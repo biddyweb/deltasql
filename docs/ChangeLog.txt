@@ -1,3 +1,7 @@
+18.9.2010 git
+Moved source code from CVS module dbsync hosted on GPU project to git 
+module deltasql hosted on project deltasql of project homepage. 
+
 13.9.2010 1.1.0 Release Notes
 - ability to submit scripts in chain
 - new deltasql client in bash script, skilled people should be able to 
