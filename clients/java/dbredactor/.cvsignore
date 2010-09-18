@@ -1,0 +1,8 @@
+build.properties
+log.txt
+scripts
+script.sql
+projectversion.properties
+deltasql.properties
+sample-deltasql.properties
+deltasql-build.xml

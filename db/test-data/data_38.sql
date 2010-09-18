@@ -1,0 +1,1 @@
+INSERT INTO tbscriptbranch VALUES (24, 7, 1);

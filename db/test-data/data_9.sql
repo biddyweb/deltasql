@@ -1,0 +1,1 @@
+INSERT INTO tbmodule VALUES (4, 'myapplication-maintenance', 'Here, a collection of scripts is maintaned, which is used for occasional database maintenance, but not for synchronizing the database schemas.', '2008-04-07', 6, 0);

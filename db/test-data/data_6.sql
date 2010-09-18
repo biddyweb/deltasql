@@ -1,0 +1,1 @@
+INSERT INTO tbmodule VALUES (1, 'mycompany-common', 'These are tables used in all projects of MyCompany. Typically tables like TBUSER, TBROLE, TBGROUPS are mantained in this module. This module belongs to the project MyProject.', '2008-04-07', 2, 0);

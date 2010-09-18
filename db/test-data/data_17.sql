@@ -1,0 +1,1 @@
+INSERT INTO tbproject VALUES (2, 'deltasql-test-project', '', '', '2008-05-21');

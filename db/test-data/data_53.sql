@@ -1,0 +1,1 @@
+INSERT INTO tbsynchronize VALUES ('deltasql-server', NULL, 'INTERNAL', 'deltasql-server', 3, 'HEAD', NULL, NULL, NULL);

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xml>
+  <type>synchronization</type>
+  <maincomment>This is a script for usa-qa</maincomment>
+  <script>
+      <scripttype>verification</scripttype>
+      <versionnr></versionnr>
+      <module></module>
+      <create_dt></create_dt>
+      <comment>
+        ![CDATA[
+            -- this verifies that the present script is executed in the correct schema]]
+     </comment>
+      <content>
+        ![CDATA[CALL DELTASQL_VERIFY_SCHEMA(913, 'WC-5', 'CarbonTube');
+        ]]
+      </content>
+  </script>
+  <script>
+      <scripttype>dbupdate</scripttype>
+     <versionnr>927</versionnr>
+     <module>mammamia</module>
+      <create_dt>2008-08-14</create_dt>
+        <branch>HEAD</branch>
+        <branch>WC-5</branch>
+        <branch>SIB_1_0</branch>
+        <branch>FX5B</branch>
+        <branch>CC_3B</branch>
+        <branch>TTEC_20</branch>
+        <branch>FX5C</branch>
+      <comment>
+        [CDATA[-- relocalizing code type]]
+     </comment>
+      <content>
+        [CDATA[
+              BEGIN
+                DELETE FROM TBCODE WHERE CODETYPE='WORKLOAD_SLOT_TYPE';
+                LOCALIZEDTBCODE( NULL, NULL, 'WORKLOAD_SLOT_TYPE', 40, 'ONE DAY',    'ONE DAY',     'ONE DAY',     'UN GIORNO');
+              END;
+        /]]
+       </content>
+    </script>
+  <script>
+      <scripttype>synchronization</scripttype>
+      <versionnr></versionnr>
+      <module></module>
+      <create_dt></create_dt>
+      <comment>
+        ![CDATA[-- updating synchronization information for the database schema]]
+     </comment>
+      <content>
+        ![CDATA[INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE)
+                VALUES ('CarbonTube', 929, 'WC-5', 'time', 'ant-client', 'This is a script for usa-qa', 913, 'WC-5');
+                UPDATE tbsynchronize SET dbtype='Oracle' WHERE versionnr=929;
+                -- all scripts to reach db WC-5 beginning from version 929 on date 2008-08-15
+        ]]
+      </content>
+  </script>
+</xml>

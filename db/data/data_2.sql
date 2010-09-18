@@ -1,0 +1,1 @@
+INSERT INTO `tbparameter` VALUES (1, 'GLOBAL', 'VERSION', '6');

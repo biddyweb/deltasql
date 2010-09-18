@@ -1,0 +1,1 @@
+INSERT INTO tbscript VALUES (id, code, module_id, versionnr, user_id, update_dt, update_user, comments, title, isapackage, isaview)  (9, '-- 6 script only for HEAD before branch DELTA_2 comes', 5, 17, 1, '2008-05-21', '', '', 'db update', 0, 0);

@@ -1,0 +1,1 @@
+INSERT INTO tbmodule VALUES (2, 'myapplication', 'This is the application layer which contains all tables and packages which are customer independent. It is based on the mycompany-common layer.', '2008-05-02', 9, 0);

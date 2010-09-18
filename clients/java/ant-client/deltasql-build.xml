@@ -1,0 +1,36 @@
+<!-- Ant script to retrieve the needed updates from the DeltaSQL server -->
+<project name="delta-sql" default="RetrieveUpdates">
+	<property file="deltasql.properties" />
+	
+	<target name="RetrieveUpdates">
+		<!-- read current version out of the DB -->
+		<sql classpath="${jdbc-driver-path}" driver="${jdbc-driver-classname}" password="${deployment.db.pass}" url="${deployment.db.url}" userid="${deployment.db.user}"
+			 output="param.txt" print="true" append="false" showheaders="false" showtrailers="false" >
+			<transaction>select versionnr from tbsynchronize where versionnr = (select max (versionnr) from tbsynchronize)</transaction>
+		</sql>
+		<loadfile property="deployment.db.version" srcfile="param.txt">
+			<filterchain><trim/><striplinebreaks/></filterchain>
+		</loadfile>
+		
+		<!-- read current branch out of the DB -->
+		<sql classpath="${jdbc-driver-path}" driver="${jdbc-driver-classname}" password="${deployment.db.pass}" url="${deployment.db.url}" userid="${deployment.db.user}"
+			 output="param.txt" print="true" append="false" showheaders="false" showtrailers="false" >
+			<transaction>select branchname from tbsynchronize where versionnr = (select max (versionnr) from tbsynchronize)</transaction>
+		</sql>
+		<loadfile property="deployment.db.fromBranch" srcfile="param.txt">
+			<filterchain><trim/><striplinebreaks/></filterchain>
+		</loadfile>
+		<delete file="param.txt" />
+		
+		<echo>Current Version: ${deployment.db.version} of branch ${deployment.db.fromBranch}.</echo>
+		<property name="temp.url" value="${deltasql.server.url}dbsync_automated_update.php?client=ant-client&amp;user=${deltasql.user}&amp;project=${deployment.db.project}&amp;version=${deployment.db.version}&amp;frombranch=${deployment.db.fromBranch}&amp;tobranch=${deployment.db.toBranch}&amp;htmlformatted=1&amp;dbtype={deployment.db.type}" />
+		<get dest="script.html" src="${temp.url}"/>
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="explorer"/>
+			<arg value="script.html"/>
+		</exec>
+		<!--<delete file="script.html" />-->
+	</target>	
+	
+</project>

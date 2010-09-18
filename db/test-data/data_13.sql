@@ -1,0 +1,1 @@
+INSERT INTO tbmoduleproject VALUES (3, 3, 1);

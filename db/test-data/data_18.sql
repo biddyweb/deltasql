@@ -1,0 +1,1 @@
+INSERT INTO tbscript (id, code, module_id, versionnr, user_id, update_dt, update_user, comments, title, isapackage, isaview) VALUES (3, 'test', 2, 9, 1, '2008-05-02', '', '', 'db update', 0, 1);

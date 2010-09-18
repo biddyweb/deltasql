@@ -1,0 +1,1 @@
+INSERT INTO tbbranch VALUES (3, 'BRANCH_2', 1, '', 7, '2008-05-02', 0);

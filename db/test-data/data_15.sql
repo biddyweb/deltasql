@@ -1,0 +1,1 @@
+UPDATE tbparameter SET paramvalue='24' WHERE paramname='VERSION' and paramtype='GLOBAL';

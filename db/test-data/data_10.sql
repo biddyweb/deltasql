@@ -1,0 +1,1 @@
+INSERT INTO tbmodule VALUES (5, 'deltasql-test-module', '', '2008-05-21', 24, 0);

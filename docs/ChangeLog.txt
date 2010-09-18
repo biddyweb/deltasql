@@ -1,0 +1,575 @@
+13.9.2010 1.1.0 Release Notes
+- ability to submit scripts in chain
+- new deltasql client in bash script, skilled people should be able to 
+build continous integration for databases with cron jobs and additional 
+scripts for database bindings
+- collection of usage statistics sent to deltasql.org if user agrees
+- manual and FAQ improved with additional sections/questions
+
+10.9.2010 CVS
+- 1 FAQ added on phone home functionality added
+- source code walk through in manual
+- Bash deltasql client added
+
+9.9.2010 CVS
+- added phone home capability to deltasql to collect usage statistics
+- added 3 new questions to FAQ, FAQ reorganized
+- added sections in manual about Projects and Modules and on how 
+  synchronization works.
+
+
+8.9.2010 CVS
+- ability to submit scripts in chain (setting recorded in cookie)
+
+30.7.2010 1.0.9 Release Notes
+- maintenance release with fixes from community
+
+29.6.2010 CVS
+- when in "Search scripts" the output as text file option is selected,
+  the scripts are showed in ascending order
+
+15.6.2010 CVS
+- added slash at the end of Oracle stored procedure to verify
+  scripts
+
+1.0.8 Release Notes (24.5.2010)
+- Important fix in install routines
+- Ability to set a default database type
+- Stored procedure for MS SQL server to verify that the script
+ is executed on the correct database
+
+24.5.2010 CVS
+Fix to the install routines finalised
+
+21.5.2010 CVS
+Added ability to select default database type
+ during install
+Applied fix to the install routines
+
+
+18.5.2010 CVS
+Added stored procedure for MS SQL server to verify
+ script correctness (tested only in read-only mode though)
+
+24.2.2010 CVS
+Minor fixes in manual.php
+
+1.0.7 Release Notes (15.2.2010)
+
+Minor bugfixes and URLs adjusted to the new URL www.deltasql.org
+
+15.1.10 CVS
+Changed the wiki url to www.deltasql.org/wiki
+
+28.10.09 CVS
+- bugfix: a missing script title is defaulted to "db update" so that it is clickable on the google gadget
+
+20.10.09 CVS
+- google gadget has number of scripts and font size as preferences
+- bugfix: scripts opened in google gadget open a new browser tab
+
+
+1.0.6 Release Notes (14.10.2009)
+
+The main feature of 1.0.6 is the Google Gadget that displays the latest scripts on
+ your iGoogle start page.
+The manual is updated on how to install the gadget.
+
+Additionally, the 'List scripts' view shows coloured rows depending on the age of a submitted script.
+For each submitted script, not only the date is recorded, but now also the hour.
+
+With 1.0.6 we change the version number to a schema numbering which is very common in the Open
+Source world.
+
+WARNING:
+Before installing 1.0.6 you need to run this script on the database schema:
+ALTER TABLE `tbscript` CHANGE `create_dt` `create_dt` DATETIME NOT NULL;
+ALTER TABLE `tbscript` CHANGE `update_dt` `update_dt` DATETIME NOT NULL;
+
+
+14.10.09
+- added settings and refined deltasql google gadget
+- added gadget on the initial page
+- added a F.A.Q question on the gadget
+- added a section in the manual that explains how to intall the gadget
+- list scripts colors scripts as the gadget does
+- removed deltasql-1.005.ebuild (gentoo ebuild script)
+
+13.10.09
+- list computers is refreshed each 3 minutes
+- started adding skeleton for a google gadget displaying the latest scripts
+- changed format in tbscript for create_dt and update_dt, people need to run:
+
+ALTER TABLE `tbscript` CHANGE `create_dt` `create_dt` DATETIME NOT NULL;
+ALTER TABLE `tbscript` CHANGE `update_dt` `update_dt` DATETIME NOT NULL;
+
+
+23.7.09
+- added under the directory "gentoo" an overlay called "gpu-grid" that will contain 
+  ebuilds for the different gentoo versions.
+
+1.005 Release Notes (22.4.09)
+- possibility to submit scripts with the option "in all branches" or "not in any branch" (by Lukas Stucki)
+- ability to remove empty lines in a script in submitscript.php (by Lukas Stucki)
+- bugfix: test data is correctly inserted by install.php
+- bugfix: error rights in Top Ten Submitters
+
+
+8.02.09
+- Lukas Stucki added the possibility to submit scripts to "all" branches or "none",
+ by clicking on a button on the submit_script.php page
+
+1.004 Release Notes
+- possibility to create a branch of a branch by duplicating it
+- it is possible to see who modified last a script and when
+- it is possible to search among modified scripts
+- added FAQ questions
+
+19.12.08 CVS
+- on the deltasql schema please execute:
+
+ALTER TABLE `tbscript` ADD `update_dt` DATE NULL AFTER `create_dt` ;
+ALTER TABLE `tbscript` ADD `update_user` VARCHAR( 64 ) NULL AFTER `update_dt`;
+
+- this adds the functionality of keeping track of script changes
+
+17.12.08 CVS
+- added possibility to duplicate a branch
+- added a FAQ on how to duplicate the branch
+
+11.12.08 CVS
+- added FAQ note on how to upgrade deltasql
+
+11.12.08 1.003 Release Notes
+- search scripts page: it is possible to search for scripts in a given time interval by using
+ the jscalendar component
+- important bugfix: branch names with dots or other special chars created problems to the submit, list
+  scripts pages (reported from Harikrishnan V at amritatech.com)
+- documentation improvements: added a Frequently Asked Question, the ant-client install instructions
+ and a tip to the manual
+ - alphabetic sorting for project names and module names
+ 
+10.12.08 CVS
+- added a tip to the manual
+- added piwik stats (only if flag $include_piwik_stats is set to true), by default disabled
+
+9.12.08 CVS
+- added section on how to install ant-client in manual and one more question in the FAQ
+
+8.12.08 CVS
+- wrote down a minimal FAQ
+
+4.12.08 CVS
+- added a $default_script_title variable in config.inc.php to configure the
+ default script title when submitting a new script
+- added skeleton for deltasql FAQ
+
+1.12.08 CVS
+- bugfix for the issue reported by Harikrishnan: it is possible to name branches
+ like "1.1.1" or using special chars now
+- bugfix: if a script is less than 35 chars it is not shown in list_scripts.php
+
+19.11.08 CVS
+- added jscalendar (http://jscalendar.sourceforge.net) to search scripts for a date interval
+
+18.11.08 CVS
+- alphabetic ordering of module names and branch names in edit_script.php and submit_script.php
+- alphabetic ordering of project names in dbsync.php
+
+14.11.08 1.002 Release Notes
+- When deleting a script, a branch, a module or a project, a page
+ asks for confirmation
+- Several documentation improvements
+
+
+13.11.08 CVS
+- added directory structure text file, to explain the package structure
+ of deltasql_thunder_1.xxx.tar
+- several improvements on tablesync (including timer)
+- minor documentation improvements
+
+7.11.08 CVS
+- improvements to the deltasql algorithm section in the manual
+
+6.11.08 CVS
+- added little section in manual that documents the deltasql algorithm
+
+4.11.08 CVS
+- added number of synchronizations in list usage history
+
+29.10.08 CVS
+- confirm page for deletion of project, user, branch and module
+
+28.10.08 CVS
+- script deletion has a confirmation page
+- tablesync implements basic functionality without foreign key management
+- reduced the number of scripts per page from 20 to 15 in utils/constants.inc.php
+
+15.10.08 1.001 Release Notes
+The deltasql clients now also support Microsoft SQL server and Sybase
+ thanks to the open source driver jTDS.
+
+Some refinements in respect to 1.000:
+- the schema name is removed as it was creating confusion.
+- install procedure: added possibility to specify another user as root user
+- the test data script is running now
+
+14.10.08 CVS
+- initial skeleton for the tablesync utility under /tablesync subfolder:
+it is a Java process (which can run on a Linux/Unix server) that is able
+ to synchronize data between different database types (via JDBC driver)
+
+2.10.08 CVS
+- deleted some entries in the test data script under subdirectory db, as they were not working
+- removed optional schema name from UI as it creates confusion
+- install procedure: added possibility to specify another user as root user
+
+1.10.08 CVS
+- added a new JDBC driver to the ant-client and to the dbredactor client that allows
+ connections to Microsoft SQL Server and Sybase. The JDBC driver name is jTDS and is under LGPL,
+  distributed at jtds.sourceforge.net
+- changes server side to support the Microsoft SQL server and Sybase
+
+24.09.08 CVS
+Improved error message in stored procedure DELTASQL_VERIFY_SCHEMA
+
+15.09.08 1.000 Release Notes
+0.950 is rereleased as version 1.000 due to its stability. Only the .tar.gz packaging has a correct Unix 
+end of line format.
+
+19.08.08 0.950 Release Notes
+Improved project module management (possibility to delete modules, less confusing navigation)
+Improved user management (possibility to delete users for administrators)
+Improved error management (bugfixes, more error types, link to error documentation if format is HTML)
+XML Export for advanced deltasql clients
+
+This release is Release Candidate 1 for Version 1.
+
+18.08.08 CVS
+- documented the possible error messages in deltasql server
+- changed logic to format error, so that it can show documentation on an hyperlink 
+- added possibility to choose between XML, HTML (default) and text in dbsync form
+
+15.08.08 CVS
+- finished XML export functionality for dbsync updates, to enable use
+ xmlformatted=1 parameter in URL string
+- fixed minor bugs in error messages if client were not aligned
+- documented the options a deltasql client can set via URL parameters
+
+14.08.08 CVS
+- Added delete project module functionality
+- Revised Add Module workflow
+- "Back To" links not too close of end of table
+- Added initial stubs to handle xml output of dbsync
+- Added possibility to delete users for Administrators
+
+13.08.08 0.901 Release Notes
+- Important bugfix: the list of database types was not shown when
+ getting the synchronization table
+
+12.08.08 0.900 Release Notes
+- Top Ten Submitters List (can be installed with an option)
+- Editing the description of Modules, Projects and Branches 
+- bugfixes in the install procedure if options are chosen
+- added test document to verify accuracy of synchronization mechanism
+
+8.08.08 CVS
+- added editing of projects, branches and modules (description and for modules also name)
+
+28.07.08 CVS
+- added document "Tests_To_Verify_deltasql_correctness.txt" containing the output
+ of the synchronization mechanism with the test data that can be installed with
+  install.php
+
+25.07.08 CVS
+- added top ten submitters list
+- added possibility to disable the top ten list on the install.php page
+
+21.07.08 CVS
+- bugfix: test system did not shown admin password in login screen
+
+11.07.08 CVS
+- bugfix: enterprise logo never shown if deltasql configured as Enterprise Edition
+
+10.07.08 0.850 Release Notes
+- provides the reliability of 0.810
+- easiness of installation thanks to the new install.php page which takes
+ the entire burden of configuring deltasql away from the user
+- usage statistics for administrators
+
+10.07.08 CVS
+- added single scripts to recreate schema in db/ subfolder 
+- install.php works perfectly :-). In one shot it is possible to install
+  deltasql with options :-)
+
+8.07.08 CVS
+- Install procedure: database creation works. now tables are missing.
+
+4.07.08 CVS
+- configuration script is automatically generated via install.php
+
+3.07.08 CVS
+- created nice layout for install.php
+- redirection to install.php if deltasql not already installed
+
+27.06.08 CVS
+- added entry in README.TXT that pictures/enterprise_logo.jpg is the only file
+ not under GPL in this package.
+
+27.05.08 CVS
+- added table tbusagehistory to record some deltasql activities for administrators,
+ it has exactly the same structure as TBSYNCHRONIZE (a part of the unique constraint on
+  the version number).
+- added page list_usage_history.php if the user is logged as administrator
+
+22.05.08 0.810 Release Notes
+- Important Fixes to the update logic for BRANCH->HEAD and HEAD->BRANCH operations (the duplicate
+ problem is solved as well)
+- Look&Feel changed with Cascade Style Sheets
+- Fixes to the backup shell script
+
+22.05.08 CVS
+- all combinations HEAD -> HEAD, BRANCH->BRANCH, BRANCH->HEAD and HEAD->BRANCH
+ are tested and seem to work (after several adjustments and adding a third phase
+  into the synchronization step)
+
+21.05.08 CVS
+- initial bugfixes to the dbsync update logic (duplicate problem seems solved,
+ but maybe a refactoring is needed)
+- stuckas fixes to backup script under /db/backup
+
+05.05.08 CVS
+- added cascade style sheet to the html page (the style sheet is copyed from the Tomcat 5.5 inside JBoss)
+
+0.809 Release Notes
+- DELTASQL_VERIFY_SCHEMA stored procedure verify that a synchronization script is executed in the
+ correct schema (for Oracle and postgreSQL. mySQL might support this at a later point)
+- possibility to edit in which branches a script belongs to (before it was possible only
+ through the removal workaround)
+- example backup shell script for Linux to periodically dump deltasql data under /db/backup
+- minor fixes and changes
+
+2.5.08 CVS
+- edit script allows modification of to which branches a script is applied
+
+27.4.08 CVS
+- added verification step for database postgreSQL as stored function
+
+24.4.08 CVS
+- important end of line bugfix in synchronization script generation
+
+23.4.08 CVS
+- changed verification step by using a stored procedure
+
+21.4.08 CVS
+- bugfix in echo statement of ant-client
+
+20.4.08 CVS
+- removed flag $enable_verification_script_for_dbsync, added a column to tbsynchronize named dbtype
+ instead. If it is an Oracle database, dbtype will contain the string Oracle, and the verification
+  script will be shown.
+- added also a column schemaname to tbsynchronize  
+- adapted ant-client and dbredactor to support the database type setting
+
+18.4.08 CVS
+- added Oracle verification script, to verify if a dbsync script is
+ executed at the correct place (flag $enable_verification_script_for_dbsync
+  in config.inc.php to enable it)
+
+17.4.08 CVS
+- script by Lukas to backup sql dumps on a samba server under db/backup
+
+16.4.08 0.808 Release notes
+- syntax highlighting for SQL scripts with the Geshi library
+of Nigel McNie and Benny Baumann added by Lukas Stucki
+- bugfix: if there are no scripts a commment is shown
+- database schema revised
+- ant client revised
+
+
+10.4.08 CVS
+- title links to show script in list scripts view.
+
+7.4.08 CVS
+- possibility to disable client download table in config.inc.php via variable
+$disable_clients_table_on_main_page 
+- redone database schema for deltasql by reexporting it with a project and some
+ modules as example
+
+6.4.08 CVS
+- better title management for "collection scripts" mode,
+ search among titles, titles different than "db update" are underlined
+- bugfix: if there are no SQL scripts, the INSERT into TBSYNCHRONIZE statement
+ is not returned. A commment that no database update is needed is printed instead
+
+4.4.08 CVS
+- possibility to disable SQL highlighting if it creates
+ performance problems
+
+3.4.08 CVS
+- ant client tested, some variable names renamed
+- added SQL coloring of updatestatement
+
+1.4.08 CVS
+stuckas: syntax highlighting for SQL scripts with the Geshi library
+of Nigel McNie and Benny Baumann
+
+30.3.08 0.807 Release Notes
+- ant client of Lukas Stucki as additional deltasql client
+- output of filtered scripts also as text file
+- minor fixes
+
+30.3.08 CVS
+- modified ant client to make it JDBC driver independent. so it can support mySQL and postgreSQL as well
+
+28.3.08 CVS
+- modified query in ant client to be compatible with other databases
+- added php version information if logged as administrator
+
+25.3.08 CVS
+- added ant client of Lukas Stucki
+
+6.3.08 CVS
+- added possibility to search among scripts and have the output as a text list
+ for faster copy-paste.
+
+4.3.08 0.806 Maintenance Release
+
+24.2.08 CVS
+- tbsynchronize is now described in the native format of postgreSQL (though the format
+ used until now was understood by PostgreSQL).
+
+20.2.08 CVS
+- bugfix: if tbscript was empty, list_scripts.php might not work
+
+15.2.08 CVS
+- clients are allowed to get the html formatted version by setting the parameter htmlformatted=1
+
+11.2.08 CVS
+- dbredactor: changed name from datasource.properties to deltasql.properties
+
+7.2.08 0.805 Release Notes
+WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database schemas
+ as two new columns were added!
+- database synchronization logs also from which version and from which branch the update
+ started, dbredactor updated to reflect this
+- bugfix in database schema creation for the deltasql server
+- settings are remembered in search script window, to allow refinements
+- possibility to add a commit comment in database synchronization form
+- bugfix branch visibility
+- it is possible to search scripts belonging in a given version range
+
+5.2.08 CVS
+- dbredactor: URL encoding of most parameters
+- dbredactor: replacing white spaces with underscores in script names
+
+4.2.08 CVS
+- bugfix: created branch must have visible set to 1 by default.
+
+3.2.08 CVS
+- update_fromsource is logged in TBSYNCHRONIZE as well
+- bugfix in db/script.sql about INSERT statement in TBSYNCHRONIZE
+- remembering settings in search_script.php to refine searches
+
+1.2.08 CVS
+- search scripts from version to version
+- update_fromversion is logged in TBSYNCHRONIZE as well
+
+31.1.08 CVS
+- possibility to add a commit comment
+- dbredactor uses the commit comment to signal for which branch the script is
+
+0.804 Release Notes
+WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database schemas
+ as the format changed!
+- TBSYNCHRONIZE keeps history of changes and remembers which user did changes on schema
+- Navigation with pages while browsing scripts (also if a search filter is enabled)
+- Last search is remembered until Cancel Search button is pressed
+
+25.1.08 CVS
+- added support UPDATE_USER und UPDATE_TYPE to TBSYNCHRONIZE
+ in dbredactor und deltasql-server
+- implemented match case logic for search_scripts.php. However
+ the query does not work in list_scripts.php. For now we keep it disabled
+
+24.1.08 CVS
+- changing columns of TBSYNCHRONIZE, so that it is possible to insert multiple
+ entries, to have a little history of what happened to the database
+- changed name of a column of TBSYNCHRONIZE from LASTVERSIONNR to VERSIONNR (breaks
+ backward compatibility unfortunately)
+- UPDATE_DT has default SYSDATE in Oracle Table
+
+22.1.08 CVS
+- navigation among scripts works fine also if search filter is enabled
+
+21.1.08 CVS
+- added Last page in list_scripts.php
+
+18.1.08 CVS
+- added primitive Top/Next/Previous in list_scripts.php
+- remembering search queries among scripts with cookies
+
+16.1.08 0.803 Release Notes
+- important bugfix in dbredactor logic
+- branch visibility
+- searching views and packages
+
+16.1.08 CVS
+- branch visibility also in dbsync.php
+- show/hide branches also for Project Managers. Delete branches only for
+ Administrators.
+
+15.1.08 CVS
+- dbredactor bugfix: dbsync info was not working properly when current version
+ on schema and on deltasql were the same
+- implemented branch visibility: hidden branches are not shown in submit_script.php
+- added dbredactor versioning
+
+10.1.08 CVS
+- detect packages and views only if project manager or administrator
+
+9.1.08 CVS
+- drop table and commit statements when getting synchronization table
+
+8.1.08 CVS
+- searching among packages and views
+
+7.1.08 0.802 Release Notes
+- supported marking scripts as views and packages
+- easier to upgrade deltasql by removing stuff from configuration file
+- minor changes for production (removed adding of ; if missing, removed
+ some default values in forms to avoid mistakes)
+- advertisement for logos of Patrizia Pulice Cascio
+
+7.1.08 CVS
+- added script to mark views and packages automatically in dbsync.php
+
+6.1.08 CVS
+- exclusion of views and packages works
+
+5.1.08 CVS
+- added possibility to mark a script as a view or as a package
+(later views and packages can be excluded from dbsync at wish)
+
+4.1.08 CVS
+- removed automatic end of line ; for scripts as it creates some problems
+
+2.1.08 CVS
+- added page of Patrizia
+
+21.12.07 CVS
+- Submit script: added mandatory specification of module without default as it was source of errors
+
+20.12.07 CVS
+- Changed show script so that also the comment can be copy-pasted into an SQL client
+
+15.12.07 CVS
+- Changed config.inc.php to example_config.inc.php and manual to reflect this
+- added $dbserver variable if instance of mySQL is not running on the same 
+server where Apache runs.
+
+13.12.07 0.801 
+Renamed tables to lowercase, as queries create some problems with some mySQL instances.
+
+12.12.07 0.800
+Initial Release on Sourceforge.net

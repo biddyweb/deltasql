@@ -1,0 +1,64 @@
+<project name="dbredactor" default="dbsync info">
+	<property file="build.properties" />
+
+	<target name="dbsync info" description="retrieves current schema info">
+			<echo>Retrieving info about schema ${config.set} datasource with latest scripts</echo>   
+			<java classname="org.deltasql.dbredactor.InfoDB"
+		        	fork="yes" >
+				<classpath>
+					<pathelement path="bin;lib/oracle-10.2.0.2-jdbc-jdk-1.5.jar;lib/mysql-connector-java-5.1.5-bin.jar;lib/postgresql-8.2-507.jdbc4.jar;lib/jtds-1.2.2.jar" />
+				</classpath>
+				<sysproperty key="DEBUG" value="true"/>
+		    	<arg value="-h"/>
+		    	<jvmarg value="-Xrunhprof:cpu=samples,file=log.txt,depth=3"/>
+			</java>
+			
+	</target>
+    	
+	
+	<target name="download script">
+		<echo>Updating database of ${config.set} datasource with latest scripts</echo>   
+		<java classname="org.deltasql.dbredactor.SynchronizeDB" fork="yes" >
+		 	<classpath>
+				<pathelement path="bin;lib/oracle-10.2.0.2-jdbc-jdk-1.5.jar;lib/mysql-connector-java-5.1.5-bin.jar;lib/postgresql-8.2-507.jdbc4.jar;lib/jtds-1.2.2.jar" />
+		  	</classpath>
+		 	<sysproperty key="DEBUG" value="true"/>
+    		<arg value="-h"/>
+    		<jvmarg value="-Xrunhprof:cpu=samples,file=log.txt,depth=3"/>
+		</java>
+	</target>
+	
+	<target name="is available script" depends="download script">
+	    <condition property="downloaded.script">
+			            <available file="script.sql"/>
+		</condition>
+	</target>
+	
+		
+	
+			
+	<target name="dbsync update"  description="updates database with the latest scripts" depends="is available script">
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		  <classpath>
+		    <pathelement location="lib/ant-contrib-1.0b3.jar"/>
+		  </classpath>
+		</taskdef>
+		<if>
+			<equals arg1="${downloaded.script}" arg2="true" />
+			 <then>
+			   <echo>Showing script in editor ${environment.editor}</echo>
+			   <exec executable="cmd">
+					    <arg value="/c"/>
+					    <arg value="${environment.editor}"/>
+					    <arg value="script.sql"/>
+				</exec>
+  	  	       <echo>Please execute this script in your SQL client.</echo>
+			 </then>
+			<else>
+				<echo>No script was generated</echo>
+			</else>
+	   </if>
+	</target>
+	
+	
+</project>

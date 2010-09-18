@@ -1,0 +1,13 @@
+<project name="dbredactor packaging" default="dist">
+
+	<target name="dist"  description="creates jar file for distribution" depends="">
+		<jar destfile="dist/dbredactor.jar" basedir="bin">
+			<manifest>
+			   <attribute name="Built-By" value="deltaSql Team"/>
+			   <attribute name="Main-Class" value="org/deltasql/dbredactor/SynchronizeDB"/>
+			</manifest>
+		</jar>	
+		
+	</target>
+
+</project>

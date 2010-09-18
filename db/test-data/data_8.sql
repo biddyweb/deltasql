@@ -1,0 +1,1 @@
+INSERT INTO tbmodule VALUES (3, 'mycustomer', 'These are the customized tables used only for the particular customer MyCustomer. They lay on top of the tables defined in mycompany-common and myapplication database modules', '2008-04-07', 4, 0);

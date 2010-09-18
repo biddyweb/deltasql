@@ -1,0 +1,73 @@
+<?php session_start(); ?>
+<html>
+<head>
+<title>deltasql - Show Database Script</title>
+<link rel="stylesheet" type="text/css" href="deltasql.css">
+</head>
+<body>
+<?php
+include_once('utils/geshi/geshi.php');
+include("head.inc.php");
+include("utils/utils.inc.php");
+$rights = $_SESSION["rights"];
+//if ($rights<1) die("<b>Not enough rights to list scripts</b>");
+?>
+<a href="list_scripts.php">Back to List</a>
+
+<?php
+include("conf/config.inc.php");
+mysql_connect($dbserver, $username, $password);
+@mysql_select_db($database) or die("Unable to select database");
+$scriptid = $_GET['id'];
+$query="SELECT * from tbscript where id=$scriptid"; 
+$result=mysql_query($query);   
+
+$id=mysql_result($result,0,"id");
+$title=mysql_result($result,0,"title");           
+$comments=mysql_result($result,0,"comments");
+$create_dt=mysql_result($result,0,"create_dt");
+$versionnr=mysql_result($result,0,"versionnr");
+$moduleid=mysql_result($result,0,"module_id");
+$script=mysql_result($result,0,"code");
+
+echo "<h2>$title</h2>";
+// retrieve module id name
+$query2="SELECT * from tbmodule where id=$moduleid"; 
+$result2=mysql_query($query2);   
+$modulename=mysql_result($result2, 0,  "name");
+echo "Module: <b>$modulename</b> ";
+echo "Version: <b>$versionnr</b> ";
+echo "Create Datum: <b>$create_dt</b> ";
+
+// retrieve to which branches the script is applied
+// retrieve to which branches and HEAD the script was applied
+$query3="SELECT * from tbscriptbranch sb, tbbranch b where (sb.script_id=$id) and (sb.branch_id=b.id) order by b.id asc"; 
+$result3=mysql_query($query3);   
+$num3=mysql_numrows($result3);
+$j=0;
+echo "Applied to: ";
+while ($j <$num3) {  
+    $branchname=mysql_result($result3,$j,"name");   
+    echo " <b>$branchname</b> ";
+    $j++;
+}
+echo "<br>";
+
+echo "<hr><br>";
+
+if ($comments!="") {
+    echo "/*\n";
+    echo "<pre>$comments</pre>";
+    echo "\n*/";
+    echo "<br><br>";
+}
+
+geshi_highlight($script, 'sql');
+
+echo "<hr>";
+mysql_close();
+?>
+</table>
+<a href="list_scripts.php">Back to List</a>
+</body>
+</html>

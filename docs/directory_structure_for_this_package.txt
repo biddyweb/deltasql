@@ -1,0 +1,43 @@
+This package is structured as follows:
+
+Deltasql Server
+---------------
+
+/           Root directory for the deltasql server
+/conf       Configuration folder
+     example_config.inc.php  This file is an example configuration, which could be renamed to config.inc.php       
+/CVS        concurrent version system folder
+/db         this folder contains database scripts needed for the mySQL database that backs the server
+    script.sql            This scripts creates the entire database schema
+    script-test-data.sql  This script creates some test data for the database schema
+    /backup               This folder contains a Unix backup shell script (example)
+    /data                 This folder contains the rows in script.sql in single scripts,
+                          so that the install logic in install.php can be executed
+    /tables               This folder contains the tables in script.sql in single scripts,
+                          so that the install logic in install.php can be executed  
+    /test-data            This folder contains the test data in script-test-data.sql in single scripts,
+                          so that the install logic in install.php can be executed
+    /docs                 Files that complement the documentation in ../manual.php
+    /pictures             Pictures for the deltasql server
+    /utils                Utilites in PHP for deltasql
+    /utils/geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
+    
+    /gentoo               in this directory, a gentoo overlay called gpu-grid is stored
+			  to easy the install of deltasql on a gentoo system    
+
+Deltasql Clients
+----------------
+
+/clients                  This is the folder with clients that interface with deltasql Server
+    /java                 Clients written in Java
+        /ant-client       A short but effective Ant client (needed libraries are in ../dbredactor/lib folder)
+        /dbredactor       The dbredactor Java client
+        
+
+Tablesync
+---------
+
+/tablesync                Currently in work: in this directory a Java process is created. It is intended to run
+                          on server and synchronizes data between different schemas but with tables with the 
+                          same name and structure. It uses JDBC connections, so that the schemas can be on different
+                          database types
