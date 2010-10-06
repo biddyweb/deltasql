@@ -1,3 +1,9 @@
+6.10.2010 git
+Added error messages on synchronization steps:
+- if the version number is less than 0 or alphanumeric
+- if the user is attempting to synchronize on a project without any 
+modules
+
 18.9.2010 git
 Moved source code from CVS module dbsync hosted on GPU project to git 
 module deltasql hosted on project deltasql of project homepage. 
