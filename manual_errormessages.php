@@ -80,6 +80,19 @@ Deltasql server does not know the project name. You probably forgot to specify i
  did not specify the <tt>project=</tt> parameter.
 </p>
 
+<li><a name="11"></a><i>11</i>: <b>Project does not contain any modules. Please add at least one module to the project!</b></li>
+<p>
+For the project you selected, no modules are defined. Please define first a module in <a href="create_module.php">Create module</a> page.
+ Add at list one script to this module in the <a href="submit_script.php">Submit script</a> page. 
+Then add the newly defined module in <a href="list_projects.php">List Projects</a> page in this way: in the row where this project is listed choose the <b>Add Module</b> button.
+Only when you accomplished all these steps you can start synchronizing on this project.
+</p>
+
+<li><a name="12"></a><i>12</i>: <b>Version number has to be greater equal zero.</b></li>
+<p>
+The version number has to be greater equal zero. Negative values are not a valid. Alphanumeric values are not valid as well.
+</p>
+
 
 
 </body>

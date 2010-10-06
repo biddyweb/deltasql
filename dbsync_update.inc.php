@@ -19,6 +19,7 @@ $debug=0; // 1 will print more verbose update scripts!
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
 
 if ($lastversionnr=="")  errormessage(9, "Not possible to compute a dbsync update if version number is missing.", $xmlformatted, $htmlformatted);
+if (($lastversionnr<0) || (!is_numeric($lastversionnr)))  errormessage(12, "Version number has to be greater equal zero.", $xmlformatted, $htmlformatted);
 if ($projectid=="")  errormessage(10, "Not possible to compute a dbsync update if project name is missing.", $xmlformatted, $htmlformatted);
 
 include("conf/config.inc.php");
@@ -98,6 +99,12 @@ $query77="SELECT * from tbproject where id=$projectid";
 $result77=mysql_query($query77);   
 $projectname=mysql_result($result77,0,"name");
 
+$query16 = "SELECT * from tbmoduleproject where project_id=$projectid";   
+$result16=mysql_query($query16);
+if ($result16!="") { $num16=mysql_numrows($result16); } else {$num16=0;}
+if ($num16==0) {
+   errormessage(11, "-- Project does not contain any modules. Please add at least one module to the project!", $xmlformatted, $htmlformatted);
+}
 
 // verify that the branch tags are for this project
 if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
@@ -106,11 +113,13 @@ if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
 if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
   errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
+
+
 if ($toversionnr<$fromversionnr) {
   if ($frombranchid!=$tobranchid) {
     errormessage(7, "Cannot downgrade a project! (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
   } else {
-    errormessage(8, "-- no scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
+    errormessage(8, "-- No scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
   }  
 }
 
