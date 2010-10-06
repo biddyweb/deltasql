@@ -26,6 +26,13 @@ include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
+$query16 = "SELECT * from tbmoduleproject where project_id=$projectid";   
+$result16=mysql_query($query16);
+if ($result16!="") { $num16=mysql_numrows($result16); } else {$num16=0;}
+if ($num16==0) {
+   errormessage(11, "-- Project does not contain any modules. Please add at least one module to the project!", $xmlformatted, $htmlformatted);
+}
+
 // retrieve branch information
 $query3="SELECT * from tbbranch where id=$frombranchid"; 
 $result3=mysql_query($query3);   
@@ -98,13 +105,6 @@ if ($frombranchid==$tobranchid) {
 $query77="SELECT * from tbproject where id=$projectid"; 
 $result77=mysql_query($query77);   
 $projectname=mysql_result($result77,0,"name");
-
-$query16 = "SELECT * from tbmoduleproject where project_id=$projectid";   
-$result16=mysql_query($query16);
-if ($result16!="") { $num16=mysql_numrows($result16); } else {$num16=0;}
-if ($num16==0) {
-   errormessage(11, "-- Project does not contain any modules. Please add at least one module to the project!", $xmlformatted, $htmlformatted);
-}
 
 // verify that the branch tags are for this project
 if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
