@@ -1,4 +1,7 @@
 6.10.2010 git
+Project deletion also deletes existing branches for the deleted project 
+and the reference from scripts to the deleted branches.
+
 Added error messages on synchronization steps:
 - if the version number is less than 0 or alphanumeric
 - if the user is attempting to synchronize on a project without any 
