@@ -46,6 +46,19 @@ $toprojectid=mysql_result($result4,0,"project_id");
 $toversionnr=mysql_result($result4,0,"versionnr");
 $tobranchname=mysql_result($result4,0,"name");
 
+// retrieve project name
+$query77="SELECT * from tbproject where id=$projectid"; 
+$result77=mysql_query($query77);   
+$projectname=mysql_result($result77,0,"name");
+
+// verify that the branch tags are for this project
+if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
+  errormessage(5, "The source branch $frombranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
+}
+if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
+  errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
+}
+
 /* adapt from and to version numbers*/
 $addheadscriptstoupdatedbranch=0;
 $addbranchscriptsafterbranch=0;
@@ -100,19 +113,6 @@ if ($frombranchid==$tobranchid) {
     $includeheadid=retrieve_head_id(); 
 }
 /* end of adaption */
-
-// retrieve project name
-$query77="SELECT * from tbproject where id=$projectid"; 
-$result77=mysql_query($query77);   
-$projectname=mysql_result($result77,0,"name");
-
-// verify that the branch tags are for this project
-if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
-  errormessage(5, "The source branch $frombranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
-}
-if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
-  errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
-}
 
 
 if ($toversionnr<$fromversionnr) {

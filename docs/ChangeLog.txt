@@ -1,3 +1,7 @@
+7.10.2010 git
+fixed error message number 5 which never appeared during db 
+synchronization.
+
 6.10.2010 git
 Project deletion also deletes existing branches for the deleted project 
 and the reference from scripts to the deleted branches.
