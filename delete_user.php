@@ -19,6 +19,13 @@ if ($deleteid=="") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
+$query3="select * from tbuser where username='admin'";
+$result3=mysql_query($query3);
+$useradminid=mysql_result($result3,0,"id");
+
+$query2="UPDATE tbscript SET user_id=$useradminid where user_id=$deleteid;";
+mysql_query($query2);
+
 $query="DELETE FROM tbuser where id=$deleteid;";
 mysql_query($query);
 

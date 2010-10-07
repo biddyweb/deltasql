@@ -1,6 +1,8 @@
 7.10.2010 git
-fixed error message number 5 which never appeared during db 
+- fixed error message number 5 which never appeared during db 
 synchronization.
+- when deleting a user, the scripts submitted by this user are 
+reassigned to admin
 
 6.10.2010 git
 Project deletion also deletes existing branches for the deleted project 
