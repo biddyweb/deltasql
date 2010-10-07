@@ -19,11 +19,11 @@ if ($branchid=="") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="DELETE FROM tbbranch where id=$branchid;";
-mysql_query($query);
-
 $query2="DELETE FROM tbscriptbranch where branch_id=$branchid;";
 mysql_query($query2);
+
+$query="DELETE FROM tbbranch where id=$branchid;";
+mysql_query($query);
 
 mysql_close();
 js_redirect("list_branches.php");

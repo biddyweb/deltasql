@@ -3,6 +3,8 @@
 synchronization.
 - when deleting a user, the scripts submitted by this user are 
 reassigned to admin
+- deleting a module also deletes assignment of scripts to branches
+- deleting branches and scripts revisited
 
 6.10.2010 git
 Project deletion also deletes existing branches for the deleted project 

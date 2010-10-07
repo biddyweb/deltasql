@@ -20,11 +20,11 @@ if ($scriptid=="") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="DELETE FROM tbscript where id=$scriptid;";
-mysql_query($query);
-
 $query2="DELETE FROM tbscriptbranch where script_id=$scriptid;";
 mysql_query($query2);
+
+$query="DELETE FROM tbscript where id=$scriptid;";
+mysql_query($query);
 
 mysql_close();
 js_redirect("list_scripts.php");
