@@ -21,24 +21,7 @@
  $first = $_SESSION["first"];
  $user_id = $_SESSION["user_id"];
  
- if (file_exists($configurationfile) && ($include_piwik_stats))
-    echo "
-    <!-- Piwik -->
-    <script type=\"text/javascript\">
-    var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://apps.sourceforge.net/piwik/deltasql/\" : \"http://apps.sourceforge.net/piwik/deltasql/\");
-    document.write(unescape(\"%3Cscript src='\" + pkBaseURL + \"piwik.js' type='text/javascript'%3E%3C/script%3E\"));
-    </script><script type=\"text/javascript\">
-    piwik_action_name = '';
-    piwik_idsite = 1;
-    piwik_url = pkBaseURL + \"piwik.php\";
-    piwik_log(piwik_action_name, piwik_idsite, piwik_url);
-    </script>
-    <object><noscript><p><img src=\"http://apps.sourceforge.net/piwik/deltasql/piwik.php?idsite=1\" alt=\"piwik\"/></p></noscript></object>
-    <!-- End Piwik Tag -->
-    ";
-    
-
- echo "<h1>deltasql Server $deltasql_version</h1>";
+ echo "<h1>deltasql server $deltasql_version</h1>";
 ?>
 
 
@@ -63,7 +46,7 @@ if (file_exists($configurationfile)) {
 <td valign="top">
 
 </p>
-<h2>DB Scripts</h2>
+<h3>DB Scripts</h3>
 <ul>
 <?php
 if ($rights>0)
@@ -74,7 +57,7 @@ if ($rights>0)
 
 </td>
 <td valign="top">
-<h2>Modules</h2>
+<h3>Modules</h3>
 <ul>
 <?php
 if ($rights>1)
@@ -85,7 +68,7 @@ if ($rights>1)
 </td>
 
 <td valign="top">
-<h2>Projects</h2>
+<h3>Projects</h3>
 <ul>
 <?php
 if ($rights>1)
@@ -96,7 +79,7 @@ if ($rights>1)
 </td>
 
 <td valign="top">
-<h2>Synchronization</h2>
+<h3>Synchronization</h3>
 <ul>
 <li><a href="list_branches.php">List Branches</a></li>
 <li><a href="dbsync.php">Synchronize database schema</a></li>
@@ -109,7 +92,7 @@ if ($rights>2)
 
 
 <td valign="top">
-<h2>Users</h2>
+<h3>Users</h3>
 <ul>
 <?php 
 if (($rights>0) && (!$disable_topten_submitters)) {
@@ -134,7 +117,7 @@ if ($rights>0) {
 </ul>
 </td>
 <td>
-<h2>Help</h2>
+<h3>Help</h3>
 <ul>
 <li><a href="manual.php">Manual</a></li>
 <li><a href="faq.php">FAQ</a></li>
@@ -154,7 +137,16 @@ if ($rights==3) {
 </ul>
 </td>
 </table>
-<h2>Database Evolution Under Control</h2>
+
+<?php
+ if ($disable_clients_table_on_main_page==true) {
+    // do nothing
+ } else {
+    include("download_clients_table.inc.php");
+ }
+?>
+
+<h3>Database Evolution Under Control</h3>
 
 <h6>(how deltasql works)</h6>
 <p>
@@ -179,17 +171,9 @@ data model branches. The trick is to number the sql scripts and to create on eac
  is contained into the copyed schema. However, it is not possible to downgrade a schema back to a previous version. 
 </p>
 <p> 
- There are deltasql clients (listed in the table at the bottom), which automatically collect synchronization data from a given database schema.
+ There are deltasql clients (listed in the table above), which automatically collect synchronization data from a given database schema.
  Though deltasql works best with Oracle, PostgreSQL and mySQL schemas, any other database type can use most of deltasql functionality.
 </p>
-
-<?php
- if ($disable_clients_table_on_main_page==true) {
-    // do nothing
- } else {
-    include("download_clients_table.inc.php");
- }
-?>
 
 <?php
 if ($enterprise_edition==true)

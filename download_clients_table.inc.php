@@ -1,4 +1,4 @@
-<h2>deltasql clients</h2>
+<h3>Download deltasql clients</h3>
 <p>
 Instead of manually synchronizing with the <a href="dbsync.php">form</a> in the synchronization section on the server, you might want
 to try out one of the clients that connect to this server and which integrate into your development environment: 
@@ -15,3 +15,4 @@ href="clients/bash_client.tar.gz">download...</a></center></td></tr>
 <tr><td><b>latest scripts</b></td><td>Google Gadget</td><td>shows latest scripts on your server on iGoogle start page</td><td><?php echo "$dbredactor_version"; ?></td><td><a href="http://www.google.ch/ig/adde?hl=en&moduleurl=http://www.gpu-grid.net/deltasql/deltasql_google_gadget.xml&source=imag" target=_blank><img src="pictures/add_google_gadget.gif" border="0" /></a>
 </td></tr>
 </table>
+</center>
