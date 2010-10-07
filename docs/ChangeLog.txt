@@ -1,3 +1,12 @@
+7.10.2010 1.1.1 Release Notes
+Server changes
+- improved error handling in synchronization step, 2 new error types 
+added, 1 error did not show up due to mistake in code
+- deletion scripts revisited to leave database consistent: delete 
+Project and delete Module were not working properly
+- Layout on initial page changed
+
+
 7.10.2010 git
 - fixed error message number 5 which never appeared during db 
 synchronization.
