@@ -240,7 +240,7 @@ if ($singlefiles=="0") {
   } 
 } // $singlefiles clause 
 else {
-  if (file_exists("output/scripts.zip")) unlink("output/scripts.zip");
+  //if (file_exists("output/scripts.zip")) unlink("output/scripts.zip");
   zip("output", "scripts", "scripts.zip");
   js_redirect("output/scripts.zip");
 }
