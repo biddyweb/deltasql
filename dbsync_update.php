@@ -19,8 +19,10 @@ $formatgroup = $_POST['formatgroup'];
 
 $htmlformatted=0;
 $xmlformatted=0;
+$singlefiles=0;
 if ($formatgroup=="html") $htmlformatted=1; else
-if ($formatgroup=="xml") $xmlformatted=1;
+if ($formatgroup=="xml") $xmlformatted=1; else
+if ($formatgroup=="singlefiles") $singlefiles=1;
 
 if ($excludeviews=="") $excludeviews=0;
 if ($excludepackages=="") $excludepackages=0;
@@ -36,7 +38,7 @@ if ($htmlformatted) {
 }
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 
-             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted );
+             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles);
 
 if ($htmlformatted) {
    echo "

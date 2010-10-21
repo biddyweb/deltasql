@@ -120,8 +120,9 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  echo "<tr><td><b>Output Format:</b> </td>";
  echo "<td>";
  echo "<input type=\"radio\" name=\"formatgroup\" value=\"html\" checked> HTML";
- echo "<input type=\"radio\" name=\"formatgroup\" value=\"xml\"> XML";
  echo "<input type=\"radio\" name=\"formatgroup\" value=\"text\"> Text";
+ echo "<input type=\"radio\" name=\"formatgroup\" value=\"xml\"> XML";
+ echo "<input type=\"radio\" name=\"formatgroup\" value=\"singlefiles\"> Single files (zipped)";
  echo "</td></tr>";
   
  echo "</table><br><br>";

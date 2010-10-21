@@ -39,31 +39,49 @@ function printXmlScript($script, $comment, $module, $versionnr, $type, $date) {
     echo "  </script>\n";
 }
 
-function output_scripts($result, $htmlformatted, $xmlformatted) {
-    if ($htmlformatted) {
+function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
+ if ($htmlformatted) {
         include_once('geshi/geshi.php');
-        include('conf/config.inc.php');
-    }    
-    if ($result=="") return 0;
-    $i=0;
-    $num=mysql_numrows($result);
-    while ($i<$num) {  
+ }    
+ include('conf/config.inc.php');
 
-    $scriptid=mysql_result($result,$i,"id");
-    //$title=mysql_result($result,$i,"title");           
-    $comments=mysql_result($result,$i,"comments");
-    $create_dt=mysql_result($result,$i,"create_dt");
-    $versionnr=mysql_result($result,$i,"versionnr");
-    $moduleid=mysql_result($result,$i,"module_id");
-    $script=mysql_result($result,$i,"code");
-    $isapackage=mysql_result($result,$i,"isapackage");
-	$isaview=mysql_result($result,$i,"isaview");
+ if ($result=="") return 0;
+ $i=0;
+ $num=mysql_numrows($result);
+ 
+ while ($i<$num) {  
+
+  $scriptid=mysql_result($result,$i,"id");
+  //$title=mysql_result($result,$i,"title");           
+  $comments=mysql_result($result,$i,"comments");
+  $create_dt=mysql_result($result,$i,"create_dt");
+  $versionnr=mysql_result($result,$i,"versionnr");
+  $moduleid=mysql_result($result,$i,"module_id");
+  $script=mysql_result($result,$i,"code");
+  $isapackage=mysql_result($result,$i,"isapackage");
+  $isaview=mysql_result($result,$i,"isaview");
 	
-    // echo the script
-    $query2="SELECT * from tbmodule where id=$moduleid"; 
-    $result2=mysql_query($query2);   
-    $modulename=mysql_result($result2, 0,  "name");
-
+  // echo the script
+  $query2="SELECT * from tbmodule where id=$moduleid"; 
+  $result2=mysql_query($query2);   
+  $modulename=mysql_result($result2, 0,  "name");
+	
+  if ($singlefiles==1) {
+    if ($script_prefix=="") $script_prefix="script_";
+	if ($versionnr<10)      $versiontext="000000$versionnr"; else
+	if ($versionnr<100)     $versiontext="00000$versionnr"; else
+	if ($versionnr<1000)    $versiontext="0000$versionnr"; else
+	if ($versionnr<10000)   $versiontext="000$versionnr"; else
+	if ($versionnr<100000)  $versiontext="00$versionnr"; else
+    if ($versionnr<1000000) $versiontext="0$versionnr"; else	
+	$versiontext="$versionnr";
+	
+    $outputfile="output/scripts/$script_prefix$versiontext.sql";
+    $fh = fopen($outputfile, 'w') or die("<b>Can't open file $outputfile</b>");
+    fwrite($fh, "$script");
+    fclose($fh);
+  } else {
+  
 	if ($htmlformatted==1)
         echo "-- version: <b>$versionnr</b> module: <b>$modulename</b> date: <b>$create_dt</b><br/> \n";
 	else
@@ -109,10 +127,10 @@ function output_scripts($result, $htmlformatted, $xmlformatted) {
         }
     }
  
- if ($xmlformatted==1) {
-    echo "      <content>\n![CDATA[$script]]\n       </content>\n    </script>\n";
- } else
- if ($script!="") {
+   if ($xmlformatted==1) {
+      echo "      <content>\n![CDATA[$script]]\n       </content>\n    </script>\n";
+   } else
+   if ($script!="") {
 	// a valid SQL statement always ends with ;
     // does not work too well
     //$lastchar = substr($script, 0, -2); // trick to retrieve the last char
@@ -133,8 +151,8 @@ function output_scripts($result, $htmlformatted, $xmlformatted) {
       // normal text output
 	  echo "$script\n\n\n";
     }
- }
-
+   }
+  } // $singlefiles else clause ends here
 $i++; // $i=$i+1;
 }
 return $num;

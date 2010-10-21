@@ -13,7 +13,7 @@ include("utils/verification_scripts.inc.php");
 
 function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted,
          $excludeviews, $excludepackages, $updateuser, $updatetype, $commitcomment, $schemaname, $dbtype,
-         $xmlformatted) {
+         $xmlformatted, $singlefiles) {
 
 $debug=0; // 1 will print more verbose update scripts!
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
@@ -124,21 +124,23 @@ if ($toversionnr<$fromversionnr) {
 }
 
 // here begins the output of the script, if all tests are passed
-if ($xmlformatted) {
+if ($singlefiles==0) {
+   if ($xmlformatted) {
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     echo "<xml>\n";
     echo "  <type>synchronization</type>\n";
     echo "  <maincomment>$commitcomment</maincomment>\n";
-} else
-if ($commitcomment!="") {
+   } else
+   if ($commitcomment!="") {
     echo "-- Commit Comment: "; 
     if ($htmlformatted==1) echo "<b><br>/*<h2>";
     echo "$commitcomment\n\n";
     if ($htmlformatted==1) echo "</h2>*/</b><br>";
+   }
+   
+   printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
 }
 
-
-printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
 
 if ($addheadscriptstoupdatedbranch=="1")  {
 
@@ -174,7 +176,7 @@ $query="$query  ORDER BY versionnr ASC";
 	 
 if ($debug==1) echo "<p>-- DEBUG: query to generate this update script was:\n-- $query\n</p>";
 $result=mysql_query($query);   
-$generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted);
+$generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles);
 
 
 if ($addbranchscriptsafterbranch==1) {
@@ -189,19 +191,19 @@ if ($addbranchscriptsafterbranch==1) {
 	 
     if ($debug==1) echo "<p>-- DEBUG: query to generate this update script was:\n-- $query88\n</p>";
     $result88=mysql_query($query88);   
-    $generated_scripts+=output_scripts($result88, $htmlformatted, $xmlformatted);
+    $generated_scripts+=output_scripts($result88, $htmlformatted, $xmlformatted, $singlefiles);
     
     // update the versionnr for the final statement
     $toversionnr = get_global_version();
 }
 
-// construct final update statement
-$query13="SELECT * FROM tbbranch where name='HEAD'";
-$result13=mysql_query($query13);
-$update_dt=mysql_result($result13,0,"create_dt");
+if ($singlefiles=="0") {
+  // construct final update statement
+  $query13="SELECT * FROM tbbranch where name='HEAD'";
+  $result13=mysql_query($query13);
+  $update_dt=mysql_result($result13,0,"create_dt");
 
-
-if ($generated_scripts>0) {
+  if ($generated_scripts>0) {
 	$commentstring = "-- updating synchronization information for the database schema";
 	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE)";
 	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $fromversionnr, '$frombranchname');";
@@ -217,23 +219,24 @@ if ($generated_scripts>0) {
 	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $fromversionnr, '$frombranchname', '$schemaname', '$dbtype', NOW());";
     mysql_query($usagestring);
     
-} else {
+  } else {
 	$commentstring = "-- It is not necessary to execute any SQL script\n";
 	$commentstring = "$commentstring-- The database schema is already uptodate\n\n";
     $updatestring = "";
-}
+  }
 
-if ($xmlformatted==1) {
+  if ($xmlformatted==1) {
     printXmlScript($updatestring, $commentstring, "" /*module*/, "" /*versionnr*/, "synchronization", "" /*date*/);
     echo "</xml>\n";
-} else
-if ($htmlformatted==1) {
+  } else
+  if ($htmlformatted==1) {
       //html encoding
  	  geshi_highlight("$commentstring\n$updatestring", 'sql');
       echo '<br/><br/>';
-} else {
+  } else {
 	  echo "$commentstring\n$updatestring\n\n\n";
-}
+  } 
+} // $singlefiles clause
 
 mysql_close();
 }

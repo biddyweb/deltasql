@@ -42,6 +42,8 @@ $default_script_title="db update";
 //allow deltasql to submit usage statistics to deltasql.org
 $submit_usage_stats=true;
 
-// used to include piwiki stats (only for www.gpu-grid.net/deltasql/
-$include_piwik_stats=false;
+
+//script prefix when outputting scripts as single files
+$script_prefix="script_";
+
 ?>
