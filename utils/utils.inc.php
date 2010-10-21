@@ -68,6 +68,8 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
 	
   if ($singlefiles==1) {
     if ($script_prefix=="") $script_prefix="script_";
+	if ($script_extension=="") $script_extension=".sql";
+	
 	if ($versionnr<10)      $versiontext="000000$versionnr"; else
 	if ($versionnr<100)     $versiontext="00000$versionnr"; else
 	if ($versionnr<1000)    $versiontext="0000$versionnr"; else
@@ -76,7 +78,7 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
     if ($versionnr<1000000) $versiontext="0$versionnr"; else	
 	$versiontext="$versionnr";
 	
-    $outputfile="output/scripts/$script_prefix$versiontext.sql";
+    $outputfile="output/scripts/$script_prefix$versiontext$script_extension";
     $fh = fopen($outputfile, 'w') or die("<b>Can't open file $outputfile</b>");
     fwrite($fh, "$script");
     fclose($fh);

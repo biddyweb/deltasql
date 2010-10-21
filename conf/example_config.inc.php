@@ -43,7 +43,8 @@ $default_script_title="db update";
 $submit_usage_stats=true;
 
 
-//script prefix when outputting scripts as single files
-$script_prefix="script_";
+//script prefix and suffix when outputting scripts as single files
+$script_prefix    = "script_";
+$script_extension = ".sql";
 
 ?>
