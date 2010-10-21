@@ -139,6 +139,8 @@ if ($singlefiles==0) {
    }
    
    printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
+} else {
+   empty_directory("output/scripts");
 }
 
 

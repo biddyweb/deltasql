@@ -327,6 +327,19 @@ if ($diff>(20*$one_minute)) {
 } else {
   echo "<tr BGCOLOR=\"#33FF00\">"; //green
 }
+}
 
+function empty_directory($dirname) {
+    if (is_dir($dirname))
+       $dir_handle = opendir($dirname);
+    if (!$dir_handle)
+       return false;
+    while($file = readdir($dir_handle)) {
+       if ($file != "." && $file != "..") {
+          if (!is_dir($dirname."/".$file))
+             unlink($dirname."/".$file); 
+       }
+    }
+    closedir($dir_handle);
 }
 ?>
