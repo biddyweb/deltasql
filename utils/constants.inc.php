@@ -18,6 +18,7 @@ $db_pgsql     = 'PostgreSQL';
 $db_mysql     = 'mySQL';
 $db_sqlserver = 'MS SQL Server';
 $db_sybase    = 'Sybase';
+$db_sqlite    = 'sqlite';
 $db_other     = 'Other';
 // if you want to add an additional database types:
 // 1) add a new constant $db_... here

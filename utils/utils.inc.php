@@ -216,6 +216,10 @@ if ($dbdefault == $db_sqlserver)
    echo "<option value=\"$db_sqlserver\" SELECTED>$db_sqlserver";               
   else                                                                          
     echo "<option value=\"$db_sqlserver\">$db_sqlserver"; 
+if ($dbdefault == $db_sqlite)
+    echo "<option value=\"$db_sqlite\" SELECTED>$db_sqlite";
+  else
+    echo "<option value=\"$db_sqlite\">$db_sqlite";	
 if ($dbdefault == $db_sybase)
     echo "<option value=\"$db_sybase\" SELECTED>$db_sybase";
   else

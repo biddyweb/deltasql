@@ -1,3 +1,7 @@
+21.10.2010
+Server changes
+- added sqlite support (sync table definition)
+
 7.10.2010 1.1.1 Release Notes
 Server changes
 - improved error handling in synchronization step, 2 new error types 

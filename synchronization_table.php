@@ -29,7 +29,7 @@ if (($frmdbtype=="$db_other") ||  ($frmdbtype=="$db_sybase")) {
 }
 if (($frmdbtype=="$db_oracle") || ($frmdbtype=="$db_other") || ($frmdbtype=="$db_sybase"))
 echo "
-DROP TABLE TBSYNCHRONIZE;
+-- DROP TABLE TBSYNCHRONIZE;
 CREATE TABLE TBSYNCHRONIZE
 (
   PROJECTNAME                 VARCHAR2(64)              NOT NULL,
@@ -107,7 +107,7 @@ DELIMITER ;
 else
 if ($frmdbtype=="$db_sqlserver")
 echo "
-DROP TABLE tbsynchronize;
+-- DROP TABLE tbsynchronize;
 CREATE TABLE tbsynchronize
 (
   projectname                 varchar(64)                    not null,
@@ -152,7 +152,7 @@ GO
 else
 if ($frmdbtype=="$db_pgsql")
 echo "
-DROP TABLE tbsynchronize;
+-- DROP TABLE tbsynchronize;
 CREATE TABLE tbsynchronize
 (
   projectname character varying(64),
@@ -186,6 +186,28 @@ END;
 $$ LANGUAGE plpgsql;
 
 ";
+else
+if ($frmdbtype=="$db_sqlite")
+echo "
+CREATE TABLE tbsynchronize
+(
+  projectname text,
+  update_dt text,
+  update_user text,
+  update_type text,
+  versionnr int primary key,
+  branchname text,
+  description text,
+  update_fromversion int,
+  update_fromsource text,
+  schemaname text,
+  dbtype text
+);
+
+
+";
+
+
 
   include("conf/config.inc.php");
   include("utils/utils.inc.php");
