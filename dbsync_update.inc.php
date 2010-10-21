@@ -9,7 +9,7 @@ This file is included both from dbsync_update.php called by the form dbsync.php 
 
 include("dbsync_currentversion.inc.php");
 include("utils/verification_scripts.inc.php");
-
+include("utils/zip.inc.php");
 
 function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted,
          $excludeviews, $excludepackages, $updateuser, $updatetype, $commitcomment, $schemaname, $dbtype,
@@ -238,8 +238,10 @@ if ($singlefiles=="0") {
   } else {
 	  echo "$commentstring\n$updatestring\n\n\n";
   } 
-} // $singlefiles clause
-
+} // $singlefiles clause 
+else {
+  zip("output", "scripts", "scripts.zip");
+}
 mysql_close();
 }
 ?>
