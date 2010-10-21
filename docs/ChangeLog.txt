@@ -1,6 +1,8 @@
 21.10.2010
 Server changes
 - added sqlite support (sync table definition)
+- added ability to export the synchronization script as single files 
+zipped to be used in dbdeploy like tools
 
 7.10.2010 1.1.1 Release Notes
 Server changes

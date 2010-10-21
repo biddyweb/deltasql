@@ -1,2 +1,5 @@
 In this directory, single scripts are generated when synchronizing and 
 choosing the single script (zipped) modus.
+
+The generated scripts can be used in dbdeploy-like tools like the one 
+available on http://www.dbdeploy.com

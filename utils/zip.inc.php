@@ -1,24 +1,5 @@
 <?php
 
-class createDirZip extends createZip {
- 
-	function get_files_from_folder($directory, $put_into) {
-		if ($handle = opendir($directory)) {
-			while (false !== ($file = readdir($handle))) {
-				if (is_file($directory.$file)) {
-					$fileContents = file_get_contents($directory.$file);
-					$this->addFile($fileContents, $put_into.$file);
-				} elseif ($file != '.' and $file != '..' and is_dir($directory.$file)) {
-					$this->addDirectory($put_into.$file.'/');
-					$this->get_files_from_folder($directory.$file.'/', $put_into.$file.'/');
-				}
-			}
-		}
-		closedir($handle);
-	}
-}
-
-
 function unpack_zip($source_path, $target_dir) {
 $dir = $target_dir;
 $zip = zip_open($source_path);
@@ -36,21 +17,13 @@ if (is_dir($target_dir) || mkdir($target_dir)) {
     }
 }
 
-function zip($source_path, $folder, $filename) {
-  // TODO: does not work with MAC,
-  // see http://www.web-development-blog.com/archives/tutorial-create-a-zip-file-from-folders-on-the-fly/
-  $createZip = new createDirZip;
-  $createZip->addDirectory('$folder/');
-  $createZip->get_files_from_folder('$source_path/$folder/', '$folder/');
+function zip($source_path, $folder, $zipName) {
+  include("createzip/CreateZipFile.inc.php");
 
-  $fileName = '$source_path/$filename';
-  $fd = fopen ($fileName, 'wb');
-  $out = fwrite ($fd, $createZip->getZippedfile());
-  fclose ($fd);
- 
-  $createZip->forceDownload($fileName);
-  @unlink($fileName);
+  $createZipFile=new CreateZipFile;
+  $createZipFile->zipDirectory("$source_path/$folder",$source_path);
+  $fd=fopen("$source_path/$zipName", "wb");
+  $out=fwrite($fd,$createZipFile->getZippedfile());
+  fclose($fd);
 }
-
-
 ?>
