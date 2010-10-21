@@ -1,9 +1,9 @@
 <?php
 //version
-$deltasql_version="1.1.1";
-$dbredactor_version="1.1.1";
-$antclient_version="1.1.1";
-$bashclient_version="1.1.1";
+$deltasql_version="1.1.2";
+$dbredactor_version="1.1.2";
+$antclient_version="1.1.2";
+$bashclient_version="1.1.2";
 
 //number of scripts on a page
 $scriptsperpage=15;
