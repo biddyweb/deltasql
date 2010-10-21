@@ -1,4 +1,4 @@
-21.10.2010
+21.10.2010 git
 Server changes
 - added sqlite support (sync table definition)
 - added ability to export the synchronization script as single files 
