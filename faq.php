@@ -28,6 +28,7 @@ include("utils/constants.inc.php");
 
 <h3>Usage questions</h3>
 <ul>
+<li><a href="#export">In which formats can the synchronization script be exported?</a></li>
 <li><a href="#modules">Why are there projects and modules?</a></li>
 <li><a href="#table">Where is the script that I need to launch in my database, so that deltasql can work?</a></li>
 <li><a href="#query">Which is the query I need to launch in my database to retrieve the current schema version?</a></li>
@@ -49,24 +50,28 @@ include("utils/constants.inc.php");
 
 <h3><a name="about"></a>What is deltasql for?</h3>
 <p>
-deltasql is a tool which is suitable for the "Agile Development" model, where developers often change the data model on the fly.
+deltasql is a tool which is suitable for the "Agile Development" model, where developers frequently change the data model.
  deltasql allows to propagate the data model changes to all team members, so that anyone in the development team has a consistent
   database schema that matches the current source code. When the software reaches a stable milestone, deltasql supports the branching
    of the development db schema to a production schema. deltasql is also able to transform a development schema into a production schema 
    and viceversa.
 </p>
+<p>We hope deltasql can help you in managing your
+  database schemas, so that for example you have more time to drink coffee, to think over interesting problems or to go out in the evening :-) ... instead of debugging
+   mismatchings between your data model and the source code you deployed to an important customer until late in the night!</p>
+</p>
+
 <p>deltasql is Open Source and licensed under the General Public License, so there aren't any fees or charge for using it.</p>
+
+
 
 <h3><a name="who"></a>Who is behind deltasql?</h3>
 
 <p>We are mainly developers in Switzerland, but there are also contributors in India and other countries. We share the passion for Open Source
  and hope Deltasql can spare some time to people who have to manage several database schemas at a time in the same way it helped us. 
  </p>
- <p>
- We hope deltasql can help you in managing your
-  database schemas, so that for example you have more time to drink coffee, to think over interesting problems or to go out in the evening :-) ... instead of debugging
-   mismatchings between your data model and the source code you deployed to an important customer with more than 400 users at 10 o'clock in the evening!</p>
-
+ 
+ 
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
 
 <p>Yes, it is used in companies in Switzerland and India. In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
@@ -101,6 +106,25 @@ Yes, there is one in the <a href="manual.php#quickguide">manual</a>.
 </p>
 
 <h2>Usage questions</h2>
+
+<h3><a name="export"></a>In which formats can the synchronization script be exported?</h3>
+
+<p>
+The format can be chosen at the bottom of the <a href="dbsync.php">synchronization form</a>. The most used is the <b>HTML</b> one
+ which is pretty printed (SQL is highlighted with geshi library). This format is the preferred one to be copyed and pasted into the own database 
+browser (like Toad, PL SQL Developer, Microsoft SQL Server Management Studio, etc). 
+</p>
+<p>
+It is possible to create a text version of the synchronization script or
+  an XML version for further processing. In this case, you need the View->Page Source functionality of your browser, to see the script in the
+  original format.</p>
+<p>  
+  Additionally, it is possible to export the files as single scripts, so that they can be used
+   in <a href="http://www.dbdeploy.com">dbdeploy</a>-like tools. When exporting scripts in this way, deltasql server will first generate the scripts
+    into the <tt>output/scripts</tt> directory of the server, then zip it and finally serve the .zip for download.
+   The idea of dbdeploy-like tools is to include the single scripts in a directory accessible by the setup executable. The setup executes then the single
+   scripts when installing the application.
+</p>
 
 <h3><a name="modules"></a>Why are there projects and modules?</h3>
 <p>
