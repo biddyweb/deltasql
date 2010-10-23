@@ -1,5 +1,6 @@
 23.10.2010 git
 - added FAQ questions on how to download, test and checkout deltasql with git.
+- continouus database integration is close to work for mySQL schemas
 
 22.10.2010 git
 - added FAQ question on formats which can be exported by deltasql
