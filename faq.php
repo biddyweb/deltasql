@@ -24,6 +24,9 @@ include("utils/constants.inc.php");
 <li><a href="#contribute">How can I contribute?</a></li>
 <li><a href="#install">Is it difficult to install?</a></li>
 <li><a href="#quick">Is there a Quick Guide?</a></li>
+<li><a href="#test">Where can I test deltasql?</a></li>
+<li><a href="#download">Where can I download deltasql?</a></li>
+<li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
 </ul>
 
 <h3>Usage questions</h3>
@@ -103,6 +106,30 @@ deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same
 <h3><a name="quick"></a>Is there a Quick Guide?</h3>
 <p>
 Yes, there is one in the <a href="manual.php#quickguide">manual</a>.
+</p>
+
+<h3><a name="test"></a>Where can I test deltasql?</h3>
+<p>
+Deltasql can be tested on <a href="http://www.deltasql.org/deltasql/">this page</a>. On the login page
+ the password for the administrator is provided. Feel free to experiment with this instance of deltasql. From time
+  to time, the database is restored to an initial status, so that you can not break anything.
+</p>
+
+<h3><a name="download"></a>Where can I download deltasql?</h3>
+<p>
+Deltasql can be downloaded at sourceforge.net <a href="http://sourceforge.net/projects/deltasql/files/">on this page</a>. Deltasql is available as .zip
+ and as .tar.gz package. To unpack the tar package, execute <tt>gunzip deltasql-x.y.z.tar.gz</tt> first, then
+  issue <tt>tar -xf deltasql-x.y.z.tar</tt> on your preferred Bash shell.
+</p>
+
+<h3><a name="checkout"></a>How can I checkout deltasql from the git repository?</h3>
+<p>
+First, you need to install a git client. On Windows, you can use <a href="http://sourceforge.net/projects/gitextensions/">git extensions</a>.
+ On Gentoo, run <tt>emerge -av git</tt>. On Ubuntu, run <tt>sudo apt-get install git-core</tt>.
+</p>
+<p>
+The command to checkout the deltasql repository is: <tt>git clone git://deltasql.git.sourceforge.net/gitroot/deltasql/deltasql</tt>.
+ To keep the repository updated, run from time to time <tt>git pull</tt>.
 </p>
 
 <h2>Usage questions</h2>
@@ -254,6 +281,10 @@ First, read through the <a href="http://www.gpu-grid.net/deltasql/docs/ChangeLog
 </p>
 <p>   If not, please contact the <a href="mailto:gpu-world@lists.sourceforge.net">mailing
     list</a> for further support.
+</p>
+<p>
+Another way to keep updated with the development is to checkout the git repository of Deltasql and to issue
+ from time to time <tt>git pull</tt> to update the repository as described in <a href="faq.php#checkout">this FAQ</a>.
 </p>
 
 <h3><a name="scripttitle"></a>All scripts are titled "db update". Where can I change this default?</h3>

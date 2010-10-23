@@ -1,8 +1,15 @@
+23.10.2010 git
+- added FAQ questions on how to download, test and checkout deltasql with git.
+
+22.10.2010 git
+- added FAQ question on formats which can be exported by deltasql
+
 21.10.2010 git
 Server changes
 - added sqlite support (sync table definition)
 - added ability to export the synchronization script as single files 
 zipped to be used in dbdeploy like tools
+- added zip library under /utils/createzip by Rochak Chauhan (www.rochakchauhan.com)
 
 7.10.2010 1.1.1 Release Notes
 Server changes
