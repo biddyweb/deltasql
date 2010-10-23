@@ -1,3 +1,3 @@
 #!/bin/bash
-source dbsource.conf
+source ../deltasql.conf
 sqlplus 
