@@ -1,3 +1,3 @@
-SPOOL ./versiondb.txt
+SPOOL ./version.txt
 select versionnr from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNCHRONIZE);
 SPOOL OFF

@@ -27,14 +27,16 @@ cat version.txt | sed s/" = "/"="/ > version.txt
 source version.txt
 rm version.txt
 
-echo "Project $project is at version $version."
+projectversion="Project $project is at version $version."
+echo $projectversion
+echo $projectversion >> sync.log
 
 if [ $1 -ge $version ]; then
     echo "This schema is already uptodate. Nothing to do."
     exit 0
 fi
 
-rm syncscript.sql
+
 echo "Asking deltasql to generate script..."
 wget -q "$urldeltasql/dbsync_automated_update.php?project=$project&version=$1&frombranch=$from&tobranch=$to" -O syncscript.sql
 echo "Script syncscript.sql created succesfully."
