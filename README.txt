@@ -1,4 +1,4 @@
-Point your browser to http://www.gpu-grid.net/deltasql/manual.php
+Point your browser to http://www.deltasql.org/deltasql/manual.php
 to get started. 
 
 The deltasql code is released under the terms and conditions of the Gnu Public License.
@@ -18,7 +18,9 @@ deltasql includes a Calendar Widget released under the LGPL. The copyright infor
 Mihai Bazon, <mihai_bazon@yahoo.com> © Dynarch.com 2002-2005, www.dynarch.com
 The Calendar Widget is available at http://jscalendar.sourceforge.net
 
-deltasql is (c) 2007-2008 the Deltasql Development Team
+deltasql includes a zip wrapper library under /utils/createzip by Rochak Chauhan (www.rochakchauhan.com)
+
+deltasql is (c) 2007-2010 the Deltasql Development Team
   contact us at gpu-world@lists.sourceforge.net
-          http://deltasql.sourceforge.net
+          http://www.deltasql.org
 
