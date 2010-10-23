@@ -1,3 +1,3 @@
 #!/bin/bash
-source ../deltasql.conf
-sqlplus 
+source ./deltasql.conf
+sqlplus $username/$password@$sid @$1
