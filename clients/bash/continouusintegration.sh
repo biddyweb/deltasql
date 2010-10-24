@@ -20,7 +20,8 @@ echo "Retrieving database schema version..."
 ./$dbtype/prepareversion.sh ./$dbtype/rawversion.txt ./$dbtype/version.txt
 source ./$dbtype/version.txt
 rm ./$dbtype/version.txt
-dbversion="The database schema is at version $version"
+timestamp=$(date)
+dbversion="The database schema is at version $version on $timestamp"
 echo "$dbversion"
 echo "$dbversion" >> sync.log
 
@@ -35,11 +36,12 @@ echo "Script executed and added to syncscript.log"
 cat sync.tmp.log >> sync.log
 rm sync.tmp.log
 echo "" >> syncscript.log
-echo "-- ********************************" >> syncscript.log
-echo "-- * Upgrading from version $version" >> syncscript.log
-echo "-- ********************************" >> syncscript.log
+echo "-- *************************************************************" >> syncscript.log
+echo "-- * Upgrading from version $version on $timestamp" >> syncscript.log
+echo "-- *************************************************************" >> syncscript.log
 cat syncscript.sql >> syncscript.log
-echo "Finished" >> sync.log
+timestamp2=$(date)
+echo "Finished on $timestamp2" >> sync.log
 echo "" >> sync.log
 rm syncscript.sql
 echo "Results of this synchronization are appended to sync.log"
