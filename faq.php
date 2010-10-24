@@ -40,6 +40,7 @@ include("utils/constants.inc.php");
 <li><a href="#devprod">What is the difference between a production and a development schema?</a></li>
 <li><a href="#branch">How can I create a branch?</a></li>
 <li><a href="#duplicatebranch">Is it possible to create a branch of a branch?</a></li>
+<li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#upgrade">I saw on the webpage that there is a new deltasql version, how do I upgrade?</a></li>
 <li><a href="#scripttitle">All scripts are titled "db update". Where can I change this default?</a></li>
@@ -263,7 +264,28 @@ UPDATE TBSYNCHRONIZE SET BRANCHNAME='NEW_BRANCH' WHERE versionnr= (select max(ve
 </pre> 
 <p>After launching this update to the table TBSYNCHRONIZE the schema will follow the new branch and everything will work as expected.</p>
 
-
+<h3><a name="continouus"></a>Is it possible to perform continouus database integration?</h3>
+<p>
+Under continouus integration, a developer normally understands the nightly checkout of the source code followed by
+ a rebuild of the whole source code to verify if something is broken. Generally, it is possible to verify in the morning the status
+  of the build in some logfiles or even on a website.
+</p>
+<p>With the deltasql bash client (available at the <a href="index.php">main page</a> for download) it is possible
+ to improve this process. The deltasql bash client can be configured to upgrade each night a predefined
+  database schema, if <tt>continouusintegration.sh</tt> is scheduled as cron job with <tt>crontab -e</tt>.
+</p>
+<p>Assume you have a huge software application which runs on an application server, backed by a database server:</p>
+<p>You could implement the following steps:</p>
+<ul>
+<li>1. Checkout sourcecode from repository, build the source code as in traditional continouus integration.</li>
+<li>2. Launch deltasql bash client and let the database schema be upgraded to the latest version.</li>
+<li>3. Launch the software on the application server and verify that the application server is correctly bound
+ to the database schema.</li>
+</ul> 
+<p>By implementing the above steps you achieve complete continouus integration which includes the database schema
+ as well. Improving continouus integration in this way allows to detect mismatches between source code and
+  data model at an early stage.</p>
+ 
 <h3><a name="downgrade"></a>Is it possible to downgrade a database schema to a previous schema?</h3>
 <p>
 No, unfortunately not, as developers submit scripts like "ALTER TABLE ADD" or "INSERT INTO TB..." and they do not provide an SQL script that

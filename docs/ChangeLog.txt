@@ -1,6 +1,8 @@
 24.10.2010 git
 - bash client: continouus database integration works for mySQL schema. 
 Now envisioning Oracle.
+- added FAQ question which explains how to improve continouus integration with the
+ deltasql bash client
 
 23.10.2010 git
 - added FAQ questions on how to download, test and checkout deltasql with git.
@@ -15,7 +17,7 @@ Bash client:
 Server changes
 - added sqlite support (sync table definition)
 - added ability to export the synchronization script as single files 
-zipped to be used in dbdeploy like tools
+zipped to be used in dbdeploy like tools (check http://www.dbdeploy.com for more details)
 - added zip library under /utils/createzip by Rochak Chauhan (www.rochakchauhan.com)
 
 7.10.2010 1.1.1 Release Notes
