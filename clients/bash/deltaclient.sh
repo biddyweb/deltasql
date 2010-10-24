@@ -1,5 +1,5 @@
 #!/bin/bash
-# Simple deltasql client (c) by 2010 HB9TVM
+# Simple deltasql client (c) by 2010 HB9TVM and the deltasql team
 # Input: arg1: current version of database schema
 # Output: file syncscript.sql , a synchronization script for the db schema
 # all other options are set into deltasql.conf
