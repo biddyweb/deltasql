@@ -7,8 +7,10 @@ to try out one of the clients that connect to this server and which integrate in
 <table border="1">
 <tr><th>client</th><th>environment</th><th>description</th><th>version</th><th>actions</th></tr>
 <tr><td><b>ant-client</b></td><td>Eclipse (Ant)</td><td>MySQL, PostgreSQL, Oracle, MS SQL Server, Sybase</td><td><?php echo "$antclient_version"; ?></td><td><a href="clients/java/ant-client.zip"><center>download...</center></a></td></tr>
-<tr><td><b>bash client</b></d><td>GNU/Linux</td><td>Once database bindings are provided, this script can be used in combination with cron jobs to achieve continous integration for
- database schemas</td><td><?php echo "$bashclient_version" 
+<tr><td><b>bash client</b></d><td>GNU/Linux</td><td>This script can be 
+used in combination with cron jobs to achieve continous integration for
+ database schemas (mySQL, Oracle)</td><td><?php echo 
+"$bashclient_version" 
 ?></td><td><center><a 
 href="clients/bash_client.tar.gz">download...</a></center></td></tr>
 <tr><td><b>dbredactor</b></td><td>Eclipse (Java, Ant)</td><td>MySQL, PostgreSQL, Oracle, MS SQL Server, Sybase</td><td><?php echo "$dbredactor_version"; ?></td><td><a href="clients/java/dbredactor.zip"><center>download...</center></a></td></tr>
