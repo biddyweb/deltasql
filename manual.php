@@ -7,7 +7,7 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
-echo "<h1>Manual deltasql $deltasql_version</h1>";
+echo "<h1>Manual for deltasql $deltasql_version</h1>";
 ?>
 <a href="index.php">Back to main page</a><br><br>
 
