@@ -8,7 +8,7 @@ to try out one of the clients that connect to this server and which integrate in
 <tr><th>client</th><th>environment</th><th>description</th><th>version</th><th>actions</th></tr>
 <tr><td><b>ant-client</b></td><td>Eclipse (Ant)</td><td>MySQL, PostgreSQL, Oracle, MS SQL Server, Sybase</td><td><?php echo "$antclient_version"; ?></td><td><a href="clients/java/ant-client.zip"><center>download...</center></a></td></tr>
 <tr><td><b>bash client</b></d><td>GNU/Linux</td><td>This script can be 
-used in combination with cron jobs to achieve continous integration for
+used in combination with cron jobs to achieve continouus integration for
  database schemas (mySQL, Oracle)</td><td><?php echo 
 "$bashclient_version" 
 ?></td><td><center><a 
