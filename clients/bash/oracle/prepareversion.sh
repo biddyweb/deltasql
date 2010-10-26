@@ -1,3 +1,3 @@
 #!/bin/bash
-sed -i -e 's_.*_version=&_' $1
-mv $1 $2
+# don't do anything, just remove rawversion.txt
+rm $1
