@@ -27,6 +27,7 @@ echo "$dbversion" >> sync.log
 
 # 3. asking deltasql server to generate synchronization script
 ./deltaclient.sh $version
+./$dbtype/preparescript.sh ./syncscript.sql
 
 # 4. executing generated script on database
 ./$dbtype/executescript.sh ./syncscript.sql &> sync.tmp.log
