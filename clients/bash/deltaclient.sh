@@ -4,6 +4,16 @@
 # Output: file syncscript.sql , a synchronization script for the db schema
 # all other options are set into deltasql.conf
 
+function is_integer() {    
+   s=$(echo $1 | tr -d 0-9)
+   if [ -z "$s" ]; then        
+      return 0    
+   else        
+      return 1    
+   fi
+}
+
+
 if [ -z "$1" ]; then 
   echo ""  
   echo "       deltasql bash client (c) by 2010 HB9TVM"   
@@ -19,7 +29,14 @@ fi
 source deltasql.conf
 
 # retrieving current version from deltasql
-echo "Retrieving current version from $urldeltasql ..."
+if is_integer $1; then
+  echo "Retrieving current version from $urldeltasql ..."
+else
+  errormsg="$1 is not an integer! Please check the database connection!"
+  echo $errormsg
+  echo $errormsg >> sync.log
+  exit 0
+fi
 wget -q "$urldeltasql/dbsync_automated_currentversion.php?project=$project" -O version.txt
 cat version.txt | grep -i "project.version" > version.txt
 cat version.txt | cut -c 9- > version.txt
