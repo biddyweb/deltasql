@@ -26,10 +26,24 @@ echo "$dbversion"
 echo "$dbversion" >> sync.log
 
 # 3. asking deltasql server to generate synchronization script
+if [ -f ./syncscript.sql ]
+then
+   rm ./syncscript.sql
+   echo "File synscript.sql exists! Removing it." >> sync.log
+fi 
 ./deltaclient.sh $version
-./$dbtype/preparescript.sh ./syncscript.sql
+if [ -f ./synscript.sql ]
+then
+   msg="No synchronization script generated."
+   echo $msg
+   echo $msg >> sync.log
+   exit 0
+fi
+
+
 
 # 4. executing generated script on database
+./$dbtype/preparescript.sh ./syncscript.sql
 ./$dbtype/executescript.sh ./syncscript.sql &> sync.tmp.log
 echo "Script executed and added to syncscript.log"
 
