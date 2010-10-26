@@ -9,19 +9,21 @@
 
 # 1. reading configuration file
 source deltasql.conf
-echo "Performing continouus database integration on $dbtype"
-echo "for project $project."
+echo "" >> sync.log
+echo "Performing continouus database integration on $dbtype for project $project"
 echo "(c) 2010 by HB9TVM and the deltasql team"
 echo ""
 
 # 2. retrieving and preparing version number
-echo "Retrieving database schema version..."
+timestamp=$(date)
+msg="$timestamp ... retrieving database schema version..."
+echo $msg 
+echo $msg >> sync.log
 ./$dbtype/executescript.sh ./$dbtype/getversion.sql > ./$dbtype/rawversion.txt
 ./$dbtype/prepareversion.sh ./$dbtype/rawversion.txt ./$dbtype/version.txt
 source ./$dbtype/version.txt
 rm ./$dbtype/version.txt
-timestamp=$(date)
-dbversion="The database schema is at version $version on $timestamp"
+dbversion="The database schema is at version $version."
 echo "$dbversion"
 echo "$dbversion" >> sync.log
 
@@ -32,7 +34,7 @@ then
    echo "File synscript.sql exists! Removing it." >> sync.log
 fi 
 ./deltaclient.sh $version
-if [ -f ./synscript.sql ]
+if [ ! -f ./synscript.sql ]
 then
    msg="No synchronization script generated."
    echo $msg
@@ -56,7 +58,7 @@ echo "-- * Upgrading from version $version on $timestamp" >> syncscript.log
 echo "-- *************************************************************" >> syncscript.log
 cat syncscript.sql >> syncscript.log
 timestamp2=$(date)
-echo "Finished on $timestamp2" >> sync.log
+echo "$timestamp2 Database synchronization finished." >> sync.log
 echo "" >> sync.log
 rm syncscript.sql
 echo "Results of this synchronization are appended to sync.log"

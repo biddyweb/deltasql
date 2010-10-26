@@ -32,7 +32,7 @@ echo $projectversion
 echo $projectversion >> sync.log
 
 if [ $1 -ge $version ]; then
-    msg="This schema is at version $1 and already uptodate. Nothing to do."
+    msg="This schema is already uptodate ($1>=$version). Nothing to do."
     echo $msg
     echo $msg >> sync.log
     exit 0
