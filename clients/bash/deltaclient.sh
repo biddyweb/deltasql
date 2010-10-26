@@ -30,9 +30,11 @@ source deltasql.conf
 
 # retrieving current version from deltasql
 if is_integer $1; then
-  echo "Retrieving current version from $urldeltasql ..."
+  msg="Retrieving current version from $urldeltasql ..."
+  echo $msg
+  echo $msg >> sync.log
 else
-  errormsg="$1 is not an integer! Please check the database connection!"
+  errormsg="$1 is not an integer! Please check the database connection and parameters in deltasql.conf!"
   echo $errormsg
   echo $errormsg >> sync.log
   exit 0
@@ -44,9 +46,24 @@ cat version.txt | sed s/" = "/"="/ > version.txt
 source version.txt
 rm version.txt
 
-projectversion="Project $project is at version $version."
-echo $projectversion
-echo $projectversion >> sync.log
+
+if [ -z $version ]; then
+   errormsg="Could not retrieve project version from URL above!"
+   echo $errormsg
+   echo $errormsg >> sync.log
+   exit 0
+fi
+
+if is_integer $version; then
+   projectversion="Project $project is at version $version."
+   echo $projectversion
+   echo $projectversion >> sync.log
+else
+   $errormsg="Version retrieved from deltasql is not integer, please check connection to deltasql and parameters in deltasql.conf!"
+   echo $errormsg 
+   echo $errormsg >> sync.log
+   exit 0
+fi
 
 if [ $1 -ge $version ]; then
     msg="This schema is already uptodate ($1>=$version). Nothing to do."
