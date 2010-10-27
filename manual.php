@@ -247,7 +247,9 @@ performing database sync" />
 
 <p>Download first the Bash client (bash_client.tar.gz) from the deltasql 
 main page (at the bottom!) onto your favourite GNU/Linux server.</p>
-<p>Unpack it with <tt>gunzip bash.tar.gz</tt> and <tt>tar -xf bash.tar</tt>. Make sure all shell scripts (also in subdirectories) have
+<p>Unpack it with <tt>gunzip bash_client.tar.gz</tt> and <tt>tar -xf 
+bash_client.tar</tt>. Make sure all shell scripts (also in 
+subdirectories) have
  executable rights with <tt>chmod 775 *.sh</tt>. Open <tt>deltasql.conf</tt>, and configure each variable of the file.</p>
 
  <p>You can test the connection to the deltasql server by running <tt>./deltaclient.sh 1</tt>. To test the full cycle (retrieving schema version,
