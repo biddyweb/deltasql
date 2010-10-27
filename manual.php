@@ -245,7 +245,8 @@ performing database sync" />
 
 <p>The bash client allows in combination with deltasql server to setup a <a href="faq.php#continouus">continouus database integration</a>.
 
-<p>Download first the Bash client (bash.tar.gz) from the deltasql main page (at the bottom!) onto your favourite GNU/Linux server.</p>
+<p>Download first the Bash client (bash_client.tar.gz) from the deltasql 
+main page (at the bottom!) onto your favourite GNU/Linux server.</p>
 <p>Unpack it with <tt>gunzip bash.tar.gz</tt> and <tt>tar -xf bash.tar</tt>. Make sure all shell scripts (also in subdirectories) have
  executable rights with <tt>chmod 775 *.sh</tt>. Open <tt>deltasql.conf</tt>, and configure each variable of the file.</p>
 
