@@ -1,3 +1,8 @@
+27.10.2010 git
+- bash client: continouus integration works for Oracle
+  several consistency checks added to bash client
+  now envisioning PostgreSQL
+
 24.10.2010 git
 - bash client: continouus database integration works for mySQL schema. 
 Now envisioning Oracle.
