@@ -20,6 +20,7 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 	<li><a name="install-clients" /><a href="#install-dbredactor-client">How to install dbredactor client (optional)</a></li>
     <li><a href="#install-ant-client">How to install the ant client into Eclipse (optional)</a></li>
     <li><a href="#install-google-gadget">How to install the Google Gadget (optional)</a></li>
+	<li><a href="#install-bash">How to install the bash client (optional)</a></li>
 </ul>
 <li><a href="#usage">Usage</a></li>
 <ul>
@@ -161,6 +162,10 @@ Do not forget to change the <b>admin</b> password shortly after with this <a hre
 
 <h3><a name="install-dbredactor-client"></a>Install steps for the dbredactor client (optional step)</h3>
 
+<p>The dbredactor client is a deltasql client which can retrieve from the database the current schema version, and using
+ this information it retrieves from deltasql server the synchronization script. Said script is shown to the user either
+  in pretty printed HTML format or in text format on your editor of choice.</p>
+
 <p>Download first dbredactor.zip from the deltasql main page (at the bottom!). Unzip the file in the Eclipse workspace. Add the build.xml
  into the Ant window by right clicking and choosing 'Add build files...'. Copy sample-build.properties to build.properties and set the correct URL for the deltasql server in the
   <tt>deltasql.server.url</tt> property.
@@ -177,6 +182,9 @@ Do not forget to change the <b>admin</b> password shortly after with this <a hre
  </p>
  
 <h3><a name="install-ant-client"></a>Install steps for the ant client into Eclipse (optional step)</h3>
+<p>The dbredactor client is a lightweight deltasql client like dbredactor. It integrates best into your <tt>build.xml</tt> script
+ for the Eclipse/Java development environment.</p>
+
 <p>
 Download first ant-client.zip from the deltasql main page (at the bottom!) and unzip it somewhere. This zip file contains only two tiny files:
  deltasql-build.xml and sample-deltasql.properties. 
@@ -185,6 +193,8 @@ Download first ant-client.zip from the deltasql main page (at the bottom!) and u
 <img src="pictures/ant-client.png" border="0"><br>
 <i>Picture: </i>the target of the Ant Client
 </center>
+
+
 <p>
 Copy deltasql-build.xml into the Eclipse
  project where you are working (at best in the root directory of the Eclipse project).  Add the deltasql-build.xml file
@@ -202,6 +212,10 @@ Et voilà, now you should have a working ant client. By pressing on "RetrieveUpda
 <img src="pictures/deltasql-google-gadget.png" border="0"><br>
 <i>Picture: </i>the Google Gadget of deltasql showing the latest submitted scripts
 </center>
+
+<p>
+Purpose of the Google Gadget is to display the latest submitted scripts on your iGoogle start page.
+</p>
 <p>
 To install the Google Gadget is fairly simple: just click on the following button: 
 <a href="http://www.google.ch/ig/adde?hl=en&moduleurl=http://www.gpu-grid.net/deltasql/deltasql_google_gadget.xml&source=imag" target=_blank><img src="pictures/add_google_gadget.gif" border="0" /></a>.
@@ -220,6 +234,24 @@ Finally, remember to save your settings. <b>If deleting cookies forces you to re
 </p>
 <p>
 For an explanation of what coloured rows in the gadget mean, see this <a href="faq.php#colors">F.A.Q. question</a>.
+</p>
+
+<h3><a name="install-bash"></a>How to install the bash client (optional)</h3>
+
+<p>The bash client allows in combination with deltasql server to setup a <a href="faq.php#continouus">continouus database integration</a>.
+
+<p>Download first the Bash client (bash.tar.gz) from the deltasql main page (at the bottom!) onto your favourite GNU/Linux server.</p>
+<p>Unpack it with <tt>gunzip bash.tar.gz</tt> and <tt>tar -xf bash.tar</tt>. Make sure all shell scripts (also in subdirectories) have
+ executable rights with <tt>chmod 775 *.sh</tt>. Open <tt>deltasql.conf</tt>, and configure each variable of the file.</p>
+
+ <p>You can test the connection to the deltasql server by running <tt>./deltaclient.sh 1</tt>. To test the full cycle (retrieving schema version,
+  contacting deltasql server and retrieving synchronization script, executing the synchronization script) please launch <tt>./continouusintegration.sh</tt>.
+ </p>
+ 
+ <p>
+ Then with
+  <tt>crontab -e</tt> register <tt>continouusintegration.sh</tt> as a cron job. From time to time, read the logfile <tt>sync.log</tt> to
+   check that everything is running as expected. <tt>syncscript.log</tt> contains the concatenation of all scripts executed on the database schema</tt>.
 </p>
 
 <h2><a name="usage"></a>Usage</h2>

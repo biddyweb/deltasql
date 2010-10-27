@@ -285,6 +285,8 @@ Under continouus integration, a developer normally understands the nightly check
 <p>By implementing the above steps you achieve complete continouus integration which includes the database schema
  as well. Improving continouus integration in this way allows to detect mismatches between source code and
   data model at an early stage.</p>
+  
+<p>If you are interested in this feature, you can read <a href="manual.php#install-bash">this entry in the manual</a> on how to install the bash client.</p>  
  
 <h3><a name="downgrade"></a>Is it possible to downgrade a database schema to a previous schema?</h3>
 <p>
