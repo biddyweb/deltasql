@@ -1,4 +1,8 @@
 27.10.2010 git
+- raised version to 1.2.0
+- added manual entry on how to install bash client
+
+26.10.2010 git
 - bash client: continouus integration works for Oracle
   several consistency checks added to bash client
   now envisioning PostgreSQL
