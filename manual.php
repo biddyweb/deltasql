@@ -239,7 +239,8 @@ For an explanation of what coloured rows in the gadget mean, see this <a href="f
 <h3><a name="install-bash"></a>How to install the bash client (optional)</h3>
 
 <center>
-<img src="pictures/bash-client.png" border="0" alt="Bash client performing database sync" />
+<img src="pictures/bash-client-2.png" border="0" alt="Bash client 
+performing database sync" />
 </center>
 
 <p>The bash client allows in combination with deltasql server to setup a <a href="faq.php#continouus">continouus database integration</a>.
