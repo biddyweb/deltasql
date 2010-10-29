@@ -1,4 +1,9 @@
-1.2.0 Release Notes
+29.9.2010 git
+- added PostgreSQL support to bash client for continouus database 
+integration
+- raised version to 1.2.1
+
+1.2.0 Release Notes 28.9.2010
 Bash client is able to perform continouus database integration for 
 Oracle and mySQL. Deltasql server is able to export scripts each one in 
 a numbered file, grouped together in a zip file for further use in 
