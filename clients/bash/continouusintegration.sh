@@ -34,7 +34,7 @@ then
    echo "File synscript.sql exists! Removing it." >> sync.log
 fi 
 ./deltaclient.sh $version
-if [ ! -f ./synscript.sql ]
+if [ ! -f ./syncscript.sql ]
 then
    msg="No synchronization script generated."
    echo $msg

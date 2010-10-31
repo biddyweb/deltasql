@@ -1,3 +1,7 @@
+31.10.2010 git
+- major fix in continouus integration script
+- PostgreSQL support succesfully tested
+
 29.9.2010 git
 - added PostgreSQL support to bash client for continouus database 
 integration
