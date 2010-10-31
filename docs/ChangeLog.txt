@@ -1,3 +1,8 @@
+1.2.1 Release Notes
+- Support for PostgreSQL database works
+- typo in bash client fixed which prevented deltasql bash client to work 
+correctly
+
 31.10.2010 git
 - major fix in continouus integration script
 - PostgreSQL support succesfully tested
