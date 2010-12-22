@@ -4,10 +4,21 @@ This are changes resulting from the proposals of Harikrishnan Nair, Peter Kevin
 
 Synchronization will be implemented as tree traversal beginning from the leaf
  in direction of the root until sourcebranch and scriptversion match. When traversing
-  back, each encountered script will be added to a table tbscriptgeneration which
-   at the end is ORDERED BY script_id ASC and passed to a outputscript routine as 
+  back, each encountered script will be added to a table tbscriptgeneration. When
+ the traversing across the branches is done, the table tbscriptgeneration 
+  is ORDERED BY script_id ASC and passed to a outputscript() routine as 
     it is already implemented now. To allow multiple synchronizations steps
 	 to be processed at once, a session id is generated.
+	 
+Traversing back from leaf to root makes the traversal unique and easy. The only
+ thing to be implemented as exception to the algorithm is when changing from
+ production schema to development schema. In this case, all scripts which
+ belong to HEAD but not to the traversal will be added to the output of the script.
+
+Tagging will be implemented in this way: tags are stored in tbbranch with istag=1
+ and being the sourcebranch the tagged branch and versionnr the moment where the
+ tag was issued. When taking a branch to begin the traversal, the highest script number
+ of HEAD is taken as starting point, when taking a tag the stored versionnr is taken instead. 
  
 Changes: 
 - fix in head.inc.php as some browsers did not support the rough way it 
