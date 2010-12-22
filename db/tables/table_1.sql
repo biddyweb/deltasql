@@ -7,6 +7,7 @@ CREATE TABLE `tbbranch` (
   `create_dt` date NOT NULL,
   `visible` tinyint(1) NOT NULL default '1',
   `sourcebranch` VARCHAR( 40 ) NULL,
+  `istag` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;

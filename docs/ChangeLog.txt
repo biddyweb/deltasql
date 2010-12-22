@@ -6,6 +6,7 @@ was implemented
  
  ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
  UPDATE `tbbranch` SET sourcebranch='HEAD' where name<>'HEAD';
+ ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
 
 1.2.1 Release Notes
 - Support for PostgreSQL database works

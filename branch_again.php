@@ -71,6 +71,10 @@ if (($frm_newname==$frm_oldname) || ($frm_newname=="")) {
     js_redirect("list_branches.php");
     exit;
 }
+if ($frm_newname=="HEAD") {
+  die ("<b>Not possible to create a branch named HEAD!</b>");
+}
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

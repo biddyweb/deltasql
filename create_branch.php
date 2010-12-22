@@ -46,6 +46,7 @@ $frm_description=$_POST['description'];
 $frm_projectid=$_POST['frmprojectid'];
 $frm_versionnr=$_POST['frmversionnr'];
 if ($frm_name=="") exit;
+if ($frm_name=="HEAD") die ("<b>Not possible to create a branch named HEAD!</b>");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
