@@ -135,7 +135,7 @@ Set a password for the <b>admin</b> user of deltasql. If you installed XAMPP, yo
 <h4>Manual install steps for the server</h4>
 
 <p>
-Go to the directory <code>htdocs/deltasql/config</code>, take <tt>example_config.inc.php</tt>, copy it to
+Go to the directory <code>deltasql/conf</code>, take <tt>example_config.inc.php</tt>, copy it to
  <tt>config.inc.php</tt>. Edit the variables in <tt>config.inc.php</tt> depending on your hardware 
  and network configuration.
 </p>
@@ -147,7 +147,7 @@ If the deltasql server is published on the Internet, you should also modify the 
  computer or with its DNS name.</p>
 </p>
 
-<p>Now take <code>htdocs/deltasql/db/script.sql</code> and go back to 
+<p>Now take <code>deltasql/db/script.sql</code> and go back to 
 <a href="http://localhost/phpmyadmin">http://localhost/phpmyadmin</a>. 
 Execute the SQL script with the phpMyAdmin interface. It will create a <code>deltasql</code> database.</p>.
 
