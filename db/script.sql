@@ -19,9 +19,10 @@ CREATE TABLE `tbbranch` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
 
 
-INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects', 0, '2007-10-31', 1);
+INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects', 0, '2007-10-31', 1, '');
 
 -- 
 -- Table structure for table `tbmodule`

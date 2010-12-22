@@ -1,6 +1,11 @@
 22.12.2010 git
 - fix in head.inc.php as some browsers did not support the rough way it 
 was implemented
+- added sourcebranch column to table TBBRANCH: users who upgrade from previous
+ versions should execute these statements in their deltasql schema:
+ 
+ ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
+ UPDATE `tbbranch` SET sourcebranch='HEAD' where name<>'HEAD';
 
 1.2.1 Release Notes
 - Support for PostgreSQL database works
