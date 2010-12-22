@@ -1,12 +1,37 @@
 22.12.2010 git
+This are changes resulting from the proposals of Harikrishnan Nair, Peter Kevin
+ and Ramesh Raghavan. In particular, the document sent by Ramesh was very enlightning. 
+
+Synchronization will be implemented as tree traversal beginning from the leaf
+ in direction of the root until sourcebranch and scriptversion match. When traversing
+  back, each encountered script will be added to a table tbscriptgeneration which
+   at the end is ORDERED BY script_id ASC and passed to a outputscript routine as 
+    it is already implemented now. To allow multiple synchronizations steps
+	 to be processed at once, a session id is generated.
+ 
+Changes: 
 - fix in head.inc.php as some browsers did not support the rough way it 
 was implemented
-- added sourcebranch column to table TBBRANCH: users who upgrade from previous
+- added istag column to table TBBRANCH to support tagging
+- added sourcebranch column to table TBBRANCH and logic to populate it
+- added table TBSCRIPTGENERATION which will be used in the new synchronization
+ step which will be more straightforward then the current one.
+ 
+IMPORTANT: users who upgrade from previous
  versions should execute these statements in their deltasql schema:
  
  ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
  UPDATE `tbbranch` SET sourcebranch='HEAD' where name<>'HEAD';
  ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
+ CREATE TABLE `tbscriptgeneration` (
+  `id` int(11) NOT NULL auto_increment,
+  `sessionid` varchar(16) collate latin1_general_ci NOT NULL,
+  `script_id` int(11) default NULL,
+  `branchname` varchar(40) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `sessionid` (`sessionid`,`script_id`)
+ ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
+
 
 1.2.1 Release Notes
 - Support for PostgreSQL database works
