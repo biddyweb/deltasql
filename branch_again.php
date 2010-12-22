@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html> 
 <head>
-<title>deltasql - Duplicate Branch</title>
+<title>deltasql - Branch Again</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
@@ -40,13 +40,13 @@ if ($id!="") {
 }    
 ?>
 
-<h2>Duplicate Branch <?php echo "$name"; ?></h2>
-<form action="duplicate_branch.php" method="post">
+<h2>Branch again <?php echo "$name"; ?></h2>
+<form action="branch_again.php" method="post">
 Name:<br>
 <input type="text" name="newname" value="<?php echo "$name"; echo "_copy"; ?>" size="30"><br>
 Description:<br>
 <textarea name="newdescription" rows="10" cols="70">
-<?php echo "This branch is a duplicate of $name.";  ?>
+<?php echo "This is a branch of $name.";  ?>
 </textarea>
 <br>
 <?php
@@ -74,9 +74,10 @@ if (($frm_newname==$frm_oldname) || ($frm_newname=="")) {
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible) VALUES('','$frm_newname','$frm_newdescription',NOW(),$frm_versionnr, $frm_projectid, 1);";
+$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible,sourcebranch) VALUES('','$frm_newname','$frm_newdescription',NOW(),$frm_versionnr, $frm_projectid, 1, '$frm_oldname');";
 mysql_query($query);
 
+/* TODO: remove it as with the new synchronization logic this step is not necessary
 // retrieve now the new branch id
 $query2="SELECT id from tbbranch where name='$frm_newname'";
 $result2=mysql_query($query2);
@@ -96,7 +97,7 @@ while ($i<$num) {
 
     $i++;
 }
-
+*/
 mysql_close();
 js_redirect("list_branches.php");
 

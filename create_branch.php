@@ -50,7 +50,7 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 $versionnr=get_global_version();
-$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible) VALUES('','$frm_name','$frm_description',NOW(),$frm_versionnr, $frm_projectid, 1);";
+$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible,sourcebranch) VALUES('','$frm_name','$frm_description',NOW(),$frm_versionnr, $frm_projectid, 1, 'HEAD');";
 mysql_query($query);
 
 mysql_close();

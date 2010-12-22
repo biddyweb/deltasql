@@ -33,6 +33,7 @@ echo "<tr>
 <th>name</th>
 <th>project</th>
 <th>description</th>
+<th>source branch</th>
 <th>update datum</th>
 <th>version number when branch done</th>
 <th>visible</th>
@@ -50,6 +51,7 @@ $versionnr=mysql_result($result,$i,"versionnr");
 if ($name=="HEAD") $versionnr="always latest ($versionnr)"; 
 $projectid=mysql_result($result,$i,"project_id");
 $visible=mysql_result($result,$i,"visible");
+$sourcebranch=mysql_result($result,$i,"sourcebranch");
 
 $query2="SELECT * from tbproject where id=$projectid"; 
 $result2=mysql_query($query2);
@@ -62,6 +64,7 @@ echo "
 <td>$name</td>
 <td>$projectname</td>
 <td>$description</td>
+<td>$sourcebranch</td>
 <td>$create_dt</td>
 <td>$versionnr</td>
 <td>$visible</td>
@@ -73,9 +76,9 @@ if (($rights>=2) && ($name!="HEAD")) {
       echo " <a href=\"change_branch_visibility.php?id=$id&show=0\">Hide</a> ";
     }
     echo "<a href=\"edit_branch.php?id=$id\">Edit</a> ";
-    echo "<a href=\"duplicate_branch.php?id=$id\">Duplicate</a> ";
+    echo "<a href=\"branch_again.php?id=$id\">BranchAgain</a> ";
     if ($rights==3) {
-        $encoded_name=urlencode($name);
+	    $encoded_name=urlencode($name);
         echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name\">Delete</a> ";
     }    
 }
