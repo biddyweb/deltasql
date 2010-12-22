@@ -1,3 +1,7 @@
+22.12.2010 git
+- fix in head.inc.php as some browsers did not support the rough way it 
+was implemented
+
 1.2.1 Release Notes
 - Support for PostgreSQL database works
 - typo in bash client fixed which prevented deltasql bash client to work 
