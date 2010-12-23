@@ -1,4 +1,13 @@
 23.12.2010 git
+- logic to upgrade schemas from production to development (HEAD) added as well
+----------------
+- error messages 7 and 4 removed, as they are superseeded by error 13
+----------------
+I think the new synchronization algorithm works already :-)                     
+The next steps are:                                                             
+- add logic when upgrading from production schema to development schema         
+- add logic to support tags (quite simple)   
+----------------
 - added sourcebranch_id to table tbbranch, and making sure datamodel is consistent when
  branching
 - get_and_increase_globalversion() when branching, instead of get_globalversion()

@@ -111,37 +111,50 @@ if ($toversionnr<$fromversionnr) {
     errormessage(8, "-- No scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);  
 }
 
-/*  
-if (($lastversionnr<$fromversionnr) && ($frombranchname!="HEAD") && ($tobranchname!="HEAD")) {
-   if ($frombranchid!=$tobranchid) {
-    errormessage(7, "Cannot downgrade a project! (from $frombranchname to $tobranchname)", $xmlformatted, $htmlformatted);
-  } else {
-    errormessage(4, "There has to be a mistake in TBSYNCHRONIZE as the version you gave is lower than when the branch was created ($lastversionnr<$fromversionnr)", $xmlformatted, $htmlformatted);
-  }
+if (($tobranchname=="HEAD") && ($frombranchid!=$tobranchid)) {
+ // this is an upgrade of a production schema to a development schema which requires particular attention
+ $upgradefromprodtodev=1;
+ $headid=retrieve_head_id();
+} else {
+ $upgradefromprodtodev=0;
 }
-*/
 
 // generating sessionid
 $c = uniqid (rand (),true);
 $sessionid = md5($c);
 // generating synchronization path
-generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
-
+if ($upgradefromprodtodev==0) {
+  generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
+} else {
+  generateSyncPath($sessionid, $headid, 0, 'HEAD', $frombranchid,  $toversionnr, $frombranchname, $xmlformatted, $htmlformatted);
+}
 // THE VERIFICATION PART ENDS HERE
 // the output of the script begins, if all tests are passed
 if ($singlefiles==0) {
+   
    if ($xmlformatted) {
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     echo "<xml>\n";
     echo "  <type>synchronization</type>\n";
     echo "  <maincomment>$commitcomment</maincomment>\n";
-   } else
-   if ($commitcomment!="") {
-    echo "-- Commit Comment: "; 
-    if ($htmlformatted==1) echo "<b><br>/*<h2>";
-    echo "$commitcomment\n\n";
-    if ($htmlformatted==1) echo "</h2>*/</b><br>";
+   } else {
+       // HTML formatted
+	   if ($commitcomment!="") {
+          echo "-- Commit Comment: "; 
+          if ($htmlformatted==1) echo "<b><br>/*<h2>";
+          echo "$commitcomment\n\n";
+          if ($htmlformatted==1) echo "</h2>*/</b><br>";
+       }
+	   
+	   if ($upgradefromprodtodev==1) {
+          if ($htmlformatted==1) echo "<b>";
+          echo "-- WARNING: this script updates your production schema to a development schema (back to HEAD)!!!\n";
+	      if ($htmlformatted==1) echo "<br>";
+	      echo "-- you should review this script manually, before executing it!!\n";
+	      if ($htmlformatted==1) echo "</b><br>";
+       }
    }
+   
    
    printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
 } else {
@@ -165,7 +178,12 @@ $numsg=mysql_numrows($resultsg);
      $tbsgfromversionnr = mysql_result($resultsg,$i,"fromversionnr");
 	 $tbsgtoversionnr   = mysql_result($resultsg,$i,"toversionnr");
      $tbsgtobranchid    = mysql_result($resultsg,$i,"tobranch_id");
-     $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>=$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and (sb.branch_id=$tbsgtobranchid))";
+     $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>=$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and ";
+     if ($upgradefromprodtodev==0) {
+ 	   $query="$query (sb.branch_id=$tbsgtobranchid))";
+	 } else {
+       $query="$query (sb.branch_id<>$tbsgtobranchid) and (sb.branch_id=$headid))";
+     }	 
      if ($excludeviews==1) $query="$query  and (s.isaview=0)";
      if ($excludepackages==1) $query="$query  and (s.isapackage=0)";
      $query="$query  ORDER BY versionnr ASC";
