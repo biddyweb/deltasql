@@ -13,7 +13,7 @@ include("utils/zip.inc.php");
 
 
 function removeSyncPath($sessionid) {
-  	 $delstr = "DELETE FROM tbscriptgeneration WHERE sessionid=$sessionid";
+  	 $delstr = "DELETE FROM tbscriptgeneration WHERE sessionid='$sessionid'";
      mysql_query($delstr);
 }
 
@@ -22,13 +22,13 @@ function removeSyncPath($sessionid) {
  it creates entries in tbscriptgeneration. Exit point for the routine is when $frombranchid
  is null or when we reached the target
 */
-function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname) {
+function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname,
+                          $xmlformatted, $htmlformatted) {
      
 	 if (($tobranchid=='') || ($tobranchid==0)) {
-	   //removeSyncPath($sessionid);
-	   //TODO create proper error message
+	   removeSyncPath($sessionid);
 	   mysql_close();
-       die("<b>Error, synchronization path not found!</b>");
+       errormessage(13, "-- There is no path between target branch and source branch, please check them", $xmlformatted, $htmlformatted);
 	 }
 	 
 	 if ($frombranchid==$tobranchid) {
@@ -43,16 +43,14 @@ function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranch
         $result_next=mysql_query($nextstr);
 		$sourcebranchname=mysql_result($result_next,0,"sourcebranch");
 		$sourcebranchid=mysql_result($result_next,0,"sourcebranch_id");
-		
-		$sourcestr = "select * from tbbranch where id=$sourcebranchid;";
-        $result_source=mysql_query($sourcestr);
-		$sourceversionnr=mysql_result($result_source,0,"versionnr");
-        
+		$sourceversionnr=mysql_result($result_next,0,"versionnr");
+        	
 		$syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,create_dt)
 	                VALUES ('$sessionid',$sourceversionnr, $toversionnr,'$sourcebranchname','$tobranchname',$sourcebranchid,$tobranchid, NOW());";
         mysql_query($syncstr);
 		
-		generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $sourcebranchid, $sourceversionnr, $sourcebranchname);
+		generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $sourcebranchid, $sourceversionnr, $sourcebranchname,
+		                 $xmlformatted, $htmlformatted);
      }	 
 }
 
@@ -104,8 +102,9 @@ if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
   errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
 
+$toversionnr = get_global_version();
 /*
-TODO: check those erros
+TODO: check those errors
 if ($toversionnr<$fromversionnr) {
   if ($frombranchid!=$tobranchid) {
     errormessage(7, "Cannot downgrade a project! (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
@@ -115,6 +114,13 @@ if ($toversionnr<$fromversionnr) {
 }
 TODO: errormessage(4, "There has to be a mistake in TBSYNCHRONIZE as the last version is lower than the source branch ($lastversionnr<$fromversionnr)", $xmlformatted, $htmlformatted);
 */
+
+
+// generating sessionid
+$c = uniqid (rand (),true);
+$sessionid = md5($c);
+// generating synchronization path
+generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
 
 
 // here begins the output of the script, if all tests are passed
@@ -137,15 +143,11 @@ if ($singlefiles==0) {
    empty_directory("output/scripts");
 }
 
-// generating sessionid
-$c = uniqid (rand (),true);
-$sessionid = md5($c);
 
-// generating synchronization path
-generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname);
+// TODO: output scripts here according to tbscriptgeneration
 
 
-// clean up step
+// TODO: enable clean up step
 //removeSyncPath($sessionid);
 
 

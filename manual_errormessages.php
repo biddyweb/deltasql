@@ -94,6 +94,14 @@ The version number has to be greater equal zero. Negative values are not a valid
 </p>
 
 
+<li><a name="13"></a><i>13</i>: <b>There is no path between target branch and source branch, please check them.</b></li>
+<p>
+Deltasql starts from the target branch (the leaf of the tree) and goes back recursively until it hits the source branch. If deltasql
+ is not able to find the source branch, it means there is an error in your synchronization request as the two branches are not related to each other.
+  Please check your source and target branch before executing the synchronization step.
+</p>
+
+
 
 </body>
 </html>
