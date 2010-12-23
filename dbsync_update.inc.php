@@ -104,7 +104,7 @@ if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
 
 $toversionnr = get_global_version();
 /*
-TODO: check those errors
+TODO: check those errors if they can be reused
 if ($toversionnr<$fromversionnr) {
   if ($frombranchid!=$tobranchid) {
     errormessage(7, "Cannot downgrade a project! (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
@@ -144,69 +144,36 @@ if ($singlefiles==0) {
 }
 
 
-// TODO: output scripts here according to tbscriptgeneration
-
-
-// TODO: enable clean up step
-//removeSyncPath($sessionid);
-
-
-/* TODO: remove this part entirely
-if ($addheadscriptstoupdatedbranch=="1")  {
-
-    $headid=retrieve_head_id();
-    $query9="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>$fromversionnr) and 
-            (s.versionnr<=$lastversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and 
-            (s.id=sb.script_id) and (sb.branch_id=$headid)) and not exists 
-            (select sb2.id from tbscriptbranch sb2 WHERE (sb2.script_id=s.id) and (sb2.branch_id=$frombranchid))
-            ";
-    if ($excludeviews==1) $query9="$query9  and (s.isaview=0)";
-	if ($excludepackages==1) $query9="$query9  and (s.isapackage=0)";
-	
-    if ($debug==1) {
-		echo "<p>-- WARNING this is an updated branch, we need an additional query which puts HEAD scripts up \n";
-		echo "-- to the updated from branch in it if the target is HEAD. Scripts which are HEAD and source branch\n";
-        echo "-- are excluded.\n\n</p>";
-        echo "<b>-- $query9</b><br>";
-    }
-	
-    
-	$query9="$query9  ORDER BY versionnr ASC";
-    $result9=mysql_query($query9);   
-    $generated_scripts+=output_scripts($result9, $htmlformatted, $xmlformatted);
-    // now reset the fromversion to the branch
-    $fromversionnr=$lastversionnr;
-    
+// We output scripts here according to the TBSCRIPTGENERATION table, but we read the entries in reversed order :-)
+// so that we traverse from root of the tree to the leaf
+$querysg="SELECT * FROM tbscriptgeneration WHERE sessionid='$sessionid' ORDER BY id desc";
+$resultsg=mysql_query($querysg);
+if ($resultsg=="") {
+   mysql_close();
+   die("Severe internal error in synchronization step: tbscriptgeneration is empty"); 
 }
 
-$query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>$fromversionnr) and (s.versionnr<=$toversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and (sb.branch_id in ($includeheadid, $frombranchid, $tobranchid)))";
-if ($excludeviews==1) $query="$query  and (s.isaview=0)";
-if ($excludepackages==1) $query="$query  and (s.isapackage=0)";
-$query="$query  ORDER BY versionnr ASC";
-	 
-if ($debug==1) echo "<p>-- DEBUG: query to generate this update script was:\n-- $query\n</p>";
-$result=mysql_query($query);   
-$generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles);
+$i=0;
+$numsg=mysql_numrows($resultsg);
+ while ($i<$numsg) {  
 
-
-if ($addbranchscriptsafterbranch==1) {
-    
-    // used for from HEAD to branch updates
-    if ($frombranchname=="HEAD") $frombranchid=-1;
-    
-    $query88="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>$toversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and (sb.branch_id in ($frombranchid, $tobranchid)))";
-    if ($excludeviews==1) $query="$query88  and (s.isaview=0)";
-    if ($excludepackages==1) $query="$query88  and (s.isapackage=0)";
-    $query="$query88  ORDER BY versionnr ASC";
+     $tbsgfromversionnr = mysql_result($resultsg,$i,"fromversionnr");
+	 $tbsgtoversionnr   = mysql_result($resultsg,$i,"toversionnr");
+     $tbsgtobranchid    = mysql_result($resultsg,$i,"tobranch_id");
+     $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>=$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and (sb.branch_id=$tbsgtobranchid))";
+     if ($excludeviews==1) $query="$query  and (s.isaview=0)";
+     if ($excludepackages==1) $query="$query  and (s.isapackage=0)";
+     $query="$query  ORDER BY versionnr ASC";
 	 
-    if ($debug==1) echo "<p>-- DEBUG: query to generate this update script was:\n-- $query88\n</p>";
-    $result88=mysql_query($query88);   
-    $generated_scripts+=output_scripts($result88, $htmlformatted, $xmlformatted, $singlefiles);
-    
-    // update the versionnr for the final statement
-    $toversionnr = get_global_version();
+     if ($debug==1) echo "<p>-- DEBUG: query to generate this update script was:\n-- $query\n</p>";
+     $result=mysql_query($query);   
+     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles);
+
+     $i++;	 
 }
-*/
+
+// We clean up the entries with our sessionid in tbscriptgeneration
+removeSyncPath($sessionid);
 
 if ($singlefiles=="0") {
   // construct final update statement
