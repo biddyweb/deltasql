@@ -11,6 +11,51 @@ include("dbsync_currentversion.inc.php");
 include("utils/verification_scripts.inc.php");
 include("utils/zip.inc.php");
 
+
+function removeSyncPath($sessionid) {
+  	 $delstr = "DELETE FROM tbscriptgeneration WHERE sessionid=$sessionid";
+     mysql_query($delstr);
+}
+
+/*
+ This routine traverses back the tree in tbbranch by recursive calls and while traversing back,
+ it creates entries in tbscriptgeneration. Exit point for the routine is when $frombranchid
+ is null or when we reached the target
+*/
+function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname) {
+     
+	 if (($tobranchid=='') || ($tobranchid==0)) {
+	   //removeSyncPath($sessionid);
+	   //TODO create proper error message
+	   mysql_close();
+       die("<b>Error, synchronization path not found!</b>");
+	 }
+	 
+	 if ($frombranchid==$tobranchid) {
+        $syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,create_dt)
+	                VALUES ('$sessionid',$fromversionnr, $toversionnr,'$frombranchname','$tobranchname',$frombranchid,$tobranchid, NOW());";
+        mysql_query($syncstr);
+   	    // we are done, we exit recursion
+		return;
+     } else {
+        // where do we want to go today? :-)
+		$nextstr = "select * from tbbranch where id=$tobranchid;";
+        $result_next=mysql_query($nextstr);
+		$sourcebranchname=mysql_result($result_next,0,"sourcebranch");
+		$sourcebranchid=mysql_result($result_next,0,"sourcebranch_id");
+		
+		$sourcestr = "select * from tbbranch where id=$sourcebranchid;";
+        $result_source=mysql_query($sourcestr);
+		$sourceversionnr=mysql_result($result_source,0,"versionnr");
+        
+		$syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,create_dt)
+	                VALUES ('$sessionid',$sourceversionnr, $toversionnr,'$sourcebranchname','$tobranchname',$sourcebranchid,$tobranchid, NOW());";
+        mysql_query($syncstr);
+		
+		generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $sourcebranchid, $sourceversionnr, $sourcebranchname);
+     }	 
+}
+
 function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted,
          $excludeviews, $excludepackages, $updateuser, $updatetype, $commitcomment, $schemaname, $dbtype,
          $xmlformatted, $singlefiles) {
@@ -59,62 +104,8 @@ if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
   errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
 
-/* adapt from and to version numbers*/
-$addheadscriptstoupdatedbranch=0;
-$addbranchscriptsafterbranch=0;
-$includeheadid=-1;
-if ($frombranchname=="HEAD") {
-// the start is HEAD
-           
-   if ($tobranchname=="HEAD") {
-     // the target is HEAD
-     $fromversionnr=$lastversionnr;
-   } else {
-      // the target is a branch
-      $addbranchscriptsafterbranch=1;
-      $fromversionnr=$lastversionnr;
-   }
-   
-} else {
-   // the start is a branch
-   if ($tobranchname!="HEAD") {
-      // also the end is a branch
-      $addbranchscriptsafterbranch=1;
-   }
-   
-   if ($fromversionnr<$lastversionnr) {
-     // not only a branch but an updated branch
-     if ($tobranchname!="HEAD") {
-        // it is a branch to branch update
-        if ($frombranchid!=$tobranchid) {
-            // the two branches are different, and the branch is an updated branch
-            $addheadscriptstoupdatedbranch=1;
-        } else {
-          // the two branches are equal, we can do the normal query, just set:
-          $fromversionnr=$lastversionnr;
-        }
-     } else {    
-       // it is a special branch to head update
-       $addheadscriptstoupdatedbranch=1;
-       //includeheadid is implicit, as the target branch is head
-     }  
-   } else if ($fromversionnr==$lastversionnr) {
-       // this is okay, it is not an updated branch
-   } else {
-        errormessage(4, "There has to be a mistake in TBSYNCHRONIZE as the last version is lower than the source branch ($lastversionnr<$fromversionnr)", $xmlformatted, $htmlformatted);
-   }
-}
-
-// the two branches are equal, let's take the latest version for the toversion field
-if ($frombranchid==$tobranchid) {
-   $toversionnr=dbsynccurrentversion("", $projectid, 0);
-} else {
-    // the two branches are different, we need to include HEAD scripts
-    $includeheadid=retrieve_head_id(); 
-}
-/* end of adaption */
-
-
+/*
+TODO: check those erros
 if ($toversionnr<$fromversionnr) {
   if ($frombranchid!=$tobranchid) {
     errormessage(7, "Cannot downgrade a project! (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
@@ -122,6 +113,9 @@ if ($toversionnr<$fromversionnr) {
     errormessage(8, "-- No scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
   }  
 }
+TODO: errormessage(4, "There has to be a mistake in TBSYNCHRONIZE as the last version is lower than the source branch ($lastversionnr<$fromversionnr)", $xmlformatted, $htmlformatted);
+*/
+
 
 // here begins the output of the script, if all tests are passed
 if ($singlefiles==0) {
@@ -143,7 +137,19 @@ if ($singlefiles==0) {
    empty_directory("output/scripts");
 }
 
+// generating sessionid
+$c = uniqid (rand (),true);
+$sessionid = md5($c);
 
+// generating synchronization path
+generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname);
+
+
+// clean up step
+//removeSyncPath($sessionid);
+
+
+/* TODO: remove this part entirely
 if ($addheadscriptstoupdatedbranch=="1")  {
 
     $headid=retrieve_head_id();
@@ -198,6 +204,7 @@ if ($addbranchscriptsafterbranch==1) {
     // update the versionnr for the final statement
     $toversionnr = get_global_version();
 }
+*/
 
 if ($singlefiles=="0") {
   // construct final update statement
@@ -208,7 +215,7 @@ if ($singlefiles=="0") {
   if ($generated_scripts>0) {
 	$commentstring = "-- updating synchronization information for the database schema";
 	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE)";
-	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $fromversionnr, '$frombranchname');";
+	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname');";
 	
 	if ($dbtype!="")
 		$updatestring = "$updatestring\nUPDATE tbsynchronize SET dbtype='$dbtype' WHERE versionnr=$toversionnr;";
@@ -218,7 +225,7 @@ if ($singlefiles=="0") {
          
     // query for the usage statistics
 	$usagestring = "INSERT INTO tbusagehistory (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, SCHEMANAME, DBTYPE, UPDATE_DT)
-	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $fromversionnr, '$frombranchname', '$schemaname', '$dbtype', NOW());";
+	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname', '$schemaname', '$dbtype', NOW());";
     mysql_query($usagestring);
     
   } else {

@@ -4,6 +4,7 @@
 - get_and_increase_globalversion() when branching, instead of get_globalversion()
 - modified structure of table tbscriptgeneration to improve its performance: instead of
  storing each script individually, we only store each segment of the path in the tree. 
+- started modifying dbsync_update.inc.php to fullfill the new algorithm
 
 - TODO: the whole test data must be regenerated, also the compatibility with the old
  branching mechanism is lost!!!
@@ -48,14 +49,14 @@ IMPORTANT: users who upgrade from previous
  ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
  CREATE TABLE `tbscriptgeneration` (
   `id` int(11) NOT NULL auto_increment,
-  `sessionid` varchar(16) collate latin1_general_ci NOT NULL,
+  `sessionid` varchar(40) collate latin1_general_ci NOT NULL,
   `fromversionnr` int(11) default NULL,
   `toversionnr` int(11) default NULL,
   `frombranch` varchar(40) collate latin1_general_ci NOT NULL,
   `tobranch` varchar(40) collate latin1_general_ci NOT NULL,
   `frombranch_id` int(11) NOT NULL,
   `tobranch_id` int(11) NOT NULL,
-  `create_dt` date default NULL,
+  `create_dt` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
 
