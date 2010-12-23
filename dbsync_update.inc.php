@@ -73,6 +73,7 @@ $query16 = "SELECT * from tbmoduleproject where project_id=$projectid";
 $result16=mysql_query($query16);
 if ($result16!="") { $num16=mysql_numrows($result16); } else {$num16=0;}
 if ($num16==0) {
+   mysql_close();
    errormessage(11, "-- Project does not contain any modules. Please add at least one module to the project!", $xmlformatted, $htmlformatted);
 }
 
@@ -96,25 +97,29 @@ $projectname=mysql_result($result77,0,"name");
 
 // verify that the branch tags are for this project
 if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
+  mysql_close();
   errormessage(5, "The source branch $frombranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
 if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
+  mysql_close();
   errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
 
 $toversionnr = get_global_version();
-/*
-TODO: check those errors if they can be reused
 if ($toversionnr<$fromversionnr) {
-  if ($frombranchid!=$tobranchid) {
-    errormessage(7, "Cannot downgrade a project! (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
-  } else {
-    errormessage(8, "-- No scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);
-  }  
+    mysql_close();
+    errormessage(8, "-- No scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);  
 }
-TODO: errormessage(4, "There has to be a mistake in TBSYNCHRONIZE as the last version is lower than the source branch ($lastversionnr<$fromversionnr)", $xmlformatted, $htmlformatted);
-*/
 
+/*  
+if (($lastversionnr<$fromversionnr) && ($frombranchname!="HEAD") && ($tobranchname!="HEAD")) {
+   if ($frombranchid!=$tobranchid) {
+    errormessage(7, "Cannot downgrade a project! (from $frombranchname to $tobranchname)", $xmlformatted, $htmlformatted);
+  } else {
+    errormessage(4, "There has to be a mistake in TBSYNCHRONIZE as the version you gave is lower than when the branch was created ($lastversionnr<$fromversionnr)", $xmlformatted, $htmlformatted);
+  }
+}
+*/
 
 // generating sessionid
 $c = uniqid (rand (),true);
@@ -122,8 +127,8 @@ $sessionid = md5($c);
 // generating synchronization path
 generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
 
-
-// here begins the output of the script, if all tests are passed
+// THE VERIFICATION PART ENDS HERE
+// the output of the script begins, if all tests are passed
 if ($singlefiles==0) {
    if ($xmlformatted) {
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";

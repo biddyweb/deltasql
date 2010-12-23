@@ -33,15 +33,6 @@ The target branch name used in the URL is not valid, it was specified as BRANCHN
 This error can be issued only by deltasql clients, but not by using the synchronization <a href="dbsync.php">form</a>.
 </p>
 
-<li><a name="4"></a><i>4</i>: <b>There has to be a mistake in TBSYNCHRONIZE as the last version is lower than the source branch (VTABLE smaller than VBRANCH)</b></li>
-<p>
-The version retrieved in the table TBSYNCHRONIZE is lower than the version when the source branch was created. The source branch is also specified in TBSYNCHRONIZE in the column
- BRANCHNAME. You should compare the version number in TBSYNCHRONIZE with the version number specified for the source branch <a href="list_branches.php">here</a>
- in the column <tt>version number when branch is done</tt>.
-This error generally means that you mistyped the version number in the synchronization <a href="dbsync.php">form</a>, or that the URL for the deltasql server specified in your
- client is wrong, or that an entry in TBSYNCHRONIZE was modified by hand in a wrong manner.
-</p>
-
 <li><a name="5"></a><i>5</i>: <b>The source branch BRANCHNAME does not belong to the project PROJECTNAME</b></li>
 <p>
 The source BRANCHNAME as specified in the parameter <tt>frombranch=</tt> does not belong to the project specified in the parameter <tt>project=</tt>. Check the dependency
@@ -56,12 +47,6 @@ The target BRANCHNAME as specified in the parameter <tt>frombranch=</tt> does no
 This error can be issued only by deltasql clients, but not by using the synchronization <a href="dbsync.php">form</a>.
 </p>
 
-<li><a name="7"></a><i>7</i>: <b>Cannot downgrade a project! (from BRANCH1 [VERSION1] to BRANCH2 [VERSION2])</b></li>
-<p>
-deltasql can only upgrade database schemas, but is not able to go back to previous states to the schema, due to the incremental, not reversible nature of the SQL scripts.
-This error generally means that you mistyped the version number in the synchronization <a href="dbsync.php">form</a>, or that you chose a target branch which was done
- before the current one.
-</p>
 
 <li><a name="8"></a><i>8</i>: <b>-- no scripts to be executed (from BRANCH1 [VERSION1] to BRANCH2 [VERSION2])</b></li>
 <p>
@@ -99,8 +84,12 @@ The version number has to be greater equal zero. Negative values are not a valid
 Deltasql starts from the target branch (the leaf of the tree) and goes back recursively until it hits the source branch. If deltasql
  is not able to find the source branch, it means there is an error in your synchronization request as the two branches are not related to each other.
   Please check your source and target branch before executing the synchronization step.
+</p>  
+<p>
+Additionally, deltasql can only upgrade database schemas, but is not able to go back to previous states to the schema, due to the incremental, not reversible nature of the SQL scripts.
+This error could also mean that you mistyped the version number in the synchronization <a href="dbsync.php">form</a>, or that you chose a target branch which was done
+ before the current one. 
 </p>
-
 
 
 </body>
