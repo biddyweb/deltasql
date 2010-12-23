@@ -78,30 +78,10 @@ if ($frm_newname=="HEAD") {
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible,sourcebranch) VALUES('','$frm_newname','$frm_newdescription',NOW(),$frm_versionnr, $frm_projectid, 1, '$frm_oldname');";
+$versionnr = get_and_increase_global_version();
+$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible,sourcebranch,istag,sourcebranch_id) VALUES('','$frm_newname','$frm_newdescription',NOW(), $versionnr, $frm_projectid, 1, '$frm_oldname',0,$frm_oldbranchid);";
 mysql_query($query);
 
-/* TODO: remove it as with the new synchronization logic this step is not necessary
-// retrieve now the new branch id
-$query2="SELECT id from tbbranch where name='$frm_newname'";
-$result2=mysql_query($query2);
-$newbranchid=mysql_result($result2,0,"id");
-
-// go through the table tbscriptbranch and insert new entries with the new branch
-$query3="SELECT * from tbscriptbranch where branch_id=$frm_oldbranchid";
-$result3=mysql_query($query3);
-$num=mysql_numrows($result3);
-
-$i=0;
-while ($i<$num) {   
-    
-    $scriptid=mysql_result($result3,$i,"script_id");
-    $query4="INSERT INTO tbscriptbranch (id, script_id, branch_id) VALUES ('', $scriptid, $newbranchid);";
-    mysql_query($query4);
-
-    $i++;
-}
-*/
 mysql_close();
 js_redirect("list_branches.php");
 

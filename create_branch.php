@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <html>
-<title>deltasql - Insert a new database module</title>
+<title>deltasql - Insert a new database branch</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 <body>
 <?php
@@ -50,8 +50,9 @@ if ($frm_name=="HEAD") die ("<b>Not possible to create a branch named HEAD!</b>"
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$versionnr=get_global_version();
-$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible,sourcebranch) VALUES('','$frm_name','$frm_description',NOW(),$frm_versionnr, $frm_projectid, 1, 'HEAD');";
+$versionnr = get_and_increase_global_version();
+$headid    = retrieve_head_id();
+$query="INSERT INTO tbbranch (id, name, description,create_dt,versionnr,project_id,visible,sourcebranch,istag,sourcebranch_id) VALUES('','$frm_name','$frm_description',NOW(),$frm_versionnr, $frm_projectid, 1, 'HEAD',0,$headid);";
 mysql_query($query);
 
 mysql_close();

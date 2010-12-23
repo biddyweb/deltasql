@@ -11,10 +11,14 @@
 CREATE TABLE `tbscriptgeneration` (
   `id` int(11) NOT NULL auto_increment,
   `sessionid` varchar(16) collate latin1_general_ci NOT NULL,
-  `script_id` int(11) default NULL,
-  `branchname` varchar(40) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `sessionid` (`sessionid`,`script_id`)
+  `fromversionnr` int(11) default NULL,
+  `toversionnr` int(11) default NULL,
+  `frombranch` varchar(40) collate latin1_general_ci NOT NULL,
+  `tobranch` varchar(40) collate latin1_general_ci NOT NULL,
+  `frombranch_id` int(11) NOT NULL,
+  `tobranch_id` int(11) NOT NULL,
+  `create_dt` date default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
 
 CREATE TABLE `tbbranch` (
@@ -29,9 +33,10 @@ CREATE TABLE `tbbranch` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
 ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
+ALTER TABLE `tbbranch` ADD `sourcebranch_id` int(11) default NULL;
 ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
 
-INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects', 0, '2007-10-31', 1, '', 0);
+INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects', 0, '2007-10-31', 1, '', 0, '');
 
 -- 
 -- Table structure for table `tbmodule`

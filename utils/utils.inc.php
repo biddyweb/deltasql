@@ -22,7 +22,7 @@ function get_and_increase_global_version() {
 }
 
 function retrieve_head_id() {
-  $query="SELECT * from tbbranch WHERE name='HEAD'"; 
+  $query="SELECT id from tbbranch WHERE name='HEAD'"; 
   $result=mysql_query($query);  
   $headid=mysql_result($result,0,"id");
   return $headid;

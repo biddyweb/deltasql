@@ -1,3 +1,13 @@
+23.12.2010 git
+- added sourcebranch_id to table tbbranch, and making sure datamodel is consistent when
+ branching
+- get_and_increase_globalversion() when branching, instead of get_globalversion()
+- modified structure of table tbscriptgeneration to improve its performance: instead of
+ storing each script individually, we only store each segment of the path in the tree. 
+
+- TODO: the whole test data must be regenerated, also the compatibility with the old
+ branching mechanism is lost!!!
+
 22.12.2010 git
 This are changes resulting from the proposals of Harikrishnan Nair, Peter Kevin
  and Ramesh Raghavan. In particular, the document sent by Ramesh was very enlightning. 
@@ -33,17 +43,21 @@ IMPORTANT: users who upgrade from previous
  versions should execute these statements in their deltasql schema:
  
  ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
+ ALTER TABLE `tbbranch` ADD `sourcebranch_id` int(11) default NULL;
  UPDATE `tbbranch` SET sourcebranch='HEAD' where name<>'HEAD';
  ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
  CREATE TABLE `tbscriptgeneration` (
   `id` int(11) NOT NULL auto_increment,
   `sessionid` varchar(16) collate latin1_general_ci NOT NULL,
-  `script_id` int(11) default NULL,
-  `branchname` varchar(40) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `sessionid` (`sessionid`,`script_id`)
- ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
-
+  `fromversionnr` int(11) default NULL,
+  `toversionnr` int(11) default NULL,
+  `frombranch` varchar(40) collate latin1_general_ci NOT NULL,
+  `tobranch` varchar(40) collate latin1_general_ci NOT NULL,
+  `frombranch_id` int(11) NOT NULL,
+  `tobranch_id` int(11) NOT NULL,
+  `create_dt` date default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
 
 1.2.1 Release Notes
 - Support for PostgreSQL database works
