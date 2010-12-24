@@ -88,7 +88,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  echo "\n<tr><td>Apply script to:<br>";
  echo "<a onclick=\"SetAllBranches(true);\">all</a> .:. <a onclick=\"SetAllBranches(false);\">none</a></td><td>";
  
- $query7="SELECT * FROM tbbranch WHERE visible=1 order by name ASC";
+ $query7="SELECT * FROM tbbranch WHERE visible=1 AND istag=0 order by name ASC";
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
  

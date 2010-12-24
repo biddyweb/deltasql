@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html> 
 <head>
-<title>deltasql - List branches </title>
+<title>deltasql - List branches and Tags </title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
@@ -16,7 +16,7 @@ $rights = $_SESSION["rights"];
 ?>
 <a href="index.php">Back to main menu</a>
 
-<h4>Project branches</h4>
+<h4>Project branches in blue and tags in yellow</h4>
 <table border="1">
 
 <?php
@@ -37,6 +37,7 @@ echo "<tr>
 <th>update datum</th>
 <th>version number when branch done</th>
 <th>visible</th>
+<th>istag</th>
 </tr>";
 
 $i=0;
@@ -52,14 +53,26 @@ if ($name=="HEAD") $versionnr="always latest ($versionnr)";
 $projectid=mysql_result($result,$i,"project_id");
 $visible=mysql_result($result,$i,"visible");
 $sourcebranch=mysql_result($result,$i,"sourcebranch");
+$istag=mysql_result($result,$i,"istag");
 
-$query2="SELECT * from tbproject where id=$projectid"; 
-$result2=mysql_query($query2);
-if ($result2!="") $projectname=mysql_result($result2,0,'name');
+if ($projectid!="") {
+  $query2="SELECT * from tbproject where id=$projectid"; 
+  $result2=mysql_query($query2);
+  if ($result2!="") $projectname=mysql_result($result2,0,'name');
   else $projectname="";
-
+}
+// colouring tags and branches
+if ($visible==1) {
+   if ($istag==1) {
+      echo "<tr BGCOLOR=\"#FDD017\">"; // yellow
+   }
+   else  {
+	  echo "<tr BGCOLOR=\"#99CCFF\">"; // blue
+   }	  
+} else {
+      echo "<tr>";
+}  
 echo "
-<tr>
 <td>$id</td>
 <td>$name</td>
 <td>$projectname</td>
@@ -68,6 +81,7 @@ echo "
 <td>$create_dt</td>
 <td>$versionnr</td>
 <td>$visible</td>
+<td>$istag</td>
 <td>";
 if (($rights>=2) && ($name!="HEAD")) {
     if ($visible==0) {
@@ -76,11 +90,18 @@ if (($rights>=2) && ($name!="HEAD")) {
       echo " <a href=\"change_branch_visibility.php?id=$id&show=0\">Hide</a> ";
     }
     echo "<a href=\"edit_branch.php?id=$id\">Edit</a> ";
-    echo "<a href=\"branch_again.php?id=$id\">BranchAgain</a> ";
+    if ($istag==0) {
+	   echo "<a href=\"branch_again.php?id=$id&tag=0\">Branch</a> ";
+	}   
     if ($rights==3) {
 	    $encoded_name=urlencode($name);
-        echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name\">Delete</a> ";
+        echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name&tag=$istag\">Delete</a> ";
     }    
+}
+if ($rights>=2) {
+   if ($istag==0) {
+	   echo "<a href=\"branch_again.php?id=$id&tag=1\">Tag</a> ";
+   }	   
 }
 echo "</td>";
 

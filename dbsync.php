@@ -65,7 +65,7 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  echo "<td>";
  
  echo "<select NAME=\"frombranchid\">";
- $query7="SELECT * FROM tbbranch WHERE visible=1 order by id ASC";
+ $query7="SELECT * FROM tbbranch WHERE (visible=1) and (istag=0) order by id ASC";
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
  $i=0;
@@ -82,10 +82,13 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  echo "<tr><td><b>Update To:</b></td>";
  echo "<td>";
  echo "<select NAME=\"tobranchid\">";
+ $query8="SELECT * FROM tbbranch WHERE (visible=1) order by id ASC";
+ $result8=mysql_query($query8);
+ $num8=mysql_numrows($result8); 
  $i=0;
- while ($i<$num7) { 
-   $branchid=mysql_result($result7,$i,"id");
-   $branchname=mysql_result($result7,$i,"name");
+ while ($i<$num8) { 
+   $branchid=mysql_result($result8,$i,"id");
+   $branchname=mysql_result($result8,$i,"name");
    echo "<option ";
    if ($branchname=="HEAD") echo "SELECTED ";
    echo "VALUE=\"$branchid\">$branchname";

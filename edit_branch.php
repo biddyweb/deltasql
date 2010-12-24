@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html> 
 <head>
-<title>deltasql - Edit Branch</title>
+<title>deltasql - Edit Branch or Tag</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
@@ -16,7 +16,7 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to edit a branch</b>");
 ?>
-<a href="list_branches.php">Back to List Branches</a>
+<a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php
 include("conf/config.inc.php");
@@ -38,7 +38,7 @@ if ($id!="") {
 }    
 ?>
 
-<h2>Edit Branch <?php echo "$name"; ?></h2>
+<h2>Edit Branch or Tag "<?php echo "$name"; ?>"</h2>
 <form action="edit_branch.php" method="post">
 Description:<br>
 <textarea name="description" rows="10" cols="70">
@@ -50,7 +50,7 @@ echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
 ?>
 <input type="Submit">
 </form>
-<a href="list_branches.php">Back to List Branches</a>
+<a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php
 $frm_description=$_POST['description'];

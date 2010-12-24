@@ -1,3 +1,6 @@
+24.12.2010 git
+implemented tagging :-), including all business logic around it :-)
+
 23.12.2010 git
 - logic to upgrade schemas from production to development (HEAD) added as well
 ----------------

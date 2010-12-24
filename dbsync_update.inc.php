@@ -83,41 +83,63 @@ $result3=mysql_query($query3);
 $fromprojectid=mysql_result($result3,0,"project_id");
 $fromversionnr=mysql_result($result3,0,"versionnr");
 $frombranchname=mysql_result($result3,0,"name");
+$fromsourcebranch=mysql_result($result3,0,"sourcebranch");
+$fromsourcebranchid=mysql_result($result3,0,"sourcebranch_id");
+$fromistag=mysql_result($result3,0,"istag");
+if ($fromistag==1) {
+   mysql_close();
+   die("<b>Internal error in dbsync_update.inc.php, Tags in from field are not allowed'");
+}
 
 $query4="SELECT * from tbbranch where id=$tobranchid"; 
 $result4=mysql_query($query4);   
 $toprojectid=mysql_result($result4,0,"project_id");
 $toversionnr=mysql_result($result4,0,"versionnr");
 $tobranchname=mysql_result($result4,0,"name");
+$tosourcebranch=mysql_result($result4,0,"sourcebranch");
+$tosourcebranchid=mysql_result($result4,0,"sourcebranch_id");
+$toistag=mysql_result($result4,0,"istag");
+if ($toistag==1) {
+    $tobranchname=$tosourcebranch;
+	$tobranchid=$tosourcebranchid;
+}
+
 
 // retrieve project name
 $query77="SELECT * from tbproject where id=$projectid"; 
 $result77=mysql_query($query77);   
 $projectname=mysql_result($result77,0,"name");
 
-// verify that the branch tags are for this project
+
 if (($fromprojectid!=$projectid) && ($frombranchname!="HEAD")) {
-  mysql_close();
-  errormessage(5, "The source branch $frombranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
+     mysql_close();
+     errormessage(5, "The source branch $frombranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
 if (($toprojectid!=$projectid) && ($tobranchname!="HEAD")) {
-  mysql_close();
-  errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
+     mysql_close();
+     errormessage(6, "The target branch $tobranchname does not belong to the project $projectname", $xmlformatted, $htmlformatted);
 }
 
-$toversionnr = get_global_version();
-if ($toversionnr<$fromversionnr) {
+
+// if it is a branch, we override the latest version with the global version
+if ($toistag==0) {
+  $toversionnr = get_global_version();
+}
+
+if ($toversionnr<$lastversionnr) {
     mysql_close();
-    errormessage(8, "-- No scripts to be executed (from $frombranchname [$fromversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);  
+    errormessage(8, "-- No scripts to be executed (from $frombranchname [$lastversionnr] to $tobranchname [$toversionnr])", $xmlformatted, $htmlformatted);  
 }
 
-if (($tobranchname=="HEAD") && ($frombranchid!=$tobranchid)) {
- // this is an upgrade of a production schema to a development schema which requires particular attention
- $upgradefromprodtodev=1;
- $headid=retrieve_head_id();
-} else {
- $upgradefromprodtodev=0;
-}
+$upgradefromprodtodev=0;
+if ($tobranchname=="HEAD") {
+ if ($frombranchid!=$tobranchid) {
+	// this is an upgrade of a production schema to a development schema which requires particular attention
+	$upgradefromprodtodev=1;
+	$headid=retrieve_head_id();
+ }	
+} 
+
 
 // generating sessionid
 $c = uniqid (rand (),true);
@@ -178,7 +200,7 @@ $numsg=mysql_numrows($resultsg);
      $tbsgfromversionnr = mysql_result($resultsg,$i,"fromversionnr");
 	 $tbsgtoversionnr   = mysql_result($resultsg,$i,"toversionnr");
      $tbsgtobranchid    = mysql_result($resultsg,$i,"tobranch_id");
-     $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>=$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and ";
+     $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and ";
      if ($upgradefromprodtodev==0) {
  	   $query="$query (sb.branch_id=$tbsgtobranchid))";
 	 } else {

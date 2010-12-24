@@ -81,7 +81,7 @@ if ($rights>1)
 <td valign="top">
 <h3>Synchronization</h3>
 <ul>
-<li><a href="list_branches.php">List Branches</a></li>
+<li><a href="list_branches.php">List Branches and Tags</a></li>
 <li><a href="dbsync.php">Synchronize database schema</a></li>
 <?php 
 if ($rights>2) 
