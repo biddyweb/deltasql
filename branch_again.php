@@ -33,6 +33,7 @@ if ($id!="") {
 
     $branchid=mysql_result($result7,0,"id");
     $projectid=mysql_result($result7,0,"project_id");
+	if ($projectid=="") $projectid="NULL";
     $name=mysql_result($result7,0,"name");  
     $description=mysql_result($result7,0,"description");
 	
