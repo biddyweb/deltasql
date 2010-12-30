@@ -6,6 +6,7 @@ ALTER TABLE tbsynchronize ADD tagname varchar(128) NULL;
 This column records the name of the tag, in case the synchronization was up to a tag.
 
 - adjusted test data during install procedure. Install procedure tested
+- documenting new synchronization step in manual and FAQ.
   
 
 24.12.2010 git

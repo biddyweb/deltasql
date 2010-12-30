@@ -526,55 +526,59 @@ When listing scripts (in <a href="list_scripts.php">List Scripts</a>), it is pos
 
 <h3><a name="insights"></a>Insights into the deltasql Algorithm</h3>
 
-<p>First, it is important to understand that deltasql does not support branches of branches. This keeps things easy.</p>
+<center>
+<img src="pictures/timeline.png" border="0"><br>
+<i>Picture: </i>Deltasql timeline with source and target
+</center>
 
 <ul>
 <li>
-<p>The main synchronization logic is contained in the file <tt>dbsync_update.inc.php</tt>. The main query that drives HEAD to HEAD, or BRANCH to BRANCH
- updates is: (we call it the "standard query")
+<p>
+The answer to this <a href="faq.php#algo">FAQ question</a> describes in general the steps performed by the deltasql algorithm.</li>
 </p>
+<li>
+<p>
+The main synchronization logic is contained in the file <tt>dbsync_update.inc.php</tt>. If you want to gain complete understanding of what deltasql does, you could study this file.
+</p>
+</li>
+<li>
+<p>
+The first algorithm step is to traverse back from target to source the pictured tree of development, and to record each segment of the traversal in a table called
+ TBSCRIPTGENERATION. In case there is no direct backward path from target to source, Deltasql summons <a href="manual_errormessages.php#13">error 13</a>. 
+</p>
+</li>
+<li>
+<p>
+With the information in TBSCRIPTGENERATION, deltasql walks now from source to target, and in each segment of its walk, it issues the standard query explained in the next point.
+</p>
+</li>
+<li>
+<p>
+The main query that drives the collection of scripts on a tree segment is: (we call it the "standard query")
 <pre>
       SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where 
        (s.versionnr>$fromversionnr) and (s.versionnr<=$toversionnr) and 
        (s.module_id in 
               (select module_id from tbmoduleproject where project_id=$projectid) 
-               and (s.id=sb.script_id) and (sb.branch_id in ($includeheadid, $frombranchid, $tobranchid)))
+               and (s.id=sb.script_id) and (sb.branch_id =$tobranchid)))
 </pre>
-
+</p>
 <p>The query shows that the table tbscriptbranch contains a relation between a given script (stored in tbscript) and the branches 
  (stored in tbbranch) to which it was submitted. tbbranch contains a particular row named HEAD, too. Therefore also the HEAD is represented
-  as a row in tbbranch and can be considered logically as a branch. <tt>$frombranchid</tt> and <tt>$tobranchid</tt> are equal in case of a BRANCH to BRANCH update or in case of a HEAD to HEAD
-   update. In both cases, <tt>$includeheadid</tt> is empty and not used.</p>
+  as a row in tbbranch and can be considered logically as a branch. </p>
    
 <p><tt>$fromversionnr</tt> is the value as it is retrieved in the table TBSYNCHRONIZE, and represents the current synchronization point of the database schema.
- <tt>$toversionnr</tt> is the version number of the latest script on deltasql,
- when HEAD is the target branch, or the version number when the BRANCH was created when BRANCH is the target.</p>
+ <tt>$toversionnr</tt> is the version number of the latest script on a tree segment.</p>
 </li>
-
 <li>
-<p> In case of a HEAD to BRANCH update, the variable <tt>$addbranchscriptsafterbranch</tt> is set to 1 and therefore an additional query is done after the standard query (please see the source code to see the query).
- The standard query adds the HEAD scripts between the current synchronization point on the schema and the point where the branch was created on deltasql. The additional query simply adds all further
-  BRANCH scripts after the branch was created. We call this additional query the "final query". For the standard query, the variable <tt>$includeheadid</tt> is empty and not used.</p>
-  
-  <p>
-  The table tbmoduleproject contains the relation between modules and one project. <tt>$project_id</tt> contains the value of the project we would
-   like to synchronize. Therefore, the query selects only scripts that belong to modules of the project to be synchronized. 
-  </p>
-</li>
-
-<li>  
-<p>In case of a BRANCH to HEAD update, the variable <tt>$addheadscriptstoupdatedbranch</tt> is set to 1 and thefore an additional query is done before the standard query (also here, please see the source code to see the query).
- This additional query adds all HEAD scripts between the BRANCH creation point and the current synchronization point on the schema.
-  We call this additional query the "initial query". For the standard qury, the variable <tt>$includeheadid</tt> is empty and not used.
+<p>
+The generated scripts for each segment are collated together in what becomes the synchronization script.
 </p>
 </li>
-
 <li>
-<p>The most complex case is a BRANCH to NEW_BRANCH update. Both <tt>$addheadscriptstoupdatedbranch</tt> and <tt>$addbranchscriptsafterbranch</tt> are set to 1:
- the "initial query" adds all HEAD scripts between the synchronization point on the schema and the creation point of BRANCH. The standard query
-  does a HEAD to HEAD update between the creation point of BRANCH and NEW_BRANCH (this time the standard query has the variable <tt>$includeheadid</tt>
- set to the id of the row named HEAD in the table tbbranch. After that, the "final query" adds all NEW_BRANCH scripts between the creation
-   of NEW_BRANCH and the current HEAD on deltasql. 
+<p>
+The proceeding for the particular upgrade from production schema to development schema (to HEAD) is done in the same way and with support of TBSCRIPTGENERATION, just a modified query which retrieves
+ all scripts belonging to HEAD but not to the segment of the tree are retrieved and collated together.
 </p>
 </li>
 </ul>
