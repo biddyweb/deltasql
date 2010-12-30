@@ -1,1 +1,1 @@
-INSERT INTO tbbranch VALUES (4, 'DELTA_1', 2, '', 13, '2008-05-21', 1);
+INSERT INTO tbbranch VALUES (4, 'DELTA_1',2, '', 13, '2008-05-21', 1,'HEAD',0,1);

@@ -1,3 +1,13 @@
+30.12.2010 git
+- added tagname to table TBSYNCHRONIZE, on the schemas where deltasql is active,
+one should run a statement:
+ALTER TABLE tbsynchronize ADD tagname varchar(128) NULL;
+
+This column records the name of the tag, in case the synchronization was up to a tag.
+
+- adjusted test data during install procedure. Install procedure tested
+  
+
 24.12.2010 git
 implemented tagging :-), including all business logic around it :-)
 

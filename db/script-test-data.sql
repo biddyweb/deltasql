@@ -1,9 +1,9 @@
 
 UPDATE tbbranch SET versionnr=24 WHERE name='HEAD';
-INSERT INTO tbbranch VALUES (2, 'BRANCH_1', 1, '', 7, '2008-05-02', 0);
-INSERT INTO tbbranch VALUES (3, 'BRANCH_2', 1, '', 7, '2008-05-02', 0);
-INSERT INTO tbbranch VALUES (4, 'DELTA_1', 2, '', 13, '2008-05-21', 1);
-INSERT INTO tbbranch VALUES (5, 'DELTA_2', 2, 'second branch after script 6', 17, '2008-05-21', 1);
+INSERT INTO tbbranch VALUES (2, 'BRANCH_1',1, '', 7, '2008-05-02', 0,'HEAD',0,1);
+INSERT INTO tbbranch VALUES (3, 'BRANCH_2',1, '', 7, '2008-05-02', 0,'HEAD',0,1);
+INSERT INTO tbbranch VALUES (4, 'DELTA_1',2, '', 13, '2008-05-21', 1,'HEAD',0,1);
+INSERT INTO tbbranch VALUES (5, 'DELTA_2',2, 'second branch after script 6', 17, '2008-05-21', 1,'HEAD',0,1);
 
 -- 
 -- Dumping data for table 'tbmodule'
