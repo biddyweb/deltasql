@@ -1,3 +1,35 @@
+1.3.0 Release Notes 
+Completely new synchronization algorithm which handles among others branches of branches,
+ tagging and upgrade from production to development schema.
+ 
+WARNING: if upgrading production environments from previous versions, please always
+ create a backup copy, and adjust table TBBRANCH manually to include sourcebranch and sourcebranch_id.
+ In such cases, you can get support from gpu-world at lists.sourceforge.net
+
+When upgrading deltasql server, please launch the following script:
+
+ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
+ALTER TABLE `tbbranch` ADD `sourcebranch_id` int(11) default NULL;
+UPDATE `tbbranch` SET sourcebranch='HEAD' where name<>'HEAD';
+UPDATE `tbbranch` SET sourcebranch_id=1 where name<>'HEAD';
+ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
+ALTER TABLE tbsynchronize ADD tagname varchar(128) NULL;
+CREATE TABLE `tbscriptgeneration` (
+  `id` int(11) NOT NULL auto_increment,
+  `sessionid` varchar(40) collate latin1_general_ci NOT NULL,
+  `fromversionnr` int(11) default NULL,
+  `toversionnr` int(11) default NULL,
+  `frombranch` varchar(40) collate latin1_general_ci NOT NULL,
+  `tobranch` varchar(40) collate latin1_general_ci NOT NULL,
+  `frombranch_id` int(11) NOT NULL,
+  `tobranch_id` int(11) NOT NULL,
+  `create_dt` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
+
+You should launch on database schemas under deltasql versioning the following statement: 
+ALTER TABLE tbsynchronize ADD tagname varchar(128) NULL;
+
 30.12.2010 git
 - added tagname to table TBSYNCHRONIZE, on the schemas where deltasql is active,
 one should run a statement:
@@ -69,6 +101,7 @@ IMPORTANT: users who upgrade from previous
  ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
  ALTER TABLE `tbbranch` ADD `sourcebranch_id` int(11) default NULL;
  UPDATE `tbbranch` SET sourcebranch='HEAD' where name<>'HEAD';
+ UPDATE `tbbranch` SET sourcebranch_id=1 where name<>'HEAD';
  ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
  CREATE TABLE `tbscriptgeneration` (
   `id` int(11) NOT NULL auto_increment,
