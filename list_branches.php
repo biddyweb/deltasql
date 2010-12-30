@@ -55,11 +55,11 @@ $visible=mysql_result($result,$i,"visible");
 $sourcebranch=mysql_result($result,$i,"sourcebranch");
 $istag=mysql_result($result,$i,"istag");
 
+$projectname="";
 if ($projectid!="") {
   $query2="SELECT * from tbproject where id=$projectid"; 
   $result2=mysql_query($query2);
   if ($result2!="") $projectname=mysql_result($result2,0,'name');
-  else $projectname="";
 }
 // colouring tags and branches
 if ($visible==1) {
