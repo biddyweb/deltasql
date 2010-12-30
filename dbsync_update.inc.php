@@ -100,6 +100,7 @@ $tosourcebranch=mysql_result($result4,0,"sourcebranch");
 $tosourcebranchid=mysql_result($result4,0,"sourcebranch_id");
 $toistag=mysql_result($result4,0,"istag");
 if ($toistag==1) {
+    $tagname=$tobranchname;
     $tobranchname=$tosourcebranch;
 	$tobranchid=$tosourcebranchid;
 }
@@ -231,6 +232,8 @@ if ($singlefiles=="0") {
 	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE)";
 	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname');";
 	
+	if ($toistag==1)
+		$updatestring = "$updatestring\nUPDATE tbsynchronize SET tagname='$tagname' WHERE versionnr=$toversionnr;";
 	if ($dbtype!="")
 		$updatestring = "$updatestring\nUPDATE tbsynchronize SET dbtype='$dbtype' WHERE versionnr=$toversionnr;";
 	if ($schemaname!="")

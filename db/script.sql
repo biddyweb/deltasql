@@ -162,6 +162,7 @@ CREATE TABLE `tbsynchronize` (
 `update_type` VARCHAR( 32 ) NULL ,
 `versionnr` INT NOT NULL,
 `branchname` VARCHAR( 128 ) NULL ,
+`tagname` VARCHAR( 128 ) NULL ,
 `description` VARCHAR( 128 ) NULL,
 `update_fromversion` INT NULL,
 `update_fromsource` VARCHAR( 128 ) NULL,
