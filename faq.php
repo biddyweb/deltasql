@@ -41,7 +41,7 @@ include("utils/constants.inc.php");
 <li><a href="#devprod">What is the difference between a production and a development schema?</a></li>
 <li><a href="#branch">How can I create a branch?</a></li>
 <li><a href="#branchofbranch">Is it possible to create a branch of a branch?</a></li>
-<li><a href="#tag">Is it possible to tag a particular release</a></li>
+<li><a href="#tag">Is it possible to tag a particular release?</a></li>
 <li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#upgrade">I saw on the webpage that there is a new deltasql version, how do I upgrade?</a></li>
@@ -281,7 +281,7 @@ on the <b>Branch</b> button (if you have rights as a Project Manager or as an Ad
     to decide if it belongs to the old, to the new or to both branches.
  </p>
 
-<h3><a name="tag"></a>Is it possible to tag a particular release</h3>
+<h3><a name="tag"></a>Is it possible to tag a particular release?</h3>
 <p>
 Yes, it is. In <a href="list_branches.php">List Branches</a>, there is a <b>Tag</b> action.
 </p> 
