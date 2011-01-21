@@ -296,7 +296,14 @@ The stored procedure DELTASQL_VERIFY_SCHEMA is called on top of every synchroniz
 </p>
 <p> 
 To verify it, the stored procedure is called with the arguments which are found as last entries in TBSYNCHRONIZATION. 
-Therefore the stored procedure verifies that the current schema belongs to the correct project, it is at the correct version number and is on the correct branch.
+Therefore the stored procedure verifies that the current schema belongs 
+to the correct project, it is at the correct version number and is on 
+the correct branch. If there is a mismatch, the stored procedure raises 
+an exception which prevents the rest of the synchronization script to be 
+executed. This feature therefore protects schemas from synchronization 
+scripts which are not meant for them. Imagine to launch a sync script 
+with more than 100 SQL statements on the wrong production schema! What a 
+nightmare!
 </p> 
 <p>A call to DELTASQL_VERIFY_SCHEMA depends on the database type, and looks e.g. for Oracle in this way</p>
 <pre>
