@@ -1,4 +1,8 @@
-1.3.0 Release Notes 
+21.1.2011
+- added FAQ question on verification step
+- minor changes in FAQ document
+
+1.3.0 Release Notes 30.12.2010
 Completely new synchronization algorithm which handles among others branches of branches,
  tagging and upgrade from production to development schema.
  

@@ -42,6 +42,7 @@ include("utils/constants.inc.php");
 <li><a href="#branch">How can I create a branch?</a></li>
 <li><a href="#branchofbranch">Is it possible to create a branch of a branch?</a></li>
 <li><a href="#tag">Is it possible to tag a particular release?</a></li>
+<li><a href="#verification">What does the "verification step" do?</a></li>
 <li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#upgrade">I saw on the webpage that there is a new deltasql version, how do I upgrade?</a></li>
@@ -285,6 +286,33 @@ on the <b>Branch</b> button (if you have rights as a Project Manager or as an Ad
 <p>
 Yes, it is. In <a href="list_branches.php">List Branches</a>, there is a <b>Tag</b> action.
 </p> 
+
+
+<h3><a name="verification"></a>What does the "verification step" do?</h3>
+<p>
+For some database types, deltasql gives the usual TBSYNCHRONIZE table and provides an additional stored procedure called DELTASQL_VERIFY_SCHEMA.
+The stored procedure DELTASQL_VERIFY_SCHEMA is called on top of every synchronization script created by Deltasql server. Its purpose is to make sure
+ that the synchronization script is executed on the correct schema. 
+</p>
+<p> 
+To verify it, the stored procedure is called with the arguments which are found as last entries in TBSYNCHRONIZATION. 
+Therefore the stored procedure verifies that the current schema belongs to the correct project, it is at the correct version number and is on the correct branch.
+</p> 
+<p>A call to DELTASQL_VERIFY_SCHEMA depends on the database type, and looks e.g. for Oracle in this way</p>
+<pre>
+-- this verifies that the present script is executed in the correct schema
+CALL DELTASQL_VERIFY_SCHEMA(1, 'HEAD', 'deltasql-Server');
+</pre>
+<p>
+If, for a particular database type, the development team was not able to define such a stored procedure, you will see this comment on top of the
+ synchronization script:
+</p>
+<pre>
+-- for this database type there still is no verification step
+-- you could define one in synchronization_table.php
+</pre>
+
+
 <h3><a name="continouus"></a>Is it possible to perform continouus database integration?</h3>
 <p>
 Under continouus integration, a developer normally understands the nightly checkout of the source code followed by
