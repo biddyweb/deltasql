@@ -147,7 +147,7 @@ To:
  echo "<option VALUE=\"\" ";
  if ($cookie_branchid=="") echo "SELECTED";
  echo ">";
- $query8="SELECT * FROM tbbranch order by name ASC";
+ $query8="SELECT * FROM tbbranch WHERE istag=0 order by name ASC";
  $result8=mysql_query($query8);
  $num8=mysql_numrows($result8); 
  $i=0;
