@@ -1,6 +1,7 @@
 24.1.2011 git
 - changed all buttons from "Submit query" to action text in caption
 - bugfix in edit_script.php: Tags are not allowed
+- bugfix in search_scripts.php: Tags are not allowed
 
 21.1.2011 git
 - added FAQ question on verification step
