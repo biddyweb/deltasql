@@ -35,7 +35,7 @@ echo "<tr>
 <th>id</th>
 <th>name</th>
 <th>description</th>
-<th>update datum</th>
+<th>update dt</th>
 <th>last version number</th>
 <th></th>
 </tr>";

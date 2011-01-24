@@ -53,7 +53,7 @@ You also can give a name to your schema <i>(optional)</i><br>
 */
 ?>
 
-<input type="Submit">
+<input type="Submit" value="Get synchronization table">
 </form>
 </body>
 </html>

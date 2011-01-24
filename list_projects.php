@@ -35,7 +35,7 @@ echo "<tr>
 <th>id</th>
 <th>name</th>
 <th>description</th>
-<th>create datum</th>
+<th>create dt</th>
 <th>last change at</th>
 <th>actions</th>
 </tr>";

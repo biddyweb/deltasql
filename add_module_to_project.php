@@ -41,7 +41,7 @@ $projectname = $_GET['name'];
  mysql_close();
 ?>
 
-<input type="Submit">
+<input type="Submit" value="Add module">
 </form>
 <a href="index.php">Back to main menu</a>
 

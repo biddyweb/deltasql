@@ -19,7 +19,7 @@ Description:<br>
 <textarea name="description" rows="10" cols="70">
 </textarea>
 <br>
-<input type="Submit">
+<input type="Submit" value="Create project">
 </form>
 <a href="index.php">Back to main menu</a>
 

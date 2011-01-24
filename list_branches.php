@@ -34,8 +34,8 @@ echo "<tr>
 <th>project</th>
 <th>description</th>
 <th>source branch</th>
-<th>update datum</th>
-<th>version number when branch done</th>
+<th>update dt</th>
+<th>version number</th>
 <th>visible</th>
 <th>istag</th>
 </tr>";

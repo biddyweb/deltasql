@@ -48,7 +48,7 @@ Description:<br>
 <?php
 echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
 ?>
-<input type="Submit">
+<input type="Submit" value="Edit project">
 </form>
 <a href="list_projects.php">Back to List Projects</a>
 

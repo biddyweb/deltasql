@@ -36,7 +36,7 @@ echo "<h2>Insert a new branch for project $projectname</h2>";
 <?php
 echo "<input type=\"hidden\" name=\"frmprojectid\"  value=\"$projectid\">";
 ?>
-<input type="Submit">
+<input type="Submit" value="Create branch">
 </form>
 <a href="index.php">Back to main menu</a>
 

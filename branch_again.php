@@ -77,7 +77,7 @@ echo "<input type=\"hidden\" name=\"versionnr\"  value=\"$versionnr\">";
 echo "<input type=\"hidden\" name=\"oldname\"  value=\"$name\">";
 echo "<input type=\"hidden\" name=\"istag\"  value=\"$tag\">";
 ?>
-<input type="Submit">
+<input type="Submit" value="Insert">
 </form>
 <a href="list_branches.php">Back to List Branches or Tags</a>
 

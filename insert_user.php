@@ -26,7 +26,7 @@ Rights:
 </select>
 </td></tr>
 </table>
-<input type="Submit">
+<input type="Submit" value="Insert user">
 </form>
 
 <?php

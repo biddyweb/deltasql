@@ -135,7 +135,7 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  will receive after pressing the Submit button! This will update both your database schema and the
   synchronization information in TBSYNCHRONIZE.</b><br>
  
-<input type="Submit">
+<input type="Submit" value="Generate synchronization script">
 </form>
 <br>
 <a href="index.php">Back to Main Page</a>
