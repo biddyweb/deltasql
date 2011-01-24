@@ -143,7 +143,7 @@ echo "<input name=\"anothersubmit\" type=\"checkbox\" value=\"1\" ";
 if ($chainscriptsubmit==1) echo "checked=\"checked\"";
 echo " />Submit Another Script after this one<br>";
 ?>
-<input type="Submit">
+<input type="Submit" value="Submit script">
 </form>
 <p>
 <a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php">Back to Main Menu</a>

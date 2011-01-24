@@ -72,7 +72,8 @@ if ($paramscriptid!="") {
  
  echo "<td>Apply script to:</td><td>";
  
- $query7="SELECT * FROM tbbranch WHERE visible=1 order by id ASC";
+ $query7="SELECT * FROM tbbranch WHERE visible=1 and istag=0 order by id 
+ASC";
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
  
@@ -122,7 +123,7 @@ Comments:<br>
 <?php
 echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\">";
 ?>
-<input type="Submit">
+<input type="Submit" value="Edit script">
 </form>
 <a href="list_scripts.php">Back to list scripts</a>
 

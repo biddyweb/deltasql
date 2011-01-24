@@ -194,8 +194,13 @@ To:
  echo "/>";
  echo "</tr>";
 ?>
+<tr>
+<td></td><td></td>
+<td>
+<input type="Submit" value="Search scripts">
+</td>
+</tr>
 </table>
-<input type="Submit">
 <p>
 <a href="list_scripts.php">Back to List Scripts</a>
 </p>
