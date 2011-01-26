@@ -44,6 +44,8 @@ function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranch
 		$sourcebranchname=mysql_result($result_next,0,"sourcebranch");
 		$sourcebranchid=mysql_result($result_next,0,"sourcebranch_id");
 		$sourceversionnr=mysql_result($result_next,0,"versionnr");
+		
+		if ($sourceversionnr<$fromversionnr) $sourceversionnr=$fromversionnr;
         	
 		$syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,create_dt)
 	                VALUES ('$sessionid',$sourceversionnr, $toversionnr,'$sourcebranchname','$tobranchname',$sourcebranchid,$tobranchid, NOW());";
@@ -133,6 +135,7 @@ if ($toversionnr<$lastversionnr) {
 }
 
 $upgradefromprodtodev=0;
+/*
 if ($tobranchname=="HEAD") {
  if ($frombranchid!=$tobranchid) {
 	// this is an upgrade of a production schema to a development schema which requires particular attention
@@ -140,6 +143,7 @@ if ($tobranchname=="HEAD") {
 	$headid=retrieve_head_id();
  }	
 } 
+*/
 
 
 // generating sessionid
@@ -205,7 +209,8 @@ $numsg=mysql_numrows($resultsg);
      if ($upgradefromprodtodev==0) {
  	   $query="$query (sb.branch_id=$tbsgtobranchid))";
 	 } else {
-       $query="$query (sb.branch_id<>$tbsgtobranchid) and (sb.branch_id=$headid))";
+       $query="$query ((sb.branch_id=$tbsgtobranchid) or (sb.branch_id=$headid))";
+	   echo "<b>$query</b><br>";
      }	 
      if ($excludeviews==1) $query="$query  and (s.isaview=0)";
      if ($excludepackages==1) $query="$query  and (s.isapackage=0)";

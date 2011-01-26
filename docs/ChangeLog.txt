@@ -1,3 +1,8 @@
+26.1.2011 git
+- Tests_To_Verify_deltasql_correctness.txt updated
+- Fix in dbsync algo patching test cases 1-5
+- Test cases 6 and 7 now are much more difficult
+
 24.1.2011 git
 - changed all buttons from "Submit query" to action text in caption
 - bugfix in edit_script.php: Tags are not allowed
