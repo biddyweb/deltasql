@@ -456,6 +456,8 @@ Only the branch complicates it a little bit.</p>
 
 <h4>Example 2.3</h4>
 
+<b>Warning: upgrades to development schemas are unsupported in this version!</b>
+
 <pre>
    Version in old database schema: 2 
    Branch name in old database schema: BRANCH_1 
@@ -573,12 +575,6 @@ The main query that drives the collection of scripts on a tree segment is: (we c
 <li>
 <p>
 The generated scripts for each segment are collated together in what becomes the synchronization script.
-</p>
-</li>
-<li>
-<p>
-The proceeding for the particular upgrade from production schema to development schema (to HEAD) is done in the same way and with support of TBSCRIPTGENERATION, just a modified query which retrieves
- all scripts belonging to HEAD but not to the segment of the tree are retrieved and collated together.
 </p>
 </li>
 </ul>

@@ -1,3 +1,12 @@
+1.3.1 Release Notes 26.1.2011
+- important set of fixes for the broken synchronization algorithm delivered with 1.3.0
+- all buttons renamed from 'Submit Query' into their corresponding action
+- if you upgrade from previous versions you should run this script:
+INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
+- if you installed test data, you should run this script as well:
+INSERT INTO tbscript (id, code, module_id, versionnr, user_id, update_dt, update_user, comments, title, isapackage, isaview) VALUES  (9, '-- 6 script only for HEAD before branch DELTA_2 comes', 5, 17, 1, '2008-05-21', '', '', 'db update', 0, 0);
+
+
 26.1.2011 git
 - Tests_To_Verify_deltasql_correctness.txt updated
 - if test data is used, add this missing script to verify deltasql correctness:
@@ -5,12 +14,13 @@ INSERT INTO tbscript (id, code, module_id, versionnr, user_id, update_dt, update
 - Fix in dbsync algo patching test cases 1-5
 - Test cases 6 and 7 now are much more difficult, and need some idea to handle them.
 In the meanwhile I added an error message to inform the user that upgrades from development
- schemas to production schemas are not supported yet
+ schemas to production schemas are not supported yet. The documentation was upgraded to reflect this fact.
 - Test case 8 is even more difficult and needs the concept of merging... It is about upgrading a production schema to a newer production schema.
 This case can not be even detected at the moment.
 - added following parameter to TBPARAMETER:
 INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
  used in script check_db_connection.php which could be later used in bash deltasql clients
+
 
 24.1.2011 git
 - changed all buttons from "Submit query" to action text in caption
