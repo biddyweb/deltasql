@@ -135,7 +135,6 @@ if ($toversionnr<$lastversionnr) {
 }
 
 $upgradefromprodtodev=0;
-/*
 if ($tobranchname=="HEAD") {
  if ($frombranchid!=$tobranchid) {
 	// this is an upgrade of a production schema to a development schema which requires particular attention
@@ -143,18 +142,18 @@ if ($tobranchname=="HEAD") {
 	$headid=retrieve_head_id();
  }	
 } 
-*/
+if ($upgradefromprodtodev==1) {
+     mysql_close();
+     errormessage(14, "-- Upgrades from production schemas to development schemas not supported yet", $xmlformatted,$htmlformatted);
+}
 
 
 // generating sessionid
 $c = uniqid (rand (),true);
 $sessionid = md5($c);
 // generating synchronization path
-if ($upgradefromprodtodev==0) {
-  generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
-} else {
-  generateSyncPath($sessionid, $headid, 0, 'HEAD', $frombranchid,  $toversionnr, $frombranchname, $xmlformatted, $htmlformatted);
-}
+generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
+
 // THE VERIFICATION PART ENDS HERE
 // the output of the script begins, if all tests are passed
 if ($singlefiles==0) {
@@ -206,12 +205,7 @@ $numsg=mysql_numrows($resultsg);
 	 $tbsgtoversionnr   = mysql_result($resultsg,$i,"toversionnr");
      $tbsgtobranchid    = mysql_result($resultsg,$i,"tobranch_id");
      $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and ";
-     if ($upgradefromprodtodev==0) {
- 	   $query="$query (sb.branch_id=$tbsgtobranchid))";
-	 } else {
-       $query="$query ((sb.branch_id=$tbsgtobranchid) or (sb.branch_id=$headid))";
-	   echo "<b>$query</b><br>";
-     }	 
+     $query="$query (sb.branch_id=$tbsgtobranchid))";
      if ($excludeviews==1) $query="$query  and (s.isaview=0)";
      if ($excludepackages==1) $query="$query  and (s.isapackage=0)";
      $query="$query  ORDER BY versionnr ASC";

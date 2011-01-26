@@ -14,6 +14,7 @@ _______13_____/__________________ HEAD
  
 1. Test: HEAD -> HEAD
 
+11 -> 12, 13, 14, 15, 
 12 -> 13, 14, 15, 17, 18, 19, 21, 22, 24
 13 -> 14, 15, 17, 18, 19, 21, 22, 24
 14 -> 15, 17, 18, 19, 21, 22, 24
@@ -86,7 +87,7 @@ _______13_____/__________________ HEAD
 
 
 6. Test: DELTA_1 -> HEAD
-
+    not implemented yet!!!
 13 -> 14, 15, 16, 17, 18, 19, 21, 22, 23, 24
 14 -> 14, 15, 16, 17, 18, 19, 21, 22, 23, 24
 15 -> 14, 16, 17, 18, 19, 21, 22, 23, 24
@@ -103,7 +104,7 @@ _______13_____/__________________ HEAD
 
 
 7. Test: DELTA_2 -> HEAD
-
+   not implemented yet!!!
 17 -> 17, 18, 19, 20, 21, 22, 24
 18 -> 17, 18, 19, 20, 21, 22, 24
 19 -> 17, 18, 21, 20, 22, 24
@@ -115,8 +116,7 @@ _______13_____/__________________ HEAD
 
 
 8. Test: DELTA_1 -> DELTA_2
-not possible at the moment for any version,
-but should be possible at a later point
-
+    not implemented yet!!!
+	
 9. Test: DELTA_2 -> DELTA_1
 not possible for any version

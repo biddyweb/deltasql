@@ -91,6 +91,13 @@ This error could also mean that you mistyped the version number in the synchroni
  before the current one. 
 </p>
 
+<li><a name="14"></a><i>14</i>: <b>Upgrades from production schemas to development schemas not supported yet</b></li>
+<p>
+After the algorithm upgrade in version 1.3.0, upgrades from production to development schemas are not supported yet. We
+ are working on it, if you have an idea, drop by!
+</p>
+
+
 
 </body>
 </html>
