@@ -105,7 +105,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 
    if ($branchname!="HEAD") { 
      if (substr($last_name,0,2) == substr($branchname,0,2)) {
-       echo "\n<br><input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"/>$branchname";
+       echo "\n<input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"/>$branchname";
      } else {
        echo "\n</td><td>";
        echo "\n<input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"/>$branchname";
