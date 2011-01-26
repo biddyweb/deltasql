@@ -1,0 +1,1 @@
+INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');

@@ -114,7 +114,7 @@ mysql_connect($mysqlhost, $mysqlrootuser, $mysqlrootpassword);
 @mysql_select_db($deltasqlschemaname) or die("Unable to select user database for schema creation with user '$mysqlrootuser'");
 
 executeScripts("db/tables", "table_", 12);
-executeScripts("db/data", "data_", 4);
+executeScripts("db/data", "data_", 5);
 
 if ($testgroup=="testsystemyes") {
     executeScripts("db/test-data", "data_", 53);
