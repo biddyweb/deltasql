@@ -9,11 +9,11 @@
 
 include("utils/constants.inc.php");
 if (!file_exists($configurationfile)) {
-    die('check=ERROR\nmsg="Configuration file conf/config.inc.php is missing. Please setup deltasql"\n');
+    die("check=ERROR\nmsg='Configuration file conf/config.inc.php is missing. Please setup deltasql'\n");
  }  
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
-@mysql_select_db($database) or die('check=ERROR\nmsg="Unable to select database, please check settings in conf/config.inc.php"\n');
+@mysql_select_db($database) or die("check=ERROR\nmsg='Unable to select database, please check settings in conf/config.inc.php'\n");
 
 $mainquery  = "SELECT * from tbparameter WHERE paramtype='TEST' and paramname='DB_CONNECTION';"; 
 $result=mysql_query($mainquery);
@@ -23,17 +23,17 @@ if ($result!="") {
 
 if ($num==0) {
 	mysql_close();
-	die('check=ERROR\nmsg="TBParameter with paramtype=TEST and paramname=DB_CONNECTION does not exist!"\n');
+	die("check=ERROR\nmsg='TBParameter with paramtype=TEST and paramname=DB_CONNECTION does not exist!'\n");
 }
 if ($num>1) {
 	mysql_close();
-	die('check=ERROR\nmsg="Too many parameters found, is the unique constraint on TBPARAMETER defined?"\n');
+	die("check=ERROR\nmsg='Too many parameters found, is the unique constraint on TBPARAMETER defined?'\n");
 }
 $answer = mysql_result($result,0,"paramvalue");
 if ($answer=="OK") {
-    echo 'check=OK\nmsg=""\n';
+    echo "check=OK\nmsg=''\n";
 } else {
-    echo 'check=ERROR\nmsg="Parameter should be OK but was $answer"\n';
+    echo "check=ERROR\nmsg='Parameter should be OK but was $answer'\n";
 }
 
 mysql_close();
