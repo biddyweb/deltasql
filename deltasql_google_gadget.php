@@ -48,13 +48,16 @@ echo "<font size=\"$fontsize\">";
 ?>
 
 
-<a href="http://www.gpu-grid.net/wiki/index.php/Deltasql" target=_blank><img src="pictures/deltasql-small.png" border="0" /></a>
+<a href="http://www.deltasql.org/wiki/" 
+target=_blank><img src="pictures/deltasql-small.png" border="0" /></a>
 <a href="list_scripts.php" target=_blank>List</a> <a href="dbsync.php" target=_blank>Sync</a>
 <a href="faq.php" target=_blank>FAQ</a> <a href="manual.php" target=_blank>Manual</a> 
 <a href="list_usage_history.php" target=blank">Stats</a> 
 <a href="http://sourceforge.net/project/stats/detail.php?group_id=212117&ugn=deltasql&type=prdownload&mode=alltime&file_id=0" target=_blank>Down.</a>
  <?php
-echo "Version: <a href='http://www.gpu-grid.net/deltasql/docs/ChangeLog.txt' target=_blank>$deltasql_version</a>";
+echo "Version: <a 
+href='http://www.deltasql.org/deltasql/docs/ChangeLog.txt' 
+target=_blank>$deltasql_version</a>";
 ?>
  <a href='http://sourceforge.net/project/memberlist.php?group_id=212117' target=_blank>Team</a>
 <br>
