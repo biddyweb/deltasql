@@ -1,3 +1,7 @@
+10.2.2011 git
+- removed table when displaying branches in submit_script.php on user 
+request (Hari)
+
 1.3.1 Release Notes 26.1.2011
 - important set of fixes for the broken synchronization algorithm delivered with 1.3.0
 - all buttons renamed from 'Submit Query' into their corresponding action
