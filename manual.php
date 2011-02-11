@@ -456,8 +456,6 @@ Only the branch complicates it a little bit.</p>
 
 <h4>Example 2.3</h4>
 
-<b>Warning: upgrades to development schemas are unsupported in this version!</b>
-
 <pre>
    Version in old database schema: 2 
    Branch name in old database schema: BRANCH_1 
@@ -548,6 +546,10 @@ The main synchronization logic is contained in the file <tt>dbsync_update.inc.ph
 The first algorithm step is to traverse back from target to source the pictured tree of development, and to record each segment of the traversal in a table called
  TBSCRIPTGENERATION. In case there is no direct backward path from target to source, Deltasql summons <a href="manual_errormessages.php#13">error 13</a>. 
 </p>
+<p> 
+ If you want to see the content
+  of the table TBSCRIPTGENERATION, you can enable the checkbox 'Include debug information' in the <a href="dbsync.php">Synchronization form</a>.
+</p>
 </li>
 <li>
 <p>
@@ -571,10 +573,23 @@ The main query that drives the collection of scripts on a tree segment is: (we c
    
 <p><tt>$fromversionnr</tt> is the value as it is retrieved in the table TBSYNCHRONIZE, and represents the current synchronization point of the database schema.
  <tt>$toversionnr</tt> is the version number of the latest script on a tree segment.</p>
-</li>
+
+<p>
+The queries issued by deltasql to retrieve scripts can be inspectioned as well by enabling the checkbox 'Include debug information' in the <a href="dbsync.php">Synchronization form</a>.
+</p> 
+ </li>
 <li>
 <p>
 The generated scripts for each segment are collated together in what becomes the synchronization script.
+</p>
+</li>
+<li>
+<p>
+Upgrades from production schemas (following branches) to development schemas (following HEAD) are handled by dividing the algorithm in two steps with the division set to the current schema version number: a tree traversal back to the root of the
+ entire tree on which a modified query is launched (can be seen by enabling 'Include debug information' in the <a href="dbsync.php">Synchronization form</a>), so that scripts belonging to HEAD
+ but not to the branch are retrieved for the backward part, and a HEAD to HEAD upgrade for the forward part. The two steps can be seen looking at the table TBSCRIPTGENERATION included in the
+  debug information. <tt>exclbranch</tt> is set to 1 in the backward part, and set to 0 in the forward part. The value in <tt>exclbranch</tt> drives deltasql to launch the standard query if set to 0,
+   and the modified query if set to 1.
 </p>
 </li>
 </ul>

@@ -23,8 +23,9 @@ function removeSyncPath($sessionid) {
  is null or when we reached the target
 */
 function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname,
-                          $xmlformatted, $htmlformatted) {
-     
+                          $exclbranch, $xmlformatted, $htmlformatted) {
+				  
+    
 	 if (($tobranchid=='') || ($tobranchid==0)) {
 	   removeSyncPath($sessionid);
 	   mysql_close();
@@ -32,8 +33,8 @@ function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranch
 	 }
 	 
 	 if ($frombranchid==$tobranchid) {
-        $syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,create_dt)
-	                VALUES ('$sessionid',$fromversionnr, $toversionnr,'$frombranchname','$tobranchname',$frombranchid,$tobranchid, NOW());";
+        $syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,exclbranch,create_dt)
+	                VALUES ('$sessionid',$fromversionnr, $toversionnr,'$frombranchname','$tobranchname',$frombranchid,$tobranchid,$exclbranch,NOW());";
         mysql_query($syncstr);
    	    // we are done, we exit recursion
 		return;
@@ -47,20 +48,19 @@ function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranch
 		
 		if ($sourceversionnr<$fromversionnr) $sourceversionnr=$fromversionnr;
         	
-		$syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,create_dt)
-	                VALUES ('$sessionid',$sourceversionnr, $toversionnr,'$sourcebranchname','$tobranchname',$sourcebranchid,$tobranchid, NOW());";
+		$syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,exclbranch,create_dt)
+	                VALUES ('$sessionid',$sourceversionnr, $toversionnr,'$sourcebranchname','$tobranchname',$sourcebranchid,$tobranchid,$exclbranch,NOW());";
         mysql_query($syncstr);
 		
 		generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranchname, $sourcebranchid, $sourceversionnr, $sourcebranchname,
-		                 $xmlformatted, $htmlformatted);
+		                 $exclbranch, $xmlformatted, $htmlformatted);
      }	 
 }
 
 function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted,
          $excludeviews, $excludepackages, $updateuser, $updatetype, $commitcomment, $schemaname, $dbtype,
-         $xmlformatted, $singlefiles) {
+         $xmlformatted, $singlefiles, $debug) {
 
-$debug=0; // 1 will print more verbose update scripts!
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
 
 if ($lastversionnr=="")  errormessage(9, "Not possible to compute a dbsync update if version number is missing.", $xmlformatted, $htmlformatted);
@@ -70,6 +70,8 @@ if ($projectid=="")  errormessage(10, "Not possible to compute a dbsync update i
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+
+$headid=retrieve_head_id();
 
 $query16 = "SELECT * from tbmoduleproject where project_id=$projectid";   
 $result16=mysql_query($query16);
@@ -92,6 +94,11 @@ if ($fromistag==1) {
    mysql_close();
    die("<b>Internal error in dbsync_update.inc.php, Tags in from field are not allowed'");
 }
+if (($frombranchid<>$headid) && ($lastversionnr<$fromversionnr)) {
+   mysql_close();
+   errormessage(15, "-- The given version number is lower than when the branch was created.", $xmlformatted, $htmlformatted);
+}
+
 
 $query4="SELECT * from tbbranch where id=$tobranchid"; 
 $result4=mysql_query($query4);   
@@ -139,23 +146,24 @@ if ($tobranchname=="HEAD") {
  if ($frombranchid!=$tobranchid) {
 	// this is an upgrade of a production schema to a development schema which requires particular attention
 	$upgradefromprodtodev=1;
-	$headid=retrieve_head_id();
  }	
 } 
-if ($upgradefromprodtodev==1) {
-     mysql_close();
-     errormessage(14, "-- Upgrades from production schemas to development schemas not supported yet", $xmlformatted,$htmlformatted);
-}
-
+// THE VERIFICATION PART ENDS HERE
+// the output of the script begins, if all tests are passed
 
 // generating sessionid
 $c = uniqid (rand (),true);
 $sessionid = md5($c);
 // generating synchronization path
-generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, $xmlformatted, $htmlformatted);
+if ($upgradefromprodtodev==0) {
+  generateSyncPath($sessionid, $frombranchid, $lastversionnr, $frombranchname, $tobranchid,  $toversionnr, $tobranchname, 0, $xmlformatted, $htmlformatted);
+} else {
+  $syncstr = "INSERT INTO tbscriptgeneration (sessionid,fromversionnr,toversionnr,frombranch,tobranch,frombranch_id,tobranch_id,exclbranch,create_dt)
+	          VALUES ('$sessionid',$lastversionnr, $toversionnr,'HEAD','HEAD',$headid,$headid,0,NOW());";
+  mysql_query($syncstr);
+  generateSyncPath($sessionid, $headid, 0, 'HEAD', $frombranchid,  $lastversionnr, $frombranchname, 1, $xmlformatted, $htmlformatted);
+}
 
-// THE VERIFICATION PART ENDS HERE
-// the output of the script begins, if all tests are passed
 if ($singlefiles==0) {
    
    if ($xmlformatted) {
@@ -196,21 +204,42 @@ if ($resultsg=="") {
    mysql_close();
    die("Severe internal error in synchronization step: tbscriptgeneration is empty"); 
 }
+$numsg=mysql_numrows($resultsg);
+
+if ($debug==1) {
+	echo "<pre><i>\n-- DEBUG: TBSCRIPTGENERATION table\n";
+	
+	$i=0;
+    while ($i<$numsg) {  
+       $tbsgfromversionnr   = mysql_result($resultsg,$i,"fromversionnr");
+	   $tbsgtoversionnr     = mysql_result($resultsg,$i,"toversionnr");
+       $tbsgtobranchname    = mysql_result($resultsg,$i,"tobranch");
+	   $tbsgexclbranch      = mysql_result($resultsg,$i,"exclbranch");
+ 
+       echo "-- Branch: $tbsgtobranchname From: $tbsgfromversionnr To: $tbsgtoversionnr Excl. branch: $tbsgexclbranch\n";
+       $i++;
+    }
+	echo "</i></pre>\n";
+}
 
 $i=0;
-$numsg=mysql_numrows($resultsg);
- while ($i<$numsg) {  
+while ($i<$numsg) {  
 
      $tbsgfromversionnr = mysql_result($resultsg,$i,"fromversionnr");
 	 $tbsgtoversionnr   = mysql_result($resultsg,$i,"toversionnr");
      $tbsgtobranchid    = mysql_result($resultsg,$i,"tobranch_id");
+	 $tbsgexclbranch    = mysql_result($resultsg,$i,"exclbranch");
      $query="SELECT DISTINCT s.* from tbscript s, tbscriptbranch sb where (s.versionnr>$tbsgfromversionnr) and (s.versionnr<=$tbsgtoversionnr) and (s.module_id in (select module_id from tbmoduleproject where project_id=$projectid) and (s.id=sb.script_id) and ";
-     $query="$query (sb.branch_id=$tbsgtobranchid))";
+     if ($tbsgexclbranch==0) {
+ 	   $query="$query (sb.branch_id=$tbsgtobranchid))";
+	 } else {
+       $query="$query ($tbsgtobranchid NOT IN (select branch_id from tbscriptbranch WHERE script_id=s.id)) and ($headid IN (select branch_id from tbscriptbranch WHERE script_id=s.id)))";
+     }	 
      if ($excludeviews==1) $query="$query  and (s.isaview=0)";
      if ($excludepackages==1) $query="$query  and (s.isapackage=0)";
      $query="$query  ORDER BY versionnr ASC";
 	 
-     if ($debug==1) echo "<p>-- DEBUG: query to generate this update script was:\n-- $query\n</p>";
+     if ($debug==1) echo "<p><pre><i>-- DEBUG: query to generate this update script was:\n-- $query\n</i></pre></p>";
      $result=mysql_query($query);   
      $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles);
 

@@ -20,7 +20,7 @@ The Calendar Widget is available at http://jscalendar.sourceforge.net
 
 deltasql includes a zip wrapper library under /utils/createzip by Rochak Chauhan (www.rochakchauhan.com)
 
-deltasql is (c) 2007-2010 the Deltasql Development Team
+deltasql is (c) 2007-2011 the Deltasql Development Team
   contact us at gpu-world@lists.sourceforge.net
           http://www.deltasql.org
 

@@ -6,7 +6,7 @@ Deltasql Server
 /           Root directory for the deltasql server
 /conf       Configuration folder
      example_config.inc.php  This file is an example configuration, which could be renamed to config.inc.php       
-/CVS        concurrent version system folder
+/.git       concurrent version system folder
 /db         this folder contains database scripts needed for the mySQL database that backs the server
     script.sql            This scripts creates the entire database schema
     script-test-data.sql  This script creates some test data for the database schema
@@ -22,8 +22,6 @@ Deltasql Server
     /utils                Utilites in PHP for deltasql
     /utils/geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
     
-    /gentoo               in this directory, a gentoo overlay called gpu-grid is stored
-			  to easy the install of deltasql on a gentoo system    
 
 Deltasql Clients
 ----------------
@@ -32,6 +30,7 @@ Deltasql Clients
     /java                 Clients written in Java
         /ant-client       A short but effective Ant client (needed libraries are in ../dbredactor/lib folder)
         /dbredactor       The dbredactor Java client
+        /bash             The bash client for continouus integration
         
 
 Tablesync

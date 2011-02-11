@@ -91,13 +91,10 @@ This error could also mean that you mistyped the version number in the synchroni
  before the current one. 
 </p>
 
-<li><a name="14"></a><i>14</i>: <b>Upgrades from production schemas to development schemas not supported yet</b></li>
+<li><a name="15"></a><i>15</i>: <b>The given version number is lower than when the branch was created.</b></li>
 <p>
-After the algorithm upgrade in version 1.3.0, upgrades from production to development schemas are not supported yet. We
- are working on it, if you have an idea, drop by!
+There has to be a mistake in the version number you retrieved from the database schema as it is lower than when the branch was created. Or did you by chance specify the wrong source branch?
 </p>
-
-
 
 </body>
 </html>

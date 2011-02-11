@@ -51,6 +51,6 @@ if ($tobranchid=="") errormessage(3, "The target branch was not found ($tobranch
 
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted, 0 /*excludeviews*/, 0 /*exclude packages*/, 
-             $updateuser, $updateclient, $comment, $schemaname, $dbtype, $xmlformatted, /*singlefiles*/ 0);
+             $updateuser, $updateclient, $comment, $schemaname, $dbtype, $xmlformatted, /*singlefiles*/ 0, /*debug*/ 0);
 
 ?>

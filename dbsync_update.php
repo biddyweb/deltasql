@@ -1,10 +1,7 @@
 <?php session_start();
-//include("head.inc.php");
 include("utils/utils.inc.php");
-//$rights = $_SESSION["rights"];
 $updateuser=$_SESSION["username"];
 if ($updateuser=="") $updateuser="Not logged in";
-//if ($rights<1) die("<b>Not enough rights to update database schema</b>");
 
 $projectid  = $_POST['frmprojectid'];
 $lastversionnr = $_POST['lastversionnr'];
@@ -16,6 +13,7 @@ $commitcomment = $_POST['frmcommitcomment'];
 $dbtype = $_POST['frmdbtype']; 
 $schemaname = $_POST['frmschemaname'];
 $formatgroup = $_POST['formatgroup'];
+$debug       = $_POST['frmdebug'];
 
 $htmlformatted=0;
 $xmlformatted=0;
@@ -32,13 +30,13 @@ if ($htmlformatted) {
     echo "
     <html> 
     <title>
-    deltasql - Update
+    deltasql - Synchronization script
     </title>
     <body>";
 }
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 
-             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles);
+             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug);
 
 if ($htmlformatted) {
    echo "

@@ -7,6 +7,7 @@ CREATE TABLE `tbscriptgeneration` (
   `tobranch` varchar(40) collate latin1_general_ci NOT NULL,
   `frombranch_id` int(11) NOT NULL,
   `tobranch_id` int(11) NOT NULL,
+  `exclbranch` tinyint(1) NOT NULL default '0',
   `create_dt` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;

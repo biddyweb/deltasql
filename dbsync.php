@@ -128,6 +128,9 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  echo "<input type=\"radio\" name=\"formatgroup\" value=\"singlefiles\"> Single files (zipped)";
  echo "</td></tr>";
   
+ echo "<tr><td><b>Debug:</b> </td>";
+ echo "<td><input name=\"frmdebug\" type=\"checkbox\" value=\"1\"/>Include debug information";
+ echo "</td></tr>"; 
  echo "</table><br><br>";
  mysql_close();
 ?>

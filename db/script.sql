@@ -18,6 +18,7 @@ CREATE TABLE `tbscriptgeneration` (
   `frombranch_id` int(11) NOT NULL,
   `tobranch_id` int(11) NOT NULL,
   `create_dt` datetime default NULL,
+  `exclbranch` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
 
