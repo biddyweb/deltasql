@@ -123,7 +123,7 @@ Comments:<br>
 <?php
 echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\">";
 ?>
-<input type="Submit" value="Edit script">
+<input type="Submit" value="Save script">
 </form>
 <a href="list_scripts.php">Back to list scripts</a>
 
@@ -146,8 +146,9 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 
-// 1. Update script
-$query="UPDATE tbscript set code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,user_id=$userid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";
+// 1. Update script and increase versionnumber
+$version = get_and_increase_global_version();
+$query="UPDATE tbscript set versionnr=$version, code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,user_id=$userid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";
 mysql_query($query);
 
 // 2. we delete the entries in tbscriptbranch
@@ -159,7 +160,6 @@ $result2=mysql_query($query2);
 $query3="SELECT * FROM tbbranch order by id ASC";
 $result3=mysql_query($query3);
 $num3=mysql_numrows($result3); 
-
 
 $i=0;
 while ($i<$num3) { 
