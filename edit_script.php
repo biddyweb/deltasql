@@ -122,7 +122,10 @@ Comments:<br>
 <br>
 <?php
 echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\">";
+echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" checked=\"checked\"/>Major edit (gives latest version number to the edited script)";
 ?>
+<br>
+<br>
 <input type="Submit" value="Save script">
 </form>
 <a href="list_scripts.php">Back to list scripts</a>
@@ -135,6 +138,7 @@ $frm_title=$_POST['title'];
 $frm_scriptid=$_POST['scriptid'];
 $frm_isaview=$_POST['frmisaview'];
 $frm_isapackage=$_POST['frmisapackage'];
+$frm_incversion=$_POST['frmincversion'];
 if ($frm_isaview=="") $frm_isaview=0;
 if ($frm_isapackage=="") $frm_isapackage=0;
 
@@ -146,10 +150,15 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 
-// 1. Update script and increase versionnumber
-$version = get_and_increase_global_version();
-$query="UPDATE tbscript set versionnr=$version, code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,user_id=$userid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";
+// 1. Update script
+$query="UPDATE tbscript set code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,user_id=$userid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";
 mysql_query($query);
+
+if ($frm_incversion==1) {
+   $version = get_and_increase_global_version();
+   $query5="UPDATE tbscript set versionnr=$version where id=$frm_scriptid;";
+   mysql_query($query5);
+} 
 
 // 2. we delete the entries in tbscriptbranch
 $query2="DELETE FROM tbscriptbranch WHERE script_id=$frm_scriptid";
