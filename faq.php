@@ -28,6 +28,7 @@ include("utils/constants.inc.php");
 <li><a href="#test">Where can I test deltasql?</a></li>
 <li><a href="#download">Where can I download deltasql?</a></li>
 <li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
+<li><a href="#support">How can I get support for deltasql?</a></li>
 </ul>
 
 <h3>Usage questions</h3>
@@ -161,6 +162,13 @@ First, you need to install a git client. On Windows, you can use <a href="http:/
 The command to checkout the deltasql repository is: <tt>git clone git://deltasql.git.sourceforge.net/gitroot/deltasql/deltasql</tt>.
  To keep the repository updated, run from time to time <tt>git pull</tt>.
 </p>
+
+<h3><a name="support"></a>How can I get support for deltasql?</h3>
+<p>
+If you need help to install deltasql, or to upgrade deltasql to newer version, if you have inquiries or suggestions, please mail to 
+ the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>.
+</p>
+
 
 <h2>Usage questions</h2>
 
