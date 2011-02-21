@@ -48,7 +48,7 @@ Description:<br>
 <?php
 echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
 ?>
-<input type="Submit" value="Edit">
+<input type="Submit" value="Save">
 </form>
 <a href="list_branches.php">Back to List Branches or Tags</a>
 

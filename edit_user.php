@@ -32,7 +32,7 @@ Rights:
 </select>
 </td></tr>
 </table>
-<input type="Submit" value="Edit user">
+<input type="Submit" value="Save user">
 </form>
 
 <?php
