@@ -11,8 +11,6 @@ include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 ?>
-<br><br>
-<a href="index.php">Back to Main Menu</a>
 <br>
 <?php
 $rights = $_SESSION["rights"];

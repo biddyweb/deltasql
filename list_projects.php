@@ -17,8 +17,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 //if ($rights<1) die("<b>Not enough rights to list all projects</b>");
 ?>
-<a href="index.php">Back to main menu</a>
-
 <h4>Projects</h4>
 <table border="1">
 

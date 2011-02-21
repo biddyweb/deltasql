@@ -9,8 +9,6 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 echo "<h1>Manual for deltasql $deltasql_version</h1>";
 ?>
-<a href="index.php">Back to main page</a><br><br>
-
 <h2>Summary</h2>
 <ul>
 <li><a href="#purpose">Purpose</a></li>

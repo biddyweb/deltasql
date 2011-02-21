@@ -8,11 +8,7 @@
 include("head.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
-
 ?>
-<br>
-<a href="index.php">Back to Main Menu</a>
-<br>
 <h2>Frequently Asked Questions (FAQ)</h2>
 
 <h3>General questions</h3>

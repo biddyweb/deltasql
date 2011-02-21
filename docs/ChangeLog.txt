@@ -1,3 +1,6 @@
+21.2.2011 git
+- cosmetic changes (removed 'back to main menu' link where not needed, changed button text from 'Edit' to 'Save')
+
 17.2.2011 git
 - on user request (Hari): editing a script increases its version number
 

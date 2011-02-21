@@ -1,12 +1,15 @@
 <?php session_start(); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head> 
-    <title>deltasql - List database modules</title>
-    <link rel="stylesheet" type="text/css" href="deltasql.css">
-  </head>
-  <body>
+<head> 
+<title>deltasql - List database modules</title>
+<link rel="stylesheet" type="text/css" href="deltasql.css">
+</head>
+<body>
 <?php
+echo "<style type=\"text/css\">";
+include ("deltasql.css");
+echo "</style>";
+
 include("head.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
@@ -17,8 +20,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 //if ($rights<1) die("<b>Not enough rights to list all modules</b>");
 ?>
-<a href="index.php">Back to main menu</a>
-
 <h4>Database modules</h4>
 <table border="1">
 

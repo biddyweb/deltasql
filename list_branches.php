@@ -14,8 +14,6 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 show_user_level();
 $rights = $_SESSION["rights"];
 ?>
-<a href="index.php">Back to main menu</a>
-
 <h4>Project branches in blue and tags in yellow</h4>
 <table border="1">
 

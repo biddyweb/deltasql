@@ -12,8 +12,6 @@ show_user_level();
 $myrights = $_SESSION["rights"];
 if ($myrights<2) die("<b>Not enough rights to list all users</b>");
 ?>
-<a href="index.php">Back to main menu</a>
-
 <h4>All users</h4>
 <table border="1">
 

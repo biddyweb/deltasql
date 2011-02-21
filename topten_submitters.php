@@ -14,11 +14,7 @@ $rights = $_SESSION["rights"];
 if ($rights<1) die("<b>Not enough rights to list top ten submitters.</b>");
 
 echo "<h2>Top Ten Submitters</h2>";
-?>
-<br>
-<a href="index.php">Back to Main Menu</a>
-<br>
-<?php
+
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
  $query="SELECT u.username, u.first, u.last, count(*) FROM tbuser u, tbscript s WHERE s.user_id=u.id GROUP BY u.id ORDER BY count(*) DESC";

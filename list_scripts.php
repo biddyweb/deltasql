@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <html>
 <head>
+<head>
 <title>deltasql - List database scripts</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
@@ -28,10 +29,7 @@ if ($textoutput=="") $textoutput=0;
 $showall = $_GET['showall'];
 if ($showall=="") $showall=0;
 
-//if ($rights<1) die("<b>Not enough rights to list scripts</b>");
 ?>
-<a href="index.php">Back to main menu</a>
-
 <h4>Database scripts</h4>
 <?php
 include("conf/config.inc.php");
