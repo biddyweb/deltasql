@@ -133,6 +133,7 @@ CREATE TABLE `tbscriptchangelog` (
   `module_id` int(11) NOT NULL,
   `versionnr` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `update_user` VARCHAR( 64 ) NULL,
   `script_id` int(11) NOT NULL,
   `create_dt` date NOT NULL,
   `comments` longtext collate latin1_general_ci,
