@@ -329,8 +329,7 @@ If, for a particular database type, the development team was not able to define 
  synchronization script:
 </p>
 <pre>
--- for this database type there still is no verification step
--- you could define one in synchronization_table.php
+-- Please make sure this script is executed on the correct schema!!
 </pre>
 
 
