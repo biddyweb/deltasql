@@ -1,3 +1,7 @@
+24.2.2001 git
+- dropped feature of editing script and increasing version number at the same time as it has some hidden
+ consequences which could get dangerous (Hari suggestion as well).
+
 21.2.2011 git
 - cosmetic changes (removed 'back to main menu' link where not needed, changed button text from 'Edit' to 'Save')
 

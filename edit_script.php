@@ -121,8 +121,9 @@ Comments:<br>
 </textarea>
 <br>
 <?php
-echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\">";
-echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" checked=\"checked\"/>Major edit (gives latest version number to the edited script)";
+echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\" />";
+// Feature dropped
+// echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Gives latest version number to the edited script (use with care!)";
 ?>
 <br>
 <br>
