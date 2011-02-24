@@ -172,14 +172,15 @@ function show_user_level() {
 echo "<center>";
 
 $rights = $_SESSION["rights"];
+$usersession = $_SESSION['username'];
 if ($rights==1) {
-echo "<b>You are logged in as Developer</b><br>";
+echo "<b>You are logged in as Developer ($usersession)</b><br>";
 } else
 if ($rights==2) {
-echo "<b>You are logged in as Project Manager</b><br>";
+echo "<b>You are logged in as Project Manager ($usersession)</b><br>";
 } else
 if ($rights==3) {
-echo "<b>You are logged in as Administrator</b><br>";
+echo "<b>You are logged in as Administrator ($usersession)</b><br>";
 } else {
 echo "<b>Please <a href=\"login.php\">login</a></b><br>";
 }

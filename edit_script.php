@@ -13,7 +13,7 @@ show_user_level();
 $rights = $_SESSION["rights"];
 $user = $_SESSION["username"];
 $userid = $_SESSION["userid"];
-if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
+if ($rights<1) die("<b>Not enough rights to edit a database script.</b>");
 
 $paramscriptid=$_GET['id'];
 // retrieve the script information
@@ -152,7 +152,7 @@ mysql_connect($dbserver, $username, $password);
 
 
 // 1. Update script
-$query="UPDATE tbscript set code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,user_id=$userid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";
+$query="UPDATE tbscript set code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";
 mysql_query($query);
 
 if ($frm_incversion==1) {
