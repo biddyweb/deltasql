@@ -2,6 +2,23 @@
 - bugfix: editing a script hijacked ownership of script to the submitting user
 - dropped feature of editing script and increasing version number at the same time as it has some hidden
  consequences which could get dangerous (Hari suggestion as well).
+- preparing data structure to record changes to scripts:
+
+CREATE TABLE `tbscriptchangelog` (
+  `id` int(11) NOT NULL auto_increment,
+  `code` longtext collate latin1_general_ci NOT NULL,
+  `module_id` int(11) NOT NULL,
+  `versionnr` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `script_id` int(11) NOT NULL,
+  `create_dt` date NOT NULL,
+  `comments` longtext collate latin1_general_ci,
+  `title` varchar(64) collate latin1_general_ci default NULL,
+  `isapackage` tinyint(1) NOT NULL default '0',
+  `isaview` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1; 
+ 
 
 21.2.2011 git
 - cosmetic changes (removed 'back to main menu' link where not needed, changed button text from 'Edit' to 'Save')
