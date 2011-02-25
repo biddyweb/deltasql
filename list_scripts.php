@@ -37,6 +37,7 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 echo "<p>";
+echo "<a  href=\"index.php\">Main</a> | ";
 if ($rights>0)
      echo "<a  href=\"submit_script.php\">Submit a new Script</a> | ";
   
