@@ -1,5 +1,7 @@
 25.2.2011 git
 - added logic to save changes into tbscriptchangelog, if a script is edited or removed
+- added ability to list history of edited files for anyone
+- added ablilty for administrators to see deleted scripts
 
 24.2.2011 git
 - bugfix: editing a script hijacked ownership of script to the submitting user

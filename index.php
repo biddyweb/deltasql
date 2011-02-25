@@ -46,13 +46,17 @@ if (file_exists($configurationfile)) {
 <td valign="top">
 
 </p>
-<h3>DB Scripts</h3>
+<h3>SQL Scripts</h3>
 <ul>
 <?php
 if ($rights>0)
-  echo "<li><a href=\"submit_script.php\">Submit DB Script</a></li>";
+  echo "<li><a href=\"submit_script.php\">Submit Script</a></li>";
 ?>
-<li><a href="list_scripts.php">List DB Scripts</a></li>
+<li><a href="list_scripts.php">List Scripts</a></li>
+<?
+if ($rights>2)
+  echo "<li><a href=\"list_changelog_deleted.php\">View deleted</a></li>";
+?>
 </ul>
 
 </td>
@@ -61,9 +65,9 @@ if ($rights>0)
 <ul>
 <?php
 if ($rights>1)
-    echo "<li><a href=\"create_module.php\">Create a DB Module</a></li>";
+    echo "<li><a href=\"create_module.php\">Create Module</a></li>";
 ?>
-<li><a href="list_modules.php">List DB Modules</a></li>
+<li><a href="list_modules.php">List Modules</a></li>
 </ul>
 </td>
 

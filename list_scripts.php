@@ -281,7 +281,7 @@ if ($textoutput==0) {
 	    $author_encoded = urlencode ( $author );
 		$updateuser_encoded = urlencode ( $update_user);
 		$updatedt_encoded = urlencode ( $update_dt);
-	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded&updateuser=$updateuser_encoded&updatedt=$updatedt_encoded\">Changelog</a>";
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded&updateuser=$updateuser_encoded&updatedt=$updatedt_encoded\">History</a>";
 	}
     echo "</td>";
     echo "<td>$isaview</td><td>$isapackage</td>";
