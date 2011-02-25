@@ -277,7 +277,7 @@ if ($textoutput==0) {
         }
   	  echo "<a href=\"delete_script_confirm.php?id=$id&version=$versionnr&script=$script_encoded&short=$shortened\">Delete</a> ";
 	}
-	if ($update_dt!="") {
+	if ($update_user!="") {
 	    $author_encoded = urlencode ( $author );
 		$updateuser_encoded = urlencode ( $update_user);
 		$updatedt_encoded = urlencode ( $update_dt);
