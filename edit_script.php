@@ -9,6 +9,8 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include("changelog.inc.php");
+
 show_user_level();
 $rights = $_SESSION["rights"];
 $user = $_SESSION["username"];
@@ -150,6 +152,8 @@ if ($frm_script=="") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
+// 0. Copy script to changelog
+copy_script_to_changelog($frm_scriptid);
 
 // 1. Update script
 $query="UPDATE tbscript set code='$frm_script', title='$frm_title', comments='$frm_comment', module_id=$frm_moduleid,isaview=$frm_isaview,isapackage=$frm_isapackage, update_dt=NOW(), update_user='$user' where id=$frm_scriptid;";

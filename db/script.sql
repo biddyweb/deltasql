@@ -135,7 +135,7 @@ CREATE TABLE `tbscriptchangelog` (
   `user_id` int(11) NOT NULL,
   `update_user` VARCHAR( 64 ) NULL,
   `script_id` int(11) NOT NULL,
-  `create_dt` date NOT NULL,
+  `create_dt` datetime NOT NULL,
   `comments` longtext collate latin1_general_ci,
   `title` varchar(64) collate latin1_general_ci default NULL,
   `isapackage` tinyint(1) NOT NULL default '0',

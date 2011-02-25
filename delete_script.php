@@ -9,6 +9,8 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include("changelog.inc.php");
+
 $rights = $_SESSION["rights"];
 $user = $_SESSION["username"];
 $userid = $_SESSION["userid"];
@@ -19,6 +21,9 @@ if ($scriptid=="") exit;
 
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+
+// store a backup copy of the script
+copy_script_to_changelog($scriptid);
 
 $query2="DELETE FROM tbscriptbranch where script_id=$scriptid;";
 mysql_query($query2);

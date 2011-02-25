@@ -1,4 +1,7 @@
-24.2.2001 git
+25.2.2011 git
+- added logic to save changes into tbscriptchangelog, if a script is edited or removed
+
+24.2.2011 git
 - bugfix: editing a script hijacked ownership of script to the submitting user
 - dropped feature of editing script and increasing version number at the same time as it has some hidden
  consequences which could get dangerous (Hari suggestion as well).
