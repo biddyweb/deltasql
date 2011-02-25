@@ -17,7 +17,7 @@ function copy_script_to_changelog($scriptid) {
   $isaview=mysql_result($result,0,"isaview");
   $isapackage=mysql_result($result,0,"isapackage");
   
-  if ($update_dt=="") $update_dt=$create_dt;
+  if (($update_dt=="") || ($update_dt=="0000-00-00 00:00:00")) $update_dt=$create_dt;
   
   $query2="INSERT INTO tbscriptchangelog (id, script_id, code, title, comments,create_dt,versionnr,user_id,module_id,isaview,isapackage, update_user) 
            VALUES('',$scriptid,\"$script\",\"$title\",\"$comments\",'$update_dt',$versionnr,$scriptuserid,$moduleid,$isaview,$isapackage, '$update_user');";
