@@ -266,16 +266,22 @@ if ($textoutput==0) {
     echo "
     <td><a href=\"show_script.php?id=$id\">Show</a> ";
 	if ($rights>=1) {
+        echo "<a href=\"edit_script.php?id=$id\">Edit</a> "; 
+    }
+	if ((($rights==1) && ($scriptuserid==$sessionuserid)) || ($rights>=2)) {
         $script_encoded = urlencode ( $script );
         $shortened=0;
         if (strlen($script_encoded)>100) { 
            $script_encoded = substr($script_encoded, 0, 100); 
            $shortened=1;
         }
-        echo "<a href=\"edit_script.php?id=$id\">Edit</a> "; 
-    }
-	if ((($rights==1) && ($scriptuserid==$sessionuserid)) || ($rights>=2)) {
-		echo "<a href=\"delete_script_confirm.php?id=$id&version=$versionnr&script=$script_encoded&short=$shortened\">Delete</a>";
+  	  echo "<a href=\"delete_script_confirm.php?id=$id&version=$versionnr&script=$script_encoded&short=$shortened\">Delete</a> ";
+	}
+	if ($update_dt!="") {
+	    $author_encoded = urlencode ( $author );
+		$updateuser_encoded = urlencode ( $update_user);
+		$updatedt_encoded = urlencode ( $update_dt);
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded&updateuser=$updateuser_encoded&updatedt=$updatedt_encoded\">Changelog</a>";
 	}
     echo "</td>";
     echo "<td>$isaview</td><td>$isapackage</td>";
