@@ -1,3 +1,7 @@
+1.3.3 Release Notes 25.2.2011
+Deltasql is more wiki-like as anyone can edit a script. The history of editing is recorded as well.
+Administrators can retrieve deleted scripts. Improved right management with bugfixes.
+
 25.2.2011 git
 - added logic to save changes into tbscriptchangelog, if a script is edited or removed
 - added ability to list history of edited files for anyone
