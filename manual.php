@@ -38,7 +38,7 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
     <ul>
         <li><a href="#insights">Insights into the deltasql Algorithm</a></li>
         <li><a href="#write-client">How to write your own client</a></li>
-        <li><a href="#structure">Directory structure of the deltasql_thunder_1.x.y package</a></li>
+        <li><a href="#structure">Directory structure of the deltasql_1.x.y package</a></li>
         <li><a href="#errors">List of error codes from deltasql Server</a></li>
 		<li><a href="#codewalkthrough">Source code walkthrogh</a></li>
     </ul>
@@ -353,7 +353,10 @@ a project 'myproject' with  <a href="create_module.php">Create a project</a>. Un
 </i>
 
 <p>This is just an example on how deltasql works in some companies where their source code is modeled as in the table above.</p>
-
+<p>Other ways to define a project might be to separate scripts which alter database structure and scripts which change content in tables.</p>
+<p> Additionally,
+ it is possible to define modules without linking them to a project, so that they can be used as <a href="#maintenance">collections for maintenance tasks</a>.
+</p>
 <p>On projects and modules, there is also <a href="faq.php#modules">a FAQ</a>.</p>
 
 <h3><a name="#whentobranch"></a>When to branch</h3>
@@ -516,9 +519,10 @@ If a database shows a given version in TBSYNCHRONIZE, deltasql can compute which
 When listing scripts (in <a href="list_scripts.php">List Scripts</a>), it is possible to filter the scripts (e.g. by date, module, author and more)
  by using the command <a href="search_scripts.php">Search among scripts</a> on top of the page. Normally, the scripts are filtered and shown
   as a list. By checking the checkbox <b>Output as text list</b> before clicking on Submit, the scripts will be shown as a normal text file
-   that can be copy pasted into your SQL client of choice. This can be sometimes useful, if you need to repair a database schema by performing this
-    special operation.
+   that can be copy pasted into your SQL client of choice. This can be sometimes useful, if you need to repair a database schema by applying
+    some subset of the recorded scripts.
 </p> 
+<p>There are also users that like this feature as substitution to the database synchronization form.</p>
  
 <h2><a name="advanced"></a>Advanced Topics</h2>
 
