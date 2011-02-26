@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: 26 Feb, 2011 at 03:51 PM
+-- Generato il: 26 Feb, 2011 at 07:48 PM
 -- Versione MySQL: 5.0.51
 -- Versione PHP: 5.2.4-2ubuntu5.9
 
@@ -32,18 +32,19 @@ CREATE TABLE IF NOT EXISTS `tbbranch` (
   `istag` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=19 ;
 
 --
 -- Dump dei dati per la tabella `tbbranch`
 --
 
 INSERT INTO `tbbranch` (`id`, `name`, `project_id`, `description`, `versionnr`, `create_dt`, `visible`, `sourcebranch`, `sourcebranch_id`, `istag`) VALUES
-(1, 'HEAD', NULL, 'This is the Trunk for all projects', 112, '2011-02-26', 1, NULL, NULL, 0),
+(1, 'HEAD', NULL, 'This is the Trunk for all projects', 113, '2011-02-26', 1, NULL, NULL, 0),
 (16, 'TAG_deltasql_1.3.2', NULL, 'This is release reenabled the ability to perform updates from production schemas to development schemas.', 98, '2011-02-11', 1, 'HEAD', 1, 1),
 (13, 'TAG_deltasql_1.3.0', NULL, 'This release introduced a completely new sync algo and to tag releases.', 89, '2010-12-30', 1, 'HEAD', 1, 1),
 (15, 'TAG_deltasql_1.3.1', NULL, 'This release fixed the broken sync algo of 1.3.0 and disabled the ability to make out of a production schema a development schema.', 96, '2011-02-11', 1, 'HEAD', 1, 1),
-(17, 'TAG_deltasql_1.3.3', NULL, 'This release introduced history for edited scripts and did fixes into the right management.', 103, '2011-02-25', 1, 'HEAD', 1, 1);
+(17, 'TAG_deltasql_1.3.3', NULL, 'This release introduced history for edited scripts and did fixes into the right management.', 103, '2011-02-25', 1, 'HEAD', 1, 1),
+(18, 'TAG_deltasql_1.3.4', NULL, '- new feature: synchronizing from a tag (without specifying version number)\r\n- new feature: changes to branches are recorded\r\n- index.php patched', 114, '2011-02-26', 1, 'HEAD', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `tbmodule` (
 INSERT INTO `tbmodule` (`id`, `name`, `description`, `create_dt`, `lastversionnr`, `size`) VALUES
 (12, 'gpuII-server', 'This module stores scripts belonging to the GPU Preview package available at http://sourceforge.net/projects/gpu/files/', '2011-02-26', 112, 0),
 (9, 'filedistributor', 'Table structure for File Distributor Project', '2011-01-05', 90, 0),
-(10, 'deltasql-module', 'module for the deltasql project, containing all scripts (no further modularization needed).', '2011-02-25', 101, 0);
+(10, 'deltasql-module', 'module for the deltasql project, containing all scripts (no further modularization needed).', '2011-02-26', 113, 0);
 
 -- --------------------------------------------------------
 
@@ -82,13 +83,14 @@ CREATE TABLE IF NOT EXISTS `tbmoduleproject` (
   `project_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `module_id` (`module_id`,`project_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=18 ;
 
 --
 -- Dump dei dati per la tabella `tbmoduleproject`
 --
 
 INSERT INTO `tbmoduleproject` (`id`, `module_id`, `project_id`) VALUES
+(17, 12, 18),
 (12, 9, 13),
 (13, 10, 14);
 
@@ -112,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `tbparameter` (
 --
 
 INSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`) VALUES
-(1, 'GLOBAL', 'VERSION', '112'),
+(1, 'GLOBAL', 'VERSION', '114'),
 (2, 'USAGESTATS', 'VERSION', '101'),
 (3, 'TEST', 'DB_CONNECTION', 'OK');
 
@@ -191,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `tbscript` (
   `isaview` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `versionnr` (`versionnr`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=73 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=74 ;
 
 --
 -- Dump dei dati per la tabella `tbscript`
@@ -236,7 +238,8 @@ INSERT INTO `tbscript` (`id`, `code`, `module_id`, `versionnr`, `user_id`, `crea
 (69, 'CREATE TABLE `tbparameter` (\r\n  `id` int(11) NOT NULL auto_increment,\r\n  `paramtype` varchar(20) collate latin1_general_ci NOT NULL,\r\n  `paramname` varchar(20) collate latin1_general_ci NOT NULL,\r\n  `paramvalue` varchar(255) collate latin1_general_ci NOT NULL,\r\n  PRIMARY KEY  (`id`),\r\n  UNIQUE KEY `paramtype` (`paramtype`,`paramname`)\r\n) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;\r\n\r\n\r\nINSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`) VALUES\r\n(1, ''TEST'', ''DB_CONNECTION'', ''OK'');\r\n', 12, 109, 5, '2011-02-26 15:48:13', '0000-00-00 00:00:00', NULL, 'Parameter table with some value', 'db update', 0, 0),
 (70, 'CREATE TABLE `tbjob` (\r\n`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,\r\n`jobid` VARCHAR( 16 ) NOT NULL ,\r\n`job` VARCHAR( 1024 ) NOT NULL ,\r\n`workunitincoming` VARCHAR( 64 ) NOT NULL ,\r\n`workunitoutgoing` VARCHAR( 64 ) NOT NULL ,\r\n`requests` INT NOT NULL DEFAULT ''1'',\r\n`delivered` INT NOT NULL DEFAULT ''0'',\r\n`results` INT NOT NULL DEFAULT ''0'',\r\n`nodename` VARCHAR( 64 ) NOT NULL ,\r\n`nodeid` VARCHAR( 32 ) NOT NULL ,\r\n`ip` VARCHAR( 32 ) NULL ,\r\n`create_dt` DATETIME NOT NULL\r\n) ENGINE = MYISAM ;', 12, 110, 5, '2011-02-26 15:48:46', '0000-00-00 00:00:00', NULL, 'job table', 'db update', 0, 0),
 (71, 'CREATE TABLE `tbjobqueue` (\r\n`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,\r\n`job_id` INT NOT NULL ,\r\n`nodeid` VARCHAR( 32 ) NOT NULL ,\r\n`transmitted` INT NOT NULL DEFAULT ''0'',\r\n`received` INT NOT NULL DEFAULT ''0'',\r\n`create_dt` DATETIME NOT NULL,\r\n`transmission_dt` DATETIME NULL,\r\n`reception_dt` DATETIME NULL\r\n) ENGINE = MYISAM ;', 12, 111, 5, '2011-02-26 15:49:17', '0000-00-00 00:00:00', NULL, 'job queue table', 'db update', 0, 0),
-(72, 'CREATE TABLE `tbjobresult` (\r\n`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,\r\n`job_id` INT NOT NULL ,\r\n`jobid` VARCHAR( 16 ) NOT NULL ,\r\n`jobqueue_id` INT NOT NULL ,\r\n`jobresult` VARCHAR( 1024 ) NOT NULL ,\r\n`workunitresult` VARCHAR( 64 ) NOT NULL ,\r\n`iserroneous` INT NOT NULL DEFAULT ''0'',\r\n`errorid` INT NOT NULL DEFAULT ''0'',\r\n`errorarg` VARCHAR( 32 ) NOT NULL ,\r\n`errormsg` VARCHAR( 32 ) NOT NULL ,\r\n`nodename` VARCHAR( 64 ) NOT NULL ,\r\n`nodeid` VARCHAR( 32 ) NOT NULL ,\r\n`ip` VARCHAR( 32 ) NULL ,\r\n`create_dt` DATETIME NOT NULL\r\n) ENGINE = MYISAM ;\r\n', 12, 112, 5, '2011-02-26 15:49:42', '0000-00-00 00:00:00', NULL, 'job result table', 'db update', 0, 0);
+(72, 'CREATE TABLE `tbjobresult` (\r\n`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,\r\n`job_id` INT NOT NULL ,\r\n`jobid` VARCHAR( 16 ) NOT NULL ,\r\n`jobqueue_id` INT NOT NULL ,\r\n`jobresult` VARCHAR( 1024 ) NOT NULL ,\r\n`workunitresult` VARCHAR( 64 ) NOT NULL ,\r\n`iserroneous` INT NOT NULL DEFAULT ''0'',\r\n`errorid` INT NOT NULL DEFAULT ''0'',\r\n`errorarg` VARCHAR( 32 ) NOT NULL ,\r\n`errormsg` VARCHAR( 32 ) NOT NULL ,\r\n`nodename` VARCHAR( 64 ) NOT NULL ,\r\n`nodeid` VARCHAR( 32 ) NOT NULL ,\r\n`ip` VARCHAR( 32 ) NULL ,\r\n`create_dt` DATETIME NOT NULL\r\n) ENGINE = MYISAM ;\r\n', 12, 112, 5, '2011-02-26 15:49:42', '0000-00-00 00:00:00', NULL, 'job result table', 'db update', 0, 0),
+(73, 'CREATE TABLE `tbscriptbranchchangelog` (\r\n  `id` int(11) NOT NULL AUTO_INCREMENT,\r\n  `script_id` int(11) NOT NULL,\r\n  `branch_id` int(11) NOT NULL,\r\n  PRIMARY KEY  (`id`),\r\n  UNIQUE KEY `script_id` (`script_id`,`branch_id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;\r\n ', 10, 113, 1, '2011-02-26 18:42:09', '0000-00-00 00:00:00', NULL, 'table to track changes into branches', 'db update', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -250,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `tbscriptbranch` (
   `branch_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `script_id` (`script_id`,`branch_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=137 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=138 ;
 
 --
 -- Dump dei dati per la tabella `tbscriptbranch`
@@ -295,7 +298,27 @@ INSERT INTO `tbscriptbranch` (`id`, `script_id`, `branch_id`) VALUES
 (133, 69, 1),
 (134, 70, 1),
 (135, 71, 1),
-(136, 72, 1);
+(136, 72, 1),
+(137, 73, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `tbscriptbranchchangelog`
+--
+
+CREATE TABLE IF NOT EXISTS `tbscriptbranchchangelog` (
+  `id` int(11) NOT NULL auto_increment,
+  `script_id` int(11) NOT NULL,
+  `branch_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `script_id` (`script_id`,`branch_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dump dei dati per la tabella `tbscriptbranchchangelog`
+--
+
 
 -- --------------------------------------------------------
 
@@ -356,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `tbscriptgeneration` (
   `create_dt` datetime default NULL,
   `exclbranch` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=33 ;
 
 --
 -- Dump dei dati per la tabella `tbscriptgeneration`
@@ -533,7 +556,8 @@ INSERT INTO `tbusagehistory` (`projectname`, `update_dt`, `update_user`, `update
 ('deltasql-Server', '2011-02-26', 'admin', 'deltasql-server', 103, 'HEAD', '', 96, 'HEAD', '', 'Oracle'),
 ('deltasql-Server', '2011-02-26', 'admin', 'deltasql-server', 104, 'HEAD', '', 1, 'HEAD', '', 'Oracle'),
 ('deltasql-Server', '2011-02-26', 'admin', 'deltasql-server', 103, 'HEAD', '', 89, 'HEAD', '', 'Oracle'),
-('deltasql-Server', '2011-02-26', 'admin', 'deltasql-server', 96, 'HEAD', '', 89, 'HEAD', '', 'Oracle');
+('deltasql-Server', '2011-02-26', 'admin', 'deltasql-server', 96, 'HEAD', '', 89, 'HEAD', '', 'Oracle'),
+('deltasql-Server', '2011-02-26', 'admin', 'deltasql-server', 103, 'HEAD', '', 89, 'HEAD', '', 'Oracle');
 
 -- --------------------------------------------------------
 
