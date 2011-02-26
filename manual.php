@@ -25,7 +25,8 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 	<li><a href="#usermanagement">User Management</a></li>
 	<li><a href="#quickguide">Quick Guide</a></li>
 	<li><a href="#projectsandmodules">How to define projects and modules</a></li>
-	<li><a href="#whentobranch">When to branch</a></li>
+	<li><a href="#whentobranch">When should one branch?</a></li>
+	<li><a href="#whentotag">When should one tag?</a></li>
 	<li><a href="#syncworks">How synchronization works</a></li>
     <li><a href="#concepts">deltasql Concepts</a></li>
 	<li><a href="#tips">Tips</a></li>
@@ -267,8 +268,8 @@ subdirectories) have
 There are four types of users: <i>Guests</i>, <i>Developers</i>, <i>Project Managers</i> and <i>Administrators</i>. 
 <i>Guests</i> can only browse through project's scripts, search among them and compute synchronizations for schemas.
 <i>Developers</i> can do everything <i>Guests</i> can do, but they also can submit new scripts, and edit old ones.
- <i>Project Managers</i> can create projects and add modules. They can create branches as well. <i>Administrators</i>
- can add new users to the deltasql database.
+ <i>Project Managers</i> can create projects and add modules. They can create branches and tags as well. <i>Administrators</i>
+ are Project Managers which can add new users to the deltasql database. They manage permissions as well.
 </p>
 
 
@@ -359,8 +360,7 @@ a project 'myproject' with  <a href="create_module.php">Create a project</a>. Un
 </p>
 <p>On projects and modules, there is also <a href="faq.php#modules">a FAQ</a>.</p>
 
-<h3><a name="#whentobranch"></a>When to branch</h3>
-
+<h3><a name="#whentobranch"></a>When should one branch?</h3>
 <p>
 Branching is something difficult and powerful. In the beginning, do not branch any project. Just submit all scripts to HEAD and learn how
  deltasql synchronizes in this scenario.
@@ -376,6 +376,12 @@ In general, you should branch a project at the
 <p>If you master deltasql, you will then be able to transform a developer schema into a production schema or to dump an existing production schema and upgrade
  it to the latest HEAD for further development.</p>
 
+<h3><a name="#whentotag"></a>When should one tag?</h3>
+
+<p>Tagging is easier than branching. Simply create a new tag in the <a href="list_branches.php">List Branches and Tags</a> page, when the software
+ you are developing is packed into a new release. Just be careful to tag the correct branch: If the release is for development (or if you are not using branches
+  at all) simply tag HEAD. If the release is on a production schema, you must tag the branch which is followed by the production schema.</p>
+ 
 <h2><a name="#syncworks"></a>How synchronization works</h2>
 
 <p>Synchronization can get difficult if branches are involved. To warm up, imagine the following scenario:</p>
