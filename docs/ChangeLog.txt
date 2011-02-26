@@ -1,5 +1,10 @@
 26.2.2011 git
 - each time a synchronization is done, deltasql records the project name in a cookie
+ and retrieves it next time
+- added ability to specify a tag in the from field of the synchronization step
+- added error message if trying to synchronize from a tag and at the same time specifying the from
+ version number. The tag implicitly sets a version number from where to start the synchronization.
+- IE8 compatibility fix in Main menu
 
 1.3.3 Release Notes 25.2.2011
 Deltasql is more wiki-like as anyone can edit a script. The history of editing is recorded as well.

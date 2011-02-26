@@ -96,5 +96,12 @@ This error could also mean that you mistyped the version number in the synchroni
 There has to be a mistake in the version number you retrieved from the database schema as it is lower than when the branch was created. Or did you by chance specify the wrong source branch?
 </p>
 
+<li><a name="16"></a><i>16</i>: <b>Version number not allowed if synchronizing from a tag</b></li>
+<p>
+You are not allowed to specify the version number in the synchronization form, as you are synchronizing from a tag. In fact, 
+the tag implicitly sets a version number from where to start the synchronization... simply leave the version number blank in 
+the synchronization form and try again :-)
+</p>
+
 </body>
 </html>

@@ -63,8 +63,6 @@ function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $h
 
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
 
-if ($lastversionnr=="")  errormessage(9, "Not possible to compute a dbsync update if version number is missing.", $xmlformatted, $htmlformatted);
-if (($lastversionnr<0) || (!is_numeric($lastversionnr)))  errormessage(12, "Version number has to be greater equal zero.", $xmlformatted, $htmlformatted);
 if ($projectid=="")  errormessage(10, "Not possible to compute a dbsync update if project name is missing.", $xmlformatted, $htmlformatted);
 
 include("conf/config.inc.php");
@@ -91,8 +89,25 @@ $fromsourcebranch=mysql_result($result3,0,"sourcebranch");
 $fromsourcebranchid=mysql_result($result3,0,"sourcebranch_id");
 $fromistag=mysql_result($result3,0,"istag");
 if ($fromistag==1) {
-   mysql_close();
-   die("<b>Internal error in dbsync_update.inc.php, Tags in from field are not allowed'");
+   // if it is a tag, lastversionnr is not needed!
+   if ($lastversionnr!="") {
+      mysql_close();
+      errormessage(16, "Version number not allowed if synchronizing from a tag", $xmlformatted, $htmlformatted);
+   }
+   $lastversionnr=$fromversionnr;
+   $frombranchid=$fromsourcebranchid;
+   $frombranchname=$fromsourcebranch;
+   
+} else {
+  // lastversionnr is needed, if it is a branch or HEAD!
+  if ($lastversionnr=="") {
+          mysql_close();  
+          errormessage(9, "Not possible to compute a dbsync update if version number is missing.", $xmlformatted, $htmlformatted);
+  }
+  if (($lastversionnr<0) || (!is_numeric($lastversionnr))) { 
+     mysql_close();
+	 errormessage(12, "Version number has to be greater equal zero.", $xmlformatted, $htmlformatted);
+  }	 
 }
 if (($frombranchid<>$headid) && ($lastversionnr<$fromversionnr)) {
    mysql_close();
