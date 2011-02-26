@@ -5,6 +5,7 @@
 - added error message if trying to synchronize from a tag and at the same time specifying the from
  version number. The tag implicitly sets a version number from where to start the synchronization.
 - IE8 compatibility fix in Main menu
+- updating FAQ on how to upgrade deltasql (by using TAGs, one can easily retrieve the missing scripts to be executed)
 
 1.3.3 Release Notes 25.2.2011
 Deltasql is more wiki-like as anyone can edit a script. The history of editing is recorded as well.

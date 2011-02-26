@@ -23,6 +23,7 @@ include("utils/constants.inc.php");
 <li><a href="#quick">Is there a Quick Guide?</a></li>
 <li><a href="#test">Where can I test deltasql?</a></li>
 <li><a href="#download">Where can I download deltasql?</a></li>
+<li><a href="#upgrade">There is a new deltasql version, how do I upgrade?</a></li>
 <li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
 <li><a href="#support">How can I get support for deltasql?</a></li>
 </ul>
@@ -43,7 +44,6 @@ include("utils/constants.inc.php");
 <li><a href="#verification">What does the "verification step" do?</a></li>
 <li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
-<li><a href="#upgrade">I saw on the webpage that there is a new deltasql version, how do I upgrade?</a></li>
 <li><a href="#scripttitle">All scripts are titled "db update". Where can I change this default?</a></li>
 <li><a href="#colors">What do the colored rows mean in the 'List scripts' view and on the Google Gadget?</a></li>
 <li><a href="#phonehome">What is the phone home functionality of deltasql?</a></li>
@@ -149,6 +149,29 @@ Deltasql can be downloaded at sourceforge.net <a href="http://sourceforge.net/pr
  and as .tar.gz package. To unpack the tar package, execute <tt>gunzip deltasql-x.y.z.tar.gz</tt> first, then
   issue <tt>tar -xf deltasql-x.y.z.tar</tt> on your preferred Bash shell.
 </p>
+
+<h3><a name="upgrade"></a>There is a new deltasql version, how do I upgrade?</h3>
+<p>
+First, read through the <a href="http://www.deltasql.org/deltasql/docs/ChangeLog.txt">Changelog</a> to see if there is something interesting, or if some
+ bug is fixed.  Then, simply download from the <a href="http://sourceforge.net/projects/deltasql/files">webpage</a> the latest
+  deltasql package and unzip (or untar) it at the same place where you installed it. The published package will not overwrite
+   your <tt>conf/config.inc.php</tt> file, and everything should still work as expected.
+</p>
+<p>
+Occasionally, the schema of deltasql itself changes: to retrieve the script to be applied to the deltasql database schema you can visit this 
+<a href="http://www.deltasql.org/deltasql/dbsync.php">synchronization form</a> and select the From: and To: fields. As an example, if you upgrade
+ from 1.3.0 to 1.3.3, set in From: <tt>TAG_deltasql_1.3.0</tt> and in To: <tt>TAG_deltasql_1.3.3</tt>.
+</p>
+<p>If the synchronization form shouldn't be available (or if you upgrade from a version prior to 1.3.0), you need to read in ChangeLog if it is necessary to upgrade
+   the deltasql schema (it will contain the ALTER TABLE commands you will execute on the deltasql schema at each release note).
+<p>If run in trouble, please contact the <a href="mailto:gpu-world@lists.sourceforge.net">mailing
+    list</a> for further support.
+</p>
+<p>
+Another way to keep updated with the development is to checkout the git repository of Deltasql and to issue
+ from time to time <tt>git pull</tt> to update the repository as described in <a href="faq.php#checkout">this FAQ</a>.
+</p>
+
 
 <h3><a name="checkout"></a>How can I checkout deltasql from the git repository?</h3>
 <p>
@@ -363,22 +386,6 @@ Under continouus integration, a developer normally understands the nightly check
 No, unfortunately not, as developers submit scripts like "ALTER TABLE ADD" or "INSERT INTO TB..." and they do not provide an SQL script that
  reverts the change. deltasql has not sufficient artificial intelligence to generate scripts that revert the database to the previous state. If reversal is necessary, 
  developers need to provide the reverting scripts by adding them to deltasql.
-</p>
-
-<h3><a name="upgrade"></a>I saw on the webpage that there is a new deltasql version, how do I upgrade?</h3>
-<p>
-First, read through the <a href="http://www.gpu-grid.net/deltasql/docs/ChangeLog.txt">Changelog</a> to see if there is something interesting, or if some
- bug is fixed.  Then, simply download from the <a href="https://sourceforge.net/project/showfiles.php?group_id=212117&package_id=255379">webpage</a> the latest
-  deltasql package and unzip (or untar) it at the same place where you installed it. In the ChangeLog, you will also see if it is necessary to upgrade
-   the deltasql schema (it will contain the ALTER TABLE commands you will execute on the deltasql schema). The published package will not overwrite
-   your <tt>conf/config.inc.php</tt> file, and everything should still work as expected.
-</p>
-<p>   If not, please contact the <a href="mailto:gpu-world@lists.sourceforge.net">mailing
-    list</a> for further support.
-</p>
-<p>
-Another way to keep updated with the development is to checkout the git repository of Deltasql and to issue
- from time to time <tt>git pull</tt> to update the repository as described in <a href="faq.php#checkout">this FAQ</a>.
 </p>
 
 <h3><a name="scripttitle"></a>All scripts are titled "db update". Where can I change this default?</h3>
