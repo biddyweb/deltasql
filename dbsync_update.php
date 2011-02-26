@@ -38,6 +38,8 @@ if ($htmlformatted) {
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 
              $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug);
 
+$_SESSION['dbsync_projectid']   = $projectid;
+			 
 if ($htmlformatted) {
    echo "
    </body>

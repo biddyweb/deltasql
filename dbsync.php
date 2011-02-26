@@ -17,7 +17,10 @@ $rights = $_SESSION["rights"];
 $user = $_SESSION["username"];
 $userid = $_SESSION["userid"];
 $defaultprojectid = $_GET["id"];
-$defaultprojectname = $_GET["name"];
+if ($defaultprojectid == "") {
+   // attempt to retrieve default project from cookies :-)
+   $defaultprojectid = $_SESSION["dbsync_projectid"];
+}
 
 //if ($rights<1) die("<b>Not enough rights to synchronize a database schema.</b>");
 ?>
@@ -65,7 +68,7 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  echo "<td>";
  
  echo "<select NAME=\"frombranchid\">";
- $query7="SELECT * FROM tbbranch WHERE (visible=1) and (istag=0) order by id ASC";
+ $query7="SELECT * FROM tbbranch WHERE (visible=1) order by id ASC";
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
  $i=0;
@@ -77,7 +80,7 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
    echo "VALUE=\"$branchid\">$branchname";
    $i++;
  }
- echo "</select></td><td><i>= value in column branchname</i></td></tr>";
+ echo "</select></td><td><i>= value in column branchname or tagname</i></td></tr>";
  
  echo "<tr><td><b>Update To:</b></td>";
  echo "<td>";
