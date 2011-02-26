@@ -24,9 +24,9 @@ function copy_script_to_changelog($scriptid) {
   mysql_query($query2);
   
   // retrieve id of submitted changelog script
-  $query5="SELECT max(id) from tbscriptchangelog WHERE script_id=$script_id;";
+  $query5="SELECT id from tbscriptchangelog WHERE (script_id=$scriptid) AND (create_dt='$update_dt');";
   $result5=mysql_query($query5);
-  $clscriptid=mysql_result($result3,$j,"id");
+  $clscriptid=mysql_result($result5,0,"id");
   
   // retrieve to which branches the script is applied
   $query3="SELECT * from tbscriptbranch sb, tbbranch b where (sb.script_id=$scriptid) and (sb.branch_id=b.id) order by b.id asc;"; 
