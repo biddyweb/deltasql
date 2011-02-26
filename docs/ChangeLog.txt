@@ -6,6 +6,16 @@
 - IE8 compatibility fix in Main menu
 - updating FAQ on how to upgrade deltasql (by using TAGs, one can easily retrieve the missing scripts to be executed)
 - updating manual on project and modules
+- recording changes of branches as well in a new table TBSCRIPTBRANCHCHANGELOG:
+
+CREATE TABLE `tbscriptbranchchangelog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `script_id` int(11) NOT NULL,
+  `branch_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `script_id` (`script_id`,`branch_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+
 
 1.3.3 Release Notes 25.2.2011
 Deltasql is more wiki-like as anyone can edit a script. The history of editing is recorded as well.

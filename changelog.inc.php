@@ -22,6 +22,24 @@ function copy_script_to_changelog($scriptid) {
   $query2="INSERT INTO tbscriptchangelog (id, script_id, code, title, comments,create_dt,versionnr,user_id,module_id,isaview,isapackage, update_user) 
            VALUES('',$scriptid,\"$script\",\"$title\",\"$comments\",'$update_dt',$versionnr,$scriptuserid,$moduleid,$isaview,$isapackage, '$update_user');";
   mysql_query($query2);
+  
+  // retrieve id of submitted changelog script
+  $query5="SELECT max(id) from tbscriptchangelog WHERE script_id=$script_id;";
+  $result5=mysql_query($query5);
+  $clscriptid=mysql_result($result3,$j,"id");
+  
+  // retrieve to which branches the script is applied
+  $query3="SELECT * from tbscriptbranch sb, tbbranch b where (sb.script_id=$scriptid) and (sb.branch_id=b.id) order by b.id asc;"; 
+  $result3=mysql_query($query3);   
+  $num3=mysql_numrows($result3);
+  $j=0;
+  while ($j <$num3) { 
+      $branchid=mysql_result($result3,$j,"branch_id"); 
+      $query4 = "INSERT INTO tbscriptbranchchangelog (id, script_id, branch_id) 
+	             VALUES ('', $clscriptid ,$branchid);";
+      mysql_query($query4); 
+	  $j++;
+  }
    
   return;
 }
