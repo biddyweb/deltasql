@@ -9,17 +9,15 @@
 include_once('utils/geshi/geshi.php');
 include("head.inc.php");
 include("utils/utils.inc.php");
-$rights = $_SESSION["rights"];
-//if ($rights<1) die("<b>Not enough rights to list scripts</b>");
-?>
-<a href="list_scripts.php">Back to List</a>
-
-<?php
 include("conf/config.inc.php");
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 $scriptid = $_GET['id'];
-$query="SELECT * from tbscript where id=$scriptid"; 
+$history  = $_GET['history'];
+if ($history==1) $changelog="changelog"; else $changelog="";
+
+$query="SELECT * from tbscript$changelog where id=$scriptid"; 
 $result=mysql_query($query);   
 
 $id=mysql_result($result,0,"id");
@@ -30,7 +28,10 @@ $versionnr=mysql_result($result,0,"versionnr");
 $moduleid=mysql_result($result,0,"module_id");
 $script=mysql_result($result,0,"code");
 
-echo "<h2>$title</h2>";
+if ($history==1) 
+ echo "<h2>History for script $versionnr ($title)</h2>";
+else
+ echo "<h2>$title</h2>";
 // retrieve module id name
 $query2="SELECT * from tbmodule where id=$moduleid"; 
 $result2=mysql_query($query2);   
@@ -41,7 +42,7 @@ echo "Create Datum: <b>$create_dt</b> ";
 
 // retrieve to which branches the script is applied
 // retrieve to which branches and HEAD the script was applied
-$query3="SELECT * from tbscriptbranch sb, tbbranch b where (sb.script_id=$id) and (sb.branch_id=b.id) order by b.id asc"; 
+$query3="SELECT * from tbscriptbranch$changelog sb, tbbranch b where (sb.script_id=$id) and (sb.branch_id=b.id) order by b.id asc"; 
 $result3=mysql_query($query3);   
 $num3=mysql_numrows($result3);
 $j=0;
@@ -68,6 +69,5 @@ echo "<hr>";
 mysql_close();
 ?>
 </table>
-<a href="list_scripts.php">Back to List</a>
 </body>
 </html>

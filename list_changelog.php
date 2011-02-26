@@ -75,7 +75,7 @@ echo "
 <td>$description</td>
 <td>$update_user</td>
 <td>$create_dt</td>
-<td><a href=\"show_changelog_script.php?clid=$id&histid=$scriptid&version=$version\">Show</a></td>
+<td><a href=\"show_script.php?id=$id&history=1\">Show</a></td>
 <td>$scriptonlist</td>
 <td>$comments</td>
 </tr>";
