@@ -73,14 +73,15 @@ deltasql is a tool which is suitable for the "Agile Development" model, where de
 <h3><a name="who"></a>Who is behind deltasql?</h3>
 
 <p>We are mainly developers in Switzerland, but there are also contributors in India and other countries. We share the passion for Open Source
- and hope Deltasql can spare some time to people who have to manage several database schemas at a time in the same way it helped us. 
+ and hope Deltasql can spare some time to people who have to manage several database schemas at a time in the same way it helped us. Deltasql should become
+  the ultimate database versioning tool by hackers for hackers!
  </p>
  
  
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
 
-<p>Yes, it is used in companies in Switzerland and India. In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
- can be seen that deltasql is popular in Brazil and Japan as well.
+<p>Yes, it is used in companies in Switzerland, India and Spain. In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
+ can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
 
 <h3><a name="algo"></a>How does the synchronization algorithm work?</h3>

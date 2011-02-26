@@ -51,9 +51,7 @@ if (file_exists($configurationfile)) {
 <?php
 if ($rights>0)
   echo "<li><a href=\"submit_script.php\">Submit Script</a></li>";
-?>
-<li><a href="list_scripts.php">List Scripts</a></li>
-<?
+echo "<li><a href=\"list_scripts.php\">List Scripts</a></li>";
 if ($rights>2)
   echo "<li><a href=\"list_changelog_deleted.php\">View deleted</a></li>";
 ?>
@@ -129,6 +127,7 @@ if ($rights>0) {
 if ($enterprise_edition==false) {
     echo "<li><a href=\"http://www.deltasql.org/wiki/\">Wiki</a></li>";
     echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list</a></li>";
+	echo "<li><a href=\"http://www.ohloh.net/p/deltasql\">Ohloh metrics</a></li>";
 	echo "<li><a 
 href=\"http://sourceforge.net/projects/deltasql/\">Project 
 Page</a></li>";
