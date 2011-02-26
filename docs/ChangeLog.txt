@@ -6,7 +6,8 @@
 - IE8 compatibility fix in Main menu
 - updating FAQ on how to upgrade deltasql (by using TAGs, one can easily retrieve the missing scripts to be executed)
 - updating manual on project and modules
-- recording changes of branches as well in a new table TBSCRIPTBRANCHCHANGELOG:
+- recording changes of branches as well in a new table TBSCRIPTBRANCHCHANGELOG, so that it is possible to
+ find in history if there were changes in respect to branches
 
 CREATE TABLE `tbscriptbranchchangelog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
