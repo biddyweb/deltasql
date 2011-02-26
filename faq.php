@@ -159,13 +159,19 @@ First, read through the <a href="http://www.deltasql.org/deltasql/docs/ChangeLog
 </p>
 <p>
 Occasionally, the schema of deltasql itself changes: to retrieve the script to be applied to the deltasql database schema you can visit this 
-<a href="http://www.deltasql.org/deltasql/dbsync.php">synchronization form</a> and select the From: and To: fields. As an example, if you upgrade
- from 1.3.0 to 1.3.3, set in From: <tt>TAG_deltasql_1.3.0</tt> and in To: <tt>TAG_deltasql_1.3.3</tt>.
+<a href="http://www.deltasql.org/deltasql/dbsync.php">synchronization form</a> and select as project <tt>deltasql-Server</tt>. Select the From: and To: fields as well. As an example, if you upgrade
+ from 1.3.0 to 1.3.3, set in From: <tt>TAG_deltasql_1.3.0</tt> and in To: <tt>TAG_deltasql_1.3.3</tt>. Then click on the <b>Generate Script</b> button.
+  Now, you'll need to apply the generated script into your deltasql server instance.
 </p>
 <p>If the synchronization form shouldn't be available (or if you upgrade from a version prior to 1.3.0), you need to read in ChangeLog if it is necessary to upgrade
    the deltasql schema (it will contain the ALTER TABLE commands you will execute on the deltasql schema at each release note).
 <p>If run in trouble, please contact the <a href="mailto:gpu-world@lists.sourceforge.net">mailing
     list</a> for further support.
+</p>
+<p>
+If you are upgrading a production instance, take a backup copy and work on the backup, until you are sure everything works as expected!
+ Anyway, if you are using deltasql, you should know the business ;-)!
+</p>
 </p>
 <p>
 Another way to keep updated with the development is to checkout the git repository of Deltasql and to issue
