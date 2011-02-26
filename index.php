@@ -126,11 +126,9 @@ if ($rights>0) {
 <?php
 if ($enterprise_edition==false) {
     echo "<li><a href=\"http://www.deltasql.org/wiki/\">Wiki</a></li>";
-    echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list</a></li>";
-	echo "<li><a href=\"http://www.ohloh.net/p/deltasql\">Ohloh metrics</a></li>";
-	echo "<li><a 
-href=\"http://sourceforge.net/projects/deltasql/\">Project 
-Page</a></li>";
+    if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list</a></li>";
+	if ($rights==3) echo "<li><a href=\"http://www.ohloh.net/p/deltasql\">Ohloh metrics</a></li>";
+	echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\">Project Page</a></li>";
 } else {
     echo "<li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
 }

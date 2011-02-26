@@ -12,7 +12,6 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 
-show_user_level();
 $rights = $_SESSION["rights"];
 $user = $_SESSION["username"];
 $userid = $_SESSION["userid"];
