@@ -13,8 +13,6 @@ include("utils/constants.inc.php");
 $scriptid = $_GET['id'];
 $version  = $_GET['version'];
 $author   = $_GET['author'];
-$upuser   = $_GET['updateuser'];
-$updt     = $_GET['updatedt'];
 if ($scriptid=="") exit;
 
 echo "<h3>History for <a href=\"show_script.php?id=$scriptid\">script $version</a>";
@@ -22,6 +20,23 @@ echo "<h3>History for <a href=\"show_script.php?id=$scriptid\">script $version</
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+
+$query2="SELECT * from tbscript where id=$scriptid";
+$result2=mysql_query($query2);
+$upuser=mysql_result($result2,0,"update_user");          
+$updt=mysql_result($result2,0,"update_dt");
+$script=htmlentities(mysql_result($result2,0,"code"));
+$comments=htmlentities(mysql_result($result2,0,"comments"));
+
+if (strlen($script)>35) {
+        $script = substr($script, 0, 35);
+        $script = "$scriptonlist<b>...</b>";
+}
+
+if (strlen($comments)>10) {
+    $comments = substr($comments, 0, 10);
+    $comments = "$comments<b>...</b>";
+}
 
 $query="SELECT * from tbscriptchangelog where script_id=$scriptid ORDER BY id DESC"; 
 $result=mysql_query($query);  
@@ -42,7 +57,9 @@ echo "
 <td><b>Latest revision</b></td>
 <td>$upuser</td>
 <td>$updt</td>
-<td><a href=\"show_script.php?id=$scriptid\">Show</a><td>
+<td><a href=\"show_script.php?id=$scriptid\">Show</a></td>
+<td>$script</td>
+<td>$comments</td>
 </tr>
 ";
 
@@ -55,15 +72,14 @@ $create_dt=mysql_result($result,$i,"create_dt");
 $script=htmlentities(mysql_result($result,$i,"code"));
 $comments=htmlentities(mysql_result($result,$i,"comments"));
 
-$scriptonlist = $script;
 if (strlen($script)>35) {
-        $scriptonlist = substr($script, 0, 35);
-        $scriptonlist = "$scriptonlist<b>...</b>";
+        $script = substr($script, 0, 35);
+        $script = "$script<b>...</b>";
 }
 
 if (strlen($comments)>10) {
     $comments = substr($comments, 0, 10);
-    $comments = "$comments<b>...</b>";
+    $comments = "$comments...";
 }
 
 if ($update_user=="") { 
@@ -76,7 +92,7 @@ echo "
 <td>$update_user</td>
 <td>$create_dt</td>
 <td><a href=\"show_script.php?id=$id&history=1\">Show</a></td>
-<td>$scriptonlist</td>
+<td>$script</td>
 <td>$comments</td>
 </tr>";
  $i++;

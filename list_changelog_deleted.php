@@ -28,6 +28,7 @@ echo "
 <th>versionnr</th>
 <th>script</th>
 <th>comments</th>
+<th>author</th>
 <th>update user</th>
 <th>create dt</th>
 <th>actions</th>
@@ -42,11 +43,15 @@ $update_user=mysql_result($result,$i,"update_user");
 $create_dt=mysql_result($result,$i,"create_dt");
 $script=htmlentities(mysql_result($result,$i,"code"));
 $comments=htmlentities(mysql_result($result,$i,"comments"));
+$userid=mysql_result($result,$i,"user_id");
 
-$scriptonlist = $script;
+$query2="SELECT * from tbuser where id=$userid"; 
+$result2=mysql_query($query2);  
+$author=mysql_result($result2,0,"username");
+
 if (strlen($script)>35) {
-        $scriptonlist = substr($script, 0, 35);
-        $scriptonlist = "$scriptonlist<b>...</b>";
+        $script = substr($script, 0, 35);
+        $script = "$script<b>...</b>";
 }
 
 if (strlen($comments)>10) {
@@ -57,8 +62,9 @@ if (strlen($comments)>10) {
 echo "
 <tr>
 <td>$versionnr</td>
-<td>$scriptonlist</td>
+<td>$script</td>
 <td>$comments</td>
+<td>$author</td>
 <td>$update_user</td>
 <td>$create_dt</td>
 <td><a href=\"show_script.php?id=$id&history=1\">Show</a></td>

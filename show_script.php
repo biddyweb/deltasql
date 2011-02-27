@@ -21,12 +21,18 @@ $query="SELECT * from tbscript$changelog where id=$scriptid";
 $result=mysql_query($query);   
 
 $id=mysql_result($result,0,"id");
-$title=mysql_result($result,0,"title");           
+$title=htmlentities(mysql_result($result,0,"title"));           
 $comments=mysql_result($result,0,"comments");
 $create_dt=mysql_result($result,0,"create_dt");
 $versionnr=mysql_result($result,0,"versionnr");
 $moduleid=mysql_result($result,0,"module_id");
 $script=mysql_result($result,0,"code");
+$userid=mysql_result($result,0,"user_id");
+$update_user=mysql_result($result,0,"update_user");
+
+$query2="SELECT * from tbuser where id=$userid"; 
+$result2=mysql_query($query2);  
+$author=mysql_result($result2,0,"username");
 
 if ($history==1) 
  echo "<h2>History for script $versionnr ($title)</h2>";
@@ -39,6 +45,8 @@ $modulename=mysql_result($result2, 0,  "name");
 echo "Module: <b>$modulename</b> ";
 echo "Version: <b>$versionnr</b> ";
 echo "Create Datum: <b>$create_dt</b> ";
+echo "Author: <b>$author</b> ";
+if ($update_user!="") echo "Updater: <b>$update_user</b> ";
 
 // retrieve to which branches the script is applied
 // retrieve to which branches and HEAD the script was applied

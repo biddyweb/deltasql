@@ -175,7 +175,7 @@ if ($textoutput==0) {
 echo "<tr>
 <th>version number</th>
 <th>title</th>
-<th>submitter</th>
+<th>author</th>
 <th>script</th>
 <th>comments</th>
 <th>module</th>
@@ -210,12 +210,12 @@ if ($textoutput==0) {
     $scriptonlist = $script;
     if (strlen($script)>35) {
         $scriptonlist = substr($script, 0, 35);
-        $scriptonlist = "$scriptonlist<b>...</b>";
+        $scriptonlist = "$scriptonlist...";
     }
 
     if (strlen($comments)>10) {
         $comments = substr($comments, 0, 10);
-        $comments = "$comments<b>...</b>";
+        $comments = "$comments...";
     }
     if ($title=="") $title="db update";    
     $title = "<a href=\"show_script.php?id=$id\">$title</a>";
@@ -280,9 +280,7 @@ if ($textoutput==0) {
 	}
 	if ($update_user!="") {
 	    $author_encoded = urlencode ( $author );
-		$updateuser_encoded = urlencode ( $update_user);
-		$updatedt_encoded = urlencode ( $update_dt);
-	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded&updateuser=$updateuser_encoded&updatedt=$updatedt_encoded\">History</a>";
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\">History</a>";
 	}
     echo "</td>";
     echo "<td>$isaview</td><td>$isapackage</td>";

@@ -1,3 +1,7 @@
+27.2.2011 git
+- showing data in history also for latest revision
+- some more fixes
+
 26.2.2011 git
 - each time a synchronization is done, deltasql records the project name in a cookie and retrieves it next time
 - added ability to specify a tag in the from field of the synchronization step
