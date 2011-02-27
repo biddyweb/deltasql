@@ -51,12 +51,12 @@ $author=mysql_result($result2,0,"username");
 
 if (strlen($script)>35) {
         $script = substr($script, 0, 35);
-        $script = "$script<b>...</b>";
+        $script = "$script...";
 }
 
 if (strlen($comments)>10) {
     $comments = substr($comments, 0, 10);
-    $comments = "$comments<b>...</b>";
+    $comments = "$comments...";
 }
 
 echo "
