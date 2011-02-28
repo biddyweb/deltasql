@@ -137,8 +137,8 @@ select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNC
  mysql_close();
 ?>
 <b>4) Please copy and execute in a sql client (like SqlPlus or Toad or PhpMyAdmin) the script you
- will receive after pressing the Submit button! This will update both your database schema and the
-  synchronization information in TBSYNCHRONIZE.</b><br>
+ will receive after pressing the button below!<br> This will update both your database schema and the
+  synchronization information in table TBSYNCHRONIZE.</b><br><br>
  
 <input type="Submit" value="Generate synchronization script">
 </form>
