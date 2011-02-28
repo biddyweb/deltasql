@@ -123,10 +123,10 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 
 </table>
 Script: <a onclick="RemoveEmptyLines();">Remove empty lines</a><br>
-<textarea name="script" rows="25" cols="120">
+<textarea name="script" rows="25" cols="140">
 </textarea><br>
 Comments:<br>
-<textarea name="comment" rows="2" cols="120">
+<textarea name="comment" rows="2" cols="140">
 </textarea>
 <br>
 <?php
@@ -154,7 +154,7 @@ if ($frm_isaview=="") $frm_isaview=0;
 if ($frm_isapackage=="") $frm_isapackage=0;
 
 if ($frm_script=="") exit;
-if ($frm_moduleid=="") die("<b>Please specify a database module.</b>");
+if ($frm_moduleid=="") die("<b><font color=\"red\">Please specify a database module.</font></b>");
 //echo "<p>";
 // echo "*$frm_script* *$frm_comment* *$frm_moduleid* *$frm_title* *$userid* *$version $frm_isaview  $frm_isapackage*";
 //echo "</p>";
