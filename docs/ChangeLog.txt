@@ -1,6 +1,16 @@
-1.3.4 2011 Release notes
+1.3.4 Release notes  1.3.2011 
 New feature: it is possible to synchronize from a tag, without need of the query to retrieve the version number
 Improvements in the History feature introduced with 1.3.3
+
+People upgrading from 1.3.2 should execute this script:
+CREATE TABLE `tbscriptbranchchangelog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `script_id` int(11) NOT NULL,
+  `branch_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `script_id` (`script_id`,`branch_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+
 
 28.2.2011 git
 - submit script has wider entry area for script and comments
@@ -52,9 +62,9 @@ CREATE TABLE `tbscriptchangelog` (
 
 
 25.2.2011 git
-- added logic to save changes into tbscriptchangelog, if a script is edited or removed
-- added ability to list history of edited files for anyone
-- added ablilty for administrators to see deleted scripts
+- added logic to save changes into tbscriptchangelog, if a script is edited or removed 
+- added ability to list history of edited files for anyone so that Deltasql gets more wiki-like (suggestion by Hari)
+- added abilily for administrators to see deleted scripts
 
 24.2.2011 git
 - bugfix: editing a script hijacked ownership of script to the submitting user
