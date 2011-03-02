@@ -9,6 +9,7 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include("utils/constants.inc.php");
 include("changelog.inc.php");
 
 show_user_level();
@@ -43,7 +44,7 @@ if ($paramscriptid!="") {
 <table>
 <tr>
 <td>Title:</td>
-<td><input type="text" name="title" value="<?php echo "$ptitle"; ?>" size="100"></td>
+<td><input type="text" name="title" value="<?php echo "$ptitle"; ?>" size="120"></td>
 </tr>
 <tr>
 <td>Author:</td> 
@@ -114,11 +115,11 @@ ASC";
 
 </table>
 Script:<br>
-<textarea name="script" rows="20" cols="100">
+<textarea name="script" rows="20" cols="<?php echo "$wide_textarea_chars"; ?>">
 <?php echo "$pscript"; ?>
 </textarea><br>
 Comments:<br>
-<textarea name="comment" rows="2" cols="100">
+<textarea name="comment" rows="2" cols="<?php echo "$wide_textarea_chars"; ?>">
 <?php echo "$pcomments"; ?>
 </textarea>
 <br>

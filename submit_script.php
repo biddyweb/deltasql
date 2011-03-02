@@ -123,10 +123,10 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 
 </table>
 Script: <a onclick="RemoveEmptyLines();">Remove empty lines</a><br>
-<textarea name="script" rows="25" cols="140">
+<textarea name="script" rows="25" cols="<?php echo "$wide_textarea_chars"; ?>">
 </textarea><br>
 Comments:<br>
-<textarea name="comment" rows="2" cols="140">
+<textarea name="comment" rows="2" cols="<?php echo "$wide_textarea_chars"; ?>">
 </textarea>
 <br>
 <?php

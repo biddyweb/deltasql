@@ -1,12 +1,14 @@
 <?php
 //version
-$deltasql_version="1.3.4";
-$dbredactor_version="1.3.4";
-$antclient_version="1.3.4";
-$bashclient_version="1.3.4";
+$deltasql_version="1.3.5";
+$dbredactor_version="1.3.5";
+$antclient_version="1.3.5";
+$bashclient_version="1.3.5";
 
 //number of scripts on a page
 $scriptsperpage=15;
+// wide of textarea field in chars in submit_script.php and edit_script.php
+$wide_textarea_chars=140;
 
 //administrator login
 $admin_user="admin";
