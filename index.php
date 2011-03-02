@@ -11,6 +11,7 @@
  include("head.inc.php");
  include("utils/constants.inc.php");
  include("utils/utils.inc.php");
+ include("patch/patchlevel.inc.php");
  
  if (file_exists($configurationfile)) {
     include("conf/config.inc.php");
@@ -21,7 +22,9 @@
  $first = $_SESSION["first"];
  $user_id = $_SESSION["user_id"];
  
- echo "<h1>deltasql server $deltasql_version</h1>";
+ echo "<h2>deltasql server $deltasql_version";
+ if ($patchlevel!="") echo "-$patchlevel";
+ echo "</h2>";
 ?>
 
 
@@ -191,8 +194,12 @@ if ($enterprise_edition==true)
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
+ echo "The changelog is <a href=\"docs/ChangeLog.txt\">here</a>. ";
+ if ($patchlevel!="") {
+    echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
+ }	
 ?> 
- The changelog is <a href="docs/ChangeLog.txt">here</a>.
+ 
  </h6>
 </center>
 </body>

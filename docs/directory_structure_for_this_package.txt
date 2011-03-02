@@ -12,15 +12,15 @@ Deltasql Server
     script-test-data.sql  This script creates some test data for the database schema
     /backup               This folder contains a Unix backup shell script (example)
     /data                 This folder contains the rows in script.sql in single scripts,
-                          so that the install logic in install.php can be executed
     /tables               This folder contains the tables in script.sql in single scripts,
                           so that the install logic in install.php can be executed  
     /test-data            This folder contains the test data in script-test-data.sql in single scripts,
                           so that the install logic in install.php can be executed
-    /docs                 Files that complement the documentation in ../manual.php
-    /pictures             Pictures for the deltasql server
-    /utils                Utilites in PHP for deltasql
-    /utils/geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
+/docs                 Files that complement the documentation in ../manual.php
+/patch                Contains information if patches are applied
+/pictures             Pictures for the deltasql server
+/utils                Utilites in PHP for deltasql
+/utils/geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
     
 
 Deltasql Clients
