@@ -106,8 +106,11 @@ $diffcells
 </tr>";
  $i++;
 }
+
+echo "</table>";
+echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$scriptid\" />";
+echo "<input type=\"hidden\" name=\"version\"  value=\"$version\" />";
 ?>
-</table>
 <input type="Submit" value="Get diffs between revisions">
 </form>
 <br>
