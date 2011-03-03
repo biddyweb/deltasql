@@ -110,6 +110,8 @@ $diffcells
 echo "</table>";
 echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$scriptid\" />";
 echo "<input type=\"hidden\" name=\"version\"  value=\"$version\" />";
+
+mysql_close();
 ?>
 <input type="Submit" value="Get diffs between revisions">
 </form>
