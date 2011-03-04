@@ -1,6 +1,10 @@
+4.3.2011 git
+- added textdiff library
+- added ability to shown difference between revisions in History
+
 2.3.2011 git
 - framework to display patchlevel (if any)
-- text area for fields in edit_script.php and submit_script.php set in constants.inc.phpclear
+- text area for fields in edit_script.php and submit_script.php set in constants.inc.php
 
 1.3.4 Release notes  1.3.2011 
 New feature: it is possible to synchronize from a tag, without need of the query to retrieve the version number
