@@ -6,6 +6,10 @@
 </head>
 <body>
 <?php
+require_once 'Text/Diff.php';
+require_once 'Text/Diff/Renderer.php';
+require_once 'Text/Diff/Renderer/unified.php';
+
 include("head.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
@@ -18,6 +22,7 @@ if ($scriptid=="") exit;
 if ($fromdiff==$todiff) die("<b>There is no difference, both scripts are the same!</b>");
 
 include("conf/config.inc.php");
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
@@ -37,6 +42,32 @@ $scriptto  =mysql_result($resultto,0,"code");
 $commentsto=mysql_result($resultto,0,"comments");
 $titleto=mysql_result($resultto,0,"title");
 
+// generating sessionid
+$c = uniqid (rand (),true);
+$sessionid = md5($c);
+
+$scriptfromfilename="output/diffs/script_from_$sessionid.txt";
+$scripttofilename="output/diffs/script_to_$sessionid.txt";
+
+$fh = fopen($scriptfromfilename, 'w');
+fwrite($fh, "$scriptfrom");
+fclose($fh);
+
+$fh = fopen($scripttofilename, 'w');
+fwrite($fh, "$scriptto");
+fclose($fh);
+
+$lines1 = file($scriptfromfilename);
+$lines2 = file($scripttofilename);
+$diff = new Text_Diff('auto', array($lines1, $lines2));
+
+echo "<pre>";
+$renderer = new Text_Diff_Renderer_unified();
+echo $renderer->render($diff);
+echo "</pre>";
+
+unlink($scriptfromfilename);
+unlink($scripttofilename);
 
 mysql_close();
 ?>
