@@ -14,9 +14,13 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 show_user_level();
 $rights = $_SESSION["rights"];
 ?>
-<h4>Project branches in blue and tags in yellow</h4>
-<table border="1">
+<form action="get_dev_tree_graph.php" method="post">
+<input type="Submit" value="Get development tree graph">
+</form>
 
+<h3>Project branches in blue and tags in yellow</h3>
+
+<table border="1">
 <?php
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
