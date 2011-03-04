@@ -19,6 +19,8 @@ $version  = $_POST['version'];
 $fromdiff = $_POST['fromdiff'];
 $todiff   = $_POST['todiff'];
 if ($scriptid=="") exit;
+if ($fromdiff=="") die("<b>No source revision specified</b>");
+if ($todiff=="") die("<b>No target revision specified</b>");
 
 echo "<b><font color=\"red\">Please note: only differences in scripts and comments are shown here!</font><br>";
 echo "<h2>Differences for version $version between revisions</h2>";
