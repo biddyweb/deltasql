@@ -33,3 +33,5 @@ $diff = new Text_Diff('auto', array($lines1, $lines2));
 /* Output the diff in unified format. */
 $renderer = new Text_Diff_Renderer_unified();
 echo $renderer->render($diff);
+
+?>
