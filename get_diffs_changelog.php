@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html> 
 <head>
-<title>deltasql - Show differences</title>
+<title>deltasql - Show differences between revisions</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
@@ -20,8 +20,8 @@ $fromdiff = $_POST['fromdiff'];
 $todiff   = $_POST['todiff'];
 if ($scriptid=="") exit;
 
-echo "<h2>Differences for version $version</h2>";
-
+echo "<b><font color=\"red\">Please note: only differences in scripts and comments are shown here!</font><br>";
+echo "<h2>Differences for version $version between revisions</h2>";
 if ($fromdiff==$todiff) die("<b>There is no difference, both scripts are the same!</b>");
 
 include("conf/config.inc.php");
