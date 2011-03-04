@@ -4,9 +4,10 @@ Deltasql Server
 ---------------
 
 /           Root directory for the deltasql server
+/.git       concurrent version system folder
 /conf       Configuration folder
      example_config.inc.php  This file is an example configuration, which could be renamed to config.inc.php       
-/.git       concurrent version system folder
+
 /db         this folder contains database scripts needed for the mySQL database that backs the server
     script.sql            This scripts creates the entire database schema
     script-test-data.sql  This script creates some test data for the database schema
@@ -16,11 +17,18 @@ Deltasql Server
                           so that the install logic in install.php can be executed  
     /test-data            This folder contains the test data in script-test-data.sql in single scripts,
                           so that the install logic in install.php can be executed
-/docs                 Files that complement the documentation in ../manual.php
-/patch                Contains information if patches are applied
-/pictures             Pictures for the deltasql server
-/utils                Utilites in PHP for deltasql
-/utils/geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
+/docs                Files that complement the documentation in ../manual.php
+/output
+    /scripts         Temporary directory to output scripts as .zip files
+	/diffs           Temporary directory to output diffs used in history feature
+/patch               Contains information if patches are applied
+/pictures            Pictures for the deltasql server
+/utils               Utilites in PHP for deltasql
+     /geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
+	 /jscalendar     Calendar Widget released under the LGPL available at http://jscalendar.sourceforge.net
+	 /createzip      Createzip library (c) Rochak Chauhan  www.rochakchauhan.com
+	 /textdiff       Textdiff library licensing and examples
+/Text                Textdiff library, see /utils/textdiff/README.txt for copyright information and licensing
     
 
 Deltasql Clients
@@ -30,13 +38,5 @@ Deltasql Clients
     /java                 Clients written in Java
         /ant-client       A short but effective Ant client (needed libraries are in ../dbredactor/lib folder)
         /dbredactor       The dbredactor Java client
-        /bash             The bash client for continouus integration
+    /bash                 The bash client for continouus integration
         
-
-Tablesync
----------
-
-/tablesync                Currently in work: in this directory a Java process is created. It is intended to run
-                          on server and synchronizes data between different schemas but with tables with the 
-                          same name and structure. It uses JDBC connections, so that the schemas can be on different
-                          database types
