@@ -19,15 +19,16 @@ Deltasql Server
                           so that the install logic in install.php can be executed
 /docs                Files that complement the documentation in ../manual.php
 /output
-    /scripts         Temporary directory to output scripts as .zip files
-	/diffs           Temporary directory to output diffs used in history feature
-/patch               Contains information if patches are applied
-/pictures            Pictures for the deltasql server
-/utils               Utilites in PHP for deltasql
-     /geshi          The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
-	 /jscalendar     Calendar Widget released under the LGPL available at http://jscalendar.sourceforge.net
-	 /createzip      Createzip library (c) Rochak Chauhan  www.rochakchauhan.com
-	 /textdiff       Textdiff library licensing and examples
+    /scripts          Temporary directory to output scripts as .zip files
+	/diffs            Temporary directory to output diffs used in history feature
+/patch                Contains information if patches are applied
+/pictures             Pictures for the deltasql server
+/utils                Utilites in PHP for deltasql
+     /geshi           The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
+	 /jscalendar      Calendar Widget released under the LGPL available at http://jscalendar.sourceforge.net
+	 /createzip       Createzip library (c) Rochak Chauhan  www.rochakchauhan.com
+	 /textdiff        Textdiff library licensed under LGPL and examples
+	 /phptreegraphext phpTreeGraph libry licensed under LGPL
 /Text                Textdiff library, see /utils/textdiff/README.txt for copyright information and licensing
     
 

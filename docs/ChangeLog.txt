@@ -1,6 +1,7 @@
 4.3.2011 git
 - added textdiff library
 - added ability to shown difference between revisions in History
+- added ability to plot graph of development tree
 
 2.3.2011 git
 - framework to display patchlevel (if any)
