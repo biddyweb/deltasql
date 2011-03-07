@@ -94,9 +94,13 @@ if ($fromistag==1) {
       mysql_close();
       errormessage(16, "Version number not allowed if synchronizing from a tag", $xmlformatted, $htmlformatted);
    }
-   $lastversionnr=$fromversionnr;
-   $frombranchid=$fromsourcebranchid;
-   $frombranchname=$fromsourcebranch;
+   if (($fromprojectid!="") && ($fromprojectid!=$projectid)) {
+	   mysql_close();
+       errormessage(17, "-- The tag $frombranchname does not belong to the project!", $xmlformatted, $htmlformatted);
+  }
+  $lastversionnr=$fromversionnr;
+  $frombranchid=$fromsourcebranchid;
+  $frombranchname=$fromsourcebranch;	
    
 } else {
   // lastversionnr is needed, if it is a branch or HEAD!
@@ -127,6 +131,10 @@ if ($toistag==1) {
     $tagname=$tobranchname;
     $tobranchname=$tosourcebranch;
 	$tobranchid=$tosourcebranchid;
+	if (($toprojectid!="") && ($toprojectid!=$projectid)) {
+	   mysql_close();
+       errormessage(17, "-- The tag $tagname does not belong to the project!", $xmlformatted, $htmlformatted);
+	} 
 }
 
 

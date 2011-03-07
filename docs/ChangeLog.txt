@@ -1,6 +1,9 @@
 7.3.2011 git
 - added ability to show difference between revisions (title, modules, branches) in History
 - added option to exclude tags from graph of dev tree
+- when tagging HEAD one needs to define to which project the tag belongs to
+- when synchronizing from or to a tag, check that the project matches
+- changed caption of button to detect views and packages
 
 4.3.2011 git
 - added textdiff library

@@ -21,7 +21,7 @@ $backto=$_GET['backto'];
 echo "<input type=\"hidden\" name=\"submitted\"  value=\"1\">";
 echo "<input type=\"hidden\" name=\"backto\"  value=\"$backto\">";
 ?>
-<input type="Submit"> or 
+<input type="Submit" value="Detect views and packages"> or 
 <?php
 if ($backto=="search")
     echo "<a href=\"search_scripts.php\">Cancel</a>";

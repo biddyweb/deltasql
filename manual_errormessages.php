@@ -103,5 +103,10 @@ the tag implicitly sets a version number from where to start the synchronization
 the synchronization form and try again :-)
 </p>
 
+<li><a name="17"></a><i>17</i>: <b>The tag [TAGNAME] does not belong to the project!</b></li>
+<p>
+The source or target tag you specified does not belong to the project you would like to synchronize. Please check it!
+</p>
+
 </body>
 </html>
