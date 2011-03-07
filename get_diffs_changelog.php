@@ -18,11 +18,11 @@ $scriptid = $_POST['scriptid'];
 $version  = $_POST['version'];
 $fromdiff = $_POST['fromdiff'];
 $todiff   = $_POST['todiff'];
+$differences = 0;
 if ($scriptid=="") exit;
 if ($fromdiff=="") die("<b>No source revision specified</b>");
 if ($todiff=="") die("<b>No target revision specified</b>");
 
-echo "<b><font color=\"red\">Please note: differences in applied branches are not shown!</font><br>";
 echo "<h2>Differences for version $version between revisions</h2>";
 if ($fromdiff==$todiff) die("<b>There is no difference, both scripts are the same!</b>");
 
@@ -31,17 +31,74 @@ include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
+if ($todiff!="latest") {
+   $queryto="SELECT * from tbscriptchangelog where id=$todiff";
+   $querytargetbranch="SELECT * from tbscriptbranchchangelog where script_id=$todiff";
+} else {
+   $queryto="SELECT * from tbscript where id=$scriptid";
+   $querytargetbranch="SELECT * from tbscriptbranch where script_id=$scriptid";
+}
+
+// 1.  differences in branches assigned to the script
+$branchesdifferences=0;
+$branchesstring="";
+// 1.1 branches which are in source but not in target
+$querysourcebranch="SELECT * from tbscriptbranchchangelog where script_id=$fromdiff;";
+$resultsb=mysql_query($querysourcebranch);
+if ($resultsb=="") $numsb=0; else $numsb=mysql_numrows($resultsb);
+$i=0;
+while ($i<$numsb) {
+  $branchid=mysql_result($resultsb,$i,"branch_id");
+  // check if the branch is in target
+  $checktarget="$querytargetbranch AND branch_id=$branchid;";
+  $resulttarget=mysql_query($checktarget);  
+  if ($resulttarget=="") $checknum=0; else $checknum=mysql_numrows($resulttarget);
+  if ($checknum==0) {
+	   $branchesdifferences++;
+	   $queryname="SELECT * FROM tbbranch where id=$branchid";
+	   $resultname=mysql_query($queryname);
+	   $branchname=mysql_result($resultname,0,"name");
+	   $branchesstring = "$branchesstring <b>-$branchname</b>";
+  }
+  $i++;
+}
+
+// 1.2 branches which are in target but not in source
+$resultsb=mysql_query($querytargetbranch);
+if ($resultsb=="") $numsb=0; else $numsb=mysql_numrows($resultsb);
+$i=0;
+while ($i<$numsb) {
+  $branchid=mysql_result($resultsb,$i,"branch_id");
+  // check if the branch is in source
+  $checksource="SELECT * from tbscriptbranchchangelog where script_id=$fromdiff AND branch_id=$branchid;";
+  $resultsource=mysql_query($checksource);  
+  if ($resultsource=="") $checknum=0; else $checknum=mysql_numrows($resultsource);
+  if ($checknum==0) {
+	   $branchesdifferences++;
+	   $queryname="SELECT * FROM tbbranch where id=$branchid";
+	   $resultname=mysql_query($queryname);
+	   $branchname=mysql_result($resultname,0,"name");
+	   $branchesstring = "$branchesstring <b>+$branchname</b>";
+  }
+  $i++;
+}
+
+if ($branchesdifferences>0) {
+  echo "<h3>Branches:</h3>";
+  echo "<pre>";
+  echo "$branchesstring\n";
+  echo "</pre>";
+  echo "<hr>";
+}
+
+
+// 2. differences in script itself
 $queryfrom="SELECT * from tbscriptchangelog where id=$fromdiff";
 $resultfrom=mysql_query($queryfrom);
 $scriptfrom  =mysql_result($resultfrom,0,"code");
 $commentsfrom=mysql_result($resultfrom,0,"comments");
 $moduleidfrom=mysql_result($resultfrom, 0, "module_id");
 
-if ($todiff!="latest") {
-   $queryto="SELECT * from tbscriptchangelog where id=$todiff";
-} else {
-   $queryto="SELECT * from tbscript where id=$scriptid";
-}
 $resultto=mysql_query($queryto);
 $scriptto  =mysql_result($resultto,0,"code");
 $commentsto=mysql_result($resultto,0,"comments");
@@ -82,12 +139,13 @@ if ($moduleidfrom!=$moduleidto) {
   $moduleto=mysql_result($resultmod,0,"name");
   
   
-  echo "<h3>Modules differences:</h3>";
+  echo "<h3>Modules:</h3>";
   echo "<pre>";
   echo "-$modulefrom\n";
   echo "+$moduleto";
   echo "</pre>";
   echo "<hr>";
+  $differences++;
 }
 
 
@@ -97,11 +155,12 @@ $diff = new Text_Diff('auto', array($lines1, $lines2));
 $renderer = new Text_Diff_Renderer_unified();
 $difftext = $renderer->render($diff); 
 if ($difftext!="") {
-   echo "<h3>Script differences:</h3>";
+   echo "<h3>Script:</h3>";
    echo "<pre>";
    echo $difftext;
    echo "</pre>";
    echo "<hr>";
+   $differences++;
 }
    
 $lines1 = file($commentsfromfilename);
@@ -110,12 +169,15 @@ $diff = new Text_Diff('auto', array($lines1, $lines2));
 $difftext = $renderer->render($diff); 
 
 if ($difftext!="") {
-   echo "<h3>Comment differences:</h3>";
+   echo "<h3>Comments:</h3>";
    echo "<pre>";
    echo $difftext;
    echo "</pre>";
    echo "<hr>";
+   $differences++;
 }
+
+if (($differences==0) && ($branchesdifferences==0)) echo "<br><b>No differences found.</b><br>";
    
 unlink($scriptfromfilename);
 unlink($scripttofilename);
