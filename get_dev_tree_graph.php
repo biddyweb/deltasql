@@ -1,6 +1,8 @@
 <?php
 include("conf/config.inc.php");
 
+$excltag=$_POST['frmexcltag'];
+
 require_once('utils/phptreegraphext/classes/Node.php');
 require_once('utils/phptreegraphext/classes/Tree.php');
 require_once('utils/phptreegraphext/classes/GDRenderer.php');
@@ -10,7 +12,8 @@ $objTree = new GDRenderer(30, 10, 30, 50, 40);
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="SELECT * from tbbranch ORDER BY id ASC"; 
+if ($excltag==1) $clause="WHERE istag=0"; else $clause="";
+$query="SELECT * from tbbranch $clause ORDER BY id ASC"; 
 $result=mysql_query($query);  
 if ($result=="") $num=0; else $num=mysql_numrows($result); 
 

@@ -14,10 +14,6 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 show_user_level();
 $rights = $_SESSION["rights"];
 ?>
-<form action="get_dev_tree_graph.php" method="post">
-<input type="Submit" value="Get development tree graph">
-</form>
-
 <h3>Project branches in blue and tags in yellow</h3>
 
 <table border="1">
@@ -114,6 +110,11 @@ mysql_close();
 ?>
 </table>
 <br>
+<hr>
+<form action="get_dev_tree_graph.php" method="post">
+<input name="frmexcltag" type="checkbox" value="1">Exclude tags<br> 
+<input type="Submit" value="Get tree graph">
+</form>
 <a href="index.php">Back to main menu</a>
 </body>
 </html>

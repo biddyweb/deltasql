@@ -1,6 +1,10 @@
+7.3.2011 git
+- added ability to show difference between revisions (title, modules, branches) in History
+- added option to exclude tags from graph of dev tree
+
 4.3.2011 git
 - added textdiff library
-- added ability to shown difference between revisions in History
+- added ability to show difference between revisions (scripts and comments) in History
 - added ability to plot graph of development tree
 
 2.3.2011 git
