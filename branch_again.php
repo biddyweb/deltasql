@@ -72,7 +72,28 @@ Description:<br>
 <br>
 <?php
 echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
-echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
+if ($projectid!="NULL") {
+  echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
+} else {
+ // plotting project combobox
+ mysql_connect($dbserver, $username, $password);
+ @mysql_select_db($database) or die("Unable to select database");
+
+ echo "Project: <select NAME=\"projectid\">";
+ $query="SELECT * FROM tbproject ORDER BY name";
+ $result=mysql_query($query);
+ $num=mysql_numrows($result); 
+ $i=0;
+ while ($i<$num) { 
+   $projectid=mysql_result($result,$i,"id");
+   $projectname=mysql_result($result,$i,"name");
+   echo "<option ";
+   echo "VALUE=\"$projectid\">$projectname";
+   $i++;
+ }
+ echo "</select><br><br>";
+ mysql_close();
+}  
 echo "<input type=\"hidden\" name=\"versionnr\"  value=\"$versionnr\">";
 echo "<input type=\"hidden\" name=\"oldname\"  value=\"$name\">";
 echo "<input type=\"hidden\" name=\"istag\"  value=\"$tag\">";
@@ -98,7 +119,7 @@ if ($frm_newname=="HEAD") {
   die ("<b>Not possible to create a branch named HEAD!</b>");
 }
 // exception for tags on HEAD
-if ($frm_projectid=="") $frm_projectid="NULL";
+if ($frm_projectid=="") die("<b>You need to assign a project to the tag!</b>");;
 
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
