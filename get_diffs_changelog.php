@@ -22,7 +22,7 @@ if ($scriptid=="") exit;
 if ($fromdiff=="") die("<b>No source revision specified</b>");
 if ($todiff=="") die("<b>No target revision specified</b>");
 
-echo "<b><font color=\"red\">Please note: only differences in scripts and comments are shown here!</font><br>";
+echo "<b><font color=\"red\">Please note: differences in applied branches are not shown!</font><br>";
 echo "<h2>Differences for version $version between revisions</h2>";
 if ($fromdiff==$todiff) die("<b>There is no difference, both scripts are the same!</b>");
 
@@ -35,6 +35,7 @@ $queryfrom="SELECT * from tbscriptchangelog where id=$fromdiff";
 $resultfrom=mysql_query($queryfrom);
 $scriptfrom  =mysql_result($resultfrom,0,"code");
 $commentsfrom=mysql_result($resultfrom,0,"comments");
+$moduleidfrom=mysql_result($resultfrom, 0, "module_id");
 
 if ($todiff!="latest") {
    $queryto="SELECT * from tbscriptchangelog where id=$todiff";
@@ -44,6 +45,7 @@ if ($todiff!="latest") {
 $resultto=mysql_query($queryto);
 $scriptto  =mysql_result($resultto,0,"code");
 $commentsto=mysql_result($resultto,0,"comments");
+$moduleidto=mysql_result($resultto, 0, "module_id");
 
 // generating sessionid
 $c = uniqid (rand (),true);
@@ -70,29 +72,51 @@ $fh = fopen($commentstofilename, 'w');
 fwrite($fh, "$commentsto");
 fclose($fh);
 
+if ($moduleidfrom!=$moduleidto) {
+  $querymod ="SELECT * from tbmodule WHERE id=$moduleidfrom";
+  $resultmod=mysql_query($querymod);
+  $modulefrom=mysql_result($resultmod,0,"name");
+  
+  $querymod ="SELECT * from tbmodule WHERE id=$moduleidto";
+  $resultmod =mysql_query($querymod);
+  $moduleto=mysql_result($resultmod,0,"name");
+  
+  
+  echo "<h3>Modules differences:</h3>";
+  echo "<pre>";
+  echo "-$modulefrom\n";
+  echo "+$moduleto";
+  echo "</pre>";
+  echo "<hr>";
+}
+
 
 $lines1 = file($scriptfromfilename);
 $lines2 = file($scripttofilename);
 $diff = new Text_Diff('auto', array($lines1, $lines2));
-
-echo "<h3>Script differences:</h3>";
-echo "<pre>";
 $renderer = new Text_Diff_Renderer_unified();
-echo $renderer->render($diff);
-echo "</pre>";
-echo "<hr>";
-
+$difftext = $renderer->render($diff); 
+if ($difftext!="") {
+   echo "<h3>Script differences:</h3>";
+   echo "<pre>";
+   echo $difftext;
+   echo "</pre>";
+   echo "<hr>";
+}
+   
 $lines1 = file($commentsfromfilename);
 $lines2 = file($commentstofilename);
 $diff = new Text_Diff('auto', array($lines1, $lines2));
+$difftext = $renderer->render($diff); 
 
-echo "<h3>Comment differences:</h3>";
-echo "<pre>";
-$renderer = new Text_Diff_Renderer_unified();
-echo $renderer->render($diff);
-echo "</pre>";
-echo "<hr>";
-
+if ($difftext!="") {
+   echo "<h3>Comment differences:</h3>";
+   echo "<pre>";
+   echo $difftext;
+   echo "</pre>";
+   echo "<hr>";
+}
+   
 unlink($scriptfromfilename);
 unlink($scripttofilename);
 unlink($commentsfromfilename);
