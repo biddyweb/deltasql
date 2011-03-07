@@ -58,7 +58,7 @@ while ($i<$numsb) {
 	   $queryname="SELECT * FROM tbbranch where id=$branchid";
 	   $resultname=mysql_query($queryname);
 	   $branchname=mysql_result($resultname,0,"name");
-	   $branchesstring = "$branchesstring <b>-$branchname</b>";
+	   $branchesstring = "$branchesstring -$branchname";
   }
   $i++;
 }
@@ -78,7 +78,7 @@ while ($i<$numsb) {
 	   $queryname="SELECT * FROM tbbranch where id=$branchid";
 	   $resultname=mysql_query($queryname);
 	   $branchname=mysql_result($resultname,0,"name");
-	   $branchesstring = "$branchesstring <b>+$branchname</b>";
+	   $branchesstring = "$branchesstring +$branchname";
   }
   $i++;
 }
@@ -98,11 +98,13 @@ $resultfrom=mysql_query($queryfrom);
 $scriptfrom  =mysql_result($resultfrom,0,"code");
 $commentsfrom=mysql_result($resultfrom,0,"comments");
 $moduleidfrom=mysql_result($resultfrom, 0, "module_id");
+$titlefrom=mysql_result($resultfrom, 0, "title");
 
 $resultto=mysql_query($queryto);
 $scriptto  =mysql_result($resultto,0,"code");
 $commentsto=mysql_result($resultto,0,"comments");
 $moduleidto=mysql_result($resultto, 0, "module_id");
+$titleto=mysql_result($resultto, 0, "title");
 
 // generating sessionid
 $c = uniqid (rand (),true);
@@ -129,6 +131,16 @@ $fh = fopen($commentstofilename, 'w');
 fwrite($fh, "$commentsto");
 fclose($fh);
 
+if ($titlefrom!=$titleto) {
+  echo "<h3>Title:</h3>";
+  echo "<pre>";
+  echo "-$titlefrom\n";
+  echo "+$titleto";
+  echo "</pre>";
+  echo "<hr>";
+  $differences++;
+}
+
 if ($moduleidfrom!=$moduleidto) {
   $querymod ="SELECT * from tbmodule WHERE id=$moduleidfrom";
   $resultmod=mysql_query($querymod);
@@ -137,7 +149,6 @@ if ($moduleidfrom!=$moduleidto) {
   $querymod ="SELECT * from tbmodule WHERE id=$moduleidto";
   $resultmod =mysql_query($querymod);
   $moduleto=mysql_result($resultmod,0,"name");
-  
   
   echo "<h3>Modules:</h3>";
   echo "<pre>";
