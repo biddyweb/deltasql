@@ -2,6 +2,7 @@
 include("conf/config.inc.php");
 
 $excltag=$_POST['frmexcltag'];
+$projectid=$_POST['frmprojectid'];
 
 require_once('utils/phptreegraphext/classes/Node.php');
 require_once('utils/phptreegraphext/classes/Tree.php');
@@ -12,8 +13,8 @@ $objTree = new GDRenderer(30, 10, 30, 50, 40);
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-if ($excltag==1) $clause="WHERE istag=0"; else $clause="";
-$query="SELECT * from tbbranch $clause ORDER BY id ASC"; 
+if ($excltag==1) $clause="AND istag=0"; else $clause="";
+$query="SELECT * from tbbranch WHERE ((project_id=$projectid) OR (project_id IS NULL)) $clause ORDER BY id ASC;"; 
 $result=mysql_query($query);  
 if ($result=="") $num=0; else $num=mysql_numrows($result); 
 
@@ -23,8 +24,14 @@ while ($i<$num) {
   $name=mysql_result($result,$i,"name");
   $sourcebranchid=mysql_result($result,$i,"sourcebranch_id");
   $versionnr=mysql_result($result,$i,"versionnr");
+  $visible=mysql_result($result,$i,"visible");
+  $istag=mysql_result($result,$i,"istag");
   
-  $objTree->add($id, $sourcebranchid, $name, $versionnr, strlen($name)*10, 30);
+  $disver=$versionnr;
+  if ($istag==1) $disver="$disver TAG";
+  if ($visible==0) $disver="$disver +h";
+  
+  $objTree->add($id, $sourcebranchid, $name, $disver, strlen($name)*9, 30);
   
   $i++;
 }

@@ -1,3 +1,10 @@
+1.3.5 Release Notes
+New feature: ability to diff scripts stored in history.
+New feature: ability to graph development tree for a project in "List Branches and Tags" page.
+
+8.3.2011 git
+- Choosing project in order to display its graph in list_branches.php
+
 7.3.2011 git
 - added ability to show difference between revisions (title, modules, branches) in History
 - added option to exclude tags from graph of dev tree

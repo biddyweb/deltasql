@@ -105,16 +105,32 @@ echo "</td>";
 
 $i++; 
 }
-
-mysql_close();
 ?>
 </table>
 <br>
 <hr>
 <form action="get_dev_tree_graph.php" method="post">
-<input name="frmexcltag" type="checkbox" value="1">Exclude tags<br> 
+<?
+// plotting project combobox
+ echo "Project: <select NAME=\"frmprojectid\">";
+ $query="SELECT * FROM tbproject ORDER BY name";
+ $result=mysql_query($query);
+ $num=mysql_numrows($result); 
+ $i=0;
+ while ($i<$num) { 
+   $projectid=mysql_result($result,$i,"id");
+   $projectname=mysql_result($result,$i,"name");
+   echo "<option ";
+   echo "VALUE=\"$projectid\">$projectname";
+   $i++;
+ }
+ echo "</select> |";
+ mysql_close();
+?>
+<input name="frmexcltag" type="checkbox" value="1">Exclude tags | 
 <input type="Submit" value="Get tree graph">
 </form>
+<hr>
 <a href="index.php">Back to main menu</a>
 </body>
 </html>
