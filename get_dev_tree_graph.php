@@ -31,7 +31,11 @@ while ($i<$num) {
   if ($istag==1) $disver="$disver TAG";
   if ($visible==0) $disver="$disver +h";
   
-  $objTree->add($id, $sourcebranchid, $name, $disver, strlen($name)*9, 30);
+  $disverlen=strlen($disver);
+  $namelen=strlen($name);
+  if ($disverlen>$namelen) $maxlen=$disverlen; else $maxlen=$namelen;
+  
+  $objTree->add($id, $sourcebranchid, $name, $disver, $maxlen*9, 30);
   
   $i++;
 }
