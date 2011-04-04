@@ -6,12 +6,12 @@ function starts_with($Haystack, $Needle){
 
 function print_block($block) {
 	if (starts_with($block, "+")) {
-      echo "<tr BGCOLOR=\"#33FF00\"><pre>$block</pre></tr>";
+      echo "<tr BGCOLOR=\"#33FF00\"><pre>$block</pre></tr>\n";
 	} else
     if (starts_with($block, "-")) {
-	  echo "<tr BGCOLOR=\"#FDD017\"><pre>$block</pre></tr>";		
+	  echo "<tr BGCOLOR=\"#FDD017\"><pre>$block</pre></tr>\n";		
 	} else {
-	  echo "<tr><pre>$block</pre></tr>";
+	  echo "<tr><pre>$block</pre></tr>\n";
 	}
 }
 
@@ -50,7 +50,7 @@ function color_diff($difftext) {
 	  }	
 	}	
  }  
- print_block($block);
+ if ($block!="") print_block($block);
  echo "</table>\n";
 }
 ?>
