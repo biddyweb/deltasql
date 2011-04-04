@@ -11,6 +11,7 @@ require_once 'Text/Diff/Renderer.php';
 require_once 'Text/Diff/Renderer/unified.php';
 
 include("head.inc.php");
+include("diff.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
 
@@ -58,7 +59,7 @@ while ($i<$numsb) {
 	   $queryname="SELECT * FROM tbbranch where id=$branchid";
 	   $resultname=mysql_query($queryname);
 	   $branchname=mysql_result($resultname,0,"name");
-	   $branchesstring = "$branchesstring -$branchname";
+	   $branchesstring = "$branchesstring\n-$branchname";
   }
   $i++;
 }
@@ -78,16 +79,14 @@ while ($i<$numsb) {
 	   $queryname="SELECT * FROM tbbranch where id=$branchid";
 	   $resultname=mysql_query($queryname);
 	   $branchname=mysql_result($resultname,0,"name");
-	   $branchesstring = "$branchesstring +$branchname";
+	   $branchesstring = "$branchesstring\n+$branchname";
   }
   $i++;
 }
 
 if ($branchesdifferences>0) {
   echo "<h3>Branches:</h3>";
-  echo "<pre>";
-  echo "$branchesstring\n";
-  echo "</pre>";
+  color_diff("$branchesstring\n");
   echo "<hr>";
 }
 
@@ -133,10 +132,7 @@ fclose($fh);
 
 if ($titlefrom!=$titleto) {
   echo "<h3>Title:</h3>";
-  echo "<pre>";
-  echo "-$titlefrom\n";
-  echo "+$titleto";
-  echo "</pre>";
+  color_diff("-$titlefrom\n+$titleto");
   echo "<hr>";
   $differences++;
 }
@@ -151,11 +147,7 @@ if ($moduleidfrom!=$moduleidto) {
   $moduleto=mysql_result($resultmod,0,"name");
   
   echo "<h3>Modules:</h3>";
-  echo "<pre>";
-  echo "-$modulefrom\n";
-  echo "+$moduleto";
-  echo "</pre>";
-  echo "<hr>";
+  color_diff("-$modulefrom\n+$moduleto");
   $differences++;
 }
 
@@ -167,9 +159,7 @@ $renderer = new Text_Diff_Renderer_unified();
 $difftext = $renderer->render($diff); 
 if ($difftext!="") {
    echo "<h3>Script:</h3>";
-   echo "<pre>";
-   echo $difftext;
-   echo "</pre>";
+   color_diff($difftext);
    echo "<hr>";
    $differences++;
 }
@@ -181,9 +171,7 @@ $difftext = $renderer->render($diff);
 
 if ($difftext!="") {
    echo "<h3>Comments:</h3>";
-   echo "<pre>";
-   echo $difftext;
-   echo "</pre>";
+   color_diff($difftext);
    echo "<hr>";
    $differences++;
 }
