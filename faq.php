@@ -246,7 +246,7 @@ You can find the script in the <a href="list_projects.php">List Projects</a> pag
 The query is:
 </p>
 <pre>
-select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNCHRONIZE);
+select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);
 </pre>
 <p> The most important column is <tt>versionnr</tt> that contains the last version of the executed script.
 The interesting columns are <tt>projectname</tt> with the project name and 

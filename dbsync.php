@@ -32,7 +32,7 @@ project list</a> and press on the 'Table' link, this will generate a script you 
 <p>2) You should run the following query into the database instance you would like
 to synchronize, and then fill the form below with the query's results as explained in the italic comments</p>
 <pre>
-select * from TBSYNCHRONIZE where versionnr = (select max(versionnr) from TBSYNCHRONIZE);
+select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);
 </pre>
 <p>3) Please enter the synchronization details you retrieved from the query:</p>
 
