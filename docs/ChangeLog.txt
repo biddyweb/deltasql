@@ -1,3 +1,7 @@
+14.4.2011
+- created an introductory movie on deltasql as screencast
+- added a link to the tutorial on the main page of deltasql
+
 4.4.2011 git
 - added colored diff
 
