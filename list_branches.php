@@ -88,9 +88,6 @@ if (($rights>=2) && ($name!="HEAD")) {
       echo " <a href=\"change_branch_visibility.php?id=$id&show=0\">Hide</a> ";
     }
     echo "<a href=\"edit_branch.php?id=$id\">Edit</a> ";
-    if ($istag==0) {
-	   echo "<a href=\"branch_again.php?id=$id&tag=0\">Branch</a> ";
-	}   
     if ($rights==3) {
 	    $encoded_name=urlencode($name);
         echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name&tag=$istag\">Delete</a> ";
@@ -98,6 +95,7 @@ if (($rights>=2) && ($name!="HEAD")) {
 }
 if ($rights>=2) {
    if ($istag==0) {
+	   echo "<a href=\"branch_again.php?id=$id&tag=0\">Branch</a> ";
 	   echo "<a href=\"branch_again.php?id=$id&tag=1\">Tag</a> ";
    }	   
 }

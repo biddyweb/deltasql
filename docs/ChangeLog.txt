@@ -1,3 +1,7 @@
+19.4.2011
+- created three additional movies on branching and tagging
+- ability to branch from HEAD in "List Branches and tags" added
+
 14.4.2011
 - created an introductory movie on deltasql as screencast
 - added a link to the tutorial on the main page of deltasql
