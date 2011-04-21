@@ -21,9 +21,12 @@ schemas.</p>
 
 <h3>Quick Links</h3>
 <ul>
-<li><a 
-href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/">Tutorials 
-(movies)</a></li>
+<li>Tutorial movies (<a 
+href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/" 
+target=_blank >download 
+</a>/<a href="http://www.youtube.com/watch?v=y1G1zXj45dQ" 
+target=_blank>on 
+youtube</a>)</li>
 <li><a href="http://www.deltasql.org/wiki/">Wiki</a></li>
 <li><a href="http://www.deltasql.org/deltasql/manual.php">Manual</a></li>
 <li><a href="http://www.deltasql.org/deltasql/faq.php">FAQ</a></li>
@@ -71,8 +74,9 @@ integration</a> on Linux.</li>
 iGoogle homepage.</li>
 <li>Easy to install, like a webforum, as deltasql server runs on 
 Apache/PHP backed by a mySQL database.</li>
-<li>There is a <a href="deltasql/manual.php">manual</a> and a <a 
-href="deltasql/faq.php">list of frequently asked questions</a>.</li>
+<li>There is a <a href="deltasql/manual.php">manual</a>,  a <a 
+href="deltasql/faq.php">list of frequently asked questions</a> and a set 
+of tutorial movies explaining how it works.</li>
 <li>It is used productively by companies in Switzerland and India 
 and is popular in Japan and South Korea. In some companies it manages 
 more than 
