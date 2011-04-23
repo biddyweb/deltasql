@@ -25,6 +25,7 @@ $query2="SELECT * from tbscript where id=$scriptid";
 $result2=mysql_query($query2);
 $upuser=mysql_result($result2,0,"update_user");          
 $updt=mysql_result($result2,0,"update_dt");
+$versionnr=mysql_result($result2,0,"versionnr");
 $script=htmlentities(mysql_result($result2,0,"code"));
 $comments=htmlentities(mysql_result($result2,0,"comments"));
 
@@ -51,6 +52,7 @@ echo "
 <th>description</th>
 <th>update user</th>
 <th>create dt</th>
+<th>versionnr</th>
 <th>actions</th>
 <th>script</th>
 <th>comments</th>
@@ -61,6 +63,7 @@ echo "
 <td><b>Latest revision</b></td>
 <td>$upuser</td>
 <td>$updt</td>
+<td>$versionnr</td>
 <td><a href=\"show_script.php?id=$scriptid\">Show</a></td>
 <td>$script</td>
 <td>$comments</td>
@@ -73,6 +76,7 @@ while ($i<$num) {
 $id=mysql_result($result,$i,"id");
 $update_user=mysql_result($result,$i,"update_user");          
 $create_dt=mysql_result($result,$i,"create_dt");
+$versionnr=mysql_result($result,$i,"versionnr");
 $script=htmlentities(mysql_result($result,$i,"code"));
 $comments=htmlentities(mysql_result($result,$i,"comments"));
 
@@ -100,6 +104,7 @@ $diffcells
 <td>$description</td>
 <td>$update_user</td>
 <td>$create_dt</td>
+<td>$versionnr</td>
 <td><a href=\"show_script.php?id=$id&history=1\">Show</a></td>
 <td>$script</td>
 <td>$comments</td>

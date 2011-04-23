@@ -125,8 +125,7 @@ Comments:<br>
 <br>
 <?php
 echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\" />";
-// Feature dropped
-// echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Gives latest version number to the edited script (use with care!)";
+echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest version number to the edited script (use with care!)";
 ?>
 <br>
 <br>

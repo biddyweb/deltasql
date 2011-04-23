@@ -98,12 +98,15 @@ $scriptfrom  =mysql_result($resultfrom,0,"code");
 $commentsfrom=mysql_result($resultfrom,0,"comments");
 $moduleidfrom=mysql_result($resultfrom, 0, "module_id");
 $titlefrom=mysql_result($resultfrom, 0, "title");
+$versionfrom=mysql_result($resultfrom, 0, "versionnr");
 
 $resultto=mysql_query($queryto);
 $scriptto  =mysql_result($resultto,0,"code");
 $commentsto=mysql_result($resultto,0,"comments");
 $moduleidto=mysql_result($resultto, 0, "module_id");
 $titleto=mysql_result($resultto, 0, "title");
+$versionto=mysql_result($resultto, 0, "versionnr");
+
 
 // generating sessionid
 $c = uniqid (rand (),true);
@@ -129,6 +132,13 @@ fclose($fh);
 $fh = fopen($commentstofilename, 'w');
 fwrite($fh, "$commentsto");
 fclose($fh);
+
+if ($versionfrom!=$versionto) {
+  echo "<h3>Version number:</h3>";
+  color_diff("-$versionfrom\n+$versionto");
+  echo "<hr>";
+  $differences++;
+}
 
 if ($titlefrom!=$titleto) {
   echo "<h3>Title:</h3>";

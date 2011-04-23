@@ -1,9 +1,23 @@
+23.4.2011
+- ability to increase version number to latest when editing a script,
+ difference in versionnumber is shown in getdiff of history
+
+22.4.2011
+- three more tutorial movies:
+050_deltasql_user_management_7min.avi
+060_deltasql_editing_scripts_3min.avi
+070_deltasql_how_verification_step_works_5min.avi
+
 19.4.2011
 - created three additional movies on branching and tagging
+020_deltasql_branching_and_transforming_schema_to_production_10min.avi
+030_deltasql_transforming_schema_from_production_back_to_development_7min.avi
+040_deltasql_tagging_7min.avi
 - ability to branch from HEAD in "List Branches and tags" added
 
 14.4.2011
-- created an introductory movie on deltasql as screencast
+- created an introductory movie on deltasql as screencast, named
+ 010_deltasql_how_synchronization_works_14min.avi
 - added a link to the tutorial on the main page of deltasql
 
 4.4.2011 git
