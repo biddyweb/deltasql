@@ -1,8 +1,7 @@
 <?php
 include("utils/constants.inc.php");
 include("conf/config.inc.php");
-echo "
-<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
+echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
 <rss version=\"0.91\">
 	<channel>
 		<title>deltasql - latest scripts</title>
@@ -46,20 +45,20 @@ $userquery="SELECT * FROM tbuser where id=$scriptuserid";
 $userresult=mysql_query($userquery);
 $username=mysql_result($userresult,0,"username");
 
-echo "      <item>";
-echo "			<title>[$modulename] $title</title>";
-echo "			<link>$dns_name/show_script.php?id=$id</link>";
-echo "			<pubDate>$create_dt 2011-04-27 00:00:00</pubDate>";
-echo "			<description>
+echo "      <item>\n";
+echo "			<title>[$modulename] $title</title>\n";
+echo "			<link>$dns_name/show_script.php?id=$id</link>\n";
+echo "			<pubDate>$create_dt</pubDate>\n";
+echo "			<description>\n
                 $code\n";
 if ($comments!="") {
-echo "          /*
+echo "          /*\n
                $comments\n
-			   */";    
+			   */\n";    
 }
-echo "           </description>";
-echo "			<author>$username</author>";
-echo "		</item>";
+echo "           </description>\n";
+echo "			<author>$username</author>\n";
+echo "		</item>\n";
 
 $i++;
 }
@@ -68,7 +67,7 @@ mysql_close();
 
 echo "
     </channel>
-</rss>	
+</rss>
 ";
 
 
