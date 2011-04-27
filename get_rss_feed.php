@@ -6,7 +6,7 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
 	<channel>
 		<title>deltasql - latest scripts</title>
 		<link>$dns_name</link>
-		<description>The latest SQL scripts are shown on this deltasql RSS feed</description>
+		<description>This feed shows the latest SQL scripts published on deltasql :-)</description>
 		<language>en-en</language>
 ";
 
@@ -50,7 +50,7 @@ echo "			<title>[$modulename] $title</title>\n";
 echo "			<link>$dns_name/show_script.php?id=$id</link>\n";
 echo "			<pubDate>$create_dt</pubDate>\n";
 echo "			<description>\n
-                $code\n";
+                $script\n";
 if ($comments!="") {
 echo "          /*\n
                $comments\n
