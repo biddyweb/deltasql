@@ -1,3 +1,6 @@
+27.4.2011
+- added RSS feed to deltasql showing latest 20 scripts
+
 23.4.2011
 - ability to increase version number to latest when editing a script,
  difference in versionnumber is shown in getdiff of history

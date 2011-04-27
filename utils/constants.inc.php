@@ -5,12 +5,16 @@ $dbredactor_version="1.3.6";
 $antclient_version="1.3.6";
 $bashclient_version="1.3.6";
 
-//number of scripts on a page
+// number of scripts on a page
 $scriptsperpage=15;
+// number of scripts on RSS feed
+$scriptsonrssfeed=20;
+
+// number of scripts on
 // wide of textarea field in chars in submit_script.php and edit_script.php
 $wide_textarea_chars=140;
 
-//administrator login
+// administrator login for test instance
 $admin_user="admin";
 $admin_pwd="testdbsync";
 
