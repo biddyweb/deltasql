@@ -40,11 +40,11 @@ $isapackage=mysql_result($result,$i,"isapackage");
 
 $modulequery="SELECT * FROM tbmodule where id=$moduleid";
 $moduleresult=mysql_query($modulequery);
-$modulename=mysql_result($result,0,"name");
+$modulename=mysql_result($moduleresult,0,"name");
 
 $userquery="SELECT * FROM tbuser where id=$scriptuserid";
-$userresult=mysql_query($modulequery);
-$username=mysql_result($result,0,"username");
+$userresult=mysql_query($userquery);
+$username=mysql_result($userresult,0,"username");
 
 echo "      <item>";
 echo "			<title>[$modulename] $title</title>";
