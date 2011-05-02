@@ -1,5 +1,6 @@
 <?php
 include("utils/constants.inc.php");
+if (!file_exists($configurationfile)) die("Please setup deltasql!");
 include("conf/config.inc.php");
 echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
 <rss version=\"0.91\">
