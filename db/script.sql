@@ -36,6 +36,7 @@ CREATE TABLE `tbbranch` (
 ALTER TABLE `tbbranch` ADD `sourcebranch` VARCHAR( 40 ) NULL;
 ALTER TABLE `tbbranch` ADD `sourcebranch_id` int(11) default NULL;
 ALTER TABLE `tbbranch` ADD `istag` tinyint(1) NOT NULL default '0';
+ALTER TABLE `tbbranch` CHANGE `create_dt` `create_dt` DATETIME NOT NULL; 
 
 INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects', 0, '2007-10-31', 1, '', 0, '');
 
