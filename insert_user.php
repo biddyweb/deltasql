@@ -48,7 +48,7 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 $hashpwd=salt_and_hash($frm_password, retrieve_salt());
-$query="INSERT INTO tbuser (id, username, password, passwhash, first,last,email,rights,encrypted) VALUES('','$frm_username','','$hashpwd','$first','$last','$email',$rights,1);";
+$query="INSERT INTO tbuser (id, username, password, passwhash, first,last,email,rights,encrypted) VALUES('','$frm_username','****','$hashpwd','$first','$last','$email',$rights,1);";
 
 
 mysql_query($query);

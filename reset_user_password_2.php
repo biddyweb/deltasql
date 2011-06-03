@@ -22,7 +22,7 @@
   @mysql_select_db($database) or die("Unable to select database");
   $hash_newpwd=salt_and_hash($newpwd, retrieve_salt());
   
-  $query2="UPDATE tbuser SET password='',passwhash='$hash_newpwd',encrypted=1 WHERE id=$id"; 
+  $query2="UPDATE tbuser SET password='****',passwhash='$hash_newpwd',encrypted=1 WHERE id=$id"; 
   $result2=mysql_query($query2); 
   mysql_close();
  

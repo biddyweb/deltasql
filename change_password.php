@@ -62,6 +62,7 @@ $frm_oldpwd=$_POST['oldpwd'];
 $frm_newpwd=$_POST['newpwd'];
 $frm_confirmnewpwd=$_POST['confirmnewpwd'];
 if ($frm_oldpwd=="") exit;
+if ($frm_newpwd=="") die("<b>The new password can not be empty!</b>");
 if ($frm_newpwd!=$frm_confirmnewpwd)
   die("<b>The new passwords do not match!</b>");
 
@@ -91,7 +92,7 @@ if ($nums==0) {
 }
 
  
-$query2="UPDATE tbuser SET password='',passwhash='$hash_newpwd',encrypted=1 WHERE id=$userid"; 
+$query2="UPDATE tbuser SET password='****',passwhash='$hash_newpwd',encrypted=1 WHERE id=$userid"; 
 $result2=mysql_query($query2); 
 
 mysql_close();
