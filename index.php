@@ -31,13 +31,29 @@
 <p>
 <?php
 if (file_exists($configurationfile)) {
+    // showing date and hour of latest changes
     echo "Last Update: ";
     mysql_connect($dbserver, $username, $password);
     @mysql_select_db($database) or die("Unable to select database");
-    $query3="SELECT * FROM `tbbranch` where name='HEAD'";
+    $query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
     $result3=mysql_query($query3);
     $create_dt=mysql_result($result3,0,'create_dt');
     echo "<b>$create_dt</b>";
+	
+	// checking if the database schema is uptodate
+	$query4="SELECT tagname FROM `tbsynchronize` where versionnr=(select max(versionnr) FROM tbsynchronize);";
+    $result4=mysql_query($query4);
+    $tagname=mysql_result($result4,0,'tagname');
+	
+	if ($tagname!="TAG_deltasql_$deltasql_version") {
+	      echo "<p><b><font color=\"red\">Deltasql database schema needs to be upgraded!</b></font></p>";
+		  echo "<p>Please visit the <a href=\"http://www.deltasql.org/deltasql/dbsync.php\">synchronization page on deltasql.org</a>, ";
+		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$deltasql_version</b>, ";
+		  echo " and hit the synchronization button at the bottom. Then execute the generated script into the deltasql schema to solve this issue. </p>";
+		  mysql_close();
+		  die("<p><b><font color=\"red\">FATAL ERROR: datamodel mismatch for database '$database' on host '$dbserver'.</font></b></p>");	
+	}
+	
     mysql_close();
  } else {
     echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
