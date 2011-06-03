@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>deltasql - Login Check</title>
@@ -17,13 +16,13 @@ if ($name == "") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
+$hash_pwd=salt_and_hash($pwd, retrieve_salt());
 $query="SELECT * from tbuser WHERE username='$name' AND password='$pwd' AND encrypted=0 LIMIT 1"; 
 $result=mysql_query($query); 
 $nums=mysql_numrows($result);
 
+$unencryptedfound=0;
 if ($nums==0) {
-
-  $hash_pwd=salt_and_hash($pwd, retrieve_salt());
   $query="SELECT * from tbuser WHERE username='$name' AND passwhash='$hash_pwd' AND encrypted=1 LIMIT 1"; 
   $result=mysql_query($query); 
   $nums=mysql_numrows($result);
@@ -32,10 +31,16 @@ if ($nums==0) {
      mysql_close();
      die("<b>The user does not exist or the password is wrong.</b>");
   }	 
+} else {
+  $unencryptedfound=1;
 }
 
  $rights=mysql_result($result, 0, "rights");
  $userid=mysql_result($result, 0, "id");
+ if ($unencryptedfound==1) {
+     $query2="UPDATE tbuser SET password='****',passwhash='$hash_pwd',encrypted=1 WHERE id=$userid"; 
+     $result2=mysql_query($query2); 
+ }
  mysql_close();
 
  $_SESSION['username'] = $name;

@@ -47,6 +47,7 @@ include("utils/constants.inc.php");
 <li><a href="#scripttitle">All scripts are titled "db update". Where can I change this default?</a></li>
 <li><a href="#colors">What do the colored rows mean in the 'List scripts' view and on the Google Gadget?</a></li>
 <li><a href="#phonehome">What is the phone home functionality of deltasql?</a></li>
+<li><a href="#lost">I lost the admin password, what can I do to restore access to deltasql?</a></li>
 <li><a href="#question">I have another question, where to submit it?</a></li>
 </ul>
 
@@ -426,12 +427,27 @@ deltasql.org will not use the collected data to mail advertisement or to harm an
  in <tt>conf/config.inc.php</tt>. 
 </p>
 
+<h3><a name="lost"></a>I lost the admin password. What can I do to restore access to deltasql?</h3>
+<p>
+If you lost the admin password (or if you messed up with the hash salt in TBPARAMETER), you can execute the following
+ script into the deltasql database schema:
+</p>
+<pre>
+UPDATE tbuser SET password='log4admin',encrypted=0,passwhash='' where username='admin';
+</pre>
+<p>
+You can then login in deltasql with username <b>admin</b> and password <b>log4admin</b>. After that, you should change the password again
+ to something more secure.
+</p>
+<p>
+In case you messed up with the salt in TBPARAMETER, you should reset all passwords for the other users as well. A password reset
+ can be issued in the <a href="list_users.php">List Users</a> page.
+</p>
+
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>
 You can submit your question to the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>.
 </p>
-
-
 
 
 <a href="index.php">Back to Main Menu</a>
