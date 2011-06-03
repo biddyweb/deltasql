@@ -8,6 +8,13 @@ Password management:
 - automatically encrypting old plain passwords at login
 - added FAQ question on how to reset admin password
 
+Detecting updates:
+- if deltasql is updated, but the underlying schema is not correct, deltasql
+ redirects to the synchronization page on www.deltasql.org
+
+Other:
+- showing not only day but also hour of latest changes in main page
+
 1.3.6 Release Notes 2.5.2011
 
 With this release, a set of 7 tutorial videos explaining how deltasql works 

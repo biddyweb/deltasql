@@ -131,6 +131,10 @@ $hashpwd=salt_and_hash("$deltasqladminpassword", "$salt");
 $query4="UPDATE tbuser SET password='',passwhash='$hashpwd',encrypted=1 WHERE username='admin';";
 mysql_query($query4);
 
+// set TBSYNCHRONIZE to correct tag, used to detect updates
+$query4="UPDATE tbsynchronize SET tagname='TAG_deltasql_$deltasql_version' WHERE versionnr=0;";
+mysql_query($query4);
+
 mysql_close();
 echo "mySQL schema created. <br>";
 }
