@@ -218,7 +218,10 @@ CREATE TABLE `tbuser` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
 
-INSERT INTO `tbuser` VALUES (1, 'admin', 'testdbsync', 'Main', 'Administrator', 'admin@deltasql', 3);
+ALTER TABLE `tbuser` ADD `encrypted` TINYINT( 1 ) NOT NULL DEFAULT '0',
+ADD `passwhash` VARCHAR( 40 ) NULL ;
+
+INSERT INTO `tbuser` VALUES (1, 'admin', 'testdbsync', 'Main', 'Administrator', 'admin@deltasql', 3,0,'');
 
 -- 
 -- Table structure for table `tbphonetranscript`
