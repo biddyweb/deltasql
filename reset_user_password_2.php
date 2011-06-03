@@ -1,0 +1,33 @@
+<?php session_start(); ?>
+<html>
+<head>
+<title>deltasql - Reset User Password</title>
+<link rel="stylesheet" type="text/css" href="deltasql.css">
+</head>
+<body>
+
+<?php
+  include("head.inc.php");
+  include("conf/config.inc.php");
+  include("utils/utils.inc.php");
+  show_user_level();
+  $myrights = $_SESSION["rights"];
+  if ($myrights<3) die("<b>Not enough rights to reset password!</b>"); 
+
+  $id=$_GET['id'];
+  $name=$_GET['name'];
+  $newpwd="delta4$name";
+  $hash_newpwd=md5($newpwd);
+  
+  mysql_connect($dbserver, $username, $password);
+  @mysql_select_db($database) or die("Unable to select database");
+  $query2="UPDATE tbuser SET password='',passwhash='$hash_newpwd',encrypted=1 WHERE id=$id"; 
+  $result2=mysql_query($query2); 
+  mysql_close();
+ 
+  echo "<p>Password for user <b>$name</b> reset to <b>$newpwd</b></p>";
+  echo "<a href=\"list_users.php\">Back to List Users</a>";
+?>
+
+</body>
+</html>

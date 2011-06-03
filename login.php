@@ -40,16 +40,8 @@ include("conf/config.inc.php");
 </form>
 
 <?php
-if ($test_system) {
-	mysql_connect($dbserver, $username, $password);
-	@mysql_select_db($database) or die("Unable to select database");
-
-	$query="SELECT * from tbuser where username='$admin_user'";
-	$result=mysql_query($query);
-	$admin_pwd=mysql_result($result,0,"password");
-
-	echo "<p>This is a test system. Login with user <b>$admin_user</b> with password <b>$admin_pwd</b> to test all functionality.</p>";
-	mysql_close();
+if ($dns_name=="http://www.deltasql.org/deltasql") {
+	echo "<p>This is a test system. Login with user <b>admin</b> with password <b>testdbsync</b> to test all functionality.</p>";
 }
 ?>
 <a href="index.php">Back to main page</a>
