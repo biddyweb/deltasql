@@ -12,7 +12,7 @@ include("head.inc.php");
 <form action="insert_user.php" method="post">
 <table>
 <tr><td>Username:</td><td> <input type="text" name="username"></td></tr>
-<tr><td>Password:</td><td> <input type="text" name="password"></td></tr>
+<tr><td>Password:</td><td> <input type="password" name="password"></td></tr>
 <tr><td>First:</td><td> <input type="text" name="first"></td></tr>
 <tr><td>Last: </td><td><input type="text" name="last"></td></tr>
 <tr><td>Email: </td><td> <input type="text" name="email"></td></tr>
@@ -46,7 +46,8 @@ if ($frm_username=="") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="INSERT INTO tbuser (id, username, password,first,last,email,rights) VALUES('','$frm_username','$frm_password','$first','$last','$email',$rights);";
+$hashpwd=md5($frm_password);
+$query="INSERT INTO tbuser (id, username, password, passwhash, first,last,email,rights,encrypted) VALUES('','$frm_username','','$hashpwd','$first','$last','$email',$rights,1);";
 
 
 mysql_query($query);

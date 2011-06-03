@@ -66,22 +66,31 @@ if ($frm_newpwd!=$frm_confirmnewpwd)
   die("<b>The new passwords do not match!</b>");
 
 $userid = $_SESSION["userid"];
+$hash_oldpwd = md5($frm_oldpwd);
+$hash_newpwd = md5($frm_newpwd);
   
   // same test as in the login process first
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="SELECT * from tbuser WHERE id=$userid AND password='$frm_oldpwd' LIMIT 1"; 
+$query="SELECT * from tbuser WHERE id=$userid AND password='$frm_oldpwd' AND encrypted=0 LIMIT 1"; 
 $result=mysql_query($query); 
 $nums=mysql_numrows($result);
 
 if ($nums==0) {
-  mysql_close();
-  die("<b>The old password is wrong. Could not change password.</b>");
+  
+  $query3="SELECT * from tbuser WHERE id=$userid AND passwhash='$hash_oldpwd' AND encrypted=1 LIMIT 1"; 
+  $result3=mysql_query($query3); 
+  $nums3=mysql_numrows($result3);
+  
+  if ($nums3==0) {
+     mysql_close();
+     die("<b>The old password is wrong. Could not change password.</b>");
+  }	 
 }
 else {
  
- $query2="UPDATE tbuser SET password='$frm_newpwd' WHERE id=$userid"; 
+ $query2="UPDATE tbuser SET password='',passwhash='$hash_newpwd',encrypted=1 WHERE id=$userid"; 
  $result2=mysql_query($query2); 
 
  mysql_close();

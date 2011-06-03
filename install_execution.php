@@ -121,7 +121,8 @@ if ($testgroup=="testsystemyes") {
 }
 
 // update admin password
-$query4="UPDATE tbuser SET password='$deltasqladminpassword' WHERE username='admin';";
+$hashpwd=md5($deltasqladminpassword);
+$query4="UPDATE tbuser SET password='',passwhash='$hashpwd',encrypted=1 WHERE username='admin';";
 mysql_query($query4);
 
 mysql_close();

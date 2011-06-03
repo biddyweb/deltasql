@@ -1,5 +1,7 @@
 3.6.2011
 - changed table tbuser to support encrypted passwords
+- changed login method and Change Password window to store encrypted passwords
+- keeping backward compatibility to old authentication method to easy upgrade of deltasql
 
 1.3.6 Release Notes 2.5.2011
 
