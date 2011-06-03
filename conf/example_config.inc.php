@@ -12,8 +12,7 @@ $dbserver = "localhost";
 // on which DNS name the Apache deltasql server is published (no SLASH at the end)
 $dns_name="http://127.0.0.1/deltasql";
 
-$test_system=true; // set to false in production
-                   // else it will display admin password on login.
+$test_system=true; 
 
 // default database type for schemas managed by deltasql
 $dbdefault="Oracle";               

@@ -180,8 +180,6 @@ fwrite($fh, "
 
 
 \$test_system=$testsystem; 
-// set to false in production
-// else it will display admin password on login.
 
 // default script title when submitting a new script
 \$default_script_title=\"db update\";
