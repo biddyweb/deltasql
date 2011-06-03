@@ -86,7 +86,7 @@ CREATE TABLE `tbparameter` (
 
 INSERT INTO `tbparameter` VALUES (1, 'GLOBAL', 'VERSION', '6');
 INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
-
+INSERT INTO `tbparameter` VALUES ('', 'SECURITY', 'PWD_HASH_SALT', 'CHANGEMETOANYRANDOMSTRING');
 
 -- 
 -- Table structure for table `tbproject`

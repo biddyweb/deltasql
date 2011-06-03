@@ -43,10 +43,11 @@ $last=$_POST['last'];
 $email=$_POST['email'];
 $rights=$_POST['rights'];
 if ($frm_username=="") exit;
+if ($frm_password=="") die("<b>The password can not be empty!</b>");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$hashpwd=md5($frm_password);
+$hashpwd=salt_and_hash($frm_password, retrieve_salt());
 $query="INSERT INTO tbuser (id, username, password, passwhash, first,last,email,rights,encrypted) VALUES('','$frm_username','','$hashpwd','$first','$last','$email',$rights,1);";
 
 

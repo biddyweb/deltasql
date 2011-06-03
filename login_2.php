@@ -23,7 +23,7 @@ $nums=mysql_numrows($result);
 
 if ($nums==0) {
 
-  $hash_pwd=md5($pwd);
+  $hash_pwd=salt_and_hash($pwd, retrieve_salt());
   $query="SELECT * from tbuser WHERE username='$name' AND passwhash='$hash_pwd' AND encrypted=1 LIMIT 1"; 
   $result=mysql_query($query); 
   $nums=mysql_numrows($result);

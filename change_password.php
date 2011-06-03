@@ -66,12 +66,13 @@ if ($frm_newpwd!=$frm_confirmnewpwd)
   die("<b>The new passwords do not match!</b>");
 
 $userid = $_SESSION["userid"];
-$hash_oldpwd = md5($frm_oldpwd);
-$hash_newpwd = md5($frm_newpwd);
-  
+ 
   // same test as in the login process first
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+$salt = retrieve_salt();
+$hash_oldpwd = salt_and_hash($frm_oldpwd, $salt);
+$hash_newpwd = salt_and_hash($frm_newpwd, $salt);
 
 $query="SELECT * from tbuser WHERE id=$userid AND password='$frm_oldpwd' AND encrypted=0 LIMIT 1"; 
 $result=mysql_query($query); 
@@ -88,18 +89,15 @@ if ($nums==0) {
      die("<b>The old password is wrong. Could not change password.</b>");
   }	 
 }
-else {
- 
- $query2="UPDATE tbuser SET password='',passwhash='$hash_newpwd',encrypted=1 WHERE id=$userid"; 
- $result2=mysql_query($query2); 
 
- mysql_close();
- echo ("Password changed!");
  
- $_SESSION['password'] = $frm_newpwd;
- js_redirect("index.php");
-}
+$query2="UPDATE tbuser SET password='',passwhash='$hash_newpwd',encrypted=1 WHERE id=$userid"; 
+$result2=mysql_query($query2); 
 
+mysql_close();
+echo ("Password changed!");
+ 
+js_redirect("index.php");
 
 ?>
 <a href="index.php">Back to main page</a>

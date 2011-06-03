@@ -28,6 +28,17 @@ function retrieve_head_id() {
   return $headid;
 }
 
+function retrieve_salt() {
+  $query="SELECT * from tbparameter where paramtype='SECURITY' and paramname='PWD_HASH_SALT';"; 
+  $result=mysql_query($query);  
+  $salt=mysql_result($result,0,"paramvalue");
+  return "$salt";
+}
+
+function salt_and_hash($pwd, $salt) {  
+  return md5("$pwd$salt");
+}
+
 function printXmlScript($script, $comment, $module, $versionnr, $type, $date) {
     echo "  <script>\n";
     echo "      <scripttype>$type</scripttype>\n";
