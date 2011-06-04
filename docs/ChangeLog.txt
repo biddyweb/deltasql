@@ -1,5 +1,6 @@
 4.6.2011 git
-Improving detection of updated datamodel for deltasql itself
+Improving detection of updated datamodel for deltasql itself.
+Improving error messages.
 
 3.6.2011 git
 Password management:

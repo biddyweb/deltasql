@@ -132,7 +132,7 @@ $query4="UPDATE tbuser SET password='',passwhash='$hashpwd',encrypted=1 WHERE us
 mysql_query($query4);
 
 // set TBSYNCHRONIZE to correct tag, used to detect updates
-$query5="UPDATE tbsynchronize SET tagname='TAG_deltasql_$deltasql_version' WHERE versionnr=0;";
+$query5="UPDATE tbsynchronize SET tagname='TAG_deltasql_$ds_schema_version' WHERE versionnr=0;";
 mysql_query($query5);
 
 mysql_close();
@@ -188,7 +188,8 @@ fwrite($fh, "
 // disables the top ten submitters link
 \$disable_topten_submitters=$disable_topten_submitters;
 
-
+// if this system contains the test scripts to verify deltasql correctness
+// if set to true, it disables the database consistency check in index.php as well
 \$test_system=$testsystem; 
 
 // default script title when submitting a new script

@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>deltasql - Database Evolution under Control</title>
@@ -45,11 +44,16 @@ if (file_exists($configurationfile)) {
     $result4=mysql_query($query4);
     $tagname=mysql_result($result4,0,'tagname');
 	
-	if ($tagname!="TAG_deltasql_$deltasql_version") {
-	      echo "<p><b><font color=\"red\">Deltasql database schema needs to be upgraded!</b></font></p>";
+	if  ((!$test_system) && ($tagname!="TAG_deltasql_$ds_schema_version")) {
+	      if ($tagname=="") $tagname="TAG_deltasql_1.3.?";
+	      echo "<p><b><font color=\"red\">Deltasql database schema needs to be upgraded! The database needs to be tagged with TAG_deltasql_$ds_schema_version.</b></font></p>";
 		  echo "<p>Please visit the <a href=\"http://www.deltasql.org/deltasql/dbsync.php\">synchronization page on deltasql.org</a>, ";
-		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$deltasql_version</b>, ";
+		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$ds_schema_version</b>, ";
 		  echo " and hit the synchronization button at the bottom. Then execute the generated script into the deltasql schema to solve this issue. </p>";
+		  
+		  echo "<p>If you are developing deltasql or you patched it, you might want to disable this error by setting the <b>test_system</b> variable in  ";
+		  echo "<i>$configurationfile</i> to true.";
+		  
 		  mysql_close();
 		  die("<p><b><font color=\"red\">FATAL ERROR: datamodel mismatch for database '$database' on host '$dbserver'.</font></b></p>");	
 	}

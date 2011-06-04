@@ -111,8 +111,8 @@ You can choose to show the table with the deltasql clients on the main page as w
 </td></tr>
 <tr><td>Allow deltasql to send usage statistics to deltasql.org: </td>
 <td>
-<input type="radio" name="usagestatsgroup" value="statsyes" checked> Yes
-<input type="radio" name="usagestatsgroup" value="statsno"> No
+<input type="radio" name="usagestatsgroup" value="statsyes"> Yes
+<input type="radio" name="usagestatsgroup" value="statsno" checked> No
 </td></tr>
 </table>
 <br></br>

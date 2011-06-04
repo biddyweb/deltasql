@@ -12,7 +12,7 @@ $dbserver = "localhost";
 // on which DNS name the Apache deltasql server is published (no SLASH at the end)
 $dns_name="http://127.0.0.1/deltasql";
 
-// if this system contains the test scripts to verify deltasql correctness
+// if set to true, it disables the database consistency check in index.php
 $test_system=true; 
 
 // default database type for schemas managed by deltasql
