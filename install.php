@@ -118,7 +118,7 @@ You can choose to show the table with the deltasql clients on the main page as w
 <br></br>
 
 <p>
-Pressing on the <b>Submit</b> button will generate the configuration file under <i><?php echo "$configurationfile"; ?></i> and create a schema on your mySQL instance.
+Pressing on the <b>Setup deltasql</b> button will generate the configuration file under <i><?php echo "$configurationfile"; ?></i> and create a schema on your mySQL instance.
  If all settings are correct, deltasql is ready to use. If not, you need to change <i><?php echo "$configurationfile"; ?></i> manually.
 </p>
 <input type="Submit" value="Setup deltasql">  <a href="index.php">Cancel</a>

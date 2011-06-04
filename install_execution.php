@@ -123,12 +123,12 @@ if ($testgroup=="testsystemyes") {
 // generate random salt and store it into database (to be done really only once)
 $c = uniqid (rand (),true);
 $salt = md5($c);
-$query5="INSERT INTO tbparameter VALUES ('', 'SECURITY', 'PWD_HASH_SALT', '$salt');";
-
+$query6="INSERT INTO tbparameter VALUES ('', 'SECURITY', 'PWD_HASH_SALT', '$salt');";
+mysql_query($query6);
 
 // update admin password
 $hashpwd=salt_and_hash("$deltasqladminpassword", "$salt");
-$query4="UPDATE tbuser SET password='',passwhash='$hashpwd',encrypted=1 WHERE username='admin';";
+$query4="UPDATE tbuser SET password='****',passwhash='$hashpwd',encrypted=1 WHERE username='admin';";
 mysql_query($query4);
 
 // set TBSYNCHRONIZE to correct tag, used to detect updates

@@ -2,7 +2,7 @@
 
 function get_global_version() {
   // a connection needs to be established
-  $query="SELECT * from tbparameter where paramtype='GLOBAL' and paramname='VERSION'"; 
+  $query="SELECT paramvalue from tbparameter where paramtype='GLOBAL' and paramname='VERSION'"; 
   $result=mysql_query($query);  
   $version=mysql_result($result,0,"paramvalue");
   
@@ -11,7 +11,7 @@ function get_global_version() {
 
 function get_and_increase_global_version() {
   // a connection needs to be established
-  $query="SELECT * from tbparameter where paramtype='GLOBAL' and paramname='VERSION'"; 
+  $query="SELECT paramvalue from tbparameter where paramtype='GLOBAL' and paramname='VERSION'"; 
   $result=mysql_query($query);  
   $version=mysql_result($result,0,"paramvalue")+1;
   
@@ -29,7 +29,7 @@ function retrieve_head_id() {
 }
 
 function retrieve_salt() {
-  $query="SELECT * from tbparameter where paramtype='SECURITY' and paramname='PWD_HASH_SALT';"; 
+  $query="SELECT paramvalue from tbparameter where paramtype='SECURITY' and paramname='PWD_HASH_SALT';"; 
   $result=mysql_query($query);  
   $salt=mysql_result($result,0,"paramvalue");
   return "$salt";
