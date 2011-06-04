@@ -11,9 +11,9 @@ include("utils/utils.inc.php");
 
 // check if deltasql is already installed
 if (file_exists($configurationfile)) {
-    echo "<h2>WARNING: deltasql is already installed!</h2> <p>Do not use this page but modify <i>$configurationfile</i> instead!</p>";
-
-   include("conf/config.inc.php");
+    die ("<p><font color=\"red\"><b>FATAL ERROR: deltasql is already installed!</h2> <p>Do not use this page but modify <i>$configurationfile</i> instead! 
+	      <br>If you would like to repeat the installation procedure drop user and database and delete the mentioned configuration file.
+		  <br>You can then visit this page again and it will show all fields to repeat the install step.</font></p>");
 }
 
 ?>

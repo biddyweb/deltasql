@@ -12,6 +12,7 @@ $dbserver = "localhost";
 // on which DNS name the Apache deltasql server is published (no SLASH at the end)
 $dns_name="http://127.0.0.1/deltasql";
 
+// if this system contains the test scripts to verify deltasql correctness
 $test_system=true; 
 
 // default database type for schemas managed by deltasql
@@ -40,7 +41,6 @@ $default_script_title="db update";
 
 //allow deltasql to submit usage statistics to deltasql.org
 $submit_usage_stats=true;
-
 
 //script prefix and suffix when outputting scripts as single files
 $script_prefix    = "script_";

@@ -1,3 +1,6 @@
+4.6.2011 git
+Improving detection of updated datamodel for deltasql itself
+
 3.6.2011 git
 Password management:
 - changed table tbuser to support encrypted passwords
