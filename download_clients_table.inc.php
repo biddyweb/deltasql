@@ -15,7 +15,7 @@ MySQL, PostgreSQL and Oracle).</td><td><?php echo
 ?></td><td><center><a 
 href="clients/bash_client.tar.gz">download...</a></center></td></tr>
 <tr><td><b>dbredactor</b></td><td>Eclipse (Java, Ant)</td><td>Retrieves version from deltasql server and shows synchronization script (for MySQL, PostgreSQL, Oracle, MS SQL Server and Sybase). JDBC driver included.</td><td><?php echo "$dbredactor_version"; ?></td><td><a href="clients/java/dbredactor.zip"><center>download...</center></a></td></tr>
-<tr><td><b>latest scripts</b></td><td>Google Gadget</td><td>Shows latest scripts on your server on iGoogle start page.</td><td><?php echo "$dbredactor_version"; ?></td><td><a href="http://www.google.ch/ig/adde?hl=en&moduleurl=http://www.gpu-grid.net/deltasql/deltasql_google_gadget.xml&source=imag" target=_blank><img src="pictures/add_google_gadget.gif" border="0" /></a>
+<tr><td><b>latest scripts</b></td><td>Google Gadget</td><td>Shows latest scripts on your server on iGoogle start page.</td><td><?php echo "$gadget_version"; ?></td><td><a href="http://www.google.ch/ig/adde?hl=en&moduleurl=http://www.gpu-grid.net/deltasql/deltasql_google_gadget.xml&source=imag" target=_blank><img src="pictures/add_google_gadget.gif" border="0" /></a>
 </td></tr>
 </table>
 </center>

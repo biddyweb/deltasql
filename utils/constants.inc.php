@@ -2,9 +2,11 @@
 //version
 $deltasql_version="1.3.7";
 $ds_schema_version="1.3.7";
-$dbredactor_version="1.3.7";
-$antclient_version="1.3.7";
-$bashclient_version="1.3.7";
+
+$dbredactor_version="1.0.2";
+$antclient_version="1.0.3";
+$bashclient_version="1.2.1";
+$gadget_version="1.0.7";
 
 // number of scripts on a page
 $scriptsperpage=15;
