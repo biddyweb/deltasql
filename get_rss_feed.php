@@ -50,13 +50,13 @@ echo "      <item>\n";
 echo "			<title>[$modulename] $title</title>\n";
 echo "			<link>$dns_name/show_script.php?id=$id</link>\n";
 echo "			<pubDate>$create_dt</pubDate>\n";
-echo "			<description>\n
-                $script\n";
+echo "			<description>\n";
 if ($comments!="") {
 echo "          /*\n
                $comments\n
 			   */\n";    
 }
+echo "          $script\n";
 echo "           </description>\n";
 echo "			<author>$username</author>\n";
 echo "		</item>\n";
