@@ -1,3 +1,26 @@
+*******************************
+1.3.7 Release Notes
+
+Security improvement: all passwords of deltasql users are stored as salted MD5 
+ hashed strings. Administrators can reset the password of a user, if it was lost.
+
+Updates to deltasql: deltasql detects if the datamodel was changed during the upgrade and if there
+ is need for an update. If yes, it redirects to a page on deltasql.org, were the synchronization
+  script can be retrieved.
+  
+Maintenance release: several minor bugfixes.
+
+People upgrading from 1.3.6 should execute the following script:
+
+ALTER TABLE `tbuser` ADD `encrypted` TINYINT( 1 ) NOT NULL DEFAULT '0',
+ADD `passwhash` VARCHAR( 40 ) NULL ;
+INSERT INTO `tbparameter` VALUES ('', 'SECURITY', 'PWD_HASH_SALT', 'CHANGEMETOANYRANDOMSTRING');
+ALTER TABLE `tbbranch` CHANGE `create_dt` `create_dt` DATETIME NOT NULL;
+UPDATE tbsynchronize SET tagname='TAG_deltasql_1.3.7' WHERE versionnr=0;
+*******************************
+
+
+
 4.6.2011 git
 Improving detection of updated datamodel for deltasql itself.
 Improving error messages.
@@ -20,6 +43,10 @@ Detecting updates:
 Other:
 - showing not only day but also hour of latest changes in main page
 
+2.5.2011 git
+- fixing empty RSS feed which was broken if there were no messages
+
+*******************************
 1.3.6 Release Notes 2.5.2011
 
 With this release, a set of 7 tutorial videos explaining how deltasql works 
@@ -30,6 +57,7 @@ New features in 1.3.6:
 - RSS feed which shows latest scripts
 - ability to give latest version number to edited scripts
 - colored diff for edited scripts (works in IE but not in Firefox)
+*******************************
 
 
 27.4.2011 git
@@ -60,9 +88,11 @@ New features in 1.3.6:
 4.4.2011 git
 - added colored diff
 
+*******************************
 1.3.5 Release Notes
 New feature: ability to diff scripts stored in history.
 New feature: ability to graph development tree for a project in "List Branches and Tags" page.
+*******************************
 
 8.3.2011 git
 - Choosing project in order to display its graph in list_branches.php
@@ -83,6 +113,7 @@ New feature: ability to graph development tree for a project in "List Branches a
 - framework to display patchlevel (if any)
 - text area for fields in edit_script.php and submit_script.php set in constants.inc.php
 
+*******************************
 1.3.4 Release notes  1.3.2011 
 New feature: it is possible to synchronize from a tag, without need of the query to retrieve the version number
 Improvements in the History feature introduced with 1.3.3
@@ -95,6 +126,7 @@ CREATE TABLE `tbscriptbranchchangelog` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `script_id` (`script_id`,`branch_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+*******************************
 
 
 28.2.2011 git
@@ -123,10 +155,11 @@ CREATE TABLE `tbscriptbranchchangelog` (
   UNIQUE KEY `script_id` (`script_id`,`branch_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
 
-
+*******************************
 1.3.3 Release Notes 25.2.2011
 Deltasql is more wiki-like as anyone can edit a script. The history of editing is recorded as well.
 Administrators can retrieve deleted scripts. Improved right management with bugfixes.
+
 
 People upgrading from 1.3.2 should execute this script into the deltasql schema:
 CREATE TABLE `tbscriptchangelog` (
@@ -144,6 +177,7 @@ CREATE TABLE `tbscriptchangelog` (
   `isaview` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1; 
+*******************************
 
 
 25.2.2011 git
@@ -180,12 +214,14 @@ CREATE TABLE `tbscriptchangelog` (
 17.2.2011 git
 - on user request (Hari): editing a script increases its version number
 
+*******************************
 1.3.2 Release Notes 11.2.2011
 This release reenables the upgrade from production to development schema, which was disabled in 1.3.1
  because the new algorithm in 1.3.0 some basic issues were found.
  
 If you upgrade from version 1.3.1 or 1.3.0, you should launch this script on deltasql server schema:
 ALTER TABLE tbscriptgeneration ADD  `exclbranch` tinyint(1) NOT NULL default '0';
+*******************************
 
 11.2.2011 git
 - reimplementing update from production schema (branch) to development schema (HEAD)
@@ -199,7 +235,7 @@ ALTER TABLE tbscriptgeneration ADD  `exclbranch` tinyint(1) NOT NULL default '0'
 - you need to launch this script when upgrading to version 1.3.2:
 ALTER TABLE tbscriptgeneration ADD  `exclbranch` tinyint(1) NOT NULL default '0';
 
-
+*******************************
 1.3.1 Release Notes 26.1.2011
 - important set of fixes for the broken synchronization algorithm delivered with 1.3.0
 - all buttons renamed from 'Submit Query' into their corresponding action
@@ -207,7 +243,7 @@ ALTER TABLE tbscriptgeneration ADD  `exclbranch` tinyint(1) NOT NULL default '0'
 INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
 - if you installed test data, you should run this script as well:
 INSERT INTO tbscript (id, code, module_id, versionnr, user_id, update_dt, update_user, comments, title, isapackage, isaview) VALUES  (9, '-- 6 script only for HEAD before branch DELTA_2 comes', 5, 17, 1, '2008-05-21', '', '', 'db update', 0, 0);
-
+*******************************
 
 26.1.2011 git
 - Tests_To_Verify_deltasql_correctness.txt updated
@@ -233,6 +269,7 @@ INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
 - added FAQ question on verification step
 - minor changes in FAQ document
 
+*******************************
 1.3.0 Release Notes 30.12.2010
 Completely new synchronization algorithm which handles among others branches of branches,
  tagging and upgrade from production to development schema.
@@ -264,6 +301,7 @@ CREATE TABLE `tbscriptgeneration` (
 
 You should launch on database schemas under deltasql versioning the following statement: 
 ALTER TABLE tbsynchronize ADD tagname varchar(128) NULL;
+*******************************
 
 30.12.2010 git
 - added tagname to table TBSYNCHRONIZE, on the schemas where deltasql is active,
@@ -351,10 +389,12 @@ IMPORTANT: users who upgrade from previous
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1;
 
+*******************************
 1.2.1 Release Notes
 - Support for PostgreSQL database works
 - typo in bash client fixed which prevented deltasql bash client to work 
 correctly
+*******************************
 
 31.10.2010 git
 - major fix in continouus integration script
@@ -365,12 +405,14 @@ correctly
 integration
 - raised version to 1.2.1
 
+*******************************
 1.2.0 Release Notes 28.9.2010
 Bash client is able to perform continouus database integration for 
 Oracle and mySQL. Deltasql server is able to export scripts each one in 
 a numbered file, grouped together in a zip file for further use in 
 autoupdater tools (like the ones available at www.dbdeploy.com). 
 Deltasql server adds support for sqlite databases.
+*******************************
 
 27.10.2010 git
 - raised version to 1.2.0
@@ -403,6 +445,7 @@ Server changes
 zipped to be used in dbdeploy like tools (check http://www.dbdeploy.com for more details)
 - added zip library under /utils/createzip by Rochak Chauhan (www.rochakchauhan.com)
 
+*******************************
 7.10.2010 1.1.1 Release Notes
 Server changes
 - improved error handling in synchronization step, 2 new error types 
@@ -410,7 +453,7 @@ added, 1 error did not show up due to mistake in code
 - deletion scripts revisited to leave database consistent: delete 
 Project and delete Module were not working properly
 - Layout on initial page changed
-
+*******************************
 
 7.10.2010 git
 - fixed error message number 5 which never appeared during db 
@@ -435,6 +478,7 @@ modules
 Moved source code from CVS module dbsync hosted on GPU project to git 
 module deltasql hosted on project deltasql of project homepage. 
 
+*******************************
 13.9.2010 1.1.0 Release Notes
 - ability to submit scripts in chain
 - new deltasql client in bash script, skilled people should be able to 
@@ -442,6 +486,7 @@ build continous integration for databases with cron jobs and additional
 scripts for database bindings
 - collection of usage statistics sent to deltasql.org if user agrees
 - manual and FAQ improved with additional sections/questions
+*******************************
 
 10.9.2010 CVS
 - 1 FAQ added on phone home functionality added
@@ -469,12 +514,14 @@ scripts for database bindings
 - added slash at the end of Oracle stored procedure to verify
   scripts
 
+*******************************  
 1.0.8 Release Notes (24.5.2010)
 - Important fix in install routines
 - Ability to set a default database type
 - Stored procedure for MS SQL server to verify that the script
  is executed on the correct database
-
+*******************************
+ 
 24.5.2010 CVS
 Fix to the install routines finalised
 
@@ -491,9 +538,11 @@ Added stored procedure for MS SQL server to verify
 24.2.2010 CVS
 Minor fixes in manual.php
 
+*******************************
 1.0.7 Release Notes (15.2.2010)
 
 Minor bugfixes and URLs adjusted to the new URL www.deltasql.org
+*******************************
 
 15.1.10 CVS
 Changed the wiki url to www.deltasql.org/wiki
@@ -505,7 +554,7 @@ Changed the wiki url to www.deltasql.org/wiki
 - google gadget has number of scripts and font size as preferences
 - bugfix: scripts opened in google gadget open a new browser tab
 
-
+*******************************
 1.0.6 Release Notes (14.10.2009)
 
 The main feature of 1.0.6 is the Google Gadget that displays the latest scripts on
@@ -522,7 +571,7 @@ WARNING:
 Before installing 1.0.6 you need to run this script on the database schema:
 ALTER TABLE `tbscript` CHANGE `create_dt` `create_dt` DATETIME NOT NULL;
 ALTER TABLE `tbscript` CHANGE `update_dt` `update_dt` DATETIME NOT NULL;
-
+*******************************
 
 14.10.09
 - added settings and refined deltasql google gadget
@@ -545,22 +594,25 @@ ALTER TABLE `tbscript` CHANGE `update_dt` `update_dt` DATETIME NOT NULL;
 - added under the directory "gentoo" an overlay called "gpu-grid" that will contain 
   ebuilds for the different gentoo versions.
 
+*******************************  
 1.005 Release Notes (22.4.09)
 - possibility to submit scripts with the option "in all branches" or "not in any branch" (by Lukas Stucki)
 - ability to remove empty lines in a script in submitscript.php (by Lukas Stucki)
 - bugfix: test data is correctly inserted by install.php
 - bugfix: error rights in Top Ten Submitters
-
+*******************************
 
 8.02.09
 - Lukas Stucki added the possibility to submit scripts to "all" branches or "none",
  by clicking on a button on the submit_script.php page
 
+******************************* 
 1.004 Release Notes
 - possibility to create a branch of a branch by duplicating it
 - it is possible to see who modified last a script and when
 - it is possible to search among modified scripts
 - added FAQ questions
+*******************************
 
 19.12.08 CVS
 - on the deltasql schema please execute:
@@ -577,6 +629,7 @@ ALTER TABLE `tbscript` ADD `update_user` VARCHAR( 64 ) NULL AFTER `update_dt`;
 11.12.08 CVS
 - added FAQ note on how to upgrade deltasql
 
+*******************************
 11.12.08 1.003 Release Notes
 - search scripts page: it is possible to search for scripts in a given time interval by using
  the jscalendar component
@@ -585,6 +638,7 @@ ALTER TABLE `tbscript` ADD `update_user` VARCHAR( 64 ) NULL AFTER `update_dt`;
 - documentation improvements: added a Frequently Asked Question, the ant-client install instructions
  and a tip to the manual
  - alphabetic sorting for project names and module names
+*******************************
  
 10.12.08 CVS
 - added a tip to the manual
@@ -642,6 +696,7 @@ ALTER TABLE `tbscript` ADD `update_user` VARCHAR( 64 ) NULL AFTER `update_dt`;
 - tablesync implements basic functionality without foreign key management
 - reduced the number of scripts per page from 20 to 15 in utils/constants.inc.php
 
+*******************************
 15.10.08 1.001 Release Notes
 The deltasql clients now also support Microsoft SQL server and Sybase
  thanks to the open source driver jTDS.
@@ -650,6 +705,7 @@ Some refinements in respect to 1.000:
 - the schema name is removed as it was creating confusion.
 - install procedure: added possibility to specify another user as root user
 - the test data script is running now
+*******************************
 
 14.10.08 CVS
 - initial skeleton for the tablesync utility under /tablesync subfolder:
@@ -670,10 +726,13 @@ it is a Java process (which can run on a Linux/Unix server) that is able
 24.09.08 CVS
 Improved error message in stored procedure DELTASQL_VERIFY_SCHEMA
 
+*******************************
 15.09.08 1.000 Release Notes
 0.950 is rereleased as version 1.000 due to its stability. Only the .tar.gz packaging has a correct Unix 
 end of line format.
+*******************************
 
+*******************************
 19.08.08 0.950 Release Notes
 Improved project module management (possibility to delete modules, less confusing navigation)
 Improved user management (possibility to delete users for administrators)
@@ -681,6 +740,7 @@ Improved error management (bugfixes, more error types, link to error documentati
 XML Export for advanced deltasql clients
 
 This release is Release Candidate 1 for Version 1.
+*******************************
 
 18.08.08 CVS
 - documented the possible error messages in deltasql server
@@ -700,15 +760,19 @@ This release is Release Candidate 1 for Version 1.
 - Added initial stubs to handle xml output of dbsync
 - Added possibility to delete users for Administrators
 
+*******************************
 13.08.08 0.901 Release Notes
 - Important bugfix: the list of database types was not shown when
  getting the synchronization table
+*******************************
 
+******************************* 
 12.08.08 0.900 Release Notes
 - Top Ten Submitters List (can be installed with an option)
 - Editing the description of Modules, Projects and Branches 
 - bugfixes in the install procedure if options are chosen
 - added test document to verify accuracy of synchronization mechanism
+*******************************
 
 8.08.08 CVS
 - added editing of projects, branches and modules (description and for modules also name)
@@ -759,11 +823,13 @@ This release is Release Candidate 1 for Version 1.
   the version number).
 - added page list_usage_history.php if the user is logged as administrator
 
+*******************************
 22.05.08 0.810 Release Notes
 - Important Fixes to the update logic for BRANCH->HEAD and HEAD->BRANCH operations (the duplicate
  problem is solved as well)
 - Look&Feel changed with Cascade Style Sheets
 - Fixes to the backup shell script
+*******************************
 
 22.05.08 CVS
 - all combinations HEAD -> HEAD, BRANCH->BRANCH, BRANCH->HEAD and HEAD->BRANCH
@@ -778,6 +844,7 @@ This release is Release Candidate 1 for Version 1.
 05.05.08 CVS
 - added cascade style sheet to the html page (the style sheet is copyed from the Tomcat 5.5 inside JBoss)
 
+*******************************
 0.809 Release Notes
 - DELTASQL_VERIFY_SCHEMA stored procedure verify that a synchronization script is executed in the
  correct schema (for Oracle and postgreSQL. mySQL might support this at a later point)
@@ -785,6 +852,7 @@ This release is Release Candidate 1 for Version 1.
  through the removal workaround)
 - example backup shell script for Linux to periodically dump deltasql data under /db/backup
 - minor fixes and changes
+*******************************
 
 2.5.08 CVS
 - edit script allows modification of to which branches a script is applied
@@ -816,13 +884,14 @@ This release is Release Candidate 1 for Version 1.
 17.4.08 CVS
 - script by Lukas to backup sql dumps on a samba server under db/backup
 
+*******************************
 16.4.08 0.808 Release notes
 - syntax highlighting for SQL scripts with the Geshi library
 of Nigel McNie and Benny Baumann added by Lukas Stucki
 - bugfix: if there are no scripts a commment is shown
 - database schema revised
 - ant client revised
-
+*******************************
 
 10.4.08 CVS
 - title links to show script in list scripts view.
@@ -851,10 +920,12 @@ $disable_clients_table_on_main_page
 stuckas: syntax highlighting for SQL scripts with the Geshi library
 of Nigel McNie and Benny Baumann
 
+*******************************
 30.3.08 0.807 Release Notes
 - ant client of Lukas Stucki as additional deltasql client
 - output of filtered scripts also as text file
 - minor fixes
+*******************************
 
 30.3.08 CVS
 - modified ant client to make it JDBC driver independent. so it can support mySQL and postgreSQL as well
@@ -870,7 +941,9 @@ of Nigel McNie and Benny Baumann
 - added possibility to search among scripts and have the output as a text list
  for faster copy-paste.
 
+*******************************
 4.3.08 0.806 Maintenance Release
+*******************************
 
 24.2.08 CVS
 - tbsynchronize is now described in the native format of postgreSQL (though the format
@@ -885,6 +958,7 @@ of Nigel McNie and Benny Baumann
 11.2.08 CVS
 - dbredactor: changed name from datasource.properties to deltasql.properties
 
+*******************************
 7.2.08 0.805 Release Notes
 WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database schemas
  as two new columns were added!
@@ -895,6 +969,7 @@ WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database sch
 - possibility to add a commit comment in database synchronization form
 - bugfix branch visibility
 - it is possible to search scripts belonging in a given version range
+*******************************
 
 5.2.08 CVS
 - dbredactor: URL encoding of most parameters
@@ -916,12 +991,14 @@ WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database sch
 - possibility to add a commit comment
 - dbredactor uses the commit comment to signal for which branch the script is
 
+*******************************
 0.804 Release Notes
 WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database schemas
  as the format changed!
 - TBSYNCHRONIZE keeps history of changes and remembers which user did changes on schema
 - Navigation with pages while browsing scripts (also if a search filter is enabled)
 - Last search is remembered until Cancel Search button is pressed
+*******************************
 
 25.1.08 CVS
 - added support UPDATE_USER und UPDATE_TYPE to TBSYNCHRONIZE
@@ -946,10 +1023,12 @@ WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database sch
 - added primitive Top/Next/Previous in list_scripts.php
 - remembering search queries among scripts with cookies
 
+*******************************
 16.1.08 0.803 Release Notes
 - important bugfix in dbredactor logic
 - branch visibility
 - searching views and packages
+*******************************
 
 16.1.08 CVS
 - branch visibility also in dbsync.php
@@ -971,12 +1050,14 @@ WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database sch
 8.1.08 CVS
 - searching among packages and views
 
+*******************************
 7.1.08 0.802 Release Notes
 - supported marking scripts as views and packages
 - easier to upgrade deltasql by removing stuff from configuration file
 - minor changes for production (removed adding of ; if missing, removed
  some default values in forms to avoid mistakes)
 - advertisement for logos of Patrizia Pulice Cascio
+*******************************
 
 7.1.08 CVS
 - added script to mark views and packages automatically in dbsync.php
@@ -1005,8 +1086,12 @@ WARNING: you need to drop and recreate TBSYNCHRONIZE on all of your database sch
 - added $dbserver variable if instance of mySQL is not running on the same 
 server where Apache runs.
 
+*******************************
 13.12.07 0.801 
 Renamed tables to lowercase, as queries create some problems with some mySQL instances.
+*******************************
 
+*******************************
 12.12.07 0.800
 Initial Release on Sourceforge.net
+*******************************
