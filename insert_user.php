@@ -43,7 +43,8 @@ $last=$_POST['last'];
 $email=$_POST['email'];
 $rights=$_POST['rights'];
 if ($frm_username=="") exit;
-if ($frm_password=="") die("<b>The password can not be empty!</b>");
+if ($frm_password=="") die("<b><font color=\"red\">The password can not be empty!</font></b>");
+if ($frm_password==$frm_username) die("<b><font color=\"red\">The password can not be equal to the username!</font></b>");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

@@ -62,11 +62,13 @@ $frm_oldpwd=$_POST['oldpwd'];
 $frm_newpwd=$_POST['newpwd'];
 $frm_confirmnewpwd=$_POST['confirmnewpwd'];
 if ($frm_oldpwd=="") exit;
-if ($frm_newpwd=="") die("<b>The new password can not be empty!</b>");
+if ($frm_newpwd=="") die("<b><font color=\"red\">The new password can not be empty!</font></b>");
 if ($frm_newpwd!=$frm_confirmnewpwd)
-  die("<b>The new passwords do not match!</b>");
+  die("<b><font color=\"red\">The new passwords do not match!</font></b>");
 
+$user=$_SESSION['username'];
 $userid = $_SESSION["userid"];
+if ($frm_newpwd==$user) die("<b><font color=\"red\">The new password can not be equal to the username!</font></b>");
  
   // same test as in the login process first
 mysql_connect($dbserver, $username, $password);

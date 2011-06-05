@@ -19,7 +19,9 @@ ALTER TABLE `tbbranch` CHANGE `create_dt` `create_dt` DATETIME NOT NULL;
 UPDATE tbsynchronize SET tagname='TAG_deltasql_1.3.7' WHERE versionnr=0;
 *******************************
 
-
+5.6.2011
+- Password policy: do not allow the combination username=password
+- Password policy: When resetting a password, a random string is chosen
 
 4.6.2011 git
 Improving detection of updated datamodel for deltasql itself.

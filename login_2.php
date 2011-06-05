@@ -6,6 +6,7 @@
 </head>
 <body>
 <?php
+include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 $name=$_POST['name'];
@@ -29,7 +30,7 @@ if ($nums==0) {
   
   if ($nums==0) {
      mysql_close();
-     die("<b>The user does not exist or the password is wrong.</b>");
+     die("<b><font color=\"red\">The user does not exist or the password is wrong.</font></b>");
   }	 
 } else {
   $unencryptedfound=1;

@@ -16,7 +16,9 @@
 
   $id=$_GET['id'];
   $name=$_GET['name'];
-  $newpwd="delta4$name";
+  $c = uniqid (rand (),true);
+  $sessionid = md5($c);
+  $newpwd=substr($sessionid,0,6);
   
   mysql_connect($dbserver, $username, $password);
   @mysql_select_db($database) or die("Unable to select database");
