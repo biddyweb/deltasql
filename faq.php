@@ -81,7 +81,9 @@ deltasql is a tool which is suitable for the "Agile Development" model, where de
  
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
 
-<p>Yes, it is used in companies in Switzerland, India and Spain. In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
+<p>Yes, it is used in companies in Italy, Switzerland, India and Spain. 
+In 
+some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
  can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
 
