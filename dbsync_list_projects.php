@@ -9,6 +9,7 @@ $query="SELECT * from tbproject ORDER BY name ASC";
 $result=mysql_query($query);  
 $num=mysql_numrows($result); 
 
+echo "id;projectname;\n";
 $i=0;
 while ($i<$num) {  
    $id=mysql_result($result,$i,"id");
