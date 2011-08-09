@@ -9,7 +9,7 @@ $query="SELECT * from tbbranch ORDER BY name ASC";
 $result=mysql_query($query);  
 $num=mysql_numrows($result); 
 
-echo "projectid;istag;branchname;\n";
+echo "projectid;istag;visible;branchname;\n";
 
 $i=0;
 while ($i<$num) {  
@@ -17,7 +17,8 @@ while ($i<$num) {
   $name=mysql_result($result,$i,"name");          
   $projectid=mysql_result($result,$i,"project_id");
   $istag=mysql_result($result,$i,"istag");
-  if ($name!="HEAD") echo "$projectid;$istag;$name;\n";
+  $isvisible=mysql_result($result,$i,"visible");
+  if ($name!="HEAD") echo "$projectid;$istag;$isvisible;$name;\n";
   $i++;
 }
 mysql_close();
