@@ -88,4 +88,24 @@ object DeltaForm: TDeltaForm
     TabOrder = 5
     Text = 'HEAD'
   end
+  object cbBranches: TCheckBox
+    Left = 240
+    Height = 19
+    Top = 48
+    Width = 68
+    Caption = 'Branches'
+    Checked = True
+    State = cbChecked
+    TabOrder = 6
+  end
+  object cbTags: TCheckBox
+    Left = 335
+    Height = 19
+    Top = 48
+    Width = 45
+    Caption = 'Tags'
+    Checked = True
+    State = cbChecked
+    TabOrder = 7
+  end
 end

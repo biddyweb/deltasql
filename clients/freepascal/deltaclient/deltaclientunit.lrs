@@ -20,5 +20,10 @@ LazarusResources.Add('TDeltaForm','FORMDATA',[
   +'TComboBox'#12'cbFromBranch'#4'Left'#2'x'#6'Height'#2#23#3'Top'#2'P'#5'Width'
   +#3#4#1#10'ItemHeight'#2#15#8'TabOrder'#2#4#4'Text'#6#4'HEAD'#0#0#9'TComboBox'
   +#10'cbToBranch'#4'Left'#2'x'#6'Height'#2#23#3'Top'#2'p'#5'Width'#3#4#1#10'It'
-  +'emHeight'#2#15#8'TabOrder'#2#5#4'Text'#6#4'HEAD'#0#0#0
+  +'emHeight'#2#15#8'TabOrder'#2#5#4'Text'#6#4'HEAD'#0#0#9'TCheckBox'#10'cbBran'
+  +'ches'#4'Left'#3#240#0#6'Height'#2#19#3'Top'#2'0'#5'Width'#2'D'#7'Caption'#6
+  +#8'Branches'#7'Checked'#9#5'State'#7#9'cbChecked'#8'TabOrder'#2#6#0#0#9'TChe'
+  +'ckBox'#6'cbTags'#4'Left'#3'O'#1#6'Height'#2#19#3'Top'#2'0'#5'Width'#2'-'#7
+  +'Caption'#6#4'Tags'#7'Checked'#9#5'State'#7#9'cbChecked'#8'TabOrder'#2#7#0#0
+  +#0
 ]);

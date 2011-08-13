@@ -18,6 +18,8 @@ type
     cbProject: TComboBox;
     cbFromBranch: TComboBox;
     cbToBranch: TComboBox;
+    cbBranches: TCheckBox;
+    cbTags: TCheckBox;
     edtVersion: TEdit;
     lblTo: TLabel;
     lblFrom: TLabel;
