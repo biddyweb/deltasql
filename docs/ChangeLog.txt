@@ -1,5 +1,13 @@
+13.8.2011
+- adding GUI skeleton for deltasql client in freepascal
+- adding libraries which the new freepascal deltasql client will use
+
+9.8.2011
+adding branch visibility to interface for deltasql clients
+
+
 8.8.2011
-- added interface for deltasql clients to retrieve branches and project information
+added interface for deltasql clients to retrieve branches and project information
 
 
 *******************************
