@@ -5,11 +5,13 @@ include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
+echo "projectid;istag;visible;branchname;\n";
+//create HEAD line
+echo "*;0;1;HEAD;"
+
 $query="SELECT * from tbbranch ORDER BY name ASC"; 
 $result=mysql_query($query);  
 $num=mysql_numrows($result); 
-
-echo "projectid;istag;visible;branchname;\n";
 
 $i=0;
 while ($i<$num) {  
