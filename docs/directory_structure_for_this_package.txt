@@ -40,4 +40,6 @@ Deltasql Clients
         /ant-client       A short but effective Ant client (needed libraries are in ../dbredactor/lib folder)
         /dbredactor       The dbredactor Java client
     /bash                 The bash client for continouus integration
-        
+    /freepascal           Clients in Freepascal
+	    /lib              Common libraries for clients
+		/deltaclient      FreePascal deltasql client
