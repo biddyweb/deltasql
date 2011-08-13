@@ -7,7 +7,7 @@ mysql_connect($dbserver, $username, $password);
 
 echo "projectid;istag;visible;branchname;\n";
 //create HEAD line
-echo "*;0;1;HEAD;";
+echo "*;0;1;HEAD;\n";
 
 $query="SELECT * from tbbranch ORDER BY name ASC"; 
 $result=mysql_query($query);  
