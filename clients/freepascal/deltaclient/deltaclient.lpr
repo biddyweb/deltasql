@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, deltaclientunit, LResources
-  { you can add units after this };
+  { you can add units after this }, configurations;
 
 {$IFDEF WINDOWS}{$R deltaclient.rc}{$ENDIF}
 

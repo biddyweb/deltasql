@@ -2,11 +2,11 @@
 <CONFIG>
   <ProjectOptions>
     <PathDelim Value="\"/>
-    <Version Value="7"/>
+    <Version Value="6"/>
     <General>
       <MainUnit Value="0"/>
+      <IconPath Value="./"/>
       <TargetFileExt Value=".exe"/>
-      <Icon Value="0"/>
       <UseXPManifest Value="True"/>
       <ActiveEditorIndexAtStart Value="0"/>
     </General>
@@ -32,35 +32,96 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="5">
       <Unit0>
         <Filename Value="deltaclient.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="deltaclient"/>
-        <CursorPos X="1" Y="1"/>
+        <CursorPos X="51" Y="11"/>
         <TopLine Value="1"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="4"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="deltaclientunit.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="DeltaForm"/>
+        <IsPartOfProject Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <ResourceFilename Value="deltaclientunit.lrs"/>
         <UnitName Value="deltaclientunit"/>
-        <CursorPos X="1" Y="1"/>
-        <TopLine Value="1"/>
+        <CursorPos X="29" Y="52"/>
+        <TopLine Value="26"/>
         <EditorIndex Value="0"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="configurations.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="configurations"/>
+        <CursorPos X="56" Y="27"/>
+        <TopLine Value="1"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\lib\own\misc\downloadutils.pas"/>
+        <UnitName Value="downloadutils"/>
+        <CursorPos X="133" Y="24"/>
+        <TopLine Value="9"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\lib\own\misc\loggers.pas"/>
+        <UnitName Value="loggers"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit4>
     </Units>
-    <JumpHistory Count="1" HistoryIndex="0">
+    <JumpHistory Count="9" HistoryIndex="8">
       <Position1>
         <Filename Value="deltaclientunit.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
       </Position1>
+      <Position2>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="9" Column="26" TopLine="7"/>
+      </Position2>
+      <Position3>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="24" Column="31" TopLine="7"/>
+      </Position3>
+      <Position4>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="28" Column="43" TopLine="10"/>
+      </Position4>
+      <Position5>
+        <Filename Value="..\lib\own\misc\downloadutils.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position5>
+      <Position6>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="9" Column="41" TopLine="1"/>
+      </Position6>
+      <Position7>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="46" Column="43" TopLine="17"/>
+      </Position7>
+      <Position8>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="48" Column="48" TopLine="18"/>
+      </Position8>
+      <Position9>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="29" Column="44" TopLine="19"/>
+      </Position9>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -68,9 +129,14 @@
     <PathDelim Value="\"/>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)\"/>
-      <OtherUnitFiles Value="..\lib\own\misc\;..\lib\ext\synapse\src\"/>
+      <OtherUnitFiles Value="..\lib\own\misc\;..\lib\ext\synapse\src\lib\"/>
       <UnitOutputDirectory Value="..\bin"/>
     </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <CStyleOperator Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
     <Linking>
       <Options>
         <Win32>
