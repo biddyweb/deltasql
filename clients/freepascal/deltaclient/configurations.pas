@@ -13,7 +13,8 @@ type TConfiguration = class(TObject)
 
       url,
       proxy,
-      port : String;
+      port,
+      editor : String;
 end;
 
 implementation
@@ -23,6 +24,7 @@ begin
   url := 'http://www.deltasql.org/deltasql';
   proxy := 'proxy.ads.regroup.net';
   port := '8080';
+  editor := 'notepad';
 end;
 
 end.
