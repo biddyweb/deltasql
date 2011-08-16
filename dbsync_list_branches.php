@@ -5,9 +5,9 @@ include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-echo "projectid;istag;visible;branchname;\n";
+echo "projectid;istag;visible;versionnr;branchname;\n";
 //create HEAD line
-echo "*;0;1;HEAD;\n";
+echo "*;0;1;0;HEAD;\n";
 
 $query="SELECT * from tbbranch ORDER BY name ASC"; 
 $result=mysql_query($query);  
@@ -20,7 +20,8 @@ while ($i<$num) {
   $projectid=mysql_result($result,$i,"project_id");
   $istag=mysql_result($result,$i,"istag");
   $isvisible=mysql_result($result,$i,"visible");
-  if ($name!="HEAD") echo "$projectid;$istag;$isvisible;$name;\n";
+  $versionnr=mysql_result($result,$i,"versionnr");
+  if ($name!="HEAD") echo "$projectid;$istag;$isvisible;$versionnr;$name;\n";
   $i++;
 }
 mysql_close();
