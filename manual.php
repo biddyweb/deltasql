@@ -619,6 +619,11 @@ Upgrades from production schemas (following branches) to development schemas (fo
  will touch the following two scripts: <tt>dbsync_list_projects.php</tt> and <tt>dbsync_list_branches.php</tt>. The format of these
   files is a comma separated text value. The header line describes the retrieved columns. Advanced deltasql clients can adjust
    dynamically the branches based on the project name, as it is done with the freepascal deltaclient.</p>
+<pre>
+Examples:
+http://www.deltasql.org/deltasql/dbsync_list_projects.php
+http://www.deltasql.org/deltasql/dbsync_list_branches.php
+</pre>   
 </li>
 <li>1. Connect to the database schema and retrieve project name, version and branch</li>
 <p>This can be simply done by executing the query <tt>SELECT * FROM TBSYNCHRONIZE ORDER BY VERSIONNR DESC</tt>. The query is so simple
