@@ -608,8 +608,8 @@ Upgrades from production schemas (following branches) to development schemas (fo
 <h3><a name="write-client"></a>How to write your own deltasql client</h3>
 
 <p>deltasql Server is written in PHP and can run whenever Apache runs. You might want to write your own deltasql client
- that integrates better into your own development environment. A client called <tt>dbredactor</tt> for the Java
-  environment can be download on the bottom of the <a href="index.php">main page</a>.</p>
+ that integrates better into your own development environment. There are already several client available. 
+ They can be downloaded at the bottom of the <a href="index.php">main page</a>.</p>
 
 <p>A deltasql client should perform the following operations:</p>
 
