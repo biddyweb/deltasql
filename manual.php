@@ -614,6 +614,12 @@ Upgrades from production schemas (following branches) to development schemas (fo
 <p>A deltasql client should perform the following operations:</p>
 
 <ul>
+<li>0. Retrieve the valid project and branches currently defined on the deltasql server. 
+<p>To perform this step, the deltasql client
+ will touch the following two scripts: <tt>dbsync_list_projects.php</tt> and <tt>dbsync_list_branches.php</tt>. The format of these
+  files is a comma separated text value. The header line describes the retrieved columns. Advanced deltasql clients can adjust
+   dynamically the branches based on the project name, as it is done with the freepascal deltaclient.</p>
+</li>
 <li>1. Connect to the database schema and retrieve project name, version and branch</li>
 <p>This can be simply done by executing the query <tt>SELECT * FROM TBSYNCHRONIZE ORDER BY VERSIONNR DESC</tt>. The query is so simple
  as the table has one row per update which was already done. The latest database update has the highest version number. The important columns in this row are <tt>PROJECTNAME</tt>, <tt>VERSIONNR</tt> 
