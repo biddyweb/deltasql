@@ -59,6 +59,7 @@ object DeltaForm: TDeltaForm
     Top = 184
     Width = 376
     Caption = 'Generate Synchronization Script...'
+    Enabled = False
     OnClick = btnGenerateScriptClick
     TabOrder = 1
   end
@@ -67,6 +68,7 @@ object DeltaForm: TDeltaForm
     Height = 21
     Top = 48
     Width = 272
+    Enabled = False
     ItemHeight = 13
     OnChange = cbProjectChange
     Style = csDropDownList
@@ -77,6 +79,7 @@ object DeltaForm: TDeltaForm
     Height = 23
     Top = 80
     Width = 80
+    Enabled = False
     TabOrder = 3
   end
   object cbFromBranch: TComboBox

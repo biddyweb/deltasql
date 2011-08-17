@@ -1,12 +1,14 @@
 unit deltaclientunit;
-
+{ (c) by 2011 HB9TVM }
+// algorithm explanation at http://www.deltasql.org/deltasql/manual.php#write-client
+// Source code is under GPL
 {$mode objfpc}{$H+}
-
 interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, configurations, downloadutils, loggers, datastructure, Clipbrd;
+  StdCtrls, configurations, downloadutils, loggers, datastructure, Clipbrd,
+  synacode, parsers;
 
 type
 
@@ -39,6 +41,7 @@ type
     appPath_ : String;
     logger_  : TLogger;
 
+    procedure reloadProjectsAndBranchesFromServer();
     procedure reloadFromAndToBranch();
     procedure reloadToBranch();
   public
@@ -47,28 +50,41 @@ type
 
 var
   DeltaForm: TDeltaForm;
-  conf     : TConfiguration;
 
 implementation
 
 { TDeltaForm }
 
 procedure TDeltaForm.FormCreate(Sender: TObject);
-var ok : Boolean;
-    i  : Longint;
 begin
   appPath_ := ExtractFilePath(ParamStr(0));
   logger_ := TLogger.Create(appPath_, 'log.txt');
   conf := TConfiguration.Create();
-  downloadToFile(conf.url+'/dbsync_list_projects.php?seed='+IntToStr(Trunc(Random*1000)), appPath_, 'projects.conf', conf.proxy, conf.port, 'deltaclient> ', logger_);
-  downloadToFile(conf.url+'/dbsync_list_branches.php?seed='+IntToStr(Trunc(Random*1000)), appPath_, 'branches.conf', conf.proxy, conf.port, 'deltaclient> ', logger_);
-  projC := TProjectController.Create(appPath_+PathDelim+'projects.conf');
-  branC := TBranchController.Create(appPath_+PathDelim+'branches.conf');
 
-  cbProject.Clear;
-  for i:=1 to projC.con_.nbprojects do
-     cbProject.AddItem(projC.con_.projects[i].name, nil);
+  reloadProjectsAndBranchesFromServer;
+end;
 
+procedure TDeltaForm.reloadProjectsAndBranchesFromServer;
+var i  : Longint;
+    ok : Boolean;
+begin
+  ok:=downloadToFile(conf.url+'/dbsync_list_projects.php?seed='+IntToStr(Trunc(Random*1000)), appPath_, 'projects.conf', conf.proxy, conf.port, 'deltaclient> ', logger_);
+  if ok then
+   ok:=downloadToFile(conf.url+'/dbsync_list_branches.php?seed='+IntToStr(Trunc(Random*1000)), appPath_, 'branches.conf', conf.proxy, conf.port, 'deltaclient> ', logger_);
+
+  if ok and FileExists('projects.conf') and FileExists('branches.conf') then
+     begin
+      if Assigned(projC) then projC.Free;
+      if Assigned(branC) then branC.Free;
+      projC := TProjectController.Create(appPath_+PathDelim+'projects.conf');
+      branC := TBranchController.Create(appPath_+PathDelim+'branches.conf');
+
+      cbProject.Enabled := true;
+      cbProject.Clear;
+      for i:=1 to projC.con_.nbprojects do
+        cbProject.AddItem(projC.con_.projects[i].name, nil);
+      edtVersion.Enabled := true;
+     end;
 end;
 
 procedure TDeltaForm.cbProjectChange(Sender: TObject);
@@ -98,8 +114,39 @@ begin
 end;
 
 procedure TDeltaForm.btnGenerateScriptClick(Sender: TObject);
+var param1, param2 : String;
+    ok             : Boolean;
+    versionServer,
+    versionSchema  : Longint;
 begin
-  //
+  // algorithm explanation at http://www.deltasql.org/deltasql/manual.php#write-client
+  if (cbProject.Text='') then
+       begin
+          ShowMessage('Please define a project name before hitting the button!');
+          Exit;
+       end;
+
+  if (cbFromBranch.Text='') or (cbToBranch.Text='') then
+        begin
+          ShowMessage('Please set both From: and To: fields before hitting the button!');
+          Exit;
+        end;
+
+  param1 := '?project='+encodeURL(cbProject.Text)+'&seed='+IntToStr(Trunc(Random*1000));
+  ok := downloadToFile(conf.url+'/dbsync_automated_currentversion.php'+param1, appPath_, 'projectversion.properties', conf.proxy, conf.port, 'deltaclient> ', logger_);
+  if ok then
+     begin
+       versionServer := retrieveProjectVersionFromFile(appPath_+'projectversion.properties');
+       versionSchema := StrToIntDef(edtVersion.Text, 0);
+       if versionSchema>=versionServer then
+          begin
+             ShowMessage('No need to update this schema as version on server is '+IntToStr(versionServer)+'.');
+             Exit;
+          end;
+       param2 := '?project='+cbProject.Text+'&version='+edtVersion.Text+'&frombranch='+cbFromBranch.Text+'&tobranch='+cbToBranch.Text;
+       param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
+       ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'script.sql', conf.proxy, conf.port, 'deltaclient> ', logger_);
+     end;
 end;
 
 procedure TDeltaForm.btnSettingsClick(Sender: TObject);
@@ -128,6 +175,7 @@ begin
       cbToBranch.AddItem(con.branches[i].name, nil);
       cbFromBranch.Enabled := true;
       cbToBranch.Enabled := true;
+      btnGenerateScript.Enabled := true;
     end;
 end;
 

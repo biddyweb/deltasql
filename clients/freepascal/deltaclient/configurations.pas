@@ -15,7 +15,11 @@ type TConfiguration = class(TObject)
       proxy,
       port,
       editor : String;
+
+      showHidden : Boolean;
 end;
+
+var conf : TConfiguration;
 
 implementation
 
@@ -25,6 +29,7 @@ begin
   proxy := 'proxy.ads.regroup.net';
   port := '8080';
   editor := 'notepad';
+  showHidden := false;
 end;
 
 end.

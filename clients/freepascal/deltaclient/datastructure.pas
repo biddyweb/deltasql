@@ -5,7 +5,7 @@ unit datastructure;
 interface
 
 uses
-  Classes, SysUtils, utils;
+  Classes, SysUtils, utils, configurations;
 
 const MAX_PROJECTS = 256;
       MAX_BRANCHES = 1024;
@@ -116,7 +116,7 @@ begin
        if (con_.branches[i].projectid=-1) or ((con_.branches[i].projectid=projectid)
            and (con_.branches[i].versionnr>versionnr))  then
              begin
-               if not (con_.branches[i].visible) then continue;
+               if (not conf.ShowHidden) and (not (con_.branches[i].visible)) then continue;
                if (con_.branches[i].name<>'HEAD') and (con_.branches[i].istag) and (not tags) then continue;
                if (con_.branches[i].name<>'HEAD') and (not con_.branches[i].istag) and (not branches) then continue;
 
