@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, configurations, downloadutils, loggers, datastructure, Clipbrd,
-  synacode, parsers;
+  synacode, deltautils;
 
 type
 
@@ -150,6 +150,7 @@ begin
           begin
             convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
             DeleteFile(appPath_+PathDelim+'script.txt');
+            copyTextFileToClipboard(appPath_+PathDelim+'script.sql');
           end;
      end;
 end;

@@ -16,7 +16,8 @@ type TConfiguration = class(TObject)
       port,
       editor : String;
 
-      showHidden : Boolean;
+      showHidden,
+      copyScriptToCliboard : Boolean;
 end;
 
 var conf : TConfiguration;
@@ -30,6 +31,7 @@ begin
   port := '8080';
   editor := 'notepad';
   showHidden := false;
+  copyScriptToCliboard := true;
 end;
 
 end.
