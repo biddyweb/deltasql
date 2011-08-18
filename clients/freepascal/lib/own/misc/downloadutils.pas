@@ -15,7 +15,8 @@ function downloadToFile(url : AnsiString; targetPath, targetFile, proxy, port, l
 function downloadToStream(url : AnsiString; proxy, port, logHeader : String; var logger : TLogger; var stream : TMemoryStream) : Boolean;
 function downloadToFileOrStream(url : AnsiString; targetPath, targetFile, proxy, port, logHeader : String; var logger : TLogger; var stream : TMemoryStream) : Boolean;
 
-procedure convertLFtoCRLF(var instream, outstream : TMemoryStream; var logger : TLogger);
+procedure convertLFtoCRLF(var instream, outstream : TMemoryStream; var logger : TLogger); overload;
+procedure convertLFtoCRLF(filein, fileout : String; var logger : TLogger); overload;
 function getProxyArg(noargs : Boolean) : String;
 function parseHttpResult(var HTTP : THTTPSend; var logger : TLogger; logHeader : String) : Boolean;
 
@@ -109,7 +110,7 @@ begin
 end;
 
 
-procedure convertLFtoCRLF(var instream, outstream : TMemoryStream; var logger : TLogger);
+procedure convertLFtoCRLF(var instream, outstream : TMemoryStream; var logger : TLogger);  overload;
 var i, size : Int64;
     by      : Byte;
     str     : AnsiString;
@@ -135,6 +136,29 @@ begin
 
   outstream.Position := 0;
   logger.log(LVL_DEBUG, 'LFtoCRLF conversion over');
+end;
+
+procedure convertLFtoCRLF(filein, fileout : String; var logger : TLogger); overload;
+var F, G : Textfile;
+    str  : AnsiString;
+begin
+logger.log(LVL_DEBUG, 'Performing LFtoCRLF conversion');
+try
+  AssignFile(F, filein);
+  AssignFile(G, fileout);
+  Reset(F);
+  Rewrite(G);
+  while not Eof(F) do
+    begin
+      ReadLn(F, str);
+      WriteLn(G, str);
+    end;
+ logger.log(LVL_DEBUG, 'LFtoCRLF conversion over');
+finally
+  CloseFile(F);
+  CloseFile(G);
+end;
+
 end;
 
 function getProxyArg(noargs : Boolean) : String;

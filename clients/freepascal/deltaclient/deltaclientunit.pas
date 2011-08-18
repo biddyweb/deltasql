@@ -145,7 +145,12 @@ begin
           end;
        param2 := '?project='+cbProject.Text+'&version='+edtVersion.Text+'&frombranch='+cbFromBranch.Text+'&tobranch='+cbToBranch.Text;
        param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
-       ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'script.sql', conf.proxy, conf.port, 'deltaclient> ', logger_);
+       ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'script.txt', conf.proxy, conf.port, 'deltaclient> ', logger_);
+       if ok then
+          begin
+            convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
+            DeleteFile(appPath_+PathDelim+'script.txt');
+          end;
      end;
 end;
 
