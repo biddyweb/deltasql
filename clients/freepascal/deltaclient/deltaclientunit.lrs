@@ -1,10 +1,10 @@
 { Das ist eine automatisch erzeugte Lazarus-Ressourcendatei }
 
 LazarusResources.Add('TDeltaForm','FORMDATA',[
-  'TPF0'#10'TDeltaForm'#9'DeltaForm'#4'Left'#3#139#2#6'Height'#3#233#0#3'Top'#3
-  +#131#0#5'Width'#3#164#1#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0
+  'TPF0'#10'TDeltaForm'#9'DeltaForm'#4'Left'#3#158#2#6'Height'#3#212#0#3'Top'#3
+  +'L'#2#5'Width'#3#148#1#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0
   +#11'BorderStyle'#7#8'bsSingle'#7'Caption'#6#11'deltaclient'#12'ClientHeight'
-  +#3#233#0#11'ClientWidth'#3#164#1#8'OnCreate'#7#10'FormCreate'#9'OnDestroy'#7
+  +#3#212#0#11'ClientWidth'#3#148#1#8'OnCreate'#7#10'FormCreate'#9'OnDestroy'#7
   +#11'FormDestroy'#10'ParentFont'#8#10'LCLVersion'#6#6'0.9.26'#0#6'TLabel'#10
   +'lblProject'#4'Left'#2#16#6'Height'#2#14#3'Top'#2'7'#5'Width'#2''''#7'Captio'
   +'n'#6#8'Project:'#11'ParentColor'#8#0#0#6'TLabel'#10'lblVersion'#4'Left'#2#16
@@ -13,27 +13,26 @@ LazarusResources.Add('TDeltaForm','FORMDATA',[
   +'Width'#2#29#7'Caption'#6#5'From:'#11'ParentColor'#8#0#0#6'TLabel'#5'lblTo'#4
   +'Left'#2#16#6'Height'#2#14#3'Top'#3#151#0#5'Width'#2#17#7'Caption'#6#3'To:'
   +#11'ParentColor'#8#0#0#7'TButton'#11'btnSettings'#4'Left'#3'3'#1#6'Height'#2
-  +#25#3'Top'#2#8#5'Width'#2'U'#7'Caption'#6#11'Settings...'#7'OnClick'#7#16'bt'
-  +'nSettingsClick'#8'TabOrder'#2#0#0#0#7'TButton'#17'btnGenerateScript'#4'Left'
-  +#2#16#6'Height'#2'!'#3'Top'#3#184#0#5'Width'#3'x'#1#7'Caption'#6'8Generate S'
-  +'ynchronization Script And Copy To Clipboard...'#7'Enabled'#8#7'OnClick'#7#22
-  +'btnGenerateScriptClick'#8'TabOrder'#2#1#0#0#9'TComboBox'#9'cbProject'#4'Lef'
-  +'t'#2'x'#6'Height'#2#21#3'Top'#2'0'#5'Width'#3#16#1#7'Enabled'#8#10'ItemHeig'
-  +'ht'#2#13#9'MaxLength'#2#255#8'OnChange'#7#15'cbProjectChange'#5'Style'#7#14
-  +'csDropDownList'#8'TabOrder'#2#2#0#0#5'TEdit'#10'edtVersion'#4'Left'#2'x'#6
-  +'Height'#2#23#3'Top'#2'P'#5'Width'#2'P'#7'Enabled'#8#8'TabOrder'#2#3#0#0#9'T'
-  +'ComboBox'#12'cbFromBranch'#4'Left'#2'x'#6'Height'#2#21#3'Top'#2'p'#5'Width'
-  +#3#16#1#7'Enabled'#8#10'ItemHeight'#2#13#9'MaxLength'#2#255#8'OnChange'#7#12
-  +'cbFromChange'#5'Style'#7#14'csDropDownList'#8'TabOrder'#2#4#0#0#9'TComboBox'
-  +#10'cbToBranch'#4'Left'#2'x'#6'Height'#2#21#3'Top'#3#144#0#5'Width'#3#16#1#7
-  +'Enabled'#8#10'ItemHeight'#2#13#9'MaxLength'#2#255#5'Style'#7#14'csDropDownL'
-  +'ist'#8'TabOrder'#2#5#0#0#9'TCheckBox'#10'cbBranches'#4'Left'#3#240#0#6'Heig'
-  +'ht'#2#19#3'Top'#2'P'#5'Width'#2'F'#7'Caption'#6#8'Branches'#7'Checked'#9#8
-  +'OnChange'#7#18'cbBranchesOnChange'#5'State'#7#9'cbChecked'#8'TabOrder'#2#6#0
-  +#0#9'TCheckBox'#6'cbTags'#4'Left'#3'O'#1#6'Height'#2#19#3'Top'#2'P'#5'Width'
-  +#2'1'#7'Caption'#6#4'Tags'#7'Checked'#9#8'OnChange'#7#13'cbTagOnChange'#5'St'
-  +'ate'#7#9'cbChecked'#8'TabOrder'#2#7#0#0#7'TButton'#14'btnPasteScript'#4'Lef'
-  +'t'#2#16#6'Height'#2#25#3'Top'#2#8#5'Width'#3#31#1#7'Caption'#6'7Copy SQL Sc'
-  +'ript to Retrieve Version Number to Clipboard'#7'OnClick'#7#19'btnPasteScrip'
-  +'tClick'#8'TabOrder'#2#8#0#0#0
+  +#25#3'Top'#2#11#5'Width'#2'U'#7'Caption'#6#11'Settings...'#7'OnClick'#7#16'b'
+  +'tnSettingsClick'#8'TabOrder'#2#0#0#0#7'TButton'#17'btnGenerateScript'#4'Lef'
+  +'t'#2#16#6'Height'#2#25#3'Top'#3#177#0#5'Width'#3'x'#1#7'Caption'#6'#Generat'
+  +'e Synchronization Script ...'#7'Enabled'#8#7'OnClick'#7#22'btnGenerateScrip'
+  +'tClick'#8'TabOrder'#2#1#0#0#9'TComboBox'#9'cbProject'#4'Left'#2'x'#6'Height'
+  +#2#21#3'Top'#2'0'#5'Width'#3#16#1#7'Enabled'#8#10'ItemHeight'#2#13#8'OnChang'
+  +'e'#7#15'cbProjectChange'#5'Style'#7#14'csDropDownList'#8'TabOrder'#2#2#0#0#5
+  +'TEdit'#10'edtVersion'#4'Left'#2'x'#6'Height'#2#23#3'Top'#2'P'#5'Width'#2'P'
+  +#7'Enabled'#8#8'TabOrder'#2#3#0#0#9'TComboBox'#12'cbFromBranch'#4'Left'#2'x'
+  +#6'Height'#2#21#3'Top'#2'p'#5'Width'#3#16#1#7'Enabled'#8#10'ItemHeight'#2#13
+  +#8'OnChange'#7#12'cbFromChange'#5'Style'#7#14'csDropDownList'#8'TabOrder'#2#4
+  +#0#0#9'TComboBox'#10'cbToBranch'#4'Left'#2'x'#6'Height'#2#21#3'Top'#3#144#0#5
+  +'Width'#3#16#1#7'Enabled'#8#10'ItemHeight'#2#13#5'Style'#7#14'csDropDownList'
+  +#8'TabOrder'#2#5#0#0#9'TCheckBox'#10'cbBranches'#4'Left'#3#240#0#6'Height'#2
+  +#19#3'Top'#2'P'#5'Width'#2'F'#7'Caption'#6#8'Branches'#7'Checked'#9#8'OnChan'
+  +'ge'#7#18'cbBranchesOnChange'#5'State'#7#9'cbChecked'#8'TabOrder'#2#6#0#0#9
+  +'TCheckBox'#6'cbTags'#4'Left'#3'O'#1#6'Height'#2#19#3'Top'#2'P'#5'Width'#2'1'
+  +#7'Caption'#6#4'Tags'#7'Checked'#9#8'OnChange'#7#13'cbTagOnChange'#5'State'#7
+  +#9'cbChecked'#8'TabOrder'#2#7#0#0#7'TButton'#14'btnPasteScript'#4'Left'#2#16
+  +#6'Height'#2#25#3'Top'#2#11#5'Width'#3#31#1#7'Caption'#6'7Copy SQL Script to'
+  +' Retrieve Version Number to Clipboard'#7'OnClick'#7#19'btnPasteScriptClick'
+  +#8'TabOrder'#2#8#0#0#0
 ]);

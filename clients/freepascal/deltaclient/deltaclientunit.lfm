@@ -1,13 +1,13 @@
 object DeltaForm: TDeltaForm
-  Left = 651
-  Height = 233
-  Top = 131
-  Width = 420
+  Left = 670
+  Height = 212
+  Top = 588
+  Width = 404
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'deltaclient'
-  ClientHeight = 233
-  ClientWidth = 420
+  ClientHeight = 212
+  ClientWidth = 404
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ParentFont = False
@@ -47,7 +47,7 @@ object DeltaForm: TDeltaForm
   object btnSettings: TButton
     Left = 307
     Height = 25
-    Top = 8
+    Top = 11
     Width = 85
     Caption = 'Settings...'
     OnClick = btnSettingsClick
@@ -55,10 +55,10 @@ object DeltaForm: TDeltaForm
   end
   object btnGenerateScript: TButton
     Left = 16
-    Height = 33
-    Top = 184
+    Height = 25
+    Top = 177
     Width = 376
-    Caption = 'Generate Synchronization Script And Copy To Clipboard...'
+    Caption = 'Generate Synchronization Script ...'
     Enabled = False
     OnClick = btnGenerateScriptClick
     TabOrder = 1
@@ -70,7 +70,6 @@ object DeltaForm: TDeltaForm
     Width = 272
     Enabled = False
     ItemHeight = 13
-    MaxLength = -1
     OnChange = cbProjectChange
     Style = csDropDownList
     TabOrder = 2
@@ -90,7 +89,6 @@ object DeltaForm: TDeltaForm
     Width = 272
     Enabled = False
     ItemHeight = 13
-    MaxLength = -1
     OnChange = cbFromChange
     Style = csDropDownList
     TabOrder = 4
@@ -102,7 +100,6 @@ object DeltaForm: TDeltaForm
     Width = 272
     Enabled = False
     ItemHeight = 13
-    MaxLength = -1
     Style = csDropDownList
     TabOrder = 5
   end
@@ -131,7 +128,7 @@ object DeltaForm: TDeltaForm
   object btnPasteScript: TButton
     Left = 16
     Height = 25
-    Top = 8
+    Top = 11
     Width = 287
     Caption = 'Copy SQL Script to Retrieve Version Number to Clipboard'
     OnClick = btnPasteScriptClick

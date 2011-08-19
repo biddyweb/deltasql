@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, configurations, downloadutils, loggers, datastructure, Clipbrd,
-  synacode, deltautils;
+  synacode, deltautils, settingsunit;
 
 type
 
@@ -56,13 +56,39 @@ implementation
 { TDeltaForm }
 
 procedure TDeltaForm.FormCreate(Sender: TObject);
+var idx : Longint;
 begin
   appPath_ := ExtractFilePath(ParamStr(0));
   logger_ := TLogger.Create(appPath_, 'log.txt');
-  conf := TConfiguration.Create();
+  conf := TConfiguration.Create(appPath_+PathDelim+'deltaclient.ini');
 
-  reloadProjectsAndBranchesFromServer;
+  if not FileExists(appPath_+PathDelim+'deltaclient.ini') then
+    begin
+      ShowMessage('Please define the communication parameters in Settings window first!');
+    end
+   else
+    reloadProjectsAndBranchesFromServer;
+
+  // defaults
+  if conf.defaultProject <> '' then
+       begin
+        idx :=  cbProject.Items.IndexOf(conf.defaultProject);
+        cbProject.ItemIndex := idx;
+        reloadFromAndToBranch;
+       end;
+  if conf.defaultFrom<>'' then
+       begin
+         idx := cbFromBranch.Items.IndexOf(conf.defaultFrom);
+         cbFromBranch.ItemIndex := idx;
+         reloadToBranch;
+       end;
+  if conf.defaultTo<>'' then
+       begin
+         idx := cbToBranch.Items.IndexOf(conf.defaultTo);
+         cbToBranch.ItemIndex := idx;
+       end;
 end;
+
 
 procedure TDeltaForm.reloadProjectsAndBranchesFromServer;
 var i  : Longint;
@@ -72,7 +98,7 @@ begin
   if ok then
    ok:=downloadToFile(conf.url+'/dbsync_list_branches.php?seed='+IntToStr(Trunc(Random*1000)), appPath_, 'branches.conf', conf.proxy, conf.port, 'deltaclient> ', logger_);
 
-  if ok and FileExists('projects.conf') and FileExists('branches.conf') then
+  if ok and FileExists(appPath_+PathDelim+'projects.conf') and FileExists(appPath_+PathDelim+'branches.conf') then
      begin
       if Assigned(projC) then projC.Free;
       if Assigned(branC) then branC.Free;
@@ -85,6 +111,7 @@ begin
         cbProject.AddItem(projC.con_.projects[i].name, nil);
       edtVersion.Enabled := true;
      end;
+  if not ok then ShowMessage('Error when retrieving script from deltasql server! Please check settings and log.txt');
 end;
 
 procedure TDeltaForm.cbProjectChange(Sender: TObject);
@@ -143,25 +170,33 @@ begin
              ShowMessage('No need to update this schema as version on server is '+IntToStr(versionServer)+'.');
              Exit;
           end;
-       param2 := '?project='+cbProject.Text+'&version='+edtVersion.Text+'&frombranch='+cbFromBranch.Text+'&tobranch='+cbToBranch.Text;
+       param2 := '?project='+encodeUrl(cbProject.Text)+'&version='+encodeUrl(edtVersion.Text)+'&frombranch='+encodeUrl(cbFromBranch.Text)+'&tobranch='+cbToBranch.Text;
+       param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user);
        param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
        ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'script.txt', conf.proxy, conf.port, 'deltaclient> ', logger_);
        if ok then
           begin
             convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
             DeleteFile(appPath_+PathDelim+'script.txt');
-            copyTextFileToClipboard(appPath_+PathDelim+'script.sql');
+            if conf.copyScriptToClipboard then copyTextFileToClipboard(appPath_+PathDelim+'script.sql');
           end;
      end;
+  if not ok then ShowMessage('Error when retrieving script from deltasql server! Please check settings and log.txt');
 end;
 
 procedure TDeltaForm.btnSettingsClick(Sender: TObject);
 begin
-  //
+  SettingsForm.loadSettingsFromConfiguration;
+  SettingsForm.Visible := true;
 end;
 
 procedure TDeltaForm.FormDestroy(Sender: TObject);
 begin
+  conf.defaultProject:=cbProject.Text;
+  conf.defaultFrom := cbFromBranch.Text;
+  conf.defaultTo:=cbToBranch.Text;
+  conf.saveToIniFile();
+
   projC.Free;
   branC.Free;
   logger_.Free;
