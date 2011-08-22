@@ -23,6 +23,7 @@ type
     edtPort: TLabeledEdit;
     edtEditor: TLabeledEdit;
     edtUser: TLabeledEdit;
+    openDialog: TOpenDialog;
     procedure btnCancelClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure btnSelectEditorClick(Sender: TObject);
@@ -52,7 +53,10 @@ end;
 
 procedure TSettingsForm.btnSelectEditorClick(Sender: TObject);
 begin
-  // open selection window
+  if openDialog.Execute then
+   begin
+     edtEditor.Text := openDialog.Filename;
+   end;
 end;
 
 procedure TSettingsForm.changeRequiresRestart(Sender: TObject);

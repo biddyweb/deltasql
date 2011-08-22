@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, configurations, downloadutils, loggers, datastructure, Clipbrd,
-  synacode, deltautils, settingsunit;
+  synacode, deltautils, settingsunit, Process, LazHelpHTML;
 
 type
 
@@ -18,6 +18,7 @@ type
     btnSettings: TButton;
     btnGenerateScript: TButton;
     btnPasteScript: TButton;
+    srvButton: TButton;
     cbProject: TComboBox;
     cbFromBranch: TComboBox;
     cbToBranch: TComboBox;
@@ -37,9 +38,12 @@ type
     procedure cbTagOnChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure srvButtonClick(Sender: TObject);
   private
     appPath_ : String;
     logger_  : TLogger;
+    BrowserPath_,
+    BrowserParams_: string;
 
     procedure reloadProjectsAndBranchesFromServer();
     procedure reloadFromAndToBranch();
@@ -57,6 +61,7 @@ implementation
 
 procedure TDeltaForm.FormCreate(Sender: TObject);
 var idx : Longint;
+    v   : THTMLBrowserHelpViewer;
 begin
   appPath_ := ExtractFilePath(ParamStr(0));
   logger_ := TLogger.Create(appPath_, 'log.txt');
@@ -87,6 +92,12 @@ begin
          idx := cbToBranch.Items.IndexOf(conf.defaultTo);
          cbToBranch.ItemIndex := idx;
        end;
+ try
+    v:=THTMLBrowserHelpViewer.Create(nil);
+    v.FindDefaultBrowser(BrowserPath_,BrowserParams_);
+ finally
+    v.Free;
+ end;
 end;
 
 
@@ -145,6 +156,7 @@ var param1, param2 : String;
     ok             : Boolean;
     versionServer,
     versionSchema  : Longint;
+    aProcess       : TProcess;
 begin
   // algorithm explanation at http://www.deltasql.org/deltasql/manual.php#write-client
   if (cbProject.Text='') then
@@ -179,6 +191,15 @@ begin
             convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
             DeleteFile(appPath_+PathDelim+'script.txt');
             if conf.copyScriptToClipboard then copyTextFileToClipboard(appPath_+PathDelim+'script.sql');
+
+            AProcess := TProcess.Create(nil);
+            try
+               AProcess.CommandLine := '"'+conf.editor+'" "'+appPath_+PathDelim+'script.sql'+'"';
+               AProcess.Options := AProcess.Options - [poWaitOnExit];
+               AProcess.Execute;
+            finally
+               AProcess.Free;
+            end;
           end;
      end;
   if not ok then ShowMessage('Error when retrieving script from deltasql server! Please check settings and log.txt');
@@ -202,6 +223,26 @@ begin
   logger_.Free;
   conf.Free;
 end;
+
+procedure TDeltaForm.srvButtonClick(Sender: TObject);
+var BrowserProcess: TProcess;
+    p             : Longint;
+    params        : String;
+begin
+    params := BrowserParams_;
+    p:=System.Pos('%s', params);
+    System.Delete(params,p,2);
+    System.Insert(conf.url,params,p);
+    BrowserProcess:=TProcess.Create(nil);
+    try
+      BrowserProcess.CommandLine:='"'+BrowserPath_+'" '+params;
+      BrowserProcess.Options := BrowserProcess.Options - [poWaitOnExit];
+      BrowserProcess.Execute;
+    finally
+      BrowserProcess.Free;
+    end;
+end;
+
 
 procedure TDeltaForm.reloadFromAndToBranch();
 var con : TBranchContainer;

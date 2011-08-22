@@ -87,8 +87,8 @@ object SettingsForm: TSettingsForm
     EditLabel.Left = 16
     EditLabel.Height = 14
     EditLabel.Top = 175
-    EditLabel.Width = 177
-    EditLabel.Caption = 'Editor which open generated scripts:'
+    EditLabel.Width = 182
+    EditLabel.Caption = 'Editor which opens generated scripts:'
     EditLabel.ParentColor = False
     ParentColor = False
     TabOrder = 5
@@ -135,5 +135,10 @@ object SettingsForm: TSettingsForm
     EditLabel.ParentColor = False
     ParentColor = False
     TabOrder = 9
+  end
+  object openDialog: TOpenDialog
+    Filter = '*.exe|*.exe'
+    left = 312
+    top = 152
   end
 end
