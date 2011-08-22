@@ -1,12 +1,14 @@
-13.8.2011
+14.8.2011-22.8.2011 git
+- the deltasql client written in freepascal is finished and ready for release with 1.4.0
+
+13.8.2011 git
 - adding GUI skeleton for deltasql client in freepascal
 - adding libraries which the new freepascal deltasql client will use
 
-9.8.2011
+9.8.2011 git
 adding branch visibility to interface for deltasql clients
 
-
-8.8.2011
+8.8.2011 git
 added interface for deltasql clients to retrieve branches and project information
 
 
