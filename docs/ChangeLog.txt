@@ -1,3 +1,19 @@
+*******************************
+1.4.0 Release Notes (23.8.2011)
+
+New client: Multipurpose deltaclient for Windows XP, Vista, 7 with dynamic project/branches selection and
+ automatic copy to clipboard of generated script.
+
+People upgrading from 1.3.7 should follow the procedure described on the Deltasql main page, as deltasql
+ detects changing in the underlying datamodel.
+*******************************
+
+23.8.2011 git
+- documenting deltaclient install steps and particularities on manual.php
+- adding ip column to tbusagehistory to troubleshoot client issues
+Users need to run the following script on their schemas:
+ALTER TABLE `tbusagehistory` ADD `ip` VARCHAR( 32 ) NULL ;
+
 14.8.2011-22.8.2011 git
 - the deltasql client written in freepascal is finished and ready for release with 1.4.0
 
@@ -13,7 +29,7 @@ added interface for deltasql clients to retrieve branches and project informatio
 
 
 *******************************
-1.3.7 Release Notes
+1.3.7 Release Notes (5.6.2011)
 
 Security improvement: all passwords of deltasql users are stored as salted MD5 
  hashed strings. Administrators can reset the password of a user, if it was lost.

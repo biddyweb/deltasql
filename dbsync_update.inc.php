@@ -292,8 +292,9 @@ if ($singlefiles=="0") {
 	if (!$xmlformatted) $updatestring = "$updatestring\n-- all scripts to reach db $tobranchname beginning from version $toversionnr on date $update_dt\n\n";
          
     // query for the usage statistics
-	$usagestring = "INSERT INTO tbusagehistory (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, SCHEMANAME, DBTYPE, UPDATE_DT)
-	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname', '$schemaname', '$dbtype', NOW());";
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$usagestring = "INSERT INTO tbusagehistory (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, SCHEMANAME, DBTYPE, UPDATE_DT, IP)
+	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname', '$schemaname', '$dbtype', NOW(), '$ip');";
     mysql_query($usagestring);
     
   } else {

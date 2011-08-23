@@ -9,5 +9,6 @@ CREATE TABLE `tbusagehistory` (
 `update_fromversion` INT NULL,
 `update_fromsource` VARCHAR( 128 ) NULL,
 `schemaname`  VARCHAR( 32 ) NULL ,
-`dbtype` VARCHAR( 32 ) NULL 
+`dbtype` VARCHAR( 32 ) NULL ,
+`ip` VARCHAR( 32 ) NULL 
 ) ENGINE = MYISAM ;

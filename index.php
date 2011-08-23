@@ -48,7 +48,7 @@ if (file_exists($configurationfile)) {
 	      if ($tagname=="") $tagname="TAG_deltasql_1.3.?";
 	      echo "<p><b><font color=\"red\">Deltasql database schema needs to be upgraded! The database needs to be tagged with TAG_deltasql_$ds_schema_version.</b></font></p>";
 		  echo "<p>Please visit the <a href=\"http://www.deltasql.org/deltasql/dbsync.php\">synchronization page on deltasql.org</a>, ";
-		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$ds_schema_version</b>, ";
+		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$ds_schema_version</b>, leave the <b>Version Number:</b> field empty ";
 		  echo " and hit the synchronization button at the bottom. Then execute the generated script into the deltasql schema to solve this issue. </p>";
 		  
 		  echo "<p>If you are developing deltasql or you patched it, you might want to disable this error by setting the <b>test_system</b> variable in  ";
