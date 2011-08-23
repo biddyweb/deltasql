@@ -15,7 +15,8 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 <li><a href="#install-guides">Install Guides</a></li>
 <ul>
 	<li><a href="#install-server">How to install deltasql Server</a></li>
-	<li><a name="install-clients" /><a href="#install-dbredactor-client">How to install dbredactor client (optional)</a></li>
+	<li><a href="#install-deltaclient">How to install deltaclient (optional)</a></li>
+	<li><a href="#install-dbredactor-client">How to install dbredactor client (optional)</a></li>
     <li><a href="#install-ant-client">How to install the ant client into Eclipse (optional)</a></li>
     <li><a href="#install-google-gadget">How to install the Google Gadget (optional)</a></li>
 	<li><a href="#install-bash">How to install the bash client (optional)</a></li>
@@ -74,8 +75,8 @@ much more complex development environment.</p>
   development schema represented by the branch named <tt>HEAD</tt>.
 
 <p>deltasql Server is written in such a way, that clients can interface to it and query the database automatically.
- Deltasql is currently shipped with a Java client called dbredactor that is able to interface with mySQL, Oracle, and postgreSQL
- databases. People in the Open Source community are encouraged to write their own clients, or to partecipate in
+ Deltasql is shipped with several clients which easy the interface to database schemas and sql clients, which show latest
+  available scripts and which can perform continouus database integration tasks. People in the Open Source community are encouraged to write their own clients, or to partecipate in
   improvements of the server itself.</p>  
 
 <center>
@@ -150,14 +151,48 @@ If the deltasql server is published on the Internet, you should also modify the 
 <a href="http://localhost/phpmyadmin">http://localhost/phpmyadmin</a>. 
 Execute the SQL script with the phpMyAdmin interface. It will create a <code>deltasql</code> database.</p>.
 
-If you did all steps right, you should get a working deltasql Server as in <a href="http://www.deltasql.org/deltasql">this webpage</a> if you visit
+<p>If you did all steps right, you should get a working deltasql Server as in <a href="http://www.deltasql.org/deltasql">this webpage</a> if you visit
 <a href="http://localhost/deltasql">http://localhost/deltasql</a>
+</p>
 
 <p>
 Log as <i>Administrator</i> with username <b><?php echo "$admin_user"; ?></b> and password <b><?php echo "$admin_pwd"; ?></b>, so that you can create your own users.
 Do not forget to change the <b>admin</b> password shortly after with this <a href="change_password.php">form</a>.
 </p>
 
+<h3><a name="install-deltaclient"></a>Install steps for the deltaclient (optional step)</h3>
+
+<p>Deltaclient is a multipurpose deltasql client for the Windows platform. It can copy to clipboard the query to retrieve the current schema version and the generated script as well. 
+ The user still needs to paste the queries and the generation script into his/her own SQL client (TOAD, SQL Developer, SQL Server Management Studio, etc.).
+
+<p>
+At startup, deltaclient will download all projects and branches which are currently available on Deltasql Server.</p>
+<p>Based on the Project selection, deltaclient will show only branches which belong to the selected project. 
+ Similarly, when selecting the From: field, it will show only valid branches and tags into the To: field.
+</p>
+
+<p>The version field should be filled with the result retrieved from the query which gets copyed when pressing the 'Copy SQL script to retrieve version number' button.
+  Please note that the query works only on a <a href="faq.php#table">prepared database</a>.
+
+<center>
+<img src="pictures/deltaclient-1.png" border="0">
+</center>
+
+<p>The branches and tags checkboxes are useful to filter branches and tags from the From: and To: comboboxes. The special branch HEAD will always appear, even if the branches checkbox is unchecked.</p>
+
+<p>To install deltasql, download first deltaclient.zip from the deltasql main page (at the bottom!). Unzip the file and start <tt>deltaclient.exe</tt>. When running the first time,
+ click on 'Settings...' button and configure the communication settings. The proxy parameter is important, if you run deltaclient in an enterprise behind a proxy.
+  If the proxy parameter is set incorrectly, deltasql will hang the next time is running. In such a case, launch <tt>restart.bat</tt> and correct the proxy parameter.</p>
+
+<center>
+<img src="pictures/deltaclient-2.png" border="0">
+</center>
+
+<p>The url setting should point to your inhouse deltasql server. For testing purposes, you can leave the predefined "www.deltasql.org/deltasql" value, just to see how deltaclient behaves.</p>
+
+<p>Instead of notepad, you can also define another editor to view SQL scripts such as <a href="http://notepad-plus-plus.org/">Notepad++</a>, Ultraedit or similar.
+
+<p>The deltaclient user parameter is not very important: it is used by deltasql server to collect statistics on how many times deltaclient was used to retrieve the synchronization script.</p>
 
 <h3><a name="install-dbredactor-client"></a>Install steps for the dbredactor client (optional step)</h3>
 
