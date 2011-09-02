@@ -1,3 +1,8 @@
+1.9.2011
+A new video tutorial revealing in 11 minutes the secret of installing the deltasql server has been published :-)
+As usual, the tutorial does not ship with this package.
+
+
 *******************************
 1.4.0 Release Notes (23.8.2011)
 
