@@ -1,6 +1,10 @@
 Point your browser to http://www.deltasql.org/deltasql/manual.php
 to get started. 
 
+deltasql is (c) 2007-2011 the Deltasql Development Team
+  contact us at gpu-world@lists.sourceforge.net
+          http://www.deltasql.org
+
 The deltasql code is released under the terms and conditions of the Gnu Public License.
 You should read and understand the document in the docs subfolder
 called GPL_license.txt. Everything in this package is under GPL a part of the enterprise logo under
@@ -20,7 +24,11 @@ The Calendar Widget is available at http://jscalendar.sourceforge.net
 
 deltasql includes a zip wrapper library under /utils/createzip by Rochak Chauhan (www.rochakchauhan.com)
 
-deltasql is (c) 2007-2011 the Deltasql Development Team
-  contact us at gpu-world@lists.sourceforge.net
-          http://www.deltasql.org
+deltasql includes the Text_Diff library, available under the LGPL at http://pear.php.net/package/Text_Diff .
+
+deltasql includes the phpgraphext library by Mathias Herrmann and Alex Fomenko, available under the LGPL.
+
+deltasql includes the Freepascal Synapse library by Lukas Gebauer, available at http://synapse.ararat.cz/
+
+
 
