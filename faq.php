@@ -30,6 +30,7 @@ include("utils/constants.inc.php");
 
 <h3>Usage questions</h3>
 <ul>
+<li><a href="#undefinedindex">Undefined index errors everywhere right after installing deltasql server</a></li>
 <li><a href="#export">In which formats can the synchronization script be exported?</a></li>
 <li><a href="#modules">Why are there projects and modules?</a></li>
 <li><a href="#table">Where is the script that I need to launch in my database, so that deltasql can work?</a></li>
@@ -199,6 +200,30 @@ If you need help to install deltasql, or to upgrade deltasql to newer version, i
 
 
 <h2>Usage questions</h2>
+
+<h3><a name="undefinedindex"></a>Undefined index errors everywhere right after installing deltasql server</h3>
+
+<p>
+If you get errors similar to the following one right after installing deltasql server:
+<br>
+<b>
+<tt>
+Notice: Undefined index: rights in D:\xampplite\htdocs\deltasql\utils\utils.inc.php on line 185
+</tt>
+</b>
+</p>
+<p>
+you should modify <tt>php.ini</tt> (in XAMPP for example it is located under C:\xampp\php) and change the variable error_reporting from
+<tt>
+E_ALL | E_STRICT
+</tt>
+to<br>
+<tt><b>
+error_reporting  =  E_ALL & ~E_NOTICE
+</tt></b><br>
+
+After that you need to restart the Apache webserver. This will solve the issue.
+</p>
 
 <h3><a name="export"></a>In which formats can the synchronization script be exported?</h3>
 
