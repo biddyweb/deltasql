@@ -129,6 +129,9 @@ Set a password for the <b>admin</b> user of deltasql. If you installed XAMPP, yo
   install everything you need to run your deltasql server.
 </p>
 
+<p>If after installing deltasql, you receive <b>Undefined index</b> errors, please read through this <a href="faq.php#undefinedindex">FAQ question</a>.</p>
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/000_deltasql_how_to_install_server_11min.avi/download"><img src="pictures/movie.jpg" border="0"></a> shows the steps described above, too.</p>
+
 <p>If something should go wrong, you can read also through the next section.</p>
 
 
@@ -307,8 +310,14 @@ There are four types of users: <i>Guests</i>, <i>Developers</i>, <i>Project Mana
  are Project Managers which can add new users to the deltasql database. They manage permissions as well.
 </p>
 
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/050_deltasql_user_management_7min.avi/download"><img src="pictures/movie.jpg" border="0"></a> shows how user management works, too.</p>
+
+
 
 <h3><a name="quickguide"></a>Quick Guide</h3>
+
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/010_deltasql_how_synchronization_works_14min.avi/download"><img src="pictures/movie.jpg" border="0"></a> should be a good introduction tutorial.</p>
+
 
 <p>Login first with a user which has 'Project Manager' or 'Administrator' rights.</p>
 <p>Define a module 'mymodule' with <a href="create_module.php">Create DB Module</a>. Then define 
@@ -411,11 +420,15 @@ In general, you should branch a project at the
 <p>If you master deltasql, you will then be able to transform a developer schema into a production schema or to dump an existing production schema and upgrade
  it to the latest HEAD for further development.</p>
 
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/020_deltasql_branching_and_transforming_schema_to_production_10min.avi/download"><img src="pictures/movie.jpg" border="0"></a> explains how branching works.</p>
+  
 <h3><a name="#whentotag"></a>When should one tag?</h3>
 
 <p>Tagging is easier than branching. Simply create a new tag in the <a href="list_branches.php">List Branches and Tags</a> page, when the software
  you are developing is packed into a new release. Just be careful to tag the correct branch: If the release is for development (or if you are not using branches
   at all) simply tag HEAD. If the release is on a production schema, you must tag the branch which is followed by the production schema.</p>
+  
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/040_deltasql_tagging_7min.avi/download"><img src="pictures/movie.jpg" border="0"></a> explains how tagging works.</p>  
  
 <h2><a name="#syncworks"></a>How synchronization works</h2>
 
@@ -515,6 +528,9 @@ Only the branch complicates it a little bit.</p>
 <p>The synchronization script executed all missing scripts to create a development schema and also changed the definition of the database
  from BRANCH_1 to HEAD, making it effectively a <b>development</b> schema.</p>
 
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/010_deltasql_how_synchronization_works_14min.avi/download"><img src="pictures/movie.jpg" border="0"></a> is an introduction tutorial on how synchronization works.</p>
+
+ 
 <h3><a name="concepts"></a>deltasql Concepts</h3>
 
 <p>Developers submit scripts which belong to a module. A project consists of one or several modules. 

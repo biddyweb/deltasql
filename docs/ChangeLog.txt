@@ -1,4 +1,8 @@
-4.9.2011
+5.9.2011 git
+- Added movie links to manual and to FAQ
+- Referencing FAQ on Undefined index problem in manual
+
+4.9.2011 git
 - Added FAQ answer to "Undefined price index" problem when installing deltasql server
 - Added external libraries used by Deltasql in README.txt
 
