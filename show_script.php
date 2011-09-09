@@ -14,7 +14,7 @@ include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 $scriptid = $_GET['id'];
-$history  = $_GET['history'];
+if (isset($_GET['history'])) $history  = $_GET['history']; else $history=0;
 if ($history==1) $changelog="changelog"; else $changelog="";
 
 $query="SELECT * from tbscript$changelog where id=$scriptid"; 
