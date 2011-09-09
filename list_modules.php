@@ -17,8 +17,9 @@ include("utils/constants.inc.php");
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 
 show_user_level();
-$rights = $_SESSION["rights"];
-//if ($rights<1) die("<b>Not enough rights to list all modules</b>");
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+} else $rights=0;
 ?>
 <h4>Database modules</h4>
 <table border="1">

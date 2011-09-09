@@ -1,19 +1,17 @@
 <?php session_start();
 include("utils/utils.inc.php");
-$updateuser=$_SESSION["username"];
-if ($updateuser=="") $updateuser="Not logged in";
+
+if(isset($_SESSION['username'])) {
+ $updateuser=$_SESSION["username"];
+} else $updateuser="Not logged in";
 
 $projectid  = $_POST['frmprojectid'];
 $lastversionnr = $_POST['lastversionnr'];
 $frombranchid = $_POST['frombranchid'];
 $tobranchid = $_POST['tobranchid'];
-$excludeviews = $_POST['frmexcludeviews'];
-$excludepackages = $_POST['frmexcludepackages'];
-$commitcomment = $_POST['frmcommitcomment'];
 $dbtype = $_POST['frmdbtype']; 
-$schemaname = $_POST['frmschemaname'];
 $formatgroup = $_POST['formatgroup'];
-$debug       = $_POST['frmdebug'];
+$debug = isset($_POST['frmdebug']);
 
 $htmlformatted=0;
 $xmlformatted=0;
@@ -22,8 +20,11 @@ if ($formatgroup=="html") $htmlformatted=1; else
 if ($formatgroup=="xml") $xmlformatted=1; else
 if ($formatgroup=="singlefiles") $singlefiles=1;
 
-if ($excludeviews=="") $excludeviews=0;
-if ($excludepackages=="") $excludepackages=0;
+// unused variables
+$excludeviews=0;
+$excludepackages=0;
+$commitcomment="";
+$schemaname="";
 
 include("dbsync_update.inc.php");
 if ($htmlformatted) {

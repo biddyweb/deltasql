@@ -14,8 +14,10 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 
 include("dbsync_currentversion.inc.php");
 show_user_level();
-$rights = $_SESSION["rights"];
-//if ($rights<1) die("<b>Not enough rights to list all projects</b>");
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+} else $rights=0;
+
 ?>
 <h4>Projects</h4>
 <table border="1">

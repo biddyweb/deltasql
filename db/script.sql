@@ -170,13 +170,12 @@ CREATE TABLE `tbsynchronize` (
 `description` VARCHAR( 128 ) NULL,
 `update_fromversion` INT NULL,
 `update_fromsource` VARCHAR( 128 ) NULL,
-`schemaname`  VARCHAR( 32 ) NULL ,
 `dbtype` VARCHAR( 32 ) NULL ,
 UNIQUE KEY `versionnr` (`versionnr`)
 ) ENGINE = MYISAM ;
 
-INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, SCHEMANAME, DBTYPE)
-VALUES ('deltasql-server', 0, 'HEAD', 'INTERNAL', 'deltasql-server', '', 'mySQL');
+INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)
+VALUES ('deltasql-server', 0, 'HEAD', 'INTERNAL', 'deltasql-server', 'mySQL');
 
 
 -- --------------------------------------------------------

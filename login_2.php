@@ -38,6 +38,7 @@ if ($nums==0) {
 
  $rights=mysql_result($result, 0, "rights");
  $userid=mysql_result($result, 0, "id");
+ $first =mysql_result($result, 0, "first");
  if ($unencryptedfound==1) {
      $query2="UPDATE tbuser SET password='****',passwhash='$hash_pwd',encrypted=1 WHERE id=$userid"; 
      $result2=mysql_query($query2); 
@@ -47,6 +48,8 @@ if ($nums==0) {
  $_SESSION['username'] = $name;
  $_SESSION['rights'] = $rights;
  $_SESSION['userid'] = $user_id;
+ $_SESSION['first'] = $first;
+ 
  js_redirect("index.php");
 
 ?>

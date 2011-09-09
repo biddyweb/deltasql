@@ -12,13 +12,22 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 
-$rights = $_SESSION["rights"];
-$user = $_SESSION["username"];
-$userid = $_SESSION["userid"];
-$defaultprojectid = $_GET["id"];
-if ($defaultprojectid == "") {
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+  $user = $_SESSION["username"];
+  $userid = $_SESSION["userid"];
+} else {
+  $rights=0; $user=""; $userid="";
+}
+
+if (isset($_GET["id"])) {
+   $defaultprojectid = $_GET["id"];
+}   
+else {
    // attempt to retrieve default project from cookies :-)
-   $defaultprojectid = $_SESSION["dbsync_projectid"];
+   if (isset($_SESSION["dbsync_projectid"])) 
+      $defaultprojectid = $_SESSION["dbsync_projectid"];
+   else $defaultprojectid = "";	  
 }
 
 //if ($rights<1) die("<b>Not enough rights to synchronize a database schema.</b>");
@@ -104,14 +113,6 @@ select * from tbsynchronize where versionnr = (select max(versionnr) from tbsync
  printDatabaseComboBox($dbdefault);
  echo "</td><td><i>= value in column dbtype</i></td></tr>";
 
- /*
- // disabled as it creates confusion
- echo "<tr><td><b>Schema name</b></td>";
- echo "<td><input type=\"text\" name=\"frmschemaname\" value=\"\" size=\"70\"></td><td><i>= value in column schema name (optional)</i></td></tr>";
- */
- echo "<tr><td><b>Commit Comment:</b></td>";
- echo "<td><input type=\"text\" name=\"frmcommitcomment\" value=\"\" size=\"70\"></td><td><i>= comment which will be shown on top of generated script (optional)</i></td></tr>";
- 
  if ($rights>1) {
    echo "<td><b>Exclude:</b></td>";
    echo "<td><input name=\"frmexcludeviews\" type=\"checkbox\" value=\"1\"/>Views";

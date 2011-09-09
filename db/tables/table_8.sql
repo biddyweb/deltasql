@@ -9,7 +9,6 @@ CREATE TABLE `tbsynchronize` (
 `description` VARCHAR( 128 ) NULL,
 `update_fromversion` INT NULL,
 `update_fromsource` VARCHAR( 128 ) NULL,
-`schemaname`  VARCHAR( 32 ) NULL ,
 `dbtype` VARCHAR( 32 ) NULL ,
 UNIQUE KEY `versionnr` (`versionnr`)
 ) ENGINE = MYISAM ;

@@ -1,7 +1,7 @@
 <?php
 include("conf/config.inc.php");
 
-$excltag=$_POST['frmexcltag'];
+$excltag=isset($_POST['frmexcltag']);
 $projectid=$_POST['frmprojectid'];
 
 require_once('utils/phptreegraphext/classes/Node.php');

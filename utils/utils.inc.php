@@ -182,8 +182,13 @@ exit();
 function show_user_level() {
 echo "<center>";
 
-$rights = $_SESSION["rights"];
-$usersession = $_SESSION['username'];
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+  $usersession = $_SESSION['username'];
+} else {
+  $rights=0; $usersession="";
+}  
+
 if ($rights==1) {
 echo "<b>You are logged in as Developer ($usersession)</b><br>";
 } else

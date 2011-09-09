@@ -12,7 +12,10 @@ include("utils/constants.inc.php");
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 show_user_level();
-$rights = $_SESSION["rights"];
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+} else $rights=0;
+
 ?>
 <h3>Project branches in blue and tags in yellow</h3>
 

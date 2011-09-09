@@ -1,3 +1,7 @@
+9.9.2011 git
+- Started fixing "Undefined Index" error
+- Removed schemaname filed from TBSYNCHRONIZE and TBUSAGEHISTORY
+
 5.9.2011 git
 - Added movie links to manual and to FAQ
 - Referencing FAQ on Undefined index problem in manual

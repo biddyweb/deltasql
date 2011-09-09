@@ -16,10 +16,12 @@
     include("conf/config.inc.php");
  }   
  if (file_exists($configurationfile)) show_user_level();
- $rights = $_SESSION["rights"];
- $user = $_SESSION["username"];
- $first = $_SESSION["first"];
- $user_id = $_SESSION["user_id"];
+ if(isset($_SESSION['userid'])) {
+    $rights = $_SESSION["rights"];
+    $user = $_SESSION["username"];
+ } else {
+   $rights=0; $user=""; 
+ }
  
  echo "<h2>deltasql server $deltasql_version";
  if ($patchlevel!="") echo "-$patchlevel";
@@ -206,7 +208,7 @@ data model branches. The trick is to number the sql scripts and to create on eac
 if ($enterprise_edition==true)
   echo "<img src=\"pictures/deltasql-small.png\" border=0";
 ?>
-<h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql">here</a>) and is developed
+<h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/project/memberlist.php?group_id=212117">deltasql Team</a>. 
  The deltasql logo was designed by 
 <?php 

@@ -9,8 +9,9 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
-$rights = $_SESSION["rights"];
-//if ($rights<1) die("<b>Not enough rights to list project modules.</b>");
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+} else $rights=0;
 
 $projectid = $_GET['id'];
 $projectname = $_GET['name'];

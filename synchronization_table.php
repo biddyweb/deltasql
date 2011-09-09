@@ -14,7 +14,6 @@
  $frmsourcebranch = $_POST['frmsourcebranch'];
  $projectid=$_POST['frmprojectid'];
  $projectname=$_POST['frmprojectname'];
- $frmschemaname = $_POST['frmschemaname'];
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h3>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></h3>";
@@ -42,7 +41,6 @@ CREATE TABLE TBSYNCHRONIZE
   DESCRIPTION                 VARCHAR2(128)             NULL,
   UPDATE_FROMVERSION          INTEGER                   NULL,
   UPDATE_FROMSOURCE           VARCHAR2(128)             NULL,
-  SCHEMANAME                  VARCHAR2(32)              NULL,
   DBTYPE                      VARCHAR2(32)              NULL,
   CONSTRAINT   UN_VERSIONNR   UNIQUE (VERSIONNR)
 );
@@ -77,7 +75,6 @@ CREATE TABLE `tbsynchronize` (
 `description` VARCHAR( 128 ) NULL,
 `update_fromversion` INT NULL,
 `update_fromsource` VARCHAR( 128 ) NULL,
-`schemaname`  VARCHAR( 32 ) NULL ,
 `dbtype` VARCHAR( 32 ) NULL ,
 UNIQUE KEY `versionnr` (`versionnr`)
 ) ENGINE = MYISAM ;
@@ -122,7 +119,6 @@ CREATE TABLE tbsynchronize
   description                 varchar(128)             null,
   update_fromversion          integer                  null,
   update_fromsource           varchar(128)             null,
-  schemaname                  varchar(32)              null,
   dbtype                      varchar(32)              null,
   CONSTRAINT   un_versionnr   UNIQUE (versionnr)
 );
@@ -168,7 +164,6 @@ CREATE TABLE tbsynchronize
   description character varying(128),
   update_fromversion integer,
   update_fromsource character varying(128),
-  schemaname character varying(32),
   dbtype character varying(32)
 );
 
@@ -205,7 +200,6 @@ CREATE TABLE tbsynchronize
   description text,
   update_fromversion int,
   update_fromsource text,
-  schemaname text,
   dbtype text
 );
 
@@ -220,8 +214,8 @@ CREATE TABLE tbsynchronize
   @mysql_select_db($database) or die("Unable to select database");
   $versionnr=get_global_version();
   mysql_close();
-  echo "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, SCHEMANAME, DBTYPE)\n";
-  echo "VALUES ('$projectname', $versionnr, '$frmsourcebranch', 'INTERNAL', 'deltasql-server', '$frmschemaname', '$frmdbtype');\n";
+  echo "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\n";
+  echo "VALUES ('$projectname', $versionnr, '$frmsourcebranch', 'INTERNAL', 'deltasql-server', '$frmdbtype');\n";
   
   if ($frmdbtype=="$db_oracle")
        echo "COMMIT;\n";
