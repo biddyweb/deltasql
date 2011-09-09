@@ -55,10 +55,10 @@ echo "<input type=\"hidden\" name=\"moduleid\"  value=\"$moduleid\">";
 <a href="list_modules.php">Back to List Modules</a>
 
 <?php
-$frm_name=$_POST['name'];
+if (isset($_POST['name'])) $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];
 $frm_moduleid=$_POST['moduleid'];
-if ($frm_name=="") exit;
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

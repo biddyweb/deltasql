@@ -27,9 +27,9 @@ Description:<br>
 <a href="index.php">Back to main menu</a>
 
 <?php
-$frm_name=$_POST['name'];
+if (isset($_POST['name']))  $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];
-if ($frm_name=="") exit;
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

@@ -41,11 +41,11 @@ echo "<input type=\"hidden\" name=\"frmprojectid\"  value=\"$projectid\">";
 <a href="index.php">Back to main menu</a>
 
 <?php
-$frm_name=$_POST['name'];
+if (isset($_POST['name'])) $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];
 $frm_projectid=$_POST['frmprojectid'];
 $frm_versionnr=$_POST['frmversionnr'];
-if ($frm_name=="") exit;
+
 if ($frm_name=="HEAD") die ("<b>Not possible to create a branch named HEAD!</b>");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");

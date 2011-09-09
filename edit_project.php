@@ -53,9 +53,9 @@ echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
 <a href="list_projects.php">Back to List Projects</a>
 
 <?php
-$frm_description=$_POST['description'];
+if (isset($_POST['description'])) $frm_description=$_POST['description']; else exit;
 $frm_projectid=$_POST['projectid'];
-if ($frm_description=="") exit;
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

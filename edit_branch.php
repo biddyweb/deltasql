@@ -53,9 +53,9 @@ echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
 <a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php
-$frm_description=$_POST['description'];
+if (isset($_POST['description'])) $frm_description=$_POST['description']; else exit;
 $frm_branchid=$_POST['branchid'];
-if ($frm_description=="") exit;
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

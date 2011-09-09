@@ -46,11 +46,10 @@ $projectname = $_GET['name'];
 <a href="index.php">Back to main menu</a>
 
 <?php
-$frm_moduleid=$_POST['frmmoduleid'];
+if (isset($_POST['frmmoduleid'])) $frm_moduleid=$_POST['frmmoduleid']; else exit;
 $frm_projectid=$_POST['frmprojectid'];
 $frm_projectname=$_POST['frmprojectname'];
 
-if ($frm_moduleid=="") exit;
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 

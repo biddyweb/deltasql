@@ -103,13 +103,13 @@ echo "<input type=\"hidden\" name=\"istag\"  value=\"$tag\">";
 <a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php
-$frm_newname=$_POST['newname'];
-$frm_oldname=$_POST['oldname'];
-$frm_newdescription=$_POST['newdescription'];
-$frm_oldbranchid=$_POST['branchid'];
-$frm_projectid=$_POST['projectid'];
-$frm_versionnr=$_POST['versionnr'];
-$frm_istag=$_POST['istag'];
+if (isset($_POST['newname'])) $frm_newname=$_POST['newname']; else $frm_newname="";
+if (isset($_POST['oldname'])) $frm_oldname=$_POST['oldname']; else $frm_oldname="";
+if (isset($_POST['newdescription'])) $frm_newdescription=$_POST['newdescription']; else $frm_description="";
+if (isset($_POST['branchid'])) $frm_oldbranchid=$_POST['branchid']; else $frm_oldbranchid="";
+if (isset($_POST['projectid'])) $frm_projectid=$_POST['projectid']; else $frm_projectid="";
+if (isset($_POST['versionnr'])) $frm_versionnr=$_POST['versionnr']; else $frm_versionnr="";
+if (isset($_POST['istag'])) $frm_istag=$_POST['istag']; else $frm_istag="";
 if (($frm_oldbranchid=="") && ($frm_istag==0)) exit;
 if (($frm_newname==$frm_oldname) || ($frm_newname=="")) {
     js_redirect("list_branches.php");
