@@ -58,10 +58,10 @@
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 
-$frm_oldpwd=$_POST['oldpwd'];
+if (isset($_POST['oldpwd'])) $frm_oldpwd=$_POST['oldpwd']; else exit;
 $frm_newpwd=$_POST['newpwd'];
 $frm_confirmnewpwd=$_POST['confirmnewpwd'];
-if ($frm_oldpwd=="") exit;
+
 if ($frm_newpwd=="") die("<b><font color=\"red\">The new password can not be empty!</font></b>");
 if ($frm_newpwd!=$frm_confirmnewpwd)
   die("<b><font color=\"red\">The new passwords do not match!</font></b>");

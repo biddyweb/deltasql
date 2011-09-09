@@ -43,13 +43,13 @@ show_user_level();
 $myrights = $_SESSION["rights"];
 if ($myrights<3) die("<b>Not enough rights to edit a user.</b>");
 
-$frm_username=$_POST['username'];
+if (isset($_POST['username'])) $frm_username=$_POST['username']; else exit;
 $first=$_POST['first'];
 $last=$_POST['last'];
 $email=$_POST['email'];
 $rights=$_POST['rights'];
 $thisuserid=$_POST['thisuserid'];
-if ($frm_username=="") exit;
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
