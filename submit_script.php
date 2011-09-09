@@ -130,7 +130,7 @@ Comments:<br>
 </textarea>
 <br>
 <?php
-$chainscriptsubmit = $_SESSION['chainscriptsubmit'];
+if (isset($_SESSION['chainscriptsubmit'])) $chainscriptsubmit = $_SESSION['chainscriptsubmit']; else $chainscriptsubmit = ""; 
 echo "<input name=\"anothersubmit\" type=\"checkbox\" value=\"1\" ";
 if ($chainscriptsubmit==1) echo "checked=\"checked\"";
 echo " />Submit Another Script after this one<br>";
@@ -142,7 +142,8 @@ echo " />Submit Another Script after this one<br>";
 </p>
 <?php
 
-$frm_script=$_POST['script'];
+if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;
+
 $frm_comment=$_POST['comment'];
 $frm_moduleid=$_POST['frmmoduleid'];
 $frm_title=$_POST['title'];
@@ -153,7 +154,6 @@ $frm_isapackage=$_POST['frmisapackage'];
 if ($frm_isaview=="") $frm_isaview=0;
 if ($frm_isapackage=="") $frm_isapackage=0;
 
-if ($frm_script=="") exit;
 if ($frm_moduleid=="") die("<b><font color=\"red\">Please specify a database module.</font></b>");
 //echo "<p>";
 // echo "*$frm_script* *$frm_comment* *$frm_moduleid* *$frm_title* *$userid* *$version $frm_isaview  $frm_isapackage*";

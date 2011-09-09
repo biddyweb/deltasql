@@ -134,7 +134,8 @@ echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest 
 <a href="list_scripts.php">Back to list scripts</a>
 
 <?php
-$frm_script=$_POST['script'];
+if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;
+
 $frm_comment=$_POST['comment'];
 $frm_moduleid=$_POST['frmmoduleid'];
 $frm_title=$_POST['title'];
@@ -145,7 +146,6 @@ $frm_incversion=$_POST['frmincversion'];
 if ($frm_isaview=="") $frm_isaview=0;
 if ($frm_isapackage=="") $frm_isapackage=0;
 
-if ($frm_script=="") exit;
 //echo "<p>";
 // echo "*$frm_script* *$frm_comment* *$frm_moduleid* *$frm_title* *$userid* *$version*";
 //echo "</p>";

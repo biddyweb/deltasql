@@ -14,24 +14,26 @@
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("head.inc.php");
-$rights = $_SESSION["rights"];
+if(isset($_SESSION['rights'])) {
+  $rights = $_SESSION["rights"];
+} else $rights=0;
 
 // load current settings
-$cookie_filtertitle=$_SESSION['search_title'];
-$cookie_filtercomment=$_SESSION['search_comments'];
-$cookie_filterscript=$_SESSION['search_script'];
-$cookie_authorid=$_SESSION['search_authorid'];
-$cookie_moduleid=$_SESSION['search_moduleid'];
-$cookie_branchid=$_SESSION['search_branchid'];
-$cookie_frmisaview=$_SESSION['search_frmisaview'];
-$cookie_frmisapackage=$_SESSION['search_frmisapackage'];
-$cookie_commentsmatchcase=$_SESSION['search_comments_matchcase'];
-$cookie_scriptsmatchcase=$_SESSION['search_script_matchcase'];
-$cookie_fromversion=$_SESSION['search_fromversion'];
-$cookie_toversion=$_SESSION['search_toversion'];
-$cookie_fromdata=$_SESSION['search_fromdata'];
-$cookie_todata=$_SESSION['search_todata'];
-$cookie_modified=$_SESSION['search_modified'];
+if (isset($_SESSION['search_title'])) $cookie_filtertitle=$_SESSION['search_title']; else $cookie_filtertitle="";
+if (isset($_SESSION['search_comments'])) $cookie_filtercomment=$_SESSION['search_comments']; else $cookie_filtercomment="";
+if (isset($_SESSION['search_script'])) $cookie_filterscript=$_SESSION['search_script']; else $cookie_filterscript="";
+if (isset($_SESSION['search_authorid'])) $cookie_authorid=$_SESSION['search_authorid']; else $cookie_authorid="";
+if (isset($_SESSION['search_moduleid'])) $cookie_moduleid=$_SESSION['search_moduleid']; else $cookie_moduleid="";
+if (isset($_SESSION['search_branchid'])) $cookie_branchid=$_SESSION['search_branchid']; else $cookie_branchid="";
+if (isset($_SESSION['search_frmisaview'])) $cookie_frmisaview=$_SESSION['search_frmisaview']; else $cookie_frmisaview="";
+if (isset($_SESSION['search_frmisapackage'])) $cookie_frmisapackage=$_SESSION['search_frmisapackage']; else $cookie_frmisapackage="";
+if (isset($_SESSION['search_comments_matchcase'])) $cookie_commentsmatchcase=$_SESSION['search_comments_matchcase']; else $cookie_commentsmatchcase="";
+if (isset($_SESSION['search_script_matchcase'])) $cookie_scriptsmatchcase=$_SESSION['search_script_matchcase']; else $cookie_scriptsmatchcase;
+if (isset($_SESSION['search_fromversion'])) $cookie_fromversion=$_SESSION['search_fromversion']; else $cookie_fromversion="";
+if (isset($_SESSION['search_toversion'])) $cookie_toversion=$_SESSION['search_toversion']; else $cookie_toversion="";
+if (isset($_SESSION['search_fromdata'])) $cookie_fromdata=$_SESSION['search_fromdata']; else $cookie_fromdata="";
+if (isset($_SESSION['search_todata'])) $cookie_todata=$_SESSION['search_todata']; else $cookie_todata="";
+if (isset($_SESSION['search_modified'])) $cookie_modified=$_SESSION['search_modified']; else $cookie_modified="";
 ?>
 
 <h3>Search Scripts</h3>
