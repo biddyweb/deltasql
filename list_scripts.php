@@ -16,18 +16,26 @@ include("utils/constants.inc.php");
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 
 //show_user_level();
-$rights = $_SESSION["rights"];
-$sessionuserid = $_SESSION["userid"];
-$scriptoffset = $_SESSION["scriptoffset"];
-if ($scriptoffset=="") {
+
+if (isset($_SESSION["userid"])) {
+  $rights = $_SESSION["rights"];
+  $sessionuserid = $_SESSION["userid"];
+} else {
+  $rights = 0; $sessionuserid="";
+}  
+if (isset($_SESSION["scriptoffset"])) { 
+  $scriptoffset = $_SESSION["scriptoffset"];
+} else {
   $scriptoffset=0;
   $_SESSION["scriptoffset"] = 0;
 }
 
-$textoutput = $_GET['textoutput'];
-if ($textoutput=="") $textoutput=0;
-$showall = $_GET['showall'];
-if ($showall=="") $showall=0;
+if (isset($_GET['textoutput'])) {
+   $textoutput = $_GET['textoutput']; }
+else $textoutput=0;
+if (isset($_GET['textoutput'])) {
+   $showall = $_GET['showall']; }
+else $showall=0;
 
 ?>
 <h4>Database scripts</h4>
