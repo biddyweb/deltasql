@@ -280,19 +280,17 @@ if ($singlefiles=="0") {
 
   if ($generated_scripts>0) {
 	$commentstring = "-- updating synchronization information for the database schema";
-	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE)";
-	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname');";
+	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
+	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";
 	
 	if ($toistag==1)
 		$updatestring = "$updatestring\nUPDATE tbsynchronize SET tagname='$tagname' WHERE versionnr=$toversionnr;";
-	if ($dbtype!="")
-		$updatestring = "$updatestring\nUPDATE tbsynchronize SET dbtype='$dbtype' WHERE versionnr=$toversionnr;";
 	if (!$xmlformatted) $updatestring = "$updatestring\n-- all scripts to reach db $tobranchname beginning from version $toversionnr on date $update_dt\n\n";
          
     // query for the usage statistics
 	$ip=$_SERVER['REMOTE_ADDR'];
-	$usagestring = "INSERT INTO tbusagehistory (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DESCRIPTION, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE, UPDATE_DT, IP)
-	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', '$commitcomment', $lastversionnr, '$frombranchname', '$dbtype', NOW(), '$ip');";
+	$usagestring = "INSERT INTO tbusagehistory (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE, UPDATE_DT, IP)
+	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype', NOW(), '$ip');";
     mysql_query($usagestring);
     
   } else {

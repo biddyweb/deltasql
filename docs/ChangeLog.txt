@@ -1,3 +1,8 @@
+10.9.2011 git
+- dropping column description from TBSYNCHRONIZE and TBUSAGEHISTORY
+ALTER TABLE `tbsynchronize` DROP `description`;
+ALTER TABLE `tbusagehistory` DROP `description`;
+
 9.9.2011 git
 - Started fixing "Undefined Index" error
 - Removed schemaname filed from TBSYNCHRONIZE and TBUSAGEHISTORY

@@ -47,7 +47,6 @@ echo "<table border=1><tr>
 <th>from</th>
 <th>to</th>
 <th>db type</th>
-<th>description</th>
 </tr>";
 
 
@@ -63,7 +62,6 @@ echo "<table border=1><tr>
    $update_type=mysql_result($result,$i,"update_type");
    $versionnr=mysql_result($result,$i,"versionnr");
    $branchname=mysql_result($result,$i,"branchname");
-   $description=mysql_result($result,$i,"description");
    $update_fromversion=mysql_result($result,$i,"update_fromversion");
    $update_fromsource=mysql_result($result,$i,"update_fromsource");
    $dbtype=mysql_result($result,$i,"dbtype");
@@ -79,7 +77,6 @@ echo "<table border=1><tr>
     <td>$update_fromversion</td>
     <td>$versionnr</td>
     <td>$dbtype</td>
-    <td>$description</td>
     </tr>";
   
    $i++;
