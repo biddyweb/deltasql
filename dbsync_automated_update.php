@@ -19,6 +19,7 @@ if ($updateuser=="") $updateuser="Unknown User";
 if ($updateclient=="") $updateclient="Unknown Client";
 if ($htmlformatted=="") $htmlformatted=0;
 if ($xmlformatted=="") $xmlformatted=0;
+if ($dbtype=="") $dbtype="Other";
 
 // XML formatted is stronger than html formatted. Both are not allowed
 if ($xmlformatted==1) $htmlformatted=0;

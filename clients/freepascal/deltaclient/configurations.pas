@@ -21,7 +21,8 @@ type TConfiguration = class(TObject)
       user,
       defaultProject,
       defaultFrom,
-      defaultTo : String;
+      defaultTo,
+      dbType : String;
 
       showHidden,
       copyScriptToClipboard : Boolean;
@@ -50,7 +51,6 @@ end;
 procedure TConfiguration.loadFromIniFile();
 begin
   url   := ini_.ReadString('Communication','URL', 'http://www.deltasql.org/deltasql');
-  //TODO: remember to remove these settings
   proxy := ini_.ReadString('Communication','Proxy', '');
   port  := ini_.ReadString('Communication','Port', '');
 
@@ -63,6 +63,7 @@ begin
   defaultProject := ini_.ReadString('Default', 'Project', '');
   defaultFrom    := ini_.ReadString('Default', 'From', '');
   defaultTo      := ini_.ReadString('Default', 'To', '');
+  dbType         := ini_.ReadString('Default', 'dbType', 'Other');
 end;
 
 procedure TConfiguration.saveToIniFile();
@@ -80,6 +81,7 @@ begin
   ini_.WriteString('Default', 'Project', defaultProject);
   ini_.WriteString('Default', 'From', defaultFrom);
   ini_.WriteString('Default', 'To', defaultTo);
+  ini_.WriteString('Default', 'dbType', dbType);
 end;
 
 end.

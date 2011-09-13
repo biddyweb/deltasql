@@ -1,12 +1,12 @@
 object DeltaForm: TDeltaForm
   Left = 447
-  Height = 213
-  Top = 306
+  Height = 240
+  Top = 263
   Width = 407
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'deltaclient'
-  ClientHeight = 213
+  ClientHeight = 240
   ClientWidth = 407
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -44,6 +44,14 @@ object DeltaForm: TDeltaForm
     Caption = 'To:'
     ParentColor = False
   end
+  object lblDbType: TLabel
+    Left = 16
+    Height = 14
+    Top = 176
+    Width = 76
+    Caption = 'Database type:'
+    ParentColor = False
+  end
   object btnSettings: TButton
     Left = 307
     Height = 25
@@ -56,7 +64,7 @@ object DeltaForm: TDeltaForm
   object btnGenerateScript: TButton
     Left = 16
     Height = 25
-    Top = 177
+    Top = 206
     Width = 287
     Caption = 'Generate Synchronization Script ...'
     Enabled = False
@@ -70,7 +78,6 @@ object DeltaForm: TDeltaForm
     Width = 272
     Enabled = False
     ItemHeight = 13
-    MaxLength = -1
     OnChange = cbProjectChange
     Style = csDropDownList
     TabOrder = 2
@@ -90,7 +97,6 @@ object DeltaForm: TDeltaForm
     Width = 272
     Enabled = False
     ItemHeight = 13
-    MaxLength = -1
     OnChange = cbFromChange
     Style = csDropDownList
     TabOrder = 4
@@ -102,7 +108,6 @@ object DeltaForm: TDeltaForm
     Width = 272
     Enabled = False
     ItemHeight = 13
-    MaxLength = -1
     Style = csDropDownList
     TabOrder = 5
   end
@@ -140,10 +145,29 @@ object DeltaForm: TDeltaForm
   object srvButton: TButton
     Left = 307
     Height = 25
-    Top = 177
+    Top = 206
     Width = 85
     Caption = 'Server...'
     OnClick = srvButtonClick
     TabOrder = 9
+  end
+  object cbDbType: TComboBox
+    Left = 120
+    Height = 21
+    Top = 174
+    Width = 272
+    ItemHeight = 13
+    Items.Strings = (
+      'Oracle'
+      'PostgreSQL'
+      'mySQL'
+      'MS SQL Server'
+      'Sybase'
+      'sqlite'
+      'Other'
+    )
+    MaxLength = -1
+    Style = csDropDownList
+    TabOrder = 10
   end
 end

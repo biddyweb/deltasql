@@ -1,4 +1,6 @@
 13.9.2011 git
+- Added dbtype field to deltaclient
+- If a client does not specify dbtype, it defaults to database type "Other"
 - Back to the oneliner INSERT statement to update synchronization information
 
 10.9.2011 git
