@@ -1,3 +1,6 @@
+13.9.2011 git
+- Back to the oneliner INSERT statement to update synchronization information
+
 10.9.2011 git
 - dropping column description from TBSYNCHRONIZE and TBUSAGEHISTORY
 ALTER TABLE `tbsynchronize` DROP `description`;

@@ -135,7 +135,7 @@ if ($toistag==1) {
 	   mysql_close();
        errormessage(17, "-- The tag $tagname does not belong to the project!", $xmlformatted, $htmlformatted);
 	} 
-}
+} else $tagname="";
 
 
 // retrieve project name
@@ -280,11 +280,9 @@ if ($singlefiles=="0") {
 
   if ($generated_scripts>0) {
 	$commentstring = "-- updating synchronization information for the database schema";
-	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
-	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";
+	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
+	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$tagname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";
 	
-	if ($toistag==1)
-		$updatestring = "$updatestring\nUPDATE tbsynchronize SET tagname='$tagname' WHERE versionnr=$toversionnr;";
 	if (!$xmlformatted) $updatestring = "$updatestring\n-- all scripts to reach db $tobranchname beginning from version $toversionnr on date $update_dt\n\n";
          
     // query for the usage statistics
