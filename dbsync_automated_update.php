@@ -3,27 +3,18 @@ include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("dbsync_update.inc.php");
 
-$projectname  = $_GET['project'];
-$lastversionnr = $_GET['version'];
-$frombranchname = $_GET['frombranch'];
-$tobranchname = $_GET['tobranch'];
-$updateuser = $_GET['user'];
-$updateclient = $_GET['client'];
-$comment = $_GET['comment'];
-$htmlformatted = $_GET['htmlformatted'];
-$xmlformatted = $_GET['xmlformatted'];
-$dbtype = $_GET['dbtype'];
-$schemaname = $_GET['schemaname'];
-
-if ($updateuser=="") $updateuser="Unknown User";
-if ($updateclient=="") $updateclient="Unknown Client";
-if ($htmlformatted=="") $htmlformatted=0;
-if ($xmlformatted=="") $xmlformatted=0;
-if ($dbtype=="") $dbtype="Other";
+if (isset($_GET['project'])) $projectname  = $_GET['project']; else $projectname="";
+if (isset($_GET['version'])) $lastversionnr = $_GET['version']; else $lastversionnr="";
+if (isset($_GET['frombranch'])) $frombranchname = $_GET['frombranch']; else $frombranchname="";
+if (isset($_GET['tobranch'])) $tobranchname = $_GET['tobranch']; else $tobranchname="";
+if (isset($_GET['user'])) $updateuser = $_GET['user']; else $updateuser="Unknown User";
+if (isset($_GET['client'])) $updateclient = $_GET['client']; else $updateclient="Unknown Client";
+if (isset($_GET['htmlformatted'])) $htmlformatted = $_GET['htmlformatted']; else $htmlformatted=0;
+if (isset($_GET['xmlformatted'])) $xmlformatted = $_GET['xmlformatted']; else $xmlformatted=0;
+if (isset($_GET['dbtype'])) $dbtype = $_GET['dbtype']; else $dbtype="Other";
 
 // XML formatted is stronger than html formatted. Both are not allowed
 if ($xmlformatted==1) $htmlformatted=0;
-
 
 if ($frombranchname=="") $frombranchname="HEAD";
 if ($tobranchname=="") $tobranchname="HEAD";
@@ -52,6 +43,6 @@ if ($tobranchid=="") errormessage(3, "The target branch was not found ($tobranch
 
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted, 0 /*excludeviews*/, 0 /*exclude packages*/, 
-             $updateuser, $updateclient, $comment, $schemaname, $dbtype, $xmlformatted, /*singlefiles*/ 0, /*debug*/ 0);
+             $updateuser, $updateclient, /*$comment*/ "", /*$schemaname*/ "", $dbtype, $xmlformatted, /*singlefiles*/ 0, /*debug*/ 0);
 
 ?>
