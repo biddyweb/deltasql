@@ -1,3 +1,8 @@
+14.9.2011 git
+- fixed missing Closefile in deltaclient
+- fixing Undefined index error when retrieveing data from a client
+
+
 13.9.2011 git
 - Added dbtype field to deltaclient
 - If a client does not specify dbtype, it defaults to database type "Other"

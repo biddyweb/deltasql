@@ -63,16 +63,20 @@ var i   : Longint;
 begin
   i := 0;
   AssignFile(F, filename);
-  Reset(F);
-  ReadLn(F); // header
-  while (not Eof(F)) and (i<=MAX_PROJECTS) do
+  try
+   Reset(F);
+   ReadLn(F); // header
+   while (not Eof(F)) and (i<=MAX_PROJECTS) do
      begin
        Inc(i);
        ReadLn(F, Str);
        con_.projects[i].projectid := StrToInt(ExtractParam(Str,';'));
        con_.projects[i].name := ExtractParam(Str,';');
      end;
-  con_.nbprojects := i;
+   con_.nbprojects := i;
+  finally
+    CloseFile(F);
+  end;
 end;
 
 constructor TBranchController.Create(filename : String);
@@ -82,9 +86,10 @@ var i   : Longint;
 begin
   i := 0;
   AssignFile(F, filename);
-  Reset(F);
-  ReadLn(F); // header
-  while (not Eof(F)) and (i<=MAX_BRANCHES) do
+  try
+   Reset(F);
+   ReadLn(F); // header
+   while (not Eof(F)) and (i<=MAX_BRANCHES) do
      begin
        Inc(i);
        ReadLn(F, Str);
@@ -94,8 +99,10 @@ begin
        con_.branches[i].versionnr := StrToInt(ExtractParam(Str,';'));
        con_.branches[i].name := ExtractParam(Str,';');
      end;
-  con_.nbbranches := i;
-
+    con_.nbbranches := i;
+  finally
+   CloseFile(F);
+  end;
 end;
 
 procedure TBranchController.retrieveBranches(projname : String; versionnr : Longint;
