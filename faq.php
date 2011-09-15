@@ -16,6 +16,7 @@ include("utils/constants.inc.php");
 <li><a href="#about">What is deltasql for?</a></li>
 <li><a href="#who">Who is behind deltasql?</a></li>
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
+<li><a href="#support">How can I get support for deltasql?</a></li>
 <li><a href="#algo">How does the synchronization algorithm work?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
 <li><a href="#contribute">How can I contribute?</a></li>
@@ -25,7 +26,6 @@ include("utils/constants.inc.php");
 <li><a href="#download">Where can I download deltasql?</a></li>
 <li><a href="#upgrade">There is a new deltasql version, how do I upgrade?</a></li>
 <li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
-<li><a href="#support">How can I get support for deltasql?</a></li>
 </ul>
 
 <h3>Usage questions</h3>
@@ -86,6 +86,22 @@ deltasql is a tool which is suitable for the "Agile Development" model, where de
 In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
  can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
+
+<h3><a name="support"></a>How can I get support for deltasql?</h3>
+<p>
+We provide technical support for following activities:
+<ul>
+<li>Install deltasql into your environment</li>
+<li>Migrate your deltasql server to the latest version</li>
+<li>Consulting services</li>
+<li>Develop particular clients and new server functionality</li>
+<li>Training</li>
+</ul>
+</p>
+<p>
+Please <a href="mailto:tiziano.mengotti at gmail.com">send a mail</a> for suggestions, inquiries and pricing information.
+</p>
+
 
 <h3><a name="algo"></a>How does the synchronization algorithm work?</h3>
 <p>
@@ -193,12 +209,6 @@ First, you need to install a git client. On Windows, you can use <a href="http:/
 <p>
 The command to checkout the deltasql repository is: <tt>git clone git://deltasql.git.sourceforge.net/gitroot/deltasql/deltasql</tt>.
  To keep the repository updated, run from time to time <tt>git pull</tt>.
-</p>
-
-<h3><a name="support"></a>How can I get support for deltasql?</h3>
-<p>
-If you need help to install deltasql, or to upgrade deltasql to newer version, if you have inquiries or suggestions, please mail to 
- the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>.
 </p>
 
 
@@ -472,9 +482,11 @@ deltasql.org will not use the collected data to mail advertisement or to harm an
 If you lost the admin password (or if you messed up with the hash salt in TBPARAMETER), you can execute the following
  script into the deltasql database schema:
 </p>
+<p>
 <pre>
 UPDATE tbuser SET password='log4admin',encrypted=0,passwhash='' where username='admin';
 </pre>
+</p>
 <p>
 You can then login in deltasql with username <b>admin</b> and password <b>log4admin</b>. After that, you should change the password again
  to something more secure.
