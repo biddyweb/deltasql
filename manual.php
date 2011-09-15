@@ -40,6 +40,10 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
     <ul>
         <li><a href="#insights">Insights into the deltasql Algorithm</a></li>
         <li><a href="#write-client">How to write your own client</a></li>
+		<ul>
+		  <li><a href="#client-parameters">Client URL parameters</a></li>
+		  <li><a href="#xml-examples">XML examples</a></li>
+		</ul>
         <li><a href="#structure">Directory structure of the deltasql_1.x.y package</a></li>
         <li><a href="#errors">List of error codes from deltasql Server</a></li>
 		<li><a href="#codewalkthrough">Source code walkthrogh</a></li>
@@ -722,7 +726,7 @@ The client should now ask the deltasql server for the script to be executed in t
    value contained in <tt>BRANCHNAME</tt> if the production schema is updated without becoming a development schema.
 If the parameters <tt>frombranch</tt> or <tt>tobranch</tt> are not specified, they default to <tt>HEAD</tt>.
 </p>
-<p>The parameters described in the previous paragraph are the most important ones, but there are more <a href="manual_clientoptions.php">here</a>, to allow customization
+<p>The parameters described in the previous paragraph are the most important ones, but there are more described in the next paragraph, to allow customization
  and even XML export. If something goes wrong, deltasql server reports an error according to the following <a href="manual_errormessages.php">list</a>.</p>
 <li>4. Visualize or execute script in database schema</li>
 <p>Depending if your client includes drivers that are capable of executing complex scripts like packages
@@ -734,13 +738,41 @@ The script always contains an UPDATE statement, that sets the new version and br
 </p> 
 </ul>
 
-<h3><a name="structure"></a>Directory structure of the deltasql_1.x.y  package</h3>
+<h3><a name="client-parameters"></a>Client URL parameters</h3>
 
-<p>The structure itself is described in this <a href="docs/directory_structure_for_this_package.txt">text file</a>.</p>
+<p>These are all possible parameters which can be passed by a client to the <tt>dbsync_automated_update.php</tt> script. String values need to be URL encoded.</p>
+
+<ul>
+<li><tt>project=</tt> the Project name as retrieved from the colum PROJECTNAME in TBSYNCHRONIZE</li>
+<li><tt>version=</tt> the version number as retrieved from the colum VERSIONNR in TBSYNCHRONIZE</li>
+<li><tt>frombranch=</tt> the current branch as retrieved from the colum BRANCHNAME in TBSYNCHRONIZE</li>
+<li><tt>tobranch=</tt> the target branch that will be reached after applying the synchronization script</li>
+<li><tt>user=</tt> the user name that requested the synchronization script</li>
+<li><tt>client=</tt> the name of the deltasql client that requests the synchronization script</li>
+<li><tt>htmlformatted=</tt> set to 1 to get a pretty printed HTML version of the synchronization script 
+(usually it is a text file without any particular formatting)</li>
+<li><tt>xmlformatted=</tt> set to 1 to get an XML version of the synchronization script, see below for the schema definition</li>
+<li><tt>dbtype=</tt> the type of the database, it should be one of the constants defined in utils/constants.inc.php</li>
+</ul>
+
+<h3><a name="xml-examples"></a>XML examples as retrieved from clients</a></h3>
+
+<p>deltasql Server answers with two XML types, either an Error message or a synchronization script, if the option <tt>xmlformatted=1</tt>
+is set. Click on the links below to see examples</p>
+
+<p>
+<a href="docs/xml-synchro-example.xml" target=_blank>Synchronization Script XML example ...</a><br>
+<a href="docs/xml-error-example.xml" target=_blank>Error Message XML example...</a><br>
+</p>
 
 <h3><a name="errors"></a>List of error codes for deltasql server</h3>
 
 <p>The entire list is <a href="manual_errormessages.php">here</a>.</p>
+
+
+<h3><a name="structure"></a>Directory structure of the deltasql_1.x.y  package</h3>
+
+<p>The structure itself is described in this <a href="docs/directory_structure_for_this_package.txt">text file</a>.</p>
 
 <h3><a name="codewalkthrough"></a>Source code walkthrogh</h3>
 
