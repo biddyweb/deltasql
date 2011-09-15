@@ -199,15 +199,15 @@ The command to checkout the deltasql repository is: <tt>git clone git://deltasql
 <p>
 We provide technical support for following activities:
 <ul>
-<li>Install deltasql into your environment</li>
 <li>Migrate your deltasql server to the latest version</li>
-<li>Consulting services</li>
 <li>Develop particular clients and new server functionality</li>
+<li>Expose deltasql server to the outside via Tomcat and AJP connector</li>
+<li>Consulting services</li>
 <li>Training</li>
 </ul>
 </p>
 <p>
-Please <a href="mailto:tiziano.mengotti at gmail.com">send a mail</a> for suggestions, inquiries and pricing information. Thank you!
+Please <a href="mailto:tiziano.mengotti at gmail.com">send a mail</a> for bug reports, suggestions, inquiries and pricing information. Thank you!
 </p>
 
 
