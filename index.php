@@ -221,9 +221,24 @@ if ($enterprise_edition==true)
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
+ echo "</h6>";
+ echo "</center>";
+ 
+ // Stats for Google Analytics
+ if ($dns_name=="http://www.deltasql.org/deltasql") {
+ echo '
+ <script type="text/javascript">
+ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+ document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
+ </script>
+ <script type="text/javascript">
+ try{
+  var pageTracker = _gat._getTracker("UA-22222509-1");
+  pageTracker._trackPageview();
+ } catch(err) {}
+ </script>
+ ';
 ?> 
  
- </h6>
-</center>
 </body>
 </html>
