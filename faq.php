@@ -16,16 +16,16 @@ include("utils/constants.inc.php");
 <li><a href="#about">What is deltasql for?</a></li>
 <li><a href="#who">Who is behind deltasql?</a></li>
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
-<li><a href="#support">How can I get support for deltasql?</a></li>
 <li><a href="#algo">How does the synchronization algorithm work?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
 <li><a href="#contribute">How can I contribute?</a></li>
 <li><a href="#install">Is it difficult to install?</a></li>
 <li><a href="#quick">Is there a Quick Guide?</a></li>
-<li><a href="#test">Where can I test deltasql?</a></li>
+<li><a href="#test">Where can I try out and experiment with deltasql?</a></li>
 <li><a href="#download">Where can I download deltasql?</a></li>
 <li><a href="#upgrade">There is a new deltasql version, how do I upgrade?</a></li>
 <li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
+<li><a href="#support">How can I get technical support for deltasql?</a></li>
 </ul>
 
 <h3>Usage questions</h3>
@@ -87,22 +87,6 @@ In some environments it manages more than 2000 scripts, 10 projects, 12 develope
  can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
 
-<h3><a name="support"></a>How can I get support for deltasql?</h3>
-<p>
-We provide technical support for following activities:
-<ul>
-<li>Install deltasql into your environment</li>
-<li>Migrate your deltasql server to the latest version</li>
-<li>Consulting services</li>
-<li>Develop particular clients and new server functionality</li>
-<li>Training</li>
-</ul>
-</p>
-<p>
-Please <a href="mailto:tiziano.mengotti at gmail.com">send a mail</a> for suggestions, inquiries and pricing information.
-</p>
-
-
 <h3><a name="algo"></a>How does the synchronization algorithm work?</h3>
 <p>
 In Deltasql (since version 1.3.0), it is possible to create multiple branches. Branches are made from the original line of development which is represented in Deltasql by
@@ -158,7 +142,7 @@ deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same
 Yes, there is one in the <a href="manual.php#quickguide">manual</a>.
 </p>
 
-<h3><a name="test"></a>Where can I test deltasql?</h3>
+<h3><a name="test"></a>Where can I try out and experiment with deltasql?</h3>
 <p>
 Deltasql can be tested on <a href="http://www.deltasql.org/deltasql/">this page</a>. On the login page
  the password for the administrator is provided. Feel free to experiment with this instance of deltasql. From time
@@ -209,6 +193,21 @@ First, you need to install a git client. On Windows, you can use <a href="http:/
 <p>
 The command to checkout the deltasql repository is: <tt>git clone git://deltasql.git.sourceforge.net/gitroot/deltasql/deltasql</tt>.
  To keep the repository updated, run from time to time <tt>git pull</tt>.
+</p>
+
+<h3><a name="support"></a>How can I get technical support for deltasql?</h3>
+<p>
+We provide technical support for following activities:
+<ul>
+<li>Install deltasql into your environment</li>
+<li>Migrate your deltasql server to the latest version</li>
+<li>Consulting services</li>
+<li>Develop particular clients and new server functionality</li>
+<li>Training</li>
+</ul>
+</p>
+<p>
+Please <a href="mailto:tiziano.mengotti at gmail.com">send a mail</a> for suggestions, inquiries and pricing information. Thank you!
 </p>
 
 
@@ -498,7 +497,8 @@ In case you messed up with the salt in TBPARAMETER, you should reset all passwor
 
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>
-You can submit your question to the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>.
+You can submit your question to the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>. We appreciate your feedback! 
+Have fun with deltasql :-)
 </p>
 
 
