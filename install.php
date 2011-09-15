@@ -16,6 +16,7 @@ if (file_exists($configurationfile)) {
 		  <br>You can then visit this page again and it will show all fields to repeat the install step.</font></p>");
 }
 
+if (!isset($dbdefault)) $dbdefault="Oracle";
 ?>
 <h2>Install Page</h2>
 <form action="install_execution.php" method="post">
@@ -118,8 +119,8 @@ You can choose to show the table with the deltasql clients on the main page as w
 <br></br>
 
 <p>
-Pressing on the <b>Setup deltasql</b> button will generate the configuration file under <i><?php echo "$configurationfile"; ?></i> and create a schema on your mySQL instance.
- If all settings are correct, deltasql is ready to use. If not, you need to change <i><?php echo "$configurationfile"; ?></i> manually.
+Pressing on the <b>Setup deltasql</b> button will generate the configuration file under <i><?php echo "$configurationfile"; ?></i> and create a user and schema on your mySQL instance.
+ If all settings are correct, deltasql is ready to use. <font color="red">If not, you need to delete <i><?php echo "$configurationfile"; ?></i> manually, and drop both the created user and schema on your mySQL instance</font>.
 </p>
 <input type="Submit" value="Setup deltasql">  <a href="index.php">Cancel</a>
 </form>

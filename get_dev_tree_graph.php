@@ -2,7 +2,7 @@
 include("conf/config.inc.php");
 
 $excltag=isset($_POST['frmexcltag']);
-$projectid=$_POST['frmprojectid'];
+if (isset($_POST['frmprojectid'])) $projectid=$_POST['frmprojectid']; else die('<b>Project not defined!</b>');
 
 require_once('utils/phptreegraphext/classes/Node.php');
 require_once('utils/phptreegraphext/classes/Tree.php');

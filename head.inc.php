@@ -1,6 +1,7 @@
 <?php
 include_once ("utils/constants.inc.php");
 if (file_exists($configurationfile)) include_once ("conf/config.inc.php");
+if (!isset($enterprise_edition)) $enterprise_edition=false;
 if ($enterprise_edition==true) {
 echo " 
     <center>

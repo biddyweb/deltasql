@@ -14,7 +14,10 @@
  
  if (file_exists($configurationfile)) {
     include("conf/config.inc.php");
- }   
+ } 
+ if (!isset($disable_clients_table_on_main_page))  $disable_clients_table_on_main_page= false;
+ if (!isset($dns_name)) $dns_name="";
+ 
  if (file_exists($configurationfile)) show_user_level();
  if(isset($_SESSION['userid'])) {
     $rights = $_SESSION["rights"];
@@ -238,6 +241,7 @@ if ($enterprise_edition==true)
  } catch(err) {}
  </script>
  ';
+ }
 ?> 
  
 </body>
