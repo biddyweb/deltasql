@@ -1,7 +1,14 @@
+15.9.2011 git
+- refreshing script.sql to create a database manually with the script
+- removing undefined index error during install procedure
+- fixing Get Development Tree if no project is defined
+- adding javascript code for Google Analytics for deltasql test instance on www.deltasql.org
+- refreshing www.deltasql.org schema
+- dropping script-test-data.sql as it is a burden to mantain
+
 14.9.2011 git
 - fixed missing Closefile in deltaclient
 - fixing Undefined index error when retrieveing data from a client
-
 
 13.9.2011 git
 - Added dbtype field to deltaclient
