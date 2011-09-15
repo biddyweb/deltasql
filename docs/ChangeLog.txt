@@ -5,6 +5,7 @@
 - adding javascript code for Google Analytics for deltasql test instance on www.deltasql.org
 - refreshing www.deltasql.org schema
 - dropping script-test-data.sql as it is a burden to mantain
+- updating manual client options and moving them to main manual page
 
 14.9.2011 git
 - fixed missing Closefile in deltaclient
