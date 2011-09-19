@@ -1,5 +1,5 @@
 *******************************
-1.4.1 Release Notes (23.8.2011)
+1.4.1 Release Notes (23.9.2011)
 
 Maintenance release:
 
