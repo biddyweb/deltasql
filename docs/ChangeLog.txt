@@ -1,3 +1,20 @@
+*******************************
+1.4.1 Release Notes (23.8.2011)
+
+Maintenance release:
+
+deltaclient: new field database type added, fixed errors in closing files project.conf and branches.conf 
+
+deltasql server:
+- minimizing impact of Undefined Index errors when running with php.ini 
+error_reporting = E_ALL | E_STRICT ; instead of E_ALL & ~E_NOTICE
+- dropped unused schemaname and description fields as they created confusion to users and were used by spammers
+- back to the onliner INSERT statement to update synchronization information
+- inserted links to videos into documentation, improved documentation
+
+*******************************
+
+
 15.9.2011 git
 - refreshing script.sql to create a database manually with the script
 - removing undefined index error during install procedure
