@@ -201,7 +201,6 @@ We provide technical support for following activities:
 <ul>
 <li>Migrate your deltasql server to the latest version</li>
 <li>Develop particular clients and new server functionality</li>
-<li>Expose deltasql server to the outside via Tomcat and AJP connector</li>
 <li>Consulting services</li>
 <li>Training</li>
 </ul>
