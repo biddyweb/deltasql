@@ -100,7 +100,9 @@ if ($rights>=2) {
    if ($istag==0) {
 	   echo "<a href=\"branch_again.php?id=$id&tag=0\">Branch</a> ";
 	   echo "<a href=\"branch_again.php?id=$id&tag=1\">Tag</a> ";
-   }	   
+   } else {
+       echo "<a href=\"branch_from_existing_tag.php?id=$id\">Branch</a> ";
+   }   
 }
 echo "</td>";
 
