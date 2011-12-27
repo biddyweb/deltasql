@@ -85,15 +85,15 @@ echo "
 <td>$istag</td>
 <td>";
 if (($rights>=2) && ($name!="HEAD")) {
-    if ($visible==0) {
-      echo " <a href=\"change_branch_visibility.php?id=$id&show=1\">Show</a> ";
-    } else {
-      echo " <a href=\"change_branch_visibility.php?id=$id&show=0\">Hide</a> ";
-    }
     echo "<a href=\"edit_branch.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
     if ($rights==3) {
 	    $encoded_name=urlencode($name);
         echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name&tag=$istag\"><img alt=\"Delete\" src=\"icons/delete.png\"></a> ";
+    }
+	if ($visible==0) {
+      echo " <a href=\"change_branch_visibility.php?id=$id&show=1\">Show</a> ";
+    } else {
+      echo " <a href=\"change_branch_visibility.php?id=$id&show=0\">Hide</a> ";
     }    
 }
 if ($rights>=2) {

@@ -64,7 +64,7 @@ echo "
 <td>$upuser</td>
 <td>$updt</td>
 <td>$versionnr</td>
-<td><a href=\"show_script.php?id=$scriptid\">Show</a></td>
+<td><a href=\"show_script.php?id=$scriptid\"><img alt=\"Show\" src=\"icons/show.png\"></a></td>
 <td>$script</td>
 <td>$comments</td>
 </tr>
@@ -105,7 +105,7 @@ $diffcells
 <td>$update_user</td>
 <td>$create_dt</td>
 <td>$versionnr</td>
-<td><a href=\"show_script.php?id=$id&history=1\">Show</a></td>
+<td><a href=\"show_script.php?id=$id&history=1\"><img alt=\"Show\" src=\"icons/show.png\"></a></td>
 <td>$script</td>
 <td>$comments</td>
 </tr>";

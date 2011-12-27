@@ -1,3 +1,6 @@
+27.12.2011 git
+- Adding some icons to improve navigation. The icons are taken from phpMyAdmin
+
 24.11.2011 git
 Adding ability to branch from existing tags.
 

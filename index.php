@@ -111,8 +111,8 @@ if ($rights>1)
 <td valign="top">
 <h3>Synchronization</h3>
 <ul>
-<li><a href="list_branches.php">List Branches and Tags</a></li>
-<li><a href="dbsync.php">Synchronize database schema</a></li>
+<li><a href="list_branches.php">List Branches and Tags <img alt="List Branches and Tags" src="icons/tree.png"></a></li>
+<li><a href="dbsync.php">Synchronize database <img alt="Synchronize Database schema" src="icons/show2.png"></a></li>
 <?php 
 if ($rights>2) 
     echo "<br><li><a href=\"list_usage_history.php\">List Usage History</a></li>";
@@ -138,16 +138,16 @@ if ($rights>1)
 <?php 
 
 if ($rights==0)
-  echo "<li><a href=\"login.php\">Login</a></li>"; 
+  echo "<li><a href=\"login.php\">Login <img alt=\"Login\" src=\"icons/rights.png\"></a></li>"; 
 if ($rights>0) {
     echo "<li><a href=\"change_password.php\">Change Password</a></li>";
-    echo "<li><a href=\"logout.php\">Logout</a></li>";
+    echo "<li><a href=\"logout.php\">Logout <img alt=\"Logout\" src=\"icons/logout.png\"></a></li>";
 }
 ?>
 </ul>
 </td>
 <td>
-<h3>Help</h3>
+<h3><img alt="Help" src="icons/help.png"></a>Help</h3>
 <ul>
 <li><a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/" target=_blank>Tutorials (movies)</a></li>
 <li><a href="manual.php">Manual</a></li>
