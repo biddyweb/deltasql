@@ -49,11 +49,11 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 echo "<p>";
-echo "<a  href=\"index.php\"><img alt='Home' src='icons/home.png'> Main</a> | ";
+echo "<a  href=\"index.php\"><img alt=\"Home\" src=\"icons/home.png\"> Main</a> | ";
 if ($rights>0)
-     echo "<a  href=\"submit_script.php\"><img alt='New' src='icons/new.png'> Submit a new Script</a> | ";
+     echo "<a  href=\"submit_script.php\"><img alt=\"New\" src=\"icons/new.png\"> Submit a new Script</a> | ";
   
-echo "<a  href=\"search_scripts.php\"><img alt='Search' src='icons/search.png'> Search among Scripts</a> ";
+echo "<a  href=\"search_scripts.php\"><img alt=\"Search\" src=\"icons/search.png\"> Search among Scripts</a> ";
    
    
    // this is for search scripts capabilities
@@ -78,7 +78,7 @@ if (isset($_SESSION['search_modified']))   $searchmodified=$_SESSION['search_mod
        ($searchfromdata!="") || ($searchtodata!="") || ($searchmodified!=""))
    		echo "<b><a  href=\"search_cancel.php\">Cancel Search</a></b>";
 
-        
+echo "<br>";        
 ?>
 
 
@@ -170,7 +170,7 @@ if (($nbscripts>$scriptsperpage) && ($showall==0)) {
  
     $lastoffset=$nbscripts - ($nbscripts % $scriptsperpage);
     if ($scriptoffset<$lastoffset) {
-	    echo " <b> </b> ";
+	    //echo " <b> </b> ";
         echo "<a href=\"script_next_page.php\">Next <b>&#62;&#62;</b></a> ";
         echo "<a href=\"script_last_page.php?nbscripts=$nbscripts\">Last <b>&#62;</b>|</a> ";
     }
@@ -277,9 +277,9 @@ if ($textoutput==0) {
     echo "</td>";
 
     echo "
-    <td><a href=\"show_script.php?id=$id\"><img alt='Show' src='icons/show.png'></a> ";
+    <td><a href=\"show_script.php?id=$id\"><img alt=\"Show\" src=\"icons/show.png\"></a> ";
 	if ($rights>=1) {
-        echo "<a href=\"edit_script.php?id=$id\"><img alt='Edit' src='icons/edit.png'></a> "; 
+        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> "; 
     }
 	if ((($rights==1) && ($scriptuserid==$sessionuserid)) || ($rights>=2)) {
         $script_encoded = urlencode ( $script );
@@ -288,11 +288,11 @@ if ($textoutput==0) {
            $script_encoded = substr($script_encoded, 0, 100); 
            $shortened=1;
         }
-  	  echo "<a href=\"delete_script_confirm.php?id=$id&version=$versionnr&script=$script_encoded&short=$shortened\"><img alt='Delete' src='icons/delete.png'></a> ";
+  	  echo "<a href=\"delete_script_confirm.php?id=$id&version=$versionnr&script=$script_encoded&short=$shortened\"><img alt=\"Delete\" src=\"icons/delete.png\"></a> ";
 	}
 	if ($update_user!="") {
 	    $author_encoded = urlencode ( $author );
-	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt='History' src='icons/history.png'></a>";
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\"></a>";
 	}
     echo "</td>";
     echo "<td>$isaview</td><td>$isapackage</td>";
