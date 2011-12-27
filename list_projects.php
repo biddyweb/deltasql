@@ -62,10 +62,14 @@ echo "
 if ($rights>1) 
     echo "<a href=\"add_module_to_project.php?id=$id&name=$name\">Add Module</a> "; 
 echo "<a href=\"list_project_modules.php?id=$id&name=$name\">List Modules</a> <a href=\"dbsync.php?id=$id&name=$name\">Synchro</a> <b><a href=\"get_synchronization_table.php?id=$id&name=$name\">Table</a></b> ";
-if ($rights>=2) echo "<a href=\"edit_project.php?id=$id\">Edit</a> ";
+
+if ($rights>1) {
+ echo "<a href=\"create_branch.php?id=$id&name=$name\">Branch</a> ";
+}
+if ($rights>=2) echo "<a href=\"edit_project.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
 if ($rights>1) {
    $encoded_name=urlencode($name);
-   echo "<a href=\"create_branch.php?id=$id&name=$name\">Branch</a> <a href=\"delete_project_confirm.php?id=$id&name=$encoded_name\">Delete</a> ";
+   echo "<a href=\"delete_project_confirm.php?id=$id&name=$encoded_name\"><img alt=\"Delete\" src=\"icons/delete.png\"></a> ";
 }
 echo "</td></tr>";
 

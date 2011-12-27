@@ -90,10 +90,10 @@ if (($rights>=2) && ($name!="HEAD")) {
     } else {
       echo " <a href=\"change_branch_visibility.php?id=$id&show=0\">Hide</a> ";
     }
-    echo "<a href=\"edit_branch.php?id=$id\">Edit</a> ";
+    echo "<a href=\"edit_branch.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
     if ($rights==3) {
 	    $encoded_name=urlencode($name);
-        echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name&tag=$istag\">Delete</a> ";
+        echo " <a href=\"delete_branch_confirm.php?id=$id&name=$encoded_name&tag=$istag\"><img alt=\"Delete\" src=\"icons/delete.png\"></a> ";
     }    
 }
 if ($rights>=2) {
@@ -130,7 +130,8 @@ $i++;
  echo "</select> |";
  mysql_close();
 ?>
-<input name="frmexcltag" type="checkbox" value="1">Exclude tags | 
+<input name="frmexcltag" type="checkbox" value="1">Exclude tags 
+<img alt="Tree" src="icons/tree.png"> 
 <input type="Submit" value="Get tree graph">
 </form>
 <hr>

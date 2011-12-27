@@ -55,7 +55,7 @@ echo "<table border=1><tr>
 
  if ($rights>=2) {
     echo "<td>";
-    echo "<a href=\"delete_project_module.php?projectid=$projectid&moduleid=$moduleid&name=$projectname\">Delete</a>";    
+    echo "<a href=\"delete_project_module.php?projectid=$projectid&moduleid=$moduleid&name=$projectname\"><img alt=\"Delete\" src=\"icons/delete.png\"></a>";    
     echo "</td>";
  }    
  echo "</tr>";
@@ -65,7 +65,7 @@ echo "<table border=1><tr>
  echo "</table>";
  mysql_close();
  if ($rights>1)
-    echo "<a href=\"add_module_to_project.php?id=$projectid&name=$projectname\">Add Module to Project</a><br>";
+    echo "<a href=\"add_module_to_project.php?id=$projectid&name=$projectname\"><img alt=\"New\" src=\"icons/new.png\"> Add Module to Project</a><br>";
  ?>
 <br>
 <a href="list_projects.php">Back to List Projects</a>

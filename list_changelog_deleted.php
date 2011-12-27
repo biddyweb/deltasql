@@ -67,7 +67,7 @@ echo "
 <td>$author</td>
 <td>$update_user</td>
 <td>$create_dt</td>
-<td><a href=\"show_script.php?id=$id&history=1\">Show</a></td>
+<td><a href=\"show_script.php?id=$id&history=1\"><img alt=\"Show\" src=\"icons/show.png\"></a></td>
 </tr>";
  $i++;
 }

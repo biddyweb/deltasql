@@ -67,11 +67,11 @@ echo "
 <td><i>$email</i></td>";
 
 echo "<td>";
-if ($myrights==3) echo "<a href=\"edit_user.php?id=$id&username=$username&rights=$rights&first=$first&last=$last&email=$email\">Edit</a> ";
+if ($myrights==3) echo "<a href=\"edit_user.php?id=$id&username=$username&rights=$rights&first=$first&last=$last&email=$email\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
 if (($myrights==3) && ($username!="admin")) {
     $encoded_name=(urlencode($username));
+    echo "<a href=\"delete_user_confirm.php?id=$id&name=$encoded_name\"><img alt=\"Delete\" src=\"icons/delete.png\"></a> ";
 	echo "<a href=\"reset_user_password.php?id=$id&name=$encoded_name\">Reset password</a> ";
-    echo "<a href=\"delete_user_confirm.php?id=$id&name=$encoded_name\">Delete</a> ";
 }
 echo "</td>";
 $i++; // $i=$i+1;

@@ -59,10 +59,10 @@ echo "
 <td>$create_dt</td>
 <td>$lastversionnr</td>
 <td>";
-if ($rights>=2) echo "<a href=\"edit_module.php?id=$id\">Edit</a> ";
+if ($rights>=2) echo "<a href=\"edit_module.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
 if ($rights==3) {
     $name_encoded=urlencode($name);
-    echo "<a href=\"delete_module_confirm.php?id=$id&amp;name=$name_encoded\">Delete</a>";
+    echo "<a href=\"delete_module_confirm.php?id=$id&amp;name=$name_encoded\"><img alt=\"Delete\" src=\"icons/delete.png\"></a>";
 }
 echo "</td>";
 
