@@ -73,6 +73,9 @@ if ($visible==1) {
 } else {
       echo "<tr>";
 }  
+if ($description=="") $description="-";
+if ($sourcebranch=="") $sourcebranch="-";
+
 echo "
 <td>$id</td>
 <td>$name</td>

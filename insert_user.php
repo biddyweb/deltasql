@@ -35,14 +35,13 @@ include("utils/utils.inc.php");
 show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<3) die("<b>Not enough rights to insert a new user.</b>");
-
+if (!isset($_POST['username'])) exit;
 $frm_username=$_POST['username'];
 $frm_password=$_POST['password'];
 $first=$_POST['first'];
 $last=$_POST['last'];
 $email=$_POST['email'];
 $rights=$_POST['rights'];
-if ($frm_username=="") exit;
 if ($frm_password=="") die("<b><font color=\"red\">The password can not be empty!</font></b>");
 if ($frm_password==$frm_username) die("<b><font color=\"red\">The password can not be equal to the username!</font></b>");
 mysql_connect($dbserver, $username, $password);

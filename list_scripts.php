@@ -225,6 +225,7 @@ if ($textoutput==0) {
         $scriptonlist = "$scriptonlist...";
     }
 
+	if ($comments=="") $comments="-";
     if (strlen($comments)>10) {
         $comments = substr($comments, 0, 10);
         $comments = "$comments...";
@@ -293,6 +294,9 @@ if ($textoutput==0) {
 	if ($update_user!="") {
 	    $author_encoded = urlencode ( $author );
 	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\"></a>";
+	} else {
+	   $update_user="-";
+	   $update_dt="-";
 	}
     echo "</td>";
     echo "<td>$isaview</td><td>$isapackage</td>";

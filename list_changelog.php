@@ -57,6 +57,7 @@ echo "
 <th>script</th>
 <th>comments</th>
 </tr>";
+if ($comments=="") $comments="-";
 echo "
 <tr>
 <td></td><td><input type=\"radio\" name=\"todiff\" value=\"latest\" checked></td>
@@ -98,6 +99,8 @@ if ($update_user=="") {
   $description = "";
   $diffcells = "<td><input type=\"radio\" name=\"fromdiff\" value=\"$id\"></td><td><input type=\"radio\" name=\"todiff\" value=\"$id\"></td>";
 }
+if ($comments=="") $comments="-";
+if ($update_user=="") $update_user="-";
 echo "
 <tr>
 $diffcells

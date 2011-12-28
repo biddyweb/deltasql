@@ -50,6 +50,7 @@ $create_dt=mysql_result($result,$i,"create_dt");
 
 $lastchange=dbsynccurrentversion("", $id, 0);
 
+if ($description=="") $description="-";
 echo "
 <tr>
 <td>$id</td>

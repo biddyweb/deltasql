@@ -54,11 +54,12 @@ if (strlen($script)>35) {
         $script = "$script...";
 }
 
+if ($comments=="") $comments="-";
 if (strlen($comments)>10) {
     $comments = substr($comments, 0, 10);
     $comments = "$comments...";
 }
-
+if ($update_user=="") $update_user="-";
 echo "
 <tr>
 <td>$versionnr</td>

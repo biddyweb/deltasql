@@ -60,6 +60,11 @@ if ($rights==2) {
 if ($rights==3) {
    echo "Administrator";
 } 
+
+if ($first=="") $first="-";
+if ($last=="") $last="-";
+if ($email=="") $email="-";
+
 echo "
 </td>
 <td>$first</td>

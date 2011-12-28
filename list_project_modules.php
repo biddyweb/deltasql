@@ -45,6 +45,7 @@ echo "<table border=1><tr>
    $create_dt=mysql_result($result2,0,"create_dt");
    $lastversionnr=mysql_result($result2,0,"lastversionnr");
    
+   if ($description=="") $description="-";
    echo "
     <tr>
     <td>$id</td>

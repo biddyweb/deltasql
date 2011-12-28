@@ -39,7 +39,7 @@ echo "<tr>
 <th>description</th>
 <th>update dt</th>
 <th>last version number</th>
-<th></th>
+<th>actions</th>
 </tr>";
 
 $i=0;
@@ -51,6 +51,7 @@ $description=mysql_result($result,$i,"description");
 $create_dt=mysql_result($result,$i,"create_dt");
 $lastversionnr=mysql_result($result,$i,"lastversionnr");
 
+if ($description=="") $description="-";
 echo "
 <tr>
 <td>$id</td>

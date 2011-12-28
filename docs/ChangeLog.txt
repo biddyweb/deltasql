@@ -1,5 +1,7 @@
 28.12.2011 git
 - Disabling ability to edit username, as it might create problems in rare situations.
+- adding - to empty cells in tables, so that the cell appears correctly, even if it is empty
+- User creation still had undefined variables, if under strict error reporting in php.ini
 
 27.12.2011 git
 - Adding some icons to improve navigation. The icons are taken from phpMyAdmin
