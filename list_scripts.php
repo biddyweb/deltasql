@@ -170,7 +170,7 @@ if (($nbscripts>$scriptsperpage) && ($showall==0)) {
  
     $lastoffset=$nbscripts - ($nbscripts % $scriptsperpage);
     if ($scriptoffset<$lastoffset) {
-	    //echo " <b> </b> ";
+	    echo " <b> </b> ";
         echo "<a href=\"script_next_page.php\">Next <b>&#62;&#62;</b></a> ";
         echo "<a href=\"script_last_page.php?nbscripts=$nbscripts\">Last <b>&#62;</b>|</a> ";
     }
