@@ -1,3 +1,6 @@
+28.12.2011 git
+- Disabling ability to edit username, as it might create problems in rare situations.
+
 27.12.2011 git
 - Adding some icons to improve navigation. The icons are taken from phpMyAdmin
 

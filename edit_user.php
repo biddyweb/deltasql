@@ -14,10 +14,9 @@
 	$email 	  = $_GET['email'];
 	$rights   = $_GET['rights'];
 ?>
-<h2>Edit user</h2>
+<h2>Edit user <?php echo "$username"; ?></h2>
 <form action="edit_user.php" method="post">
 <table>
-<tr><td>Username:</td><td> <input type="text" name="username" value="<?php echo "$username"; ?>"></td></tr>
 <tr><td>First:</td><td> <input type="text" name="first" value="<?php echo "$first"; ?>"></td></tr>
 <tr><td>Last: </td><td><input type="text" name="last"  value="<?php echo "$last"; ?>"></td></tr>
 <tr><td>Email: </td><td> <input type="text" name="email" value="<?php echo "$email"; ?>"></td></tr>
@@ -43,9 +42,8 @@ show_user_level();
 $myrights = $_SESSION["rights"];
 if ($myrights<3) die("<b>Not enough rights to edit a user.</b>");
 
-if (isset($_POST['username'])) $frm_username=$_POST['username']; else exit;
+if (isset($_POST['last'])) $last=$_POST['last']; else exit;
 $first=$_POST['first'];
-$last=$_POST['last'];
 $email=$_POST['email'];
 $rights=$_POST['rights'];
 $thisuserid=$_POST['thisuserid'];
@@ -53,7 +51,7 @@ $thisuserid=$_POST['thisuserid'];
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="UPDATE tbuser SET username='$frm_username',first='$first',last='$last',email='$email',rights=$rights WHERE id=$thisuserid";
+$query="UPDATE tbuser SET first='$first',last='$last',email='$email',rights=$rights WHERE id=$thisuserid";
 mysql_query($query);
 mysql_close();
 
