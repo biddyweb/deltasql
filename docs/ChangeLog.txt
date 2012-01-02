@@ -1,6 +1,6 @@
 2.1.2012 git
 - deltasql reports an error when trying to submit a script with no modules defined (happens when deltasql is freshly installed).
-
+- fixing minor bug on login screen
 
 *******************************
 1.4.2 Release Notes (1.1.2012)

@@ -47,7 +47,7 @@ if ($nums==0) {
 
  $_SESSION['username'] = $name;
  $_SESSION['rights'] = $rights;
- $_SESSION['userid'] = $user_id;
+ $_SESSION['userid'] = $userid;
  $_SESSION['first'] = $first;
  
  js_redirect("index.php");
