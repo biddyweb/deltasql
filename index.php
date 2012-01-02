@@ -16,6 +16,7 @@
     include("conf/config.inc.php");
  } 
  if (!isset($disable_clients_table_on_main_page))  $disable_clients_table_on_main_page= false;
+ if (!isset($disable_topten_submitters))  $disable_topten_submitters=true;
  if (!isset($dns_name)) $dns_name="";
  
  if (file_exists($configurationfile)) show_user_level();
