@@ -1,3 +1,13 @@
+*******************************
+1.4.2 Release Notes (1.1.2012)
+
+Maintenance release:
+Visual enhancements (icons on important actions and border to empty cells)
+Ability to branch from existing tags
+Minor bugfixes
+
+*******************************
+
 28.12.2011 git
 - Disabling ability to edit username, as it might create problems in rare situations.
 - adding - to empty cells in tables, so that the cell appears correctly, even if it is empty
