@@ -42,6 +42,19 @@ $rights = $_SESSION["rights"];
 //$user = $_SESSION["username"];
 $userid = $_SESSION["userid"];
 if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
+
+ mysql_connect($dbserver, $username, $password);
+ @mysql_select_db($database) or die("Unable to select database");
+
+ // checking if there is at least one module, if not print an error message and exit
+ $query44="SELECT count(*) FROM tbmodule";
+ $result44=mysql_query($query44);
+ $modcount=mysql_result($result44,0,"count(*)");
+ if ($modcount==0) {
+     mysql_close();
+	 die("<b><font color=\"red\">You need to create at least one module before submitting scripts.</font></b>");
+ }
+
 ?>
 <h2>Insert a new database script</h2>
 <form action="submit_script.php" name="script" method="post">
@@ -53,9 +66,6 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 <tr>
 <td>Author:</td> 
 <?php
- mysql_connect($dbserver, $username, $password);
- @mysql_select_db($database) or die("Unable to select database");
-
  // retrieving user name from user id
  // necessary because some old Apaches have problems with the username (why?)
  $query33="SELECT username FROM tbuser WHERE id=$userid";
