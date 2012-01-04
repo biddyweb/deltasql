@@ -794,5 +794,8 @@ If you need help in setting up your own deltasql server,
 </p>
 
 <p>Have fun!</p>
+
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>
 </html>

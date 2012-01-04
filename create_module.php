@@ -24,8 +24,8 @@ Description:<br>
 <br>
 <input type="Submit" value="Create module">
 </form>
-<a href="index.php">Back to main menu</a>
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 <?php
 if (isset($_POST['name']))  $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];

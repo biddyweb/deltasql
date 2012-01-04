@@ -52,6 +52,7 @@ echo "<input type=\"hidden\" name=\"moduleid\"  value=\"$moduleid\">";
 ?>
 <input type="Submit" value="Save module">
 </form>
+<hr>
 <a href="list_modules.php">Back to List Modules</a>
 
 <?php

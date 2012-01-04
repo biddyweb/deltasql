@@ -100,6 +100,7 @@ echo "<input type=\"hidden\" name=\"istag\"  value=\"$tag\">";
 ?>
 <input type="Submit" value="Insert">
 </form>
+<hr>
 <a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php

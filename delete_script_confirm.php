@@ -33,6 +33,7 @@ echo "<li><b><a href=\"delete_script.php?id=$scriptid\">Yes, delete it</a></b></
 echo "</ul>";
 ?>
 
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

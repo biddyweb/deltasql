@@ -28,7 +28,8 @@ Rights:
 </table>
 <input type="Submit" value="Insert user">
 </form>
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 <?php
 include("conf/config.inc.php");
 include("utils/utils.inc.php");

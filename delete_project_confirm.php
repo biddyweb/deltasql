@@ -75,6 +75,7 @@ echo "<li><b><a href=\"delete_project.php?id=$id\">Yes, delete project $name</a>
 echo "</ul>";
 ?>
 
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

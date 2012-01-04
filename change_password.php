@@ -54,6 +54,10 @@
 	</tr>	
 </table>
 </form>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+</body>
+</html>
 <?php
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
@@ -103,6 +107,4 @@ echo ("Password changed!");
 js_redirect("index.php");
 
 ?>
-<a href="index.php">Back to main page</a>
-</body>
-</html>
+

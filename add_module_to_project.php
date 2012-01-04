@@ -43,7 +43,8 @@ $projectname = $_GET['name'];
 
 <input type="Submit" value="Add module">
 </form>
-<a href="index.php">Back to main menu</a>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 
 <?php
 if (isset($_POST['frmmoduleid'])) $frm_moduleid=$_POST['frmmoduleid']; else exit;

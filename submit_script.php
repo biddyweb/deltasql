@@ -147,9 +147,9 @@ echo " />Submit Another Script after this one<br>";
 ?>
 <input type="Submit" value="Submit script">
 </form>
-<p>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php">Back to Main Menu</a>
-</p>
+<hr>
+<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
+
 <?php
 
 if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;

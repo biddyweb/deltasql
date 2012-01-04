@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
+<br>
+
 <?php
 require_once 'Text/Diff.php';
 require_once 'Text/Diff/Renderer.php';
@@ -14,6 +16,8 @@ include("head.inc.php");
 include("diff.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+
+echo "<a href=\"faq.php#undefinedindex\"><img src=\"icons/help.png\"> Undefined index errors everywhere</a><br>";  
 
 $scriptid = $_POST['scriptid'];
 $version  = $_POST['version'];

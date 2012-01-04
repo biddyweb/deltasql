@@ -44,6 +44,7 @@ if ($dns_name=="http://www.deltasql.org/deltasql") {
 	echo "<p>This is a test system. Login with user <b>admin</b> with password <b>testdbsync</b> to test all functionality.</p>";
 }
 ?>
-<a href="index.php">Back to main page</a>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>
 </html>

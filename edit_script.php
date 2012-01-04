@@ -131,6 +131,7 @@ echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest 
 <br>
 <input type="Submit" value="Save script">
 </form>
+<hr>
 <a href="list_scripts.php">Back to list scripts</a>
 
 <?php

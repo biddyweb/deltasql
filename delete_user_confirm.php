@@ -30,6 +30,7 @@ echo "<li><b><a href=\"delete_user.php?id=$id\">Yes, delete it</a></b></li>";
 echo "</ul>";
 ?>
 
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

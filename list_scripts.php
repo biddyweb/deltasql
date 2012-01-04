@@ -325,6 +325,7 @@ mysql_close();
 ?>
 </table>
 <br>
-<a href="index.php">Back to main menu</a>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

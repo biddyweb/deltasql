@@ -62,6 +62,7 @@ echo "<table border=1><tr>
  mysql_close();
  
  ?>
-<a href="index.php">Back to Main Menu</a>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

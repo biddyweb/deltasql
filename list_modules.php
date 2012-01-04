@@ -74,6 +74,8 @@ mysql_close();
 ?>
 </table>
 <br>
-<a href="index.php">Back to main menu</a>
+<hr>
+<a href="faq.php#modules"><img src="icons/help.png"> Why are there projects and modules?</a><br>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

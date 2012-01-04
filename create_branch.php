@@ -38,8 +38,8 @@ echo "<input type=\"hidden\" name=\"frmprojectid\"  value=\"$projectid\">";
 ?>
 <input type="Submit" value="Create branch">
 </form>
-<a href="index.php">Back to main menu</a>
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 <?php
 if (isset($_POST['name'])) $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];

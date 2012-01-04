@@ -58,6 +58,8 @@ mysql_close();
 js_redirect("list_users.php");
 
 ?>
-<a href="index.php">Back to main menu</a>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+
 </body>
 </html>

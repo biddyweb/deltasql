@@ -500,8 +500,7 @@ In case you messed up with the salt in TBPARAMETER, you should reset all passwor
 You can submit your question to the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>. We appreciate your feedback! 
 Have fun with deltasql :-)
 </p>
-
-
-<a href="index.php">Back to Main Menu</a>
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>
+</html>

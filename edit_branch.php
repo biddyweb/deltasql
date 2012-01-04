@@ -50,6 +50,7 @@ echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
 ?>
 <input type="Submit" value="Save">
 </form>
+<hr>
 <a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php

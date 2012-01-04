@@ -50,6 +50,7 @@ echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
 ?>
 <input type="Submit" value="Save project">
 </form>
+<hr>
 <a href="list_projects.php">Back to List Projects</a>
 
 <?php

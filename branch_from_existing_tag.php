@@ -72,6 +72,7 @@ echo "<input type=\"hidden\" name=\"sourcebranch\"  value=\"$sourcebranch\">";
 ?>
 <input type="Submit" value="Insert">
 </form>
+<hr>
 <a href="list_branches.php">Back to List Branches or Tags</a>
 
 <?php

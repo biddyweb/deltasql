@@ -138,6 +138,7 @@ $i++;
 <input type="Submit" value="Get tree graph">
 </form>
 <hr>
-<a href="index.php">Back to main menu</a>
+<a href="faq.php#devprod"><img src="icons/help.png"> What is the difference between a production and a development schema?</a><br>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

@@ -31,7 +31,7 @@ echo "<tr>
 <th>first:</th>
 <th>last:</th>
 <th>e-mail:</th>
-<th></th>
+<th>actions</th>
 </tr>";
 
 $i=0;
@@ -86,6 +86,7 @@ mysql_close();
 ?>
 </table>
 <br>
-<a href="index.php">Back to main menu</a>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>
