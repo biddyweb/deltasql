@@ -87,6 +87,7 @@ echo "<table border=1><tr>
  ?>
 <br>
 <hr>
+<a href="faq.php#production"><img src="icons/help.png"> Is deltasql used in productive environments?</a></a><br>
 <a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

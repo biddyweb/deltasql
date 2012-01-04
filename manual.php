@@ -434,7 +434,7 @@ In general, you should branch a project at the
   
 <p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/040_deltasql_tagging_7min.avi/download"><img src="pictures/movie.jpg" border="0"></a> explains how tagging works.</p>  
  
-<h2><a name="#syncworks"></a>How synchronization works</h2>
+<h2><a name="syncworks"></a>How synchronization works</h2>
 
 <p>Synchronization can get difficult if branches are involved. To warm up, imagine the following scenario:</p>
 

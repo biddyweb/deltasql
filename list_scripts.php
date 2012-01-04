@@ -49,11 +49,11 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 echo "<p>";
-echo "<a  href=\"index.php\"><img alt=\"Home\" src=\"icons/home.png\"> Main</a> | ";
+echo "<a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a> | ";
 if ($rights>0)
-     echo "<a  href=\"submit_script.php\"><img alt=\"New\" src=\"icons/new.png\"> Submit a new Script</a> | ";
+     echo "<a  href=\"submit_script.php\"><img src=\"icons/new.png\"> Submit a new Script</a> | ";
   
-echo "<a  href=\"search_scripts.php\"><img alt=\"Search\" src=\"icons/search.png\"> Search among Scripts</a> ";
+echo "<a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search among Scripts</a> ";
    
    
    // this is for search scripts capabilities

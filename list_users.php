@@ -87,6 +87,7 @@ mysql_close();
 </table>
 <br>
 <hr>
+<a href="manual.php#usermanagement"><img src="icons/help.png"> User Management</a></a><br>
 <a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

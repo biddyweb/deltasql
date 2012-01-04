@@ -41,7 +41,7 @@ include("conf/config.inc.php");
 
 <?php
 if ($dns_name=="http://www.deltasql.org/deltasql") {
-	echo "<p>This is a test system. Login with user <b>admin</b> with password <b>testdbsync</b> to test all functionality.</p>";
+	echo "<p><img src=\"icons/help.png\"> This is a test system. Login with user <b>admin</b> with password <b>testdbsync</b> to test all functionality.</p>";
 }
 ?>
 <hr>
