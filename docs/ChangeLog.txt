@@ -1,3 +1,7 @@
+4.1.2012 git
+- updating footers to be consistent
+- spreading help links to topics overall over deltasql server
+
 2.1.2012 git
 - deltasql reports an error when trying to submit a script with no modules defined (happens when deltasql is freshly installed).
 - fixing minor bug on login screen
