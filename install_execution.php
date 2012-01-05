@@ -123,7 +123,7 @@ if ($testgroup=="testsystemyes") {
 // generate random salt and store it into database (to be done really only once)
 $c = uniqid (rand (),true);
 $salt = md5($c);
-$query6="INSERT INTO tbparameter VALUES ('', 'SECURITY', 'PWD_HASH_SALT', '$salt');";
+$query6="INSERT INTO tbparameter('id', 'paramtype', 'paramname', 'paramvalue') VALUES ('', 'SECURITY', 'PWD_HASH_SALT', '$salt');";
 mysql_query($query6);
 
 // update admin password

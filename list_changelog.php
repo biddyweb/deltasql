@@ -15,7 +15,7 @@ $version  = $_GET['version'];
 $author   = $_GET['author'];
 if ($scriptid=="") exit;
 
-echo "<h3>History for <a href=\"show_script.php?id=$scriptid\">script $version</a>";
+echo "<h3>History for <a href=\"show_script.php?id=$scriptid\">script $version</a></h3>";
 
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
@@ -121,10 +121,10 @@ echo "<input type=\"hidden\" name=\"version\"  value=\"$version\" />";
 
 mysql_close();
 ?>
-<input type="Submit" value="Get diffs between revisions">
+<input type="Submit" value="Get diffs between revisions" />
 </form>
 <br>
 <hr>
-<a href="list_scripts.php">Back to List scripts</a>
+<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>
 </html>

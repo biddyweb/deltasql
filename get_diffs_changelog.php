@@ -199,5 +199,6 @@ unlink($commentstofilename);
 
 mysql_close();
 ?>
+<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>
 </html>
