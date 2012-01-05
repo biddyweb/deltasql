@@ -174,7 +174,7 @@ return $num;
 function js_redirect($s)
 {
 print "<body onload=\"window.location='$s';\">";
-print "<a href='$s'>Javascript redirect.. If your page doesn't redirect click here.</a>";
+//print "<a href='$s'>Javascript redirect.. If your page doesn't redirect click here.</a>";
 print "</body>";
 exit();
 }
