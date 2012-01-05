@@ -11,6 +11,7 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 ?>
 <h2>Summary</h2>
 <ul>
+<li><a href="#db-evolution">Database Evolution Under Control</a></li>
 <li><a href="#purpose">Purpose</a></li>
 <li><a href="#install-guides">Install Guides</a></li>
 <ul>
@@ -50,6 +51,35 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
     </ul>
 <li><a href="#feedback">Feedback on this document</a></li>	
 </ul>
+
+
+<h2><a name="db-evolution"></a>Database Evolution Under Control</h2>
+<h6>(how deltasql works)</h6>
+<p>
+A strong version control system for databases saves time to developers, who would like to keep their schema updated while developing with minimal effort. 
+With a version control for databases, the number of mistakes dued to different schemas or missing scripts is considerably reduced. Critical errors in production due to schema
+ inconsistencies disappear, too.
+</p>
+<p>
+deltasql is an Open Source tool to synchronize databases with source code.
+While developing middle size or big applications, developers undertake changes to the data model which go along with changes to the source code. From time
+  to time, branches of source code are done to stabilize the code which will go to production. A sort of data model branch is also needed.
+</p>
+<p>  
+deltasql provides a simple set of php scripts to be executed on an apache server backed by a mySQL database to collect all scripts which change the data model, and means to handle 
+data model branches. The trick is to number the sql scripts and to create on each database instance a table which keeps the number of the latest executed script 
+(the table deltasql uses is named TBSYNCHRONIZE). 
+</p>
+<p> 
+ A <a href="dbsync.php">form</a> allows the user to enter data from the synchronization table and thereafter the needed chain of datamodel updates is computed and shown to the user. The user
+ has to manually execute all scripts. It is possible to update development schemas (the HEADs) and production schemas (the branches), to transform a production schema into a development schema and
+ vice versa. Also in case of a schema dumped and imported into another database, it is still upgradeable as the synchronization table
+ is contained into the copyed schema. However, it is not possible to downgrade a schema back to a previous version. 
+</p>
+<p> 
+ There are deltasql clients (listed in the table above), which automatically collect synchronization data from a given database schema.
+ Though deltasql works best with Oracle, PostgreSQL and mySQL schemas, any other database type can use most of deltasql functionality.
+</p>
 
 <h2><a name="purpose"></a>Purpose</h2>
 
