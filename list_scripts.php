@@ -41,9 +41,6 @@ if (isset($_GET['textoutput'])) {
    $showall = $_GET['showall']; }
 else $showall=0;
 
-?>
-<h4>Database scripts</h4>
-<?php
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
@@ -79,13 +76,6 @@ if (isset($_SESSION['search_modified']))   $searchmodified=$_SESSION['search_mod
    		echo "<b><a  href=\"search_cancel.php\">Cancel Search</a></b>";
 
 echo "<br>";        
-?>
-
-
-<table border="1">
-
-<?php
-
 
 // concatenate the query
 $query="";
@@ -178,6 +168,8 @@ if (($nbscripts>$scriptsperpage) && ($showall==0)) {
 }
    
 echo "</p>";
+echo "<hr>";
+echo "<table border=\"1\">\n";
 
 
 $result=mysql_query($query);   

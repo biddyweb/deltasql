@@ -197,15 +197,15 @@ To:
  echo "</tr>";
 ?>
 <tr>
-<td></td><td></td>
+<td></td>
 <td>
 <input type="Submit" value="Search scripts">
 </td>
+<td></td>
 </tr>
 </table>
-<p>
-<a href="list_scripts.php">Back to List Scripts</a>
-</p>
+<hr>
+<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </form>
 </body>
 </html>
