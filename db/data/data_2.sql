@@ -1,1 +1,1 @@
-INSERT INTO `tbparameter` VALUES (1, 'GLOBAL', 'VERSION', '10');
+INSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`) VALUES (1, 'GLOBAL', 'VERSION', '10');

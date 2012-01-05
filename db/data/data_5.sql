@@ -1,1 +1,1 @@
-INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
+INSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`) VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');

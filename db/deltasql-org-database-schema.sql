@@ -119,6 +119,8 @@ CREATE TABLE IF NOT EXISTS `tbparameter` (
   UNIQUE KEY `paramtype` (`paramtype`,`paramname`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
 
+ALTER TABLE `tbparameter` ADD `user_id` int(11) NULL;
+
 --
 -- Dumping data for table `tbparameter`
 --
