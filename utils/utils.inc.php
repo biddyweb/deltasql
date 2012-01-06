@@ -16,7 +16,8 @@ function get_parameter_default($paramtype, $paramname, $userid, $defaultparam) {
 }
 
 function get_parameter($paramtype, $paramname, $userid) {
-  $paramvalue=get_parameter($paramtype,$paramname,$userid,"");
+  $paramvalue=get_parameter_default($paramtype,$paramname,$userid,"");
+  return $paramvalue;
 }
 
 function set_parameter($paramtype, $paramname, $paramvalue, $userid) {
