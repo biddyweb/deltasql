@@ -141,7 +141,7 @@ if ($rights>1)
 if ($rights==0)
   echo "<li><a href=\"login.php\">Login <img src=\"icons/rights.png\"></a></li>"; 
 if ($rights>0) {
-    echo "<li><a href=\"change_password.php\">Change Password</a></li>";
+    echo "<li><a href=\"preferences.php\">Preferences <img src=\"icons/settings.png\"></a></li>";
     echo "<li><a href=\"logout.php\">Logout <img src=\"icons/logout.png\"></a></li>";
 }
 ?>

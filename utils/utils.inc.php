@@ -1,14 +1,22 @@
 <?php
 
-function get_parameter($paramtype, $paramname, $userid) {
+function get_parameter_default($paramtype, $paramname, $userid, $defaultparam) {
   if ($userid=="") $userquery="AND user_id IS NULL";
   else $userquery="AND user_id=$userid";
   
   $query="SELECT paramvalue from tbparameter where paramtype='$paramtype' and paramname='$paramname' $userquery"; 
   $result=mysql_query($query);  
-  $paramvalue=mysql_result($result,0,"paramvalue");
-
+  $num=mysql_numrows($result);
+  
+  if ($num>0) 
+     $paramvalue=mysql_result($result,0,"paramvalue");
+  else
+     $paramvalue=$defaultparam;
   return $paramvalue;
+}
+
+function get_parameter($paramtype, $paramname, $userid) {
+  $paramvalue=get_parameter($paramtype,$paramname,$userid,"");
 }
 
 function set_parameter($paramtype, $paramname, $paramvalue, $userid) {
