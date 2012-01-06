@@ -6,7 +6,7 @@
 <body>
 <?php
 include("head.inc.php");
-$backto=$_GET['backto'];
+if (isset($_GET['backto'])) $backto=$_GET['backto']; else $backto="";
 ?>
 <h2>Detect packages and views</h2>
 
@@ -29,11 +29,14 @@ if ($backto=="search")
     echo "<a href=\"dbsync.php\">Cancel</a>";
 ?>
 </form>
-
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+</body>
+</html>
 
 <?php
-$submitted=$_POST['submitted'];
-$frmbackto=$_POST['backto'];
+if (isset($_POST['backto'])) $frmbackto=$_POST['backto']; else $backto="";
+if (isset($_POST['submitted'])) $submitted=$_POST['submitted']; else $submitted="";
 if ($submitted!=1) exit;
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
@@ -41,10 +44,10 @@ include("utils/utils.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query="update tbscript set isapackage=1 where code like '%CREATE OR REPLACE PACKAGE%'";
+$query="update tbscript set isapackage=1 where upper(code) like '% PACKAGE%'";
 mysql_query($query);
 
-$query2="update tbscript set isaview=1 where code like '%CREATE OR REPLACE VIEW%'";
+$query2="update tbscript set isaview=1 where upper(code) like '% VIEW%'";
 mysql_query($query2);
 
 mysql_close();
@@ -53,5 +56,3 @@ if ($frmbackto=="search")
    else
     js_redirect("dbsync.php");
 ?>
-</body>
-</html>
