@@ -1,3 +1,10 @@
+6.1.2012 git
+- preparing utils.inc.php to handle new column in tbparameter, refactoring code a bit
+
+5.1.2012 git
+- preparing datamodel to accept usersettings (added user_id column to tbparameter)
+- more updates on footers
+
 4.1.2012 git
 - updating footers to be consistent
 - spreading help links to topics overall over deltasql server
