@@ -133,7 +133,7 @@ if ($searchtodata!="") {
 }
 
 if ($searchmodified!="") {
-	$query="$query and (s.update_dt IS NOT NULL)";
+	$query="$query and (s.update_user IS NOT NULL)";
 }
 
 $querycount = "SELECT count(*) FROM tbscript s $query ";

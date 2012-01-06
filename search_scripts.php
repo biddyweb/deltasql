@@ -188,12 +188,12 @@ To:
  echo "<td><b>Modified scripts only:</b></td>";
  echo "<td><input name=\"frmmodified\" type=\"checkbox\" value=\"1\" ";
  if ($cookie_modified=="1") echo "checked=\"checked\"";
- echo "/>";
+ echo "/> </td>";
  echo "</tr>";
 
  echo "<td><b>Output as a text list:</b></td>";
  echo "<td><input name=\"frmtextlistoutput\" type=\"checkbox\" value=\"1\" ";
- echo "/>";
+ echo "/> (from lowest version to highest)</td>";
  echo "</tr>";
 ?>
 <tr>
