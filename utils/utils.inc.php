@@ -24,7 +24,12 @@ function set_parameter($paramtype, $paramname, $paramvalue, $userid) {
   if ($userid=="") $userupdate="";
   else $userupdate=",p.user_id=$userid";
   
-  $query="UPDATE tbparameter p SET p.paramvalue='$paramvalue'$userupdate where paramtype='$paramtype' and paramname='$paramname'"; 
+  // decide first if we need to insert a new parameter
+  $check = get_parameter_default($paramtype, $paramname, $userid, 'missing parameter');
+  if ($check=='missing parameter') 
+      $query="INSERT INTO tbparameter (id, paramtype, paramname, paramvalue, user_id) VALUES('', '$paramtype', '$paramname', '$paramvalue', '$userid');";
+  else
+      $query="UPDATE tbparameter p SET p.paramvalue='$paramvalue'$userupdate where paramtype='$paramtype' and paramname='$paramname'"; 
   mysql_query($query); 
 }
 

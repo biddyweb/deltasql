@@ -150,8 +150,13 @@ if ($rights>0) {
 <td>
 <h3>Help</h3>
 <ul>
-<li><a href="manual.php#quickguide"><img src="icons/help.png"> Quick Guide</a></li>
-<li><a href="faq.php#algo"><img src="icons/help.png"> Synchronization Overview</a></li>
+<?php
+if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
+if ($displayhelp==1)  {
+  echo '<li><a href="manual.php#quickguide"><img src="icons/help.png"> Quick Guide</a></li>';
+  echo '<li><a href="faq.php#algo"><img src="icons/help.png"> Synchronization Overview</a></li>';
+}
+?>
 <li><a href="manual.php">Manual</a></li>
 <li><a href="faq.php">FAQ</a></li>
 <li><a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/" target=_blank>Tutorials... (movies)</a></li>
