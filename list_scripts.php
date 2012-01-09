@@ -16,6 +16,7 @@ include ("deltasql.css");
 echo "</style>";
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+if (isset($_SESSION['scriptsperpage'])) $scriptsperpage=$_SESSION['scriptsperpage']; else $scriptsperpage=$default_scriptsperpage;
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 

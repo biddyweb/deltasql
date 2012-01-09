@@ -7,6 +7,7 @@
 <body>
 <?php
 include("head.inc.php");
+include("utils/constants.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 $name=$_POST['name'];
@@ -43,13 +44,15 @@ if ($nums==0) {
      $query2="UPDATE tbuser SET password='****',passwhash='$hash_pwd',encrypted=1 WHERE id=$userid"; 
      $result2=mysql_query($query2); 
  }
- mysql_close();
 
  $_SESSION['username'] = $name;
  $_SESSION['rights'] = $rights;
  $_SESSION['userid'] = $userid;
  $_SESSION['first'] = $first;
+ $_SESSION['scriptsperpage'] = get_parameter_default('UI','SCRIPTS_PER_PAGE',$userid,$default_scriptsperpage);
+ $_SESSION['displayhelplinks'] = get_parameter_default('UI','DISPLAY_HELP_LINKS',$userid,$default_displayhelplinks);
  
+ mysql_close();
  js_redirect("index.php");
 
 ?>

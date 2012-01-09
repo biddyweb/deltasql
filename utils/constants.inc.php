@@ -10,7 +10,10 @@ $gadget_version="1.0.7";
 $deltaclient_version="1.4.1";
 
 // number of scripts on a page
-$scriptsperpage=15;
+$default_scriptsperpage=15;
+// if help links should be displayed
+$default_displayhelplinks=true;
+
 // number of scripts on RSS feed
 $scriptsonrssfeed=20;
 
