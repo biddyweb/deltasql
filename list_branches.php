@@ -138,7 +138,11 @@ $i++;
 <input type="Submit" value="Get tree graph">
 </form>
 <hr>
-<a href="faq.php#devprod"><img src="icons/help.png"> What is the difference between a production and a development schema?</a><br>
+<?php
+if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
+if ($displayhelp==1)  
+  echo '<a href="faq.php#devprod"><img src="icons/help.png"> What is the difference between a production and a development schema?</a><br>';
+?>
 <a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

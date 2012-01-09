@@ -145,7 +145,11 @@ select * from tbsynchronize where versionnr = (select max(versionnr) from tbsync
 </form>
 <br>
 <hr>
-<a href="manual.php#syncworks"><img src="icons/help.png"> How synchronization works with examples</a><br>
+<?php
+if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
+if ($displayhelp==1)  
+   echo '<a href="manual.php#syncworks"><img src="icons/help.png"> How synchronization works with examples</a><br>';
+?>
 <a href="index.php"><img src="icons/home.png"> Back to Main Page</a>
 </body>
 </html>

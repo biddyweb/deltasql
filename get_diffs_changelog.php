@@ -17,7 +17,9 @@ include("diff.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
 
-echo "<a href=\"faq.php#undefinedindex\"><img src=\"icons/help.png\"> Undefined index errors everywhere</a><br>";  
+if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
+if ($displayhelp==1)
+   echo "<a href=\"faq.php#undefinedindex\"><img src=\"icons/help.png\"> Undefined index errors everywhere</a><br>";  
 
 $scriptid = $_POST['scriptid'];
 $version  = $_POST['version'];

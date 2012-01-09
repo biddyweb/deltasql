@@ -1,3 +1,6 @@
+9.1.2012 git
+- implemented user preferences for scripts per page and display help links
+
 6.1.2012 git
 - bugfix: in some mysql versions, deltasql was not searching for the modified scripts, when the option was set
 - bugfix: package and view detection on lowercase + undefined index errors on this page
