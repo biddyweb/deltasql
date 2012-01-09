@@ -1,5 +1,5 @@
 9.1.2012 git
-- implemented user preferences for scripts per page and display help links
+- implemented user preferences for scripts per page, display help links and color new rows
 
 6.1.2012 git
 - bugfix: in some mysql versions, deltasql was not searching for the modified scripts, when the option was set

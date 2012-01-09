@@ -12,7 +12,9 @@ $deltaclient_version="1.4.1";
 // number of scripts on a page
 $default_scriptsperpage=15;
 // if help links should be displayed
-$default_displayhelplinks=true;
+$default_displayhelplinks=1;
+// if rows need to be colored
+$default_colorrows=1;
 
 // number of scripts on RSS feed
 $scriptsonrssfeed=20;
