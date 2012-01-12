@@ -1,3 +1,9 @@
+12.1.2012 git
+- towards the implementation of email notification for new scripts
+
+11.1.2012 git
+- created configuration to enable/disable emails. Users can choose in preferences.php if they want to be notified by email.
+
 9.1.2012 git
 - implemented user preferences for scripts per page, display help links and color new rows
 

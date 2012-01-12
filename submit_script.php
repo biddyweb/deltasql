@@ -34,6 +34,7 @@ function RemoveEmptyLines() {
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+include("utils/sendmail.inc.php");
 include("usage_stats.inc.php");
 //show_user_level();
 $rights = $_SESSION["rights"];
@@ -177,6 +178,8 @@ $num3=mysql_numrows($result3);
 
 // 1. Insert script
 $version = get_and_increase_global_version();
+//echo "<b>*$version*</b>";
+
 $query="INSERT INTO tbscript (id, code, title, comments,create_dt,versionnr,user_id,module_id,isaview,isapackage) VALUES('','$frm_script', '$frm_title','$frm_comment',NOW(),$version,$userid,$frm_moduleid,$frm_isaview,$frm_isapackage);";
 mysql_query($query);
 
@@ -220,6 +223,17 @@ if (($submit_usage_stats==true) || ($submit_usage_stats=="")) {
      }	 
 }
 
+// 7. Notify users with email
+if ($emails_enable) {
+  $body = "$frm_script";
+  if ($frm_comment!="") $body="$body\n/*\n$frm_comment\n*/";
+  $query16="SELECT * FROM tbmodule WHERE id=$frm_moduleid";
+  mysql_query($query16);
+  $result16=mysql_query($query16);
+  $modulename=mysql_result($result16,0,"name");
+  $subject="$emails_subject_identifier($modulename) $frm_title";
+  notify_users_with_email($emails_sender, $subject, $body);
+}
 mysql_close();
 if ($frm_anothersubmit=="1") {
  $_SESSION['chainscriptsubmit'] = 1;

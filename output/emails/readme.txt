@@ -1,0 +1,1 @@
+In this directory, temporary emails are created. 

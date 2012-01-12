@@ -145,7 +145,6 @@ fwrite($fh, "
 // Configuration file generated with install.php
 
 // [mySQL Settings]
-
 \$username=\"$deltasqlschemauser\";
 \$password=\"$deltasqlschemapassword\";
 \$database=\"$deltasqlschemaname\";
@@ -154,16 +153,19 @@ fwrite($fh, "
 \$dbserver = \"$mysqlhost\";
 
 
-
 // [Apache Settings]
-
 // on which DNS name the Apache deltasql server is published (no SLASH at the end)
 \$dns_name=\"$dnsname\";
 
-
+// [Email Settings]
+// The following settings are used, if users need to be notified by email
+// of new scripts entered in deltasql
+// email settings (all other settings are configured in sendmail)
+\$emails_enable=true;
+\$emails_sender=\"admin@deltasql.org\";
+\$emails_subject_identifier=\"[deltasql]\";
 
 // [Edition Settings]
-
 \$dbdefault=\"$dbdefault\";             				
 // If set to true, the wiki and mailing lists are disabled
 // The \$enterprise_logo is used as logo				

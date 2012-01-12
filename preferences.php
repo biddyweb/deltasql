@@ -24,14 +24,17 @@ if (isset($_POST['frm_submit'])) {
   $frm_displayhelplinks=$_POST['helpgroup'];
   $frm_colorrows=$_POST['colorgroup'];
   $frm_sendemailto=$_POST['frm_sendemailto'];
-  
-  if ($frm_sendemailto!="") {
+ 
+  if (isset($emails_enable) && ($emails_enable) && ($frm_sendemailto!="")) {
      $pos = strpos($frm_sendemailto,"@");
-     if (!$pos) die("<font color=\"red\"><b>$frm_sendemailto is not a valid email address!</b></font>");
+     if (!$pos) {
+  	     die("<font color=\"red\"><b>$frm_sendemailto is not a valid email address!</b></font>");
+	 } 
   }
-  
+
   mysql_connect($dbserver, $username, $password);
   @mysql_select_db($database) or die("Unable to select database");	 
+  
   set_parameter('UI','SCRIPTS_PER_PAGE',"$frm_scriptsperpage",$userid);
   set_parameter('UI','DISPLAY_HELP_LINKS',"$frm_displayhelplinks",$userid);
   set_parameter('UI','COLOR_ROWS',"$frm_colorrows",$userid);
@@ -80,9 +83,13 @@ mysql_close();
 <input type="radio" name="helpgroup" value="0"  <?php echo "$dhl_nochecked"; ?>> No
 <input type="hidden" name="frm_submit" value="1">
 </td></tr>
-<tr><td><b>Send me an email at </b></td>
-<td><input type="text" name="frm_sendemailto" value="<?php echo "$sendemailto"; ?>" size="30"> <b>when a new script is inserted in deltasql server.</b></td></tr>
 
+<?php
+  if (isset($emails_enable) && ($emails_enable)) {
+  echo "<tr><td><b>Send me an email at </b></td>";
+  echo "<td><input type=\"text\" name=\"frm_sendemailto\" value=\"$sendemailto\" size=\"45\"> <b>when a new script is inserted in deltasql server.</b></td></tr>";
+  }
+?>
 <tr><td><h4>'List Scripts' page</h4></td><td></td></tr>
 <tr><td><b>Color new scripts:</b></td>
 <td>
