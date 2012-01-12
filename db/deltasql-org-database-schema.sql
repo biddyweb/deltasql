@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 15, 2011 at 08:55 AM
+-- Generation Time: Jan 12, 2012 at 05:29 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.4-2ubuntu5.9
 
@@ -32,25 +32,29 @@ CREATE TABLE IF NOT EXISTS `tbbranch` (
   `istag` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `tbbranch`
 --
 
 INSERT INTO `tbbranch` (`id`, `name`, `project_id`, `description`, `versionnr`, `create_dt`, `visible`, `sourcebranch`, `sourcebranch_id`, `istag`) VALUES
-(1, 'HEAD', NULL, 'This is the Trunk for all projects', 203, '2011-09-13 14:33:03', 1, NULL, NULL, 0),
+(1, 'HEAD', NULL, 'This is the Trunk for all projects', 222, '2012-01-12 10:26:07', 1, NULL, NULL, 0),
 (16, 'TAG_deltasql_1.3.2', 14, 'This is release reenabled the ability to perform updates from production schemas to development schemas.', 98, '2011-02-11 00:00:00', 1, 'HEAD', 1, 1),
 (13, 'TAG_deltasql_1.3.0', 14, 'This release introduced a completely new sync algo and to tag releases.', 89, '2010-12-30 00:00:00', 1, 'HEAD', 1, 1),
 (15, 'TAG_deltasql_1.3.1', 14, 'This release fixed the broken sync algo of 1.3.0 and disabled the ability to make out of a production schema a development schema.', 96, '2011-02-11 00:00:00', 1, 'HEAD', 1, 1),
 (17, 'TAG_deltasql_1.3.3', 14, 'This release introduced history for edited scripts and did fixes into the right management.', 103, '2011-02-25 00:00:00', 1, 'HEAD', 1, 1),
 (18, 'TAG_deltasql_1.3.4', 14, '- new feature: synchronizing from a tag (without specifying version number)\r\n- new feature: changes to branches are recorded\r\n- index.php patched', 114, '2011-02-26 00:00:00', 1, 'HEAD', 1, 1),
 (19, 'TAG_deltasql_1.3.5', 14, 'Diff of history in scripts. Plotting of graph. Tagging of HEAD should always belong to a project.', 115, '2011-03-07 00:00:00', 1, 'HEAD', 1, 1),
-(22, 'PROD_1_X', 24, 'This is branch 1 for our beloved customer X.', 146, '2011-04-15 00:00:00', 1, 'HEAD', 1, 0),
+(22, 'PROD_1_X', 24, 'This is branch 1 for our beloved customer X.', 146, '2011-04-15 00:00:00', 0, 'HEAD', 1, 0),
 (24, 'TAG_deltasql_1.3.6', 14, 'An RSS feed with the latest scripts is added to deltasql server. A set of seven tutorial videos is available as well.', 161, '2011-04-15 00:00:00', 1, 'HEAD', 1, 1),
 (27, 'TAG_deltasql_1.3.7', 14, 'This release replaces plaintext passwords with MD5 hashed passwords in TBUSER table. The password reset mechanism was improved as well.', 177, '2011-06-03 23:53:19', 1, 'HEAD', 1, 1),
 (31, 'TAG_deltasql_1.4.0', 14, 'This release introduces the new Freepascal/Lazarus deltaclient.', 198, '2011-08-23 09:54:56', 1, 'HEAD', 1, 1),
-(32, 'TAG_deltasql_1.4.1', 14, 'This is a tag for deltasql 1.4.1. In this version documentation got updated and deltasql was refactored to minimize STRICT php warnings.', 200, '2011-09-09 16:39:47', 1, 'HEAD', 1, 1);
+(32, 'TAG_deltasql_1.4.1', 14, 'This is a tag for deltasql 1.4.1. In this version documentation got updated and deltasql was refactored to minimize STRICT php warnings.', 200, '2011-09-09 16:39:47', 1, 'HEAD', 1, 1),
+(33, 'BRANCH_Amritatech', 14, 'This is a branch from the existing tag TAG_deltasql_1.3.1.', 96, '2011-11-24 14:21:12', 1, 'HEAD', 1, 0),
+(34, 'BRANCH_PROD_Y', 24, 'This is a branch of PROD_1_X for our beloved customer Y', 211, '2012-01-04 15:52:52', 0, 'PROD_1_X', 22, 0),
+(36, 'TAG_deltasql_1.4.2', 14, 'This version is a maintenance release. It did not contain any data model updates, only visual enhancementes and the new feature to branch from an existing tag.', 213, '2012-01-05 09:01:39', 1, 'HEAD', 1, 1),
+(37, 'TAG_deltasql_1.4.3', 14, 'This release introduces user preferences: display help links and number of scripts per page as first configurable settings.', 222, '2012-01-05 16:54:44', 1, 'HEAD', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -66,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `tbmodule` (
   `lastversionnr` int(11) NOT NULL,
   `size` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `tbmodule`
@@ -75,9 +79,10 @@ CREATE TABLE IF NOT EXISTS `tbmodule` (
 INSERT INTO `tbmodule` (`id`, `name`, `description`, `create_dt`, `lastversionnr`, `size`) VALUES
 (12, 'gpuII-server', 'This module stores scripts belonging to the GPU Preview package available at http://sourceforge.net/projects/gpu/files/', '2011-04-14', 119, 0),
 (18, 'multivac-module', 'This is the multivac module for the project Multivac.', '2011-04-15', 154, 0),
-(27, 'Test Module', 'A test module for everyone to experiment.', '2011-09-13', 203, 0),
+(28, 'SVE', '', '2011-09-15', 206, 0),
+(27, 'Test Module', 'A test module for everyone to experiment.', '2012-01-12', 222, 0),
 (9, 'filedistributor', 'Table structure for File Distributor Project', '2011-01-05', 90, 0),
-(10, 'deltasql-module', 'module for the deltasql project, containing all scripts (no further modularization needed).', '2011-09-09', 199, 0);
+(10, 'deltasql-module', 'module for the deltasql project, containing all scripts (no further modularization needed).', '2012-01-12', 221, 0);
 
 -- --------------------------------------------------------
 
@@ -91,14 +96,16 @@ CREATE TABLE IF NOT EXISTS `tbmoduleproject` (
   `project_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `module_id` (`module_id`,`project_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `tbmoduleproject`
 --
 
 INSERT INTO `tbmoduleproject` (`id`, `module_id`, `project_id`) VALUES
+(33, 12, 30),
 (24, 18, 24),
+(31, 28, 31),
 (30, 27, 30),
 (17, 12, 18),
 (12, 9, 13),
@@ -115,21 +122,28 @@ CREATE TABLE IF NOT EXISTS `tbparameter` (
   `paramtype` varchar(20) collate latin1_general_ci NOT NULL,
   `paramname` varchar(20) collate latin1_general_ci NOT NULL,
   `paramvalue` varchar(255) collate latin1_general_ci NOT NULL,
+  `user_id` int(11) default NULL,
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `paramtype` (`paramtype`,`paramname`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
-
-ALTER TABLE `tbparameter` ADD `user_id` int(11) NULL;
+  UNIQUE KEY `paramtype` (`paramtype`,`paramname`,`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `tbparameter`
 --
 
-INSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`) VALUES
-(1, 'GLOBAL', 'VERSION', '203'),
-(2, 'USAGESTATS', 'VERSION', '203'),
-(3, 'TEST', 'DB_CONNECTION', 'OK'),
-(4, 'SECURITY', 'PWD_HASH_SALT', '');
+INSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`, `user_id`) VALUES
+(1, 'GLOBAL', 'VERSION', '222', NULL),
+(2, 'USAGESTATS', 'VERSION', '203', NULL),
+(3, 'TEST', 'DB_CONNECTION', 'OK', NULL),
+(4, 'SECURITY', 'PWD_HASH_SALT', '', NULL),
+(5, 'UI', 'SCRIPTS_PER_PAGE', '15', 1),
+(6, 'UI', 'DISPLAY_HELP_LINKS', '1', 1),
+(7, 'UI', 'COLOR_ROWS', '1', 1),
+(8, 'EMAIL', 'SEND_EMAIL_TO', 'tmengotti@hotmail.com', 1),
+(9, 'UI', 'SCRIPTS_PER_PAGE', '15', 5),
+(10, 'UI', 'DISPLAY_HELP_LINKS', '1', 5),
+(11, 'UI', 'COLOR_ROWS', '0', 5),
+(12, 'EMAIL', 'SEND_EMAIL_TO', 'tiziano.mengotti@gmail.com', 5);
 
 -- --------------------------------------------------------
 
@@ -175,13 +189,15 @@ CREATE TABLE IF NOT EXISTS `tbproject` (
   `description` varchar(700) collate latin1_general_ci default NULL,
   `create_dt` date default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `tbproject`
 --
 
 INSERT INTO `tbproject` (`id`, `name`, `description`, `create_dt`) VALUES
+(31, 'posis standard', '', '2011-09-15'),
+(32, 'Noah_base', '&#21517;&#22612;&#20043;&#20809;base&#24211;', '2011-12-29'),
 (18, 'GPU-II', 'This is the server side project of GPU-II (http://gpu.sourceforge.net)', '2011-02-26'),
 (24, 'Multivac', 'This is the Multivac project.', '2011-04-14'),
 (30, 'TestProject', 'A test project for everyone to experiment.', '2011-09-13'),
@@ -209,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `tbscript` (
   `isaview` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `versionnr` (`versionnr`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=114 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=126 ;
 
 --
 -- Dumping data for table `tbscript`
@@ -268,7 +284,11 @@ INSERT INTO `tbscript` (`id`, `code`, `module_id`, `versionnr`, `user_id`, `crea
 (104, 'UPDATE tbsynchronize SET tagname=''TAG_deltasql_1.3.7'' WHERE versionnr=0;', 10, 176, 1, '2011-06-03 23:29:39', '0000-00-00 00:00:00', NULL, 'We record on the database the deltasql version, so that we can detect upgrades in source code.', 'db update', 0, 0),
 (111, 'ALTER TABLE `tbusagehistory` ADD `ip` VARCHAR( 32 ) NULL ;', 10, 197, 1, '2011-08-23 09:53:45', '0000-00-00 00:00:00', NULL, 'Adding ip to tbusagehistory to troubleshoot client issues.', 'db update', 0, 0),
 (112, 'ALTER TABLE `tbsynchronize` DROP `schemaname`;\r\nALTER TABLE `tbusagehistory` DROP `schemaname`;\r\nALTER TABLE `tbsynchronize` DROP `description`;\r\nALTER TABLE `tbusagehistory` DROP `description`;', 10, 199, 1, '2011-09-09 16:39:00', '2011-09-13 09:12:47', 'admin', 'Removing fields schemaname and description as they are not used anymore.', 'db update', 0, 0),
-(113, '-- DROP TABLE TBSYNCHRONIZE;\r\nCREATE TABLE TBSYNCHRONIZE\r\n(\r\n  PROJECTNAME                 VARCHAR2(64)              NOT NULL,\r\n  UPDATE_DT                   DATE    DEFAULT SYSDATE   NOT NULL,\r\n  UPDATE_USER                 VARCHAR2(64)              NULL,\r\n  UPDATE_TYPE                 VARCHAR2(32)              NULL,\r\n  VERSIONNR                   INTEGER                   NOT NULL,\r\n  BRANCHNAME                  VARCHAR2(128)             NULL,\r\n  TAGNAME                     VARCHAR2(128)             NULL,\r\n  UPDATE_FROMVERSION          INTEGER                   NULL,\r\n  UPDATE_FROMSOURCE           VARCHAR2(128)             NULL,\r\n  DBTYPE                      VARCHAR2(32)              NULL,\r\n  CONSTRAINT   UN_VERSIONNR   UNIQUE (VERSIONNR)\r\n);\r\n\r\n-- this stored procedure verifies that scripts are executed in the correct schema\r\nCREATE OR REPLACE PROCEDURE DELTASQL_VERIFY_SCHEMA (versionExt INTEGER, branchnameExt VARCHAR2,projectnameExt VARCHAR2)\r\nAS\r\n versionV INTEGER;\r\n branchnameV  VARCHAR2(128); \r\n projectnameV  VARCHAR2(64); \r\nBEGIN\r\n SELECT versionnr INTO versionV FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);\r\n SELECT branchname INTO branchnameV FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);\r\n SELECT projectname INTO projectnameV FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);\r\n IF (branchnameV <> branchnameExt) OR (versionV <> versionExt) OR (projectnameV <> projectnameExt) then\r\n    raise_application_error(-20001, ''This script is for another schema or it was already executed!!!'');\r\n end IF;\r\nEND;\r\n/\r\n\r\nINSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\r\nVALUES (''TestProject'', 202, ''HEAD'', ''INTERNAL'', ''deltasql-server'', ''Oracle'');\r\nCOMMIT;', 27, 203, 1, '2011-09-13 14:33:03', '0000-00-00 00:00:00', NULL, 'Initial syncrhonization information for TestProject.', 'db update', 0, 0);
+(113, '-- DROP TABLE TBSYNCHRONIZE;\r\nCREATE TABLE TBSYNCHRONIZE\r\n(\r\n  PROJECTNAME                 VARCHAR2(64)              NOT NULL,\r\n  UPDATE_DT                   DATE    DEFAULT SYSDATE   NOT NULL,\r\n  UPDATE_USER                 VARCHAR2(64)              NULL,\r\n  UPDATE_TYPE                 VARCHAR2(32)              NULL,\r\n  VERSIONNR                   INTEGER                   NOT NULL,\r\n  BRANCHNAME                  VARCHAR2(128)             NULL,\r\n  TAGNAME                     VARCHAR2(128)             NULL,\r\n  UPDATE_FROMVERSION          INTEGER                   NULL,\r\n  UPDATE_FROMSOURCE           VARCHAR2(128)             NULL,\r\n  DBTYPE                      VARCHAR2(32)              NULL,\r\n  CONSTRAINT   UN_VERSIONNR   UNIQUE (VERSIONNR)\r\n);\r\n\r\n-- this stored procedure verifies that scripts are executed in the correct schema\r\nCREATE OR REPLACE PROCEDURE DELTASQL_VERIFY_SCHEMA (versionExt INTEGER, branchnameExt VARCHAR2,projectnameExt VARCHAR2)\r\nAS\r\n versionV INTEGER;\r\n branchnameV  VARCHAR2(128); \r\n projectnameV  VARCHAR2(64); \r\nBEGIN\r\n SELECT versionnr INTO versionV FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);\r\n SELECT branchname INTO branchnameV FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);\r\n SELECT projectname INTO projectnameV FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);\r\n IF (branchnameV <> branchnameExt) OR (versionV <> versionExt) OR (projectnameV <> projectnameExt) then\r\n    raise_application_error(-20001, ''This script is for another schema or it was already executed!!!'');\r\n end IF;\r\nEND;\r\n/\r\n\r\nINSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\r\nVALUES (''TestProject'', 202, ''HEAD'', ''INTERNAL'', ''deltasql-server'', ''Oracle'');\r\nCOMMIT;', 27, 203, 1, '2011-09-13 14:33:03', '0000-00-00 00:00:00', NULL, 'Initial syncrhonization information for TestProject.', 'db update', 0, 0),
+(114, 'create table test (id number primary key);', 27, 205, 1, '2011-09-15 15:58:05', '0000-00-00 00:00:00', NULL, '', 'db update', 0, 0),
+(115, 'CREATE TABLE ken (id number PRIMARY KEY);', 27, 207, 1, '2011-12-22 10:25:50', '0000-00-00 00:00:00', NULL, 'testing from ken', 'db update', 0, 0),
+(118, 'ALTER TABLE `tbparameter` ADD `user_id` int(11) NULL;', 10, 214, 1, '2012-01-05 09:09:20', '0000-00-00 00:00:00', NULL, 'Introducing customizable parameters for each user (user''s preferences)', 'db update', 0, 0),
+(124, 'ALTER TABLE `tbparameter` DROP INDEX `paramtype`;\r\nALTER TABLE `tbparameter` ADD UNIQUE KEY `paramtype` (`paramtype`,`paramname`,`user_id`);\r\n', 10, 221, 1, '2012-01-12 10:21:59', '2012-01-12 10:24:05', 'admin', 'Modifying unique key for table tbparameter\r\n', 'db update', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -282,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `tbscriptbranch` (
   `branch_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `script_id` (`script_id`,`branch_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=194 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=207 ;
 
 --
 -- Dumping data for table `tbscriptbranch`
@@ -347,7 +367,11 @@ INSERT INTO `tbscriptbranch` (`id`, `script_id`, `branch_id`) VALUES
 (180, 104, 1),
 (181, 105, 1),
 (188, 111, 1),
-(192, 112, 1);
+(192, 112, 1),
+(194, 114, 1),
+(195, 115, 1),
+(198, 118, 1),
+(205, 124, 1);
 
 -- --------------------------------------------------------
 
@@ -361,7 +385,7 @@ CREATE TABLE IF NOT EXISTS `tbscriptbranchchangelog` (
   `branch_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `script_id` (`script_id`,`branch_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `tbscriptbranchchangelog`
@@ -404,7 +428,16 @@ INSERT INTO `tbscriptbranchchangelog` (`id`, `script_id`, `branch_id`) VALUES
 (34, 44, 1),
 (35, 45, 1),
 (36, 46, 1),
-(37, 47, 1);
+(37, 47, 1),
+(38, 48, 1),
+(39, 49, 1),
+(40, 50, 1),
+(41, 51, 1),
+(42, 52, 1),
+(43, 53, 1),
+(44, 54, 1),
+(45, 55, 1),
+(46, 56, 1);
 
 -- --------------------------------------------------------
 
@@ -426,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `tbscriptchangelog` (
   `isapackage` tinyint(1) NOT NULL default '0',
   `isaview` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=48 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=57 ;
 
 --
 -- Dumping data for table `tbscriptchangelog`
@@ -478,7 +511,16 @@ INSERT INTO `tbscriptchangelog` (`id`, `code`, `module_id`, `versionnr`, `user_i
 (44, 'ALTER TABLE `tbsynchronize` DROP `schemaname`;\r\nALTER TABLE `tbusagehistory` DROP `schemaname`;', 10, 199, 1, '', 112, '2011-09-09 16:39:00', 'Removing field schemaname as it is not used anymore.', 'db update', 0, 0),
 (45, 'ALTER TABLE `tbbranch` CHANGE `create_dt` `create_dt` DATETIME NOT NULL; ', 10, 175, 1, '', 103, '2011-06-03 23:10:30', 'Changing TBBRANCH to record hour timestamps.', 'db update', 0, 0),
 (46, 'ALTER TABLE `tbbranch` CHANGE `create_dt` `create_dt` DATETIME; ', 10, 175, 1, 'admin', 103, '2011-09-10 18:22:36', 'Changing TBBRANCH to record hour timestamps.', 'db update', 0, 0),
-(47, 'ALTER TABLE `tbsynchronize` DROP `schemaname`;\r\nALTER TABLE `tbusagehistory` DROP `schemaname`;\r\nALTER TABLE `tbsynchronize` DROP `description`;\r\nALTER TABLE `tbusagehistory` DROP `description`;', 10, 199, 1, 'admin', 112, '2011-09-10 10:16:07', 'Removing field schemaname as it is not used anymore.', 'db update', 0, 0);
+(47, 'ALTER TABLE `tbsynchronize` DROP `schemaname`;\r\nALTER TABLE `tbusagehistory` DROP `schemaname`;\r\nALTER TABLE `tbsynchronize` DROP `description`;\r\nALTER TABLE `tbusagehistory` DROP `description`;', 10, 199, 1, 'admin', 112, '2011-09-10 10:16:07', 'Removing field schemaname as it is not used anymore.', 'db update', 0, 0),
+(48, 'CREATE TABLE test (id number PRIMARY KEY);', 27, 209, 1, '', 117, '2011-12-22 10:26:24', '', 'db update2', 0, 0),
+(49, 'CREATE TABLE test (id number PRIMARY KEY);', 27, 208, 1, '', 116, '2011-12-22 10:26:06', '', 'db update', 0, 0),
+(50, 'create table test2;', 27, 217, 1, '', 120, '2012-01-09 11:36:46', '', 'db update', 0, 0),
+(51, 'create table test;', 27, 216, 1, '', 119, '2012-01-09 11:36:34', '', 'db update', 0, 0),
+(52, 'est', 27, 218, 1, '', 121, '2012-01-09 17:01:59', '', 'db update', 0, 0),
+(53, '-- test email sending', 27, 219, 5, '', 122, '2012-01-12 09:43:17', '-- comment', 'db update', 0, 0),
+(54, 'ALTER TABLE `tbparameter` DROP INDEX `paramtype`;\r\nALTER TABLE `tbparameter` ADD INDEX `paramtype` UNIQUE KEY `paramtype` (`paramtype`,`paramname`,`user_id`);\r\n', 10, 221, 1, '', 124, '2012-01-12 10:21:59', '', 'db update', 0, 0),
+(55, 'test', 27, 220, 1, '', 123, '2012-01-12 09:56:13', 'test', 'db update', 0, 0),
+(56, '-- testing sending of an email', 27, 222, 1, '', 125, '2012-01-12 10:26:07', '-- testing sending of an email', 'db update', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -498,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `tbscriptgeneration` (
   `create_dt` datetime default NULL,
   `exclbranch` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=226 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=272 ;
 
 --
 -- Dumping data for table `tbscriptgeneration`
@@ -568,7 +610,49 @@ INSERT INTO `tbusagehistory` (`projectname`, `update_dt`, `update_user`, `update
 ('deltasql-Server', '2011-09-13', 'deltauser', 'deltaclient', 200, 'HEAD', 198, 'HEAD', '', '91.213.136.2'),
 ('deltasql-Server', '2011-09-13', 'deltauser', 'deltaclient', 177, 'HEAD', 161, 'HEAD', '', '91.213.136.2'),
 ('deltasql-Server', '2011-09-13', 'deltauser', 'deltaclient', 177, 'HEAD', 161, 'HEAD', 'Oracle', '91.213.136.2'),
-('deltasql-Server', '2011-09-13', 'deltauser', 'deltaclient', 177, 'HEAD', 161, 'HEAD', 'Other', '91.213.136.2');
+('deltasql-Server', '2011-09-13', 'deltauser', 'deltaclient', 177, 'HEAD', 161, 'HEAD', 'Other', '91.213.136.2'),
+('deltasql-Server', '2011-09-26', 'Not logged in', 'deltasql-server', 200, 'HEAD', 198, 'HEAD', 'mySQL', '91.213.136.2'),
+('Multivac', '2011-09-27', 'admin', 'deltasql-server', 206, 'HEAD', 2, 'HEAD', 'mySQL', '188.80.95.105'),
+('Multivac', '2011-10-05', 'admin', 'deltasql-server', 206, 'HEAD', 1, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2011-10-07', 'admin', 'deltasql-server', 96, 'HEAD', 89, 'HEAD', 'mySQL', '103.4.124.12'),
+('deltasql-Server', '2011-10-07', 'admin', 'deltasql-server', 200, 'HEAD', 89, 'HEAD', 'mySQL', '103.4.124.12'),
+('Multivac', '2011-10-26', 'admin', 'deltasql-server', 206, 'HEAD', 20, 'HEAD', 'mySQL', '203.177.74.135'),
+('deltasql-Server', '2011-10-27', 'Not logged in', 'deltasql-server', 206, 'HEAD', 1, 'HEAD', 'mySQL', '217.133.111.198'),
+('TestProject', '2011-11-01', 'Not logged in', 'deltasql-server', 206, 'HEAD', 55, 'HEAD', 'Oracle', '72.196.199.206'),
+('TestProject', '2011-11-02', 'Not logged in', 'deltasql-server', 206, 'HEAD', 1, 'HEAD', 'mySQL', '159.53.174.145'),
+('TestProject', '2011-11-02', 'Not logged in', 'deltasql-server', 206, 'HEAD', 1, 'HEAD', 'Sybase', '159.53.174.145'),
+('deltasql-Server', '2011-11-10', 'Not logged in', 'deltasql-server', 198, 'HEAD', 161, 'HEAD', 'Oracle', '212.202.230.122'),
+('deltasql-Server', '2011-11-10', 'Not logged in', 'deltasql-server', 200, 'HEAD', 161, 'HEAD', 'Oracle', '212.202.230.122'),
+('deltasql-Server', '2011-11-10', 'Not logged in', 'deltasql-server', 200, 'HEAD', 89, 'HEAD', 'Oracle', '212.202.230.122'),
+('deltasql-Server', '2011-12-07', 'Not logged in', 'deltasql-server', 200, 'HEAD', 96, 'HEAD', 'Oracle', '62.180.244.232'),
+('deltasql-Server', '2011-12-07', 'admin', 'deltasql-server', 206, 'HEAD', 89, 'HEAD', 'mySQL', '62.180.244.232'),
+('deltasql-Server', '2011-12-07', 'admin', 'deltasql-server', 200, 'HEAD', 89, 'HEAD', 'Oracle', '62.180.244.232'),
+('GPU-II', '2011-12-12', 'Not logged in', 'deltasql-server', 206, 'HEAD', 1, 'HEAD', 'PostgreSQL', '212.59.44.6'),
+('FileDistributor', '2011-12-12', 'Not logged in', 'deltasql-server', 206, 'HEAD', 1, 'HEAD', 'PostgreSQL', '212.59.44.4'),
+('deltasql-Server', '2011-12-13', 'Not logged in', 'deltasql-server', 115, 'HEAD', 98, 'HEAD', 'mySQL', '72.22.186.68'),
+('deltasql-Server', '2011-12-13', 'Not logged in', 'deltasql-server', 115, 'HEAD', 98, 'HEAD', 'mySQL', '72.22.186.68'),
+('deltasql-Server', '2011-12-13', 'Not logged in', 'deltasql-server', 198, 'HEAD', 115, 'HEAD', 'mySQL', '178.114.217.43'),
+('deltasql-Server', '2011-12-22', 'Not logged in', 'deltasql-server', 206, 'HEAD', 5, 'HEAD', 'mySQL', '203.177.193.54'),
+('deltasql-Server', '2011-12-22', 'Not logged in', 'deltasql-server', 206, 'HEAD', 5, 'HEAD', 'mySQL', '203.177.193.54'),
+('TestProject', '2011-12-22', 'Not logged in', 'deltasql-server', 206, 'HEAD', 5, 'HEAD', 'mySQL', '203.177.193.54'),
+('TestProject', '2011-12-22', 'admin', 'deltasql-server', 209, 'HEAD', 2, 'HEAD', 'mySQL', '203.177.193.54'),
+('deltasql-Server', '2011-12-23', 'admin', 'deltasql-server', 209, 'HEAD', 102, 'HEAD', 'mySQL', '80.58.205.42'),
+('deltasql-Server', '2011-12-27', 'time', 'deltasql-server', 209, 'HEAD', 1, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2011-12-27', 'Not logged in', 'deltasql-server', 98, 'HEAD', 89, 'HEAD', 'mySQL', '125.17.110.162'),
+('deltasql-Server', '2011-12-27', 'Not logged in', 'deltasql-server', 115, 'HEAD', 89, 'HEAD', 'mySQL', '125.17.110.162'),
+('deltasql-Server', '2011-12-27', 'Not logged in', 'deltasql-server', 115, 'HEAD', 89, 'HEAD', 'mySQL', '125.17.110.162'),
+('deltasql-Server', '2011-12-27', 'Not logged in', 'deltasql-server', 115, 'HEAD', 89, 'HEAD', 'Oracle', '125.17.110.162'),
+('deltasql-Server', '2011-12-27', 'Not logged in', 'deltasql-server', 115, 'HEAD', 89, 'HEAD', 'MS SQL Server', '125.17.110.162'),
+('deltasql-Server', '2011-12-27', 'Not logged in', 'deltasql-server', 115, 'HEAD', 89, 'HEAD', 'Other', '125.17.110.162'),
+('deltasql-Server', '2011-12-28', 'Not logged in', 'deltasql-server', 209, 'HEAD', 4, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2011-12-28', 'Not logged in', 'deltasql-server', 209, 'HEAD', 177, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2011-12-28', 'Not logged in', 'deltasql-server', 209, 'HEAD', 1, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2011-12-29', 'Not logged in', 'deltasql-server', 209, 'HEAD', 89, 'HEAD', 'mySQL', '112.90.181.42'),
+('deltasql-Server', '2011-12-29', 'admin', 'deltasql-server', 200, 'HEAD', 89, 'HEAD', 'mySQL', '112.90.181.42'),
+('deltasql-Server', '2012-01-05', 'Not logged in', 'deltasql-server', 215, 'HEAD', 200, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2012-01-12', 'time', 'deltasql-server', 215, 'HEAD', 213, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2012-01-12', 'admin', 'deltasql-server', 222, 'HEAD', 213, 'HEAD', 'mySQL', '91.213.136.2'),
+('deltasql-Server', '2012-01-12', 'admin', 'deltasql-server', 222, 'HEAD', 213, 'HEAD', 'mySQL', '91.213.136.2');
 
 -- --------------------------------------------------------
 
@@ -588,17 +672,17 @@ CREATE TABLE IF NOT EXISTS `tbuser` (
   `passwhash` varchar(40) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `tbuser`
--- Note: Password for admin is testdbsync 
+--
 
 INSERT INTO `tbuser` (`id`, `username`, `password`, `first`, `last`, `email`, `rights`, `encrypted`, `passwhash`) VALUES
-(1, 'admin', '****', 'Main', 'Administrator', 'admin@deltasql', 3, 1, 'd6ce200dba380fa8451760f84d7ab6fe'),
+(1, 'admin', '****', 'Main', 'Administrator', 'admin@deltasql.org', 3, 1, 'd6ce200dba380fa8451760f84d7ab6fe'),
 (3, 'dangermouse', '****', 'Paul', 'Smith', 'paul.smith@gmail.com', 1, 1, 'c3df5702a6c5d9c9ad375297d40ddbc3'),
 (4, 'pinco', '', 'Pinco', 'Pallino', 'pincopallino@pallino.ch', 1, 1, '0104f1ecf2ab98ab68bb22b66a33193b'),
-(5, 'time', 'time', 'Tiz', 'Danger', 'tiz@danger.com', 2, 0, NULL),
-(8, 'virus', 'virus', 'Virginia', 'Saladin', 'vir@sal.com', 1, 0, NULL),
+(5, 'time', '****', 'Tiz', 'Danger', 'tiz@danger.com', 2, 1, 'f38163018214363849be3f4a1d6656b7'),
+(8, 'virus', 'virus', 'Virginia', 'Saladin', 'vir@saladin.com', 2, 0, NULL),
 (11, 'linus', 'linus', 'Linus', 'Torvalds', 'linus@kernel.org', 1, 0, NULL),
 (12, 'billgates', '****', 'Bill', 'Gates', 'bill@microsoft.com', 2, 1, '01b6ad058bbd2ab3bdaab9c3c9b87dfc');
