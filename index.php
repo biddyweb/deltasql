@@ -56,7 +56,7 @@ if (file_exists($configurationfile)) {
 		  echo "<p>Please visit the <a href=\"http://www.deltasql.org/deltasql/dbsync.php\">synchronization page on deltasql.org</a>, ";
 		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$ds_schema_version</b>, leave the <b>Version Number:</b> field empty ";
 		  echo " and hit the synchronization button at the bottom. Then execute the generated script into the deltasql schema to solve this issue. </p>";
-		  
+		  echo "<p>If deltasql.org should be offline for whatever reason, use the script <tt>db/migration_path.sql</tt> instead and figure out what it does.</p>";
 		  echo "<p>If you are developing deltasql or you patched it, you might want to disable this error by setting the <b>test_system</b> variable in  ";
 		  echo "<i>$configurationfile</i> to true.";
 		  
