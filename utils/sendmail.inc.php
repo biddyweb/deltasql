@@ -1,6 +1,6 @@
 <?php
 
-function send_email($from, $to, $subject, $body) {
+function send_email($cmdsend, $path, $from, $to, $subject, $body) {
    // first, we create a temporary file in output/emails/ directory
    // in the format required by sendmail which is fairly straightforward.
    $c = uniqid (rand (),true);
@@ -16,15 +16,20 @@ $body
 ");
    fclose($fh);
    
-   $output = shell_exec("sendmail -t < $emailfile");
-   //echo "<pre>$output</pre>";
-
+   $output = shell_exec("$cmdsend $path$emailfile");
+   
+   //logging output in logfile
+   $logfile="output/emails/log.txt";
+   $flog = fopen($logfile, 'w') or die("Can't create file $logfile");
+   fwrite($fh, $output);
+   fclose($fh);
+   
    unlink($emailfile);
    return;
 }
 
 
-function notify_users_with_email($from, $subject, $body) {
+function notify_users_with_email($cmdsend, $path, $from, $subject, $body) {
   // searching for all users which would like to be notified
   $query="SELECT * from tbparameter where paramtype='EMAIL' and paramname='SEND_EMAIL_TO' and paramvalue<>'';"; 
   $result=mysql_query($query);  
@@ -33,7 +38,7 @@ function notify_users_with_email($from, $subject, $body) {
   $i=0;
   while ($i<$num) {  
     $to=mysql_result($result,$i,"paramvalue");
-	send_email($from,$to,$subject,$body);
+	send_email($cmdsend, $path, $from,$to,$subject,$body);
 	$i++;
   }	
   return;

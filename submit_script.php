@@ -232,7 +232,7 @@ if ($emails_enable) {
   $result16=mysql_query($query16);
   $modulename=mysql_result($result16,0,"name");
   $subject="$emails_subject_identifier($modulename) $frm_title";
-  notify_users_with_email($emails_sender, $subject, $body);
+  notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 mysql_close();
 if ($frm_anothersubmit=="1") {

@@ -21,6 +21,13 @@ $dns_name="http://127.0.0.1/deltasql";
 $emails_enable=true;
 $emails_sender="admin@deltasql.org";
 $emails_subject_identifier="[deltasql]";
+//for Unix
+//$sendmail_command="/usr/bin/sendmail -t <";
+//$deltasql_path="/var/www/deltasql/";
+//for XAMPP under Windows
+$sendmail_command="D:\\xampplite\\sendmail\\sendmail.exe -t <";
+$deltasql_path="D:\\xampplite\\htdocs\\deltasql\\";
+
 
 // [Edition Settings]
 
