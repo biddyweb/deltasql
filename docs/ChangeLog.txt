@@ -1,3 +1,20 @@
+*******************************
+1.4.3 Release Notes (30.1.2012)
+
+There are several new improvements in this release:
+ - deltasql server is able to notify users by email if a new script is inserted in deltasql. This feature is important to
+  slowly migrate users from the manual synchronization burden to the deltasql way of life.
+ - Users can define preferences: if help links are shown, if rows are colored. The number of scripts shown in the list script
+   page is configurable as well.
+ - Minor visual enhancements 
+ - Minor bugfixes
+
+*******************************
+
+13.1.2012 git
+- email notification for new scripts works both under Linux and Windows :-D
+- added FAQ entry on how to configure email notification for new scripts
+
 12.1.2012 git
 - towards the implementation of email notification for new scripts
 
