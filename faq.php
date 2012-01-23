@@ -49,7 +49,7 @@ include("utils/constants.inc.php");
 <li><a href="#colors">What do the colored rows mean in the 'List scripts' view and on the Google Gadget?</a></li>
 <li><a href="#phonehome">What is the phone home functionality of deltasql?</a></li>
 <li><a href="#lost">I lost the admin password, what can I do to restore access to deltasql?</a></li>
-<li><a href="#email">How to configure email notification for new scripts</a></li>
+<li><a href="#email">How can I configure email notification for new scripts?</a></li>
 <li><a href="#question">I have another question, where to submit it?</a></li>
 </ul>
 
@@ -202,13 +202,13 @@ We provide technical support for following activities:
 <ul>
 <li>Migrate your deltasql server to the latest version</li>
 <li>Develop particular clients and new server functionality</li>
-<li>Expose deltasql server to the outside via Tomcat and AJP connector</li>
+<li>Configure deltasql server for email notification</li>
 <li>Consulting services</li>
 <li>Training</li>
 </ul>
 </p>
 <p>
-Please <a href="mailto:tiziano.mengotti at gmail.com">send a mail</a> for bug reports, suggestions, inquiries and pricing information. Thank you!
+Please <a href="mailto:gpu-world@lists.sourceforge.net">send a mail</a> for bug reports, suggestions and inquiries.
 </p>
 
 
@@ -496,7 +496,7 @@ In case you messed up with the salt in TBPARAMETER, you should reset all passwor
  can be issued in the <a href="list_users.php">List Users</a> page.
 </p>
 
-<h3><a name="email"></a>How to configure email notification for new scripts</h3>
+<h3><a name="email"></a>How can I configure email notification for new scripts?</h3>
 <p>
 Email notification of new scripts is an important feature of deltasql, so that users can slowly migrate from a development model where they are informed by email,
  to the new deltasql model. It is enough to ask all users to submit new scripts via deltasql server. Users who would like to continue working by managing their database schemas manually,
@@ -553,6 +553,9 @@ $deltasql_path="C:\\xampp\\htdocs\\deltasql\\";
 <p>Once you defined the variables correctly, you can configure at least one user with a valid email address in the Preferences window. Finally, submit
  a new script to deltasql and check that the email is received correctly :-).</p>
 
+<p>On the contrary, if you do not need this feature, you might want to disable it by setting  <tt>$emails_enable=false;</tt> in the configuration file <tt>conf/config.inc.php</tt>. Following this action, the field to set 
+ an email address in the Preferences window will be hidden.</p>
+ 
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>
 You can submit your question to the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>. We appreciate your feedback! 
