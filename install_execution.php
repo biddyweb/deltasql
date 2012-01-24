@@ -168,8 +168,8 @@ fwrite($fh, "
 //\$sendmail_command=\"/usr/bin/sendmail -t <\";
 //\$deltasql_path=\"/var/www/deltasql/\";
 //for XAMPP under Windows
-\$sendmail_command=\"D:\\xampplite\\sendmail\\sendmail.exe -t <\";
-\$deltasql_path=\"D:\\xampplite\\htdocs\\deltasql\\\";
+\$sendmail_command=\"D:\\\\xampplite\\\\sendmail\\\\sendmail.exe -t <\";
+\$deltasql_path=\"D:\\\\xampplite\\\\htdocs\\\\deltasql\\\\\";
 
 // [Edition Settings]
 \$dbdefault=\"$dbdefault\";             				
