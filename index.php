@@ -185,12 +185,13 @@ if ($rights==3) {
     include("download_clients_table.inc.php");
  }
 ?>
+<hr>
 <center>
 <?php
 if ($enterprise_edition==true)
   echo "<img src=\"pictures/deltasql-small.png\" border=0";
 ?>
-<h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
+<font size="small">deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/project/memberlist.php?group_id=212117">deltasql Team</a>. 
  The deltasql logo was designed by 
 <?php 
@@ -203,7 +204,7 @@ if ($enterprise_edition==true)
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
- echo "</h6>";
+ echo "</font>";
  echo "</center>";
  
  // Stats for Google Analytics

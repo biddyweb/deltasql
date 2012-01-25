@@ -123,7 +123,7 @@ if ($testgroup=="testsystemyes") {
 // generate random salt and store it into database (to be done really only once)
 $c = uniqid (rand (),true);
 $salt = md5($c);
-set_parameter('SECURITY', 'PWD_HASH_SALT', '$salt', '');
+set_parameter('SECURITY', 'PWD_HASH_SALT', "$salt", '');
 
 // update admin password
 $hashpwd=salt_and_hash("$deltasqladminpassword", "$salt");
