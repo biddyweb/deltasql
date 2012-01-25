@@ -11,6 +11,9 @@ There are several new improvements in this release:
 
 *******************************
 
+23-25.1.2012 git
+- Testing and debugging the new release
+
 13.1.2012 git
 - email notification for new scripts works both under Linux and Windows :-D
 - added FAQ entry on how to configure email notification for new scripts
