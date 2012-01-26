@@ -52,6 +52,7 @@ $clientsgroup=$_POST['clientsgroup'];
 $editiongroup =  $_POST['editiongroup'];
 $toptengroup =  $_POST['toptengroup'];
 $usagestatsgroup = $_POST['usagestatsgroup'];
+$emailgroup = $_POST['emailgroup'];
 
 
 $testsystem="false";
@@ -60,6 +61,7 @@ $disable_clients_table_on_main_page="false";
 $enterpriseedition="false";
 $disable_topten_submitters="false";
 $submit_usage_stats="true";
+$emails_enable="true";
 
 if ($testgroup=="testsystemyes") $testsystem="true";
 if ($sqlgroup=="donotusesqlhighlighting") $disablesqlhighlightning="true"; 
@@ -67,6 +69,7 @@ if ($clientsgroup=="clientstableno") $disable_clients_table_on_main_page="true";
 if ($editiongroup=="enterpriseedition") $enterpriseedition = "true";
 if ($toptengroup=="yes") $disable_topten_submitters = "true";
 if ($usagestatsgroup=="statsno") $submit_usage_stats="false";
+if ($emailgroup=="no") $emails_enable="false"; 
 
 if (!$debug_output_script) {
 if ($deltasqlschemauser!=$mysqlrootuser) {
@@ -161,7 +164,7 @@ fwrite($fh, "
 // The following settings are used, if users need to be notified by email
 // of new scripts entered in deltasql
 // email settings (all other settings are configured in sendmail)
-\$emails_enable=true;
+\$emails_enable=$emails_enable;
 \$emails_sender=\"admin@deltasql.org\";
 \$emails_subject_identifier=\"[deltasql]\";
 //for Unix

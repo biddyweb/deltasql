@@ -78,16 +78,25 @@ In this section, you can choose which default database type deltasql will manage
 
 <h3>Further Options</h3>
 
-<p>
-Here, most people can probably leave with the defaults. You can disable SQL highlighting if your deltasql will have more than 10000 SQL scripts, or
- if deltasql runs on an old server with poor performance. SQL highlighting is only disable in the synchronization script generation, but not for browsing scripts,
-  as it helps the eye. 
+<p>For email notification, you need sendmail to be <a href="faq.php#email">installed on your system</a>. 
+For the rest, most people can probably leave with the defaults. You can disable SQL highlighting if your deltasql will have more than 10000 SQL scripts, or
+ if deltasql runs on an old server with poor performance. SQL highlighting is only disabled in the synchronization script generation, but not for browsing scripts,
+  as it helps the eye. If the test option is enabled, you can change the underlying deltasql schema without having deltasql complaining about it.
 </p>
 <p>
 You can choose to show the table with the deltasql clients on the main page as well. And you can have a system with test data, and where the admin password is displayed at login,
  for users to experiment with deltasql, or to check deltasql correctness.
 </p>
+<p>
+If you enable to send usage statistics to deltasql.org, then after 100 scripts inserted, deltasql.org receives how many scripts there were in your deltasql instance.
+</p>
 <table>
+<tr><td>Enable email notification for new scripts (requires an additional <a href="faq.php#email">sendmail setup</a>): </td>
+<td>
+<input type="radio" name="emailgroup" value="yes" checked> Yes
+<input type="radio" name="emailgroup" value="no"> No
+</td></tr>
+
 <tr><td>Use SQL highlighting: </td>
 <td>
 <input type="radio" name="sqlgroup" value="usesqlhighlighting" checked> Yes

@@ -2,6 +2,7 @@
 - author name in subject of email notification
 - script version in email notification
 - email notification also if script is edited or deleted
+- initial install page has the option to enable email notification
 
 
 *******************************
