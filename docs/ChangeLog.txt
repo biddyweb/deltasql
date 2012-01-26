@@ -1,6 +1,7 @@
 26.1.2012
 - author name in subject of email notification
-- email notification also if script is edited
+- script version in email notification
+- email notification also if script is edited or deleted
 
 
 *******************************
