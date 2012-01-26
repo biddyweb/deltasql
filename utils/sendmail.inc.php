@@ -31,7 +31,7 @@ $body
 
 function notify_users_with_email($cmdsend, $path, $from, $subject, $body) {
   // searching for all users which would like to be notified
-  $query="SELECT * from tbparameter where paramtype='EMAIL' and paramname='SEND_EMAIL_TO' and paramvalue<>'';"; 
+  $query="SELECT * from tbparameter where paramtype='EMAIL' and paramname='SEND_EMAIL_TO' and TRIM(paramvalue)<>'';"; 
   $result=mysql_query($query);  
   $num=mysql_numrows($result); 
   
