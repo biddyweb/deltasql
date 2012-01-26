@@ -165,7 +165,13 @@ if ($frm_incversion==1) {
    $version = get_and_increase_global_version();
    $query5="UPDATE tbscript set versionnr=$version where id=$frm_scriptid;";
    mysql_query($query5);
-} 
+} else {
+  // retrieve version for email notification
+  $query22="SELECT * FROM tbscript WHERE id=$frm_scriptid;";
+  mysql_query($query22);
+  $result22=mysql_query($query22);
+  $version=mysql_result($result22,0,"versionnr");
+}
 
 // 2. we delete the entries in tbscriptbranch
 $query2="DELETE FROM tbscriptbranch WHERE script_id=$frm_scriptid";
@@ -200,7 +206,7 @@ if ($emails_enable) {
   $result16=mysql_query($query16);
   $modulename=mysql_result($result16,0,"name");
   
-  $subject="$emails_subject_identifier($modulename) edited by $user: $frm_title";
+  $subject="$emails_subject_identifier($modulename) $version edited by $user: $frm_title";
   notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 
