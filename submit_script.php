@@ -231,7 +231,13 @@ if ($emails_enable) {
   mysql_query($query16);
   $result16=mysql_query($query16);
   $modulename=mysql_result($result16,0,"name");
-  $subject="$emails_subject_identifier($modulename) $frm_title";
+  
+  $query21="SELECT * FROM tbuser WHERE id=$userid";
+  mysql_query($query21);
+  $result21=mysql_query($query21);
+  $authorname=mysql_result($result21,0,"username");
+  
+  $subject="$emails_subject_identifier($modulename) by $authorname: $frm_title";
   notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 mysql_close();

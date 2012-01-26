@@ -1,5 +1,10 @@
+26.1.2012
+- author name in subject of email notification
+- email notification also if script is edited
+
+
 *******************************
-1.4.3 Release Notes (30.1.2012)
+1.4.3 Release Notes (25.1.2012)
 
 There are several new improvements in this release:
  - deltasql server is able to notify users by email if a new script is inserted in deltasql. This feature is important to

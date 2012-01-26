@@ -10,6 +10,7 @@ include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+include("utils/sendmail.inc.php");
 include("changelog.inc.php");
 
 show_user_level();
@@ -188,6 +189,19 @@ while ($i<$num3) {
       mysql_query($query4);
    }
    $i++;
+}
+
+// 4. Email notification
+if ($emails_enable) {
+  $body = "$frm_script";
+  if ($frm_comment!="") $body="$body\n/*\n$frm_comment\n*/";
+  $query16="SELECT * FROM tbmodule WHERE id=$frm_moduleid";
+  mysql_query($query16);
+  $result16=mysql_query($query16);
+  $modulename=mysql_result($result16,0,"name");
+  
+  $subject="$emails_subject_identifier($modulename) edited by $user: $frm_title";
+  notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 
 mysql_close();
