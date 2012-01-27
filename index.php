@@ -27,7 +27,7 @@
    $rights=0; $user=""; 
  }
  
- echo "<h2><a href=\"http://www.deltasql.org\">deltasql</a> server <a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
+ echo "<h2>deltasql server <a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
  if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
 ?>
@@ -189,7 +189,7 @@ if ($rights==3) {
 <center>
 <?php
 if ($enterprise_edition==true)
-  echo "<img src=\"pictures/deltasql-small.png\" border=0";
+  echo "<a href=\"http://www.deltasql.org\"><img src=\"pictures/deltasql-small.png\" border=0></a>";
 ?>
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/project/memberlist.php?group_id=212117">deltasql Team</a>. 
