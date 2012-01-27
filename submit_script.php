@@ -236,8 +236,8 @@ if ($emails_enable) {
   mysql_query($query21);
   $result21=mysql_query($query21);
   $authorname=mysql_result($result21,0,"username");
-  
-  $subject="$emails_subject_identifier($modulename) $version by $authorname: $frm_title";
+  $branches=list_branches($scriptid);
+  $subject="$emails_subject_identifier($modulename) $version by $authorname for$branches: $frm_title";
   notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 mysql_close();

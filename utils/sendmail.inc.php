@@ -44,5 +44,21 @@ function notify_users_with_email($cmdsend, $path, $from, $subject, $body) {
   return;
 }
 
+function list_branches($scriptid) {
+   // retrieve to which branches and HEAD the script was applied
+	$query3="SELECT * from tbscriptbranch sb, tbbranch b where (sb.script_id=$scriptid) and (sb.branch_id=b.id) order by b.id asc"; 
+	$result3=mysql_query($query3);   
+	$num3=mysql_numrows($result3);
+	$j=0;
+	$branches="";
+    while ($j <$num3) {  
+        $branchname=mysql_result($result3,$j,"name");   
+        $branches = "$branches $branchname";
+        $j++;
+    }
+	
+	return $branches;
+}
+
 
 ?>

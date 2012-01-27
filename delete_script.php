@@ -36,8 +36,9 @@ if ($emails_enable) {
   $result22=mysql_query($query22);
   $version=mysql_result($result22,0,"versionnr");
   $body=mysql_result($result22,0,"code");;
+  $branches=list_branches($scriptid);
   
-  $subject="$emails_subject_identifier $version DELETED by $user";
+  $subject="$emails_subject_identifier $version DELETED by $user for$branches";
   notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 

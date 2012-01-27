@@ -205,8 +205,9 @@ if ($emails_enable) {
   mysql_query($query16);
   $result16=mysql_query($query16);
   $modulename=mysql_result($result16,0,"name");
+  $branches=list_branches($frm_scriptid);
   
-  $subject="$emails_subject_identifier($modulename) $version edited by $user: $frm_title";
+  $subject="$emails_subject_identifier($modulename) $version edited by $user for$branches: $frm_title";
   notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 
