@@ -27,7 +27,7 @@
    $rights=0; $user=""; 
  }
  
- echo "<h2>deltasql server <a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
+ echo "<h2><a href=\"http://www.deltasql.org\">deltasql</a> server <a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
  if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
 ?>
