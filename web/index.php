@@ -83,6 +83,7 @@ and is popular in Japan and South Korea. In some companies it manages
 more than 
 2000 scripts and more than 10 projects.</li>
 <li>Typically used for large J2EE/Oracle software architectures which are partially customized to the customer's wishes.</li>
+<li>Ability to send email notifications to users who would like to work without deltasql.</li>
 <li>Lightweight, fast and reliable :-)</li>
 </ul>
 <?php
