@@ -1,3 +1,6 @@
+28.1.2012 git patch 3
+- bufix in homepage of enterprise edition
+
 27.1.2012 git patch 2
 - email notification contains to which branches the script is applied
 
