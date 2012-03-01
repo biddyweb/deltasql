@@ -1,3 +1,13 @@
+*******************************
+1.4.4 Release Notes (1.3.2012)
+
+Maintenance release: consolidating the three patches for 1.4.3 in a new release.
+
+*******************************
+
+1.3.2012 git
+- removing Pyhton skeleton as to date I do not have gear to develop it
+
 30.1.2012 git
 - skeleton for a deltasql client written in Python
 
