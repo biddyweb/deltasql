@@ -2,7 +2,7 @@ CREATE TABLE `tbphonetranscript` (
   `id` int(11) NOT NULL auto_increment,
   `ip` varchar(32) NULL,
   `deltasql_version` varchar(32) NULL,
-  `create_dt` date default NULL,
+  `create_dt` datetime default NULL,
   `nbscripts` int(11) NULL,
   `nbmodules` int(11) NULL,
   `nbprojects` int(11) NULL,

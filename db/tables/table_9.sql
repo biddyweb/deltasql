@@ -1,6 +1,6 @@
 CREATE TABLE `tbusagehistory` (
 `projectname` VARCHAR( 64 ) NOT NULL ,
-`update_dt` DATE NULL ,
+`update_dt` DATETIME NULL ,
 `update_user` VARCHAR( 64 ) NULL ,
 `update_type` VARCHAR( 32 ) NULL ,
 `versionnr` INT NOT NULL,

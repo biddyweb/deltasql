@@ -33,6 +33,21 @@ function count_records($table) {
   return $nbrecords;
 }
 
+function store_stats() {
+  // a connection needs to be established
+  include("utils/constants.inc.php");
+  // collect data for the phone call
+  $nbscripts  = count_records("tbscript");
+  $nbmodules  = count_records("tbmodule");
+  $nbprojects = count_records("tbproject");
+  $nbbranches = count_records("tbbranch");
+  $nbsyncs    = count_records("tbusagehistory");
+  $nbusers    = count_records("tbuser");
+  $nbmp       = count_records("tbmoduleproject");
+  $nbsb       = count_records("tbscriptbranch");
+
+  answer_phone('localhost', $nbscripts, $nbmodules, $nbprojects, $nbbranches, $nbsyncs, $nbusers, $nbmp, $nbsb, $deltasql_version);  
+}
 
 function phone_home() {
   // a connection needs to be established
