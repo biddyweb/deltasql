@@ -30,5 +30,6 @@ deltasql includes the phpgraphext library by Mathias Herrmann and Alex Fomenko, 
 
 deltasql includes the Freepascal Synapse library by Lukas Gebauer, available at http://synapse.ararat.cz/
 
+deltasql includes the Open Flash Chart component by John Glazebrook, available at http://teethgrinder.co.uk/open-flash-chart/
 
-
+deltasql includes the SWFObject JavaScript component, which is (c) 2007 Geoff Stearns
