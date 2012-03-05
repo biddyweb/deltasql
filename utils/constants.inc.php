@@ -1,7 +1,7 @@
 <?php
 //version
-$deltasql_version="1.4.4";
-$ds_schema_version="1.4.3";
+$deltasql_version="1.5.0";
+$ds_schema_version="1.5.0";
 
 $dbredactor_version="1.0.2";
 $antclient_version="1.0.3";

@@ -21,7 +21,7 @@ echo "<h2>List Synchronization Usage History</h2>";
 <?php
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT * FROM tbusagehistory ORDER BY update_dt DESC";
+ $query="SELECT * FROM tbsyncstats ORDER BY update_dt DESC";
  $result=mysql_query($query);
  
  if ($result=="") {
@@ -31,7 +31,7 @@ echo "<h2>List Synchronization Usage History</h2>";
   $num=mysql_numrows($result); 
  }
  
- $query2="SELECT count(*) FROM tbusagehistory ORDER BY update_dt DESC";
+ $query2="SELECT count(*) FROM tbsyncstats ORDER BY update_dt DESC";
  $result2=mysql_query($query2);
  
  $numsync=mysql_result($result2,0,"count(*)");

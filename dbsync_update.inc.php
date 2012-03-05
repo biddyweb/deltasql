@@ -287,7 +287,7 @@ if ($singlefiles=="0") {
          
     // query for the usage statistics
 	$ip=$_SERVER['REMOTE_ADDR'];
-	$usagestring = "INSERT INTO tbusagehistory (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE, UPDATE_DT, IP)
+	$usagestring = "INSERT INTO tbsyncstats (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE, UPDATE_DT, IP)
 	                VALUES ('$projectname', $toversionnr, '$tobranchname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype', NOW(), '$ip');";
     mysql_query($usagestring);
     

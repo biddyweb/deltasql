@@ -41,7 +41,7 @@ function store_stats() {
   $nbmodules  = count_records("tbmodule");
   $nbprojects = count_records("tbproject");
   $nbbranches = count_records("tbbranch");
-  $nbsyncs    = count_records("tbusagehistory");
+  $nbsyncs    = count_records("tbsyncstats");
   $nbusers    = count_records("tbuser");
   $nbmp       = count_records("tbmoduleproject");
   $nbsb       = count_records("tbscriptbranch");
@@ -57,7 +57,7 @@ function phone_home() {
   $nbmodules  = count_records("tbmodule");
   $nbprojects = count_records("tbproject");
   $nbbranches = count_records("tbbranch");
-  $nbsyncs    = count_records("tbusagehistory");
+  $nbsyncs    = count_records("tbsyncstats");
   $nbusers    = count_records("tbuser");
   $nbmp       = count_records("tbmoduleproject");
   $nbsb       = count_records("tbscriptbranch");
@@ -76,7 +76,7 @@ function phone_home() {
 
 function answer_phone($ip, $nbscripts, $nbmodules, $nbprojects, $nbbranches, $nbsyncs, $nbusers, $nbmp, $nbsb, $deltasql_version) {
   // a connection needs to be established
-   $query="INSERT INTO tbphonetranscript (id, ip, deltasql_version, create_dt, nbscripts, nbmodules, nbprojects, nbbranches, nbsyncs, nbusers, nbmp, nbsb ) VALUES ('', '$ip', '$deltasql_version', NOW(), $nbscripts, $nbmodules, $nbprojects, $nbbranches, $nbsyncs, $nbusers, $nbmp, $nbsb);"; 
+   $query="INSERT INTO tbstats (id, ip, deltasql_version, create_dt, nbscripts, nbmodules, nbprojects, nbbranches, nbsyncs, nbusers, nbmp, nbsb ) VALUES ('', '$ip', '$deltasql_version', NOW(), $nbscripts, $nbmodules, $nbprojects, $nbbranches, $nbsyncs, $nbusers, $nbmp, $nbsb);"; 
    mysql_query($query);
 }
 

@@ -112,11 +112,11 @@ INSERT INTO `tbparameter` (`id`, `paramtype`, `paramname`, `paramvalue`) VALUES
 -- Tabellenstruktur für Tabelle `tbphonetranscript`
 --
 
-CREATE TABLE IF NOT EXISTS `tbphonetranscript` (
+CREATE TABLE IF NOT EXISTS `tbstats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(32) COLLATE latin1_general_ci DEFAULT NULL,
   `deltasql_version` varchar(32) COLLATE latin1_general_ci DEFAULT NULL,
-  `create_dt` date DEFAULT NULL,
+  `create_dt` datetime DEFAULT NULL,
   `nbscripts` int(11) DEFAULT NULL,
   `nbmodules` int(11) DEFAULT NULL,
   `nbprojects` int(11) DEFAULT NULL,
@@ -303,9 +303,9 @@ INSERT INTO `tbsynchronize` (`projectname`, `update_dt`, `update_user`, `update_
 -- Tabellenstruktur für Tabelle `tbusagehistory`
 --
 
-CREATE TABLE IF NOT EXISTS `tbusagehistory` (
+CREATE TABLE IF NOT EXISTS `tbsyncstats` (
   `projectname` varchar(64) NOT NULL,
-  `update_dt` date DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
   `update_user` varchar(64) DEFAULT NULL,
   `update_type` varchar(32) DEFAULT NULL,
   `versionnr` int(11) NOT NULL,

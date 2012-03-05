@@ -1,4 +1,4 @@
-CREATE TABLE `tbusagehistory` (
+CREATE TABLE `tbsyncstats` (
 `projectname` VARCHAR( 64 ) NOT NULL ,
 `update_dt` DATETIME NULL ,
 `update_user` VARCHAR( 64 ) NULL ,

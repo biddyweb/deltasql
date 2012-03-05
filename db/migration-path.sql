@@ -217,6 +217,28 @@ INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_U
 VALUES ('deltasql-Server', 222, 'HEAD', 'TAG_deltasql_1.4.3', 'admin', 'deltasql-server', 213, 'HEAD', 'mySQL');
 -- all scripts to reach db HEAD beginning from version 222 on date 2012-01-13 11:11:57
 
+-- version: 239 module: deltasql-module date: 2012-03-02 10:45:36
+-- applied to: HEAD 
 
+/*
+Changing structure of stats tables for datetime capabilities
+*/
+ALTER TABLE `tbphonetranscript` CHANGE `create_dt` `create_dt` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `tbusagehistory` CHANGE `update_dt` `update_dt` DATETIME NULL DEFAULT NULL; 
+ 
 
+-- version: 241 module: deltasql-module date: 2012-03-05 08:46:25
+-- applied to: HEAD 
 
+/*
+Renaming statistics tables.
+*/
+ALTER TABLE tbusagehistory RENAME tbsyncstats;
+ALTER TABLE tbphonetranscript RENAME tbstats;
+
+-- updating synchronization information for the database schema
+INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)
+VALUES ('deltasql-Server', 242, 'HEAD', 'TAG_deltasql_1.5.0', 'admin', 'deltasql-server', 222, 'HEAD', 'mySQL');
+-- all scripts to reach db HEAD beginning from version 242 on date 2012-03-05 08:46:25
+
+ 

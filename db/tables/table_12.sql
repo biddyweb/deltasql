@@ -1,4 +1,4 @@
-CREATE TABLE `tbphonetranscript` (
+CREATE TABLE `tbstats` (
   `id` int(11) NOT NULL auto_increment,
   `ip` varchar(32) NULL,
   `deltasql_version` varchar(32) NULL,
