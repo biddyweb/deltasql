@@ -9,9 +9,12 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include_once('utils/openflashchart/open_flash_chart_object.php');
 
 $rights = $_SESSION["rights"];
 if ($rights<1) die("<b>Not enough rights to list top ten submitters.</b>");
+
+open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-submitters.php');
 
 echo "<h2>Top Ten Submitters</h2>";
 
