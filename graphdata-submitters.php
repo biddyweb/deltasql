@@ -1,23 +1,58 @@
 <?
 
 include_once( 'utils/openflashchart/open-flash-chart.php' );
+include("conf/config.inc.php");
+
+ // preparing data for chart
+ mysql_connect($dbserver, $username, $password);
+ @mysql_select_db($database) or die("Unable to select database");
+ $query="SELECT u.username, u.first, u.last, count(*) FROM tbuser u, tbscript s WHERE s.user_id=u.id GROUP BY u.id ORDER BY count(*) DESC";
+ $result=mysql_query($query);
+ 
+ if ($result=="") {
+    mysql_close();
+    exit();
+ } else {
+  $num=mysql_numrows($result); 
+ }
+ 
+ $data = array();
+ $labels = array();
+ $i=0;
+ while ($i<$num) { 
+   $username=mysql_result($result,$i,"username");
+   $count=mysql_result($result,$i,"count(*)");          
+   
+   $data[$i] = $username;
+   $labels[$i] = $count;
+   
+   $i++;
+ }
+ mysql_close();
+ 
+
 
 // use the chart class to build the chart:
 $g = new graph();
-$g->title( 'Top Ten Submitters', '{font-size: 12px;}' );
+$g->title( 'Top Ten Submitters', '{font-size:18px; color: #d01f3c}' );
 
-$data = array();
-for ($i=0;$i<10;$i++) {
-  $data[$i] = $i;
-}  
-/*
-$data[0] = 1;
-$data[1] = 55;
-$data[2] = 17;
-*/
-$g->set_data( $data );
-$g->set_y_max( 55) ;
-$g->y_label_steps( 3 );
+//
+// PIE chart, 60% alpha
+//
+$g->pie(60,'#505050','{font-size: 12px; color: #404040;');
+//
+// pass in two arrays, one of data, the other data labels
+//
+$g->pie_values( $labels, $data);
+//
+// Colours for each slice, in this case some of the colours
+// will be re-used (3 colurs for 5 slices means the last two
+// slices will have colours colour[0] and colour[1]):
+//
+$g->pie_slice_colours( array('#d01f3c','#356aa0','#C79810') );
+
+$g->set_tool_tip( '#val#' );
+
 
 // display the data
 echo $g->render();

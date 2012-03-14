@@ -66,7 +66,7 @@ function _ofc( $width, $height, $url, $use_swfobject, $base )
     if( !isset( $open_flash_chart_seqno ) )
     {
         $open_flash_chart_seqno = 1;
-        $out[] = '<script type="text/javascript" src="'. $base .'js/swfobject.js"></script>';
+        $out[] = '<script type="text/javascript" src="'. $base .'utils/openflashchart/swfobject.js"></script>';
     }
     else
     {
@@ -80,7 +80,7 @@ function _ofc( $width, $height, $url, $use_swfobject, $base )
 	// Using library for auto-enabling Flash object on IE, disabled-Javascript proof  
     $out[] = '<div id="'. $div_name .'"></div>';
 	$out[] = '<script type="text/javascript">';
-	$out[] = 'var so = new SWFObject("'. $base .'open-flash-chart.swf", "'. $obj_id .'", "'. $width . '", "' . $height . '", "9", "#FFFFFF");';
+	$out[] = 'var so = new SWFObject("'. $base .'utils/openflashchart/open-flash-chart.swf", "'. $obj_id .'", "'. $width . '", "' . $height . '", "9", "#FFFFFF");';
 	//$out[] = 'so.addVariable("width", "' . $width . '");';
 	//$out[] = 'so.addVariable("height", "' . $height . '");';
 	$out[] = 'so.addVariable("data", "'. $url . '");';
@@ -93,10 +93,10 @@ function _ofc( $width, $height, $url, $use_swfobject, $base )
     $out[] = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="' . $protocol . '://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" ';
     $out[] = 'width="' . $width . '" height="' . $height . '" id="ie_'. $obj_id .'" align="middle">';
     $out[] = '<param name="allowScriptAccess" value="sameDomain" />';
-    $out[] = '<param name="movie" value="'. $base .'open-flash-chart.swf?width='. $width .'&height='. $height . '&data='. $url .'" />';
+    $out[] = '<param name="movie" value="'. $base .'utils/openflashchart/open-flash-chart.swf?width='. $width .'&height='. $height . '&data='. $url .'" />';
     $out[] = '<param name="quality" value="high" />';
     $out[] = '<param name="bgcolor" value="#FFFFFF" />';
-    $out[] = '<embed src="'. $base .'open-flash-chart.swf?data=' . $url .'" quality="high" bgcolor="#FFFFFF" width="'. $width .'" height="'. $height .'" name="'. $obj_id .'" align="middle" allowScriptAccess="sameDomain" ';
+    $out[] = '<embed src="'. $base .'utils/openflashchart/open-flash-chart.swf?data=' . $url .'" quality="high" bgcolor="#FFFFFF" width="'. $width .'" height="'. $height .'" name="'. $obj_id .'" align="middle" allowScriptAccess="sameDomain" ';
     $out[] = 'type="application/x-shockwave-flash" pluginspage="' . $protocol . '://www.macromedia.com/go/getflashplayer" id="'. $obj_id .'"/>';
     $out[] = '</object>';
 

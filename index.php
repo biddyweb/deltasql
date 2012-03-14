@@ -126,7 +126,7 @@ if ($rights>2)
 <h3>Users</h3>
 <ul>
 <?php 
-if (($rights>0) && (!$disable_topten_submitters)) {
+if (!$disable_topten_submitters) {
     echo "<li><a href=\"topten_submitters.php\">Top Ten Submitters</a></li><br>";
 }
 
