@@ -1,3 +1,6 @@
+20.3.2012
+- second deltasql graph showing top ten synchronizers :-)
+
 14.3.2012
 - first deltasql graph showing top ten submitters in a pie chart :-)
 

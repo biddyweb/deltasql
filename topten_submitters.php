@@ -64,6 +64,6 @@ echo "<table border=1><tr>
  
  ?>
 <hr>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<a href="topten.php">Top Ten</a> | <a href="index.php"><img src="icons/home.png"> Main menu</a>
 </body>
 </html>

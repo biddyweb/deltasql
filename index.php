@@ -114,10 +114,6 @@ if ($rights>1)
 <ul>
 <li><a href="list_branches.php">List Branches and Tags <img src="icons/tree.png"></a></li>
 <li><a href="dbsync.php">Synchronize database <img src="icons/show2.png"></a></li>
-<?php 
-if ($rights>2) 
-    echo "<br><li><a href=\"list_usage_history.php\">List Usage History</a></li>";
-?>
 </ul>
 </td>
 
@@ -127,7 +123,7 @@ if ($rights>2)
 <ul>
 <?php 
 if (!$disable_topten_submitters) {
-    echo "<li><a href=\"topten_submitters.php\">Top Ten Submitters</a></li><br>";
+    echo "<li><a href=\"topten.php\">Top Ten</a></li><br>";
 }
 
 if ($rights>2) 

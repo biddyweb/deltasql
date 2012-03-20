@@ -6,7 +6,7 @@ include("conf/config.inc.php");
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT u.username, u.first, u.last, count(*) FROM tbuser u, tbscript s WHERE s.user_id=u.id GROUP BY u.id ORDER BY count(*) DESC";
+ $query="SELECT update_user, count(*) FROM tbsyncstats group by update_user order by count(*) desc;";
  $result=mysql_query($query);
  
  if ($result=="") {
@@ -20,7 +20,7 @@ include("conf/config.inc.php");
  $labels = array();
  $i=0;
  while ($i<$num) { 
-   $username=mysql_result($result,$i,"username");
+   $username=mysql_result($result,$i,"update_user");
    $count=mysql_result($result,$i,"count(*)");          
    
    $data[$i] = $username;
@@ -34,7 +34,7 @@ include("conf/config.inc.php");
 
 // use the chart class to build the chart:
 $g = new graph();
-$g->title( 'Top Ten Submitters', '{font-size:18px; color: #d01f3c}' );
+$g->title( 'Top Ten Synchronizers', '{font-size:18px; color: #d01f3c}' );
 
 //
 // PIE chart, 60% alpha

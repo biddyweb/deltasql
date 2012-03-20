@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html>
 <head>
-<title>deltasql - List Usage History</title>
+<title>deltasql - Top Ten Synchronizers</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
@@ -10,15 +10,17 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
-?>
-<br>
-<?php
-$rights = $_SESSION["rights"];
-if ($rights<3) die("<b>Not enough rights to list usage history.</b>");
+include_once('utils/openflashchart/open_flash_chart_object.php');
+echo "<br>";
 
-echo "<h2>List Synchronization Usage History</h2>";
-?>
-<?php
+echo "<hr>";
+//echo 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-synchronizers.php';
+open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-synchronizers.php');
+echo "<hr>";
+
+
+echo "<h2>List Synchronization History</h2>";
+
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
  $query="SELECT * FROM tbsyncstats ORDER BY update_dt DESC";
@@ -92,7 +94,7 @@ if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplin
 if ($displayhelp==1)
   echo '<a href="faq.php#production"><img src="icons/help.png"> Is deltasql used in productive environments?</a></a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<a href="topten.php">Top Ten</a> | <a href="index.php"><img src="icons/home.png"> Main menu</a>
 </body>
 </html>
 </body>
