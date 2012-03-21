@@ -59,9 +59,6 @@ $disable_clients_table_on_main_page=false;
 // default script title when submitting a new script
 $default_script_title="db update";
 
-//allow deltasql to submit usage statistics to deltasql.org
-$submit_usage_stats=false;
-
 //script prefix and suffix when outputting scripts as single files
 $script_prefix    = "script_";
 $script_extension = ".sql";

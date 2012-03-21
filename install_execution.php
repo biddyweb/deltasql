@@ -60,7 +60,6 @@ $disablesqlhighlightning="false";
 $disable_clients_table_on_main_page="false";
 $enterpriseedition="false";
 $disable_topten_submitters="false";
-$submit_usage_stats="true";
 $emails_enable="true";
 
 if ($testgroup=="testsystemyes") $testsystem="true";
@@ -68,7 +67,6 @@ if ($sqlgroup=="donotusesqlhighlighting") $disablesqlhighlightning="true";
 if ($clientsgroup=="clientstableno") $disable_clients_table_on_main_page="true";
 if ($editiongroup=="enterpriseedition") $enterpriseedition = "true";
 if ($toptengroup=="yes") $disable_topten_submitters = "true";
-if ($usagestatsgroup=="statsno") $submit_usage_stats="false";
 if ($emailgroup=="no") $emails_enable="false"; 
 
 if (!$debug_output_script) {
@@ -204,9 +202,6 @@ fwrite($fh, "
 
 // default script title when submitting a new script
 \$default_script_title=\"db update\";
-
-//allow deltasql to submit usage statistics to deltasql.org
-\$submit_usage_stats=$submit_usage_stats;
 
 //script prefix and suffix when outputting scripts as single files
 \$script_prefix    = \"script_\";

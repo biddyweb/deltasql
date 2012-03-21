@@ -119,11 +119,6 @@ If you enable to send usage statistics to deltasql.org, then after 100 scripts i
 <input type="radio" name="testgroup" value="testsystemyes"> Yes
 <input type="radio" name="testgroup" value="testsystemno" checked> No
 </td></tr>
-<tr><td>Allow deltasql to send usage statistics to deltasql.org: </td>
-<td>
-<input type="radio" name="usagestatsgroup" value="statsyes"> Yes
-<input type="radio" name="usagestatsgroup" value="statsno" checked> No
-</td></tr>
 </table>
 <br></br>
 

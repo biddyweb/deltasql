@@ -47,8 +47,8 @@ include("utils/constants.inc.php");
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#scripttitle">All scripts are titled "db update". Where can I change this default?</a></li>
 <li><a href="#colors">What do the colored rows mean in the 'List scripts' view and on the Google Gadget?</a></li>
-<li><a href="#phonehome">What is the phone home functionality of deltasql?</a></li>
 <li><a href="#lost">I lost the admin password, what can I do to restore access to deltasql?</a></li>
+<li><a href="#slow">deltasql server has more than 2000 scripts and starts to get slow. How can I increase its performance?</a></li>
 <li><a href="#email">How can I configure email notification for new scripts?</a></li>
 <li><a href="#question">I have another question, where to submit it?</a></li>
 </ul>
@@ -457,25 +457,6 @@ The colored rows just show how old the first submission of a script was. The row
  was submitted in the last 20 minutes, yellow if it is less than 5 hours old and blue if it is less than one day old.
 </p>
 
-<h3><a name="phonehome"></a>What is the phone home functionality of deltasql?</h3>
-<p>
-Deltasql collects usage statistics and sends it to the deltasql.org homepage. When you install Deltasql, you are asked
- if you want Deltasql to submit usage statistics: each 100 scripts submitted to the homepage,
- deltasql server contacts deltasql.org and sends row counts of important tables in deltasql. The current deltasql version is
- also sent over the wire. 
-</p>
-<p>Why is deltasql.org collecting this data? We just would like to get an idea of how many scripts deltasql is managing overall.
- We would like to publish this information on the homepage for advertisment purposes, in the hope that the user basis increases.
- Additionally, some row counts tell us if our users are using advanced functionality like branches or complex project-modules
-  structures. The frequency of upgrades to deltasql server can be revealed as well.
-</p>
-<p>
-deltasql.org will not use the collected data to mail advertisement or to harm any deltasql user.
-</p>
-<p>
- If you still want to disable this functionality, add or modify the row <tt>submit_usage_stats=false;</tt>
- in <tt>conf/config.inc.php</tt>. 
-</p>
 
 <h3><a name="lost"></a>I lost the admin password. What can I do to restore access to deltasql?</h3>
 <p>
@@ -495,6 +476,14 @@ You can then login in deltasql with username <b>admin</b> and password <b>log4ad
 In case you messed up with the salt in TBPARAMETER, you should reset all passwords for the other users as well. A password reset
  can be issued in the <a href="list_users.php">List Users</a> page.
 </p>
+
+
+<h3><a name="slow"></a>deltasql server has more than 2000 scripts and starts to get slow. How can I increase its performance?</h3>
+
+<p>If deltasql is slow when inserting new scripts, this might be dued to the fact that when a script is stored, deltasql collects statistics information and stores it in the table tbstats. Try to increase the variable <tt>store_usage_stats_each</tt>
+  in <tt>utils/constants.inc.php</tt> from 1 to 100, so that only each 100 scripts statistics information is collected.</p>
+ 
+<p>On the contrary, if deltasql is slow when generating the synchronization script, try to set the variable <tt>$disable_sql_highlighting=true;</tt> in <tt>conf/config.inc.php</tt> so that the SQL highlighting step is skipped.</p>
 
 <h3><a name="email"></a>How can I configure email notification for new scripts?</h3>
 <p>

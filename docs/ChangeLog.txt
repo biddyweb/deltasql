@@ -1,3 +1,7 @@
+21.3.2012
+- removed deltasql phone home functionality as nobody was using it
+- added a FAQ question on how to increase performance on large deltasql server instances, by tweaking some configuration parameters
+
 20.3.2012
 - second deltasql graph showing top ten synchronizers :-)
 

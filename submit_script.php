@@ -214,15 +214,12 @@ mysql_query($query4);
 $query5="UPDATE tbbranch SET versionnr=$version, create_dt=NOW() WHERE name='HEAD'";
 mysql_query($query5);
 
-// 6. Store stats for charting and submit usage stats if allowed
-store_stats();
-if (($submit_usage_stats==true) || ($submit_usage_stats=="")) {
-     $last_stats_sent=get_usagestats_version();
-     if ($version>=$last_stats_sent+$send_usage_stats_each) {
+// 6. Store stats for charting
+$last_stats_sent=get_usagestats_version();
+if ($version>=$last_stats_sent+$store_usage_stats_each) {
 	    set_usagestats_version($version);
-        phone_home();
-     }	 
-}
+        store_stats();
+}	 
 
 // 7. Notify users with email
 if ($emails_enable) {
