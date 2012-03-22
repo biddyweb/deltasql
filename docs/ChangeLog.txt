@@ -1,3 +1,6 @@
+22.3.2012
+- latest changelog feature, informing the user if there is a newer version available on deltasql.org
+
 21.3.2012
 - removed deltasql phone home functionality as nobody was using it
 - added a FAQ question on how to increase performance on large deltasql server instances, by tweaking some configuration parameters
