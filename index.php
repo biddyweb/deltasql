@@ -196,7 +196,7 @@ if ($enterprise_edition==true)
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
- echo "The changelog is <a href=\"docs/ChangeLog.txt\">here</a>. ";
+ echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version\">here</a>. ";
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
