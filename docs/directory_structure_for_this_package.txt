@@ -18,17 +18,22 @@ Deltasql Server
     /test-data            This folder contains the test data in script-test-data.sql in single scripts,
                           so that the install logic in install.php can be executed
 /docs                Files that complement the documentation in ../manual.php
+/icons               small pictures used to prettify deltasql
 /output
     /scripts          Temporary directory to output scripts as .zip files
 	/diffs            Temporary directory to output diffs used in history feature
+	/emails           Temporary directory to output emails, so that users are notifed by changes via email
 /patch                Contains information if patches are applied
 /pictures             Pictures for the deltasql server
 /utils                Utilites in PHP for deltasql
      /geshi           The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
 	 /jscalendar      Calendar Widget released under the LGPL available at http://jscalendar.sourceforge.net
 	 /createzip       Createzip library (c) Rochak Chauhan  www.rochakchauhan.com
+	 /openflashchart  Open Flash Chart by John Glazebrook, available at http://teethgrinder.co.uk/open-flash-chart/
+	                  and SWFObject JavaScript component, which is (c) 2007 Geoff Stearns
 	 /textdiff        Textdiff library licensed under LGPL and examples
 	 /phptreegraphext phpTreeGraph libry licensed under LGPL
+/web                 deltasql.org homepage
 /Text                Textdiff library, see /utils/textdiff/README.txt for copyright information and licensing
     
 
