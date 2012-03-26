@@ -481,7 +481,8 @@ In case you messed up with the salt in TBPARAMETER, you should reset all passwor
 <h3><a name="slow"></a>deltasql server has more than 2000 scripts and starts to get slow. How can I increase its performance?</h3>
 
 <p>If deltasql is slow when inserting new scripts, this might be dued to the fact that when a script is stored, deltasql collects statistics information and stores it in the table tbstats. Try to increase the variable <tt>store_usage_stats_each</tt>
-  in <tt>utils/constants.inc.php</tt> from 1 to 100, so that only each 100 scripts statistics information is collected.</p>
+  in <tt>utils/constants.inc.php</tt> from 1 to 100, so that only each 100 scripts statistics information is collected. Also disable the feature of sending emails, if not configured, by setting <tt>$emails_enable=false</tt> in
+ <tt>conf/config.inc.php</tt>.   </p>
  
 <p>On the contrary, if deltasql is slow when generating the synchronization script, try to set the variable <tt>$disable_sql_highlighting=true;</tt> in <tt>conf/config.inc.php</tt> so that the SQL highlighting step is skipped.</p>
 

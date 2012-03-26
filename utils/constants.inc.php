@@ -52,5 +52,5 @@ $dbtestdatafile    = "db/script-test-data.sql";
 $installmessage="<h2><a href=\"install.php\">Please setup Deltasql...</a></h2>";
 
 // after how many scripts usage stats are stored into tbsyncstats
-$store_usage_stats_each = 1;
+$store_usage_stats_each = 100;
 ?>
