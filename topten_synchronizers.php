@@ -89,11 +89,6 @@ echo "<table border=1><tr>
  ?>
 <br>
 <hr>
-<?php
-if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
-if ($displayhelp==1)
-  echo '<a href="faq.php#production"><img src="icons/help.png"> Is deltasql used in productive environments?</a></a><br>';
-?>
 <a href="topten.php">Top Ten</a> | <a href="index.php"><img src="icons/home.png"> Main menu</a>
 </body>
 </html>

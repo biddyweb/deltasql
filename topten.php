@@ -20,6 +20,11 @@ open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SE
 echo "<br><a href=\"topten_synchronizers.php\">Details...";
 ?>
 <hr>
+<?php
+if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
+if ($displayhelp==1)
+  echo '<a href="faq.php#production"><img src="icons/help.png"> Is deltasql used in productive environments?</a></a><br>';
+?>
 <a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>
