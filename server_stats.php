@@ -1,0 +1,24 @@
+<?php session_start(); ?>
+<html>
+<head>
+<title>deltasql - Server Statistics</title>
+<link rel="stylesheet" type="text/css" href="deltasql.css">
+</head>
+<body>
+<?php
+include("head.inc.php");
+include("conf/config.inc.php");
+include("utils/utils.inc.php");
+include_once('utils/openflashchart/open_flash_chart_object.php');
+echo "<br>";
+echo "<h1>deltasql Server Statistics</h1>";
+echo "<hr>";
+?>
+<?php
+if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
+if ($displayhelp==1)
+  echo '<a href="faq.php#continouus"><img src="icons/help.png"> Is it possible to perform continouus database integration?</a></a><br>';
+?>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+</body>
+</html>
