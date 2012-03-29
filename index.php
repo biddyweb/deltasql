@@ -106,6 +106,8 @@ if ($rights>1)
     echo "<li><a href=\"create_project.php\">Create a Project</a></li>";
 ?>
 <li><a href="list_projects.php">List Projects</a></li>
+<br>
+<li><a href="server_stats.php">Statistics</a></li>
 </ul>
 </td>
 
