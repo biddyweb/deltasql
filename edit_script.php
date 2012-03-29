@@ -133,7 +133,7 @@ echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest 
 <input type="Submit" value="Save script">
 </form>
 <hr>
-<a href="list_scripts.php">Back to list scripts</a>
+<a href="list_scripts.php">Back to list scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 
 <?php
 if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;

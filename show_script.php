@@ -11,6 +11,14 @@ include("head.inc.php");
 include("utils/utils.inc.php");
 include("conf/config.inc.php");
 
+if (isset($_GET['edit'])) $edit=$_GET['edit']; else $edit=0;
+if (isset($_SESSION["userid"])) {
+  $rights = $_SESSION["rights"];
+  $sessionuserid = $_SESSION["userid"];
+} else {
+  $rights = 0; $sessionuserid="";
+} 
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 $scriptid = $_GET['id'];
@@ -62,6 +70,20 @@ while ($j <$num3) {
 }
 echo "<br>";
 
+// if rights allow it, we show the script as editable
+if ($edit==1) {
+  echo "<b>Actions:</b> ";
+  if ($rights>=1) {
+        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> "; 
+  }
+  if ($update_user!="") {
+	    $author_encoded = urlencode ( $author );
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\"></a>";
+	} else {
+	   $update_user="-";
+	   $update_dt="-";
+  }
+}  
 echo "<hr><br>";
 
 if ($comments!="") {

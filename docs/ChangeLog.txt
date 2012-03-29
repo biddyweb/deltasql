@@ -1,22 +1,28 @@
-22.3.2012
+29.3.2012 git
+- editing existing scripts when the script is shown
+
+28.3.2012 git
+- minor fixes
+
+22.3.2012 git
 - latest changelog feature, informing the user if there is a newer version available on deltasql.org
 
-21.3.2012
+21.3.2012 git
 - removed deltasql phone home functionality as nobody was using it
 - added a FAQ question on how to increase performance on large deltasql server instances, by tweaking some configuration parameters
 
-20.3.2012
+20.3.2012 git
 - second deltasql graph showing top ten synchronizers :-)
 
-14.3.2012
+14.3.2012 git
 - first deltasql graph showing top ten submitters in a pie chart :-)
 
-5.3.2012
+5.3.2012 git
 - renamed statistics tables into tbstats and tbsyncstats
 - added Open Flash Chart library to git repository
 
 
-2.3.2012
+2.3.2012 git
 - preparing structure for better stats capability
 - we will use Open Flash Chart http://teethgrinder.co.uk/open-flash-chart/
 

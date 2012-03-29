@@ -15,7 +15,7 @@ $version  = $_GET['version'];
 $author   = $_GET['author'];
 if ($scriptid=="") exit;
 
-echo "<h3>History for <a href=\"show_script.php?id=$scriptid\">script $version</a></h3>";
+echo "<h3>History for <a href=\"show_script.php?id=$scriptid&edit=1\">script $version</a></h3>";
 
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);

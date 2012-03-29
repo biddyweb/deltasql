@@ -224,7 +224,7 @@ if ($textoutput==0) {
         $comments = "$comments...";
     }
     if ($title=="") $title="db update";    
-    $title = "<a href=\"show_script.php?id=$id\">$title</a>";
+    $title = "<a href=\"show_script.php?id=$id&edit=1\">$title</a>";
 }
 
 $query3="SELECT * from tbuser where id=$scriptuserid"; 
@@ -272,7 +272,7 @@ if ($textoutput==0) {
     echo "</td>";
 
     echo "
-    <td><a href=\"show_script.php?id=$id\"><img alt=\"Show\" src=\"icons/show.png\"></a> ";
+    <td><a href=\"show_script.php?id=$id&edit=1\"><img alt=\"Show\" src=\"icons/show.png\"></a> ";
 	if ($rights>=1) {
         echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> "; 
     }
