@@ -7,7 +7,8 @@
 <body>
 <?php
 include("head.inc.php");
-include("conf/config.inc.php");
+include("utils/constants.inc.php");
+if (!file_exists($configurationfile)) echo ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
