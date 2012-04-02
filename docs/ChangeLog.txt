@@ -1,3 +1,16 @@
+*******************************
+1.5.0 Release Notes (4.4.2012)
+
+Major release containing charting features for deltasql. It is possible to see how many scripts are added 
+each month and how many synchronizations are performed. A top ten page shows the best developers writing new scripts
+ and the best release managers performing most synchronizations.
+ 
+Minor features include a changelog feature which shows which is the latest deltasql release and the ability to edit scripts
+ when they are shown. Other minor enhancements and the removal of the unused phone home functionality round off this release.
+
+*******************************
+
+
 2.4.2012 git
 - added scripts per month and scripts per module and synchronizations per month in new server statistics page
 
