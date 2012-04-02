@@ -72,16 +72,19 @@ echo "<br>";
 
 // if rights allow it, we show the script as editable
 if ($edit==1) {
-  echo "<b>Actions:</b> ";
+  $actions=0;
+  echo "Actions: ";
   if ($rights>=1) {
-        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> "; 
+        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
+        $actions=1;  		
   }
   if ($update_user!="") {
+        $actions=1;
 	    $author_encoded = urlencode ( $author );
 	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\"></a>";
-	} else {
-	   $update_user="-";
-	   $update_dt="-";
+  } 
+  if ($actions==0) {
+     echo "None";
   }
 }  
 echo "<hr><br>";
