@@ -15,6 +15,9 @@ include("conf/config.inc.php");
  } else {
   $num=mysql_numrows($result); 
  }
+
+ $bar = new bar_outline( 50, '#9933CC', '#8010A0' );
+ $bar->key( 'Scripts', 10 );
  
  $data = array();
  $labels = array();
@@ -25,7 +28,7 @@ include("conf/config.inc.php");
    $my=mysql_result($result,$i,"my");
    $count=mysql_result($result,$i,"count(*)");          
    
-   $data[$i] = $count;
+   $bar->data[] = $count;
    $labels[$i] = $my;
    
    if ($count>$max) $max=$count;
@@ -34,7 +37,7 @@ include("conf/config.inc.php");
  }
  mysql_close();
  
-
+ //$bar->$data[] = $data[];
 
 // use the chart class to build the chart:
 $g = new graph();
@@ -43,7 +46,7 @@ $g->title( 'Scripts per month', '{font-size:18px; color: #d01f3c}' );
 //
 // pass in two arrays, one of data, the other data labels
 //
-$g->set_data($data);
+$g->data_sets[] = $bar;
 $g->set_x_labels($labels);
 $g->set_x_label_style( 10, '#9933CC', 0, 2 );
 $g->set_y_max( $max );
