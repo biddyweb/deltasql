@@ -86,7 +86,7 @@ more than
 <li>Ability to send email notifications to users who would like to work without deltasql.</li>
 <li><a href="deltasql/server_stats.php">Charting</a> features to monitor how deltasql improves over time.</li>
 <li>Ability to diff scripts if they were subsequently updated, ability to plot the tree of tags and branches and more...</li>
-<li>In short, deltasql is lightweight but powerfu but powerful, fast and reliable :-)</li>
+<li>In short, deltasql is lightweight but powerful, fast and reliable :-)</li>
 </ul>
 <?php
 //<center>
