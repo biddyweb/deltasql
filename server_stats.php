@@ -13,6 +13,12 @@ include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
 echo "<h1>deltasql Server Statistics</h1>";
 echo "<hr>";
+open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-scriptspermonth.php');
+echo "<hr>";
+open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-scriptspermodule.php');
+echo "<hr>";
+open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-syncspermonth.php');
+echo "<hr>";
 ?>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
