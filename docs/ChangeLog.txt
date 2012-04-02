@@ -1,3 +1,6 @@
+2.4.2012 git
+- added scripts per month and scripts per module and synchronizations per month in new server statistics page
+
 29.3.2012 git
 - editing existing scripts when the script is shown
 

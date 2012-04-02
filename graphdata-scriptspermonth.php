@@ -19,6 +19,7 @@ include("conf/config.inc.php");
  $data = array();
  $labels = array();
  $i=0;
+ $max=20;
  while ($i<$num) { 
    // my is for month-year
    $my=mysql_result($result,$i,"my");
@@ -26,6 +27,8 @@ include("conf/config.inc.php");
    
    $data[$i] = $count;
    $labels[$i] = $my;
+   
+   if ($count>$max) $max=$count;
    
    $i++;
  }
@@ -43,7 +46,7 @@ $g->title( 'Scripts per month', '{font-size:18px; color: #d01f3c}' );
 $g->set_data($data);
 $g->set_x_labels($labels);
 $g->set_x_label_style( 10, '#9933CC', 0, 2 );
-
+$g->set_y_max( $max );
 
 $g->set_tool_tip( '#val#' );
 
