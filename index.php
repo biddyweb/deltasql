@@ -82,7 +82,7 @@ if ($rights>0)
   echo "<li><a href=\"submit_script.php\">Submit Script</a></li>";
 echo "<li><a href=\"list_scripts.php\">List Scripts</a> <a href=\"get_rss_feed.php\"><img src=\"pictures/rss-icon.png\" border=0/></a></li>";
 if ($rights>2)
-  echo "<li><a href=\"list_changelog_deleted.php\">View deleted</a></li>";
+  echo "<br><li><a href=\"list_changelog_deleted.php\">View deleted</a></li>";
 ?>
 </ul>
 
