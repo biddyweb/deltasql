@@ -7,13 +7,13 @@
 <body>
 <?php
 include("head.inc.php");
-include("conf/config.inc.php");
+include("utils/constants.inc.php");
+if (!file_exists($configurationfile)) die ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 
 echo "<hr>";
-//echo 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-submitters.php';
-open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-submitters.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-submitters.php');
 echo "<hr>";
 
  mysql_connect($dbserver, $username, $password);

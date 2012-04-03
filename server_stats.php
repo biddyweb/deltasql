@@ -8,17 +8,17 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
-if (!file_exists($configurationfile)) echo ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
+if (!file_exists($configurationfile)) die ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
 echo "<h1>deltasql Server Statistics</h1>";
 echo "<hr>";
-open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-scriptspermonth.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptspermonth.php');
 echo "<hr>";
-open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-scriptspermodule.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptspermodule.php');
 echo "<hr>";
-open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-syncspermonth.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-syncspermonth.php');
 echo "<hr>";
 ?>
 <?php

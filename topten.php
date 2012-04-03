@@ -8,16 +8,16 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
-if (!file_exists($configurationfile)) echo ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
+if (!file_exists($configurationfile)) die ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
 echo "<h1>Top Ten</h1>";
 echo "<hr>";
-open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-submitters.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-submitters.php');
 echo "<br><a href=\"topten_submitters.php\">Details...";
 echo "</a><hr>";
-open_flash_chart_object( 500, 250, 'http://'. $_SERVER['SERVER_NAME'] . ':'.$_SERVER['SERVER_PORT'] . '/deltasql/graphdata-synchronizers.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-synchronizers.php');
 echo "<br><a href=\"topten_synchronizers.php\">Details...";
 ?>
 <hr>
