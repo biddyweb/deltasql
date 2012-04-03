@@ -212,7 +212,7 @@ if ($emails_enable) {
 }
 
 mysql_close();
-js_redirect("list_scripts.php");
+js_redirect("show_script.php?id=$frm_scriptid&edit=1");
 ?>
 
 </body>
