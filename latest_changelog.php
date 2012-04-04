@@ -41,17 +41,23 @@ if (($dns_name=="http://www.deltasql.org/deltasql") && ($version!="unknown")) {
   $port      = $_SERVER['REMOTE_PORT'];
   $referrer  = $_SERVER['HTTP_REFERER'];
   $useragent = $_SERVER['HTTP_USER_AGENT'];
-  mysql_connect($dbserver, $username, $password);
-  @mysql_select_db($database) or die("Unable to select database");
-  $query="INSERT INTO tbqos (id, deltasql_version, ip, port, referrer, useragent, create_dt) VALUES('', '$version', '$ip', '$port', '$referrer', '$useragent', NOW());";
-  mysql_query($query);
-  mysql_close();
+  $scripts = $_GET['scripts'];
+  if ($scripts=="") $scripts=-1;
+  
+  if ($referrer!="http://www.deltasql.org/deltasql/") {
+     mysql_connect($dbserver, $username, $password);
+     @mysql_select_db($database) or die("Unable to select database");
+     $query="INSERT INTO tbqos (id, deltasql_version, nbscripts, ip, port, referrer, useragent, create_dt) VALUES('', '$version', $scripts, '$ip', '$port', '$referrer', '$useragent', NOW());";
+     mysql_query($query);
+     mysql_close();
+  }	 
 }
 
 /*
 CREATE TABLE IF NOT EXISTS `tbqos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deltasql_version` varchar(32) COLLATE latin1_general_ci DEFAULT NULL,
+  `nbscripts` int(11) DEFAULT NULL,
   `ip` varchar(32) COLLATE latin1_general_ci DEFAULT NULL,
   `port` varchar(5) COLLATE latin1_general_ci DEFAULT NULL,
   `referrer` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,

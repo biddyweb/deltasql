@@ -19,17 +19,12 @@
  if (!isset($disable_topten_submitters))  $disable_topten_submitters=true;
  if (!isset($dns_name)) $dns_name="";
  
- if (file_exists($configurationfile)) show_user_level();
  if(isset($_SESSION['userid'])) {
     $rights = $_SESSION["rights"];
     $user = $_SESSION["username"];
  } else {
    $rights=0; $user=""; 
  }
- 
- echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version\">$deltasql_version</a>";
- if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
- echo "</h2>";
 ?>
 
 
@@ -37,13 +32,22 @@
 <?php
 if (file_exists($configurationfile)) {
     // showing date and hour of latest changes
-    echo "Last Update: ";
     mysql_connect($dbserver, $username, $password);
     @mysql_select_db($database) or die("Unable to select database");
-    $query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
+    echo "<center>";
+	echo "Scripts: ";
+	$query5="SELECT count(*) from tbscript;";
+    $result5=mysql_query($query5);
+    $nbscripts=mysql_result($result5,0,'count(*)');
+	echo "<b>$nbscripts</b> ";
+	
+    echo "Last Update: ";
+	$query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
     $result3=mysql_query($query3);
     $create_dt=mysql_result($result3,0,'create_dt');
-    echo "<b>$create_dt</b>";
+    echo "<b>$create_dt</b> ";
+	echo "</center>";
+	show_user_level();
 	
 	// checking if the database schema is uptodate
 	$query4="SELECT tagname FROM `tbsynchronize` where versionnr=(select max(versionnr) FROM tbsynchronize);";
@@ -68,7 +72,11 @@ if (file_exists($configurationfile)) {
  } else {
     echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
  } 
-?>
+
+ echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts\">$deltasql_version</a>";
+ if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
+ echo "</h2>";
+ ?>
 
 <table cellspacing="4" cellpadding="4">
 <tr>
@@ -198,7 +206,7 @@ if ($enterprise_edition==true)
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
- echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version\">here</a>. ";
+ echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts\">here</a>. ";
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
