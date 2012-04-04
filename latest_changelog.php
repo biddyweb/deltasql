@@ -44,7 +44,8 @@ if (($dns_name=="http://www.deltasql.org/deltasql") && ($version!="unknown")) {
   $scripts = $_GET['scripts'];
   if ($scripts=="") $scripts=-1;
   
-  if ($referrer!="http://www.deltasql.org/deltasql/") {
+  if (($referrer!="http://www.deltasql.org/deltasql/") &&
+      ($referrer!="http://www.deltasql.org/deltasql/index.php"))   {
      mysql_connect($dbserver, $username, $password);
      @mysql_select_db($database) or die("Unable to select database");
      $query="INSERT INTO tbqos (id, deltasql_version, nbscripts, ip, port, referrer, useragent, create_dt) VALUES('', '$version', $scripts, '$ip', '$port', '$referrer', '$useragent', NOW());";
