@@ -179,7 +179,13 @@ if ($rights==3) {
 </table>
 
 <?php
-if (file_exists($configurationfile)) {
+ if ($disable_clients_table_on_main_page==true) {
+    // do nothing
+ } else {
+    include("download_clients_table.inc.php");
+ }
+ 
+ if (file_exists($configurationfile)) {
     echo "<center>";
 	echo "Scripts: ";
 	echo "<b>$nbscripts</b> ";
@@ -187,12 +193,6 @@ if (file_exists($configurationfile)) {
     echo "<b>$create_dt</b> ";
 	echo "</center>";
 }
-
- if ($disable_clients_table_on_main_page==true) {
-    // do nothing
- } else {
-    include("download_clients_table.inc.php");
- }
 ?>
 <hr>
 <center>
