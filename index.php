@@ -34,19 +34,13 @@ if (file_exists($configurationfile)) {
     // showing date and hour of latest changes
     mysql_connect($dbserver, $username, $password);
     @mysql_select_db($database) or die("Unable to select database");
-    echo "<center>";
-	echo "Scripts: ";
 	$query5="SELECT count(*) from tbscript;";
     $result5=mysql_query($query5);
     $nbscripts=mysql_result($result5,0,'count(*)');
-	echo "<b>$nbscripts</b> ";
-	
-    echo "Last Update: ";
 	$query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
     $result3=mysql_query($query3);
     $create_dt=mysql_result($result3,0,'create_dt');
-    echo "<b>$create_dt</b> ";
-	echo "</center>";
+
 	show_user_level();
 	
 	// checking if the database schema is uptodate
@@ -185,6 +179,15 @@ if ($rights==3) {
 </table>
 
 <?php
+if (file_exists($configurationfile)) {
+    echo "<center>";
+	echo "Scripts: ";
+	echo "<b>$nbscripts</b> ";
+    echo " / Last Update: ";
+    echo "<b>$create_dt</b> ";
+	echo "</center>";
+}
+
  if ($disable_clients_table_on_main_page==true) {
     // do nothing
  } else {
