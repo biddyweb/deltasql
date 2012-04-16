@@ -1,3 +1,13 @@
+16.4.2012
+- added new graph: scripts per project
+- reorganized server stats page in a table
+
+4.4.2012
+News on www.linux-magazin.de about deltasql on release 1.5.0:
+http://www.linux-magazin.de/NEWS/Deltasql-1.5.0-Versionskontrolle-fuer-Datenbank-Schemata
+Unfortunately, the online news is not selected for publication on paper :-(, but I keep buying
+ Linux Magazin since 2003 ;-)
+
 *******************************
 1.5.0 Release Notes (4.4.2012)
 

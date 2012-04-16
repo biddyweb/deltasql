@@ -14,12 +14,20 @@ include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
 echo "<h1>deltasql Server Statistics</h1>";
 echo "<hr>";
+echo "<table>";
+echo "<tr><td>";
 open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptspermonth.php');
-echo "<hr>";
+echo "</td><td>";
 open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptspermodule.php');
-echo "<hr>";
+echo "</td></tr>";
+
+echo "<tr><td>";
 open_flash_chart_object( 500, 250, $dns_name . '/graphdata-syncspermonth.php');
-echo "<hr>";
+echo "</td><td>";
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptsperproject.php');
+echo "</td></tr>";
+echo "</table>";
+
 ?>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
