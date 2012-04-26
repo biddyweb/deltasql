@@ -5,8 +5,9 @@ db=MySQLdb.connect("localhost","deltasqluser","deltapass","deltasql")
 
 c=db.cursor()
 c.execute('select versionnr from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
-ver=c.fetchall()
+ver=c.fetchone()
 
-print ver
+versionnr= ver[0]
+print versionnr
 
 db.close()
