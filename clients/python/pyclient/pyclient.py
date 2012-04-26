@@ -9,7 +9,7 @@ for option in cp.getoptionslist():
     print "getoption('%s') = '%s'" % (option, cp.getoption(option))
 print "hasoption('wrongname') =", cp.hasoption('wrongname')
 
-db=MySQLdb.connect(cp.getoption('host').tostring(),cp.getoption('username'),
+db=MySQLdb.connect(cp.getoption('host'),cp.getoption('username'),
                    cp.getoption('password'),cp.getoption('database'))
 
 c=db.cursor()
