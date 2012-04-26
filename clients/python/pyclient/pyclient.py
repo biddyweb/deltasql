@@ -1,7 +1,16 @@
 #!/usr/bin/python
 import MySQLdb
+import SimpleConfigParser
 
-db=MySQLdb.connect("localhost","deltasqluser","deltapass","deltasql")
+cp = SimpleConfigParser.SimpleConfigParser()
+cp.read('config.ini')
+print 'getoptionslist():', cp.getoptionslist()
+for option in cp.getoptionslist():
+    print "getoption('%s') = '%s'" % (option, cp.getoption(option))
+print "hasoption('wrongname') =", cp.hasoption('wrongname')
+
+db=MySQLdb.connect(cp.getoption('host').tostring(),cp.getoption('username'),
+                   cp.getoption('password'),cp.getoption('database'))
 
 c=db.cursor()
 c.execute('select versionnr from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
