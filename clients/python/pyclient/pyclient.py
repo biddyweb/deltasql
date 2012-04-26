@@ -4,10 +4,13 @@ import SimpleConfigParser
 
 cp = SimpleConfigParser.SimpleConfigParser()
 cp.read('config.ini')
+
+"""
 print 'getoptionslist():', cp.getoptionslist()
 for option in cp.getoptionslist():
     print "getoption('%s') = '%s'" % (option, cp.getoption(option))
 print "hasoption('wrongname') =", cp.hasoption('wrongname')
+"""
 
 db=MySQLdb.connect(cp.getoption('host'),cp.getoption('username'),
                    cp.getoption('password'),cp.getoption('database'))
@@ -17,6 +20,6 @@ c.execute('select versionnr from tbsynchronize where versionnr = (select max(ver
 ver=c.fetchone()
 
 versionnr= ver[0]
-print versionnr
+print "Database schema is currently at version "+str(versionnr)
 
 db.close()
