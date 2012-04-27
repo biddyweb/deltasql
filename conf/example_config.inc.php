@@ -2,7 +2,7 @@
 
 // [mySQL Settings]
 // User Settings
-$username="delta_user";
+$username="deltasqluser";
 $password="deltapass";
 $database="deltasql";
 

@@ -140,7 +140,7 @@ echo "mySQL schema created. <br>";
 }
 
 // Creating the configuration file :-)
-$fh = fopen($configurationfile, 'w') or die("Can't open file $configurationfile");
+$fh = fopen($configurationfile, 'w') or die("Can't open file $configurationfile <br> You could try to copy example_config.inc.php to config.inc.php and to adapt it then...");
 fwrite($fh, "<?php\n");
 fwrite($fh, "
 // Configuration file generated with install.php
