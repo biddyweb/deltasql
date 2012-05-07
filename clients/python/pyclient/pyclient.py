@@ -81,7 +81,12 @@ else:
 		print('Done!')
 	elif (cp.getoption('executeupdate')=='yes'):
 		#or we execute it directly into the database
-                print('Executing script.sql into database schema')        	
+                command=cp.getoption('synccommand')+' --host "'+cp.getoption('host')+'" --user "'+cp.getoption('username')+'" -p'+cp.getoption('password')+' --database "'+cp.getoption('database')+'" < script.sql &> script.out'
+
+                print('Executing script.sql into database schema')
+                print command   
+     		os.system(command)
+		
 	else:
 		print('ERROR: unrecognized executeupdate option in config.ini')
 		exit(1)
