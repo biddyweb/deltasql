@@ -19,10 +19,15 @@ db=MySQLdb.connect(cp.getoption('host'),cp.getoption('username'),
 
 c=db.cursor()
 c.execute('select versionnr from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
-ver=c.fetchone()
+versionnr=c.fetchone()[0]
+c.execute('select projectname from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
+projectname=c.fetchone()[0]
+c.execute('select branchname from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
 db.close()
-versionnr= ver[0]
-print "Database schema is currently at version "+str(versionnr)+"."
+branchname=c.fetchone()[0]
+
+
+print "Database schema for project "+projectname+" is currently at version "+str(versionnr)+" and follows "+branchname+"."
 
 # We check the current version on the external deltasql server
 versionurl = cp.getoption('url')+'/dbsync_automated_currentversion.php?project='+cp.getoption('project')
