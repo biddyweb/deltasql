@@ -1,3 +1,6 @@
+7.5.2012 git
+- further developing Python deltasql client
+
 6.5.2012
 - German Linux Magazin publishes short news about 1.5.0 release on paper :-)
 
