@@ -18,13 +18,12 @@ db=MySQLdb.connect(cp.getoption('host'),cp.getoption('username'),
                    cp.getoption('password'),cp.getoption('database'))
 
 c=db.cursor()
-c.execute('select versionnr from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
-versionnr=c.fetchone()[0]
-c.execute('select projectname from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
-projectname=c.fetchone()[0]
-c.execute('select branchname from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
+c.execute('select versionnr, projectname, branchname from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
+qtuple= c.fetchone()
+versionnr=qtuple[0]
+projectname=qtuple[1]
+branchname=qtuple[2]
 db.close()
-branchname=c.fetchone()[0]
 
 
 print "Database schema for project "+projectname+" is currently at version "+str(versionnr)+" and follows "+branchname+"."
