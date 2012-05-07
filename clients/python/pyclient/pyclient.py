@@ -27,17 +27,17 @@ try:
 	db.close()
 except:
 	print 'ERROR: Could not connect to mySQL database, please check connection settings in config.ini'
-	exit(0)
+	exit(1)
 
 print "Database schema for project "+projectname+" is currently at version "+str(versionnr)+" and follows branch "+branchname+"."
 
 # Checking our data with the configuration script
 if projectname!=cp.getoption('project'):
 	print "ERROR: Project in config.ini ("+cp.getoption('project')+") does not match project on database schema!"
-	exit(0)
+	exit(1)
 if branchname!=cp.getoption('frombranch'):
 	print "ERROR: frombranch option in config.ini ("+cp.getoption('frombranch')+") does not match branch on database schema!"
-	exit(0)
+	exit(1)
 
 
 # We check the current version on the external deltasql server
@@ -46,7 +46,7 @@ try:
 	versionpage = urllib.urlopen(versionurl)
 except:
 	print "ERROR: could not access "+cp.getoption('url')+" Please verify your settings in config.ini and make sure you have access to this URL..."
-	exit(0)
+	exit(1)
 
 f = open('project.properties', 'wb')
 f.write(versionpage.read())
@@ -63,12 +63,31 @@ else:
 	print "Downloading synchronization script from server..."
         scripturl = cp.getoption('url')+'/dbsync_automated_update.php?project='+cp.getoption('project')+'&version='+str(versionnr)+'&frombranch='+cp.getoption('frombranch')+'&tobranch='+cp.getoption('tobranch')+'&dbtype=mySQL'
 	
-	scriptpage = urllib.urlopen(scripturl)
-        f = open('script.sql', 'wb')
-        f.write(scriptpage.read())
-        f.close()
-	print('Synchronization script downloaded :-)');
+	try:
+		scriptpage = urllib.urlopen(scripturl)
+        	f = open('script.sql', 'wb')
+        	f.write(scriptpage.read())
+        	f.close()
+		print('Synchronization script downloaded :-)');
+	except:
+		print('ERROR: could not download synchronization script. Is the connection unstable?')
+		exit(1)
 
+	# now depending on executeupdate
+	if (cp.getoption('executeupdate')=='no'):
+	        # we either show the script to the user
+                print('Showing script to the user with '+cp.getoption('opencommand')+' script.sql &')
+		os.system(cp.getoption('opencommand')+' script.sql &')
+		print('Done!')
+	elif (cp.getoption('executeupdate')=='yes'):
+		#or we execute it directly into the database
+                print('Executing script.sql into database schema')        	
+	else:
+		print('ERROR: unrecognized executeupdate option in config.ini')
+		exit(1)
+		
+
+exit(0)
 
 
 
