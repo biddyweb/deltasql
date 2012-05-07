@@ -7,6 +7,7 @@ import os
 # some initial clenaup steps
 if os.path.exists('project.properties'): os.unlink('project.properties')
 if os.path.exists('script.sql'): os.unlink('script.sql')
+if os.path.exists('script.out'): os.unlink('script.out')
 
 
 # opening configuration file
@@ -42,7 +43,7 @@ if branchname!=cp.getoption('frombranch'):
 
 # We check the current version on the external deltasql server
 try:
-	versionurl = cp.getoption('url')+'/dbsync_automated_currentversion.php?project='+cp.getoption('project')
+	versionurl = cp.getoption('url')+'/dbsync_automated_currentversion.php?project='+urllib.quote(cp.getoption('project'))
 	versionpage = urllib.urlopen(versionurl)
 except:
 	print "ERROR: could not access "+cp.getoption('url')+" Please verify your settings in config.ini and make sure you have access to this URL..."
@@ -61,7 +62,7 @@ if (srvversionnr<=versionnr):
 	print "Nothing to do for the moment. Exiting..."
 else:
 	print "Downloading synchronization script from server..."
-        scripturl = cp.getoption('url')+'/dbsync_automated_update.php?project='+cp.getoption('project')+'&version='+str(versionnr)+'&frombranch='+cp.getoption('frombranch')+'&tobranch='+cp.getoption('tobranch')+'&dbtype=mySQL'
+        scripturl = cp.getoption('url')+'/dbsync_automated_update.php?project='+urllib.quote(cp.getoption('project'))+'&version='+str(versionnr)+'&frombranch='+urllib.quote(cp.getoption('frombranch'))+'&tobranch='+urllib.quote(cp.getoption('tobranch'))+'&dbtype=mySQL'
 	
 	try:
 		scriptpage = urllib.urlopen(scripturl)
@@ -86,6 +87,9 @@ else:
                 print('Executing script.sql into database schema')
                 print command   
      		os.system(command)
+		print "Output of synchronization script stored in script.out is:"
+		os.system('cat script.out')
+		print "Done!"
 		
 	else:
 		print('ERROR: unrecognized executeupdate option in config.ini')
