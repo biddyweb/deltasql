@@ -41,6 +41,14 @@ if (file_exists($configurationfile)) {
     $query6="SELECT count(*) from tbsyncstats;";
     $result6=mysql_query($query6);
     $nbsyncs=mysql_result($result6,0,'count(*)');
+
+    $query7="SELECT count(*) from tbproject;";
+    $result7=mysql_query($query7);
+    $nbprojects=mysql_result($result7,0,'count(*)');
+
+    $query8="SELECT count(*) from tbbranch;";
+    $result8=mysql_query($query8);
+    $nbbranches=mysql_result($result8,0,'count(*)');
         
     $query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
     $result3=mysql_query($query3);
@@ -72,7 +80,7 @@ if (file_exists($configurationfile)) {
     echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
  } 
 
- echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs\">$deltasql_version</a>";
+ echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
  if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
  ?>
@@ -195,8 +203,12 @@ if ($rights==3) {
     echo "Scripts: ";
     echo "<b>$nbscripts</b> / ";
     echo "Syncs: ";
-    echo "<b>$nbsyncs</b> ";
-    echo " / Last Update: ";
+    echo "<b>$nbsyncs</b> / ";
+    echo "Projects: ";
+    echo "<b>$nbprojects</b> / ";
+    echo "Branches: ";
+    echo "<b>$nbbranches</b> / ";
+    echo "Last Update: ";
     echo "<b>$create_dt</b> ";
 	echo "</center>";
 }
@@ -216,7 +228,7 @@ if ($enterprise_edition==true)
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
- echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs\">here</a>. ";
+ echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">here</a>. ";
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	

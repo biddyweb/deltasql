@@ -45,13 +45,17 @@ if (($dns_name=="http://www.deltasql.org/deltasql") && ($version!="unknown")) {
   if ($scripts=="") $scripts=-1;
   $syncs = $_GET['syncs'];
   if ($syncs=="") $syncs=-1;
+  $projs = $_GET['projs'];
+  if ($projs=="") $projs=-1;
+  $bras = $_GET['bras'];
+  if ($bras=="") $bras=-1;
   
   if (($referrer!="http://www.deltasql.org/deltasql/") &&
       ($referrer!="http://www.deltasql.org/deltasql/index.php") &&
 	  ($referrer!=""))   {
      mysql_connect($dbserver, $username, $password);
      @mysql_select_db($database) or die("Unable to select database");
-     $query="INSERT INTO tbqos (id, deltasql_version, nbscripts, nbsyncs, ip, port, referrer, useragent, create_dt) VALUES('', '$version', $scripts, $syncs, '$ip', '$port', '$referrer', '$useragent', NOW());";
+     $query="INSERT INTO tbqos (id, deltasql_version, nbscripts, nbsyncs, nbprojects, nbbranches, ip, port, referrer, useragent, create_dt) VALUES('', '$version', $scripts, $syncs, $projs, $bras, '$ip', '$port', '$referrer', '$useragent', NOW());";
      mysql_query($query);
      mysql_close();
   }	 
@@ -71,6 +75,8 @@ CREATE TABLE IF NOT EXISTS `tbqos` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
 
 ALTER TABLE tbqos ADD nbsyncs int(11) DEFAULT NULL;
+ALTER TABLE tbqos ADD nbprojects int(11) DEFAULT NULL;
+ALTER TABLE tbqos ADD nbbranches int(11) DEFAULT NULL;
 */
 
 ?>
