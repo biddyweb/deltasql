@@ -24,9 +24,16 @@ versionnr=qtuple[0]
 projectname=qtuple[1]
 branchname=qtuple[2]
 db.close()
+print "Database schema for project "+projectname+" is currently at version "+str(versionnr)+" and follows branch "+branchname+"."
 
+# Checking our data with the configuration script
+if projectname!=cp.getoption('project'):
+	print "ERROR: Project in config.ini ("+cp.getoption('project')+") does not match project on database schema!"
+	exit(0)
+if branchname!=cp.getoption('frombranch'):
+	print "ERROR: frombranch option in config.ini ("+cp.getoption('frombranch')+") does not match branch on database schema!"
+	exit(0)
 
-print "Database schema for project "+projectname+" is currently at version "+str(versionnr)+" and follows "+branchname+"."
 
 # We check the current version on the external deltasql server
 versionurl = cp.getoption('url')+'/dbsync_automated_currentversion.php?project='+cp.getoption('project')
