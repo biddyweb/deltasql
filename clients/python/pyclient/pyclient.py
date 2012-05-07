@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# (c) 2012 HB9TVM and the deltasql team
+# Please open and edit config.ini to configure this Python deltasql client
 import MySQLdb
 import SimpleConfigParser
 import urllib
@@ -79,7 +81,6 @@ else:
 	        # we either show the script to the user
                 print('Showing script to the user with '+cp.getoption('opencommand')+' script.sql &')
 		os.system(cp.getoption('opencommand')+' script.sql &')
-		print('Done!')
 	elif (cp.getoption('executeupdate')=='yes'):
 		#or we execute it directly into the database
                 command=cp.getoption('synccommand')+' --host "'+cp.getoption('host')+'" --user "'+cp.getoption('username')+'" -p'+cp.getoption('password')+' --database "'+cp.getoption('database')+'" < script.sql &> script.out'
@@ -88,14 +89,13 @@ else:
                 print command   
      		os.system(command)
 		print "Output of synchronization script stored in script.out is:"
-		os.system('cat script.out')
-		print "Done!"
+		os.system('cat script.out')	
 		
 	else:
 		print('ERROR: unrecognized executeupdate option in config.ini')
 		exit(1)
 		
-
+print "Done!"
 exit(0)
 
 
