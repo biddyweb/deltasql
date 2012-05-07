@@ -34,10 +34,15 @@ if (file_exists($configurationfile)) {
     // showing date and hour of latest changes
     mysql_connect($dbserver, $username, $password);
     @mysql_select_db($database) or die("Unable to select database");
-	$query5="SELECT count(*) from tbscript;";
+    $query5="SELECT count(*) from tbscript;";
     $result5=mysql_query($query5);
     $nbscripts=mysql_result($result5,0,'count(*)');
-	$query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
+    
+    $query6="SELECT count(*) from tbsyncstats;";
+    $result6=mysql_query($query6);
+    $nbsyncs=mysql_result($result6,0,'count(*)');
+        
+    $query3="SELECT create_dt FROM `tbbranch` where name='HEAD'";
     $result3=mysql_query($query3);
     $create_dt=mysql_result($result3,0,'create_dt');
 
@@ -67,7 +72,7 @@ if (file_exists($configurationfile)) {
     echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
  } 
 
- echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts\">$deltasql_version</a>";
+ echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs\">$deltasql_version</a>";
  if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
  ?>
@@ -187,8 +192,10 @@ if ($rights==3) {
  
  if (file_exists($configurationfile)) {
     echo "<center>";
-	echo "Scripts: ";
-	echo "<b>$nbscripts</b> ";
+    echo "Scripts: ";
+    echo "<b>$nbscripts</b> / ";
+    echo "Syncs: ";
+    echo "<b>$nbsyncs</b> ";
     echo " / Last Update: ";
     echo "<b>$create_dt</b> ";
 	echo "</center>";
@@ -209,7 +216,7 @@ if ($enterprise_edition==true)
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
- echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts\">here</a>. ";
+ echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs\">here</a>. ";
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
