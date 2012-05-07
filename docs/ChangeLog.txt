@@ -1,12 +1,17 @@
-16.4.2012
+6.5.2012
+- German Linux Magazin publishes short news about 1.5.0 release on paper :-)
+
+25-27.4.2012 git
+- developing Python deltasql client
+
+16.4.2012 git
 - added new graph: scripts per project
 - reorganized server stats page in a table
 
 4.4.2012
 News on www.linux-magazin.de about deltasql on release 1.5.0:
 http://www.linux-magazin.de/NEWS/Deltasql-1.5.0-Versionskontrolle-fuer-Datenbank-Schemata
-Unfortunately, the online news is not selected for publication on paper :-(, but I keep buying
- Linux Magazin since 2003 ;-)
+Unfortunately, the online news is not selected for publication on paper :-(. Said that, I am a happy reader of Linux Magazin since 2003 :-)
 
 *******************************
 1.5.0 Release Notes (4.4.2012)
