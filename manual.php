@@ -20,7 +20,8 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 	<li><a href="#install-dbredactor-client">How to install dbredactor client (optional)</a></li>
     <li><a href="#install-ant-client">How to install the ant client into Eclipse (optional)</a></li>
     <li><a href="#install-google-gadget">How to install the Google Gadget (optional)</a></li>
-	<li><a href="#install-bash">How to install the bash client (optional)</a></li>
+	<li><a href="#install-bash">How to install the bash client to achieve continouus integration (optional)</a></li>
+        <li><a href="#install-pyclient">How to install the Python deltasql client (optional)</a></li>
 </ul>
 <li><a href="#usage">Usage</a></li>
 <ul>
@@ -332,6 +333,27 @@ subdirectories) have
   <tt>crontab -e</tt> register <tt>continouusintegration.sh</tt> as a cron job. From time to time, read the logfile <tt>sync.log</tt> to
    check that everything is running as expected. <tt>syncscript.log</tt> contains the concatenation of all scripts executed on the database schema</tt>.
 </p>
+
+
+<h3><a name="install-pyclient"></a>How to install the Python deltasql client (optional)</h3>
+
+<p>The Python client is a simple deltasql client which helps to synchronize mySQL databases. Unlike other clients, it does not support other database types.
+
+<p>Download first the Python client (pyclient.tar.gz) from the deltasql 
+main page (at the bottom!) onto your favourite GNU/Linux server.</p>
+<p>Unpack it with <tt>gunzip pyclient.tar.gz</tt> and <tt>tar -xf 
+pyclient.tar</tt>. Make sure all Python scripts  have
+ executable rights with <tt>chmod 775 *.py</tt>. Open <tt>config.ini</tt>, and configure each variable of the file.</p>
+
+<p>Depending on the option <tt>executeupdate</tt> in <tt>config.ini</tt>, the Python client will either show the script into your editor of choice for later execution, or it will execute it directly into the database schema. The output of the execution is stored in <tt>script.out</tt>, and you should monitor this file for possible errors.
+</p>
+
+<p>The script itself is robust and does several checks before automatically executing an update in the database schema.</p>
+
+ <p>To test the full cycle (retrieving schema version,
+  contacting deltasql server and retrieving synchronization script, executing the synchronization script) please launch <tt>./pyclient.py</tt>.
+ </p>
+ 
 
 <h2><a name="usage"></a>Usage</h2>
 
