@@ -345,7 +345,7 @@ main page (at the bottom!) onto your favourite GNU/Linux server.</p>
 pyclient.tar</tt>. Make sure all Python scripts  have
  executable rights with <tt>chmod 775 *.py</tt>. Open <tt>config.ini</tt>, and configure each variable of the file.</p>
 
-<p>Depending on the option <tt>executeupdate</tt> in <tt>config.ini</tt>, the Python client will either show the script into your editor of choice for later execution, or it will execute it directly into the database schema. The output of the execution is stored in <tt>script.out</tt>, and you should monitor this file for possible errors.
+<p>Depending on the option <tt>executeupdate</tt> in <tt>config.ini</tt>, the Python client will either show the script into your editor of choice for later execution, or it will execute it directly into the database schema. The output of the last execution is stored in <tt>script.out</tt>, and you should monitor this file for possible errors. The concatenated output of all executions is stored in <tt>fullscript.out</tt>.
 </p>
 
 <p>The script itself is robust and does several checks before automatically executing an update in the database schema.</p>

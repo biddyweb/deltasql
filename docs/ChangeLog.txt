@@ -1,3 +1,12 @@
+*******************************
+1.5.1 Release Notes (15.5.2012)
+
+Maintenance release for deltasql, including a new Python deltasql client which works from the command line for mySQL database types only.
+
+A new chart showing scripts per project was added. Minor fixes
+
+*******************************
+
 8.5.2012 git
 - documenting the Python deltasql client in manual section
 

@@ -90,7 +90,8 @@ else:
      		os.system(command)
 		print "Output of synchronization script stored in script.out is:"
 		os.system('cat script.out')	
-		
+		print "The concatenated output of all executions is stored in fullscript.out"
+		os.system('cat script.out >> fullscript.out')	
 	else:
 		print('ERROR: unrecognized executeupdate option in config.ini')
 		exit(1)
