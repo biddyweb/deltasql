@@ -76,13 +76,15 @@ if (file_exists($configurationfile)) {
 	}
 	
     mysql_close();
+    echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
+    if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
+ echo "</h2>";
  } else {
     echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
- } 
+    echo "<h2>deltasql Server $deltasql_version</h2>";
+} 
 
- echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
- if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
- echo "</h2>";
+ 
  ?>
 
 <table cellspacing="4" cellpadding="4">
@@ -221,10 +223,10 @@ if ($enterprise_edition==true)
 ?>
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/project/memberlist.php?group_id=212117">deltasql Team</a>. 
- The deltasql logo was designed by 
 <?php 
+if (file_exists($configurationfile)) {
  if ($enterprise_edition==false) {
-   echo "<a href=\"patrizia.php\">Patrizia Pulice Cascio</a>. ";
+   echo " The deltasql logo was designed by <a href=\"patrizia.php\">Patrizia Pulice Cascio</a>. ";
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
@@ -232,9 +234,10 @@ if ($enterprise_edition==true)
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
+ }
  echo "</h6>";
  echo "</center>";
- 
+
  // Stats for Google Analytics
  if ($dns_name=="http://www.deltasql.org/deltasql") {
  echo '
