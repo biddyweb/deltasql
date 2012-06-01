@@ -127,9 +127,9 @@ echo "<p id=\"description\">";
 if ($comments!="") {
     echo "/*\n";
     echo "$comments";
-    echo "\n*/\n\n";
-    echo "$script</p>";
+    echo "\n*/\n\n"; 
 }
+echo "$script</p>";
 echo "</font>";
 ?>
 
