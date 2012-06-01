@@ -33,3 +33,7 @@ deltasql includes the Freepascal Synapse library by Lukas Gebauer, available at 
 deltasql includes the Open Flash Chart component by John Glazebrook, available at http://teethgrinder.co.uk/open-flash-chart/
 
 deltasql includes the SWFObject JavaScript component, which is (c) 2007 Geoff Stearns
+
+deltasql includes the jQuery ZeroClipborad library available at http://www.steamdev.com/zclip/
+
+deltasql includes the jQuery Javascript library available at http://docs.jquery.com/Downloading_jQuery
