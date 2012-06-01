@@ -4,6 +4,24 @@
 <title>deltasql - Show Database Script</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
+<script type="text/javascript" src="utils/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="utils/js/jquery.zclip.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('a#copy-description').zclip({
+        path:'utils/js/ZeroClipboard.swf',
+        copy:$('p#description').text()
+    });
+    // The link with ID "copy-description" will copy
+    // the text of the paragraph with ID "description"
+    $('a#copy-dynamic').zclip({
+        path:'utils/js/ZeroClipboard.swf',
+        copy:function(){return $('input#dynamic').val();}
+    });
+    // The link with ID "copy-dynamic" will copy the current value
+    // of a dynamically changing input with the ID "dynamic"
+});
+</script>
 <body>
 <?php
 include_once('utils/geshi/geshi.php');
@@ -70,23 +88,22 @@ while ($j <$num3) {
 }
 echo "<br>";
 
+echo "Actions: ";
 // if rights allow it, we show the script as editable
 if ($edit==1) {
   $actions=0;
-  echo "Actions: ";
   if ($rights>=1) {
-        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
+        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\">Edit</a> ";
         $actions=1;  		
   }
   if ($update_user!="") {
         $actions=1;
 	    $author_encoded = urlencode ( $author );
-	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\"></a>";
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\">History</a> ";
   } 
-  if ($actions==0) {
-     echo "None";
-  }
-}  
+} 
+
+echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a>"; 
 echo "<hr><br>";
 
 if ($comments!="") {
@@ -101,7 +118,20 @@ geshi_highlight($script, 'sql');
 echo "<hr>";
 mysql_close();
 ?>
-</table>
 <a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
+
+<?php
+// repeating the script for copy&paste purposes
+echo "<font color='white'>";
+echo "<p id=\"description\">";
+if ($comments!="") {
+    echo "/*\n";
+    echo "$comments";
+    echo "\n*/\n\n";
+    echo "$script</p>";
+}
+echo "</font>";
+?>
+
 </body>
 </html>

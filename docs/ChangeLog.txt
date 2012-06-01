@@ -1,3 +1,6 @@
+1.6.2012
+- added feature to copy script to clipboard, when showing a script
+
 *******************************
 1.5.1 Release Notes (15.5.2012)
 
