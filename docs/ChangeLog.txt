@@ -1,6 +1,9 @@
+22.6.2012 git
+- added ability to copy script to clipboard also for the generated synchronization script,
+when using it with a form
+
 4.6.2012 Patch 1: new feature "Copy To Clipboard" for existing scripts released as patch under
 http://sourceforge.net/projects/deltasql/files/deltasql%20server%20and%20clients/1.5.1/?
-
 
 1.6.2012 git
 - added feature to copy script to clipboard, when showing a script

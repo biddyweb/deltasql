@@ -34,6 +34,23 @@ if ($htmlformatted) {
     deltasql - Synchronization script
     </title>
     <body>";
+	
+	echo "
+	<script type=\"text/javascript\" src=\"utils/js/jquery-1.7.2.min.js\"></script>
+    <script type=\"text/javascript\" src=\"utils/js/jquery.zclip.min.js\"></script>
+    <script>
+	$(document).ready(function(){
+    $('a#copy-description').zclip({
+        path:'utils/js/ZeroClipboard.swf',
+        copy:$('p#description').text()
+    });
+    $('a#copy-dynamic').zclip({
+        path:'utils/js/ZeroClipboard.swf',
+        copy:function(){return $('input#dynamic').val();}
+    });
+	});
+	</script>
+	";
 }
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 

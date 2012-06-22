@@ -30,5 +30,6 @@ if ($xmlformatted) {
   echo "$commentscript\n$verificationscript\n";
 }
 
+  return "$commentscript\n$verificationscript\n\n";
 }
 ?>

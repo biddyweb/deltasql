@@ -71,7 +71,7 @@ function printXmlScript($script, $comment, $module, $versionnr, $type, $date) {
     echo "  </script>\n";
 }
 
-function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
+function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult) {
  if ($htmlformatted) {
         include_once('geshi/geshi.php');
  }    
@@ -116,8 +116,11 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
     fclose($fh);
   } else {
   
-	if ($htmlformatted==1)
-        echo "-- version: <b>$versionnr</b> module: <b>$modulename</b> date: <b>$create_dt</b><br/> \n";
+	if ($htmlformatted==1) {
+        $verstr = "-- version: <b>$versionnr</b> module: <b>$modulename</b> date: <b>$create_dt</b><br/> \n";
+		echo $verstr;
+		$textresult = $textresult . $verstr;
+	}
 	else
     if ($xmlformatted==1) {
         echo "  <script>\n      <scripttype>dbupdate</scripttype>\n     <versionnr>$versionnr</versionnr>\n     <module>$modulename</module>\n      <create_dt>$create_dt</create_dt>\n";
@@ -156,8 +159,10 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
     } else {
         if ($comments!="") {
             $comments="/*\n$comments\n*/\n";
+			$textresult = $textresult . $comments;
         if ($htmlformatted==1) $comments='<pre>'.htmlspecialchars($comments).'</pre>';
             echo $comments;
+			
         }
     }
  
@@ -172,6 +177,7 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles) {
 
 	//html encoding
 	if ($htmlformatted==1) {
+		$textresult = $textresult . $script . "\n\n";
         if ($disable_sql_highlighting==true) {
             echo "<pre>";
             $script = htmlspecialchars($script);

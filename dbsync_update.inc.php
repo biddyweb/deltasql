@@ -195,11 +195,13 @@ if ($singlefiles==0) {
     echo "  <type>synchronization</type>\n";
     echo "  <maincomment>$commitcomment</maincomment>\n";
    } else {
+		echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a>"; 
+        echo "<hr><br>";
        // HTML formatted
 	   if ($commitcomment!="") {
           echo "-- Commit Comment: "; 
           if ($htmlformatted==1) echo "<b><br>/*<h2>";
-          echo "$commitcomment\n\n";
+		  echo "$commitcomment\n\n";
           if ($htmlformatted==1) echo "</h2>*/</b><br>";
        }
 	   
@@ -213,7 +215,7 @@ if ($singlefiles==0) {
    }
    
    
-   printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
+   $textresult = printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
 } else {
    empty_directory("output/scripts");
 }
@@ -246,6 +248,7 @@ if ($debug==1) {
 }
 
 $i=0;
+
 while ($i<$numsg) {  
 
      $tbsgfromversionnr = mysql_result($resultsg,$i,"fromversionnr");
@@ -264,7 +267,7 @@ while ($i<$numsg) {
 	 
      if ($debug==1) echo "<p><pre><i>-- DEBUG: query to generate this update script was:\n-- $query\n</i></pre></p>";
      $result=mysql_query($query);   
-     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles);
+     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, $textresult);
 
      $i++;	 
 }
@@ -305,6 +308,17 @@ if ($singlefiles=="0") {
       //html encoding
  	  geshi_highlight("$commentstring\n$updatestring", 'sql');
       echo '<br/><br/>';
+	  echo "<hr>";
+	  
+	  // paragraph for copy&paste functionality
+	  echo "<font color='white'>";
+	  echo "<p id=\"description\">";
+	  echo "$textresult";
+      echo "$commentstring\n$updatestring";
+	  echo "</p>";
+      echo "</font>";
+	  echo "</body>";
+	  echo "</html>";
   } else {
 	  echo "$commentstring\n$updatestring\n\n\n";
   } 
