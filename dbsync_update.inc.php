@@ -195,10 +195,14 @@ if ($singlefiles==0) {
     echo "  <type>synchronization</type>\n";
     echo "  <maincomment>$commitcomment</maincomment>\n";
    } else {
-		echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a>"; 
-        echo "<hr><br>";
-       // HTML formatted
-	   if ($commitcomment!="") {
+	    // HTML and text formatted
+	   if ($htmlformatted==1) {
+			echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a> "; 
+			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\"> Back to Synchronize Database</a> ";
+			echo "<a href=\"index.php\"><img src=\"icons/home.png\">Back to main page</a>";
+			echo "<hr><br>";
+		}	
+       if ($commitcomment!="") {
           echo "-- Commit Comment: "; 
           if ($htmlformatted==1) echo "<b><br>/*<h2>";
 		  echo "$commitcomment\n\n";
@@ -308,6 +312,7 @@ if ($singlefiles=="0") {
       //html encoding
  	  geshi_highlight("$commentstring\n$updatestring", 'sql');
       echo '<br/><br/>';
+	  echo "</div>";
 	  echo "<hr>";
 	  
 	  // paragraph for copy&paste functionality
@@ -317,8 +322,6 @@ if ($singlefiles=="0") {
       echo "$commentstring\n$updatestring";
 	  echo "</p>";
       echo "</font>";
-	  echo "</body>";
-	  echo "</html>";
   } else {
 	  echo "$commentstring\n$updatestring\n\n\n";
   } 
