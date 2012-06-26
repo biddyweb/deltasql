@@ -197,8 +197,8 @@ if ($singlefiles==0) {
    } else {
 	    // HTML and text formatted
 	   if ($htmlformatted==1) {
-			echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a> "; 
-			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\"> Back to Synchronize Database</a> ";
+			echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a> | "; 
+			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\"> Back to Synchronize Database</a> | ";
 			echo "<a href=\"index.php\"><img src=\"icons/home.png\">Back to main page</a>";
 			echo "<hr><br>";
 		}	

@@ -93,13 +93,13 @@ echo "Actions: ";
 if ($edit==1) {
   $actions=0;
   if ($rights>=1) {
-        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\">Edit</a> ";
+        echo "<a href=\"edit_script.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\">Edit</a> | ";
         $actions=1;  		
   }
   if ($update_user!="") {
         $actions=1;
 	    $author_encoded = urlencode ( $author );
-	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\">History</a> ";
+	    echo "<a href=\"list_changelog.php?id=$id&version=$versionnr&author=$author_encoded\"><img alt=\"History\" src=\"icons/history.png\">History</a> | ";
   } 
 } 
 

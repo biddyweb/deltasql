@@ -1,3 +1,11 @@
+26.6.2012 git
+- link to copy standard query to retrieve synchronization on synchronization form
+- link to copy tbsynchronize generation and verification script
+- minor visual changes
+
+25.6.2012 git
+- bugfix when generating text synchronization script, showing backlinks
+
 22.6.2012 git
 - added ability to copy script to clipboard also for the generated synchronization script,
 when using it with a form

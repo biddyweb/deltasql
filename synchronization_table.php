@@ -3,6 +3,24 @@
 <title>deltasql - Synchronization Table</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
+<script type="text/javascript" src="utils/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="utils/js/jquery.zclip.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('a#copy-description').zclip({
+        path:'utils/js/ZeroClipboard.swf',
+        copy:$('p#description').text()
+    });
+    // The link with ID "copy-description" will copy
+    // the text of the paragraph with ID "description"
+    $('a#copy-dynamic').zclip({
+        path:'utils/js/ZeroClipboard.swf',
+        copy:function(){return $('input#dynamic').val();}
+    });
+    // The link with ID "copy-dynamic" will copy the current value
+    // of a dynamically changing input with the ID "dynamic"
+});
+</script>
 <body>
 <?php
  echo "<style type=\"text/css\">";
@@ -18,16 +36,20 @@
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h3>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></h3>";
 ?>
-<a href="list_projects.php">Back to List Projects</a>
+<a href="#" id="copy-description"><img alt="Copy to clipboard" src="icons/copy.png">Copy to clipboard</a> |   
+<a href="list_projects.php">Back to List Projects</a> | 
+<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 <hr>
 <pre>
 <?php
+$intro="";
 if (($frmdbtype=="$db_other") ||  ($frmdbtype=="$db_sybase")) {
-  echo "-- you might need to adapt the following script to your database type\n";
-  echo "-- the table TBSYNCHRONIZE is mandatory. the stored procedure DELTASQL_VERIFY_SCHEMA is optional.\n\n";
+  $intro = "-- you might need to adapt the following script to your database type\n" .
+           "-- the table TBSYNCHRONIZE is mandatory. the stored procedure DELTASQL_VERIFY_SCHEMA is optional.\n\n";
+  echo $intro;
 }
 if (($frmdbtype=="$db_oracle") || ($frmdbtype=="$db_other") || ($frmdbtype=="$db_sybase"))
-echo "
+$script = "
 -- DROP TABLE TBSYNCHRONIZE;
 CREATE TABLE TBSYNCHRONIZE
 (
@@ -62,7 +84,7 @@ END;
 
 "; else
 if ($frmdbtype=="$db_mysql")
-echo "
+$script = "
 CREATE TABLE `tbsynchronize` (
 `projectname` VARCHAR( 64 ) NOT NULL ,
 `update_dt` DATE NULL ,
@@ -103,7 +125,7 @@ DELIMITER ;
 */
 else
 if ($frmdbtype=="$db_sqlserver")
-echo "
+$script = "
 -- DROP TABLE tbsynchronize;
 CREATE TABLE tbsynchronize
 (
@@ -147,7 +169,7 @@ GO
 ";
 else
 if ($frmdbtype=="$db_pgsql")
-echo "
+$script = "
 -- DROP TABLE tbsynchronize;
 CREATE TABLE tbsynchronize
 (
@@ -183,7 +205,7 @@ $$ LANGUAGE plpgsql;
 ";
 else
 if ($frmdbtype=="$db_sqlite")
-echo "
+$script = "
 CREATE TABLE tbsynchronize
 (
   projectname text,
@@ -201,7 +223,7 @@ CREATE TABLE tbsynchronize
 
 ";
 
-
+echo $script;
 
   include("conf/config.inc.php");
   include("utils/utils.inc.php");
@@ -209,13 +231,24 @@ CREATE TABLE tbsynchronize
   @mysql_select_db($database) or die("Unable to select database");
   $versionnr=get_global_version();
   mysql_close();
-  echo "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\n";
-  echo "VALUES ('$projectname', $versionnr, '$frmsourcebranch', 'INTERNAL', 'deltasql-server', '$frmdbtype');\n";
+  $insert = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\n" .
+            "VALUES ('$projectname', $versionnr, '$frmsourcebranch', 'INTERNAL', 'deltasql-server', '$frmdbtype');\n";
   
-  if ($frmdbtype=="$db_oracle")
-       echo "COMMIT;\n";
-
+  echo "$insert";
+  $commit = "";
+  if ($frmdbtype=="$db_oracle") {
+       $commit = "COMMIT;\n";
+	   echo $commit;
+  }
 ?>
 </pre>
+<hr>
+<?php
+// repeating the script for copy&paste purposes
+echo "<font color='white'>";
+echo "<p id=\"description\">";
+echo "$intro\n$script\n$insert\n$commit</p>";
+echo "</font>";
+?>
 </body>
 </html>
