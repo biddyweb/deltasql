@@ -4,26 +4,12 @@
 <title>deltasql - Show Database Script</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
-<script type="text/javascript" src="utils/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="utils/js/jquery.zclip.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('a#copy-description').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:$('p#description').text()
-    });
-    // The link with ID "copy-description" will copy
-    // the text of the paragraph with ID "description"
-    $('a#copy-dynamic').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:function(){return $('input#dynamic').val();}
-    });
-    // The link with ID "copy-dynamic" will copy the current value
-    // of a dynamically changing input with the ID "dynamic"
-});
-</script>
-<body>
 <?php
+ include("utils/copypaste.inc.php");
+ printCopyPasteJS();
+
+ echo "<body>";
+
 include_once('utils/geshi/geshi.php');
 include("head.inc.php");
 include("utils/utils.inc.php");
@@ -123,13 +109,11 @@ mysql_close();
 <?php
 // repeating the script for copy&paste purposes
 echo "<font color='white'>";
-echo "<p id=\"description\">";
+$intro = "";
 if ($comments!="") {
-    echo "/*\n";
-    echo "$comments";
-    echo "\n*/\n\n"; 
+    $intro = "/*\n$comments\n*/\n";
 }
-echo "$script</p>";
+printCopyPasteBlock("$intro$script");
 echo "</font>";
 ?>
 

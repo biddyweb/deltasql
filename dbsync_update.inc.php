@@ -6,7 +6,6 @@ This file is included both from dbsync_update.php called by the form dbsync.php 
  The core logic of deltasql is here.
 
 */
-
 include("dbsync_currentversion.inc.php");
 include("utils/verification_scripts.inc.php");
 include("utils/zip.inc.php");
@@ -317,10 +316,7 @@ if ($singlefiles=="0") {
 	  
 	  // paragraph for copy&paste functionality
 	  echo "<font color='white'>";
-	  echo "<p id=\"description\">";
-	  echo "$textresult";
-      echo "$commentstring\n$updatestring";
-	  echo "</p>";
+	  printCopyPasteBlock("$textresult$commentstring\n$updatestring");
       echo "</font>";
   } else {
 	  echo "$commentstring\n$updatestring\n\n\n";

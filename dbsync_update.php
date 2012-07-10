@@ -1,5 +1,7 @@
 <?php session_start();
 include("utils/utils.inc.php");
+include("utils/copypaste.inc.php");
+
 
 if(isset($_SESSION['username'])) {
  $updateuser=$_SESSION["username"];
@@ -26,32 +28,20 @@ $excludepackages=0;
 $commitcomment="";
 $schemaname="";
 
-include("dbsync_update.inc.php");
+
 if ($htmlformatted) {
     echo "
     <html> 
     <title>
     deltasql - Synchronization script
     </title>
-    <body>";
+    <body>
+	<div>";
 	
-	echo "
-	<script type=\"text/javascript\" src=\"utils/js/jquery-1.7.2.min.js\"></script>
-    <script type=\"text/javascript\" src=\"utils/js/jquery.zclip.min.js\"></script>
-    <script>
-	$(document).ready(function(){
-    $('a#copy-description').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:$('p#description').text()
-    });
-    $('a#copy-dynamic').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:function(){return $('input#dynamic').val();}
-    });
-	});
-	</script>
-	";
+	printCopyPasteJS();
 }
+
+include("dbsync_update.inc.php");
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 
              $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug);

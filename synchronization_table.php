@@ -3,31 +3,17 @@
 <title>deltasql - Synchronization Table</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
-<script type="text/javascript" src="utils/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="utils/js/jquery.zclip.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('a#copy-description').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:$('p#description').text()
-    });
-    // The link with ID "copy-description" will copy
-    // the text of the paragraph with ID "description"
-    $('a#copy-dynamic').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:function(){return $('input#dynamic').val();}
-    });
-    // The link with ID "copy-dynamic" will copy the current value
-    // of a dynamically changing input with the ID "dynamic"
-});
-</script>
-<body>
 <?php
+ include("utils/constants.inc.php");
+ include("utils/copypaste.inc.php");
+ 
+ printCopyPasteJS();
+ 
+ echo "<body>";
  echo "<style type=\"text/css\">";
  include ("deltasql.css");
  echo "</style>";
 
- include("utils/constants.inc.php");
  $frmdbtype = $_POST['frmdbtype'];
  $frmsourcebranch = $_POST['frmsourcebranch'];
  $projectid=$_POST['frmprojectid'];
@@ -246,8 +232,7 @@ echo $script;
 <?php
 // repeating the script for copy&paste purposes
 echo "<font color='white'>";
-echo "<p id=\"description\">";
-echo "$intro\n$script\n$insert\n$commit</p>";
+printCopyPasteBlock("$intro\n$script\n$insert\n$commit");
 echo "</font>";
 ?>
 </body>

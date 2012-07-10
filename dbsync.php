@@ -7,6 +7,7 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
+include("utils/copypaste.inc.php");
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 include("conf/config.inc.php");
@@ -30,26 +31,9 @@ else {
    else $defaultprojectid = "";	  
 }
 
-//if ($rights<1) die("<b>Not enough rights to synchronize a database schema.</b>");
+printCopyPasteJS();
 ?>
-<script type="text/javascript" src="utils/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="utils/js/jquery.zclip.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('a#copy-description').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:$('p#description').text()
-    });
-    // The link with ID "copy-description" will copy
-    // the text of the paragraph with ID "description"
-    $('a#copy-dynamic').zclip({
-        path:'utils/js/ZeroClipboard.swf',
-        copy:function(){return $('input#dynamic').val();}
-    });
-    // The link with ID "copy-dynamic" will copy the current value
-    // of a dynamically changing input with the ID "dynamic"
-});
-</script>
+
 <body>
 <h1>Database Synchronization Form</h1>
 
@@ -59,7 +43,9 @@ project list</a> and press on the 'Table' link, this will generate a script you 
 <p>2) You should run the following query into the database instance you would like
 to synchronize, and then fill the form below with the query's results as explained in the italic comments</p>
 <tt>
-<p id="description">select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);</p>
+<?php
+printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);");
+?>
 </tt>
 <center>
 <a href="#" id="copy-description"><img alt="Copy to clipboard" src="icons/copy.png">Copy this query to clipboard</a> 
