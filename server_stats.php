@@ -29,6 +29,7 @@ echo "</td></tr>";
 echo "</table>";
 
 ?>
+<hr>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)
