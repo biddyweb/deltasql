@@ -21,8 +21,9 @@
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h3>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></h3>";
+ printCopyPasteLink("Copy to clipboard");
 ?>
-<a href="#" id="copy-description"><img alt="Copy to clipboard" src="icons/copy.png">Copy to clipboard</a> |   
+ |   
 <a href="list_projects.php">Back to List Projects</a> | 
 <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 <hr>
@@ -231,9 +232,7 @@ echo $script;
 <hr>
 <?php
 // repeating the script for copy&paste purposes
-echo "<font color='white'>";
 printCopyPasteBlock("$intro\n$script\n$insert\n$commit");
-echo "</font>";
 ?>
 </body>
 </html>

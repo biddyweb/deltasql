@@ -196,7 +196,8 @@ if ($singlefiles==0) {
    } else {
 	    // HTML and text formatted
 	   if ($htmlformatted==1) {
-			echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\" border=0>Copy to clipboard</a> | "; 
+			printCopyPasteLink("Copy to clipboard");
+			echo " | "; 
 			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\" border=0> Back to Synchronize Database</a> | ";
 			echo "<a href=\"index.php\"><img src=\"icons/home.png\" border=0>Back to main page</a>";
 			echo "<hr><br>";
@@ -315,9 +316,8 @@ if ($singlefiles=="0") {
 	  echo "<hr>";
 	  
 	  // paragraph for copy&paste functionality
-	  echo "<font color='white'>";
 	  printCopyPasteBlock("$textresult$commentstring\n$updatestring");
-      echo "</font>";
+      
   } else {
 	  echo "$commentstring\n$updatestring\n\n\n";
   } 

@@ -20,8 +20,14 @@ $(document).ready(function(){
 }
 
 function printCopyPasteBlock($textblock) {
+ echo "<font color='white'>";
  echo "<p id='description'>";
  echo "$textblock";
  echo "</p>";
+ echo "</font>";
 }
+
+function printCopyPasteLink($textlink) {
+ echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">$textlink</a>";
+ }
 ?>

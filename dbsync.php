@@ -42,14 +42,15 @@ project list</a> and press on the 'Table' link, this will generate a script you 
 </p>
 <p>2) You should run the following query into the database instance you would like
 to synchronize, and then fill the form below with the query's results as explained in the italic comments</p>
-<tt>
 <?php
-printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);");
+echo "<tt>";
+echo "select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);";
+echo "</tt>";
+echo "<center>";
+printCopyPasteLink("Copy this query to clipboard");
+echo "</center>";
+
 ?>
-</tt>
-<center>
-<a href="#" id="copy-description"><img alt="Copy to clipboard" src="icons/copy.png">Copy this query to clipboard</a> 
-</center>
 <p>3) Please enter the synchronization details you retrieved from the query:</p>
 
 <form action="dbsync_update.php" method="post">
@@ -158,5 +159,8 @@ if ($displayhelp==1)
    echo '<a href="manual.php#syncworks"><img src="icons/help.png"> How synchronization works with examples</a><br>';
 ?>
 <a href="index.php"><img src="icons/home.png"> Back to Main Page</a>
+<?php
+printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);");
+?>
 </body>
 </html>

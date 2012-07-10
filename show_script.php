@@ -89,7 +89,7 @@ if ($edit==1) {
   } 
 } 
 
-echo "<a href=\"#\" id=\"copy-description\"><img alt=\"Copy to clipboard\" src=\"icons/copy.png\">Copy to clipboard</a>"; 
+printCopyPasteLink("Copy to clipboard"); 
 echo "<hr><br>";
 
 if ($comments!="") {
@@ -108,13 +108,11 @@ mysql_close();
 
 <?php
 // repeating the script for copy&paste purposes
-echo "<font color='white'>";
 $intro = "";
 if ($comments!="") {
     $intro = "/*\n$comments\n*/\n";
 }
 printCopyPasteBlock("$intro$script");
-echo "</font>";
 ?>
 
 </body>
