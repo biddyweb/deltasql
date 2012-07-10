@@ -59,6 +59,9 @@ $disable_clients_table_on_main_page=false;
 // default script title when submitting a new script
 $default_script_title="db update";
 
+// if the copy&paste functionality is enabled by default or not
+$default_copypaste = 1;
+
 //script prefix and suffix when outputting scripts as single files
 $script_prefix    = "script_";
 $script_extension = ".sql";

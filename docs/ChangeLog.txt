@@ -1,3 +1,15 @@
+*******************************
+1.5.2 Release Notes (19.7.2012)
+
+ With this release deltasql introduces the handy copy&paste functionality to copy pasting existing scripts, the synchronization query, 
+ the generated synchronization script and the seeding script for databases which will come under deltasql version control.
+
+*******************************
+
+10.7.2012 git
+- added user preferences to enable and disable copy paste functionality, as it does not work in all browsers (e.g. Internet Explorer) and in all editors
+- added FAQ question on how to enable disable this new functionality
+
 26.6.2012 git
 - link to copy standard query to retrieve synchronization on synchronization form
 - link to copy tbsynchronize generation and verification script

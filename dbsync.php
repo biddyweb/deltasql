@@ -47,7 +47,7 @@ echo "<tt>";
 echo "select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);";
 echo "</tt>";
 echo "<center>";
-printCopyPasteLink("Copy this query to clipboard");
+printCopyPasteLink("Copy this query to clipboard", 0);
 echo "</center>";
 
 ?>

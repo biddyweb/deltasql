@@ -1,6 +1,6 @@
 <?php
 //version
-$deltasql_version="1.5.1";
+$deltasql_version="1.5.2";
 $ds_schema_version="1.5.0";
 
 $dbredactor_version="1.0.2";

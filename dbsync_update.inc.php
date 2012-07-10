@@ -196,8 +196,7 @@ if ($singlefiles==0) {
    } else {
 	    // HTML and text formatted
 	   if ($htmlformatted==1) {
-			printCopyPasteLink("Copy to clipboard");
-			echo " | "; 
+			printCopyPasteLink("Copy to clipboard", 1);
 			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\" border=0> Back to Synchronize Database</a> | ";
 			echo "<a href=\"index.php\"><img src=\"icons/home.png\" border=0>Back to main page</a>";
 			echo "<hr><br>";

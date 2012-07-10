@@ -89,7 +89,7 @@ if ($edit==1) {
   } 
 } 
 
-printCopyPasteLink("Copy to clipboard"); 
+printCopyPasteLink("Copy to clipboard", 0); 
 echo "<hr><br>";
 
 if ($comments!="") {

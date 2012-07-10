@@ -50,6 +50,7 @@ include("utils/constants.inc.php");
 <li><a href="#lost">I lost the admin password, what can I do to restore access to deltasql?</a></li>
 <li><a href="#slow">deltasql server has more than 2000 scripts and starts to get slow. How can I increase its performance?</a></li>
 <li><a href="#email">How can I configure email notification for new scripts?</a></li>
+<li><a href="#copypaste">The Copy and Paste functionality does not work in my browser or SQL client!</a></li>
 <li><a href="#question">I have another question, where to submit it?</a></li>
 </ul>
 
@@ -545,6 +546,16 @@ $deltasql_path="C:\\xampp\\htdocs\\deltasql\\";
 
 <p>On the contrary, if you do not need this feature, you might want to disable it by setting  <tt>$emails_enable=false;</tt> in the configuration file <tt>conf/config.inc.php</tt>. Following this action, the field to set 
  an email address in the Preferences window will be hidden.</p>
+ 
+<h3><a name="copypaste"></a>The Copy and Paste functionality does not work in my browser or SQL client!</h3>
+<p>
+Although the functionality is very practical, for some browser (e.g. Internet Explorer) or some text editor (e.g. notepad of Windows) there might be problems with the copy and paste functionality 
+introduced with version 1.5.2.
+</p>
+<p>
+If single users would like to disable it, they can disable it on their 'Preferences' page. To disable the functionality also when not logged in, you need to set the variable <tt>$default_copypaste</tt>
+ in <tt>conf/config.inc.php</tt> to 0.
+</p>
  
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>

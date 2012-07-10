@@ -49,9 +49,11 @@ if ($nums==0) {
  $_SESSION['rights'] = $rights;
  $_SESSION['userid'] = $userid;
  $_SESSION['first'] = $first;
- $_SESSION['scriptsperpage'] = get_parameter_default('UI','SCRIPTS_PER_PAGE',$userid,$default_scriptsperpage);
+ $_SESSION['scriptsperpage']   = get_parameter_default('UI','SCRIPTS_PER_PAGE',$userid,$default_scriptsperpage);
  $_SESSION['displayhelplinks'] = get_parameter_default('UI','DISPLAY_HELP_LINKS',$userid,$default_displayhelplinks);
- $_SESSION['colorrows'] = get_parameter_default('UI','COLOR_ROWS',$userid,$default_colorrows);
+ if (!isset($default_copypaste)) $default_copypaste=1;
+ $_SESSION['copypaste']        =  get_parameter_default('UI','COPY_PASTE',$userid,$default_copypaste);
+ $_SESSION['colorrows']        = get_parameter_default('UI','COLOR_ROWS',$userid,$default_colorrows);
  
  mysql_close();
  js_redirect("index.php");

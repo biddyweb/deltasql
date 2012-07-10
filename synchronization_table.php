@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
 <title>deltasql - Synchronization Table</title>
@@ -5,6 +6,7 @@
 </head>
 <?php
  include("utils/constants.inc.php");
+ include("conf/config.inc.php");
  include("utils/copypaste.inc.php");
  
  printCopyPasteJS();
@@ -21,9 +23,8 @@
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h3>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></h3>";
- printCopyPasteLink("Copy to clipboard");
+ printCopyPasteLink("Copy to clipboard", 1);
 ?>
- |   
 <a href="list_projects.php">Back to List Projects</a> | 
 <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 <hr>

@@ -24,6 +24,7 @@ if (isset($_POST['frm_submit'])) {
   $frm_displayhelplinks=$_POST['helpgroup'];
   $frm_colorrows=$_POST['colorgroup'];
   $frm_sendemailto=$_POST['frm_sendemailto'];
+  $frm_copypaste=$_POST['copypaste'];
  
   if (isset($emails_enable) && ($emails_enable) && ($frm_sendemailto!="")) {
      $pos = strpos($frm_sendemailto,"@");
@@ -38,24 +39,32 @@ if (isset($_POST['frm_submit'])) {
   set_parameter('UI','SCRIPTS_PER_PAGE',"$frm_scriptsperpage",$userid);
   set_parameter('UI','DISPLAY_HELP_LINKS',"$frm_displayhelplinks",$userid);
   set_parameter('UI','COLOR_ROWS',"$frm_colorrows",$userid);
+  set_parameter('UI','COPY_PASTE',"$frm_copypaste",$userid);
   set_parameter('EMAIL','SEND_EMAIL_TO',"$frm_sendemailto",$userid);
   
   $_SESSION['scriptsperpage'] = $frm_scriptsperpage;
   $_SESSION['displayhelplinks'] = $frm_displayhelplinks;
   $_SESSION['colorrows'] = $frm_colorrows; 
+  $_SESSION['copypaste'] = $frm_copypaste; 
+  
   mysql_close();  
   js_redirect("index.php");
 }
 
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-echo "<h2>User preferences for $name</h2>";
+echo "<h1>User preferences for $name</h1>";
+
+
 
 $scriptsperpage   =  get_parameter_default('UI','SCRIPTS_PER_PAGE',$userid,$default_scriptsperpage);
 $displayhelplinks =  get_parameter_default('UI','DISPLAY_HELP_LINKS',$userid,$default_displayhelplinks);
 $colorrows        =  get_parameter_default('UI','COLOR_ROWS',$userid,$default_colorrows);
-$sendemailto      =  get_parameter_default('EMAIL','SEND_EMAIL_TO',$userid,"");
+if (!isset($default_copypaste)) $default_copypaste=1;
+$copypaste        =  get_parameter_default('UI','COPY_PASTE',$userid,$default_copypaste);
+$sendemailto      =  get_parameter_default('EMAIL','SEND_EMAIL_TO',$userid,$default_copypaste);
 
 if ($displayhelplinks=="1") {
    $dhl_yeschecked="checked"; $dhl_nochecked="";
@@ -68,20 +77,32 @@ if ($colorrows=="1") {
 } else {
    $cns_yeschecked=""; $cns_nochecked="checked";
 }
+
+if ($copypaste=="1") {
+   $paste_yeschecked="checked"; $paste_nochecked="";
+} else {
+   $paste_yeschecked=""; $paste_nochecked="checked";
+}
 mysql_close();	
 ?>
 <hr>
 <form action="preferences.php" method="post">
 <table>
-<tr><td><h4>Password</h4></td><td></td></tr>
-<tr><td></td><td><b><a href="change_password.php">Change Password <img src="icons/rights.png"></td></tr>
+<tr><td><h3>Password</h3></td><td></td></tr>
+<tr><td></td><td><a href="change_password.php">Change Password <img src="icons/rights.png"></td></tr>
 
-<tr><td><h4>General</h4></td><td></td></tr>
-<tr><td><b>Display Help Links (<img src="icons/help.png">):</b></td>
+<tr><td><h3>General</h3></td><td></td></tr>
+<tr><td>Display Help Links <img src="icons/help.png">:</td>
 <td>
 <input type="radio" name="helpgroup" value="1" <?php echo "$dhl_yeschecked"; ?>> Yes 
 <input type="radio" name="helpgroup" value="0"  <?php echo "$dhl_nochecked"; ?>> No
 <input type="hidden" name="frm_submit" value="1">
+</td></tr>
+
+<tr><td>Enable Copy-Paste Functionality <img src="icons/copy.png">:</td>
+<td>
+<input type="radio" name="copypaste" value="1" <?php echo "$paste_yeschecked"; ?>> Yes 
+<input type="radio" name="copypaste" value="0"  <?php echo "$paste_nochecked"; ?>> No
 </td></tr>
 
 <?php
@@ -90,13 +111,13 @@ mysql_close();
   echo "<td><input type=\"text\" name=\"frm_sendemailto\" value=\"$sendemailto\" size=\"45\"> <b>when a new script is inserted in deltasql server.</b></td></tr>";
   }
 ?>
-<tr><td><h4>'List Scripts' page</h4></td><td></td></tr>
-<tr><td><b>Color new scripts:</b></td>
+<tr><td><h3>'List Scripts' page</h3></td><td></td></tr>
+<tr><td>Color new scripts:</td>
 <td>
 <input type="radio" name="colorgroup" value="1" <?php echo "$cns_yeschecked"; ?>> Yes 
 <input type="radio" name="colorgroup" value="0"  <?php echo "$cns_nochecked"; ?>> No
 </td></tr>
-<tr><td><b>Number of scripts to be shown at once:</b></td>
+<tr><td>Number of scripts to be shown at once:</td>
 <td><input type="text" name="frm_scriptsperpage" value="<?php echo "$scriptsperpage"; ?>" size="5"></td></tr>
 
 <tr><td></td><td><input type="Submit" value="Save preferences"></td></tr>
