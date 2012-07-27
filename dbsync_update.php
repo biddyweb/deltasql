@@ -1,5 +1,6 @@
 <?php session_start();
 include("utils/utils.inc.php");
+include("conf/config.inc.php");
 include("utils/copypaste.inc.php");
 
 
@@ -38,7 +39,8 @@ if ($htmlformatted) {
     <body>
 	<div>";
 	
-	printCopyPasteJS();
+	if (!isset($default_copypaste)) $default_copypaste=1;
+	printCopyPasteJS($default_copypaste);
 }
 
 include("dbsync_update.inc.php");

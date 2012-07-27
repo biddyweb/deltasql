@@ -15,6 +15,7 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 include("utils/utils.inc.php");
 include("conf/config.inc.php");
+if (!isset($default_copypaste)) $default_copypaste=1;
 
 if (isset($_POST['frm_submit'])) {
   $frm_scriptsperpage=$_POST['frm_scriptsperpage'];
@@ -62,7 +63,6 @@ echo "<h1>User preferences for $name</h1>";
 $scriptsperpage   =  get_parameter_default('UI','SCRIPTS_PER_PAGE',$userid,$default_scriptsperpage);
 $displayhelplinks =  get_parameter_default('UI','DISPLAY_HELP_LINKS',$userid,$default_displayhelplinks);
 $colorrows        =  get_parameter_default('UI','COLOR_ROWS',$userid,$default_colorrows);
-if (!isset($default_copypaste)) $default_copypaste=1;
 $copypaste        =  get_parameter_default('UI','COPY_PASTE',$userid,$default_copypaste);
 $sendemailto      =  get_parameter_default('EMAIL','SEND_EMAIL_TO',$userid,$default_copypaste);
 

@@ -10,7 +10,6 @@ include("dbsync_currentversion.inc.php");
 include("utils/verification_scripts.inc.php");
 include("utils/zip.inc.php");
 
-
 function removeSyncPath($sessionid) {
   	 $delstr = "DELETE FROM tbscriptgeneration WHERE sessionid='$sessionid'";
      mysql_query($delstr);
@@ -60,11 +59,12 @@ function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $h
          $excludeviews, $excludepackages, $updateuser, $updatetype, $commitcomment, $schemaname, $dbtype,
          $xmlformatted, $singlefiles, $debug) {
 
+include("conf/config.inc.php");	 
+if (!isset($default_copypaste)) $default_copypaste=1;		 
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
 
 if ($projectid=="")  errormessage(10, "Not possible to compute a dbsync update if project name is missing.", $xmlformatted, $htmlformatted);
 
-include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
@@ -196,7 +196,7 @@ if ($singlefiles==0) {
    } else {
 	    // HTML and text formatted
 	   if ($htmlformatted==1) {
-			printCopyPasteLink("Copy to clipboard", 1);
+			printCopyPasteLink("Copy to clipboard", 1, $default_copypaste);
 			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\" border=0> Back to Synchronize Database</a> | ";
 			echo "<a href=\"index.php\"><img src=\"icons/home.png\" border=0>Back to main page</a>";
 			echo "<hr><br>";
@@ -315,7 +315,7 @@ if ($singlefiles=="0") {
 	  echo "<hr>";
 	  
 	  // paragraph for copy&paste functionality
-	  printCopyPasteBlock("$textresult$commentstring\n$updatestring");
+	  printCopyPasteBlock("$textresult$commentstring\n$updatestring", $default_copypaste);
       
   } else {
 	  echo "$commentstring\n$updatestring\n\n\n";

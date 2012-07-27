@@ -5,15 +5,17 @@
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <?php
+ include_once('utils/geshi/geshi.php');
+ include("head.inc.php");
+ include("utils/utils.inc.php");
+ include("conf/config.inc.php");
  include("utils/copypaste.inc.php");
- printCopyPasteJS();
+ 
+ if (!isset($default_copypaste)) $default_copypaste=1;
+ printCopyPasteJS($default_copypaste);
 
  echo "<body>";
 
-include_once('utils/geshi/geshi.php');
-include("head.inc.php");
-include("utils/utils.inc.php");
-include("conf/config.inc.php");
 
 if (isset($_GET['edit'])) $edit=$_GET['edit']; else $edit=0;
 if (isset($_SESSION["userid"])) {
@@ -89,7 +91,7 @@ if ($edit==1) {
   } 
 } 
 
-printCopyPasteLink("Copy to clipboard", 0); 
+printCopyPasteLink("Copy to clipboard", 0, $default_copypaste); 
 echo "<hr><br>";
 
 if ($comments!="") {
@@ -112,7 +114,7 @@ $intro = "";
 if ($comments!="") {
     $intro = "/*\n$comments\n*/\n";
 }
-printCopyPasteBlock("$intro$script");
+printCopyPasteBlock("$intro$script", $default_copypaste);
 ?>
 
 </body>

@@ -31,7 +31,8 @@ else {
    else $defaultprojectid = "";	  
 }
 
-printCopyPasteJS();
+if (!isset($default_copypaste)) $default_copypaste=1;
+printCopyPasteJS($default_copypaste);
 ?>
 
 <body>
@@ -47,7 +48,7 @@ echo "<tt>";
 echo "select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);";
 echo "</tt>";
 echo "<center>";
-printCopyPasteLink("Copy this query to clipboard", 0);
+printCopyPasteLink("Copy this query to clipboard", 0, $default_copypaste);
 echo "</center>";
 
 ?>
@@ -160,7 +161,7 @@ if ($displayhelp==1)
 ?>
 <a href="index.php"><img src="icons/home.png"> Back to Main Page</a>
 <?php
-printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);");
+printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);", $default_copypaste);
 ?>
 </body>
 </html>
