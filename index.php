@@ -17,6 +17,7 @@
  } 
  if (!isset($disable_clients_table_on_main_page))  $disable_clients_table_on_main_page= false;
  if (!isset($disable_topten_submitters))  $disable_topten_submitters=true;
+ if (!isset($enable_server_stats))  $enable_server_stats=true;
  if (!isset($dns_name)) $dns_name="";
  
  if(isset($_SESSION['userid'])) {
@@ -124,7 +125,9 @@ if ($rights>1)
 ?>
 <li><a href="list_projects.php">List Projects</a></li>
 <br>
-<li><a href="server_stats.php">Statistics</a></li>
+<?php
+	if ($enable_server_stats) echo "<li><a href=\"server_stats.php\">Statistics</a></li>";
+?>
 </ul>
 </td>
 

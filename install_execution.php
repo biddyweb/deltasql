@@ -53,6 +53,8 @@ $editiongroup =  $_POST['editiongroup'];
 $toptengroup =  $_POST['toptengroup'];
 $usagestatsgroup = $_POST['usagestatsgroup'];
 $emailgroup = $_POST['emailgroup'];
+$copypastegroup = $_POST['copypastegroup'];
+$statsgroup $_POST['statsgroup'];
 
 
 $testsystem="false";
@@ -61,13 +63,17 @@ $disable_clients_table_on_main_page="false";
 $enterpriseedition="false";
 $disable_topten_submitters="false";
 $emails_enable="true";
+$copypaste_enable="0";
+$stats_enable="true";
 
 if ($testgroup=="testsystemyes") $testsystem="true";
 if ($sqlgroup=="donotusesqlhighlighting") $disablesqlhighlightning="true"; 
 if ($clientsgroup=="clientstableno") $disable_clients_table_on_main_page="true";
 if ($editiongroup=="enterpriseedition") $enterpriseedition = "true";
-if ($toptengroup=="yes") $disable_topten_submitters = "true";
+if ($toptengroup=="no") $disable_topten_submitters = "true";
 if ($emailgroup=="no") $emails_enable="false"; 
+if ($copypastegroup=="yes") $copypaste_enable="1";
+if ($statsgroup=="no") $stats_enable="false";  
 
 if (!$debug_output_script) {
 if ($deltasqlschemauser!=$mysqlrootuser) {
@@ -193,8 +199,11 @@ fwrite($fh, "
 \$disable_clients_table_on_main_page=$disable_clients_table_on_main_page;
 
 
-// disables the top ten submitters link
+// disables the top ten statistics
 \$disable_topten_submitters=$disable_topten_submitters;
+
+// enables server statistics
+\$enable_server_stats=$stats_enable;
 
 // if this system contains the test scripts to verify deltasql correctness
 // if set to true, it disables the database consistency check in index.php as well
@@ -204,7 +213,7 @@ fwrite($fh, "
 \$default_script_title=\"db update\";
 
 // if the copy&paste functionality is enabled by default or not
-\$default_copypaste = 1;
+\$default_copypaste = $copypaste_enable;
 
 //script prefix and suffix when outputting scripts as single files
 \$script_prefix    = \"script_\";

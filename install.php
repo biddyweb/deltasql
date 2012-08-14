@@ -92,10 +92,11 @@ You can choose to show the table with the deltasql clients on the main page as w
 If you enable to send usage statistics to deltasql.org, then after 100 scripts inserted, deltasql.org receives how many scripts there were in your deltasql instance.
 </p>
 <table>
-<tr><td>Enable email notification for new scripts (requires an additional <a href="faq.php#email">sendmail setup</a>): </td>
+
+<tr><td>Show deltasql clients on main page: </td>
 <td>
-<input type="radio" name="emailgroup" value="yes" checked> Yes
-<input type="radio" name="emailgroup" value="no"> No
+<input type="radio" name="clientsgroup" value="clientstableyes" checked> Yes
+<input type="radio" name="clientsgroup" value="clientstableno"> No
 </td></tr>
 
 <tr><td>Use SQL highlighting: </td>
@@ -104,17 +105,31 @@ If you enable to send usage statistics to deltasql.org, then after 100 scripts i
 <input type="radio" name="sqlgroup" value="donotusesqlhighlighting"> No
 </td></tr>
 
-<tr><td>Disable Top Ten Submitters Statistics: </td>
+<tr><td>Enable Top Ten Statistics (requires browser with Flash): </td>
 <td>
-<input type="radio" name="toptengroup" value="yes"> Yes
-<input type="radio" name="toptengroup" value="no" checked> No
+<input type="radio" name="toptengroup" value="yes" checked> Yes
+<input type="radio" name="toptengroup" value="no"> No
 </td></tr>
 
-<tr><td>Show deltasql clients on main page: </td>
+<tr><td>Enable Server Statistics (requires browser with Flash): </td>
 <td>
-<input type="radio" name="clientsgroup" value="clientstableyes" checked> Yes
-<input type="radio" name="clientsgroup" value="clientstableno"> No
+<input type="radio" name="statsgroup" value="yes" checked> Yes
+<input type="radio" name="statsgroup" value="no"> No
 </td></tr>
+
+<tr><td>Enable email notification for new scripts (requires an additional <a href="faq.php#email">sendmail setup</a>): </td>
+<td>
+<input type="radio" name="emailgroup" value="yes"> Yes
+<input type="radio" name="emailgroup" value="no" checked> No
+</td></tr>
+
+<tr><td>Enable Copy-Paste functionality by default (requires modern browser and sql client): </td>
+<td>
+<input type="radio" name="copypastegroup" value="yes"> Yes
+<input type="radio" name="copypastegroup" value="no" checked> No
+</td></tr>
+
+
 <tr><td>Test System (with Test Data): </td>
 <td>
 <input type="radio" name="testgroup" value="testsystemyes"> Yes

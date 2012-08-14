@@ -49,8 +49,11 @@ $enterprise_logo="pictures/enterprise_logo.jpg";
 // synchronization form
 $disable_sql_highlighting=false;
 
-// disables the top ten submitters link
+// disables the top ten statistics 
 $disable_topten_submitters=false;
+
+// enables server statistics
+$enable_server_stats=true;
 
 // if your clients are preinstalled, you might want to disable the table
 // with external clients like dbredactor and ant-client on the main page

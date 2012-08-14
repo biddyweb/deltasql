@@ -1,3 +1,8 @@
+14.8.2012 git
+- install routine asks if copy-paste functionality should be enabled by default
+- install routine asks if server statistics should be enabled
+
+
 27.7.2012 Patch 1: "$default_copypaste switch in conf/config.inc.php did not work correctly"
 is available at
 http://sourceforge.net/projects/deltasql/files/deltasql%20server%20and%20clients/1.5.2/?
