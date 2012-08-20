@@ -1,3 +1,12 @@
+*******************************
+1.5.3 Release Notes (25.8.2012)
+
+ Maintenance release: Consolidating the Copy&Paste functionality
+
+*******************************
+
+
+
 14.8.2012 git
 - install routine asks if copy-paste functionality should be enabled by default
 - install routine asks if server statistics should be enabled
