@@ -54,7 +54,7 @@ $toptengroup =  $_POST['toptengroup'];
 $usagestatsgroup = $_POST['usagestatsgroup'];
 $emailgroup = $_POST['emailgroup'];
 $copypastegroup = $_POST['copypastegroup'];
-$statsgroup $_POST['statsgroup'];
+$statsgroup = $_POST['statsgroup'];
 
 
 $testsystem="false";
