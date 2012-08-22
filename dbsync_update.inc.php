@@ -270,7 +270,7 @@ while ($i<$numsg) {
 	 
      if ($debug==1) echo "<p><pre><i>-- DEBUG: query to generate this update script was:\n-- $query\n</i></pre></p>";
      $result=mysql_query($query);   
-     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, $textresult);
+     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, $textresult, $disable_sql_highlighting);
 
      $i++;	 
 }

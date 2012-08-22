@@ -71,7 +71,7 @@ function printXmlScript($script, $comment, $module, $versionnr, $type, $date) {
     echo "  </script>\n";
 }
 
-function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult) {
+function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult, $disable_sql_highlighting) {
  if ($htmlformatted) {
         include_once('geshi/geshi.php');
  }    
@@ -179,7 +179,7 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$
 	if ($htmlformatted==1) {
 		$textresult = $textresult . $script . "\n\n";
         if ($disable_sql_highlighting==true) {
-            echo "<pre>";
+		    echo "<pre>";
             $script = htmlspecialchars($script);
             echo "$script";
             echo "</pre>";         
