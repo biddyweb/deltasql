@@ -18,6 +18,7 @@ include("utils/constants.inc.php");
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
 <li><a href="#algo">How does the synchronization algorithm work?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
+<li><a href="#milestones">What where the achieved milestones so far?</a></li>
 <li><a href="#contribute">How can I contribute?</a></li>
 <li><a href="#install">Is it difficult to install?</a></li>
 <li><a href="#quick">Is there a Quick Guide?</a></li>
@@ -121,6 +122,20 @@ When the user asks deltasql to generate a synchronization script for a particula
  free of charge in your commercial or Open Source software. However, if you significantly modify deltasql, you must report the changes back
  to the Open source community. 
 </p> 
+
+<h3><a name="milestones"></a>What where the achieved milestones so far?</h3>
+
+<p>This is a list of achieved milestones:</p>
+<ul>
+<li>In December 2007, 0.800 is released on sourceforge after six months of saltuary development. It is in beta stage and contains many ideas which will be later developed.</li>
+<li>0.850 is the first release effectively used in production. It controlled about 7 schemas of 2 customers with 3 branches each.</li>
+<li>In 2008, the 1.0.x series introduces the idea of deltasql clients. It is actively used in production by several users.</li>
+<li>In September 2010, the 1.2.x series introduces <a href="#continouus">continouus database integration</a>.</li>
+<li>The 1.3.x series developed through 2011 redesigns the synchronization algorithm to support branches of branches and tags. Features and security are enhanced. Several companies use deltasql in their daily business.</li>
+<li>In 1.4.x a client targeted at the Windows platform (XP, 7) is delivered.</li>
+<li>The 1.5.x series in 2012 adds charting features to monitor the deltasql server and a handy copy/paste functionality.</li>
+</ul>
+
 
 <h3><a name="contribute"></a>How can I contribute?</h3>
 <p>
