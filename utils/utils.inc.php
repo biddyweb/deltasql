@@ -335,7 +335,7 @@ function errormessage($msgid, $message, $xmlformatted, $htmlformatted) {
 
 function color_row($date_now, $create_dt) {
 // conversion from mySQL to a PHP date
-ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})", $create_dt, $regs);
+preg_match ("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $create_dt, $regs);
 $updated_php = mktime ($regs[4],$regs[5],$regs[6],$regs[2],$regs[3],$regs[1]);
 
 $one_day=86400;
