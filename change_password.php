@@ -63,8 +63,8 @@ include("conf/config.inc.php");
 include("utils/utils.inc.php");
 
 if (isset($_POST['oldpwd'])) $frm_oldpwd=$_POST['oldpwd']; else exit;
-$frm_newpwd=$_POST['newpwd'];
-$frm_confirmnewpwd=$_POST['confirmnewpwd'];
+$frm_newpwd=mysql_real_escape_string($_POST['newpwd']);
+$frm_confirmnewpwd=mysql_real_escape_string($_POST['confirmnewpwd']);
 
 if ($frm_newpwd=="") die("<b><font color=\"red\">The new password can not be empty!</font></b>");
 if ($frm_newpwd!=$frm_confirmnewpwd)

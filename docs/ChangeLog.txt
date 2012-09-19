@@ -1,3 +1,14 @@
+Patch 3 released (19.9.2012)
+- fixed graph display in PHP 5.3 (Statistics and Top Ten page)
+
+Patch 2 released (18.9.2012)
+
+18.9.2012 git
+- fixed script insertion when using PHP 5.3
+- fixed SQL injection attack on deltasql
+
+Patch 1 released (10.9.2012)
+
 6.9.2012 git
 - fixed ereg() deprecation error when using PHP 5.3
 

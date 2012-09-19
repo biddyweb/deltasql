@@ -1,4 +1,4 @@
-<?
+<?php
 
 include_once( 'utils/openflashchart/open-flash-chart.php' );
 include("conf/config.inc.php");

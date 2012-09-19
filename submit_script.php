@@ -155,15 +155,12 @@ echo " />Submit Another Script after this one<br>";
 
 if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;
 
-$frm_comment=$_POST['comment'];
-$frm_moduleid=$_POST['frmmoduleid'];
-$frm_title=$_POST['title'];
-$frm_anothersubmit=$_POST['anothersubmit'];
-$frm_isaview=$_POST['frmisaview'];
-$frm_isapackage=$_POST['frmisapackage'];
-
-if ($frm_isaview=="") $frm_isaview=0;
-if ($frm_isapackage=="") $frm_isapackage=0;
+if (!isset($_POST['frmisaview']))  $frm_isaview=0; else $frm_isaview=$_POST['frmisaview'];
+if (!isset($_POST['frmisapackage']))  $frm_isapackage=0; else $frm_isapackage=$_POST['frmisapackage'];
+if (!isset($_POST['anothersubmit'])) $frm_anothersubmit=0; else $frm_anothersubmit=$_POST['anothersubmit'];
+if (!isset($_POST['comment'])) $frm_comment=''; else $frm_comment=$_POST['comment'];
+if (!isset($_POST['frmmoduleid'])) $frm_moduleid=''; else  $frm_moduleid=$_POST['frmmoduleid'];
+if (!isset($_POST['title'])) $frm_title=''; else $frm_title=$_POST['title'];
 
 if ($frm_moduleid=="") die("<b><font color=\"red\">Please specify a database module.</font></b>");
 //echo "<p>";
@@ -171,6 +168,7 @@ if ($frm_moduleid=="") die("<b><font color=\"red\">Please specify a database mod
 //echo "</p>";
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+
 // we repeat the previous query to add the tbscriptbranch
 $query3="SELECT * FROM tbbranch order by id ASC";
 $result3=mysql_query($query3);
@@ -178,10 +176,14 @@ $num3=mysql_numrows($result3);
 
 // 1. Insert script
 $version = get_and_increase_global_version();
+$frm_script = mysql_real_escape_string($frm_script);
+$frm_title = mysql_real_escape_string($frm_title);
+$frm_comment = mysql_real_escape_string($frm_comment);
 //echo "<b>*$version*</b>";
 
 $query="INSERT INTO tbscript (id, code, title, comments,create_dt,versionnr,user_id,module_id,isaview,isapackage) VALUES('','$frm_script', '$frm_title','$frm_comment',NOW(),$version,$userid,$frm_moduleid,$frm_isaview,$frm_isapackage);";
 mysql_query($query);
+//echo "$query\n";
 
 // 2. Retrieve id of inserted script
 // the query utilize lot of parameters as version might not be atomic in particular circumstances
@@ -239,6 +241,8 @@ if ($emails_enable) {
   notify_users_with_email($sendmail_command,$deltasql_path,$emails_sender, $subject, $body);
 }
 mysql_close();
+
+
 if ($frm_anothersubmit=="1") {
  $_SESSION['chainscriptsubmit'] = 1;
  js_redirect("submit_script.php");
@@ -247,7 +251,8 @@ else {
   $_SESSION['chainscriptsubmit'] = 0;
   $_SESSION["scriptoffset"] = 0;
   js_redirect("list_scripts.php");
-}  
+} 
+ 
  ?>
 
 </body>

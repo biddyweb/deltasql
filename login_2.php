@@ -10,8 +10,8 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
-$name=$_POST['name'];
-$pwd=$_POST['pwd'];
+$name=mysql_real_escape_string($_POST['name']);
+$pwd=mysql_real_escape_string($_POST['pwd']);
 
 if ($name == "") exit;
 
