@@ -116,7 +116,7 @@ $i++;
 <br>
 <hr>
 <form action="get_dev_tree_graph.php" method="post">
-<?
+<?php
 // plotting project combobox
  echo "Project: <select NAME=\"frmprojectid\">";
  $query="SELECT * FROM tbproject ORDER BY name";

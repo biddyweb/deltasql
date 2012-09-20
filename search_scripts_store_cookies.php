@@ -5,15 +5,12 @@
    $filtertitle=$_POST['title'];
    $filtercomment=$_POST['comments'];
    $filterscript=$_POST['script'];
-   
-   $commentsmatchcase=$_POST['commentsmatchcase'];
-   $scriptmatchcase=$_POST['scriptmatchcase'];
-     
+    
    $authorid=$_POST['authorid'];
    $moduleid=$_POST['moduleid'];
    $branchid=$_POST['branchid'];
-   $frmisaview=$_POST['frmisaview'];
-   $frmisapackage=$_POST['frmisapackage'];
+   if (!isset($_POST['frmisaview'])) $frmisaview=""; else $frmisaview=$_POST['frmisaview'];
+   if (!isset($_POST['frmisapackage'])) $frmisapackage=""; else $frmisapackage=$_POST['frmisapackage'];
    
    $fromversion=$_POST['fromversion'];
    $toversion=$_POST['toversion'];
@@ -21,9 +18,9 @@
    $fromdata=$_POST['fromdata'];
    $todata=$_POST['todata'];
    
-   $textoutput=$_POST['frmtextlistoutput'];
+   if (!isset($_POST['frmtextlistoutput'])) $textoutput=0; else $textoutput=$_POST['frmtextlistoutput'];
    
-   $modified=$_POST['frmmodified'];
+   if (!isset($_POST['frmmodified'])) $modified=0; else $modified=$_POST['frmmodified'];
    
    $scriptoffset = 0;
    $_SESSION["scriptoffset"] = $scriptoffset;
@@ -31,10 +28,7 @@
    $_SESSION["search_title"] = $filtertitle;
    $_SESSION["search_comments"] = $filtercomment;
    $_SESSION["search_script"] = $filterscript;
-   
-   $_SESSION["search_comments_matchcase"] = $commentsmatchcase;
-   $_SESSION["search_script_matchcase"] = $scriptmatchcase;
-     
+       
    $_SESSION["search_authorid"] = $authorid;
    $_SESSION["search_moduleid"] = $moduleid;
    $_SESSION["search_branchid"] = $branchid;
@@ -48,10 +42,10 @@
    $_SESSION["search_todata"] = $todata;
    
    $_SESSION["search_modified"] = $modified;
-   
+     
    if ($textoutput==1) {
         js_redirect("list_scripts.php?textoutput=1&showall=1");
    } else {
         js_redirect("list_scripts.php");
-   }   
+   }    
 ?>

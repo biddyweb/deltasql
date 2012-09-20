@@ -77,8 +77,12 @@ if (file_exists($configurationfile)) {
 	}
 	
     mysql_close();
-    echo "<h2>deltasql server <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
-    if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
+    echo "<h2>deltasql server ";
+	//Enables link to homepage, disabled as don't know how long deltasql will stay up
+	//echo "<a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
+    echo "<a href=\"docs/Changelog.txt\">$deltasql_version</a>";
+    
+	if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
  } else {
     echo "<h2><a href=\"install.php\">$installmessage</a></h2>";

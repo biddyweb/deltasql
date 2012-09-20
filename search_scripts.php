@@ -74,23 +74,16 @@ To:
 <tr>
 <td><b>Script Title:</b></td> <td><input type="text" name="title" 
                                            value="<?php echo "$cookie_filtertitle"; ?>" size="40">
-<?php //<input name="scriptmatchcase" type="checkbox" value="1"/>Match Case ?>
 </td>
 </tr>
 <td><b>Script Content:</b></td> <td><input type="text" name="script" 
                                            value="<?php echo "$cookie_filterscript"; ?>" size="40">
-<?php 
-// matchcase does not work, query in list_scripts.php should be adjusted somehow
-//<input name="scriptmatchcase" type="checkbox" value="1"/>Match Case ?>
 </td>
 </tr>
 <tr>
 <td><b>Script Comments:</b></td> <td><input type="text" name="comments" 
                                             value="<?php echo "$cookie_filtercomment"; ?>" size="40">
 
-<?php 
-// matchcase does not work, query in list_scripts.php should be adjusted somehow
-//<input name="commentsmatchcase" type="checkbox" value="1"/>Match Case ?>
  </td>
 </tr>
 <tr><td>
