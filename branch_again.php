@@ -20,8 +20,8 @@ if ($rights<2) die("<b>Not enough rights to create a branch or a tag</b>");
 
 <?php
 include("conf/config.inc.php");
-$id=$_GET['id'];
-$tag=$_GET["tag"];
+if (!isset($_GET['id'])) $id=''; else $id=$_GET['id'];
+if (!isset($_GET['tag']))$tag=''; else $tag=$_GET["tag"];
 
 if ($id!="") {
     // on the second call ID is empty and this block is not executed
@@ -53,7 +53,8 @@ if ($id!="") {
 <form action="branch_again.php" method="post">
 Name:<br>
 <input type="text" name="newname" value="<?php 
-  if ($tag==0) {
+  if ($id!='')
+  if ($tag==0)  {
     echo "BRANCH_$name.$versionnr"; 
   } else {
     echo "TAG_$name.$versionnr";
@@ -62,6 +63,7 @@ Name:<br>
 Description:<br>
 <textarea name="newdescription" rows="10" cols="70">
 <?php 
+  if ($id!='')
   if ($tag==0) {
    echo "This is a branch of $name.";
   } else {
@@ -71,32 +73,35 @@ Description:<br>
 </textarea>
 <br>
 <?php
-echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
-if ($projectid!="NULL") {
-  echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
-} else {
- // plotting project combobox
- mysql_connect($dbserver, $username, $password);
- @mysql_select_db($database) or die("Unable to select database");
+if ($id!="") {
+    // on the second call ID is empty and this block is not executed
+	echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
+	if ($projectid!="NULL") {
+		echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
+	} else {
+	// plotting project combobox
+	mysql_connect($dbserver, $username, $password);
+	@mysql_select_db($database) or die("Unable to select database");
 
- echo "Project: <select NAME=\"projectid\">";
- $query="SELECT * FROM tbproject ORDER BY name";
- $result=mysql_query($query);
- $num=mysql_numrows($result); 
- $i=0;
- while ($i<$num) { 
-   $projectid=mysql_result($result,$i,"id");
-   $projectname=mysql_result($result,$i,"name");
-   echo "<option ";
-   echo "VALUE=\"$projectid\">$projectname";
-   $i++;
- }
- echo "</select><br><br>";
- mysql_close();
-}  
-echo "<input type=\"hidden\" name=\"versionnr\"  value=\"$versionnr\">";
-echo "<input type=\"hidden\" name=\"oldname\"  value=\"$name\">";
-echo "<input type=\"hidden\" name=\"istag\"  value=\"$tag\">";
+	echo "Project: <select NAME=\"projectid\">";
+	$query="SELECT * FROM tbproject ORDER BY name";
+	$result=mysql_query($query);
+	$num=mysql_numrows($result); 
+	$i=0;
+	while ($i<$num) { 
+		$projectid=mysql_result($result,$i,"id");
+		$projectname=mysql_result($result,$i,"name");
+		echo "<option ";
+		echo "VALUE=\"$projectid\">$projectname";
+		$i++;
+	}
+	echo "</select><br><br>";
+	mysql_close();
+	}  
+	echo "<input type=\"hidden\" name=\"versionnr\"  value=\"$versionnr\">";
+	echo "<input type=\"hidden\" name=\"oldname\"  value=\"$name\">";
+	echo "<input type=\"hidden\" name=\"istag\"  value=\"$tag\">";
+}
 ?>
 <input type="Submit" value="Insert">
 </form>
