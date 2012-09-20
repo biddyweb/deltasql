@@ -33,6 +33,7 @@ target=_blank >Tutorial movies
 <li><a href="http://sourceforge.net/projects/deltasql/files/">Download deltasql</a></li>
 <li><a href="http://sourceforge.net/projects/deltasql/">Project 
 page</a></li>
+<li><a href="http://sourceforge.net/p/deltasql/discussion/">Forum</a></li>
 </ul>
 <center>
 <a href="http://sourceforge.net/projects/deltasql/"><img 
