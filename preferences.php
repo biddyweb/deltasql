@@ -24,7 +24,7 @@ if (isset($_POST['frm_submit'])) {
   
   $frm_displayhelplinks=$_POST['helpgroup'];
   $frm_colorrows=$_POST['colorgroup'];
-  $frm_sendemailto=$_POST['frm_sendemailto'];
+  if (!isset($_POST['frm_sendemailto']))  $frm_sendemailto=""; else $frm_sendemailto=$_POST['frm_sendemailto'];
   $frm_copypaste=$_POST['copypaste'];
  
   if (isset($emails_enable) && ($emails_enable) && ($frm_sendemailto!="")) {
