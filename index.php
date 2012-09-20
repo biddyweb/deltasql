@@ -182,6 +182,7 @@ if ($displayhelp==1)  {
 <li><a href="manual.php">Manual</a></li>
 <li><a href="faq.php">FAQ</a></li>
 <li><a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/" target=_blank>Tutorials... (movies)</a></li>
+<li><a href="http://sourceforge.net/p/deltasql/discussion/" target=_blank>Forum...</a></li>
 <?php
 if ($enterprise_edition==false) {
     echo "<li><a href=\"http://www.deltasql.org/wiki/\" target=_blank>Wiki...</a></li>";
