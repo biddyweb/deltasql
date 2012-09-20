@@ -1,3 +1,6 @@
+Patch 4 released (20.9.2012)
+- backward compatibility to PHP 4.3 added
+
 Patch 3 released (19.9.2012)
 - fixed graph display in PHP 5.3 (Statistics and Top Ten page)
 

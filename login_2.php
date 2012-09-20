@@ -10,13 +10,12 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
-$name=mysql_real_escape_string($_POST['name']);
-$pwd=mysql_real_escape_string($_POST['pwd']);
 
-if ($name == "") exit;
-
-mysql_connect($dbserver, $username, $password);
+$link=mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+$name=mysql_real_escape_string($_POST['name'], $link);
+$pwd=mysql_real_escape_string($_POST['pwd'], $link);
+if ($name == "") { mysql_close(); exit;}
 
 $hash_pwd=salt_and_hash($pwd, retrieve_salt());
 $query="SELECT * from tbuser WHERE username='$name' AND password='$pwd' AND encrypted=0 LIMIT 1"; 

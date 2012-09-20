@@ -63,20 +63,24 @@ include("conf/config.inc.php");
 include("utils/utils.inc.php");
 
 if (isset($_POST['oldpwd'])) $frm_oldpwd=$_POST['oldpwd']; else exit;
-$frm_newpwd=mysql_real_escape_string($_POST['newpwd']);
-$frm_confirmnewpwd=mysql_real_escape_string($_POST['confirmnewpwd']);
+if (isset($_POST['newpwd'])) $frm_newpwd=$_POST['newpwd']; else exit;
+if (isset($_POST['confirmnewpwd'])) $frm_confirmnewpwd=$_POST['newpwd']; else exit;
 
-if ($frm_newpwd=="") die("<b><font color=\"red\">The new password can not be empty!</font></b>");
+
+if ($frm_newpwd=="") die("<b><font color=\"red\"> | The new password can not be empty!</font></b>");
 if ($frm_newpwd!=$frm_confirmnewpwd)
-  die("<b><font color=\"red\">The new passwords do not match!</font></b>");
+  die("<b><font color=\"red\"> | The new passwords do not match!</font></b>");
 
 $user=$_SESSION['username'];
 $userid = $_SESSION["userid"];
-if ($frm_newpwd==$user) die("<b><font color=\"red\">The new password can not be equal to the username!</font></b>");
+if ($frm_newpwd==$user) die("<b><font color=\"red\"> | The new password can not be equal to the username!</font></b>");
  
   // same test as in the login process first
-mysql_connect($dbserver, $username, $password);
+$link=mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+$frm_newpwd=mysql_real_escape_string($_POST['newpwd'], $link);
+$frm_confirmnewpwd=mysql_real_escape_string($_POST['confirmnewpwd'], $link);
+
 $salt = retrieve_salt();
 $hash_oldpwd = salt_and_hash($frm_oldpwd, $salt);
 $hash_newpwd = salt_and_hash($frm_newpwd, $salt);
@@ -102,7 +106,7 @@ $query2="UPDATE tbuser SET password='****',passwhash='$hash_newpwd',encrypted=1 
 $result2=mysql_query($query2); 
 
 mysql_close();
-echo ("Password changed!");
+echo ("<b><font color=\"green\"> Password changed!</font></b>");
  
 js_redirect("index.php");
 

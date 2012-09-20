@@ -37,21 +37,22 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<3) die("<b>Not enough rights to insert a new user.</b>");
 if (!isset($_POST['username'])) exit;
-$frm_username=mysql_real_escape_string($_POST['username']);
-$frm_password=mysql_real_escape_string($_POST['password']);
+if (!isset($_POST['password'])) die("<b><font color=\"red\">The password can not be empty!</font></b>");
 $first=$_POST['first'];
 $last=$_POST['last'];
 $email=$_POST['email'];
 $rights=$_POST['rights'];
-if ($frm_password=="") die("<b><font color=\"red\">The password can not be empty!</font></b>");
+$frm_username=$_POST['username'];
+$frm_password=$_POST['password'];
+
 if ($frm_password==$frm_username) die("<b><font color=\"red\">The password can not be equal to the username!</font></b>");
-mysql_connect($dbserver, $username, $password);
+$link=mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+$frm_username=mysql_real_escape_string($frm_username, $link);
+$frm_password=mysql_real_escape_string($frm_password, $link);
 
 $hashpwd=salt_and_hash($frm_password, retrieve_salt());
 $query="INSERT INTO tbuser (id, username, password, passwhash, first,last,email,rights,encrypted) VALUES('','$frm_username','****','$hashpwd','$first','$last','$email',$rights,1);";
-
-
 mysql_query($query);
 mysql_close();
 

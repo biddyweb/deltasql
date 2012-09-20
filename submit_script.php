@@ -166,7 +166,7 @@ if ($frm_moduleid=="") die("<b><font color=\"red\">Please specify a database mod
 //echo "<p>";
 // echo "*$frm_script* *$frm_comment* *$frm_moduleid* *$frm_title* *$userid* *$version $frm_isaview  $frm_isapackage*";
 //echo "</p>";
-mysql_connect($dbserver, $username, $password);
+$link=mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 // we repeat the previous query to add the tbscriptbranch
@@ -176,9 +176,9 @@ $num3=mysql_numrows($result3);
 
 // 1. Insert script
 $version = get_and_increase_global_version();
-$frm_script = mysql_real_escape_string($frm_script);
-$frm_title = mysql_real_escape_string($frm_title);
-$frm_comment = mysql_real_escape_string($frm_comment);
+$frm_script = mysql_real_escape_string($frm_script, $link);
+$frm_title = mysql_real_escape_string($frm_title, $link);
+$frm_comment = mysql_real_escape_string($frm_comment, $link);
 //echo "<b>*$version*</b>";
 
 $query="INSERT INTO tbscript (id, code, title, comments,create_dt,versionnr,user_id,module_id,isaview,isapackage) VALUES('','$frm_script', '$frm_title','$frm_comment',NOW(),$version,$userid,$frm_moduleid,$frm_isaview,$frm_isapackage);";
