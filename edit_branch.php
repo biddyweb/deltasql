@@ -20,7 +20,7 @@ if ($rights<2) die("<b>Not enough rights to edit a branch</b>");
 
 <?php
 include("conf/config.inc.php");
-$id=$_GET['id'];
+if (!isset($_GET['id'])) $id=''; else $id=$_GET['id'];
 
 if ($id!="") {
     // on the second call ID is empty
@@ -38,15 +38,15 @@ if ($id!="") {
 }    
 ?>
 
-<h2>Edit Branch or Tag "<?php echo "$name"; ?>"</h2>
+<h2>Edit Branch or Tag "<?php if (isset($name)) echo "$name"; ?>"</h2>
 <form action="edit_branch.php" method="post">
 Description:<br>
 <textarea name="description" rows="10" cols="70">
-<?php echo "$description";  ?>
+<?php if (isset($description)) echo "$description";  ?>
 </textarea>
 <br>
 <?php
-echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
+ if (isset($branchid)) echo "<input type=\"hidden\" name=\"branchid\"  value=\"$branchid\">";
 ?>
 <input type="Submit" value="Save">
 </form>
