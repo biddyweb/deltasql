@@ -198,7 +198,7 @@ $scriptid=mysql_result($result2,0,"id");
    $branchid=mysql_result($result3,$i,"id");
    $branchname=mysql_result($result3,$i,"name");
    
-   $branchnamepost = $_POST["BRANCH_$branchid"];
+   if (isset($_POST["BRANCH_$branchid"])) $branchnamepost = $_POST["BRANCH_$branchid"]; else $branchnamepost = ""; 
    if ($branchnamepost=="1") {
       //echo "<b>$scriptid $branchid $branchname</b> ";
       $query3="INSERT INTO tbscriptbranch (id, script_id, branch_id) VALUES ('', $scriptid, $branchid);";
@@ -252,7 +252,6 @@ else {
   $_SESSION["scriptoffset"] = 0;
   js_redirect("list_scripts.php");
 } 
- 
  ?>
 
 </body>

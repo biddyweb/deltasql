@@ -19,7 +19,7 @@ $user = $_SESSION["username"];
 $userid = $_SESSION["userid"];
 if ($rights<1) die("<b>Not enough rights to edit a database script.</b>");
 
-$paramscriptid=$_GET['id'];
+if (isset($_GET['id'])) $paramscriptid=$_GET['id']; else $paramscriptid="";
 // retrieve the script information
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
@@ -45,7 +45,7 @@ if ($paramscriptid!="") {
 <table>
 <tr>
 <td>Title:</td>
-<td><input type="text" name="title" value="<?php echo "$ptitle"; ?>" size="120"></td>
+<td><input type="text" name="title" value="<?php if (!isset($_POST['script'])) echo "$ptitle"; ?>" size="120"></td>
 </tr>
 <tr>
 <td>Author:</td> 
@@ -57,6 +57,7 @@ if ($paramscriptid!="") {
 <td>Module:</td>
 <td>
 <?php
+ if (!isset($_POST['script']))  {
  echo "<select NAME=\"frmmoduleid\">";
  $query6="SELECT * FROM tbmodule ORDER BY name ASC";
  $result6=mysql_query($query6);
@@ -112,21 +113,24 @@ ASC";
  echo "</tr>";
 
  mysql_close();
+ } //!isset
 ?>
 
 </table>
 Script:<br>
 <textarea name="script" rows="20" cols="<?php echo "$wide_textarea_chars"; ?>">
-<?php echo "$pscript"; ?>
+<?php if (!isset($_POST['script'])) echo "$pscript"; ?>
 </textarea><br>
 Comments:<br>
 <textarea name="comment" rows="2" cols="<?php echo "$wide_textarea_chars"; ?>">
-<?php echo "$pcomments"; ?>
+<?php if (!isset($_POST['script'])) echo "$pcomments"; ?>
 </textarea>
 <br>
 <?php
-echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\" />";
-echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest version number to the edited script (use with care!)";
+if (!isset($_POST['script'])) {
+	echo "<input type=\"hidden\" name=\"scriptid\"  value=\"$paramscriptid\" />";
+	echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest version number to the edited script (use with care!)";
+}
 ?>
 <br>
 <br>
@@ -138,21 +142,25 @@ echo "<input name=\"frmincversion\" type=\"checkbox\" value=\"1\" />Give latest 
 <?php
 if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;
 
-$frm_comment=$_POST['comment'];
-$frm_moduleid=$_POST['frmmoduleid'];
-$frm_title=$_POST['title'];
-$frm_scriptid=$_POST['scriptid'];
-$frm_isaview=$_POST['frmisaview'];
-$frm_isapackage=$_POST['frmisapackage'];
-$frm_incversion=$_POST['frmincversion'];
+if (isset($_POST['comment'])) $frm_comment=$_POST['comment']; else $frm_comment="";
+if (isset($_POST['frmmoduleid'])) $frm_moduleid=$_POST['frmmoduleid']; else $frm_moduleid="";
+if (isset($_POST['title'])) $frm_title=$_POST['title']; else $frm_title="";
+if (isset($_POST['scriptid'])) $frm_scriptid=$_POST['scriptid']; else $frm_scriptid="";
+if (isset($_POST['frmisaview'])) $frm_isaview=$_POST['frmisaview']; else $frm_isaview="";
+if (isset($_POST['frmisapackage'])) $frm_isapackage=$_POST['frmisapackage']; else $frm_isapackage="";
+if (isset($_POST['frmincversion'])) $frm_incversion=$_POST['frmincversion']; else $frm_incversion="";
 if ($frm_isaview=="") $frm_isaview=0;
 if ($frm_isapackage=="") $frm_isapackage=0;
 
 //echo "<p>";
 // echo "*$frm_script* *$frm_comment* *$frm_moduleid* *$frm_title* *$userid* *$version*";
 //echo "</p>";
-mysql_connect($dbserver, $username, $password);
+$link=mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+
+$frm_script = mysql_real_escape_string($frm_script, $link);
+$frm_title = mysql_real_escape_string($frm_title, $link);
+$frm_comment = mysql_real_escape_string($frm_comment, $link);
 
 // 0. Copy script to changelog
 copy_script_to_changelog($frm_scriptid);
@@ -188,7 +196,7 @@ while ($i<$num3) {
    $branchid=mysql_result($result3,$i,"id");
    $branchname=mysql_result($result3,$i,"name");
    
-   $branchnamepost = $_POST["BRANCH_$branchid"];
+   if (isset($_POST["BRANCH_$branchid"])) $branchnamepost = $_POST["BRANCH_$branchid"]; else $branchnamepost="";
    if ($branchnamepost=="1") {
       //echo "<b>$scriptid $branchid $branchname</b> ";
       $query4="INSERT INTO tbscriptbranch (id, script_id, branch_id) VALUES ('', $frm_scriptid, $branchid);";
