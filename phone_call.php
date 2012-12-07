@@ -1,5 +1,5 @@
 <?php
-// this php script is used only by deltasql.org
+// this php script is used only by deltasql.sourceforge.net
 include("conf/config.inc.php");
 include("usage_stats.inc.php");
 

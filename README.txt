@@ -1,9 +1,9 @@
-Point your browser to http://www.deltasql.org/deltasql/manual.php
+Point your browser to http://deltasql.sourceforge.net/deltasql/manual.php
 to get started. 
 
 deltasql is (c) 2007-2011 the Deltasql Development Team
   contact us at gpu-world@lists.sourceforge.net
-          http://www.deltasql.org
+          http://deltasql.sourceforge.net
 
 The deltasql code is released under the terms and conditions of the Gnu Public License.
 You should read and understand the document in the docs subfolder

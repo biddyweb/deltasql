@@ -64,7 +64,7 @@ function phone_home() {
   
   $timeout = 6;
   $old = ini_set('default_socket_timeout', $timeout);
-  $handle = fopen("http://www.deltasql.org/deltasql/phone_call.php?nbscripts=$nbscripts&nbmodules=$nbmodules&nbprojects=$nbprojects&nbbranches=$nbbranches&nbsyncs=$nbsyncs&nbusers=$nbusers&nbmp=$nbmp&nbsb=$nbsb&version=$deltasql_version", 'r');
+  $handle = fopen("http://deltasql.sourceforge.net/deltasql/phone_call.php?nbscripts=$nbscripts&nbmodules=$nbmodules&nbprojects=$nbprojects&nbbranches=$nbbranches&nbsyncs=$nbsyncs&nbusers=$nbusers&nbmp=$nbmp&nbsb=$nbsb&version=$deltasql_version", 'r');
   ini_set('default_socket_timeout', $old);
   stream_set_timeout($handle, $timeout);
   stream_set_blocking($handle, 0); 

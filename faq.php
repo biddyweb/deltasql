@@ -161,7 +161,7 @@ Yes, there is one in the <a href="manual.php#quickguide">manual</a>.
 
 <h3><a name="test"></a>Where can I try out and experiment with deltasql?</h3>
 <p>
-Deltasql can be tested on <a href="http://www.deltasql.org/deltasql/">this page</a>. On the login page
+Deltasql can be tested on <a href="http://deltasql.sourceforge.net/deltasql/">this page</a>. On the login page
  the password for the administrator is provided. Feel free to experiment with this instance of deltasql. From time
   to time, the database is restored to an initial status, so that you can not break anything.
 </p>
@@ -175,14 +175,14 @@ Deltasql can be downloaded at sourceforge.net <a href="http://sourceforge.net/pr
 
 <h3><a name="upgrade"></a>There is a new deltasql version, how do I upgrade?</h3>
 <p>
-First, read through the <a href="http://www.deltasql.org/deltasql/docs/ChangeLog.txt">Changelog</a> to see if there is something interesting, or if some
+First, read through the <a href="http://deltasql.sourceforge.net/deltasql/docs/ChangeLog.txt">Changelog</a> to see if there is something interesting, or if some
  bug is fixed.  Then, simply download from the <a href="http://sourceforge.net/projects/deltasql/files">webpage</a> the latest
   deltasql package and unzip (or untar) it at the same place where you installed it. The published package will not overwrite
    your <tt>conf/config.inc.php</tt> file, and everything should still work as expected.
 </p>
 <p>
 Occasionally, the schema of deltasql itself changes: to retrieve the script to be applied to the deltasql database schema you can visit this 
-<a href="http://www.deltasql.org/deltasql/dbsync.php">synchronization form</a> and select as project <tt>deltasql-Server</tt>. Select the From: and To: fields as well. As an example, if you upgrade
+<a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">synchronization form</a> and select as project <tt>deltasql-Server</tt>. Select the From: and To: fields as well. As an example, if you upgrade
  from 1.3.0 to 1.3.3, set in From: <tt>TAG_deltasql_1.3.0</tt> and in To: <tt>TAG_deltasql_1.3.3</tt>. Then click on the <b>Generate Script</b> button.
   Now, you'll need to apply the generated script into your deltasql server instance.
 </p>

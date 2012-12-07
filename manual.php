@@ -129,7 +129,7 @@ the exact database state is known only to the database owner.</p><br>
  if ($enterprise_edition==false) {
 	echo "<p>If you find the project useful, or if you use deltasql for managing your Open Source project, ";
 	echo "you are encouraged to add this button <img src=\"pictures/deltasql-button.jpg\" border=0> to your homepage. Link it to ";
-	echo "the project wiki at <a href=\"http://www.deltasql.org/wiki/\">http://www.deltasql.org/wiki/</a>."; 
+	echo "the project page at <a href=\"http://deltasql.sourceforge.net\">http://deltasql.sourceforge.net</a>."; 
 	echo "This might bring some additional traffic and maybe involve others in the project who will improve the quality of ";
 	echo "this software. Thanks! </p>";
  }	
@@ -148,8 +148,7 @@ version might work as well. Then you should install XAMPP. Using the <i>XAMPP Co
 </p>
 
 <p>Of course, XAMPP is not a strict requirement, just a good entry point for newbies. 
-Almost all Linux distributions come with options to install Apache, Apache PHP module and a mySQL database. deltasql works with them as well. deltasql.org
- runs on a Linux Ubuntu distribution with Apache 2.2, PHP 5.2.3 and mySQL 5.0.</p>
+Almost all Linux distributions come with options to install Apache, Apache PHP module and a mySQL database. deltasql works with them as well.</p>
 
 <p>
 As next step, download the <a href="http://sourceforge.net/projects/deltasql">deltasql PHP scripts</a>, unzip them and copy
@@ -189,7 +188,7 @@ If the deltasql server is published on the Internet, you should also modify the 
 <a href="http://localhost/phpmyadmin">http://localhost/phpmyadmin</a>. 
 Execute the SQL script with the phpMyAdmin interface. It will create a <code>deltasql</code> database.</p>.
 
-<p>If you did all steps right, you should get a working deltasql Server as in <a href="http://www.deltasql.org/deltasql">this webpage</a> if you visit
+<p>If you did all steps right, you should get a working deltasql Server as in <a href="http://deltasql.sourceforge.net/deltasql">this webpage</a> if you visit
 <a href="http://localhost/deltasql">http://localhost/deltasql</a>
 </p>
 
@@ -226,7 +225,7 @@ At startup, deltaclient will download all projects and branches which are curren
 <img src="pictures/deltaclient-2.png" border="0">
 </center>
 
-<p>The url setting should point to your inhouse deltasql server. For testing purposes, you can leave the predefined "www.deltasql.org/deltasql" value, just to see how deltaclient behaves.</p>
+<p>The url setting should point to your inhouse deltasql server. For testing purposes, you can leave the predefined "deltasql.sourceforge.net/deltasql" value, just to see how deltaclient behaves.</p>
 
 <p>Instead of notepad, you can also define another editor to view SQL scripts such as <a href="http://notepad-plus-plus.org/">Notepad++</a>, Ultraedit or similar.
 
@@ -728,8 +727,8 @@ Upgrades from production schemas (following branches) to development schemas (fo
    dynamically the branches based on the project name, as it is done with the freepascal deltaclient.</p>
 <pre>
 Examples:
-http://www.deltasql.org/deltasql/dbsync_list_projects.php
-http://www.deltasql.org/deltasql/dbsync_list_branches.php
+http://deltasql.sourceforge.net/deltasql/dbsync_list_projects.php
+http://deltasql.sourceforge.net/deltasql/dbsync_list_branches.php
 </pre>   
 </li>
 <li>1. Connect to the database schema and retrieve project name, version and branch</li>

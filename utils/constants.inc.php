@@ -22,7 +22,7 @@ $scriptsonrssfeed=20;
 
 // number of scripts on
 // wide of textarea field in chars in submit_script.php and edit_script.php
-$wide_textarea_chars=140;
+$wide_textarea_chars=180;
 
 // administrator login for test instance
 $admin_user="admin";

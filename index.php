@@ -65,10 +65,10 @@ if (file_exists($configurationfile)) {
 	if  ((!$test_system) && ($tagname!="TAG_deltasql_$ds_schema_version")) {
 	      if ($tagname=="") $tagname="TAG_deltasql_1.3.?";
 	      echo "<p><b><font color=\"red\">Deltasql database schema needs to be upgraded! The database needs to be tagged with TAG_deltasql_$ds_schema_version.</b></font></p>";
-		  echo "<p>Please visit the <a href=\"http://www.deltasql.org/deltasql/dbsync.php\">synchronization page on deltasql.org</a>, ";
+		  echo "<p>Please visit the <a href=\"http://deltasql.sourceforge.net/deltasql/dbsync.php\">synchronization page on deltasql.sourceforge.net</a>, ";
 		  echo " set as parameters <b>Project Name: deltasql-Server</b>, <b>From: $tagname</b>, <b>Update To: TAG_deltasql_$ds_schema_version</b>, leave the <b>Version Number:</b> field empty ";
 		  echo " and hit the synchronization button at the bottom. Then execute the generated script into the deltasql schema to solve this issue. </p>";
-		  echo "<p>If deltasql.org should be offline for whatever reason, use the script <tt>db/migration_path.sql</tt> instead and figure out what it does.</p>";
+		  echo "<p>If deltasql.sourceforge.net should be offline for whatever reason, use the script <tt>db/migration_path.sql</tt> instead and figure out what it does.</p>";
 		  echo "<p>If you are developing deltasql or you patched it, you might want to disable this error by setting the <b>test_system</b> variable in  ";
 		  echo "<i>$configurationfile</i> to true.";
 		  
@@ -79,7 +79,7 @@ if (file_exists($configurationfile)) {
     mysql_close();
     echo "<h2>deltasql server ";
 	//Enables link to homepage, disabled as don't know how long deltasql will stay up
-	//echo "<a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
+	//echo "<a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
     echo "<a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
     
 	if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
@@ -185,7 +185,6 @@ if ($displayhelp==1)  {
 <li><a href="http://sourceforge.net/p/deltasql/discussion/" target=_blank>Forum...</a></li>
 <?php
 if ($enterprise_edition==false) {
-    echo "<li><a href=\"http://www.deltasql.org/wiki/\" target=_blank>Wiki...</a></li>";
     if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list...</a></li>";
 	if ($rights==3) echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
 	echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
@@ -193,9 +192,9 @@ if ($enterprise_edition==false) {
     echo "<li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
 }
 
-if ($rights==3) {
-        echo "<li><a href=\"phpinfo.php\">PHP Version Info</a></li>";
-}
+//if ($rights==3) {
+//        echo "<li><a href=\"phpinfo.php\">PHP Version Info</a></li>";
+//}
 ?>
 </ul>
 </td>
@@ -227,7 +226,7 @@ if ($rights==3) {
 <center>
 <?php
 if ($enterprise_edition==true)
-  echo "<a href=\"http://www.deltasql.org\"><img src=\"pictures/deltasql-small.png\" border=0></a>";
+  echo "<a href=\"http://deltasql.sourceforge.net\"><img src=\"pictures/deltasql-small.png\" border=0></a>";
 ?>
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/project/memberlist.php?group_id=212117">deltasql Team</a>. 
@@ -238,7 +237,7 @@ if (file_exists($configurationfile)) {
  } else {
    echo "Patrizia Pulice Cascio. ";
  } 
- echo "The changelog is <a href=\"http://www.deltasql.org/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">here</a>. ";
+ echo "The latest changelog is <a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">here</a>. ";
  if ($patchlevel!="") {
     echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
  }	
@@ -247,7 +246,7 @@ if (file_exists($configurationfile)) {
  echo "</center>";
 
  // Stats for Google Analytics
- if ($dns_name=="http://www.deltasql.org/deltasql") {
+ if ($dns_name=="http://deltasql.sourceforge.net/deltasql") {
  echo '
  <script type="text/javascript">
  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

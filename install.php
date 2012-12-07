@@ -88,9 +88,6 @@ For the rest, most people can probably leave with the defaults. You can disable 
 You can choose to show the table with the deltasql clients on the main page as well. And you can have a system with test data, and where the admin password is displayed at login,
  for users to experiment with deltasql, or to check deltasql correctness.
 </p>
-<p>
-If you enable to send usage statistics to deltasql.org, then after 100 scripts inserted, deltasql.org receives how many scripts there were in your deltasql instance.
-</p>
 <table>
 
 <tr><td>Show deltasql clients on main page: </td>

@@ -6,7 +6,7 @@ include("utils/constants.inc.php");
 include("conf/config.inc.php");
 
 // Stats for Google Analytics
- if ($dns_name=="http://www.deltasql.org/deltasql") {
+ if ($dns_name=="http://deltasql.sourceforge.net/deltasql") {
  echo '
  <script type="text/javascript">
  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -24,9 +24,9 @@ include("conf/config.inc.php");
 if (isset($_GET['version'])) $version=$_GET['version']; else $version="unknown";
 echo "<h2>Latest ChangeLog for $deltasql_version</h2>";
 if ($version==$deltasql_version) {
-  echo "<i>$deltasql_version is currently the latest available release from www.deltasql.org.</i>";
+  echo "<i>$deltasql_version is currently the latest available release from deltasql.sourceforge.net.</i>";
 } else {
-  echo "<i>Your deltasql server version is $version. A newer version $deltasql_version is available from www.deltasql.org. Read below for the latest changes...</i>";
+  echo "<i>Your deltasql server version is $version. A newer version $deltasql_version is available from deltasql.sourceforge.net. Read below for the latest changes...</i>";
 }
 echo "<hr>";
 ?>
@@ -36,7 +36,7 @@ echo "<hr>";
 </pre>
 
 <?php
-if (($dns_name=="http://www.deltasql.org/deltasql") && ($version!="unknown")) {
+if (($dns_name=="http://deltasql.sourceforge.net/deltasql") && ($version!="unknown")) {
   $ip        = $_SERVER['REMOTE_ADDR'];
   $port      = $_SERVER['REMOTE_PORT'];
   $referrer  = $_SERVER['HTTP_REFERER'];
@@ -50,8 +50,8 @@ if (($dns_name=="http://www.deltasql.org/deltasql") && ($version!="unknown")) {
   $bras = $_GET['bras'];
   if ($bras=="") $bras=-1;
   
-  if (($referrer!="http://www.deltasql.org/deltasql/") &&
-      ($referrer!="http://www.deltasql.org/deltasql/index.php") &&
+  if (($referrer!="http://deltasql.sourceforge.net/deltasql/") &&
+      ($referrer!="http://deltasql.sourceforge.net/deltasql/index.php") &&
 	  ($referrer!=""))   {
      mysql_connect($dbserver, $username, $password);
      @mysql_select_db($database) or die("Unable to select database");

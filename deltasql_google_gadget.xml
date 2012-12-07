@@ -2,10 +2,9 @@
 <Module>  
 <ModulePrefs title="deltasql Latest Scripts" height="300" author="HB9TVM" 
 author_email="tiziano.mengotti@gmail.com" 
-title_url="http://www.deltasql.org" 
-screenshot="http://www.deltasql.org/deltasql/pictures/deltasql-google-gadget.png" 
-thumbnail="http://www.deltasql.org/deltasql/pictures/Thumbnail-deltasql.png" 
-author_photo="http://www.gpu-grid.net/viretiz/calibra.png"  
+title_url="http://deltasql.sourceforge.net" 
+screenshot="http://deltasql.sourceforge.net/deltasql/pictures/deltasql-google-gadget.png" 
+thumbnail="http://deltasql.sourceforge.net/deltasql/pictures/Thumbnail-deltasql.png" 
 	author_link="http://www.advogato.org/person/dangermaus" 
 	author_quote="Freedom light my fire" 
 description="This is the official deltasql gadget that shows the latest scripts submitted to the deltasql server."
@@ -15,7 +14,7 @@ description="This is the official deltasql gadget that shows the latest scripts 
 </ModulePrefs>   
 
 <UserPref urlparam="_urldeltasql" name="urldeltasql" display_name="URL of deltasql server:"
-            datatype="string" default_value="http://www.deltasql.org/deltasql" required="true"/>
+            datatype="string" default_value="http://deltasql.sourceforge.net/deltasql" required="true"/>
 <UserPref name="numentries" display_name="Number of scripts:" default_value="10"/>  
  <UserPref name="fontsize" display_name="Font size:" default_value="2"/>  
 <Content type="url" href="__UP_urldeltasql__/deltasql_google_gadget.php" />
