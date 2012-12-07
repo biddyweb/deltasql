@@ -19,7 +19,6 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 	<li><a href="#install-deltaclient">How to install deltaclient (optional)</a></li>
 	<li><a href="#install-dbredactor-client">How to install dbredactor client (optional)</a></li>
     <li><a href="#install-ant-client">How to install the ant client into Eclipse (optional)</a></li>
-    <li><a href="#install-google-gadget">How to install the Google Gadget (optional)</a></li>
 	<li><a href="#install-bash">How to install the bash client to achieve continouus integration (optional)</a></li>
         <li><a href="#install-pyclient">How to install the Python deltasql client (optional)</a></li>
 </ul>
@@ -276,35 +275,6 @@ Copy deltasql-build.xml into the Eclipse
 <p>
 Et voilà, now you should have a working ant client. By pressing on "RetrieveUpdates" you will receive the script with the latest db updates. The ant client
  is also easy to integrate in an existing build.xml!
-</p>
-
-<h3><a name="install-google-gadget"></a>How to install the Google Gadget (optional step)</h3>
-<center>
-<img src="pictures/deltasql-google-gadget.png" border="0"><br>
-<i>Picture: </i>the Google Gadget of deltasql showing the latest submitted scripts
-</center>
-
-<p>
-Purpose of the Google Gadget is to display the latest submitted scripts on your iGoogle start page.
-</p>
-<p>
-To install the Google Gadget is fairly simple: just click on the following button: 
-<a href="http://www.google.ch/ig/adde?hl=en&moduleurl=http://www.gpu-grid.net/deltasql/deltasql_google_gadget.xml&source=imag" target=_blank><img src="pictures/add_google_gadget.gif" border="0" /></a>.
-A new page will open. Follow instructions there to get the deltasql gadget on your iGoogle start page. 
-</p>
-<p>
-After that, the Google Gadget still points to the deltasql server which is used as showcase for new users. With the arrow that points down on the top right of the deltasql gadget, 
-you should choose the menu entry "Change settings", and enter an URL that points to your local deltasql install. Look at the screenshot:
-</p>
-<center>
-<img src="pictures/gadget-change-settings.png" border="0"><br>
-</center>
-
-<p>
-Finally, remember to save your settings. <b>If deleting cookies forces you to reenter each time a new URL</b>, just modify the <tt>default_value</tt> string in <tt>deltasql/deltasql_google_gadget.xml</tt>.
-</p>
-<p>
-For an explanation of what coloured rows in the gadget mean, see this <a href="faq.php#colors">F.A.Q. question</a>.
 </p>
 
 <h3><a name="install-bash"></a>How to install the bash client (optional)</h3>

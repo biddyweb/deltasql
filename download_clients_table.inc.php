@@ -23,8 +23,5 @@ href="clients/bash_client.tar.gz">download...</a></center></td></tr>
 <tr><td><b>dbredactor</b></td><td><a href="manual.php#install-dbredactor-client"><img src="icons/help.png"></a></td><td>Eclipse (Java, Ant)</td><td>Retrieves version directly from db schema and shows synchronization script from deltasql server (for MySQL, PostgreSQL, Oracle, MS SQL Server and Sybase). JDBC driver is included.</td><td><?php echo "$dbredactor_version"; ?></td><td><a href="clients/java/dbredactor.zip"><center>download...</center></a></td></tr>
 
 <tr><td><b>pyclient</b></td><td><a href="manual.php#install-pyclient"><img src="icons/help.png"></a></td><td>Python (Linux)</td><td>This simple Python script retrieves version directly from db schema and shows synchronization script from deltasql server or executes it into schema depending on configuration (for MySQL only). </td><td><?php echo "$pyclient_version"; ?></td><td><a href="clients/python/pyclient.tar.gz"><center>download...</center></a></td></tr>
-
-<tr><td><b>latest scripts</b></td><td><a href="manual.php#install-google-gadget"><img src="icons/help.png"></a></td><td>Google Gadget</td><td>This Google Gadget shows latest scripts on your deltasql server on your iGoogle homepage.</td><td><?php echo "$gadget_version"; ?></td><td><a href="http://www.google.ch/ig/adde?hl=en&moduleurl=http://www.gpu-grid.net/deltasql/deltasql_google_gadget.xml&source=imag" target=_blank><img src="pictures/add_google_gadget.gif" border="0" /></a>
-</td></tr>
 </table>
 </center>
