@@ -47,7 +47,7 @@ include("utils/constants.inc.php");
 <li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#scripttitle">All scripts are titled "db update". Where can I change this default?</a></li>
-<li><a href="#colors">What do the colored rows mean in the 'List scripts' view and on the Google Gadget?</a></li>
+<li><a href="#colors">What do the colored rows mean in the 'List scripts' view?</a></li>
 <li><a href="#lost">I lost the admin password, what can I do to restore access to deltasql?</a></li>
 <li><a href="#slow">deltasql server has more than 2000 scripts and starts to get slow. How can I increase its performance?</a></li>
 <li><a href="#email">How can I configure email notification for new scripts?</a></li>
@@ -467,7 +467,7 @@ You can change the variable <tt>$default_script_title</tt> in the file <tt>confi
 </p>
 
 
-<h3><a name="colors"></a>What do the colored rows mean in the 'List scripts' view and on the Google Gadget?</h3>
+<h3><a name="colors"></a>What do the colored rows mean in the 'List scripts' view?</h3>
 <p>
 The colored rows just show how old the first submission of a script was. The row is green if the script
  was submitted in the last 20 minutes, yellow if it is less than 5 hours old and blue if it is less than one day old.
