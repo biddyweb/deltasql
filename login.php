@@ -40,7 +40,7 @@ include("conf/config.inc.php");
 </form>
 
 <?php
-if ($dns_name=="http://www.deltasql.org/deltasql") {
+if ($dns_name=="http://deltasql.sourceforge.net/deltasql") {
 	echo "<p><img src=\"icons/help.png\"> This is a test system. Login with user <b>admin</b> with password <b>testdbsync</b> to test all functionality.</p>";
 }
 ?>
