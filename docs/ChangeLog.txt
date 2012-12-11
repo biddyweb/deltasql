@@ -1,3 +1,11 @@
+*******************************
+1.5.5 Release Notes (1.1.2013)
+
+ Maintenance release: more deltasql fixes to work with PHP 5.3 (as XAMPP ships it by default now),
+                      moving deltasql url from www.deltasql.org to deltasql.sourceforge.net
+ 
+*******************************
+
 7.12.2012 git
 Patch 2: changing all URLs from www.deltasql.org to deltasql.sourceforge.net
 - removal of Google Gadget as Google does not support them anymore
