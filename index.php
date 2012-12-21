@@ -235,7 +235,7 @@ if (file_exists($configurationfile)) {
  if ($enterprise_edition==false) {
    echo " The deltasql logo was designed by <a href=\"patrizia.php\">Patrizia Pulice Cascio</a>. ";
  } else {
-   echo "Patrizia Pulice Cascio. ";
+   echo " The deltasql logo was designed by Patrizia Pulice Cascio. ";
  } 
  echo "The latest changelog is <a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">here</a>. ";
  if ($patchlevel!="") {
