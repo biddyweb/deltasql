@@ -208,7 +208,7 @@ First, you need to install a git client. On Windows, you can use <a href="http:/
  On Gentoo, run <tt>emerge -av git</tt>. On Ubuntu, run <tt>sudo apt-get install git-core</tt>.
 </p>
 <p>
-The command to checkout the deltasql repository is: <tt>git clone git://deltasql.git.sourceforge.net/gitroot/deltasql/deltasql</tt>.
+The command to checkout the deltasql repository is: <tt>git clone git://git.code.sourceforge.net/p/deltasql/code deltasql-code</tt>.
  To keep the repository updated, run from time to time <tt>git pull</tt>.
 </p>
 
