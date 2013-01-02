@@ -26,9 +26,9 @@ schemas.</p>
 href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/" 
 target=_blank >Tutorial movies
 </a></li>
-<li><a href="http://www.deltasql.org/deltasql/manual.php">Manual</a></li>
-<li><a href="http://www.deltasql.org/deltasql/faq.php">FAQ</a></li>
-<li><a href="http://www.deltasql.org/deltasql/">Test deltasql online</a></li>
+<li><a href="deltasql/manual.php">Manual</a></li>
+<li><a href="deltasql/faq.php">FAQ</a></li>
+<li><a href="deltasql/">Test deltasql online</a></li>
 <li><a href="http://sourceforge.net/projects/deltasql/files/">Download deltasql</a></li>
 <li><a href="http://sourceforge.net/projects/deltasql/">Project 
 page</a></li>
