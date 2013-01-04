@@ -1,3 +1,7 @@
+4.1.2013 git
+
+- removed strict index warning from Add Module to Project
+
 *******************************
 1.5.5 Release Notes (1.1.2013)
 

@@ -14,8 +14,8 @@ include("utils/utils.inc.php");
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to add a module to the project.</b>");
 
-$projectid = $_GET['id'];
-$projectname = $_GET['name'];
+if (!isset($_GET['id'])) $projectid=''; else $projectid = $_GET['id'];
+if (!isset($_GET['name'])) $projectname=''; else $projectname = $_GET['name'];
 
 ?>
 <h2>Insert a new database module to the project <?php echo "$projectname";?></h2>
