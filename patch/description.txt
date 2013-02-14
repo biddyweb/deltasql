@@ -1,1 +1,1 @@
-No patch applied.
+Patch 1: This patch removes a strict index warning when adding a module to a project.
