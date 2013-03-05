@@ -4,6 +4,10 @@ function getparam($name, $default) {
  if (isset($_GET["$name"])) return $_GET["$name"]; else return $default;
 }
 
+function create_unique_id() {
+    return md5( uniqid (rand(), true));
+}
+
 function get_parameter_default($paramtype, $paramname, $userid, $defaultparam) {
   if ($userid=="") $userquery="AND user_id IS NULL";
   else $userquery="AND user_id=$userid";
