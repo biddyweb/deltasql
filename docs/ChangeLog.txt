@@ -1,5 +1,9 @@
-4.1.2013 git
+5.3.2013
+Migrating stuff from GPU server:
+- added sql2xml utils by Darko Bunic
+- added some utils to retrieve params and create unique ids 
 
+4.1.2013 Patch 1 patch_1_add_module_to_project.zip
 - removed strict index warning from Add Module to Project
 
 *******************************
