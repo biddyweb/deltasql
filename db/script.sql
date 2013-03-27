@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `tbscript` (
   `update_dt` datetime DEFAULT NULL,
   `update_user` varchar(64) COLLATE latin1_general_ci DEFAULT NULL,
   `comments` longtext COLLATE latin1_general_ci,
-  `title` varchar(64) COLLATE latin1_general_ci DEFAULT NULL,
+  `title` varchar(128) COLLATE latin1_general_ci DEFAULT NULL,
   `isapackage` tinyint(1) NOT NULL DEFAULT '0',
   `isaview` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),

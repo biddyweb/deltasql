@@ -8,7 +8,7 @@ CREATE TABLE `tbscript` (
   `update_dt` datetime NULL,
   `update_user` VARCHAR( 64 ) NULL, 
   `comments` longtext collate latin1_general_ci,
-  `title` varchar(64) collate latin1_general_ci default NULL,
+  `title` varchar(128) collate latin1_general_ci default NULL,
   `isapackage` tinyint(1) NOT NULL default '0',
   `isaview` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`),

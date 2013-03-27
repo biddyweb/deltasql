@@ -241,4 +241,7 @@ INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_U
 VALUES ('deltasql-Server', 242, 'HEAD', 'TAG_deltasql_1.5.0', 'admin', 'deltasql-server', 222, 'HEAD', 'mySQL');
 -- all scripts to reach db HEAD beginning from version 242 on date 2012-03-05 08:46:25
 
+ALTER TABLE  `tbscript` CHANGE  `title`  `title` VARCHAR( 128 ) CHARACTER SET latin1 COLLATE latin1_general_ci NULL DEFAULT NULL;
+
+
  

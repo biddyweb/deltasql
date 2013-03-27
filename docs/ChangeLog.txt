@@ -1,3 +1,6 @@
+27.3.2013
+- doubling wideness of field title in tbscript 
+
 5.3.2013
 Migrating stuff from GPU server:
 - added sql2xml utils by Darko Bunic
