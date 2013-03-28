@@ -1,3 +1,7 @@
+28.3.2013
+- removing old deltasql google gadget code
+- implementing form to export a project as XML or HTML (available only to project managers and administrators)
+
 27.3.2013
 - doubling wideness of field title in tbscript 
 
