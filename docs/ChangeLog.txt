@@ -1,9 +1,9 @@
 28.3.2013
-- removing old deltasql google gadget code
 - implementing form to export a project as XML or HTML (available only to project managers and administrators)
+- removing old deltasql google gadget code
 
 27.3.2013
-- doubling wideness of field title in tbscript 
+- doubling wideness of field title in tbscript (database version increased to 1.5.6)
 
 5.3.2013
 Migrating stuff from GPU server:

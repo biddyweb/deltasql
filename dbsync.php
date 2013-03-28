@@ -4,6 +4,7 @@
 <title>deltasql - Database Synchronization Form</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
+<body>
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
@@ -35,7 +36,6 @@ if (!isset($default_copypaste)) $default_copypaste=1;
 printCopyPasteJS($default_copypaste);
 ?>
 
-<body>
 <h1>Database Synchronization Form</h1>
 
 <p>1) First, make sure your database schema has a table called TBSYNCHRONIZE. If not, click on the <a href="list_projects.php">

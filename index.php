@@ -131,6 +131,9 @@ if ($rights>1)
 <br>
 <?php
 	if ($enable_server_stats) echo "<li><a href=\"server_stats.php\">Statistics</a></li>";
+	if ($rights>=2) {
+		echo "<br><li><a href=\"export_project.php\">Export Project</a></li>";
+	}
 ?>
 </ul>
 </td>
