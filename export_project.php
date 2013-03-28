@@ -44,5 +44,7 @@ This form exports all scripts belonging to a project in XML or HTML format for r
 </table>
 <input type="Submit" value="Export Project">
 </form>
+<hr>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>
