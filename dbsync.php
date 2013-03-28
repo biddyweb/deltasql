@@ -56,25 +56,12 @@ echo "</center>";
 
 <form action="dbsync_update.php" method="post">
 <?php
- echo "<table>";
- echo "<tr><td><b>Project Name:</b></td><td>";
- echo "<select NAME=\"frmprojectid\">";
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT * FROM tbproject ORDER BY name";
- $result=mysql_query($query);
- $num=mysql_numrows($result); 
  
- $i=0;
- if ($defaultprojectid=="") echo "<option VALUE=\"\" SELECTED> ";
- while ($i<$num) { 
-   $projectid=mysql_result($result,$i,"id");
-   $projectname=mysql_result($result,$i,"name");
-   echo "<option ";
-   if ($projectid==$defaultprojectid) echo "SELECTED ";
-   echo "VALUE=\"$projectid\">$projectname";
-   $i++;
- }
+ echo "<table>";
+ echo "<tr><td><b>Project Name:</b></td><td>";
+ printProjectComboBox($defaultprojectid);
  echo "</select>";
  echo "</td><td><i>= value in column projectname</i></td></tr>";
  

@@ -378,4 +378,23 @@ function empty_directory($dirname) {
     }
     closedir($dir_handle);
 }
+
+function printProjectComboBox($defaultprojectid) {
+ echo "<select NAME=\"frmprojectid\">";
+ $query="SELECT * FROM tbproject ORDER BY name";
+ $result=mysql_query($query);
+ $num=mysql_numrows($result); 
+ 
+ $i=0;
+ if ($defaultprojectid=="") echo "<option VALUE=\"\" SELECTED> ";
+ while ($i<$num) { 
+   $projectid=mysql_result($result,$i,"id");
+   $projectname=mysql_result($result,$i,"name");
+   echo "<option ";
+   if ($projectid==$defaultprojectid) echo "SELECTED ";
+   echo "VALUE=\"$projectid\">$projectname";
+   $i++;
+ }
+ echo "</select>";
+}
 ?>

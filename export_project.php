@@ -24,7 +24,25 @@ if ($rights<2) die('<b>Not enough rights to export a project</b>');
 <p>
 This form exports all scripts belonging to a project in XML or HTML format for reporting purposes, or to integrate information stored by deltasql into other tools.
 </p>  
-  
 
+<form action="export_project_execution.php" method="post">
+<?php  
+ echo "<table>";
+ echo "<tr><td><b>Project Name:</b></td><td>";
+ mysql_connect($dbserver, $username, $password);
+ @mysql_select_db($database) or die("Unable to select database");
+ printProjectComboBox('');
+ echo "</td></tr>";
+ mysql_close();
+ 
+ echo "<tr><td><b>Output Format:</b> </td>";
+ echo "<td>";
+ echo "<input type=\"radio\" name=\"formatgroup\" value=\"xml\" checked> XML";
+ echo "<input type=\"radio\" name=\"formatgroup\" value=\"html\"> HTML";
+ echo "</td></tr>";
+?> 
+</table>
+<input type="Submit" value="Export Project">
+</form>
 </body>
 </html>
