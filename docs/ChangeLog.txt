@@ -1,3 +1,6 @@
+2.4.2013
+- initial revision for export_project_execution.php
+
 28.3.2013
 - implementing form to export a project as XML or HTML (available only to project managers and administrators)
 - removing old deltasql google gadget code
