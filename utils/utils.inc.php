@@ -1,4 +1,9 @@
 <?php
+/*
+	General purpose utils
+	
+	(c) 2007-2013 HB9TVM and the deltasql team
+*/
 
 function getparam($name, $default) {
  if (isset($_GET["$name"])) return $_GET["$name"]; else return $default;

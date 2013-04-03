@@ -10,6 +10,7 @@ include("dbsync_currentversion.inc.php");
 include("utils/verification_scripts.inc.php");
 include("utils/zip.inc.php");
 include("utils/syncutils.inc.php");
+include("utils/timing.inc.php");
 
 function removeSyncPath($sessionid) {
   	 $delstr = "DELETE FROM tbscriptgeneration WHERE sessionid='$sessionid'";
@@ -61,6 +62,7 @@ function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $h
          $xmlformatted, $singlefiles, $debug) {
 
 include("conf/config.inc.php");	 
+$startwatch = start_watch();
 if (!isset($default_copypaste)) $default_copypaste=1;		 
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
 
@@ -290,8 +292,11 @@ if ($singlefiles=="0") {
 	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
 	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$tagname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";
 	
-	if (!$xmlformatted) $updatestring = "$updatestring\n-- all scripts to reach db $tobranchname beginning from version $toversionnr on date $update_dt\n\n";
-         
+	if (!$xmlformatted) $updatestring = "$updatestring\n-- all scripts to reach db $tobranchname beginning from version $toversionnr on date $update_dt\n";
+	
+	$stopwatch = stop_watch_string($startwatch);
+    $updatestring = "$updatestring-- synchronization script generated in $stopwatch seconds\n";
+	     
     // query for the usage statistics
 	$ip=$_SERVER['REMOTE_ADDR'];
 	$usagestring = "INSERT INTO tbsyncstats (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE, UPDATE_DT, IP)

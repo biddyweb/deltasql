@@ -4,6 +4,7 @@
 - docs: adding 3 FAQ question on project
 - reorganizing links on main page
 - raising next version to 1.6.0
+- adding timing utils to time page generation.
 
 2.4.2013 git
 - initial revision for export_project_execution.php

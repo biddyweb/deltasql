@@ -10,7 +10,10 @@
  include("head.inc.php");
  include("utils/constants.inc.php");
  include("utils/utils.inc.php");
+ include("utils/timing.inc.php");
  include("patch/patchlevel.inc.php");
+
+ $startwatch = start_watch(); 
  
  if (file_exists($configurationfile)) {
     include("conf/config.inc.php");
@@ -244,9 +247,10 @@ if (file_exists($configurationfile)) {
  } 
  echo "The latest changelog is <a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">here</a>. ";
  if ($patchlevel!="") {
-    echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>.";
+    echo "A description of the applied patch is <a href=\"patch/description.txt\">here</a>. ";
  }	
  }
+ stop_watch($startwatch);
  echo "</h6>";
  echo "</center>";
 

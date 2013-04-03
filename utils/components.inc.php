@@ -5,7 +5,6 @@
 	(c) 2007-2013 HB9TVM and the deltasql team
 */
 
-
 function printProjectComboBox($defaultprojectid) {
  echo "<select NAME=\"frmprojectid\">";
  $query="SELECT * FROM tbproject ORDER BY name";

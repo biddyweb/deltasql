@@ -17,6 +17,9 @@ echo "</style>";
 include("utils/utils.inc.php");
 include("utils/display.inc.php");
 include("utils/constants.inc.php");
+include("utils/timing.inc.php");
+$startwatch = start_watch();
+
 if (isset($_SESSION['scriptsperpage'])) $scriptsperpage=$_SESSION['scriptsperpage']; else $scriptsperpage=$default_scriptsperpage;
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
@@ -319,6 +322,7 @@ mysql_close();
 </table>
 <br>
 <hr>
-<a href="index.php"><img src="icons/home.png" /> Back to main menu</a>
+<a href="index.php"><img src="icons/home.png" /> Back to main menu</a><br>
+<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>";?>
 </body>
 </html>
