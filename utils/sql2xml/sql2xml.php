@@ -10,7 +10,7 @@
  */
  
 function sql2xml($sql, $level_list, $structure = 0) {
-    include("../conf/config.inc.php"); 
+    include("conf/config.inc.php"); 
 
 	// init variables for row processing
 	$row_current = $row_previous = null;

@@ -16,11 +16,20 @@
  $projectid = $_POST['frmprojectid'];
  $format    = $_POST['formatgroup'];
  
- //TODO: we could do a full export of deltasql scripts!
- if ($projectid=="") die("<b>Error: no projectname defined</b>");
+ // full deltasql export if projectid is not defined
+ if ($projectid=="") $projectclause=""; else $projectclause="and p.id=$projectid";
 
  if ($format=='html') prepare_XSLT();
  echo "<scripts>\n"; 
+ $level_list = Array("script");
+ sql2xml("select s.id, s.code, s.versionnr, s.title, s.create_dt, s.update_dt 
+          from tbscript s, tbmodule m, tbmoduleproject mp, tbproject p 
+          where 
+		  s.module_id=m.id 
+		  and mp.module_id=m.id and mp.project_id=p.id 
+		  $projectclause
+		  order by id asc;"
+		 , $level_list, 0);
  
   echo "</scripts>\n";
  if ($format=='html') apply_XSLT();
