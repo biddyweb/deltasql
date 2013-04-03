@@ -7,6 +7,8 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
+include("utils/timing.inc.php");
+$startwatch=start_watch();
 echo "<h1>Manual for deltasql $deltasql_version</h1>";
 ?>
 <h2>Summary</h2>
@@ -817,6 +819,7 @@ If you need help in setting up your own deltasql server,
 <p>Have fun!</p>
 
 <hr>
-<a href="index.php"><img src="icons/home.png"> Back to main page</a>
+<a href="index.php"><img src="icons/home.png"> Back to main page</a><br>
+<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

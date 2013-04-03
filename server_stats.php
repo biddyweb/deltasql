@@ -8,6 +8,9 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
+include("utils/timing.inc.php");
+$startwatch=start_watch();
+
 if (!file_exists($configurationfile)) die ("<h2><a href=\"install.php\">$installmessage</a></h2>"); else include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
@@ -35,6 +38,7 @@ if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplin
 if ($displayhelp==1)
   echo '<a href="faq.php#continouus"><img src="icons/help.png"> Is it possible to perform continouus database integration?</a></a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a><br>
+<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

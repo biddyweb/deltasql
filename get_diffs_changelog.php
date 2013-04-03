@@ -16,6 +16,8 @@ include("head.inc.php");
 include("diff.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+include("utils/timing.inc.php");
+$startwatch = start_watch();
 
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)
@@ -201,6 +203,7 @@ unlink($commentstofilename);
 
 mysql_close();
 ?>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
+<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a><br>
+<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>
