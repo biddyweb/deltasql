@@ -65,4 +65,17 @@ echo "</select><br><br>";
 }
 
 
+function echo_files_as_select_options($basedir) {
+ $dir_handle = @opendir("$basedir") or die("Unable to open $basedir");
+ while ($file = readdir($dir_handle)) 
+ {
+   if (($file=="README.txt") || ($file=="CVS")) continue;
+   if (($file!=".") && ($file!="..")) {
+        echo "<option VALUE=\"$file\">$file";
+   }  
+ }
+ closedir($dir_handle);
+}
+
+
 ?>

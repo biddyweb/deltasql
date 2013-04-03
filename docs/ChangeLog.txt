@@ -1,5 +1,5 @@
 3.4.2013
-- refactoring utils.inc.php
+- heavy refactoring utils.inc.php, splitting the file in several subfiles
 - extending export_project_execution.php to produce XML
 
 2.4.2013

@@ -100,31 +100,4 @@ echo "<b>Please <a href=\"login.php\">login</a></b><br>";
 echo "</center>";
 }
 
-
-function echo_files_as_select_options($basedir) {
- $dir_handle = @opendir("$basedir") or die("Unable to open $basedir");
- while ($file = readdir($dir_handle)) 
- {
-   if (($file=="README.txt") || ($file=="CVS")) continue;
-   if (($file!=".") && ($file!="..")) {
-        echo "<option VALUE=\"$file\">$file";
-   }  
- }
- closedir($dir_handle);
-}
-
-function empty_directory($dirname) {
-    if (is_dir($dirname))
-       $dir_handle = opendir($dirname);
-    if (!$dir_handle)
-       return false;
-    while($file = readdir($dir_handle)) {
-       if ($file != "." && $file != "..") {
-          if (!is_dir($dirname."/".$file))
-             unlink($dirname."/".$file); 
-       }
-    }
-    closedir($dir_handle);
-}
-
 ?>
