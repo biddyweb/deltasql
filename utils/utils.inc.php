@@ -113,59 +113,6 @@ function echo_files_as_select_options($basedir) {
  closedir($dir_handle);
 }
 
-
-function readFileToString($filename) {
-$output="";
-$file = fopen($filename, "r");
-while(!feof($file)) {
-
-    //read file line by line into variable
-  $output = $output . fgets($file, 4096);
- 
-}
-fclose ($file);
-return $output; 
-}
-
-
-function executeScripts($directory, $prefix, $howmany) {
-
-for ($i=1; $i<=$howmany; $i++) {
-  // a connection needs to be established
-  $query=readFileToString("$directory/$prefix$i.sql"); 
-  $result=mysql_query($query); 
-  if ($result==1) {
-    echo "Script $directory/$prefix$i.sql succesfully executed.<br>";
-  } else {
-    echo "Script $directory/$prefix$i.sql <b>failed</b>.<br>";
-  }
-}
-}
-
-function errormessage($msgid, $message, $xmlformatted, $htmlformatted) {
-    include("conf/config.inc.php");
-    $urlerror = "$dns_name/manual_errormessages.php#$msgid";
-    if ($htmlformatted)  {
-        die("<a href=\"$urlerror\">$msgid:$message</a>");
-    } 
-    else 
-    if ($xmlformatted)
-    {
-        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-        echo "<xml>\n";
-        echo "  <type>error</type>\n";
-        echo "  <msgerrorid>$msgid</msgerrorid>\n";       
-        echo "  <msgerror>![CDATA[$message]]</msgerror>\n";
-        echo "  <msglink>![CDATA[$urlerror]]</msglink>\n";
-        echo "</xml>\n";
-        die("");
-    } else {
-        if ($msgid==8) die ("$message"); // not really an error, just a comment that there are no scripts to be executed, see dbsync_update.inc.php
-        else
-        die("Error Number: $msgid\n Error Text: $message\n Error Explanation: $urlerror\n");
-    }
-}
-
 function color_row($date_now, $create_dt) {
 // conversion from mySQL to a PHP date
 preg_match ("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $create_dt, $regs);

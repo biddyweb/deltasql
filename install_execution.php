@@ -8,6 +8,7 @@
 include("head.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+include("utils/installutils.inc.php");
 
 $debug_output_script=false;
 

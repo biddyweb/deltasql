@@ -144,7 +144,29 @@ $i++; // $i=$i+1;
 return $num;
 }
 
-
+function errormessage($msgid, $message, $xmlformatted, $htmlformatted) {
+    include("conf/config.inc.php");
+    $urlerror = "$dns_name/manual_errormessages.php#$msgid";
+    if ($htmlformatted)  {
+        die("<a href=\"$urlerror\">$msgid:$message</a>");
+    } 
+    else 
+    if ($xmlformatted)
+    {
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        echo "<xml>\n";
+        echo "  <type>error</type>\n";
+        echo "  <msgerrorid>$msgid</msgerrorid>\n";       
+        echo "  <msgerror>![CDATA[$message]]</msgerror>\n";
+        echo "  <msglink>![CDATA[$urlerror]]</msglink>\n";
+        echo "</xml>\n";
+        die("");
+    } else {
+        if ($msgid==8) die ("$message"); // not really an error, just a comment that there are no scripts to be executed, see dbsync_update.inc.php
+        else
+        die("Error Number: $msgid\n Error Text: $message\n Error Explanation: $urlerror\n");
+    }
+}
 
 
 ?>
