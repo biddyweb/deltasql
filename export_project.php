@@ -11,6 +11,7 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
+include("utils/components.inc.php");
 
 if(isset($_SESSION['rights'])) {
   $rights = $_SESSION["rights"];

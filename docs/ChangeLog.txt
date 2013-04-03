@@ -1,3 +1,7 @@
+3.4.2013
+- refactoring utils.inc.php
+- extending export_project_execution.php to produce XML
+
 2.4.2013
 - initial revision for export_project_execution.php
 

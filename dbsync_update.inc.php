@@ -9,6 +9,7 @@ This file is included both from dbsync_update.php called by the form dbsync.php 
 include("dbsync_currentversion.inc.php");
 include("utils/verification_scripts.inc.php");
 include("utils/zip.inc.php");
+include("utils/syncutils.inc.php");
 
 function removeSyncPath($sessionid) {
   	 $delstr = "DELETE FROM tbscriptgeneration WHERE sessionid='$sessionid'";

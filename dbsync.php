@@ -9,6 +9,7 @@
 include("head.inc.php");
 include("utils/constants.inc.php");
 include("utils/copypaste.inc.php");
+include("utils/components.inc.php");
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 include("conf/config.inc.php");

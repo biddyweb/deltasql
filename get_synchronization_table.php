@@ -7,6 +7,7 @@
 <?php
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include("utils/components.inc.php");
 include("head.inc.php");
 
 $id=$_GET['id'];
