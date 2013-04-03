@@ -15,12 +15,11 @@ echo "<style type=\"text/css\">";
 include ("deltasql.css");
 echo "</style>";
 include("utils/utils.inc.php");
+include("utils/display.inc.php");
 include("utils/constants.inc.php");
 if (isset($_SESSION['scriptsperpage'])) $scriptsperpage=$_SESSION['scriptsperpage']; else $scriptsperpage=$default_scriptsperpage;
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
-
-//show_user_level();
 
 if (isset($_SESSION["userid"])) {
   $rights = $_SESSION["rights"];
