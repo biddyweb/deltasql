@@ -15,6 +15,9 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 include("utils/utils.inc.php");
 include("conf/config.inc.php");
+include("utils/timing.inc.php");
+$startwatch=start_watch();
+
 if (!isset($default_copypaste)) $default_copypaste=1;
 
 if (isset($_POST['frm_submit'])) {
@@ -130,6 +133,7 @@ if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplin
 if ($displayhelp==1)  
    echo '<a href="faq.php#email"><img src="icons/help.png"> How to configure email notification for new scripts</a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>    
+<a href="index.php"><img src="icons/home.png"> Back to main menu</a><br>
+<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

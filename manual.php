@@ -9,6 +9,7 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 include("utils/timing.inc.php");
 $startwatch=start_watch();
+
 echo "<h1>Manual for deltasql $deltasql_version</h1>";
 ?>
 <h2>Summary</h2>
