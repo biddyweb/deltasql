@@ -38,8 +38,8 @@ This form exports all scripts belonging to a project in XML or HTML format for r
  
  echo "<tr><td><b>Output Format:</b> </td>";
  echo "<td>";
- echo "<input type=\"radio\" name=\"formatgroup\" value=\"xml\" checked> XML";
- echo "<input type=\"radio\" name=\"formatgroup\" value=\"html\"> HTML";
+ echo "<input type=\"radio\" name=\"formatgroup\" value=\"xml\" > XML";
+ echo "<input type=\"radio\" name=\"formatgroup\" value=\"html\" checked> HTML";
  echo "</td></tr>";
 ?> 
 </table>

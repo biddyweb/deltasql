@@ -127,13 +127,13 @@ if ($rights>1)
 if ($rights>1)
     echo "<li><a href=\"create_project.php\">Create a Project</a></li>";
 ?>
-<li><a href="list_projects.php">List Projects</a></li>
-<br>
+<li><a href="list_projects.php">List Projects</a></li><br>
 <?php
-	if ($enable_server_stats) echo "<li><a href=\"server_stats.php\">Statistics</a></li>";
 	if ($rights>=2) {
-		echo "<br><li><a href=\"export_project.php\">Export Project</a></li>";
+		echo "<li><a href=\"export_project.php\">Export Project</a></li>";
 	}
+	if ($enable_server_stats) echo "<br><li><a href=\"server_stats.php\">Statistics</a></li>";
+	
 ?>
 </ul>
 </td>
@@ -151,24 +151,25 @@ if ($rights>1)
 <h3>Users</h3>
 <ul>
 <?php 
-if (!$disable_topten_submitters) {
-    echo "<li><a href=\"topten.php\">Top Ten</a></li><br>";
-}
-
 if ($rights>2) 
     echo "<li><a href=\"insert_user.php\">Create User</a></li>";
 if ($rights>1) 
     echo "<li><a href=\"list_users.php\">List Users</a></li>";
-
 ?>
 <?php 
-
 if ($rights==0)
   echo "<li><a href=\"login.php\">Login <img src=\"icons/rights.png\"></a></li>"; 
 if ($rights>0) {
+    echo "<br>";
     echo "<li><a href=\"preferences.php\">Preferences <img src=\"icons/settings.png\"></a></li>";
     echo "<li><a href=\"logout.php\">Logout <img src=\"icons/logout.png\"></a></li>";
 }
+
+
+if (!$disable_topten_submitters) {
+    echo "<br><li><a href=\"topten.php\">Top Ten</a></li><br>";
+}
+
 ?>
 </ul>
 </td>
@@ -188,11 +189,12 @@ if ($displayhelp==1)  {
 <li><a href="http://sourceforge.net/p/deltasql/discussion/" target=_blank>Forum...</a></li>
 <?php
 if ($enterprise_edition==false) {
-    if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list...</a></li>";
+    echo "<br>";
+	if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list...</a></li>";
 	if ($rights==3) echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
 	echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
 } else {
-    echo "<li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
+    echo "<br><li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
 }
 
 //if ($rights==3) {

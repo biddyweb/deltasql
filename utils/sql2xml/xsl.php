@@ -32,7 +32,7 @@ function apply_XSLT() {
 	$xml = new DomDocument;
 	$xsl = new DomDocument;
 	$xml->loadXML($xml_data);
-	$xsl->load("../stylesheet/$xsl_file");
+	$xsl->load("stylesheet/$xsl_file");
 
 	// load the xsl template
 	$xp->importStyleSheet($xsl);
