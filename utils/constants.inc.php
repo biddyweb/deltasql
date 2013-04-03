@@ -1,12 +1,11 @@
 <?php
 //version
-$deltasql_version="1.5.6";
-$ds_schema_version="1.5.6";
+$deltasql_version="1.6.0";
+$ds_schema_version="1.6.0";
 
 $dbredactor_version="1.0.2";
 $antclient_version="1.0.3";
 $bashclient_version="1.2.1";
-$gadget_version="1.0.7";
 $deltaclient_version="1.4.1";
 $pyclient_version="1.5.1";
 
