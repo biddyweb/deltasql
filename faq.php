@@ -14,19 +14,22 @@ include("utils/constants.inc.php");
 <h3>General questions</h3>
 <ul>
 <li><a href="#about">What is deltasql for?</a></li>
+<li><a href="#logo">What does the deltasql logo mean?</a></li>
 <li><a href="#who">Who is behind deltasql?</a></li>
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
 <li><a href="#algo">How does the synchronization algorithm work?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
 <li><a href="#milestones">What where the achieved milestones so far?</a></li>
-<li><a href="#contribute">How can I contribute?</a></li>
 <li><a href="#install">Is it difficult to install?</a></li>
+<li><a href="#stable">Which are the most stable versions of deltasql?</a></li>
 <li><a href="#quick">Is there a Quick Guide?</a></li>
 <li><a href="#test">Where can I try out and experiment with deltasql?</a></li>
 <li><a href="#download">Where can I download deltasql?</a></li>
+<li><a href="#patch">How can I install a patch for deltasql?</a></li>
 <li><a href="#upgrade">There is a new deltasql version, how do I upgrade?</a></li>
-<li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
 <li><a href="#support">How can I get technical support for deltasql?</a></li>
+<li><a href="#contribute">How can I contribute?</a></li>
+<li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
 </ul>
 
 <h3>Usage questions</h3>
@@ -73,7 +76,11 @@ deltasql is a tool which is suitable for the "Agile Development" model, where de
 
 <p>deltasql is Open Source and licensed under the General Public License, so there aren't any fees or charge for using it.</p>
 
+<h3><a name="logo"></a>What does the deltasql logo mean?</h3>
 
+The triangle represents the greek letter delta, which also means difference in mathematics. The cylinder is a symbol often used in IT charts to represent a database. 
+The two symbols together identify a system which is able to handle differences on a database with mathematical precision.
+The logo was created in 2007 by <a href="patrizia.php">Patrizia</a>.
 
 <h3><a name="who"></a>Who is behind deltasql?</h3>
 
@@ -82,10 +89,9 @@ deltasql is a tool which is suitable for the "Agile Development" model, where de
   the ultimate database versioning tool by hackers for hackers!
  </p>
  
- 
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
 
-<p>Yes, it is used in companies in Pakistan, USA, Italy, Switzerland, India and Spain. 
+<p>Yes, it is used in companies in Switzerland, India, USA, Italy, and Spain. 
 In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
  can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
@@ -137,14 +143,6 @@ When the user asks deltasql to generate a synchronization script for a particula
 </ul>
 
 
-<h3><a name="contribute"></a>How can I contribute?</h3>
-<p>
-deltasql has a project page on <a href="http://sourceforge.net/projects/deltasql">sourceforge</a>. Feel free to check out the code and experiment with it,
- or to submit bug and feature requests. Any contributions (also from newbies) is welcome :-) Open Source is the best way to learn the
-  fascinating world of Computer Science!
-</p>
-
-
 <h3><a name="install"></a>Is deltasql difficult to install?</h3>
 <p>
 deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same difficulty as to setup a discussion forum on a webpage.
@@ -153,6 +151,14 @@ deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same
 </p>
 <p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/000_deltasql_how_to_install_server_11min.avi/download"><img src="pictures/movie.jpg" border="0"></a> steps through the install process, too.</p>
 
+<h3><a name="stable"></a>Which are the most stable versions of deltasql?</h3>
+
+<p>
+Stability is also a matter of personal judgment. However, due to the deltasql release process, stable versions are generally the ones with the highest minor number. 
+This is because when a new feature is introduced, the major number is increased. Over time the feature gets stabilized in successive releases.
+As an example, for the 1.5 line, the stablest version is probably 1.5.5, as no additional release 1.5.6 was published.
+Stable releases so far where: 1.5.5, 1.3.7 and 1.0.9 (now obsolete).
+</p>
 
 <h3><a name="quick"></a>Is there a Quick Guide?</h3>
 <p>
@@ -171,6 +177,13 @@ Deltasql can be tested on <a href="http://deltasql.sourceforge.net/deltasql/">th
 Deltasql can be downloaded at sourceforge.net <a href="http://sourceforge.net/projects/deltasql/files/">on this page</a>. Deltasql is available as .zip
  and as .tar.gz package. To unpack the tar package, execute <tt>gunzip deltasql-x.y.z.tar.gz</tt> first, then
   issue <tt>tar -xf deltasql-x.y.z.tar</tt> on your preferred Bash shell.
+</p>
+
+<h3><a name="patch"></a>How can I install a patch for deltasql?</h3>
+<p>
+Along with releases, we publish patches on user request, or as backport from features of the development branch. 
+You can recognize if there is a patch for a given release, if there is a zip file named <tt>patch_[patchnumber]_[short patch description].zip</tt> on the deltasql project page where you downloaded a release. Installation is simple: unzip the package and drop the files in the deltasql server 
+ folder. You will recognize, that the patch is installed on the main page: the release number receives a dash and the patch number. E.g. a patched deltasql 1.5.5 with patch one will become 1.5.5-1
 </p>
 
 <h3><a name="upgrade"></a>There is a new deltasql version, how do I upgrade?</h3>
@@ -201,6 +214,30 @@ Another way to keep updated with the development is to checkout the git reposito
  from time to time <tt>git pull</tt> to update the repository as described in <a href="faq.php#checkout">this FAQ</a>.
 </p>
 
+<h3><a name="support"></a>How can I get technical support for deltasql?</h3>
+<p>
+We provide technical support for following activities:
+<ul>
+<li>Migrate your deltasql server to the latest version (e.g. a migration from versions lower than 1.3 can not be automated)</li>
+<li>Develop particular clients and new server functionality</li>
+<li>Configure deltasql server for email notification</li>
+<li>Consulting services</li>
+<li>Training</li>
+</ul>
+</p>
+<p>
+Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> on the project homepage for bug reports, suggestions and inquiries.
+</p>
+
+
+
+<h3><a name="contribute"></a>How can I contribute?</h3>
+<p>
+deltasql has a project page on <a href="http://sourceforge.net/projects/deltasql">sourceforge</a>. Feel free to check out the code and experiment with it,
+ or to submit bug and feature requests. Any contributions (also from newbies) is welcome :-) Open Source is the best way to learn the
+  fascinating world of Computer Science!
+</p>
+
 
 <h3><a name="checkout"></a>How can I checkout deltasql from the git repository?</h3>
 <p>
@@ -209,22 +246,7 @@ First, you need to install a git client. On Windows, you can use <a href="http:/
 </p>
 <p>
 The command to checkout the deltasql repository is: <tt>git clone git://git.code.sourceforge.net/p/deltasql/code deltasql-code</tt>.
- To keep the repository updated, run from time to time <tt>git pull</tt>.
-</p>
-
-<h3><a name="support"></a>How can I get technical support for deltasql?</h3>
-<p>
-We provide technical support for following activities:
-<ul>
-<li>Migrate your deltasql server to the latest version</li>
-<li>Develop particular clients and new server functionality</li>
-<li>Configure deltasql server for email notification</li>
-<li>Consulting services</li>
-<li>Training</li>
-</ul>
-</p>
-<p>
-Please <a href="mailto:gpu-world@lists.sourceforge.net">send a mail</a> for bug reports, suggestions and inquiries.
+ To keep the repository updated, run from time to time <tt>git pull</tt> in the directory deltasql-code, which will be created by the checkout process issued by the previous command.
 </p>
 
 
@@ -574,7 +596,7 @@ If single users would like to disable it, they can disable it on their 'Preferen
  
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>
-You can submit your question to the <a href="mailto:gpu-world@lists.sourceforge.net">GPU mailing list</a>. We appreciate your feedback! 
+Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> on the project homepage for bug reports, suggestions and inquiries. We appreciate your feedback! 
 Have fun with deltasql :-)
 </p>
 <hr>
