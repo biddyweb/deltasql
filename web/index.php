@@ -57,8 +57,7 @@ databases.</li>
 <li><img src="deltasql/icons/tree.png"> Ability to manage development schemas and production schemas by 
 creating branches, branches of branches and tags.</li>
 <li>Syncronization scripts can be generated for Oracle, 
-postgreSQL, mySQL, Microsoft SQL 
-Server and 
+postgreSQL, mySQL and 
 sqlite. On user request, any SQL-like database can be supported.</li>
 <li>Synchronization script can be exported in several formats, including
  pretty printed HTML, text and XML or even a zipped package with each 
