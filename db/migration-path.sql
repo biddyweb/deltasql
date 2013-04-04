@@ -243,5 +243,10 @@ VALUES ('deltasql-Server', 242, 'HEAD', 'TAG_deltasql_1.5.0', 'admin', 'deltasql
 
 ALTER TABLE  `tbscript` CHANGE  `title`  `title` VARCHAR( 128 ) CHARACTER SET latin1 COLLATE latin1_general_ci NULL DEFAULT NULL;
 
+-- updating synchronization information for the database schema
+INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)
+VALUES ('deltasql-Server', 252, 'HEAD', 'TAG_deltasql_1.6.0', 'admin', 'deltasql-server', 242, 'HEAD', 'mySQL');
+-- all scripts to reach db HEAD beginning from version 252 on date 2013-03-27 15:41:42
+-- synchronization script generated in 0.0339 seconds
 
  

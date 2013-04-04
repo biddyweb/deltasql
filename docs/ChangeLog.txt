@@ -1,10 +1,13 @@
+4.4.2013 git
+- extending export_project_execution.php to produce XML with more fields
+
 3.4.2013 git
 - heavy refactoring of utils.inc.php, splitting the file in several subfiles -> makes page loading much faster :-)
 - extending export_project_execution.php to produce XML and HTML via XSLT (stylehseet added)
 - docs: adding 3 FAQ question on project
 - reorganizing links on main page
 - raising next version to 1.6.0
-- adding timing utils to time page generation.
+- adding timing utils to time page generation. Timing several key pages
 
 2.4.2013 git
 - initial revision for export_project_execution.php
@@ -14,7 +17,7 @@
 - removing old deltasql google gadget code
 
 27.3.2013 git
-- doubling wideness of field title in tbscript (database version increased to 1.5.6)
+- doubling wideness of field title in tbscript 
 
 5.3.2013 git
 Migrating stuff from GPU server:
