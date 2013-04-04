@@ -1,5 +1,5 @@
 4.4.2013 git
-- extending export_project_execution.php to produce XML with more fields
+- extending export_project_execution.php to produce XML with more fields. Adapting XSL definition.
 
 3.4.2013 git
 - heavy refactoring of utils.inc.php, splitting the file in several subfiles -> makes page loading much faster :-)
