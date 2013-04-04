@@ -16,6 +16,9 @@
 						<th>id</th>
 						<th>title</th>
 						<th>version number</th>
+						<th>module name</th>
+						<th>project name</th>
+						<th>branches</th>
 						<th>code</th>
 						<th>create_dt</th>
 						<th>update_dt</th>
@@ -41,6 +44,17 @@
                 <xsl:value-of select="versionnr"/>			
             </td>
 			<td>
+                <xsl:value-of select="modulename"/>			
+            </td>
+			<td>
+                <xsl:value-of select="projectname"/>			
+            </td>
+			<td>
+				<table border="0">
+			      <xsl:apply-templates select="branches"/>
+				</table>  
+			</td>
+			<td>
                 <xsl:value-of select="code"/>			
             </td>
 			<td>
@@ -51,5 +65,14 @@
             </td>
 		</tr>
     </xsl:template>
- 
+
+	 
+    <xsl:template match="branches">
+        <tr>
+			<td>
+                <xsl:value-of select="branchname"/>			
+            </td> 
+		</tr>
+    </xsl:template>
+	
 </xsl:stylesheet>

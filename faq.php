@@ -138,7 +138,7 @@ When the user asks deltasql to generate a synchronization script for a particula
 <li>In 2008, the 1.0.x series introduces the idea of deltasql clients. It is actively used in production by several users.</li>
 <li>In September 2010, the 1.2.x series introduces <a href="#continouus">continouus database integration</a>.</li>
 <li>The 1.3.x series developed through 2011 redesigns the synchronization algorithm to support branches of branches and tags. Features and security are enhanced. Several companies use deltasql in their daily business.</li>
-<li>In 1.4.x a client targeted at the Windows platform (XP, 7) is delivered.</li>
+<li>In 1.4.x a client targeted at the Windows platform (XP, 7) is delivered and the email notification feature is added. Parameters customize deltasql behaviour depending on user preferences.</li>
 <li>The 1.5.x series in 2012 adds charting features to monitor the deltasql server and a handy copy/paste functionality.</li>
 </ul>
 
@@ -157,7 +157,7 @@ deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same
 Stability is also a matter of personal judgment. However, due to the deltasql release process, stable versions are generally the ones with the highest minor number. 
 This is because when a new feature is introduced, the major number is increased. Over time the feature gets stabilized in successive releases.
 As an example, for the 1.5 line, the stablest version is probably 1.5.5, as no additional release 1.5.6 was published.
-Stable releases so far where: 1.5.5, 1.3.7 and 1.0.9 (now obsolete).
+Stable releases so far where: 1.5.5, 1.3.7 (only PHP4 supported) and 1.0.9 (now obsolete).
 </p>
 
 <h3><a name="quick"></a>Is there a Quick Guide?</h3>

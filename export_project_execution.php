@@ -21,15 +21,17 @@
 
  if ($format=='html') prepare_XSLT();
  echo "<scripts>\n"; 
- $level_list = Array("script");
- sql2xml("select s.id, s.code, s.versionnr, s.title, s.create_dt, s.update_dt 
-          from tbscript s, tbmodule m, tbmoduleproject mp, tbproject p 
+ $level_list = Array("script", "branches");
+ sql2xml("select s.id, s.code, s.versionnr, s.title, s.create_dt, s.update_dt, m.name as modulename, p.name as projectname,
+		  b.name as branchname
+          from tbscript s, tbmodule m, tbmoduleproject mp, tbproject p, tbbranch b, tbscriptbranch sb 
           where 
 		  s.module_id=m.id 
 		  and mp.module_id=m.id and mp.project_id=p.id 
+		  and sb.branch_id=b.id and sb.script_id=s.id
 		  $projectclause
 		  order by id asc;"
-		 , $level_list, 0);
+		 , $level_list, 8);
  
   echo "</scripts>\n";
  if ($format=='html') apply_XSLT();
