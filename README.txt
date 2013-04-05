@@ -37,3 +37,5 @@ deltasql includes the SWFObject JavaScript component, which is (c) 2007 Geoff St
 deltasql includes the jQuery ZeroClipborad library available at http://www.steamdev.com/zclip/
 
 deltasql includes the jQuery Javascript library available at http://docs.jquery.com/Downloading_jQuery
+
+deltasql includes sql2xml by Darko Bunic explained at http://www.redips.net/php/from-mysql-to-html-with-xml/
