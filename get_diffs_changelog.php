@@ -13,7 +13,7 @@ require_once 'Text/Diff/Renderer.php';
 require_once 'Text/Diff/Renderer/unified.php';
 
 include("head.inc.php");
-include("diff.inc.php");
+include("utils/diffutils.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
 include("utils/timing.inc.php");

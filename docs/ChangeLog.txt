@@ -1,3 +1,6 @@
+5.4.2013 git
+- fixing the colored diff when comparing different script revisions
+
 4.4.2013 git
 - extending export_project_execution.php to produce XML with more fields. Adapting XSL definition.
 
