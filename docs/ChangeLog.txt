@@ -1,4 +1,4 @@
-5.4.2013 git
+5.4.2013 Patch 2 for 1.5.5: patch_2_diff_colors.zip
 - fixing the colored diff when comparing different script revisions
 
 4.4.2013 git
@@ -27,7 +27,7 @@ Migrating stuff from GPU server:
 - added sql2xml and xslt utils by Darko Bunic
 - added some utils to retrieve params and create unique ids 
 
-4.1.2013 Patch 1 patch_1_add_module_to_project.zip
+4.1.2013 Patch 1 for 1.5.5; patch_1_add_module_to_project.zip
 - removed strict index warning from Add Module to Project
 
 *******************************
