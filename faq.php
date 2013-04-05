@@ -183,7 +183,8 @@ Deltasql can be downloaded at sourceforge.net <a href="http://sourceforge.net/pr
 <p>
 Along with releases, we publish patches on user request, or as backport from features of the development branch. 
 You can recognize if there is a patch for a given release, if there is a zip file named <tt>patch_[patchnumber]_[short patch description].zip</tt> on the deltasql project page where you downloaded a release. Installation is simple: unzip the package and drop the files in the deltasql server 
- folder. You will recognize, that the patch is installed on the main page: the release number receives a dash and the patch number. E.g. a patched deltasql 1.5.5 with patch one will become 1.5.5-1
+ folder. You will recognize, that the patch is installed on the main page: the release number receives a dash and the patch number. E.g. a patched deltasql 1.5.5 with patch one will become 1.5.5-1. Patches are incremental: if you install patch seven for a particular release,
+  you will automatically install patches from one through six.
 </p>
 
 <h3><a name="upgrade"></a>There is a new deltasql version, how do I upgrade?</h3>
