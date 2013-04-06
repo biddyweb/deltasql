@@ -19,7 +19,9 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
 <li><a href="#install-guides">Install Guides</a></li>
 <ul>
 	<li><a href="#install-server">How to install deltasql Server</a></li>
-	<li><a href="#install-deltaclient">How to install deltaclient (optional)</a></li>
+	<li><a href="#install-deltaclient-windows">How to install deltaclient on Windows (optional)</a></li>
+        <li><a href="#install-deltaclient-linux">How to install deltaclient on Linux (optional)</a></li>
+        <li><a href="#install-deltaclient">How to install deltaclient (general steps)</a></li>
 	<li><a href="#install-dbredactor-client">How to install dbredactor client (optional)</a></li>
     <li><a href="#install-ant-client">How to install the ant client into Eclipse (optional)</a></li>
 	<li><a href="#install-bash">How to install the bash client to achieve continouus integration (optional)</a></li>
@@ -199,10 +201,27 @@ Log as <i>Administrator</i> with username <b><?php echo "$admin_user"; ?></b> an
 Do not forget to change the <b>admin</b> password shortly after with this <a href="change_password.php">form</a>.
 </p>
 
-<h3><a name="install-deltaclient"></a>Install steps for the deltaclient (optional step)</h3>
+<h3><a name="install-deltaclient-windows"></a>Install steps for the deltaclient on Windows (optional step)</h3>
 
-<p>Deltaclient is a multipurpose deltasql client for the Windows platform. It can copy to clipboard the query to retrieve the current schema version and the generated script as well. 
- The user still needs to paste the queries and the generation script into his/her own SQL client (TOAD, SQL Developer, SQL Server Management Studio, etc.).
+Download first <tt>deltaclient_windows.zip</tt> from the main page and unzip it in some directory. Locate <tt>deltaclient.exe</tt> in the <tt>bin</tt> subfolder and launch it. Continue with the steps described <a href="manual.php#install-deltaclient">here</a>.
+
+<center>
+<img src="pictures/deltaclient-1.png" border="0">
+</center>
+
+
+<h3><a name="install-deltaclient-linux"></a>Install steps for the deltaclient on Linux (optional step)</h3>
+
+Download first <tt>deltaclient_linux.tar.gz</tt> and unpack it with <tt>gunzip deltaclient_linux.tar.gz</tt> and <tt>tar -xf deltaclient_linux.tar</tt>. Change in the bin subfolder with <tt>cd bin</tt> and launch deltaclient with <tt>./deltaclient</tt>. Now you can read the steps in the next section.
+
+<center>
+<img src="pictures/deltaclient-linux.png" border="0">
+</center>
+
+<h3><a name="install-deltaclient"></a>Install steps for the deltaclient (general steps)</h3>
+
+<p>Deltaclient can copy to clipboard the query to retrieve the current schema version and the generated script as well. 
+ The user still needs to paste the queries and the generation script into his/her own SQL client (TOAD, SQL Developer, SQL Server Management Studio, SquirrelSQL etc.).
 
 <p>
 At startup, deltaclient will download all projects and branches which are currently available on Deltasql Server.</p>
@@ -212,10 +231,6 @@ At startup, deltaclient will download all projects and branches which are curren
 
 <p>The version field should be filled with the result retrieved from the query which gets copyed when pressing the 'Copy SQL script to retrieve version number' button.
   Please note that the query works only on a <a href="faq.php#table">prepared database</a>.
-
-<center>
-<img src="pictures/deltaclient-1.png" border="0">
-</center>
 
 <p>The branches and tags checkboxes are useful to filter branches and tags from the From: and To: comboboxes. The special branch HEAD will always appear, even if the branches checkbox is unchecked.</p>
 
@@ -276,7 +291,7 @@ Copy deltasql-build.xml into the Eclipse
   clients\java\dbredactor\lib directory of this package (or only the ones you enabled in deltasql.properties, at your wish).
 </p>
 <p>
-Et voilà, now you should have a working ant client. By pressing on "RetrieveUpdates" you will receive the script with the latest db updates. The ant client
+Et voil\E0, now you should have a working ant client. By pressing on "RetrieveUpdates" you will receive the script with the latest db updates. The ant client
  is also easy to integrate in an existing build.xml!
 </p>
 
