@@ -1,7 +1,7 @@
 unit configurations;
 
 {$mode objfpc}{$H+}
-{ $DEFINE LINUX_CONF}
+{$DEFINE LINUX_CONF}
 
 interface
 

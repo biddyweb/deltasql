@@ -3,6 +3,7 @@ object DeltaForm: TDeltaForm
   Height = 240
   Top = 132
   Width = 407
+  ActiveControl = btnPasteScript
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'deltaclient'
@@ -13,31 +14,31 @@ object DeltaForm: TDeltaForm
   LCLVersion = '0.9.28.2'
   object lblProject: TLabel
     Left = 16
-    Height = 16
+    Height = 18
     Top = 55
-    Width = 41
+    Width = 49
     Caption = 'Project:'
     ParentColor = False
   end
   object lblVersion: TLabel
     Left = 16
-    Height = 16
+    Height = 18
     Top = 87
-    Width = 43
+    Width = 52
     Caption = 'Version:'
     ParentColor = False
   end
   object lblFrom: TLabel
     Left = 16
-    Height = 16
+    Height = 18
     Top = 119
-    Width = 32
+    Width = 37
     Caption = 'From:'
     ParentColor = False
   end
   object lblTo: TLabel
     Left = 16
-    Height = 16
+    Height = 18
     Top = 151
     Width = 18
     Caption = 'To:'
@@ -45,9 +46,9 @@ object DeltaForm: TDeltaForm
   end
   object lblDbType: TLabel
     Left = 16
-    Height = 16
+    Height = 18
     Top = 176
-    Width = 78
+    Width = 99
     Caption = 'Database type:'
     ParentColor = False
   end
@@ -72,18 +73,18 @@ object DeltaForm: TDeltaForm
   end
   object cbProject: TComboBox
     Left = 120
-    Height = 23
+    Height = 31
     Top = 48
     Width = 272
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     OnChange = cbProjectChange
     Style = csDropDownList
     TabOrder = 2
   end
   object edtVersion: TEdit
     Left = 120
-    Height = 23
+    Height = 27
     Top = 80
     Width = 80
     Enabled = False
@@ -91,30 +92,30 @@ object DeltaForm: TDeltaForm
   end
   object cbFromBranch: TComboBox
     Left = 120
-    Height = 23
+    Height = 31
     Top = 112
     Width = 272
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     OnChange = cbFromChange
     Style = csDropDownList
     TabOrder = 4
   end
   object cbToBranch: TComboBox
     Left = 120
-    Height = 23
+    Height = 31
     Top = 144
     Width = 272
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     Style = csDropDownList
     TabOrder = 5
   end
   object cbBranches: TCheckBox
     Left = 240
-    Height = 19
+    Height = 22
     Top = 80
-    Width = 68
+    Width = 84
     Caption = 'Branches'
     Checked = True
     OnChange = cbBranchesOnChange
@@ -123,9 +124,9 @@ object DeltaForm: TDeltaForm
   end
   object cbTags: TCheckBox
     Left = 335
-    Height = 19
+    Height = 22
     Top = 80
-    Width = 45
+    Width = 52
     Caption = 'Tags'
     Checked = True
     OnChange = cbTagOnChange
@@ -137,7 +138,7 @@ object DeltaForm: TDeltaForm
     Height = 25
     Top = 11
     Width = 287
-    Caption = 'Copy SQL Script to Retrieve Version Number'
+    Caption = 'Copy SQL Script to Retrieve Version'
     OnClick = btnPasteScriptClick
     TabOrder = 8
   end
@@ -152,10 +153,10 @@ object DeltaForm: TDeltaForm
   end
   object cbDbType: TComboBox
     Left = 120
-    Height = 23
+    Height = 31
     Top = 174
     Width = 272
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'Oracle'
       'PostgreSQL'
