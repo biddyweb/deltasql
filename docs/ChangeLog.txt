@@ -3,7 +3,7 @@
 - actualizing client list and documentation
 - windows deltaclient recompiled due to URL change
 - deltaclient for Linux does not work on Debian Gnome, so recompiling on Debian and checking if Ubuntu Unity can do something with it
-
+- Does not work on Ubuntu Unity, so decided to distribute both versions (and I should provide a KDE version as well...)
 
 5.4.2013 Patch 2 for 1.5.5: patch_2_diff_colors.zip
 - fixing the colored diff when comparing different script revisions
