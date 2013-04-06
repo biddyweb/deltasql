@@ -234,7 +234,7 @@ At startup, deltaclient will download all projects and branches which are curren
 
 <p>The branches and tags checkboxes are useful to filter branches and tags from the From: and To: comboboxes. The special branch HEAD will always appear, even if the branches checkbox is unchecked.</p>
 
-<p>To install deltasql, download first deltaclient.zip from the deltasql main page (at the bottom!). Unzip the file and start <tt>deltaclient.exe</tt>. When running the first time,
+<p>When running the first time,
  click on 'Settings...' button and configure the communication settings. The proxy parameter is important, if you run deltaclient in an enterprise behind a proxy.
   If the proxy parameter is set incorrectly, deltasql will hang the next time is running. In such a case, launch <tt>restart.bat</tt> and correct the proxy parameter.</p>
 
@@ -242,7 +242,7 @@ At startup, deltaclient will download all projects and branches which are curren
 <img src="pictures/deltaclient-2.png" border="0">
 </center>
 
-<p>The url setting should point to your inhouse deltasql server. For testing purposes, you can leave the predefined "deltasql.sourceforge.net/deltasql" value, just to see how deltaclient behaves.</p>
+<p>The url setting should point to your inhouse deltasql server. In such case, you should leave the proxy parameter empty. For testing purposes, you can leave the predefined "deltasql.sourceforge.net/deltasql" value, just to see how deltaclient behaves.</p>
 
 <p>Instead of notepad, you can also define another editor to view SQL scripts such as <a href="http://notepad-plus-plus.org/">Notepad++</a>, Ultraedit or similar.
 
