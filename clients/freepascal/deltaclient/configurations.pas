@@ -9,11 +9,6 @@ uses
 
 type TConfiguration = class(TObject)
    public
-      constructor Create(filename : String);
-      destructor destroy;
-      procedure loadFromIniFile();
-      procedure saveToIniFile();
-
       url,
       proxy,
       port,
@@ -26,6 +21,11 @@ type TConfiguration = class(TObject)
 
       showHidden,
       copyScriptToClipboard : Boolean;
+
+      constructor Create(filename : String);
+      destructor destroy;
+      procedure loadFromIniFile();
+      procedure saveToIniFile();
 
    private
       filename_ : String;
@@ -85,4 +85,4 @@ begin
 end;
 
 end.
-
+
