@@ -1,7 +1,7 @@
 object DeltaForm: TDeltaForm
-  Left = 447
+  Left = 198
   Height = 240
-  Top = 263
+  Top = 132
   Width = 407
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -10,45 +10,44 @@ object DeltaForm: TDeltaForm
   ClientWidth = 407
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ParentFont = False
-  LCLVersion = '0.9.26'
+  LCLVersion = '0.9.28.2'
   object lblProject: TLabel
     Left = 16
-    Height = 14
+    Height = 16
     Top = 55
-    Width = 39
+    Width = 41
     Caption = 'Project:'
     ParentColor = False
   end
   object lblVersion: TLabel
     Left = 16
-    Height = 14
+    Height = 16
     Top = 87
-    Width = 40
+    Width = 43
     Caption = 'Version:'
     ParentColor = False
   end
   object lblFrom: TLabel
     Left = 16
-    Height = 14
+    Height = 16
     Top = 119
-    Width = 29
+    Width = 32
     Caption = 'From:'
     ParentColor = False
   end
   object lblTo: TLabel
     Left = 16
-    Height = 14
+    Height = 16
     Top = 151
-    Width = 17
+    Width = 18
     Caption = 'To:'
     ParentColor = False
   end
   object lblDbType: TLabel
     Left = 16
-    Height = 14
+    Height = 16
     Top = 176
-    Width = 76
+    Width = 78
     Caption = 'Database type:'
     ParentColor = False
   end
@@ -73,11 +72,11 @@ object DeltaForm: TDeltaForm
   end
   object cbProject: TComboBox
     Left = 120
-    Height = 21
+    Height = 23
     Top = 48
     Width = 272
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     OnChange = cbProjectChange
     Style = csDropDownList
     TabOrder = 2
@@ -92,22 +91,22 @@ object DeltaForm: TDeltaForm
   end
   object cbFromBranch: TComboBox
     Left = 120
-    Height = 21
+    Height = 23
     Top = 112
     Width = 272
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     OnChange = cbFromChange
     Style = csDropDownList
     TabOrder = 4
   end
   object cbToBranch: TComboBox
     Left = 120
-    Height = 21
+    Height = 23
     Top = 144
     Width = 272
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     Style = csDropDownList
     TabOrder = 5
   end
@@ -115,7 +114,7 @@ object DeltaForm: TDeltaForm
     Left = 240
     Height = 19
     Top = 80
-    Width = 70
+    Width = 68
     Caption = 'Branches'
     Checked = True
     OnChange = cbBranchesOnChange
@@ -126,7 +125,7 @@ object DeltaForm: TDeltaForm
     Left = 335
     Height = 19
     Top = 80
-    Width = 49
+    Width = 45
     Caption = 'Tags'
     Checked = True
     OnChange = cbTagOnChange
@@ -138,7 +137,7 @@ object DeltaForm: TDeltaForm
     Height = 25
     Top = 11
     Width = 287
-    Caption = 'Copy SQL Script to Retrieve Version Number to Clipboard'
+    Caption = 'Copy SQL Script to Retrieve Version Number'
     OnClick = btnPasteScriptClick
     TabOrder = 8
   end
@@ -153,10 +152,10 @@ object DeltaForm: TDeltaForm
   end
   object cbDbType: TComboBox
     Left = 120
-    Height = 21
+    Height = 23
     Top = 174
     Width = 272
-    ItemHeight = 13
+    ItemHeight = 15
     Items.Strings = (
       'Oracle'
       'PostgreSQL'
@@ -166,7 +165,6 @@ object DeltaForm: TDeltaForm
       'sqlite'
       'Other'
     )
-    MaxLength = -1
     Style = csDropDownList
     TabOrder = 10
   end

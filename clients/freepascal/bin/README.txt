@@ -1,4 +1,10 @@
 Some notes on the deltaclient (06.4.2013 v1.6.0)
+To get install instructions point your browser at http://deltasql.sourceforge.net/deltasql/manual.php#install-deltaclient-windows
+
+Restart once
+------------
+
+If you want to test with the deltasql.sourceforge.net/deltasql instance, you need to restart at least once the deltaclient.
 
 Hangup at startup
 -----------------
