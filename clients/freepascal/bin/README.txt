@@ -1,5 +1,5 @@
 Some notes on the deltaclient (06.4.2013 v1.6.0)
-To get install instructions point your browser at http://deltasql.sourceforge.net/deltasql/manual.php#install-deltaclient-windows
+To get install instructions point your browser at http://deltasql.sourceforge.net/deltasql/manual.php#install-deltaclient
 
 Restart once
 ------------

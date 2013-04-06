@@ -236,7 +236,7 @@ At startup, deltaclient will download all projects and branches which are curren
 
 <p>When running the first time,
  click on 'Settings...' button and configure the communication settings. The proxy parameter is important, if you run deltaclient in an enterprise behind a proxy.
-  If the proxy parameter is set incorrectly, deltasql will hang the next time is running. In such a case, launch <tt>restart.bat</tt> and correct the proxy parameter.</p>
+  If the proxy parameter is set incorrectly, deltasql will hang the next time is running. In such a case, launch <tt>restart.bat</tt> on Windows (or <tt>restart.sh</tt> on Linux) and correct the proxy parameter.</p>
 
 <center>
 <img src="pictures/deltaclient-2.png" border="0">
