@@ -2,7 +2,7 @@
 - changes to compile deltaclient on Linux (tested on Ubuntu Unity)
 - actualizing client list and documentation
 - windows deltaclient recompiled due to URL change
-- deltaclient for Linux does not work on Debian Gnome
+- deltaclient for Linux does not work on Debian Gnome, so recompiling on Debian and checking if Ubuntu Unity can do something with it
 
 
 5.4.2013 Patch 2 for 1.5.5: patch_2_diff_colors.zip
@@ -630,6 +630,7 @@ ALTER TABLE tbscriptgeneration ADD  `exclbranch` tinyint(1) NOT NULL default '0'
 - all buttons renamed from 'Submit Query' into their corresponding action
 - if you upgrade from previous versions you should run this script:
 INSERT INTO `tbparameter` VALUES ('', 'TEST', 'DB_CONNECTION', 'OK');
+
 - if you installed test data, you should run this script as well:
 INSERT INTO tbscript (id, code, module_id, versionnr, user_id, update_dt, update_user, comments, title, isapackage, isaview) VALUES  (9, '-- 6 script only for HEAD before branch DELTA_2 comes', 5, 17, 1, '2008-05-21', '', '', 'db update', 0, 0);
 *******************************
