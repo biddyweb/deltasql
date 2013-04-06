@@ -1,4 +1,4 @@
-Some notes on the deltaclient (22.8.2011 v1.4.0)
+Some notes on the deltaclient (06.4.2013 v1.6.0)
 
 Hangup at startup
 -----------------
