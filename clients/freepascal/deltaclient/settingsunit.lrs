@@ -1,48 +1,46 @@
-{ Das ist eine automatisch erzeugte Lazarus-Ressourcendatei }
+{ This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TSettingsForm','FORMDATA',[
-  'TPF0'#13'TSettingsForm'#12'SettingsForm'#4'Left'#3#223#2#6'Height'#3#18#1#3
-  +'Top'#3#172#0#5'Width'#3#180#1#7'Caption'#6#8'Settings'#12'ClientHeight'#3#18
-  +#1#11'ClientWidth'#3#180#1#10'ParentFont'#8#10'LCLVersion'#6#6'0.9.26'#0#12
-  +'TLabeledEdit'#6'edtUrl'#4'Left'#2#16#6'Height'#2#23#3'Top'#2#24#5'Width'#3
-  +#152#1' EditLabel.AnchorSideLeft.Control'#7#6'edtUrl"EditLabel.AnchorSideBot'
-  +'tom.Control'#7#6'edtUrl'#14'EditLabel.Left'#2#16#16'EditLabel.Height'#2#14
-  +#13'EditLabel.Top'#2#7#15'EditLabel.Width'#3#227#0#17'EditLabel.Caption'#6'/'
-  +'Deltasql Server URL (without slash at the end):'#21'EditLabel.ParentColor'#8
-  +#11'ParentColor'#8#8'TabOrder'#2#0#8'OnChange'#7#21'changeRequiresRestart'#0
-  +#0#12'TLabeledEdit'#8'edtProxy'#4'Left'#2#16#6'Height'#2#23#3'Top'#2'H'#5'Wi'
-  +'dth'#3'8'#1' EditLabel.AnchorSideLeft.Control'#7#8'edtProxy"EditLabel.Ancho'
-  +'rSideBottom.Control'#7#8'edtProxy'#14'EditLabel.Left'#2#16#16'EditLabel.Hei'
-  +'ght'#2#14#13'EditLabel.Top'#2'7'#15'EditLabel.Width'#2'!'#17'EditLabel.Capt'
-  +'ion'#6#6'Proxy:'#21'EditLabel.ParentColor'#8#11'ParentColor'#8#8'TabOrder'#2
-  +#1#8'OnChange'#7#21'changeRequiresRestart'#0#0#12'TLabeledEdit'#7'edtPort'#4
-  +'Left'#3'P'#1#6'Height'#2#23#3'Top'#2'H'#5'Width'#2'X EditLabel.AnchorSideLe'
-  +'ft.Control'#7#7'edtPort"EditLabel.AnchorSideBottom.Control'#7#7'edtPort'#14
-  +'EditLabel.Left'#3'P'#1#16'EditLabel.Height'#2#14#13'EditLabel.Top'#2'7'#15
-  +'EditLabel.Width'#2#25#17'EditLabel.Caption'#6#5'Port:'#21'EditLabel.ParentC'
-  +'olor'#8#11'ParentColor'#8#8'TabOrder'#2#2#8'OnChange'#7#21'changeRequiresRe'
-  +'start'#0#0#9'TCheckBox'#12'cbShowHidden'#4'Left'#2#16#6'Height'#2#19#3'Top'
-  +#2'p'#5'Width'#3#231#0#7'Caption'#6'''Show branches and tags marked as hidde'
-  +'n'#8'TabOrder'#2#3#0#0#9'TCheckBox'#17'cbLoadOnClipboard'#4'Left'#2#16#6'He'
-  +'ight'#2#19#3'Top'#3#144#0#5'Width'#3#194#0#7'Caption'#6'"Copy generated scr'
+  'TPF0'#13'TSettingsForm'#12'SettingsForm'#4'Left'#3#166#2#6'Height'#3#18#1#3
+  +'Top'#2'X'#5'Width'#3#180#1#7'Caption'#6#8'Settings'#12'ClientHeight'#3#18#1
+  +#11'ClientWidth'#3#180#1#10'LCLVersion'#6#8'0.9.30.2'#0#12'TLabeledEdit'#6'e'
+  +'dtUrl'#4'Left'#2#16#6'Height'#2#27#3'Top'#2#24#5'Width'#3#152#1' EditLabel.'
+  +'AnchorSideLeft.Control'#7#6'edtUrl"EditLabel.AnchorSideBottom.Control'#7#6
+  +'edtUrl'#14'EditLabel.Left'#2#16#16'EditLabel.Height'#2#18#13'EditLabel.Top'
+  +#2#3#15'EditLabel.Width'#3'5'#1#17'EditLabel.Caption'#6'/Deltasql Server URL'
+  +' (without slash at the end):'#21'EditLabel.ParentColor'#8#8'TabOrder'#2#0#8
+  +'OnChange'#7#21'changeRequiresRestart'#0#0#12'TLabeledEdit'#8'edtProxy'#4'Le'
+  +'ft'#2#16#6'Height'#2#27#3'Top'#2'H'#5'Width'#3'8'#1' EditLabel.AnchorSideLe'
+  +'ft.Control'#7#8'edtProxy"EditLabel.AnchorSideBottom.Control'#7#8'edtProxy'
+  +#14'EditLabel.Left'#2#16#16'EditLabel.Height'#2#18#13'EditLabel.Top'#2'3'#15
+  +'EditLabel.Width'#2','#17'EditLabel.Caption'#6#6'Proxy:'#21'EditLabel.Parent'
+  +'Color'#8#8'TabOrder'#2#1#8'OnChange'#7#21'changeRequiresRestart'#0#0#12'TLa'
+  +'beledEdit'#7'edtPort'#4'Left'#3'P'#1#6'Height'#2#27#3'Top'#2'H'#5'Width'#2
+  +'X EditLabel.AnchorSideLeft.Control'#7#7'edtPort"EditLabel.AnchorSideBottom.'
+  +'Control'#7#7'edtPort'#14'EditLabel.Left'#3'P'#1#16'EditLabel.Height'#2#18#13
+  +'EditLabel.Top'#2'3'#15'EditLabel.Width'#2'#'#17'EditLabel.Caption'#6#5'Port'
+  +':'#21'EditLabel.ParentColor'#8#8'TabOrder'#2#2#8'OnChange'#7#21'changeRequi'
+  +'resRestart'#0#0#9'TCheckBox'#12'cbShowHidden'#4'Left'#2#16#6'Height'#2#24#3
+  +'Top'#2'p'#5'Width'#3'4'#1#7'Caption'#6'''Show branches and tags marked as h'
+  +'idden'#8'TabOrder'#2#3#0#0#9'TCheckBox'#17'cbLoadOnClipboard'#4'Left'#2#16#6
+  +'Height'#2#24#3'Top'#3#144#0#5'Width'#3#6#1#7'Caption'#6'"Copy generated scr'
   +'ipt to Clipboard'#7'Checked'#9#5'State'#7#9'cbChecked'#8'TabOrder'#2#4#0#0
-  +#12'TLabeledEdit'#9'edtEditor'#4'Left'#2#16#6'Height'#2#23#3'Top'#3#192#0#5
+  +#12'TLabeledEdit'#9'edtEditor'#4'Left'#2#16#6'Height'#2#27#3'Top'#3#192#0#5
   +'Width'#3'h'#1' EditLabel.AnchorSideLeft.Control'#7#9'edtEditor"EditLabel.An'
   +'chorSideBottom.Control'#7#9'edtEditor'#14'EditLabel.Left'#2#16#16'EditLabel'
-  +'.Height'#2#14#13'EditLabel.Top'#3#175#0#15'EditLabel.Width'#3#182#0#17'Edit'
+  +'.Height'#2#18#13'EditLabel.Top'#3#171#0#15'EditLabel.Width'#3#253#0#17'Edit'
   +'Label.Caption'#6'%Editor which opens generated scripts:'#21'EditLabel.Paren'
-  +'tColor'#8#11'ParentColor'#8#8'TabOrder'#2#5#0#0#7'TButton'#15'btnSelectEdit'
-  +'or'#4'Left'#3'}'#1#6'Height'#2#25#3'Top'#3#192#0#5'Width'#2'+'#7'Caption'#6
-  +#3'...'#7'OnClick'#7#20'btnSelectEditorClick'#8'TabOrder'#2#6#0#0#7'TButton'
-  +#5'btnOk'#4'Left'#3#16#1#6'Height'#2#25#3'Top'#3#232#0#5'Width'#2'K'#7'Capti'
-  +'on'#6#2'OK'#7'OnClick'#7#10'btnOkClick'#8'TabOrder'#2#7#0#0#7'TButton'#9'bt'
-  +'nCancel'#4'Left'#3']'#1#6'Height'#2#25#3'Top'#3#232#0#5'Width'#2'K'#7'Capti'
-  +'on'#6#6'Cancel'#7'OnClick'#7#14'btnCancelClick'#8'TabOrder'#2#8#0#0#12'TLab'
-  +'eledEdit'#7'edtUser'#4'Left'#3#0#1#6'Height'#2#23#3'Top'#2'x'#5'Width'#3#168
-  +#0' EditLabel.AnchorSideLeft.Control'#7#7'edtUser"EditLabel.AnchorSideBottom'
-  +'.Control'#7#7'edtUser'#14'EditLabel.Left'#3#0#1#16'EditLabel.Height'#2#14#13
-  +'EditLabel.Top'#2'g'#15'EditLabel.Width'#2'O'#17'EditLabel.Caption'#6#17'Del'
-  +'taclient user:'#21'EditLabel.ParentColor'#8#11'ParentColor'#8#8'TabOrder'#2
-  +#9#0#0#11'TOpenDialog'#10'openDialog'#6'Filter'#6#11'*.exe|*.exe'#4'left'#3
-  +'8'#1#3'top'#3#152#0#0#0#0
-]);
+  +'tColor'#8#8'TabOrder'#2#5#0#0#7'TButton'#15'btnSelectEditor'#4'Left'#3'}'#1
+  +#6'Height'#2#25#3'Top'#3#192#0#5'Width'#2'+'#7'Caption'#6#3'...'#7'OnClick'#7
+  +#20'btnSelectEditorClick'#8'TabOrder'#2#6#0#0#7'TButton'#5'btnOk'#4'Left'#3
+  +#16#1#6'Height'#2#25#3'Top'#3#232#0#5'Width'#2'K'#7'Caption'#6#2'OK'#7'OnCli'
+  +'ck'#7#10'btnOkClick'#8'TabOrder'#2#7#0#0#7'TButton'#9'btnCancel'#4'Left'#3
+  +']'#1#6'Height'#2#25#3'Top'#3#232#0#5'Width'#2'K'#7'Caption'#6#6'Cancel'#7'O'
+  +'nClick'#7#14'btnCancelClick'#8'TabOrder'#2#8#0#0#12'TLabeledEdit'#7'edtUser'
+  +#4'Left'#3#0#1#6'Height'#2#27#3'Top'#2'x'#5'Width'#3#168#0' EditLabel.Anchor'
+  +'SideLeft.Control'#7#7'edtUser"EditLabel.AnchorSideBottom.Control'#7#7'edtUs'
+  +'er'#14'EditLabel.Left'#3#0#1#16'EditLabel.Height'#2#18#13'EditLabel.Top'#2
+  +'c'#15'EditLabel.Width'#2'n'#17'EditLabel.Caption'#6#17'Deltaclient user:'#21
+  +'EditLabel.ParentColor'#8#8'TabOrder'#2#9#0#0#11'TOpenDialog'#10'openDialog'
+  +#6'Filter'#6#11'*.exe|*.exe'#4'left'#3'8'#1#3'top'#3#152#0#0#0#0
+]);

@@ -1,3 +1,5 @@
+6.4.2013 
+- changes to compile deltaclient on Linux (tested on Ubuntu)
 
 5.4.2013 Patch 2 for 1.5.5: patch_2_diff_colors.zip
 - fixing the colored diff when comparing different script revisions

@@ -1,6 +1,7 @@
 unit configurations;
 
 {$mode objfpc}{$H+}
+{$DEFINE LINUX_CONF}
 
 interface
 
@@ -50,11 +51,15 @@ end;
 
 procedure TConfiguration.loadFromIniFile();
 begin
-  url   := ini_.ReadString('Communication','URL', 'http://www.deltasql.org/deltasql');
+  url   := ini_.ReadString('Communication','URL', 'http://deltasql.sourceforge.net/deltasql');
   proxy := ini_.ReadString('Communication','Proxy', '');
   port  := ini_.ReadString('Communication','Port', '');
 
+  {$IFDEF LINUX_CONF}
+  editor := ini_.ReadString('General', 'Editor', 'gedit');
+  {$ELSE}
   editor := ini_.ReadString('General', 'Editor', 'notepad');
+  {$ENDIF}
   showHidden := ini_.ReadBool('General', 'ShowHidden', false);
   copyScriptToClipboard := ini_.ReadBool('General', 'CopyScriptToClipboard', true);
 

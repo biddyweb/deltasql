@@ -1,77 +1,73 @@
 object SettingsForm: TSettingsForm
-  Left = 735
+  Left = 678
   Height = 274
-  Top = 172
+  Top = 88
   Width = 436
   Caption = 'Settings'
   ClientHeight = 274
   ClientWidth = 436
-  ParentFont = False
-  LCLVersion = '0.9.26'
+  LCLVersion = '0.9.30.2'
   object edtUrl: TLabeledEdit
     Left = 16
-    Height = 23
+    Height = 27
     Top = 24
     Width = 408
     EditLabel.AnchorSideLeft.Control = edtUrl
     EditLabel.AnchorSideBottom.Control = edtUrl
     EditLabel.Left = 16
-    EditLabel.Height = 14
-    EditLabel.Top = 7
-    EditLabel.Width = 227
+    EditLabel.Height = 18
+    EditLabel.Top = 3
+    EditLabel.Width = 309
     EditLabel.Caption = 'Deltasql Server URL (without slash at the end):'
     EditLabel.ParentColor = False
-    ParentColor = False
     TabOrder = 0
     OnChange = changeRequiresRestart
   end
   object edtProxy: TLabeledEdit
     Left = 16
-    Height = 23
+    Height = 27
     Top = 72
     Width = 312
     EditLabel.AnchorSideLeft.Control = edtProxy
     EditLabel.AnchorSideBottom.Control = edtProxy
     EditLabel.Left = 16
-    EditLabel.Height = 14
-    EditLabel.Top = 55
-    EditLabel.Width = 33
+    EditLabel.Height = 18
+    EditLabel.Top = 51
+    EditLabel.Width = 44
     EditLabel.Caption = 'Proxy:'
     EditLabel.ParentColor = False
-    ParentColor = False
     TabOrder = 1
     OnChange = changeRequiresRestart
   end
   object edtPort: TLabeledEdit
     Left = 336
-    Height = 23
+    Height = 27
     Top = 72
     Width = 88
     EditLabel.AnchorSideLeft.Control = edtPort
     EditLabel.AnchorSideBottom.Control = edtPort
     EditLabel.Left = 336
-    EditLabel.Height = 14
-    EditLabel.Top = 55
-    EditLabel.Width = 25
+    EditLabel.Height = 18
+    EditLabel.Top = 51
+    EditLabel.Width = 35
     EditLabel.Caption = 'Port:'
     EditLabel.ParentColor = False
-    ParentColor = False
     TabOrder = 2
     OnChange = changeRequiresRestart
   end
   object cbShowHidden: TCheckBox
     Left = 16
-    Height = 19
+    Height = 24
     Top = 112
-    Width = 231
+    Width = 308
     Caption = 'Show branches and tags marked as hidden'
     TabOrder = 3
   end
   object cbLoadOnClipboard: TCheckBox
     Left = 16
-    Height = 19
+    Height = 24
     Top = 144
-    Width = 194
+    Width = 262
     Caption = 'Copy generated script to Clipboard'
     Checked = True
     State = cbChecked
@@ -79,18 +75,17 @@ object SettingsForm: TSettingsForm
   end
   object edtEditor: TLabeledEdit
     Left = 16
-    Height = 23
+    Height = 27
     Top = 192
     Width = 360
     EditLabel.AnchorSideLeft.Control = edtEditor
     EditLabel.AnchorSideBottom.Control = edtEditor
     EditLabel.Left = 16
-    EditLabel.Height = 14
-    EditLabel.Top = 175
-    EditLabel.Width = 182
+    EditLabel.Height = 18
+    EditLabel.Top = 171
+    EditLabel.Width = 253
     EditLabel.Caption = 'Editor which opens generated scripts:'
     EditLabel.ParentColor = False
-    ParentColor = False
     TabOrder = 5
   end
   object btnSelectEditor: TButton
@@ -122,18 +117,17 @@ object SettingsForm: TSettingsForm
   end
   object edtUser: TLabeledEdit
     Left = 256
-    Height = 23
+    Height = 27
     Top = 120
     Width = 168
     EditLabel.AnchorSideLeft.Control = edtUser
     EditLabel.AnchorSideBottom.Control = edtUser
     EditLabel.Left = 256
-    EditLabel.Height = 14
-    EditLabel.Top = 103
-    EditLabel.Width = 79
+    EditLabel.Height = 18
+    EditLabel.Top = 99
+    EditLabel.Width = 110
     EditLabel.Caption = 'Deltaclient user:'
     EditLabel.ParentColor = False
-    ParentColor = False
     TabOrder = 9
   end
   object openDialog: TOpenDialog
@@ -141,4 +135,4 @@ object SettingsForm: TSettingsForm
     left = 312
     top = 152
   end
-end
+end
