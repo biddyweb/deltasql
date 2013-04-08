@@ -1,3 +1,5 @@
+8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
+
 6.4.2013 
 - changes to compile deltaclient on Linux (tested on Ubuntu Unity)
 - actualizing client list and documentation
