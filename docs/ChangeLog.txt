@@ -1,5 +1,22 @@
+*******************************
+1.6.0 Release Notes (19.4.2013)
+
+  New features:  export project as XML or HTML to avoid vendor lock-in
+                 timing of synchronization script generation and of some key PHP pages
+				 deltaclient compiled for Linux (Gnome and Unity)
+				 
+  Fixes:         colored diffs of scripts works in any browser
+                 refactoring utility library to increase rendering speed
+				 increased wideness of title                
+				 
+  Documentation: two new FAQ entries about stable releases and how to install patches
+                 added documentation on how to install deltaclient on Linux  
+                  
+*******************************
+
 15.4.2013
 - bugfixes in install routine
+- testing the key features of new release
 
 8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
 
