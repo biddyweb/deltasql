@@ -240,7 +240,7 @@ if (($email!="") && ($textoutput==0)) {
 
 if ($textoutput==0) {
   if (isset($_SESSION['colorrows'])) $colorrows=$_SESSION['colorrows']; else $colorrows=$default_colorrows;
-  if ($colorrows==1) color_row($date, $create_dt); else echo "<td>";
+  if ($colorrows==1) color_row($date, $create_dt); else echo "<tr>";
   echo "
 <td>$versionnr</td>
 <td>$title</td>
