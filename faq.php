@@ -213,9 +213,9 @@ Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> o
 <h3><a name="contribute"></a>How can I contribute?</h3>
 <p>
 deltasql has a project page on <a href="http://sourceforge.net/projects/deltasql">sourceforge</a>. Feel free to check out the code and experiment with it,
- or to submit bug and feature requests. Any contributions (also from newbies) is welcome :-) Open Source is the best way to learn the
-  fascinating world of Computer Science!
-</p>
+ or to submit bug and feature requests. However, please be aware that the source code as it is now was quickly developed to get something working and needs a careful rewrite in some professional framework. If you extended deltasql 
+ in some new way, you are welcome to share your source code with the deltasql community :-)
+ </p>
 
 
 <h3><a name="checkout"></a>How can I checkout deltasql from the git repository?</h3>
