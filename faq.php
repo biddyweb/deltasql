@@ -32,10 +32,9 @@ include("utils/constants.inc.php");
 <li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
 </ul>
 
-<h3>Usage questions</h3>
+<h3>Questions about synchronization</h3>
+
 <ul>
-<li><a href="#undefinedindex">Undefined index or Strict Standards errors everywhere right after installing deltasql server</a></li>
-<li><a href="#export">In which formats can the synchronization script be exported?</a></li>
 <li><a href="#modules">Why are there projects and modules?</a></li>
 <li><a href="#table">Where is the script that I need to launch in my database, so that deltasql can work?</a></li>
 <li><a href="#query">Which is the query I need to launch in my database to retrieve the current schema version?</a></li>
@@ -49,12 +48,19 @@ include("utils/constants.inc.php");
 <li><a href="#verification">What does the "verification step" do?</a></li>
 <li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
 <li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
+<li><a href="#export">In which formats can the synchronization script be exported?</a></li>
+</ul>
+
+<h3>Other questions</h3>
+<ul>
+<li><a href="#undefinedindex">Undefined index or Strict Standards errors everywhere right after installing deltasql server</a></li>
 <li><a href="#scripttitle">All scripts are titled "db update". Where can I change this default?</a></li>
 <li><a href="#colors">What do the colored rows mean in the 'List scripts' view?</a></li>
 <li><a href="#lost">I lost the admin password, what can I do to restore access to deltasql?</a></li>
 <li><a href="#slow">deltasql server has more than 2000 scripts and starts to get slow. How can I increase its performance?</a></li>
 <li><a href="#email">How can I configure email notification for new scripts?</a></li>
 <li><a href="#copypaste">The Copy and Paste functionality does not work in my browser or SQL client!</a></li>
+<li><a href="#internet">Is it recommended to run deltasql outside the company's intranet?</a></li>
 <li><a href="#question">I have another question, where to submit it?</a></li>
 </ul>
 
@@ -251,55 +257,7 @@ The command to checkout the deltasql repository is: <tt>git clone git://git.code
 </p>
 
 
-<h2>Usage questions</h2>
-
-<h3><a name="undefinedindex"></a>Undefined index or Strict standard errors everywhere right after installing deltasql server</h3>
-
-<p>
-If you get errors similar to the following one right after installing deltasql server:
-<br>
-<b>
-<tt>
-Notice: Undefined index: rights in D:\xampplite\htdocs\deltasql\utils\utils.inc.php on line 185
-</tt>
-</b>
-</p>
-<p>
-or
-<br>
-<b><tt>Strict Standards: Assigning the return value of new by reference is deprecated...</tt></b>
-</p>
-<p>
-you should modify <tt>php.ini</tt> (in XAMPP for example it is located under C:\xampp\php) and change the variable error_reporting from
-<tt>
-E_ALL | E_STRICT
-</tt>
-to<br>
-<tt><b>
-error_reporting  =  E_ALL & ~E_NOTICE
-</tt></b><br>
-
-After that you need to restart the Apache webserver. This will solve the issue.
-</p>
-
-<h3><a name="export"></a>In which formats can the synchronization script be exported?</h3>
-
-<p>
-The format can be chosen at the bottom of the <a href="dbsync.php">synchronization form</a>. The most used is the <b>HTML</b> one
- which is pretty printed (SQL is highlighted with geshi library). This format is the preferred one to be copyed and pasted into the own database 
-browser (like Toad, PL SQL Developer, Microsoft SQL Server Management Studio, etc). 
-</p>
-<p>
-It is possible to create a text version of the synchronization script or
-  an XML version for further processing. In this case, you need the View->Page Source functionality of your browser, to see the script in the
-  original format.</p>
-<p>  
-  Additionally, it is possible to export the files as single scripts, so that they can be used
-   in <a href="http://www.dbdeploy.com">dbdeploy</a>-like tools. When exporting scripts in this way, deltasql server will first generate the scripts
-    into the <tt>output/scripts</tt> directory of the server, then zip it and finally serve the .zip for download.
-   The idea of dbdeploy-like tools is to include the single scripts in a directory accessible by the setup executable. The setup executes then the single
-   scripts when installing the application.
-</p>
+<h2>Questions about Synchronization</h2>
 
 <h3><a name="modules"></a>Why are there projects and modules?</h3>
 <p>
@@ -419,6 +377,12 @@ on the <b>Branch</b> button (if you have rights as a Project Manager or as an Ad
 Yes, it is. In <a href="list_branches.php">List Branches</a>, there is a <b>Tag</b> action.
 </p> 
 
+<h3><a name="downgrade"></a>Is it possible to downgrade a database schema to a previous schema?</h3>
+<p>
+No, unfortunately not, as developers submit scripts like "ALTER TABLE ADD" or "INSERT INTO TB..." and they do not provide an SQL script that
+ reverts the change. deltasql has not sufficient artificial intelligence to generate scripts that revert the database to the previous state. If reversal is necessary, 
+ developers need to provide the reverting scripts by adding them to deltasql.
+</p>
 
 <h3><a name="verification"></a>What does the "verification step" do?</h3>
 <p>
@@ -477,12 +441,27 @@ Under continouus integration, a developer normally understands the nightly check
   
 <p>If you are interested in this feature, you can read <a href="manual.php#install-bash">this entry in the manual</a> on how to install the bash client.</p>  
  
-<h3><a name="downgrade"></a>Is it possible to downgrade a database schema to a previous schema?</h3>
+<h3><a name="export"></a>In which formats can the synchronization script be exported?</h3>
+
 <p>
-No, unfortunately not, as developers submit scripts like "ALTER TABLE ADD" or "INSERT INTO TB..." and they do not provide an SQL script that
- reverts the change. deltasql has not sufficient artificial intelligence to generate scripts that revert the database to the previous state. If reversal is necessary, 
- developers need to provide the reverting scripts by adding them to deltasql.
+The format can be chosen at the bottom of the <a href="dbsync.php">synchronization form</a>. The most used is the <b>HTML</b> one
+ which is pretty printed (SQL is highlighted with geshi library). This format is the preferred one to be copyed and pasted into the own database 
+browser (like Toad, PL SQL Developer, Microsoft SQL Server Management Studio, etc). 
 </p>
+<p>
+It is possible to create a text version of the synchronization script or
+  an XML version for further processing. In this case, you need the View->Page Source functionality of your browser, to see the script in the
+  original format.</p>
+<p>  
+  Additionally, it is possible to export the files as single scripts, so that they can be used
+   in <a href="http://www.dbdeploy.com">dbdeploy</a>-like tools. When exporting scripts in this way, deltasql server will first generate the scripts
+    into the <tt>output/scripts</tt> directory of the server, then zip it and finally serve the .zip for download.
+   The idea of dbdeploy-like tools is to include the single scripts in a directory accessible by the setup executable. The setup executes then the single
+   scripts when installing the application.
+</p>
+
+<h2>Other questions</h2>
+
 
 <h3><a name="scripttitle"></a>All scripts are titled "db update". Where can I change this default?</h3>
 <p>
@@ -595,11 +574,47 @@ If single users would like to disable it, they can disable it on their 'Preferen
  in <tt>conf/config.inc.php</tt> to 0.
 </p>
  
+
+<h3><a name="undefinedindex"></a>Undefined index or Strict standard errors everywhere right after installing deltasql server</h3>
+
+<p>
+If you get errors similar to the following one right after installing deltasql server:
+<br>
+<b>
+<tt>
+Notice: Undefined index: rights in D:\xampplite\htdocs\deltasql\utils\utils.inc.php on line 185
+</tt>
+</b>
+</p>
+<p>
+or
+<br>
+<b><tt>Strict Standards: Assigning the return value of new by reference is deprecated...</tt></b>
+</p>
+<p>
+you should modify <tt>php.ini</tt> (in XAMPP for example it is located under C:\xampp\php) and change the variable error_reporting from
+<tt>
+E_ALL | E_STRICT
+</tt>
+to<br>
+<tt><b>
+error_reporting  =  E_ALL & ~E_NOTICE
+</tt></b><br>
+
+After that you need to restart the Apache webserver. This will solve the issue.
+</p>
+
+<h3><a name="internet"></a>Is it recommended to run deltasql outside the company's intranet?</h3>
+
+<p>deltasql provides some simple mechanisms to authenticate users and store hashed passwords.
+However, we still do not recommend running deltasql on the internet: deltasql is not verified against sql injection attacks, nor provides authentication via https.</p>
+
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>
 Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> on the project homepage for bug reports, suggestions and inquiries. We appreciate your feedback! 
 Have fun with deltasql :-)
 </p>
+
 <hr>
 <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>

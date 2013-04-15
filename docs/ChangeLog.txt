@@ -17,6 +17,7 @@
 15.4.2013
 - bugfixes in install routine
 - testing the key features of new release
+- reorganizing sections in FAQ, adding new question about running deltasql outside intranet
 
 8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
 
