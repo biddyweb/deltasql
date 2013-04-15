@@ -17,7 +17,6 @@ include("utils/constants.inc.php");
 <li><a href="#logo">What does the deltasql logo mean?</a></li>
 <li><a href="#who">Who is behind deltasql?</a></li>
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
-<li><a href="#algo">How does the synchronization algorithm work?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
 <li><a href="#milestones">What where the achieved milestones so far?</a></li>
 <li><a href="#install">Is it difficult to install?</a></li>
@@ -33,8 +32,8 @@ include("utils/constants.inc.php");
 </ul>
 
 <h3>Questions about synchronization</h3>
-
 <ul>
+<li><a href="#algo">How does the synchronization algorithm work?</a></li>
 <li><a href="#modules">Why are there projects and modules?</a></li>
 <li><a href="#table">Where is the script that I need to launch in my database, so that deltasql can work?</a></li>
 <li><a href="#query">Which is the query I need to launch in my database to retrieve the current schema version?</a></li>
@@ -45,9 +44,9 @@ include("utils/constants.inc.php");
 <li><a href="#proddev">How can I transform a production schema back into a development schema?</a></li>
 <li><a href="#branchofbranch">Is it possible to create a branch of a branch?</a></li>
 <li><a href="#tag">Is it possible to tag a particular release?</a></li>
+<li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#verification">What does the "verification step" do?</a></li>
 <li><a href="#continouus">Is it possible to perform continouus database integration?</a></li>
-<li><a href="#downgrade">Is it possible to downgrade a database schema to a previous schema?</a></li>
 <li><a href="#export">In which formats can the synchronization script be exported?</a></li>
 </ul>
 
@@ -101,33 +100,6 @@ The logo was created in 2007 by <a href="patrizia.php">Patrizia</a>.
 In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
  can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
-
-<h3><a name="algo"></a>How does the synchronization algorithm work?</h3>
-<p>
-In Deltasql (since version 1.3.0), it is possible to create multiple branches. Branches are made from the original line of development which is represented in Deltasql by
- the special branch named HEAD or can be made from other branches and from branches of branches, too. Each control version system has a particular way to name the original line of development: e.g. Subversion
-  calls it 'trunk', git calls it 'master', but Deltasql calls it <b>HEAD</b> after the old but reliable Concurrent Version System (CVS).
-</p>
-<center>
-<img src="pictures/timeline.png" border="0"><br>
-<i>Picture: </i>Deltasql timeline with source and target
-</center>
-<p>Deltasql advances commit revision number (the <b>version number</b>) across all branches.
-When creating a new branch, Deltasql remembers at which version number and from which source branch branching occurs. The development tree shown in the picture above
- is stored.</p>
-<p>
-When the user asks deltasql to generate a synchronization script for a particular database schema, the user provides the version number of the schema and its branch, and gives a target branch which should
- be achieved by the synchronization algorithm (the source circle in the picture). By providing the target branch, the user implicitly provides the target version number as the latest version number available in Deltasql at the moment (the target circle in the picture). 
-</p>
-<p>Alternatively, the user can provide a target tag, which contains target branch and target version number.</p>
-<p>With this information, Deltasql first traverses back the tree of branches, from target (the leaf) to the source (the schema version number and its branch), recording the path in a particular
- table called TBSCRIPTGENERATION.</p>
-<p>Deltasql then walks back along the path and for each segment of the tree, it generates a sequence of scripts which belong to that segment of the tree.</p>
-<p>The synchronization script is then the collation of the sequences of scripts and follows the path from source to target.</p>
-<p>There are <a href="manual.php#insights">more details</a> on the synchronization algorithm in the manual.</p>
-
-<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/010_deltasql_how_synchronization_works_14min.avi/download"><img src="pictures/movie.jpg" border="0"></a> is an introduction tutorial on how synchronization works.</p>
-
 
 <h3><a name="license"></a>Under which license is deltasql released?</h3>
 <p>Deltasql is released under the <a href="docs/GPL_license.txt">GNU General Public License</a> meaning that you can use this software
@@ -258,6 +230,33 @@ The command to checkout the deltasql repository is: <tt>git clone git://git.code
 
 
 <h2>Questions about Synchronization</h2>
+
+<h3><a name="algo"></a>How does the synchronization algorithm work?</h3>
+<p>
+In Deltasql (since version 1.3.0), it is possible to create multiple branches. Branches are made from the original line of development which is represented in Deltasql by
+ the special branch named HEAD or can be made from other branches and from branches of branches, too. Each control version system has a particular way to name the original line of development: e.g. Subversion
+  calls it 'trunk', git calls it 'master', but Deltasql calls it <b>HEAD</b> after the old but reliable Concurrent Version System (CVS).
+</p>
+<center>
+<img src="pictures/timeline.png" border="0"><br>
+<i>Picture: </i>Deltasql timeline with source and target
+</center>
+<p>Deltasql advances commit revision number (the <b>version number</b>) across all branches.
+When creating a new branch, Deltasql remembers at which version number and from which source branch branching occurs. The development tree shown in the picture above
+ is stored.</p>
+<p>
+When the user asks deltasql to generate a synchronization script for a particular database schema, the user provides the version number of the schema and its branch, and gives a target branch which should
+ be achieved by the synchronization algorithm (the source circle in the picture). By providing the target branch, the user implicitly provides the target version number as the latest version number available in Deltasql at the moment (the target circle in the picture). 
+</p>
+<p>Alternatively, the user can provide a target tag, which contains target branch and target version number.</p>
+<p>With this information, Deltasql first traverses back the tree of branches, from target (the leaf) to the source (the schema version number and its branch), recording the path in a particular
+ table called TBSCRIPTGENERATION.</p>
+<p>Deltasql then walks back along the path and for each segment of the tree, it generates a sequence of scripts which belong to that segment of the tree.</p>
+<p>The synchronization script is then the collation of the sequences of scripts and follows the path from source to target.</p>
+<p>There are <a href="manual.php#insights">more details</a> on the synchronization algorithm in the manual.</p>
+
+<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/010_deltasql_how_synchronization_works_14min.avi/download"><img src="pictures/movie.jpg" border="0"></a> is an introduction tutorial on how synchronization works.</p>
+
 
 <h3><a name="modules"></a>Why are there projects and modules?</h3>
 <p>
@@ -606,8 +605,8 @@ After that you need to restart the Apache webserver. This will solve the issue.
 
 <h3><a name="internet"></a>Is it recommended to run deltasql outside the company's intranet?</h3>
 
-<p>deltasql provides some simple mechanisms to authenticate users and store hashed passwords.
-However, we still do not recommend running deltasql on the internet: deltasql is not verified against sql injection attacks, nor provides authentication via https.</p>
+<p>deltasql provides some simple mechanisms to authenticate users and store their passwords in a secure manner.
+However, we still do not recommend running deltasql on the internet: deltasql is not routinely verified against sql injection attacks, nor provides authentication via https.</p>
 
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>
