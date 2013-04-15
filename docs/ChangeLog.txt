@@ -1,10 +1,10 @@
 *******************************
 1.6.0 Release Notes (19.4.2013)
 
-  New features:  export project as XML or HTML to avoid vendor lock-in
-                 timing of synchronization script generation and of some key PHP pages
+  New features:  timing of synchronization script generation and of some key PHP pages
 				 deltaclient compiled for Linux (Gnome and Unity)
-				 
+				 export project as XML or HTML to avoid vendor (=deltasql) lock-in
+                 				 
   Fixes:         colored diffs of scripts works in any browser
                  refactoring utility library to increase rendering speed
 				 removing some dead code (google gadget and phone home functionality)

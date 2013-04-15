@@ -238,7 +238,7 @@ if ($enterprise_edition==true)
   echo "<a href=\"http://deltasql.sourceforge.net\"><img src=\"pictures/deltasql-small.png\" border=0></a>";
 ?>
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
- and mantained by the <a href="http://sourceforge.net/project/memberlist.php?group_id=212117">deltasql Team</a>. 
+ and mantained by the <a href="http://sourceforge.net/projects/deltasql/">deltasql Team</a>. 
 <?php 
 if (file_exists($configurationfile)) {
  if ($enterprise_edition==false) {
