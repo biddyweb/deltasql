@@ -156,14 +156,15 @@ if ($rights>1)
 <?php 
 if ($rights>2) 
     echo "<li><a href=\"insert_user.php\">Create User</a></li>";
-if ($rights>1) 
+if ($rights>1) {
     echo "<li><a href=\"list_users.php\">List Users</a></li>";
+    echo "<br>";
+}	
 ?>
 <?php 
 if ($rights==0)
   echo "<li><a href=\"login.php\">Login <img src=\"icons/rights.png\"></a></li>"; 
 if ($rights>0) {
-    echo "<br>";
     echo "<li><a href=\"preferences.php\">Preferences <img src=\"icons/settings.png\"></a></li>";
     echo "<li><a href=\"logout.php\">Logout <img src=\"icons/logout.png\"></a></li>";
 }
