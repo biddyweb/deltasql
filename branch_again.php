@@ -125,7 +125,7 @@ if ($frm_newname=="HEAD") {
   die ("<b>Not possible to create a branch named HEAD!</b>");
 }
 // exception for tags on HEAD
-if (($frm_projectid=="") || ($frm_projectid=="NULL")) die("<b>You need to assign a project to the tag!</b>");;
+if (($frm_projectid=="") || ($frm_projectid=="NULL")) die("<b><font color='red'>You need to assign a project to the tag!</font></b>");;
 
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
