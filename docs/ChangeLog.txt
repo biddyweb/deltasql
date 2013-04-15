@@ -15,7 +15,7 @@
                   
 *******************************
 
-15.4.2013
+15.4.2013 Patch 4 for 1.5.5: list script view has problems displaying table, when coloring row option is disabled
 - bugfixes in install routine
 - testing the key features of new release
 - testing the workflow to have the first sync (add module, add project, link module to project, insert script, do sync)
@@ -26,7 +26,7 @@
 
 8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
 
-6.4.2013 
+6.4.2013 git
 - changes to compile deltaclient on Linux (tested on Ubuntu Unity)
 - actualizing client list and documentation
 - windows deltaclient recompiled due to URL change
