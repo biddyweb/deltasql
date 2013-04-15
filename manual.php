@@ -820,10 +820,9 @@ is set. Click on the links below to see examples</p>
  <ul>
  <li><tt>synchronization_table.php</tt>: contains the preparation script for any database schema which will be put under deltasql version control</li>
  <li><tt>dbsync_update.inc.php</tt>: contains the logic of retrieving scripts for the synchronization step. The heart of deltasql is here. Everything is built around this unit. </li>
- <li><tt>dbsync.php</tt>: synchronization via Form</li>
- <li><tt>dbsync_automated_update.php</tt>: synchronization for deltasql clients</li>
- <li><tt>deltasql_google_gadget.xml</tt>: deltasql google gadget definition</li>
- <li><tt>user_stats.inc.php</tt>: phone home functionality</li>
+ <li><tt>dbsync.php</tt>: synchronization via Form.</li>
+ <li><tt>dbsync_automated_update.php</tt>: synchronization for deltasql clients.</li>
+ <li><tt>utils/verification_scripts.inc.php</tt>: calls to the verification script for the different database types.</li>
  </ul>
 <h2><a name="feedback"></a>Feedback on this document</h2>
 <p>
