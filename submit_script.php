@@ -35,7 +35,6 @@ include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
 include("utils/sendmail.inc.php");
-include("usage_stats.inc.php");
 //show_user_level();
 $rights = $_SESSION["rights"];
 
@@ -216,14 +215,7 @@ mysql_query($query4);
 $query5="UPDATE tbbranch SET versionnr=$version, create_dt=NOW() WHERE name='HEAD'";
 mysql_query($query5);
 
-// 6. Store stats for charting
-$last_stats_sent=get_usagestats_version();
-if ($version>=$last_stats_sent+$store_usage_stats_each) {
-	    set_usagestats_version($version);
-        store_stats();
-}	 
-
-// 7. Notify users with email
+// 6. Notify users with email
 if ($emails_enable) {
   $body = "$frm_script";
   if ($frm_comment!="") $body="$body\n/*\n$frm_comment\n*/";
