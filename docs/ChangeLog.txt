@@ -18,6 +18,8 @@
 - bugfixes in install routine
 - testing the key features of new release
 - reorganizing sections in FAQ, adding new question about running deltasql outside intranet
+- updating manual
+- removing usage_stats.inc.php and tbstats table, as they are unused
 
 8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
 
