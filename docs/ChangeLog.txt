@@ -22,6 +22,7 @@
 - reorganizing sections in FAQ, adding new question about running deltasql outside intranet
 - updating manual
 - removing usage_stats.inc.php and dropping tbstats table from schema, as they are unused
+- bugfix in list_scripts.php if coloring row is disabled
 
 8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
 
