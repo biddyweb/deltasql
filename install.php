@@ -8,6 +8,7 @@
 include("head.inc.php");
 include("utils/constants.inc.php");
 include("utils/utils.inc.php");
+include("utils/components.inc.php");
 
 // check if deltasql is already installed
 if (file_exists($configurationfile)) {

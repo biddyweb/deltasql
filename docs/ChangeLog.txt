@@ -1,3 +1,6 @@
+15.4.2013
+- bugfixes in install routine
+
 8.4.2013 Patch 3 for 1.5.5: url fix for deltaclient
 
 6.4.2013 
