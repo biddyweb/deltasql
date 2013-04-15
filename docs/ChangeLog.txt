@@ -8,7 +8,7 @@
   Fixes:         colored diffs of scripts works in any browser
                  refactoring utility library to increase rendering speed
 				 removing some dead code (google gadget and phone home functionality)
-				 increased wideness of title                
+				 increased wideness of script's title                
 				 
   Documentation: two new FAQ entries about stable releases and how to install patches
                  added documentation on how to install deltaclient on Linux  
