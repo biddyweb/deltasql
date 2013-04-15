@@ -24,7 +24,7 @@ function print_block($block) {
 
 function color_diff($difftext) {
  $lines = explode( "\n", $difftext);
- echo "<table border="0">\n";
+ echo "<table border='0'>\n";
  for ( $i = 0; $i < sizeof( $lines ); $i++ ) {
 	print_block($lines[$i]);
  }  
