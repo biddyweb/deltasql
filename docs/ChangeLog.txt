@@ -15,7 +15,7 @@
                   
 *******************************
 
-16.4.2013 
+16.4.2013 git
 - adding advanced topic: how to compile deltaclient on Linux
 - doc: updating directory structure
 
