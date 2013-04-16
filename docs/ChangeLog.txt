@@ -1,19 +1,23 @@
 *******************************
 1.6.0 Release Notes (19.4.2013)
-
+ 
   New features:  timing of synchronization script generation and of some key PHP pages
-				 deltaclient compiled for Linux (Gnome and Unity)
-				 export project as XML or HTML to avoid vendor (=deltasql) lock-in
-                 				 
+                 deltaclient compiled for Linux (Gnome and Unity)
+                 export project as XML or HTML to avoid vendor (=deltasql) lock-in
+                                  
   Fixes:         colored diffs of scripts works in any browser
                  refactoring utility library to increase rendering speed
-				 removing some dead code (google gadget and phone home functionality)
-				 increased wideness of script's title                
-				 
+                 removing some dead code (google gadget and phone home functionality)
+                 increased wideness of script's title                
+                 
   Documentation: two new FAQ entries about stable releases and how to install patches
                  added documentation on how to install deltaclient on Linux  
                   
 *******************************
+
+16.4.2013 
+- adding advanced topic: how to compile deltaclient on Linux
+- doc: updating directory structure
 
 15.4.2013 Patch 4 for 1.5.5: list script view has problems displaying table, when coloring row option is disabled
 - bugfixes in install routine
@@ -765,8 +769,8 @@ Synchronization will be implemented as tree traversal beginning from the leaf
  the traversing across the branches is done, the table tbscriptgeneration 
   is ORDERED BY script_id ASC and passed to a outputscript() routine as 
     it is already implemented now. To allow multiple synchronizations steps
-	 to be processed at once, a session id is generated.
-	 
+     to be processed at once, a session id is generated.
+     
 Traversing back from leaf to root makes the traversal unique and easy. The only
  thing to be implemented as exception to the algorithm is when changing from
  production schema to development schema. In this case, all scripts which
