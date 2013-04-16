@@ -148,11 +148,11 @@ the exact database state is known only to the database owner.</p><br>
 
 <p>
 If you want to run it on windows, you should first download from the Apachefriends.org website <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a>,
-a package which bundles Apache, mySQL and phpMyAdmin (and more... :-) for Linux and Windows. deltasql was developed with XAMPP 1.5.5, but any newer
+a package which bundles Apache, mySQL and phpMyAdmin (and more... :-) for Linux and Windows. deltasql was developed with XAMPP 3.0.12, but any newer
 version might work as well. Then you should install XAMPP. Using the <i>XAMPP Control Panel</i> start Apache and mySQL.
 </p>
 
-<p>Of course, XAMPP is not a strict requirement, just a good entry point for newbies. 
+<p>Of course, XAMPP is not a strict requirement, just a good entry point for people who would like to get the software stack required by deltasql installed in few minutes. 
 Almost all Linux distributions come with options to install Apache, Apache PHP module and a mySQL database. deltasql works with them as well.</p>
 
 <p>
