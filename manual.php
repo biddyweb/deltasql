@@ -53,6 +53,7 @@ echo "<h1>Manual for deltasql $deltasql_version</h1>";
         <li><a href="#structure">Directory structure of the deltasql_1.x.y package</a></li>
         <li><a href="#errors">List of error codes from deltasql Server</a></li>
 		<li><a href="#codewalkthrough">Source code walkthrogh</a></li>
+        <li><a href="#compiledeltaclient">How to compile deltaclient on Linux, Windows or MacOSX</a></li>
     </ul>
 <li><a href="#feedback">Feedback on this document</a></li>	
 </ul>
@@ -207,16 +208,19 @@ Download first <tt>deltaclient_windows.zip</tt> from the main page and unzip it 
 
 <center>
 <img src="pictures/deltaclient-1.png" border="0">
+<p><i>Picture:</i> deltaclient running on Windows 7.</p><br>
 </center>
 
 
 <h3><a name="install-deltaclient-linux"></a>Install steps for the deltaclient on Linux (optional step)</h3>
 
-Download first <tt>deltaclient_linux.tar.gz</tt> and unpack it with <tt>gunzip deltaclient_linux.tar.gz</tt> and <tt>tar -xf deltaclient_linux.tar</tt>. Change in the bin subfolder with <tt>cd bin</tt> and launch deltaclient with <tt>./deltaclient</tt>. Now you can read the steps in the next section.
-
+Download first <tt>deltaclient_linux.tar.gz</tt> for Gnome or Unity and unpack it with <tt>gunzip deltaclient_linux.tar.gz</tt> and <tt>tar -xf deltaclient_linux.tar</tt>. Change in the bin subfolder with <tt>cd bin</tt> and launch deltaclient with <tt>./deltaclient</tt>. 
 <center>
 <img src="pictures/deltaclient-linux.png" border="0">
+<p><i>Picture:</i> deltaclient running on Ubuntu Unity.</p><br>
 </center>
+
+If deltaclient launches as in the screenshot above, you can read the next section. If you get an error message about missing libraries, you can try to <a href="manual.php#compiledeltaclient">compile deltaclient on Linux</a>.
 
 <h3><a name="install-deltaclient"></a>Install steps for the deltaclient (general steps)</h3>
 
@@ -300,6 +304,7 @@ Et voil\E0, now you should have a working ant client. By pressing on "RetrieveUp
 <center>
 <img src="pictures/bash-client-2.png" border="0" alt="Bash client 
 performing database sync" />
+<p><i>Picture:</i> Bash client performing a database synchronization. Automating the bash client leads to continouus database integration!</p><br>
 </center>
 
 <p>The bash client allows in combination with deltasql server to setup a <a href="faq.php#continouus">continouus database integration</a>.
@@ -824,6 +829,24 @@ is set. Click on the links below to see examples</p>
  <li><tt>dbsync_automated_update.php</tt>: synchronization for deltasql clients.</li>
  <li><tt>utils/verification_scripts.inc.php</tt>: calls to the verification script for the different database types.</li>
  </ul>
+ 
+<h3><a name="compiledeltaclient"></a>How to compile deltaclient on Linux, Windows or MacOSX</h3>
+<p>
+To compile deltaclient, you need a working copy of Lazarus, an IDE for fast software prototyping in Pascal, installed on your operating system. You can download the lazarus package from the <a href="http://lazarus.freepascal.org">Lazarus Homepage</a>. Lazarus is packaged to run on several architectures, including Linux, Windows and MacOSX. If you run Linux, you can also try to install it via your packet manager, e.g. <tt>apt-get install lazarus</tt> on Debian, <tt>emerge -av lazarus</tt> on Gentoo, <tt>yum install lazarus</tt> on Red Hat, etc.
+</p>
+
+<p>
+Once Lazarus is installed, launch it. Choose File -> Open from the menu, navigate to the directory <tt>clients/freepascal/deltaclient</tt> and open the file <tt>deltaclient.lpr</tt>. Once you opened the file, simply click on the green play button. This will compile deltaclient on your favorite operating system. You will find the deltaclient executable in the <tt>clients/freepascal/bin</tt> subfolder. 
+</p>
+
+<center>
+<img src="pictures/lazarus-deltaclient.png" border="0" alt="Bash client 
+performing database sync" />
+<p><i>Picture:</i> Press the green play button to get deltaclient compiled on your favourite operating system!</p><br>
+</center>
+ 
+<p>If you should run into trouble, please contact us on the forum.</p>
+ 
 <h2><a name="feedback"></a>Feedback on this document</h2>
 <p>
 If you need help in setting up your own deltasql server,
