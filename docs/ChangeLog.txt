@@ -1,5 +1,5 @@
 *******************************
-1.6.0 Release Notes (19.4.2013)
+1.6.0 Release Notes (17.4.2013)
  
   New features:  timing of synchronization script generation and of some key PHP pages
                  deltaclient compiled for Linux (Gnome and Unity)
