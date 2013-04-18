@@ -254,4 +254,9 @@ VALUES ('deltasql-Server', 254, 'HEAD', 'TAG_deltasql_1.6.0', 'admin', 'deltasql
 -- all scripts to reach db HEAD beginning from version 254 on date 2013-04-15 13:26:35
 -- synchronization script generated in 4.6231 seconds
 
+/*
+deleting unused parameter
+*/
+delete from tbparameter where paramtype='USAGESTATS' and paramname='VERSION';
+
  
