@@ -178,7 +178,7 @@ A new chart showing scripts per project was added. Minor fixes
 - further developing Python deltasql client
 
 6.5.2012
-- German Linux Magazin publishes short news about 1.5.0 release in Magazine 06/2012 :-) 
+- German Linux Magazin publishes three-liner news about 1.5.0 release in the printed edition of Magazine 06/2012 :-) 
 
 25-27.4.2012 git
 - developing Python deltasql client
