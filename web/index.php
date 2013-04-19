@@ -36,7 +36,8 @@ page</a></li>
 </ul>
 <center>
 <a href="http://sourceforge.net/projects/deltasql/"><img 
-src="deltasql/pictures/sourceforge-logo.gif" border="0"></a>
+src="deltasql/pictures/server-statistics.png" border="0"></a>
+<br><i>Picture: deltasql server showing general statistics.</i>
 </center>
 
 <h3>Features</h3>
@@ -92,6 +93,11 @@ more than
 //<script type="text/javascript" src="http://www.ohloh.net/p/10241/widgets/project_users.js?style=red"></script>
 //</center>
 ?>
+<center>
+<a href="http://www.sourceforge.net">
+<img src="deltasql/pictures/sourceforge-logo.gif" border="0" />
+</a>
+</center>
 <h3>How deltasql works</h3>
 <p>
 A strong version control system for databases saves time to developers, who would like to keep their schema updated while developing with minimal effort. 
