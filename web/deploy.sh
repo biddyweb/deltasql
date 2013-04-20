@@ -5,7 +5,7 @@ cp ../faq.php ../../
 cp ../patrizia.php ../../
 chmod 755 ../../*.php
 cp ../deltasql.css ../../
-chmod 755 *.css
+chmod 755 ../../*.css
 
 #mkdir ../../pictures
 #chmod 755 ../../pictures
