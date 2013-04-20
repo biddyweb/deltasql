@@ -1,4 +1,7 @@
-18.4.2013
+20.4.2013 git
+- improving deltasql website on deltasql.sf.net
+
+18.4.2013 git
 - docu cleanup and removal of parameter involved in statistics collection
 
 *******************************
