@@ -77,7 +77,7 @@ data model branches. The trick is to number the sql scripts and to create on eac
 (the table deltasql uses is named TBSYNCHRONIZE). 
 </p>
 <p> 
- A <a href="dbsync.php">form</a> allows the user to enter data from the synchronization table and thereafter the needed chain of datamodel updates is computed and shown to the user. The user
+ A <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">form</a> allows the user to enter data from the synchronization table and thereafter the needed chain of datamodel updates is computed and shown to the user. The user
  has to manually execute all scripts. It is possible to update development schemas (the HEADs) and production schemas (the branches), to transform a production schema into a development schema and
  vice versa. Also in case of a schema dumped and imported into another database, it is still upgradeable as the synchronization table
  is contained into the copyed schema. However, it is not possible to downgrade a schema back to a previous version. 
@@ -91,7 +91,7 @@ data model branches. The trick is to number the sql scripts and to create on eac
 
 <p>deltasql Server allows developers to submit their SQL scripts in a central place. Each time a script is submitted, deltasql assigns 
  a number to it (the script's version). Database administrators can check at which version the database table is, by checking the last inserted row
-  in the table TBSYNCHRONIZE. They also can look at the project name in this table. They can then <a href="dbsync.php">ask</a> the deltasql Server 
+  in the table TBSYNCHRONIZE. They also can look at the project name in this table. They can then <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">ask</a> the deltasql Server 
   for the currently missing scripts.</p>
 
 <center>
@@ -162,7 +162,7 @@ full of PHP scripts.
 </p>
 
 <p>
-If you visit the main page index.php, there is a link called <a href="install.php">Please Setup Deltasql...</a>. Click on this link and follow the instructions there.
+If you visit the main page index.php, there is a link called <b>Please Setup Deltasql...</b>. Click on this link and follow the instructions there.
 Set a password for the <b>admin</b> user of deltasql. If you installed XAMPP, you do not need to define a mySQL password for the root account,
  as XAMPP sets the empty password for root by default. Else please use the correct root password of mySQL. Pressing the "Submit" button will
   install everything you need to run your deltasql server.
@@ -199,7 +199,7 @@ Execute the SQL script with the phpMyAdmin interface. It will create a <code>del
 
 <p>
 Log as <i>Administrator</i> with username <b><?php echo "$admin_user"; ?></b> and password <b><?php echo "$admin_pwd"; ?></b>, so that you can create your own users.
-Do not forget to change the <b>admin</b> password shortly after with this <a href="change_password.php">form</a>.
+Do not forget to change the <b>admin</b> password shortly after with the <b>Change password</b> form.
 </p>
 
 <h3><a name="install-deltaclient-windows"></a>Install steps for the deltaclient on Windows (optional step)</h3>
@@ -368,18 +368,18 @@ There are four types of users: <i>Guests</i>, <i>Developers</i>, <i>Project Mana
 
 
 <p>Login first with a user which has 'Project Manager' or 'Administrator' rights.</p>
-<p>Define a module 'mymodule' with <a href="create_module.php">Create DB Module</a>. Then define 
-a project 'myproject' with  <a href="create_module.php">Create a project</a>. Under <a href="list_projects.php">List projects</a>
+<p>Define a module 'mymodule' with <a href="http://deltasql.sourceforge.net/deltasql/create_module.php">Create DB Module</a>. Then define 
+a project 'myproject' with  <a href="http://deltasql.sourceforge.net/deltasql/create_module.php">Create a project</a>. Under <a href="http://deltasql.sourceforge.net/deltasql/list_projects.php">List projects</a>
  it is possible to add the module 'mymodule' to the project 'myproject' with the link 'Add Module'.</p>
 
-<p>Now choose 'Table' under  <a href="list_projects.php">List projects</a>. Specify your database type. This will
+<p>Now choose 'Table' under  <a href="http://deltasql.sourceforge.net/deltasql/list_projects.php">List projects</a>. Specify your database type. This will
  generate a table which needs to be created in all involved database schemas, you would like to keep under version control
   with deltasql. Create this table in these database schemas with a sql client.</p>
   
-<p>Developers can now submit scripts with this <a href="submit_script.php">form</a>. They have to choose to which module
+<p>Developers can now submit scripts with this <a href="http://deltasql.sourceforge.net/deltasql/submit_script.php">form</a>. They have to choose to which module
  the script belongs. If branches are created, they can also choose if a script is
  only a script for development schemas (a <tt>HEAD</tt> script), or if it needs to be applied to a previously created branch. 
- They can list all <a href="list_scripts.php">previously submitted scripts</a>. In this list,
+ They can list all <a href="http://deltasql.sourceforge.net/deltasql/list_scripts.php">previously submitted scripts</a>. In this list,
   they can also modify a submitted script, if it contains errors, or if it is incomplete.
 </p> 
 
@@ -393,7 +393,7 @@ a project 'myproject' with  <a href="create_module.php">Create a project</a>. Un
 </p>
 
 <p>Once the three parameters are retrieved from the database schema, it is possible to ask for a database synchronization
- with the form <a href="dbsync.php">Synchronize database schema</a>. The field 'From:' should be filled with the value found
+ with the form <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">Synchronize database schema</a>. The field 'From:' should be filled with the value found
   in TBSYNCHRONIZE.BRANCHNAME. The field 'To:' (the so called target branch) should be decided as follows: choose
    <tt>HEAD</tt> if you would like to update a development schema (= 'From: HEAD') or if you would like to turn
     a production schema (= 'From:'= name of a created branch) into a development schema. Choose defined branch name for
@@ -401,23 +401,23 @@ a project 'myproject' with  <a href="create_module.php">Create a project</a>. Un
 	  you would like to update an older development schema to a newer production branch.
 </p>
 
-<p><a href="dbsync.php">Synchronize database schema</a> will return a page with the missing SQL scripts for that given
+<p><a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">Synchronize database schema</a> will return a page with the missing SQL scripts for that given
  database schema. Choose 'Edit->Select All' from your browser and then 'Edit->Copy'. Paste the script into your
   favourite SQL client, which is connected to the database schema and execute it.
 </p>
 
-<p>The script from <a href="dbsync.php">Synchronize database schema</a> will create at the end an UPDATE statement,
+<p>The script from <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">Synchronize database schema</a> will create at the end an UPDATE statement,
  which will update the information in TBSYNCHRONIZE for the next time.</p>
  
  <p>
- Please note, that if something goes wrong, deltasql server reports an error according to the following <a href="manual_errormessages.php">list</a>.
+ Please note, that if something goes wrong, deltasql server reports an error according to the following <a href="http://deltasql.sourceforge.net/deltasql/manual_errormessages.php">list</a>.
  </p>
  <p>This is deltasql in short. Have fun!</p>
 
 <h3><a name="projectsandmodules"></a>How to define projects and modules</h3>
 
 <p>Modules are collections of scripts and projects are collections of modules.
- On the main page of deltasql, you can create a module and a project. Linking modules to projects is done on the <a href="list_projects.php">List Projects</a> page
+ On the main page of deltasql, you can create a module and a project. Linking modules to projects is done on the <a href="http://deltasql.sourceforge.net/deltasql/list_projects.php">List Projects</a> page
   by using the <b>Add module</b> link.</p>
 </p>
 <p>At best you should model your projects and modules to follow your source code structure. If your source code is simple, you can start with one project containing one module.
@@ -458,7 +458,7 @@ Branching is something difficult and powerful. In the beginning, do not branch a
  deltasql synchronizes in this scenario.
 </p>
 <p> 
-Later on, you can branch a project in the <a href="list_projects.php">List Projects</a> page, if you click on the <b>Branch</b> link (visible only if your user has at least <i>Project manager</i> permissions). 
+Later on, you can branch a project in the <a href="http://deltasql.sourceforge.net/deltasql/list_projects.php">List Projects</a> page, if you click on the <b>Branch</b> link (visible only if your user has at least <i>Project manager</i> permissions). 
 </p>
 <p>
 In general, you should branch a project at the
@@ -498,7 +498,7 @@ and HEAD for branchname. The fact that the field branchname is set to HEAD indic
 <p>Please make sure you know the <a href="faq.php#devprod">difference between a production and development database</a> in deltasql before continuing to read.</p>
 
 </p>
-<p>If we ask deltasql to synchronize with the <a href="dbsync.php">form</a> where we enter version=3 and branchname=HEAD, deltasql will generate a
+<p>If we ask deltasql to synchronize with the <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">form</a> where we enter version=3 and branchname=HEAD, deltasql will generate a
  synchronization script as follows:</p>
 <pre>
    Synchronization scripts contains scripts 4, 5, 6 and updates version of old database schema to 6
@@ -594,7 +594,7 @@ If a database shows a given version in TBSYNCHRONIZE, deltasql can compute which
  </p>
  
  <p>
- When updating with the <a href="dbsync.php">form</a>, one has to choose the target branch. The target branch can be
+ When updating with the <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">form</a>, one has to choose the target branch. The target branch can be
   <tt>HEAD</tt>, if all scripts need to be executed, and therefore if the database schema has to get a development one.
  Specifying a new target branch which is not <tt>HEAD</tt> will update the database schema to the version number assigned
   to this branch (by inserting a new row in TBSYNCHRONIZE with the version number), 
@@ -615,14 +615,14 @@ If a database shows a given version in TBSYNCHRONIZE, deltasql can compute which
   Typically, you will change the default title <i>db update</i> to what the script effectively does. deltasql underlines titles which are not default
   and allows to search also in the title field of a script.
 </p>
-<p>By using the function <a href="search_scripts.php">Search among scripts</a>, you can then specifically select the module
+<p>By using the function <a href="http://deltasql.sourceforge.net/deltasql/search_scripts.php">Search among scripts</a>, you can then specifically select the module
   'collection of scripts for myProject' to search among the maintenance SQL scripts.
 </p>  
 
 <h4><a name="filter"></a>Filter script - output particular synchronization scripts</h4>
 <p>
-When listing scripts (in <a href="list_scripts.php">List Scripts</a>), it is possible to filter the scripts (e.g. by date, module, author and more)
- by using the command <a href="search_scripts.php">Search among scripts</a> on top of the page. Normally, the scripts are filtered and shown
+When listing scripts (in <a href="http://deltasql.sourceforge.net/deltasql/list_scripts.php">List Scripts</a>), it is possible to filter the scripts (e.g. by date, module, author and more)
+ by using the command <a href="http://deltasql.sourceforge.net/deltasql/search_scripts.php">Search among scripts</a> on top of the page. Normally, the scripts are filtered and shown
   as a list. By checking the checkbox <b>Output as text list</b> before clicking on Submit, the scripts will be shown as a normal text file
    that can be copy pasted into your SQL client of choice. This can be sometimes useful, if you need to repair a database schema by applying
     some subset of the recorded scripts.
@@ -651,11 +651,11 @@ The main synchronization logic is contained in the file <tt>dbsync_update.inc.ph
 <li>
 <p>
 The first algorithm step is to traverse back from target to source the pictured tree of development, and to record each segment of the traversal in a table called
- TBSCRIPTGENERATION. In case there is no direct backward path from target to source, Deltasql summons <a href="manual_errormessages.php#13">error 13</a>. 
+ TBSCRIPTGENERATION. In case there is no direct backward path from target to source, Deltasql summons <a href="http://deltasql.sourceforge.net/deltasql/manual_errormessages.php#13">error 13</a>. 
 </p>
 <p> 
  If you want to see the content
-  of the table TBSCRIPTGENERATION, you can enable the checkbox 'Include debug information' in the <a href="dbsync.php">Synchronization form</a>.
+  of the table TBSCRIPTGENERATION, you can enable the checkbox 'Include debug information' in the <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">Synchronization form</a>.
 </p>
 </li>
 <li>
@@ -682,7 +682,7 @@ The main query that drives the collection of scripts on a tree segment is: (we c
  <tt>$toversionnr</tt> is the version number of the latest script on a tree segment.</p>
 
 <p>
-The queries issued by deltasql to retrieve scripts can be inspectioned as well by enabling the checkbox 'Include debug information' in the <a href="dbsync.php">Synchronization form</a>.
+The queries issued by deltasql to retrieve scripts can be inspectioned as well by enabling the checkbox 'Include debug information' in the <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">Synchronization form</a>.
 </p> 
  </li>
 <li>
@@ -693,7 +693,7 @@ The generated scripts for each segment are collated together in what becomes the
 <li>
 <p>
 Upgrades from production schemas (following branches) to development schemas (following HEAD) are handled by dividing the algorithm in two steps with the division set to the current schema version number: a tree traversal back to the root of the
- entire tree on which a modified query is launched (can be seen by enabling 'Include debug information' in the <a href="dbsync.php">Synchronization form</a>), so that scripts belonging to HEAD
+ entire tree on which a modified query is launched (can be seen by enabling 'Include debug information' in the <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">Synchronization form</a>), so that scripts belonging to HEAD
  but not to the branch are retrieved for the backward part, and a HEAD to HEAD upgrade for the forward part. The two steps can be seen looking at the table TBSCRIPTGENERATION included in the
   debug information. <tt>exclbranch</tt> is set to 1 in the backward part, and set to 0 in the forward part. The value in <tt>exclbranch</tt> drives deltasql to launch the standard query if set to 0,
    and the modified query if set to 1.
@@ -708,7 +708,7 @@ Upgrades from production schemas (following branches) to development schemas (fo
 
 <p>deltasql Server is written in PHP and can run whenever Apache runs. You might want to write your own deltasql client
  that integrates better into your own development environment. There are already several client available. 
- They can be downloaded at the bottom of the <a href="index.php">main page</a>.</p>
+ They can be downloaded at the bottom of the <a href="http://deltasql.sourceforge.net/deltasql/index.php">main page</a>.</p>
 
 <p>A deltasql client should perform the following operations:</p>
 
@@ -771,7 +771,7 @@ The client should now ask the deltasql server for the script to be executed in t
 If the parameters <tt>frombranch</tt> or <tt>tobranch</tt> are not specified, they default to <tt>HEAD</tt>.
 </p>
 <p>The parameters described in the previous paragraph are the most important ones, but there are more described in the next paragraph, to allow customization
- and even XML export. If something goes wrong, deltasql server reports an error according to the following <a href="manual_errormessages.php">list</a>.</p>
+ and even XML export. If something goes wrong, deltasql server reports an error according to the following <a href="http://deltasql.sourceforge.net/deltasql/manual_errormessages.php">list</a>.</p>
 <li>4. Visualize or execute script in database schema</li>
 <p>Depending if your client includes drivers that are capable of executing complex scripts like packages
  and stored procedures (JDBC drivers are not), you can either directly execute <tt>script.sql</tt> in the database schema
@@ -811,7 +811,7 @@ is set. Click on the links below to see examples</p>
 
 <h3><a name="errors"></a>List of error codes for deltasql server</h3>
 
-<p>The entire list is <a href="manual_errormessages.php">here</a>.</p>
+<p>The entire list is <a href="http://deltasql.sourceforge.net/deltasql/manual_errormessages.php">here</a>.</p>
 
 
 <h3><a name="structure"></a>Directory structure of the deltasql_1.x.y  package</h3>
