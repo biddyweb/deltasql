@@ -18,7 +18,6 @@ src="deltasql/pictures/deltasql-small.png" border="0"></a>
 </td>
 <td>
 <h3>deltasql - Database Evolution under Control</h3>
-<hr>
 </td>
 
 

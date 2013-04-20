@@ -856,8 +856,7 @@ If you need help in setting up your own deltasql server,
 
 <p>Have fun!</p>
 
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main page</a><br>
+<?php include("bottom.inc.php"); ?>
 <?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

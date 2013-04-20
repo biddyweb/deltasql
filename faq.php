@@ -613,7 +613,6 @@ Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> o
 Have fun with deltasql :-)
 </p>
 
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main page</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>
