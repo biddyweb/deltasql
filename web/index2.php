@@ -3,7 +3,10 @@
 <title>deltasql - Database Evolution under Control</title>
 </head>
 <body>
-<div align="right">
+<div align="top">
+<h3>deltasql - A software to synchronize database schemas</h3>
+</div>
+<div align="left">
 <ul>
 <li><a href="deltasql/manual.php" class="menu">Manual</a></li>
 <li><a href="deltasql/faq.php" class="menu">FAQ</a></li>
