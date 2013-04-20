@@ -64,7 +64,7 @@ sqlite. On user request, any SQL-like database can be supported.</li>
  pretty printed HTML, text and XML or even a zipped package with each 
 script stored in a file.</li>
 <li>Free to use, Open Source tool licensed under GPL.</li>
-<li>Integration on Windows platform (XP, 7) with multipurpose 
+<li>Integration on several platform (Windows XP, Windows 7, Linux) with multipurpose 
 deltaclient tool.</li>
 <li>Integration in Eclipse IDE with ant client or dbredactor 
 client.</li>

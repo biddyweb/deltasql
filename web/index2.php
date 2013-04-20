@@ -5,9 +5,9 @@
 <body>
 <php include("top.php"); ?>
 <php include("menu.php"); ?>
-<div>
-Test Frame
-</div>
+
+<h2>Test Frame</h2>
+
 <php include("bottom.php"); ?>
 </body>
 </html>
