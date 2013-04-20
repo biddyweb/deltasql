@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="deltasql.css">
 <meta name="description" content="deltasql is a tool to synchronize database schemas. It has similarities to version controls used with normal source code.">
 <meta name="author" content="dangermouse">
 <meta name="keywords" content="deltasql, database synchronization, continouus integration, database evolution, cvs, git, subversion, mercurial, sql, synchronization, diff, database diff">

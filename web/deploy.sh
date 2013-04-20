@@ -1,15 +1,18 @@
 #!/bin/bash
 cp *.php ../../
-cp ../manual.php ../
-cp ../faq.php ../
+cp ../manual.php ../../
+cp ../faq.php ../../
+cp ../patrizia.php ../../
 chmod 755 ../../*.php
+cp ../deltasql.css ../../
+chmod 755 *.css
 
-mkdir ../../pictures
-chmod 755 ../../pictures
+#mkdir ../../pictures
+#chmod 755 ../../pictures
 cp ../pictures/* ../../pictures
 
-mkdir ../../docs
-chmod 755 ../../docs
+#mkdir ../../docs
+#chmod 755 ../../docs
 cp ../docs/* ../../docs
 
 #mkdir ../../utils
