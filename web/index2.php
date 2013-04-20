@@ -1,11 +1,11 @@
 <html>
 <head>
 <title>deltasql - A software to synchronize Database Schemas</title>
-<?php include("meta.php"); ?>
+<?php include("meta.inc.php"); ?>
 </head>
 <body>
-<?php include("top.php"); ?>
-<?php include("menu.php"); ?>
+<?php include("top.inc.php"); ?>
+<?php include("menu.inc.php"); ?>
 
 <h2>deltasql - Database Evolution Under Control</h2>
 
@@ -52,6 +52,6 @@ synchronization table and thereafter the needed chain of datamodel updates is co
 <script type="text/javascript" src="http://www.ohloh.net/p/10241/widgets/project_basic_stats.js"></script>
 </center>
 
-<?php include("bottom.php"); ?>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>
