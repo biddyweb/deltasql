@@ -7,9 +7,6 @@
 <?php include("top.inc.php"); ?>
 <?php include("menu.inc.php"); ?>
 
-<h2>Introduction</h2>
-
-<p>
 <p>deltasql is an Open Source tool to keep track of your database 
 schemas. It supports several developers working on the same schema.</p>
 </p>
