@@ -11,6 +11,12 @@ pageTracker._trackPageview();
 <table>
 <tr>
 <td>
+<center>
+<a href="index.php"><img 
+src="deltasql/pictures/deltasql-small.png" border="0"></a>
+</center>
+</td>
+<td>
 <center><h3>deltasql - Database Evolution under Control</h3></center>
 </td>
 
