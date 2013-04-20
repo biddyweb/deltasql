@@ -7,7 +7,7 @@
 <?php include("top.inc.php"); ?>
 <?php include("menu.inc.php"); ?>
 
-<h2>deltasql - A software to synchronize Database Schemas</h2>
+<h2>A free software to synchronize Database Schemas</h2>
 
 <p>
 <p>deltasql is an Open Source tool to keep track of your database 
