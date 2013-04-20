@@ -17,5 +17,8 @@ page</a></li>
 <li><a href="http://sourceforge.net/p/deltasql/discussion/" class="menu">Forum</a></li>
 </ul>
 </div>
+
+<div>
+</div>
 </body>
 </html>
