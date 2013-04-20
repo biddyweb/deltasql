@@ -135,7 +135,7 @@ deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same
 Stability is also a matter of personal judgment. However, due to the deltasql release process, stable versions are generally the ones with the highest minor number. 
 This is because when a new feature is introduced, the major number is increased. Over time the feature gets stabilized in successive releases.
 As an example, for the 1.5 line, the stablest version is probably 1.5.5, as no additional release 1.5.6 was published.
-Stable releases so far where: 1.5.5, 1.3.7 (only PHP4 supported) and 1.0.9 (now obsolete).
+Stable releases so far where: 1.5.5 with <a href="faq.php#patch">patch 4 applied</a>, 1.3.7 (only PHP4 supported) and 1.0.9 (now obsolete).
 </p>
 
 <h3><a name="quick"></a>Is there a Quick Guide?</h3>
