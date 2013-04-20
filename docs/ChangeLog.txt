@@ -1,5 +1,5 @@
 20.4.2013 git
-- improving deltasql website on deltasql.sf.net
+- improving deltasql website on deltasql.sf.net (table layout)
 
 18.4.2013 git
 - docu cleanup and removal of parameter involved in statistics collection
