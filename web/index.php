@@ -14,7 +14,6 @@ pageTracker._trackPageview();
 } catch(err) {}
 </script>
 
-<img src="deltasql/pictures/deltasql.png" border="0">
 <h2>deltasql, Database Evolution under Control</h2>
 
 <p>deltasql is an Open Source tool to keep track of your database 
