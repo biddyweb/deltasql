@@ -12,6 +12,16 @@ schemas. It supports several developers working on the same schema.</p>
 </p>
 
 <center>
+<p>
+<i>
+"Deltasql is a wonderful software application that fitted the requirement for achieving better database script management in my company. 
+It has made life easier for us ever since. It is primarily because of this software that I was able to achieve the task of automating a whole 
+lot of processes in my company.", Harikrishnan Nair, Amrita Technologies, via Linkedin in April 2013</i>
+</p>
+
+</center>
+
+<center>
 <a href="http://sourceforge.net/projects/deltasql/"><img 
 src="deltasql/pictures/server-statistics.png" border="0"></a>
 <br><i>Picture: deltasql server showing general statistics.</i>

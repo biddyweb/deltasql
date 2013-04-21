@@ -9,7 +9,7 @@
 <center>
 <i>"Wonderful job, thank you for writing", Jayson Otis in March 2012 via sourceforge</i>
 </center>
-
+<br>
 <center>
 <img src="docs/devel-no-deltasql.jpg" border="0"><br>
 <p><i>Without deltasql:</i> A developer has to send his/her scripts to everyone, 
@@ -64,6 +64,8 @@ more than
 <li>Ability to diff scripts if they were subsequently updated, ability to plot the tree of tags and branches and more...</li>
 <li>In short, deltasql is lightweight but powerful, fast and reliable :-)</li>
 </ul>
+
+<br>
 
 <center>
 <img src="docs/devel-with-deltasql.jpg" border="0"><br>
