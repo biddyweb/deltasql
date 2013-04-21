@@ -25,7 +25,6 @@ Consequences were-
 <br>
 </center>
 
-
 <h2><a href="http://sourceforge.net/projects/deltasql/files/">Download Deltasql</a></h2>
 
 <p>
@@ -35,7 +34,7 @@ Downloads for server, clients and tutorials are kindly provided through <a href=
 
 <center>
 <img src="pictures/deltaclient-1.png" border="0">
-<p><i>Picture:</i> deltaclient running on Windows 7 (available also for Linux). It allows faster synchronization than by visiting pages on deltasql server.</p><br>
+<p><i>Picture:</i> deltaclient running on Windows 7 (available for Linux, too). It allows faster synchronization than by visiting pages on deltasql server.</p><br>
 </center>
 
 <?php include("bottom.inc.php"); ?>

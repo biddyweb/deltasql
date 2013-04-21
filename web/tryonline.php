@@ -16,6 +16,11 @@ With the bash client and cron jobs it is even possible to build a continous inte
 </i>
 </center>
 
+<center>
+<img src="pictures/timeline.png" border="0"><br>
+<i>Picture: </i>deltasql timeline with source and target
+</center>
+
 <h2><a href="deltasql/">Try deltasql online</a></h2>
 
 <p>If you want to <a href="deltasql/">test deltasql in deep</a>, the password for the administrator is provided on the login page . 
