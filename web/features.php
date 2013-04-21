@@ -47,7 +47,7 @@ client.</li>
 <li>Bash client can perform <a 
 href="deltasql/faq.php#continouus">continouus database 
 integration</a> on Linux.</li>
-<li>RSS feed and iGoogle Gadget show latest submitted scripts.</li>
+<li>RSS feed show latest submitted scripts.</li>
 <li>Easy to install, like a webforum, as deltasql server runs on 
 Apache/PHP backed by a mySQL database.</li>
 <li><img src="deltasql/icons/help.png">There is a <a href="deltasql/manual.php">manual</a>,  a <a 
