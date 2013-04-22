@@ -614,6 +614,6 @@ Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> o
 Have fun with deltasql :-)
 </p>
 
-<?php include("bottom.inc.php"); ?>
+<?php include("bottom-with-navbar.inc.php"); ?>
 </body>
 </html>

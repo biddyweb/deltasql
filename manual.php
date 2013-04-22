@@ -856,7 +856,7 @@ If you need help in setting up your own deltasql server,
 
 <p>Have fun!</p>
 
-<?php include("bottom.inc.php"); ?>
+<?php include("bottom-with-navbar.inc.php"); ?>
 <?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

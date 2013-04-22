@@ -18,6 +18,32 @@ include("utils/timing.inc.php");
 $startwatch = start_watch();
 include("head.inc.php");
 
+
+function print_script_navigation($querycount, $scriptsperpage, $showall, $scriptoffset) {
+// decide if printing Next button
+    $resultcount=mysql_query($querycount);
+    if ($resultcount!="") {
+        $nbscripts=mysql_result($resultcount,0,'count(*)');
+    } else $nbscripts=0;
+
+    if (($nbscripts>$scriptsperpage) && ($showall==0)) {
+        if ($scriptoffset>0) {
+            echo " <a href=\"script_top_page.php\">|<b>&#60;</b> First</a> ";
+            echo " <a href=\"script_previous_page.php\"><b>&#60;&#60;</b> Previous</a> ";
+        }
+ 
+        $lastoffset=$nbscripts - ($nbscripts % $scriptsperpage);
+        if ($scriptoffset<$lastoffset) {
+            echo " <b> </b> ";
+            echo "<a href=\"script_next_page.php\">Next <b>&#62;&#62;</b></a> ";
+            echo "<a href=\"script_last_page.php?nbscripts=$nbscripts\">Last <b>&#62;</b>|</a> ";
+        }
+    
+    }
+}
+   
+echo "</p>";
+
 if (isset($_SESSION['scriptsperpage'])) $scriptsperpage=$_SESSION['scriptsperpage']; else $scriptsperpage=$default_scriptsperpage;
 
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
@@ -140,28 +166,8 @@ if ($textoutput) {
 if ($showall==0) $query="$query LIMIT $scriptoffset, $scriptsperpage ";
 $query      = "SELECT * from tbscript s $query";
 
-// decide if printing Next button
-$resultcount=mysql_query($querycount);
-if ($resultcount!="") {
- $nbscripts=mysql_result($resultcount,0,'count(*)');
-} else $nbscripts=0;
 
-if (($nbscripts>$scriptsperpage) && ($showall==0)) {
-    if ($scriptoffset>0) {
-      echo " <a href=\"script_top_page.php\">|<b>&#60;</b> First</a> ";
-      echo " <a href=\"script_previous_page.php\"><b>&#60;&#60;</b> Previous</a> ";
-    }
- 
-    $lastoffset=$nbscripts - ($nbscripts % $scriptsperpage);
-    if ($scriptoffset<$lastoffset) {
-	    echo " <b> </b> ";
-        echo "<a href=\"script_next_page.php\">Next <b>&#62;&#62;</b></a> ";
-        echo "<a href=\"script_last_page.php?nbscripts=$nbscripts\">Last <b>&#62;</b>|</a> ";
-    }
-    
-}
-   
-echo "</p>";
+print_script_navigation($querycount, $scriptsperpage, $showall, $scriptoffset);
 echo "<hr>";
 echo "<table border=\"1\">\n";
 
@@ -308,13 +314,15 @@ if ($textoutput==1) {
 $i++; // $i=$i+1;
 }
 
-mysql_close();
 ?>
 </table>
 <br>
 <?php 
+  print_script_navigation($querycount, $scriptsperpage, $showall, $scriptoffset);
+  mysql_close();
+
   echo "<h6>"; stop_watch($startwatch); echo "</h6>";
-  include("bottom.inc.php");
+  include("bottom-with-navbar.inc.php");
 ?>
 </body>
 </html>

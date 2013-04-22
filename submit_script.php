@@ -31,6 +31,7 @@ function RemoveEmptyLines() {
 </head>
 <body>
 <?php
+include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
@@ -147,9 +148,7 @@ echo " />Submit Another Script after this one<br>";
 ?>
 <input type="Submit" value="Submit script">
 </form>
-<hr>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
-
+<?php include("bottom.inc.php") ?> 
 <?php
 
 if (isset($_POST['script'])) $frm_script=$_POST['script']; else exit;
@@ -245,6 +244,5 @@ else {
   js_redirect("list_scripts.php");
 } 
  ?>
-
 </body>
 </html>

@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
-<?php include ("head.inc.php");?>
+<?php include ("head-main.inc.php");?>
 <h1>deltasql Change Password</h1>
 <br />
 
