@@ -14,7 +14,7 @@
 	$email 	  = $_GET['email'];
 	$rights   = $_GET['rights'];
 ?>
-<h2>Edit user <?php echo "$username"; ?></h2>
+<h2>Edit User <?php echo "$username"; ?></h2>
 <form action="edit_user.php" method="post">
 <table>
 <tr><td>First:</td><td> <input type="text" name="first" value="<?php echo "$first"; ?>"></td></tr>

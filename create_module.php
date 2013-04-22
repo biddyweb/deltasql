@@ -14,7 +14,7 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to insert a new database module.</b>");
 ?>
-<h2>Insert a new database module</h2>
+<h2>Insert a New Database Module</h2>
 <form action="create_module.php" method="post">
 Name:<br> 
 <input type="text" name="name" size="60"><br>

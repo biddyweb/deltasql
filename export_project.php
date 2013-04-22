@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-include("head.inc.php");
+include("head-main.inc.php");
 if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
@@ -46,6 +46,5 @@ This form exports all scripts belonging to a project in XML or HTML format for r
 <input type="Submit" value="Export Project">
 </form>
 <p><b>Note:</b> If you do not select a project, the whole content of deltasql will be exported!!</p>
-<?php include("bottom.inc.php"); ?>
 </body>
 </html>

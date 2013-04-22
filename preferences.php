@@ -59,7 +59,7 @@ if (isset($_POST['frm_submit'])) {
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-echo "<h1>User preferences for $name</h1>";
+echo "<h2>Preferences for $name</h2>";
 
 
 

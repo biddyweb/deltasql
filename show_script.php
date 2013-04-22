@@ -49,7 +49,7 @@ $result2=mysql_query($query2);
 $author=mysql_result($result2,0,"username");
 
 if ($history==1) 
- echo "<h2>History for script $versionnr ($title)</h2>";
+ echo "<h2>History for Script $versionnr ($title)</h2>";
 else
  echo "<h2>$title</h2>";
 // retrieve module id name

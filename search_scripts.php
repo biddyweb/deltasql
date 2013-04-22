@@ -36,7 +36,7 @@ if (isset($_SESSION['search_todata'])) $cookie_todata=$_SESSION['search_todata']
 if (isset($_SESSION['search_modified'])) $cookie_modified=$_SESSION['search_modified']; else $cookie_modified="";
 ?>
 
-<h3>Search Scripts</h3>
+<h2>Search Scripts</h2>
 <form name="searchscripts" id="searchscripts" method="post" action="search_scripts_store_cookies.php">
 <table>
 <tr>

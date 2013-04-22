@@ -32,7 +32,7 @@ if ($scriptid=="") exit;
 if ($fromdiff=="") die("<b>No source revision specified</b>");
 if ($todiff=="") die("<b>No target revision specified</b>");
 
-echo "<h2>Differences for version $version between revisions</h2>";
+echo "<h2>Differences for Script $version between Revisions</h2>";
 if ($fromdiff==$todiff) die("<b>There is no difference, both scripts are the same!</b>");
 
 include("conf/config.inc.php");
@@ -166,6 +166,7 @@ if ($moduleidfrom!=$moduleidto) {
   
   echo "<h3>Modules:</h3>";
   color_diff("-$modulefrom\n+$moduleto");
+  echo "<hr>";
   $differences++;
 }
 
@@ -204,7 +205,7 @@ unlink($commentstofilename);
 mysql_close();
 
 echo "<h6>"; stop_watch($startwatch); echo "</h6>";
-include("bottom.inc.php");
 ?>
+</td></tr></table>
 </body>
 </html>

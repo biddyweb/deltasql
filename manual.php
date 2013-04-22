@@ -10,9 +10,9 @@ include("utils/constants.inc.php");
 include("utils/timing.inc.php");
 $startwatch=start_watch();
 
-echo "<h1>Manual for deltasql $deltasql_version</h1>";
+echo "<h2>Manual for deltasql $deltasql_version</h2>";
 ?>
-<h2>Summary</h2>
+<h3>Summary</h3>
 <ul>
 <li><a href="#db-evolution">Database Evolution Under Control</a></li>
 <li><a href="#purpose">Purpose</a></li>

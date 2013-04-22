@@ -7,10 +7,8 @@
 <?php
 include("head.inc.php");
 include("utils/constants.inc.php");
-echo "<h1>deltasql Error Messages for $deltasql_version</h1>";
+echo "<h2>deltasql Error Messages for $deltasql_version</h2>";
 ?>
-<a href="manual.php">Back to manual</a><br><br>
-
 
 <li><a name="1"></a><i>1</i>: <b>The project name was not found (PROJECTNAME)</b></li>
 <p>
@@ -108,5 +106,6 @@ the synchronization form and try again :-)
 The source or target tag you specified does not belong to the project you would like to synchronize. Please check it!
 </p>
 
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

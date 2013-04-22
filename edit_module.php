@@ -37,7 +37,7 @@ if ($id!="") {
 }    
 ?>
 
-<h2>Edit database module</h2>
+<h2>Edit Database Module</h2>
 <form action="edit_module.php" method="post">
 Name:<br> 
 <input type="text" name="name" size="60" value="<?php echo "$name"; ?>"><br>

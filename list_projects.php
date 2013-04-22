@@ -19,7 +19,7 @@ if(isset($_SESSION['rights'])) {
 } else $rights=0;
 
 ?>
-<h4>Projects</h4>
+<h2>Projects</h2>
 <table border="1">
 
 <?php

@@ -39,6 +39,7 @@ echo "
 
 echo "<ul>";
 echo "<li><a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a></li>";
+echo "<li><a  href=\"clients.php\">Clients</a></li>";
 echo "</ul>";
 
 echo "
@@ -79,7 +80,7 @@ echo "
 echo "
 <h3>Statistics</h3>
 <ul>";
-if ($enable_server_stats) echo "<li><a href=\"server_stats.php\">Statistics</a></li>";      
+if ($enable_server_stats) echo "<li><a href=\"server_stats.php\">Server</a></li>";      
 if (!$disable_topten_submitters) {
     echo "<li><a href=\"topten.php\">Top Ten</a></li><br>";
 }

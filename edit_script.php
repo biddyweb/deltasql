@@ -40,7 +40,7 @@ if ($paramscriptid!="") {
 }
 
 ?>
-<h2>Edit database script</h2>
+<h2>Edit Database Script</h2>
 <form action="edit_script.php" method="post">
 <table>
 <tr>

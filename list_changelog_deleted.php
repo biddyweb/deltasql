@@ -12,7 +12,7 @@ include("utils/constants.inc.php");
 
 $rights = $_SESSION["rights"];
 if ($rights<3) die ("Not enough rights to see deleted scripts");
-echo "<h3>List of deleted scripts</h3>";
+echo "<h2>List of Deleted Scripts</h2>";
 
 include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);

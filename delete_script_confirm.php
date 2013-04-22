@@ -20,7 +20,7 @@ $script = $_GET['script'];
 $shortened = $_GET['short'];
 if ($scriptid=="") exit;
 
-echo "<h2>Please confirm script deletion (version number: $versionnr):</h2>";
+echo "<h2>Please Confirm Script Deletion (version number: $versionnr):</h2>";
 
 echo "<pre>$script</pre><br>";
 

@@ -18,7 +18,7 @@ if (!isset($_GET['id'])) $projectid=''; else $projectid = $_GET['id'];
 if (!isset($_GET['name'])) $projectname=''; else $projectname = $_GET['name'];
 
 ?>
-<h2>Insert a new database module to the project <?php echo "$projectname";?></h2>
+<h2>Insert a New Database Module to the Project <?php echo "$projectname";?></h2>
 <form action="add_module_to_project.php" method="post">
 <?php
  echo "<select NAME=\"frmmoduleid\">";

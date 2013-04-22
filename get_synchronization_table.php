@@ -12,7 +12,7 @@ include("head.inc.php");
 
 $id=$_GET['id'];
 $name=$_GET['name'];
-echo "<h3>Get Synchronization Table for $name</h3>";
+echo "<h2>Get Synchronization Table for $name</h2>";
 echo "Please choose the <b>Database Type</b> for your $name schema: <br><br>";
 
 echo "

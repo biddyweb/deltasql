@@ -18,7 +18,7 @@ $id = $_GET['id'];
 $name = $_GET['name'];
 if ($id=="") exit;
 
-echo "<h2>Please confirm user deletion:</h2>";
+echo "<h2>Please Confirm User Deletion:</h2>";
 
 echo "User <b>$name</b><br><br>";
 

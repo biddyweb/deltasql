@@ -6,7 +6,6 @@
 </head>
 <body>
 <?php
-include("head.inc.php");
 include("utils/constants.inc.php");
 include("utils/copypaste.inc.php");
 include("utils/components.inc.php");
@@ -34,10 +33,12 @@ else {
 }
 
 if (!isset($default_copypaste)) $default_copypaste=1;
+include("head.inc.php");
 printCopyPasteJS($default_copypaste);
+
 ?>
 
-<h1>Database Synchronization Form</h1>
+<h2>Database Synchronization Form</h2>
 
 <p>1) First, make sure your database schema has a table called TBSYNCHRONIZE. If not, click on the <a href="list_projects.php">
 project list</a> and press on the 'Table' link, this will generate a script you have to launch on your database schema.
@@ -147,8 +148,9 @@ if ($displayhelp==1)
    echo '<a href="manual.php#syncworks"><img src="icons/help.png"> How synchronization works with examples</a><br>';
 ?>
 <?php
-include("bottom.inc.php");
 printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);", $default_copypaste);
+include("bottom.inc.php");
+
 ?>
 
 

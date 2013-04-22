@@ -57,7 +57,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  }
 
 ?>
-<h2>Insert a new database script</h2>
+<h2>Insert a New Database Script</h2>
 <form action="submit_script.php" name="script" method="post">
 <table>
 <tr>

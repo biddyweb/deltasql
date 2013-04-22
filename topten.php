@@ -12,7 +12,7 @@ if (!file_exists($configurationfile)) die ("<h2><a href=\"install.php\">$install
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
-echo "<h1>Top Ten</h1>";
+echo "<h2>Top Ten</h2>";
 echo "<hr>";
 open_flash_chart_object( 500, 250, $dns_name . '/graphdata-submitters.php');
 echo "<br><a href=\"topten_submitters.php\">Details...";

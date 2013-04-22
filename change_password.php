@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 </head>
 <body>
-<?php include ("head-main.inc.php");?>
-<h1>deltasql Change Password</h1>
+<?php include ("head.inc.php");?>
+<h2>deltasql Change Password</h2>
 <br />
 
 <form name="tlogin" id="tlogin" method="post" action="change_password.php">
@@ -54,8 +54,7 @@
 	</tr>	
 </table>
 </form>
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include ("bottom.inc.php");?>
 </body>
 </html>
 <?php

@@ -24,7 +24,8 @@
  $projectname=$_POST['frmprojectname'];
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
- echo "<h3>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></h3>";
+ echo "<h2>Synchronization Table</h2>";
+ echo "<p><i>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></i></p>";
  printCopyPasteLink("Copy to clipboard", 0, $default_copypaste);
 ?>
 <hr>

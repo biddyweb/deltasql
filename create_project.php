@@ -11,7 +11,7 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to insert a new project.</b>");
 ?>
-<h2>Insert a new Project</h2>
+<h2>Insert a New Project</h2>
 <form action="create_project.php" method="post">
 Name:<br> 
 <input type="text" name="name" size="30"><br>

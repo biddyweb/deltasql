@@ -18,5 +18,6 @@ Patrizia Pulice Cascio is a barmaid who lives in Spreitenbach, Switzerland.
 </p>
 
 <img src="pictures/horse.png"></img>
+<?php include("bottom.inc.php") ?>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <body>
 
 <?php 
- include("head-main.inc.php");
+ include("head.inc.php");
  include("utils/constants.inc.php");
  include("utils/utils.inc.php");
  include("utils/timing.inc.php");
@@ -203,11 +203,6 @@ if ($enterprise_edition==false) {
 </table>
 
 <?php
- if ($disable_clients_table_on_main_page==true) {
-    // do nothing
- } else {
-    include("download_clients_table.inc.php");
- }
  
  if (file_exists($configurationfile)) {
     echo "<center>";
@@ -226,10 +221,6 @@ if ($enterprise_edition==false) {
 ?>
 <hr>
 <center>
-<?php
-if ($enterprise_edition==true)
-  echo "<a href=\"http://deltasql.sourceforge.net\"><img src=\"pictures/deltasql-small.png\" border=0></a>";
-?>
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/projects/deltasql/">deltasql Team</a>. 
 <?php 
@@ -264,6 +255,6 @@ if (file_exists($configurationfile)) {
  ';
  }
 ?> 
- 
+</td></tr></table> 
 </body>
 </html>

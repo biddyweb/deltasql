@@ -18,7 +18,7 @@ $id = $_GET['id'];
 $name = $_GET['name'];
 if ($id=="") exit;
 
-echo "<h2>Please confirm module deletion:</h2>";
+echo "<h2>Please Confirm Module Deletion:</h2>";
 
 echo "Module <b>$name</b><br><br><br>";
 

@@ -15,7 +15,7 @@ if (!file_exists($configurationfile)) die ("<h2><a href=\"install.php\">$install
 include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
-echo "<h1>deltasql Server Statistics</h1>";
+echo "<h2>deltasql Server Statistics</h2>";
 echo "<hr>";
 echo "<table>";
 echo "<tr><td>";

@@ -17,7 +17,8 @@ if(isset($_SESSION['rights'])) {
 } else $rights=0;
 
 ?>
-<h3>Project branches in blue and tags in yellow</h3>
+<h2>Branches and Tags</h2>
+<p><i>Project branches are in blue and tags in yellow.</i></p>
 
 <table border="1">
 <?php

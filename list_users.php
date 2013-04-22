@@ -12,7 +12,7 @@ show_user_level();
 $myrights = $_SESSION["rights"];
 if ($myrights<2) die("<b>Not enough rights to list all users</b>");
 ?>
-<h4>All users</h4>
+<h2>Users</h2>
 <table border="1">
 
 <?php

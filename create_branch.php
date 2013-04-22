@@ -14,7 +14,7 @@ if ($rights<2) die("<b>Not enough rights to insert a new branch.</b>");
 $projectid   = $_GET['id'];
 $projectname = $_GET['name'];
 
-echo "<h2>Insert a new branch for project $projectname</h2>";
+echo "<h2>Insert a New Branch for Project $projectname</h2>";
 ?>
 
 <form action="create_branch.php" method="post">

@@ -40,7 +40,7 @@ if ($id!="") {
    if ($tag==0) 
       echo "<h2>Branch again $name</h2>";
    else {
-      echo "<h2> Tag on branch $name at version $versionnr</h2>";
+      echo "<h2> Tag on Branch $name at Version $versionnr</h2>";
    }
    mysql_close();   
 

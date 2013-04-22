@@ -20,6 +20,7 @@
   echo "<p>Are you sure that you want to reset the password for user <b>$name</b>? If not, please press the <b>Back</b> button on your browser<p>";
   echo "<p>If you really want to reset the password for user <b>$name</b> click on Yes below.</p>";
   echo "<ul><li><a href=\"reset_user_password_2.php?id=$id&name=$encoded_name\">Yes, reset it!</a></li></ul>";
+  include("bottom.inc.php");
 ?>
 
 </body>

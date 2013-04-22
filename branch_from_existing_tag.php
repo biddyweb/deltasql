@@ -16,8 +16,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to create a branch or a tag</b>");
 ?>
-<a href="list_branches.php">Back to List Branches or Tags</a>
-
 <?php
 include("conf/config.inc.php");
 if (isset($_GET['id'])) $id=$_GET['id']; else $id="";
@@ -40,7 +38,7 @@ if ($id!="") {
 	
 	$versionnr = mysql_result($result7,0,"versionnr");; 
 	
-    echo "<h2>Branch from existing tag: $name</h2>";
+    echo "<h2>Branch from Existing Tag: $name</h2>";
  
     mysql_close();   
 }    
@@ -72,8 +70,7 @@ echo "<input type=\"hidden\" name=\"sourcebranch\"  value=\"$sourcebranch\">";
 ?>
 <input type="Submit" value="Insert">
 </form>
-<hr>
-<a href="list_branches.php">Back to List Branches or Tags</a>
+<?php include("bottom.inc.php"); ?>
 
 <?php
 if (isset($_POST['newname'])) $frm_newname=$_POST['newname']; else $frm_newname="";

@@ -30,12 +30,12 @@ if ($numbranches>0) die("<b>Not possible to delete branch '$name' as there are o
 
 
 if ($tag==0) { 
-  echo "<h2>Please confirm branch deletion:</h2>";
+  echo "<h2>Please Confirm Branch Deletion:</h2>";
   echo "Branch <b>$name</b><br><br>";
   echo "<b>All scripts containing this branch will loose the branch mention.</b><br>";
 }
 else {
-  echo "<h2>Please confirm tag deletion:</h2>";
+  echo "<h2>Please Confirm Tag Deletion:</h2>";
   echo "Tag <b>$name</b><br><br>";
 }  
 
