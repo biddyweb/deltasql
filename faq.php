@@ -118,6 +118,7 @@ In some environments it manages more than 2000 scripts, 10 projects, 12 develope
 <li>The 1.3.x series developed through 2011 redesigns the synchronization algorithm to support branches of branches and tags. Features and security are enhanced. Several companies use deltasql in their daily business.</li>
 <li>In 1.4.x a client targeted at the Windows platform (XP, 7) is delivered and the email notification feature is added. Parameters customize deltasql behaviour depending on user preferences.</li>
 <li>The 1.5.x series in 2012 adds charting features to monitor the deltasql server and a handy copy/paste functionality.</li>
+<li>The 1.6.x series in 2013 ships with a deltaclient compiled for the linux platform and adds navigation with frames.</li>
 </ul>
 
 

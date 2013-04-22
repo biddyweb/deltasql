@@ -34,12 +34,21 @@ echo "
 <tr>
 <div align='left'>
 <td>
+<h4>Navigation Bar</h4>
+";
+
+echo "<ul>";
+echo "<li><a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a></li>";
+echo "</ul>";
+
+echo "
 <h4>Scripts</h4>
 <ul>
 ";
 if ($rights>0)
-  echo "<li><a href=\"submit_script.php\">Submit Script</a></li>";
-echo "<li><a href=\"list_scripts.php\">List Scripts</a> <a href=\"get_rss_feed.php\"><img src=\"pictures/rss-icon.png\" border=0/></a></li>";
+  echo "<li><a href=\"submit_script.php\"><img src=\"icons/new.png\"> Submit</a></li>";
+echo "<li><a href=\"list_scripts.php\"><a href=\"get_rss_feed.php\"><img src=\"pictures/rss-icon.png\" border=0/> List</a></a></li>";
+echo "<li><a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search</a></li>";
 if ($rights>2)
   echo "<br><li><a href=\"list_changelog_deleted.php\">View deleted</a></li>";
 echo "</ul>";

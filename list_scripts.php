@@ -46,15 +46,8 @@ include("conf/config.inc.php");
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-echo "<p>";
-echo "<a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a> | ";
-if ($rights>0)
-     echo "<a  href=\"submit_script.php\"><img src=\"icons/new.png\"> Submit a new Script</a> | ";
   
-echo "<a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search among Scripts</a> ";
-   
-   
-   // this is for search scripts capabilities
+// this is for search scripts capabilities
 if (isset($_SESSION['search_title']))   $filtertitle=$_SESSION['search_title'];   else $filtertitle="";
 if (isset($_SESSION['search_comments']))   $filtercomment=$_SESSION['search_comments']; else $filtercomment="";
 if (isset($_SESSION['search_script']))   $filterscript=$_SESSION['search_script']; else $filterscript="";
@@ -319,8 +312,9 @@ mysql_close();
 ?>
 </table>
 <br>
-<hr>
-<a href="index.php"><img src="icons/home.png" /> Back to main menu</a><br>
-<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>";?>
+<?php 
+  echo "<h6>"; stop_watch($startwatch); echo "</h6>";
+  include("bottom.inc.php");
+?>
 </body>
 </html>
