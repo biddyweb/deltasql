@@ -1,4 +1,10 @@
-18.4.2013
+21.4.2013 git
+- adding two webpages: try online and download. adding some testimonials and screenshots to pepper it up.
+
+20.4.2013 git
+- improving deltasql website on deltasql.sf.net (table layout)
+
+18.4.2013 git
 - docu cleanup and removal of parameter involved in statistics collection
 
 *******************************

@@ -81,9 +81,7 @@ if (file_exists($configurationfile)) {
 	
     mysql_close();
     echo "<h2>deltasql server ";
-	//Enables link to homepage, disabled as don't know how long deltasql will stay up
-	//echo "<a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\">$deltasql_version</a>";
-    echo "<a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
+	echo "<a href=\"docs/ChangeLog.txt\">$deltasql_version</a>";
     
 	if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
@@ -189,8 +187,7 @@ if ($displayhelp==1)  {
 ?>
 <li><a href="manual.php">Manual</a></li>
 <li><a href="faq.php">FAQ</a></li>
-<li><a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/" target=_blank>Tutorials... (movies)</a></li>
-<li><a href="http://sourceforge.net/p/deltasql/discussion/" target=_blank>Forum...</a></li>
+<li><a href="http://deltasql.sourceforge.net">Website...</a></li>
 <?php
 if ($enterprise_edition==false) {
     echo "<br>";
