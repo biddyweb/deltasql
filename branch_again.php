@@ -16,8 +16,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to create a branch or a tag</b>");
 ?>
-<a href="list_branches.php">Back to List Branches or Tags</a>
-
 <?php
 include("conf/config.inc.php");
 if (!isset($_GET['id'])) $id=''; else $id=$_GET['id'];
@@ -105,8 +103,7 @@ if ($id!="") {
 ?>
 <input type="Submit" value="Insert">
 </form>
-<hr>
-<a href="list_branches.php">Back to List Branches or Tags</a>
+<?php include("bottom.inc.php"); ?>
 
 <?php
 if (isset($_POST['newname'])) $frm_newname=$_POST['newname']; else $frm_newname="";

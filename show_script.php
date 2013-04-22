@@ -103,10 +103,9 @@ if ($comments!="") {
 
 geshi_highlight($script, 'sql');
 
-echo "<hr>";
 mysql_close();
+include("bottom-with-navbar.inc.php");
 ?>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 
 <?php
 // repeating the script for copy&paste purposes

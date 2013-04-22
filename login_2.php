@@ -6,7 +6,6 @@
 </head>
 <body>
 <?php
-include("head-main.inc.php");
 include("utils/constants.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");

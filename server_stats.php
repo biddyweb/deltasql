@@ -32,13 +32,12 @@ echo "</td></tr>";
 echo "</table>";
 
 ?>
-<hr>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)
   echo '<a href="faq.php#continouus"><img src="icons/help.png"> Is it possible to perform continouus database integration?</a></a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a><br>
+<?php include("bottom.inc.php"); ?>
 <?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

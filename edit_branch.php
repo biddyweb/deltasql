@@ -16,8 +16,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to edit a branch</b>");
 ?>
-<a href="list_branches.php">Back to List Branches or Tags</a>
-
 <?php
 include("conf/config.inc.php");
 if (!isset($_GET['id'])) $id=''; else $id=$_GET['id'];
@@ -50,8 +48,7 @@ Description:<br>
 ?>
 <input type="Submit" value="Save">
 </form>
-<hr>
-<a href="list_branches.php">Back to List Branches or Tags</a>
+<?php include("bottom.inc.php"); ?>
 
 <?php
 if (isset($_POST['description'])) $frm_description=$_POST['description']; else exit;

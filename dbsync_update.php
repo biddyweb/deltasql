@@ -33,12 +33,15 @@ $schemaname="";
 if ($htmlformatted) {
     echo "
     <html> 
+    <head>
     <title>
     deltasql - Synchronization script
     </title>
-    <body>
-	<div>";
-	
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"deltasql.css\">
+    </head>
+    <body>";
+	include('head.inc.php'); 
+    
 	if (!isset($default_copypaste)) $default_copypaste=1;
 	printCopyPasteJS($default_copypaste);
 }

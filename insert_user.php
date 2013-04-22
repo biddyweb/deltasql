@@ -28,8 +28,7 @@ Rights:
 </table>
 <input type="Submit" value="Insert user">
 </form>
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include("bottom.inc.php"); ?>
 <?php
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
@@ -58,6 +57,5 @@ mysql_close();
 
 js_redirect("list_users.php");
 ?>
-<a href="index.php">Back to main menu</a>
 </body>
 </html>

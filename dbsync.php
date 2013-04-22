@@ -138,18 +138,19 @@ echo "</center>";
  will receive after pressing the button below!<br> This will update both your database schema and the
   synchronization information in table TBSYNCHRONIZE.</b><br><br>
  
-<center><input type="Submit" value="Generate synchronization script"></center>
+<center><input type="Submit" value="Generate Synchronization Script"></center>
 </form>
 <br>
-<hr>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)  
    echo '<a href="manual.php#syncworks"><img src="icons/help.png"> How synchronization works with examples</a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to Main Page</a>
 <?php
+include("bottom.inc.php");
 printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);", $default_copypaste);
 ?>
+
+
 </body>
 </html>

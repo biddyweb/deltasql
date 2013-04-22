@@ -35,7 +35,7 @@ if (!isset($_GET['name'])) $projectname=''; else $projectname = $_GET['name'];
    echo "<option VALUE=\"$moduleid\">$modulename";
    $i++;
  }
- echo "</select></td></tr>";
+ echo "</select>";
  echo "<input type=\"hidden\" name=\"frmprojectid\"  value=\"$projectid\">";
  echo "<input type=\"hidden\" name=\"frmprojectname\"  value=\"$projectname\">";
  mysql_close();
@@ -43,8 +43,10 @@ if (!isset($_GET['name'])) $projectname=''; else $projectname = $_GET['name'];
 
 <input type="Submit" value="Add module">
 </form>
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include("bottom.inc.php"); ?>
+</body>
+</html>
+
 
 <?php
 if (isset($_POST['frmmoduleid'])) $frm_moduleid=$_POST['frmmoduleid']; else exit;
@@ -60,6 +62,3 @@ mysql_query($query);
 mysql_close();
 js_redirect("list_project_modules.php?id=$frm_projectid&amp;name=$frm_projectname");
 ?>
-
-</body>
-</html>

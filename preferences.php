@@ -127,13 +127,13 @@ mysql_close();
 </table>
 </form>
 
-<hr>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)  
    echo '<a href="faq.php#email"><img src="icons/help.png"> How to configure email notification for new scripts</a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a><br>
+
 <?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

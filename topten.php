@@ -18,14 +18,13 @@ open_flash_chart_object( 500, 250, $dns_name . '/graphdata-submitters.php');
 echo "<br><a href=\"topten_submitters.php\">Details...";
 echo "</a><hr>";
 open_flash_chart_object( 500, 250, $dns_name . '/graphdata-synchronizers.php');
-echo "<br><a href=\"topten_synchronizers.php\">Details...";
+echo "<br><a href=\"topten_synchronizers.php\">Details...</a><br><br>";
 ?>
-<hr>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)
   echo '<a href="faq.php#production"><img src="icons/help.png"> Is deltasql used in productive environments?</a></a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

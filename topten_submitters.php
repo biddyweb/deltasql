@@ -63,7 +63,6 @@ echo "<table border=1><tr>
  mysql_close();
  
  ?>
-<hr>
-<a href="topten.php">Top Ten</a> | <a href="index.php"><img src="icons/home.png"> Main menu</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

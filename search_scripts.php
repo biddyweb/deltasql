@@ -192,13 +192,12 @@ To:
 <tr>
 <td></td>
 <td>
-<input type="Submit" value="Search scripts">
+<input type="Submit" value="Search among Scripts">
 </td>
 <td></td>
 </tr>
 </table>
-<hr>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </form>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

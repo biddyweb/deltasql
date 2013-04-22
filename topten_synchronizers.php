@@ -88,8 +88,7 @@ echo "<table border=1><tr>
  
  ?>
 <br>
-<hr>
-<a href="topten.php">Top Ten</a> | <a href="index.php"><img src="icons/home.png"> Main menu</a>
+<?php include("bottom-with-navbar.inc.php"); ?>
 </body>
 </html>
 </body>

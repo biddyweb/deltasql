@@ -81,12 +81,12 @@ mysql_close();
 ?>
 </table>
 <br>
-<hr>
+
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)
    echo '<a href="manual.php#projectsandmodules"><img src="icons/help.png"> How to define projects and modules</a><br>';
+ include("bottom.inc.php");
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
 </body>
 </html>

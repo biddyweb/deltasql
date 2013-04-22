@@ -16,7 +16,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to edit modules</b>");
 ?>
-<a href="list_modules.php">Back to List Modules</a>
 
 <?php
 include("conf/config.inc.php");
@@ -52,9 +51,7 @@ echo "<input type=\"hidden\" name=\"moduleid\"  value=\"$moduleid\">";
 ?>
 <input type="Submit" value="Save module">
 </form>
-<hr>
-<a href="list_modules.php">Back to List Modules</a>
-
+<?php include("bottom.inc.php"); ?>
 <?php
 if (isset($_POST['name'])) $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];

@@ -75,7 +75,6 @@ echo "
 ?>
 </table>
 <br>
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main page</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

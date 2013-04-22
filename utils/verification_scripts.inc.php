@@ -1,7 +1,7 @@
 <?php
 
 function printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted) {
-include_once('constants.inc.php');
+include('constants.inc.php');
 
 // we use strToLower as deltasql clients might use other names for the dbtype parameter
 $dbtype=strtolower(trim($dbtype));

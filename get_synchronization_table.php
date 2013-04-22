@@ -54,7 +54,8 @@ You also can give a name to your schema <i>(optional)</i><br>
 */
 ?>
 
-<input type="Submit" value="Get synchronization table">
+<input type="Submit" value="Get Synchronization Table">
 </form>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

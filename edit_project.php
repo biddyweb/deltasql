@@ -16,8 +16,6 @@ show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to edit projects</b>");
 ?>
-<a href="list_projects.php">Back to List Projects</a>
-
 <?php
 include("conf/config.inc.php");
 $id=$_GET['id'];
@@ -50,9 +48,7 @@ echo "<input type=\"hidden\" name=\"projectid\"  value=\"$projectid\">";
 ?>
 <input type="Submit" value="Save project">
 </form>
-<hr>
-<a href="list_projects.php">Back to List Projects</a>
-
+<?php include("bottom.inc.php"); ?>
 <?php
 if (isset($_POST['description'])) $frm_description=$_POST['description']; else exit;
 $frm_projectid=$_POST['projectid'];

@@ -199,9 +199,7 @@ if ($singlefiles==0) {
    } else {
 	    // HTML and text formatted
 	   if ($htmlformatted==1) {
-			printCopyPasteLink("Copy to clipboard", 1, $default_copypaste);
-			echo "<a href=\"dbsync.php\"><img src=\"icons/show2.png\" border=0> Back to Synchronize Database</a> | ";
-			echo "<a href=\"index.php\"><img src=\"icons/home.png\" border=0>Back to main page</a>";
+			printCopyPasteLink("Copy to clipboard", 0, $default_copypaste);
 			echo "<hr><br>";
 		}	
        if ($commitcomment!="") {
@@ -317,8 +315,8 @@ if ($singlefiles=="0") {
       //html encoding
  	  geshi_highlight("$commentstring\n$updatestring", 'sql');
       echo '<br/><br/>';
-	  echo "</div>";
-	  echo "<hr>";
+	  
+      include("bottom-with-navbar.inc.php");
 	  
 	  // paragraph for copy&paste functionality
 	  printCopyPasteBlock("$textresult$commentstring\n$updatestring", $default_copypaste);

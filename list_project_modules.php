@@ -69,7 +69,6 @@ echo "<table border=1><tr>
     echo "<a href=\"add_module_to_project.php?id=$projectid&name=$projectname\"><img alt=\"New\" src=\"icons/new.png\"> Add Module to Project</a><br>";
  ?>
 <br>
-<hr>
-<a href="list_projects.php">Back to List Projects</a>
+<?php include("bottom.inc.php"); ?> 
 </body>
 </html>

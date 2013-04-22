@@ -202,8 +202,9 @@ unlink($commentsfromfilename);
 unlink($commentstofilename);
 
 mysql_close();
+
+echo "<h6>"; stop_watch($startwatch); echo "</h6>";
+include("bottom.inc.php");
 ?>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a><br>
-<?php echo "<h6>"; stop_watch($startwatch); echo "</h6>"; ?>
 </body>
 </html>

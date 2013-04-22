@@ -74,12 +74,11 @@ mysql_close();
 ?>
 </table>
 <br>
-<hr>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)
   echo '<a href="faq.php#modules"><img src="icons/help.png"> Why are there projects and modules?</a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

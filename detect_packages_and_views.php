@@ -29,8 +29,7 @@ if ($backto=="search")
     echo "<a href=\"dbsync.php\">Cancel</a>";
 ?>
 </form>
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>
 

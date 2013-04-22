@@ -124,7 +124,6 @@ mysql_close();
 <input type="Submit" value="Get diffs between revisions" />
 </form>
 <br>
-<hr>
-<a href="list_scripts.php">Back to List Scripts</a> | <a href="index.php"><img src="icons/home.png"> Back to main page</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

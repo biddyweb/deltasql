@@ -39,6 +39,7 @@ echo "<tr>
 <th>version number</th>
 <th>visible</th>
 <th>istag</th>
+<th>actions</th>
 </tr>";
 
 $i=0;
@@ -137,12 +138,12 @@ $i++;
 <img alt="Tree" src="icons/tree.png"> 
 <input type="Submit" value="Get tree graph">
 </form>
-<hr>
+
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)  
   echo '<a href="faq.php#devprod"><img src="icons/help.png"> What is the difference between a production and a development schema?</a><br>';
 ?>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+<?php include("bottom.inc.php"); ?>
 </body>
 </html>

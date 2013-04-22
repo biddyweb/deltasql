@@ -31,9 +31,10 @@ echo "<p>Are you sure that you want to delete this script? If not, please press 
 echo "<ul>";
 echo "<li><b><a href=\"delete_script.php?id=$scriptid\">Yes, delete it</a></b></li>";
 echo "</ul>";
+
+include("bottom.inc.php");
 ?>
 
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main menu</a>
+
 </body>
 </html>

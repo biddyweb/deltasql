@@ -8,6 +8,7 @@
  include("utils/constants.inc.php");
  include("conf/config.inc.php");
  include("utils/copypaste.inc.php");
+ include("head.inc.php");
  
  if (!isset($default_copypaste)) $default_copypaste=1;
  printCopyPasteJS($default_copypaste);
@@ -24,10 +25,8 @@
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h3>Script to be created in the <b>$frmdbtype</b> database schema for the project <b>$projectname</b></h3>";
- printCopyPasteLink("Copy to clipboard", 1, $default_copypaste);
+ printCopyPasteLink("Copy to clipboard", 0, $default_copypaste);
 ?>
-<a href="list_projects.php">Back to List Projects</a> | 
-<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 <hr>
 <pre>
 <?php
@@ -231,8 +230,9 @@ echo $script;
   }
 ?>
 </pre>
-<hr>
+
 <?php
+include("bottom.inc.php");
 // repeating the script for copy&paste purposes
 printCopyPasteBlock("$intro\n$script\n$insert\n$commit", $default_copypaste);
 ?>
