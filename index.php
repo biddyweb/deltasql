@@ -187,21 +187,17 @@ if ($displayhelp==1)  {
 ?>
 <li><a href="manual.php">Manual</a></li>
 <li><a href="faq.php">FAQ</a></li>
-<li><a href="http://deltasql.sourceforge.net">Website...</a></li>
+<br>
 <?php
 if ($enterprise_edition==false) {
-    echo "<br>";
 	if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list...</a></li>";
 	if ($rights==3) echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
 	echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
 } else {
-    echo "<br><li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
+    echo "<li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
 }
-
-//if ($rights==3) {
-//        echo "<li><a href=\"phpinfo.php\">PHP Version Info</a></li>";
-//}
 ?>
+<li><a href="http://deltasql.sourceforge.net">deltasql Website...</a></li>
 </ul>
 </td>
 </table>
