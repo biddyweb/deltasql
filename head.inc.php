@@ -34,7 +34,7 @@ echo "
 <tr>
 <div align='left'>
 <td>
-<h4>Navigation Bar</h4>
+<h3>Navigation Bar</h3>
 ";
 
 echo "<ul>";
@@ -42,16 +42,77 @@ echo "<li><a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a></li>";
 echo "</ul>";
 
 echo "
-<h4>Scripts</h4>
+<h3>Scripts</h3>
 <ul>
 ";
 if ($rights>0)
   echo "<li><a href=\"submit_script.php\"><img src=\"icons/new.png\"> Submit</a></li>";
-echo "<li><a href=\"list_scripts.php\"><a href=\"get_rss_feed.php\"><img src=\"pictures/rss-icon.png\" border=0/> List</a></a></li>";
+echo "<li><a href=\"list_scripts.php\"><img src=\"pictures/rss-icon.png\" border=0/> List</a></a></li>";
 echo "<li><a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search</a></li>";
 if ($rights>2)
   echo "<br><li><a href=\"list_changelog_deleted.php\">View deleted</a></li>";
 echo "</ul>";
+
+echo "
+<h3>Modules</h3>
+<ul>
+";
+if ($rights>1)
+    echo "<li><a href=\"create_module.php\">Create</a></li>";
+echo "<li><a href=\"list_modules.php\">List</a></li>";
+echo "</ul>";
+
+echo "
+<h3>Projects</h3>
+<ul>";
+if ($rights>1)
+    echo "<li><a href=\"create_project.php\">Create</a></li>";
+echo "<li><a href=\"list_projects.php\">List</a></li><br>";
+echo "</ul>";
+
+echo "
+<h3>Synchronization</h3>
+<ul>
+<li><a href=\"list_branches.php\"><img src=\"icons/tree.png\"> List</a></li>
+<li><a href=\"dbsync.php\"><img src=\"icons/show2.png\"> Synchronize</a></li>
+</ul>
+";
+
+echo "
+<h3>Statistics</h3>
+<ul>";
+if ($enable_server_stats) echo "<li><a href=\"server_stats.php\">Statistics</a></li>";      
+if (!$disable_topten_submitters) {
+    echo "<li><a href=\"topten.php\">Top Ten</a></li><br>";
+}
+echo "</ul>";
+
+
+echo "
+<h3>Users</h3>
+<ul>
+";
+if ($rights>2) 
+    echo "<li><a href=\"insert_user.php\">Create</a></li>";
+if ($rights>1) {
+    echo "<li><a href=\"list_users.php\">List</a></li>";
+}	
+
+if ($rights==0)
+  echo "<li><a href=\"login.php\"><img src=\"icons/rights.png\"> Login</a></li>"; 
+if ($rights>0) {
+    echo "<li><a href=\"preferences.php\"><img src=\"icons/settings.png\"> Preferences</a></li>";
+    echo "<li><a href=\"logout.php\"><img src=\"icons/logout.png\"> Logout</a></li>";
+}
+echo "</ul>";
+
+echo "
+<h3>Help</h3>
+<ul>
+<li><a href=\"faq.php\">FAQ</a></li>
+<li><a href=\"manual.php\">Manual</a></li>
+</ul>
+";
   
 echo "
 </div>
