@@ -11,14 +11,12 @@ $deftz=ini_get('date.timezone');
 if ($deftz=="") $deftz="Europe/Berlin";
 date_default_timezone_set($deftz);
 
-echo "<style type=\"text/css\">";
-include ("deltasql.css");
-echo "</style>";
 include("utils/utils.inc.php");
 include("utils/display.inc.php");
 include("utils/constants.inc.php");
 include("utils/timing.inc.php");
 $startwatch = start_watch();
+include("head.inc.php");
 
 if (isset($_SESSION['scriptsperpage'])) $scriptsperpage=$_SESSION['scriptsperpage']; else $scriptsperpage=$default_scriptsperpage;
 

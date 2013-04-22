@@ -7,7 +7,7 @@
 <body>
 
 <?php 
- include("head.inc.php");
+ include("head-main.inc.php");
  include("utils/constants.inc.php");
  include("utils/utils.inc.php");
  include("utils/timing.inc.php");
