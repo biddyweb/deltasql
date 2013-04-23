@@ -219,10 +219,14 @@ if ($enterprise_edition==false) {
 	echo "</center>";
 }
 ?>
+<br><br>
+ <center>
+<img src="docs/devel-with-deltasql.jpg" border="0"><br>
+</center>
 <hr>
 <center>
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
- and mantained by the <a href="http://sourceforge.net/projects/deltasql/">deltasql Team</a>. 
+ and mantained by the <a href="http://sourceforge.net/projects/deltasql/">deltasql Team</a>.
 <?php 
 if (file_exists($configurationfile)) {
  if ($enterprise_edition==false) {
@@ -237,8 +241,13 @@ if (file_exists($configurationfile)) {
  }
  stop_watch($startwatch);
  echo "</h6>";
- echo "</center>";
-
+ ?>
+<br>
+ <a href="http://www.sourceforge.net">
+<img src="pictures/sourceforge-logo.gif" border="0" />
+</a>
+</center>
+ <?php
  // Stats for Google Analytics
  if ($dns_name=="http://deltasql.sourceforge.net/deltasql") {
  echo '
