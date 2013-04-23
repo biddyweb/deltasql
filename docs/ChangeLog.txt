@@ -1,7 +1,6 @@
 22.4.2013 git
 - implementing navigation with frames
 - unifying title height
-- TODO: drop unused "show deltasql clients on main page" option
 - TODO: understand why copy & paste does not work
 
 21.4.2013 git
