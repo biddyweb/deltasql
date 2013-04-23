@@ -55,10 +55,6 @@ $disable_topten_submitters=false;
 // enables server statistics
 $enable_server_stats=true;
 
-// if your clients are preinstalled, you might want to disable the table
-// with external clients like dbredactor and ant-client on the main page
-$disable_clients_table_on_main_page=false;
-
 // default script title when submitting a new script
 $default_script_title="db update";
 

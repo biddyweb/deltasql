@@ -91,12 +91,6 @@ You can choose to show the table with the deltasql clients on the main page as w
 </p>
 <table>
 
-<tr><td>Show deltasql clients on main page: </td>
-<td>
-<input type="radio" name="clientsgroup" value="clientstableyes" checked> Yes
-<input type="radio" name="clientsgroup" value="clientstableno"> No
-</td></tr>
-
 <tr><td>Use SQL highlighting: </td>
 <td>
 <input type="radio" name="sqlgroup" value="usesqlhighlighting" checked> Yes

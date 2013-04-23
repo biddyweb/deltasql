@@ -49,7 +49,6 @@ $enterpriselinkurl = $_POST['enterpriselinkurl'];
 
 $testgroup=$_POST['testgroup'];
 $sqlgroup=$_POST['sqlgroup'];
-$clientsgroup=$_POST['clientsgroup'];
 $editiongroup =  $_POST['editiongroup'];
 $toptengroup =  $_POST['toptengroup'];
 $usagestatsgroup = $_POST['usagestatsgroup'];
@@ -60,7 +59,6 @@ $statsgroup = $_POST['statsgroup'];
 
 $testsystem="false";
 $disablesqlhighlightning="false";
-$disable_clients_table_on_main_page="false";
 $enterpriseedition="false";
 $disable_topten_submitters="false";
 $emails_enable="true";
@@ -69,7 +67,6 @@ $stats_enable="true";
 
 if ($testgroup=="testsystemyes") $testsystem="true";
 if ($sqlgroup=="donotusesqlhighlighting") $disablesqlhighlightning="true"; 
-if ($clientsgroup=="clientstableno") $disable_clients_table_on_main_page="true";
 if ($editiongroup=="enterpriseedition") $enterpriseedition = "true";
 if ($toptengroup=="no") $disable_topten_submitters = "true";
 if ($emailgroup=="no") $emails_enable="false"; 
@@ -198,10 +195,6 @@ fwrite($fh, "
 // if your clients are preinstalled, you might want to disable the table
 // with external clients like dbredactor and ant-client on the main page
 \$disable_clients_table_on_main_page=$disable_clients_table_on_main_page;
-
-
-// disables the top ten statistics
-\$disable_topten_submitters=$disable_topten_submitters;
 
 // enables server statistics
 \$enable_server_stats=$stats_enable;
