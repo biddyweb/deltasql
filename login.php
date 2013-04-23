@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-include("head-main.inc.php");
+include("head.inc.php");
 include("utils/utils.inc.php");
 include("utils/constants.inc.php");
 
@@ -43,8 +43,7 @@ include("conf/config.inc.php");
 if ($dns_name=="http://deltasql.sourceforge.net/deltasql") {
 	echo "<p><img src=\"icons/help.png\"> This is a test system. Login with user <b>admin</b> with password <b>testdbsync</b> to test all functionality.</p>";
 }
+include("bottom.inc.php");
 ?>
-<hr>
-<a href="index.php"><img src="icons/home.png"> Back to main page</a>
 </body>
 </html>

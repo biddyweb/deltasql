@@ -55,7 +55,6 @@ if ($nums==0) {
  
  mysql_close();
  js_redirect("index.php");
-
 ?>
 </body>
 </html>
