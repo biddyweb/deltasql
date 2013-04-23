@@ -190,7 +190,7 @@ if ($displayhelp==1)  {
 <br>
 <?php
 if ($enterprise_edition==false) {
-	if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list...</a></li>";
+	if ($rights==3) echo "<li><a href=\"http://sourceforge.net/p/deltasql/discussion/\">Forum...</a></li>";
 	echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
 	echo "<li><a href=\"http://www.freecode.com/projects/deltasql\" target=_blank>Freecode...</a></li>";
     echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
