@@ -26,7 +26,7 @@ echo "
     </center>
 ";
 } else { 
-    echo "<center>deltasql - Database Evolution under Control</center>";
+    echo "<center><h3>deltasql - Database Evolution under Control</h3></center>";
 }
 echo "
 </td>

@@ -191,8 +191,9 @@ if ($displayhelp==1)  {
 <?php
 if ($enterprise_edition==false) {
 	if ($rights==3) echo "<li><a href=\"mailto:gpu-world AT lists.sourceforge.net\">Mailing list...</a></li>";
-	if ($rights==3) echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
-	echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
+	echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
+	echo "<li><a href=\"http://www.freecode.com/projects/deltasql\" target=_blank>Freecode...</a></li>";
+    echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
 } else {
     echo "<li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
 }
