@@ -254,9 +254,17 @@ VALUES ('deltasql-Server', 254, 'HEAD', 'TAG_deltasql_1.6.0', 'admin', 'deltasql
 -- all scripts to reach db HEAD beginning from version 254 on date 2013-04-15 13:26:35
 -- synchronization script generated in 4.6231 seconds
 
+-- version: 255 module: deltasql-module date: 2013-04-18 07:30:56
+-- applied to: HEAD 
+
 /*
 deleting unused parameter
 */
-delete from tbparameter where paramtype='USAGESTATS' and paramname='VERSION';
+DELETE FROM tbparameter WHERE paramtype='USAGESTATS' AND paramname='VERSION';
 
+-- updating synchronization information for the database schema
+INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)
+VALUES ('deltasql-Server', 256, 'HEAD', 'TAG_deltasql_1.6.1', 'admin', 'deltasql-server', 254, 'HEAD', 'Oracle');
+-- all scripts to reach db HEAD beginning from version 256 on date 2013-04-18 07:30:56
+-- synchronization script generated in 3.3705 seconds
  
