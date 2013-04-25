@@ -52,7 +52,7 @@ $lastchange=dbsynccurrentversion("", $id, 0);
 
 if ($description=="") $description="-";
 echo "
-<tr>
+<tr BGCOLOR=\"#FDD017\">
 <td>$id</td>
 <td>$name</td>
 <td>$description</td>
@@ -62,7 +62,7 @@ echo "
 
 if ($rights>1) 
     echo "<a href=\"add_module_to_project.php?id=$id&name=$name\">Add Module</a> "; 
-echo "<a href=\"list_project_modules.php?id=$id&name=$name\">List Modules</a> <a href=\"dbsync.php?id=$id&name=$name\">Synchro</a> <b><a href=\"get_synchronization_table.php?id=$id&name=$name\">Table</a></b> ";
+echo "<a href=\"list_project_modules.php?id=$id&name=$name\">List Project Modules</a> <a href=\"dbsync.php?id=$id&name=$name\">Synchro</a> <b><a href=\"get_synchronization_table.php?id=$id&name=$name\">Table</a></b> ";
 
 if ($rights>1) {
  echo "<a href=\"create_branch.php?id=$id&name=$name\">Branch</a> ";

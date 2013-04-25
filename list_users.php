@@ -46,7 +46,7 @@ $email=mysql_result($result,$i,"email");
 $rights=mysql_result($result,$i,"rights");
 
 echo "
-<tr>
+<tr bgcolor=\"#99CCFF\">
 <td>$id</td>
 <td>$username</td>
 <td>";

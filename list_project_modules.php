@@ -47,7 +47,7 @@ echo "<table border=1><tr>
    
    if ($description=="") $description="-";
    echo "
-    <tr>
+    <tr bgcolor=\"#F4FA58\">
     <td>$id</td>
     <td>$name</td>
     <td>$description</td>

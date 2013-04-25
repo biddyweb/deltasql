@@ -53,7 +53,7 @@ $lastversionnr=mysql_result($result,$i,"lastversionnr");
 
 if ($description=="") $description="-";
 echo "
-<tr>
+<tr bgcolor=\"#81F781\">
 <td>$id</td>
 <td>$name</td>
 <td>$description</td>

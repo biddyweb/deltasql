@@ -1,3 +1,8 @@
+25.4.2013 git
+- added colors to tables
+- tried another way to do copy paste (which does not work)
+- upgrading zeroClipboard library to 1.1.7
+
 23.4.2013 git
 - minor improvements to navigation
 - TODO: understand why copy & paste does not work

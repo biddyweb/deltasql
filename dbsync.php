@@ -33,8 +33,8 @@ else {
 }
 
 if (!isset($default_copypaste)) $default_copypaste=1;
-include("head.inc.php");
 printCopyPasteJS($default_copypaste);
+include("head.inc.php");
 
 ?>
 
@@ -148,8 +148,8 @@ if ($displayhelp==1)
    echo '<a href="manual.php#syncworks"><img src="icons/help.png"> How synchronization works with examples</a><br>';
 ?>
 <?php
-printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);", $default_copypaste);
 include("bottom.inc.php");
+printCopyPasteBlock("select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);", $default_copypaste);
 
 ?>
 
