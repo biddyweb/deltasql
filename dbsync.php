@@ -47,7 +47,7 @@ project list</a> and press on the 'Table' link, this will generate a script you 
 to synchronize, and then fill the form below with the query's results as explained in the italic comments</p>
 <?php
 echo "<tt>";
-echo "select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);";
+echo "<p id='clipboard_text'>select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);</p>";
 echo "</tt>";
 echo "<center>";
 printCopyPasteLink("Copy this query to clipboard", 0, $default_copypaste);
