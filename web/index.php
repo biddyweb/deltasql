@@ -55,9 +55,6 @@ synchronization table and thereafter the needed chain of datamodel updates is co
  There are <a href="deltasql/index.php">deltasql clients</a>, which automatically collect synchronization data from a given database schema.
  Though deltasql works best with Oracle, PostgreSQL and mySQL schemas, any other database type can use most of deltasql functionality.
 </p>
-<center>
-<script type="text/javascript" src="http://www.ohloh.net/p/10241/widgets/project_basic_stats.js"></script>
-</center>
 
 <?php include("bottom.inc.php"); ?>
 </body>

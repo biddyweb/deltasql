@@ -7,9 +7,9 @@
 <?php include("top.inc.php"); ?>
 <?php include("menu.inc.php"); ?>
 
+
 <center>
-<img src="pictures/ant-dbredactor.png" border="0"><br>
-<i>Picture: </i>the two Ant targets of dbredactor
+<script type="text/javascript" src="http://www.ohloh.net/p/10241/widgets/project_basic_stats.js"></script>
 </center>
 
 <h2><a href="http://sourceforge.net/projects/deltasql">Develop</a></h2>
@@ -22,6 +22,12 @@ deltasql is enhanced from time to time. Ideas, bug reportes, feature requests, p
 If you are serious about contributing, read the <a href="faq.php">F.A.Q.</a> and drop us a line on the
  <a href="http://sourceforge.net/p/deltasql/discussion/" class="menu" target="blank_">Forum...</a>.
 </p>
+
+<center>
+<img src="pictures/ant-dbredactor.png" border="0"><br>
+<i>Picture: </i>the two Ant targets of dbredactor
+</center>
+
 <?php include("bottom.inc.php"); ?>
 </body>
 </html>
