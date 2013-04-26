@@ -21,6 +21,12 @@ With the bash client and cron jobs it is even possible to build a continous inte
 <i>Picture: </i>deltasql timeline with source and target
 </center>
 
+<font color="red">
+<p>
+WARNING: some features do not work, as sourceforge disabled them to enforce security. Additionally, you might encounter here newer versions than the ones 
+relased. Please be patient if you do not get everything working. Thank you!
+</p>
+</font>
 <h2><a href="deltasql/">Try deltasql online</a></h2>
 
 <p>If you want to <a href="deltasql/">test deltasql in deep</a>, the password for the administrator is provided on the login page . 

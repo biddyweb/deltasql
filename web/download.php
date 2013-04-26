@@ -12,7 +12,7 @@
 <center>
 <i>
 <p>
-"... Concepts of continouus integration were implemented with Hudson CI and Linux scripts for Build automation and deltasql Version Control System for databases.
+"... Concepts of <a href="faq.php#continouus">continouus integration</a> were implemented with Hudson CI and Linux scripts for Build automation and deltasql Version Control System for databases.
 </p>
 <p>
 Consequences were-
