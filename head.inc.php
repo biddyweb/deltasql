@@ -27,6 +27,7 @@ echo "
 ";
 } else { 
     echo "<center><h3>deltasql - Database Evolution under Control</h3></center>";
+	if ($dns_name=="http://deltasql.sourceforge.net/deltasql") echo "<center><a href='../index.php'>Back to Website</a></center>";
 }
 echo "
 </td>
