@@ -13,47 +13,18 @@ function isCopyPasteEnabled($default_copypaste) {
 
 function printCopyPasteJS($default_copypaste) {
 if (isCopyPasteEnabled($default_copypaste)) echo "
-<script type=\"text/javascript\" src=\"utils/zeroclipboard/ZeroClipboard.js\"></script>
+<script type=\"text/javascript\" src=\"ZeroClipboard.js\"></script>
 ";
 }
 
 function printCopyPasteBlock($textblock, $default_copypaste) {
   if (isCopyPasteEnabled($default_copypaste)) {
-     /*
-	 echo "
-	 <script>
-	function myFunction()
- {
- alert(\"Hello World!\");
- }
-	
-	function copy2Clip() {
-		//var clip = new ZeroClipboard();
-		clip.setText('test test test');
-		alert('Copied!');
-    }
-	</script>
-	";
-    */
-     
      echo "<font color='white'>";
      echo "<p id='clipboard_text'>";
      echo "$textblock";
      echo "</p>";
      echo "</font>";  
 	 echo "<script type=\"text/javascript\" src=\"mainclipboard.js\"></script>";
-   
-    /*
-    echo "
-    <script>
-	function copy2Clip() {
-		var clip = new ZeroClipboard();
-		clip.setText( \"$textblock\" );
-    }
-	</script>
-    ";
-	*/
-    
   } 
 }
 

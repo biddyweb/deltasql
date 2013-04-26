@@ -23,7 +23,6 @@ clip.on( 'mouseout', function(client) {
 } );
 
 clip.on( 'mousedown', function(client) {
-
   //alert("mouse down");
 } );
 

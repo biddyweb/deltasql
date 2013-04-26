@@ -86,8 +86,7 @@ For the rest, most people can probably leave with the defaults. You can disable 
   as it helps the eye. If the test option is enabled, you can change the underlying deltasql schema without having deltasql complaining about it.
 </p>
 <p>
-You can choose to show the table with the deltasql clients on the main page as well. And you can have a system with test data, and where the admin password is displayed at login,
- for users to experiment with deltasql, or to check deltasql correctness.
+You can have a system with test data to experiment with deltasql, or to check deltasql correctness.
 </p>
 <table>
 
@@ -117,8 +116,8 @@ You can choose to show the table with the deltasql clients on the main page as w
 
 <tr><td>Enable Copy-Paste functionality by default (requires modern browser and sql client): </td>
 <td>
-<input type="radio" name="copypastegroup" value="yes"> Yes
-<input type="radio" name="copypastegroup" value="no" checked> No
+<input type="radio" name="copypastegroup" value="yes" checked> Yes
+<input type="radio" name="copypastegroup" value="no"> No
 </td></tr>
 
 

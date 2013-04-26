@@ -1,3 +1,6 @@
+26.4.2013 git
+- ZeroClipboard works now even in IE, but for some reason the link disappears after it was clicked
+
 25.4.2013 git
 - added colors to tables
 - tried another way to do copy paste (which does not work)
