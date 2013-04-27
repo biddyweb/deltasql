@@ -609,15 +609,22 @@ If a database shows a given version in TBSYNCHRONIZE, deltasql can compute which
 
 <p>
  With deltasql it is also possible to keep a collection of scripts which are occasionally used for maintenance tasks.
- It is sufficient to create a database module with a name like 'collection of scripts for myProject' without adding
-  the module to any project. Modules which are not added to a project do not partecipate in the synchronization process.
+ It is sufficient to create a database module with a name like <b>collection of my scripts</b> without adding
+  the module to any project. 
+</p>
+<p>  
+  Modules which are not added to a project do not partecipate in the synchronization process.
   So you can submit maintenace scripts to this module without fear that they will appear in the synchronization sequence. 
   Typically, you will change the default title <i>db update</i> to what the script effectively does. deltasql underlines titles which are not default
   and allows to search also in the title field of a script.
 </p>
-<p>By using the function <a href="http://deltasql.sourceforge.net/deltasql/search_scripts.php">Search among scripts</a>, you can then specifically select the module
-  'collection of scripts for myProject' to search among the maintenance SQL scripts.
+<p>By using the function <a href="http://deltasql.sourceforge.net/deltasql/search_scripts.php"><img src="icons/search.png">  Search among scripts</a>, you can then specifically select the special module
+  to search among the maintenance SQL scripts.
 </p>  
+<p>
+You can see how your scripts improve over time in the <b><img alt="Show" src="icons/show.png"> Show Script</b> page, if you click on the <b><img alt="History" src="icons/history.png"> History button</b>. You will be presented with
+ a history of revisions. You can see how old revisions looked like or diff them to see what changed between them.
+</p>
 
 <h4><a name="filter"></a>Filter script - output particular synchronization scripts</h4>
 <p>

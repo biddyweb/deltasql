@@ -15,17 +15,18 @@ include("utils/constants.inc.php");
 <ul>
 <li><a href="#about">What is deltasql for?</a></li>
 <li><a href="#logo">What does the deltasql logo mean?</a></li>
-<li><a href="#who">Who is behind deltasql?</a></li>
+<li><a href="#cool">What is so cool about deltasql?</a></li>
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
+<li><a href="#install">Is it difficult to install?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
 <li><a href="#milestones">What where the achieved milestones so far?</a></li>
-<li><a href="#install">Is it difficult to install?</a></li>
 <li><a href="#stable">Which are the most stable versions of deltasql?</a></li>
 <li><a href="#quick">Is there a Quick Guide?</a></li>
 <li><a href="#test">Where can I try out and experiment with deltasql?</a></li>
 <li><a href="#download">Where can I download deltasql?</a></li>
 <li><a href="#patch">How can I install a patch for deltasql?</a></li>
 <li><a href="#upgrade">There is a new deltasql version, how do I upgrade?</a></li>
+<li><a href="#who">Who is behind deltasql?</a></li>
 <li><a href="#support">How can I get technical support for deltasql?</a></li>
 <li><a href="#contribute">How can I contribute?</a></li>
 <li><a href="#checkout">How can I checkout deltasql from the git repository?</a></li>
@@ -83,16 +84,44 @@ deltasql is a tool which is suitable for the "Agile Development" model, where de
 
 <h3><a name="logo"></a>What does the deltasql logo mean?</h3>
 
+<p>
 The triangle represents the greek letter delta, which also means difference in mathematics. The cylinder is a symbol often used in IT charts to represent a database. 
 The two symbols together identify a system which is able to handle differences on a database with mathematical precision.
 The logo was created in 2007 by <a href="patrizia.php">Patrizia</a>.
+</p>
 
-<h3><a name="who"></a>Who is behind deltasql?</h3>
+<h3><a name="cool"></a>What is so cool about deltasql?</h3>
 
-<p>We are mainly developers in Switzerland, but there are also contributors in India and other countries. We share the passion for Open Source
- and hope Deltasql can spare some time to people who have to manage several database schemas at a time in the same way it helped us. Deltasql should become
-  the ultimate database versioning tool by hackers for hackers!
- </p>
+<p>
+deltasql has a flat learning curve and has plenty to offer. As you will see, you can set it up in minutes on your machine. 
+Dropping a <a href="get_synchronization_table.php">special table</a> on your database schema is enough to put it under version control. If you forget a schema
+ for some time because you are doing something else, you will exactly know how many scripts you miss to get it to the latest version. Or if you
+  dump the schema and copy it somewhere else, you still keep it under version control, because the synchronization table is copied along with the dump.
+</p>
+<p> 
+In the beginning, you will use only one module and one project. But later, especially if you have a base product which has different customization layers
+ for each customer, you will appreciate a setup with <a href="#modules">several modules for one project</a>.
+</p>
+<p>
+If you develop alone, you will maybe create a module disjoint from projects <a href="manual.php#maintenance">to store your collection of scripts</a> which is kind of your spell collection as DBA wizard. 
+With the practical diff feature embedded in deltasql, you will see how your scripts change over time. 
+</p>
+<p>If you have plenty of schemas to manage and fear to execute the synchronization script in the wrong schema, a <a href="#verification">verification</a> stored procedure on top of 
+ the script will protect you from any wrongdoing.
+<p>
+If you develop in team, you will get your development schema synchronized with source code <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">with three clicks of the mouse</a>.
+ If you are even lazier, you will use <a href="http://deltasql.sourceforge.net/deltasql/clients.php">a deltasql client</a> to synchronize your schema with the other developers. 
+ If you are old style and do not trust this crazy system, you still will receive an email when someone inserts a new script into deltasql server.
+</p>
+<p>If you like how source code develops and you think at it as a fluid or as a tree which grows with plenty of branches, you can study the
+ <a href="manual.php#insights">synchronization algorithm embedded in deltasql</a>. 
+ Or you can even try to develop <a href="manual.php#write-client">your own client for deltasql server</a> tailored to your needs.</p>
+
+<p>If you are a Linux crack, you can go on implementing <a href="#continouus">continouus integration for databases</a> with the bash client provided. The entire source
+ code is provided, so you can modify the system's behaviour at wish.</p> 
+
+<p>No matter if you are a busy DBA, a developer with no private life or a stressed manager. No matter if you are a beginner or an experienced professional,
+deltasql will help you!</p>
  
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
 
@@ -100,6 +129,20 @@ The logo was created in 2007 by <a href="patrizia.php">Patrizia</a>.
 In some environments it manages more than 2000 scripts, 10 projects, 12 developers and 15 branches. From Google it
  can be seen that deltasql is popular in Brazil, Japan and South Korea as well. There are even pages in arabic language about deltasql!
 </p>
+
+<h3><a name="install"></a>Is deltasql difficult to install?</h3>
+<p>
+deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same difficulty as to setup a discussion forum on a webpage.
+ deltasql has an automatic install page, though it can be installed step-by-step. Everything should be explained in 
+ the <a href="manual.php#install-server">manual</a>.
+</p>
+<p>As you can see from this movie, <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/000_deltasql_how_to_install_server_11min.avi/download"><img src="pictures/movie.jpg" border="0"></a> 
+you can get deltasql server installed on your own Windows computer or on a Windows server in about 10 minutes and with a low level of difficulty. If you have care
+ to use a Linux distribution with the LAMP stack installed and running, the install process is straightforward on Linux, too.</p>
+
+<p>Also productive environments can run with deltasql server on Windows, although for best performance Linux is recommended.
+</p>
+
 
 <h3><a name="license"></a>Under which license is deltasql released?</h3>
 <p>Deltasql is released under the <a href="docs/GPL_license.txt">GNU General Public License</a> meaning that you can use this software
@@ -120,15 +163,6 @@ In some environments it manages more than 2000 scripts, 10 projects, 12 develope
 <li>The 1.5.x series in 2012 adds charting features to monitor the deltasql server and a handy copy/paste functionality.</li>
 <li>The 1.6.x series in 2013 ships with a deltaclient compiled for the linux platform and adds navigation with frames.</li>
 </ul>
-
-
-<h3><a name="install"></a>Is deltasql difficult to install?</h3>
-<p>
-deltasql is based on the LAMP stack (Linux, Apache, mySQL, PHP). It has the same difficulty as to setup a discussion forum on a webpage.
- deltasql has an automatic install page, though it can be installed step-by-step. Everything should be explained in 
- the <a href="manual.php#install-server">manual</a>.
-</p>
-<p>This movie <a href="http://sourceforge.net/projects/deltasql/files/tutorials%20%28movies%29/000_deltasql_how_to_install_server_11min.avi/download"><img src="pictures/movie.jpg" border="0"></a> steps through the install process, too.</p>
 
 <h3><a name="stable"></a>Which are the most stable versions of deltasql?</h3>
 
@@ -194,6 +228,14 @@ Another way to keep updated with the development is to checkout the git reposito
  from time to time <tt>git pull</tt> to update the repository as described in <a href="faq.php#checkout">this FAQ</a>.
 </p>
 
+
+<h3><a name="who"></a>Who is behind deltasql?</h3>
+
+<p>We are mainly developers in Switzerland, but there are also contributors in India and other countries. We share the passion for Open Source
+ and hope Deltasql can spare some time to people who have to manage several database schemas at a time in the same way it helped us. Deltasql should become
+  the ultimate database versioning tool by hackers for hackers!
+ </p>
+
 <h3><a name="support"></a>How can I get technical support for deltasql?</h3>
 <p>
 We provide technical support for following activities:
@@ -206,7 +248,7 @@ We provide technical support for following activities:
 </ul>
 </p>
 <p>
-Please <a href="http://sourceforge.net/projects/deltasql/">visit the forum</a> on the project homepage for bug reports, suggestions and inquiries.
+Please <a href="mailto:tiziano.mengotti AT gmail.com">send an email</a> to ask for technical support.
 </p>
 
 

@@ -53,7 +53,7 @@ Apache/PHP backed by a mySQL database.</li>
 <li><img src="deltasql/icons/help.png">There is a <a href="deltasql/manual.php">manual</a>,  a <a 
 href="deltasql/faq.php">list of frequently asked questions</a> and a set 
 of tutorial movies explaining how it works.</li>
-<li>It is used productively by companies in Pakistan, USA, Italy, 
+<li>It is used productively by companies in USA, China, Italy, 
 Switzerland and India 
 and is popular in Japan and South Korea. In some companies it manages 
 more than 

@@ -1,3 +1,7 @@
+27.4.2013 git
+- added two FAQ entries
+- fixed undefined index error when upgrading deltasql
+
 26.4.2013 git
 - ZeroClipboard works now even in IE, but for some reason the link disappears after it was clicked
 
