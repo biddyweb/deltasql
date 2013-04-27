@@ -123,16 +123,19 @@ If you develop in team, you will get your development schema synchronized with s
  Or you can even try to develop <a href="manual.php#write-client">your own client for deltasql server</a> tailored to your needs.</p>
 
 <p>If you are a Linux crack, you can go on implementing <a href="faq.php#continouus">continouus integration for databases</a> with the bash client provided. The entire source
- code is provided, so you can modify the system's behaviour at wish. Overnight, the source code will be checked out and rebuild; 
- the reference database schema will be updated and the whole battery of unit tests will be launched against the connected database.</p> 
+ code is provided, so you can modify the system's behaviour at wish. Overnight, the source code will be checked out and rebuilt; 
+ the bash deltasql client will update the reference database schema. Shortly after, the whole battery of unit tests will be launched against the connected database. 
+ The entire work will be performed automatically while you are sleeping. 
+ In the morning, before the tedious bootstrapping of your local application server, you will know in advance if the latest source code on HEAD expects a missing column in the database :-)</p> 
  
 <p>On the other side, deltasql is unfinished and has many gray areas which need improvements and maintenace. Did you find a way to get the verification script working on
  your database type? Did you extend the poor server's side API without breaking backward compatibility? Did you upgrade a client to get it working
   with newer libraries? We would be glad to <a href="http://deltasql.sourceforge.net/develop.php">hear about it</a>. Not only we will publish your work and
-   credit you properly, you will also spend less time integrating your features each time you upgrade to a new release.
+   credit you properly, you will also spend less time integrating your features each time you upgrade to a new release. The whole community will benefit.
+    If you contribute, your colleague leaving top down on the other side of the world will contribute as well :-)
 </p>
 
-<p>No matter if you are a busy DBA, a developer with no private life or a stressed manager. No matter if you are a beginner or an experienced professional,
+<p>No matter if you are a busy DBA, a developer with no private life, a stressed manager or a bored open source developer. No matter if you are a beginner or an experienced professional,
 deltasql will help you and will overhaul the way your organization thinks about databases!</p>
  
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
