@@ -93,7 +93,11 @@ The logo was created in 2007 by <a href="patrizia.php">Patrizia</a>.
 <h3><a name="cool"></a>What is so cool about deltasql?</h3>
 
 <p>
-deltasql has a flat learning curve and has plenty to offer. As you will see, you can set it up in minutes on your machine. 
+deltasql is easy to learn and has plenty to offer. As you will see, you can set it up in minutes on your laptop. You can start it as your
+little pet project well hidden on your machine and extend it so far, until it gets a powerful monster installed on the central server of your company,
+ with as many tentacles as existing databases. 
+</p>
+<p>
 Dropping a <a href="get_synchronization_table.php">special table</a> on your database schema is enough to put it under version control. If you forget a schema
  for some time because you are doing something else, you will exactly know how many scripts you miss to get it to the latest version. Or if you
   dump the schema and copy it somewhere else, you still keep it under version control, because the synchronization table is copied along with the dump.
@@ -109,19 +113,27 @@ With the practical diff feature embedded in deltasql, you will see how your scri
 <p>If you have plenty of schemas to manage and fear to execute the synchronization script in the wrong schema, a <a href="#verification">verification</a> stored procedure on top of 
  the script will protect you from any wrongdoing.
 <p>
-If you develop in team, you will get your development schema synchronized with source code <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">with three clicks of the mouse</a>.
+If you develop in team, you will get your development schema synchronized with source code <a href="http://deltasql.sourceforge.net/deltasql/dbsync.php">with four clicks of the mouse</a>.
  If you are even lazier, you will use <a href="http://deltasql.sourceforge.net/deltasql/clients.php">a deltasql client</a> to synchronize your schema with the other developers. 
- If you are old style and do not trust this crazy system, you still will receive an email when someone inserts a new script into deltasql server.
+ If you are old style and do not trust this crazy system, you still will <a href="faq.php#email">receive an email</a> when someone inserts a new script into deltasql server.
 </p>
-<p>If you like how source code develops and you think at it as a fluid or as a tree which grows with plenty of branches, you can study the
- <a href="manual.php#insights">synchronization algorithm embedded in deltasql</a>. 
+<p>If you like how source code develops and you think at it as a fluid or as a tree which grows with plenty of branches and fruits, you can study the
+ <a href="manual.php#insights">synchronization algorithm embedded in deltasql</a>. When you branch in source code, you can also branch on deltasql.
+  You can identifies the gems on your tree by tagging important product releases.
  Or you can even try to develop <a href="manual.php#write-client">your own client for deltasql server</a> tailored to your needs.</p>
 
-<p>If you are a Linux crack, you can go on implementing <a href="#continouus">continouus integration for databases</a> with the bash client provided. The entire source
- code is provided, so you can modify the system's behaviour at wish.</p> 
+<p>If you are a Linux crack, you can go on implementing <a href="faq.php#continouus">continouus integration for databases</a> with the bash client provided. The entire source
+ code is provided, so you can modify the system's behaviour at wish. Overnight, the source code will be checked out and rebuild; 
+ the reference database schema will be updated and the whole battery of unit tests will be launched against the connected database.</p> 
+ 
+<p>On the other side, deltasql is unfinished and has many gray areas which need improvements and maintenace. Did you find a way to get the verification script working on
+ your database type? Did you extend the poor server's side API without breaking backward compatibility? Did you upgrade a client to get it working
+  with newer libraries? We would be glad to <a href="http://deltasql.sourceforge.net/develop.php">hear about it</a>. Not only we will publish your work and
+   credit you properly, you will also spend less time integrating your features each time you upgrade to a new release.
+</p>
 
 <p>No matter if you are a busy DBA, a developer with no private life or a stressed manager. No matter if you are a beginner or an experienced professional,
-deltasql will help you!</p>
+deltasql will help you and will overhaul the way your organization thinks about databases!</p>
  
 <h3><a name="production"></a>Is deltasql used in productive environments?</h3>
 
