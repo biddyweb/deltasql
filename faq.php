@@ -15,7 +15,7 @@ include("utils/constants.inc.php");
 <ul>
 <li><a href="#about">What is deltasql for?</a></li>
 <li><a href="#logo">What does the deltasql logo mean?</a></li>
-<li><a href="#cool">What is so cool about deltasql?</a></li>
+<li><a href="#cool">Why is deltasql so different from other synchronization tools?</a></li>
 <li><a href="#production">Is deltasql used in productive environments?</a></li>
 <li><a href="#install">Is it difficult to install?</a></li>
 <li><a href="#license">Under which license is deltasql released?</a></li>
@@ -90,10 +90,16 @@ The two symbols together identify a system which is able to handle differences o
 The logo was created in 2007 by <a href="patrizia.php">Patrizia</a>.
 </p>
 
-<h3><a name="cool"></a>What is so cool about deltasql?</h3>
+<h3><a name="cool"></a>Why is deltasql so different from other synchronization tools?</h3>
 
 <p>
-deltasql is easy to learn and has plenty to offer. As you will see, you can set it up in minutes on your laptop. You can start it as your
+Unlike commercial tools that compare a source and target database schema and then automatically create a SQL script with the differences, deltasql assumes
+ that you are very knowledgeable about SQL and that you are able to script single changes in SQL. For example, if your source code makes a new reference to
+  a new column in a particular table, it assumes that you know about the command <tt>alter table x add column y</tt>. If you should not have this ability, 
+  then you probably can get most of it if you invest an afternoon of study on a good SQL tutorial.
+</p>
+<p>
+A part of this initial difficulty, deltasql is easy to learn and has plenty to offer. As you will see, you can set it up in minutes on your laptop. You can start it as your
 little pet project well hidden on your machine and extend it so far, until it gets a powerful monster installed on the central server of your company,
  with as many tentacles as existing databases. 
 </p>
@@ -101,14 +107,16 @@ little pet project well hidden on your machine and extend it so far, until it ge
 Dropping a <a href="get_synchronization_table.php">special table</a> on your database schema is enough to put it under version control. If you forget a schema
  for some time because you are doing something else, you will exactly know how many scripts you miss to get it to the latest version. Or if you
   dump the schema and copy it somewhere else, you still keep it under version control, because the synchronization table is copied along with the dump.
+When you generate a synchronization script with deltasql for a particular schema, the last statement of the sync script will always be an INSERT statement in the special table, to update the  
+ current version number of the schema. So simple.
 </p>
 <p> 
-In the beginning, you will use only one module and one project. But later, especially if you have a base product which has different customization layers
+In the beginning, you will use only one module and one project. But later on, especially if you have a base product which has different customization layers
  for each customer, you will appreciate a setup with <a href="#modules">several modules for one project</a>.
 </p>
 <p>
 If you develop alone, you will maybe create a module disjoint from projects <a href="manual.php#maintenance">to store your collection of scripts</a> which is kind of your spell collection as DBA wizard. 
-With the practical diff feature embedded in deltasql, you will see how your scripts change over time. 
+With the practical diff feature embedded in deltasql, you will see how your scripts change and improve over time. 
 </p>
 <p>If you have plenty of schemas to manage and fear to execute the synchronization script in the wrong schema, a <a href="#verification">verification</a> stored procedure on top of 
  the script will protect you from any wrongdoing.
@@ -117,9 +125,14 @@ If you develop in team, you will get your development schema synchronized with s
  If you are even lazier, you will use <a href="http://deltasql.sourceforge.net/deltasql/clients.php">a deltasql client</a> to synchronize your schema with the other developers. 
  If you are old style and do not trust this crazy system, you still will <a href="faq.php#email">receive an email</a> when someone inserts a new script into deltasql server.
 </p>
+<p>
+Your team will be motivated on one side by a <a href="http://deltasql.sourceforge.net/deltasql/server_stats.php">collective statistics</a> where the overall contribution is
+ summarized, showing how the server grows in complexity over time. On the other side, competitiveness among developers will spark looking at whom will enter the 
+ <a href="http://deltasql.sourceforge.net/deltasql/topten.php">top ten</a>.
+</p>
 <p>If you like how source code develops and you think at it as a fluid or as a tree which grows with plenty of branches and fruits, you can study the
  <a href="manual.php#insights">synchronization algorithm embedded in deltasql</a>. When you branch in source code, you can also branch on deltasql.
-  You can identifies the gems on your tree by tagging important product releases.
+  You can identify the gems on your tree by tagging important product releases. With some manual intervention you can transform a development schema into a production schema or the other way around. 
  Or you can even try to develop <a href="manual.php#write-client">your own client for deltasql server</a> tailored to your needs.</p>
 
 <p>If you are a Linux crack, you can go on implementing <a href="faq.php#continouus">continouus integration for databases</a> with the bash client provided. The entire source
@@ -128,11 +141,12 @@ If you develop in team, you will get your development schema synchronized with s
  The entire work will be performed automatically while you are sleeping. 
  In the morning, before the tedious bootstrapping of your local application server, you will know in advance if the latest source code on HEAD expects a missing column in the database :-)</p> 
  
-<p>On the other side, deltasql is unfinished and has many gray areas which need improvements and maintenace. Did you find a way to get the verification script working on
- your database type? Did you extend the poor server's side API without breaking backward compatibility? Did you upgrade a client to get it working
+<p>On the other side, deltasql is unfinished and has many gray areas which need improvement and maintenace. Did you find a way to get the verification script working on
+ your preferred database type? Did you extend the poor server's side API without breaking backward compatibility? Did you upgrade a client to get it working
   with newer libraries? We would be glad to <a href="http://deltasql.sourceforge.net/develop.php">hear about it</a>. Not only we will publish your work and
-   credit you properly, you will also spend less time integrating your features each time you upgrade to a new release. The whole community will benefit.
-    If you contribute, your colleague leaving top down on the other side of the world will contribute as well :-)
+   credit you properly, you will also spend less time integrating your features each time you upgrade to a new deltasql release. The whole community will benefit.
+    If you contribute, your colleague leaving top down on the other side of the world will contribute as well. Even if deltasql will miss its mission, we will
+ have learnt completely new ways to do amazing things :-)
 </p>
 
 <p>No matter if you are a busy DBA, a developer with no private life, a stressed manager or a bored open source developer. No matter if you are a beginner or an experienced professional,
