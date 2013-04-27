@@ -1,3 +1,17 @@
+*******************************
+1.6.1 Release Notes (10.5.2013)
+ 
+  New features:  navigation bar on the left for faster switch between pages
+                                  
+  Fixes:         Copy&Paste works also in Internet Explorer
+  
+  Known Issues: Copy&Paste link disappears after being clicked once
+                 
+  Documentation: one new FAQ entry on why deltasql is so different from commercial tools. 
+                 New webpage is part of the package in web subfolder
+                  
+*******************************
+
 27.4.2013 git
 - added one FAQ entries on why deltasql is so cool :-D
 
