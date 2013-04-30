@@ -192,10 +192,6 @@ fwrite($fh, "
 // synchronization form
 \$disable_sql_highlighting=$disablesqlhighlightning;
 
-// if your clients are preinstalled, you might want to disable the table
-// with external clients like dbredactor and ant-client on the main page
-\$disable_clients_table_on_main_page=$disable_clients_table_on_main_page;
-
 // enables server statistics
 \$enable_server_stats=$stats_enable;
 
