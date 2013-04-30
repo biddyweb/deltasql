@@ -35,7 +35,7 @@ In this section you specify the password for the <b>admin</b> user of deltasql. 
 <p>Here you should set the URL where deltasql is published. <b>Please do not add a SLASH at the end</b>. 
 <b>This parameter is important, if is set wrong, charts and other minor features will not work correctly.</b></p>
 <table>
-<tr><td>Published on:</td><td> <input type="text" name="dnsname" value="http://localhost/deltasql" size="50"></td></tr>
+<tr><td>Published on:</td><td> <input type="text" name="dnsname" value="http://127.0.0.1/deltasql" size="50"></td></tr>
 </table>
 
 <h3>mySQL Settings</h3>
