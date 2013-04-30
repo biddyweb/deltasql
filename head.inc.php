@@ -2,6 +2,9 @@
 include_once ("utils/constants.inc.php");
 if (file_exists($configurationfile)) include_once ("conf/config.inc.php");
 if (!isset($enterprise_edition)) $enterprise_edition=false;
+if (!isset($dns_name)) $dns_name="";
+if (!isset($enable_server_stats)) $enable_server_stats=false;
+if (!isset($disable_topten_submitters)) $disable_topten_submitters=true;
 
  if(isset($_SESSION['rights'])) {
     $rights = $_SESSION["rights"];
@@ -50,7 +53,7 @@ echo "
 if ($rights>0)
   echo "<li><a href=\"submit_script.php\"><img src=\"icons/new.png\"> Submit</a></li>";
 echo "<li><a href=\"list_scripts.php\"><img src=\"pictures/rss-icon.png\" border=0/> List</a></a></li>";
-echo "<li><a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search</a></li>";
+if ($dns_name!="") echo "<li><a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search</a></li>";
 echo "</ul>";
 
 echo "

@@ -12,6 +12,9 @@
                   
 *******************************
 
+30.4.2013 git
+- fixing install routine (some undefined variables in head.inc.php while installing)
+
 27.4.2013 git
 - added one FAQ entries on why deltasql is so cool :-D
 
