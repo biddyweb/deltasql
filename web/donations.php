@@ -33,6 +33,8 @@ Donate with Paypal:
 </form>
 
 </td>
+<td>
+</td>
 </tr>
 
 <tr>
@@ -40,10 +42,12 @@ Donate with Paypal:
 Donate Bitcoins:
 </td>
 <td>
-<img src="pictures/bitcoin.jpg" border="0" />
+<a href="bitcoin:1B5ANtmboh5beArhUtchVUiYPtcTGfknXc?label=deltasql"><img src="pictures/bitcoin.jpg" border="0" /></a>
+</td>
+<td>
+<img src="pictures/bitcoin-qr.png" border="0">
 </td>
 </tr>
-
 </table>
 
 <?php include("bottom.inc.php"); ?>
