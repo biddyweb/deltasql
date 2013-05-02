@@ -12,6 +12,7 @@
 <li><a href="tutorials.php" class="menu">Tutorials</a></li>
 <li><a href="manual.php" class="menu">Manual</a></li>
 <li><a href="develop.php" class="menu">Develop</a></li>
+<li><a href="donations.php" class="menu">Donate</a></li>
 </ul>
 <br>
 <ul>

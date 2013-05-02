@@ -12,6 +12,9 @@
                   
 *******************************
 
+2.5.2013 git
+- added donations page with paypal and bitcoin address
+
 30.4.2013 git
 - fixing install routine (some undefined variables in head.inc.php while installing)
 - fixing an error in the newly generated configuration script
