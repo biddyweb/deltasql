@@ -1,12 +1,12 @@
 <?php
 
-include_once( 'utils/openflashchart/open-flash-chart.php' );
-include("conf/config.inc.php");
+include_once( '../utils/openflashchart/open-flash-chart.php' );
+include("../conf/config.inc.php");
 
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT update_user, count(*) FROM tbsyncstats group by update_user order by count(*) desc;";
+ $query="select count(*), p.name from tbscript s, tbproject p, tbmoduleproject pm where (pm.module_id=s.module_id) and (pm.project_id=p.id) group by p.name order by count(*) asc;";
  $result=mysql_query($query);
  
  if ($result=="") {
@@ -20,10 +20,10 @@ include("conf/config.inc.php");
  $labels = array();
  $i=0;
  while ($i<$num) { 
-   $username=mysql_result($result,$i,"update_user");
+   $project=mysql_result($result,$i,"name");
    $count=mysql_result($result,$i,"count(*)");          
    
-   $data[$i] = $username;
+   $data[$i] = $project;
    $labels[$i] = $count;
    
    $i++;
@@ -34,7 +34,7 @@ include("conf/config.inc.php");
 
 // use the chart class to build the chart:
 $g = new graph();
-$g->title( 'Top Ten Synchronizers', '{font-size:18px; color: #d01f3c}' );
+$g->title( 'Scripts per project', '{font-size:18px; color: #d01f3c}' );
 
 //
 // PIE chart, 60% alpha

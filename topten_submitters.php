@@ -13,7 +13,7 @@ include("utils/utils.inc.php");
 include_once('utils/openflashchart/open_flash_chart_object.php');
 
 echo "<hr>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-submitters.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/submitters.php');
 echo "<hr>";
 
  mysql_connect($dbserver, $username, $password);

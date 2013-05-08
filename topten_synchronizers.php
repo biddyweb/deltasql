@@ -15,7 +15,7 @@ include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
 
 echo "<hr>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-synchronizers.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/synchronizers.php');
 echo "<hr>";
 
 

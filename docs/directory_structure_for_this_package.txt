@@ -18,6 +18,7 @@ Deltasql Server
     /test-data            This folder contains the test data in script-test-data.sql in single scripts,
                           so that the install logic in install.php can be executed
 /docs                Files that complement the documentation in ../manual.php
+/graphdata           scripts that prepare data to be shown in charts
 /icons               small pictures used to prettify deltasql
 /output
     /scripts          Temporary directory to output scripts as .zip files

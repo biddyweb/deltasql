@@ -14,10 +14,10 @@ include_once('utils/openflashchart/open_flash_chart_object.php');
 echo "<br>";
 echo "<h2>Top Ten</h2>";
 echo "<hr>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-submitters.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/submitters.php');
 echo "<br><a href=\"topten_submitters.php\">Details...";
 echo "</a><hr>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-synchronizers.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/synchronizers.php');
 echo "<br><a href=\"topten_synchronizers.php\">Details...</a><br><br>";
 ?>
 <?php

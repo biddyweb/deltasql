@@ -1,12 +1,12 @@
 <?php
 
-include_once( 'utils/openflashchart/open-flash-chart.php' );
-include("conf/config.inc.php");
+include_once( '../utils/openflashchart/open-flash-chart.php' );
+include("../conf/config.inc.php");
 
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="select count(*), m.name from tbscript s, tbmodule m where s.module_id=m.id group by module_id order by count(*) asc;";
+ $query="SELECT u.username, u.first, u.last, count(*) FROM tbuser u, tbscript s WHERE s.user_id=u.id GROUP BY u.id ORDER BY count(*) DESC";
  $result=mysql_query($query);
  
  if ($result=="") {
@@ -20,10 +20,10 @@ include("conf/config.inc.php");
  $labels = array();
  $i=0;
  while ($i<$num) { 
-   $module=mysql_result($result,$i,"name");
+   $username=mysql_result($result,$i,"username");
    $count=mysql_result($result,$i,"count(*)");          
    
-   $data[$i] = $module;
+   $data[$i] = $username;
    $labels[$i] = $count;
    
    $i++;
@@ -34,7 +34,7 @@ include("conf/config.inc.php");
 
 // use the chart class to build the chart:
 $g = new graph();
-$g->title( 'Scripts per module', '{font-size:18px; color: #d01f3c}' );
+$g->title( 'Top Ten Submitters', '{font-size:18px; color: #d01f3c}' );
 
 //
 // PIE chart, 60% alpha

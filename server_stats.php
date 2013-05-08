@@ -19,15 +19,15 @@ echo "<h2>deltasql Server Statistics</h2>";
 echo "<hr>";
 echo "<table>";
 echo "<tr><td>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptspermonth.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/scriptspermonth.php');
 echo "</td><td>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptspermodule.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/scriptspermodule.php');
 echo "</td></tr>";
 
 echo "<tr><td>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-syncspermonth.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/syncspermonth.php');
 echo "</td><td>";
-open_flash_chart_object( 500, 250, $dns_name . '/graphdata-scriptsperproject.php');
+open_flash_chart_object( 500, 250, $dns_name . '/graphdata/scriptsperproject.php');
 echo "</td></tr>";
 echo "</table>";
 

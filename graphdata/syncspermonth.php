@@ -1,7 +1,7 @@
 <?php
 
-include_once( 'utils/openflashchart/open-flash-chart.php' );
-include("conf/config.inc.php");
+include_once( '../utils/openflashchart/open-flash-chart.php' );
+include("../conf/config.inc.php");
 
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
