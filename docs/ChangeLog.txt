@@ -1,5 +1,6 @@
 10.5.2013 git
 - deltasql.tex compiles with miktex
+- added Latest Changelog link to main site
 
 8.5.2013 git
 - cleanup: moving graphdata scripts into graphdata subfolder

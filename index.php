@@ -190,7 +190,7 @@ if ($displayhelp==1)  {
 <br>
 <?php
 if ($enterprise_edition==false) {
-	if ($rights==3) echo "<li><a href=\"http://sourceforge.net/p/deltasql/discussion/\">Forum...</a></li>";
+	if ($rights==3) echo "<li><a href=\"http://sourceforge.net/p/deltasql/discussion/\" target=blank_>Forum...</a></li>";
 	echo "<li><a href=\"http://www.ohloh.net/p/deltasql\" target=_blank>Ohloh metrics...</a></li>";
 	echo "<li><a href=\"http://www.freecode.com/projects/deltasql\" target=_blank>Freecode...</a></li>";
     echo "<li><a href=\"http://sourceforge.net/projects/deltasql/\" target=_blank>Project Page...</a></li>";
@@ -198,7 +198,11 @@ if ($enterprise_edition==false) {
     echo "<li><a href=\"$enterprise_website\">$enterprise_name</a></li>";
 }
 ?>
-<li><a href="http://deltasql.sourceforge.net">deltasql Website...</a></li>
+<br>
+<li><a href="http://deltasql.sourceforge.net" target=blank_>deltasql Website...</a></li>
+<?php
+echo "<li><a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\" target=blank_>Latest Changelog...</a></li>";
+?>
 </ul>
 </td>
 </table>
