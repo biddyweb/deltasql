@@ -11,7 +11,7 @@
 <p>
 If deltasql is useful to you and you would like to sponsor further development, consider doing a donation. 
  Larger donations will be used to buy a server to test clients against several database types. We plan also to buy
-  a <a href="http://www.iopus.com">web testing framework</a> to automate some unit tests and to increase deltasql reliability.
+  a <a href="http://www.iopus.com">web testing framework</a> to automate some unit tests and to increase deltasql reliability. Small amounts are used instead to run Adwords campaigns to advertise deltasql further.
 </p>
 <p>
 You can read <a href="http://sourceforge.net/p/deltasql/discussion/">what we plan to do next</a>, which is kind of roadmap, in the forum.
