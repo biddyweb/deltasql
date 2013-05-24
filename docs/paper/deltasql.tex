@@ -59,7 +59,7 @@
 
 \author{
 \large
-\textsc{Tiziano Mengotti}\thanks{A thank you or further information}\\[2mm] % Your name
+\textsc{Tiziano Mengotti} % Your name
 \normalsize deltasql.sourceforge.net \\ % Your institution
 \normalsize \href{mailto:tiziano.mengotti@gmail.com}{tiziano.mengotti@gmail.com} % Your email address
 \vspace{-5mm}
@@ -80,7 +80,8 @@
 
 \begin{abstract}
 
-\noindent \lipsum[1] % Dummy abstract text
+\noindent 
+This paper describes a simple but powerful algorithm to synchronize databases. It assumes that each change to the database can be scripted in SQL. To each script, a version number is attached. A special table named tbsynchronization remembers the last version number applied to the database. When a database is updated, the last version number is retrieved, and the algorithm generates the newer scripts which still need to be applied. The paper describes in detail how the algorithm works when development on a main line splits in several branches. It describes several other ideas, which make deltasql a unique synchronization system for databases. 
 
 \end{abstract}
 
