@@ -1,133 +1,59 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Journal Article
-% LaTeX Template
-% Version 1.1 (25/11/12)
+\documentclass[10pt,a4paper]{article}
 %
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{texnames,path}
+%\usepackage[german]{babel}
+
+% \usepackage{aaspp4}
+% \usepackage[light,first,bottomafter]{draftcopy}
 %
-% Original author:
-% Frits Wenneker (http://www.howtotex.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-\documentclass[twoside]{article}
-
-\usepackage{lipsum} % Package to generate dummy text throughout this template
-
-%\usepackage[sc]{mathpazo} % Use the Palatino font
-%\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-%\linespread{1.05} % Line spacing - Palatino needs more space between lines
-%\usepackage{microtype} % Slightly tweak font spacing for aesthetics
-
-\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
-\usepackage{multicol} % Used for the two-column layout of the document
-\usepackage{hyperref} % For hyperlinks in the PDF
-
-\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
-\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
-
-\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
-
-\usepackage{abstract} % Allows abstract customization
-\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
-\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
-
-\usepackage{titlesec} % Allows customization of titles
-\renewcommand\thesection{\Roman{section}}
-\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
-
-\usepackage{fancyhdr} % Headers and footers
-\pagestyle{fancy} % All pages have headers and footers
-\fancyhead{} % Blank out the default header
-\fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Running title $\bullet$ November 2012 $\bullet$ Vol. XXI, No. 1} % Custom header text
-\fancyfoot[RO,LE]{\thepage} % Custom footer text
-
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\title{\vspace{-15mm}\fontsize{24pt}{10pt}\selectfont\textbf{deltasql - A Novel Synchronization Mechanism for Databases}} % deltasql - A novel synchronization mechanism for databases
-
-\author{
-\large
-\textsc{Tiziano Mengotti} % Your name
-\normalsize deltasql.sourceforge.net \\ % Your institution
-\normalsize \href{mailto:tiziano.mengotti@gmail.com}{tiziano.mengotti@gmail.com} % Your email address
-\vspace{-5mm}
-}
-\date{}
-
-%----------------------------------------------------------------------------------------
+\def\BE{\mbox{\boldmath $E$}}
+% \def\BBE{\mbox{\boldmath $\bar{E}$}}
 
 \begin{document}
+\pagestyle{headings}
 
-\maketitle % Insert title
+\title{deltasql - A Simple but Powerful Synchronization Mechanism for Databases}
 
-\thispagestyle{fancy} % All pages have headers and footers
+\author{Tiziano Mengotti\thanks{tiziano.mengotti@gmail.com}\\
+deltasql.sourceforge.net\\}
 
-%----------------------------------------------------------------------------------------
-%	ABSTRACT
-%----------------------------------------------------------------------------------------
+\maketitle
+\thispagestyle{empty}
 
 \begin{abstract}
-
-\noindent 
 This paper describes a simple but powerful algorithm to synchronize databases. It assumes that each change to the database can be scripted in SQL. To each script, a version number is attached. A special table named tbsynchronization remembers the last version number applied to the database. When a database is updated, the last version number is retrieved, and the algorithm generates the newer scripts which still need to be applied. The paper describes in detail how the algorithm works when development on a main line splits in several branches. It describes several other ideas, which make deltasql a unique synchronization system for databases. 
-
 \end{abstract}
 
-%----------------------------------------------------------------------------------------
-%	ARTICLE CONTENTS
-%----------------------------------------------------------------------------------------
-
-\begin{multicols}{2} % Two-column layout throughout the main article text
 
 \section{Introduction}
-
-\lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
-\lipsum[2-3] % Dummy text
-
-%------------------------------------------------
-
-\section{Methods}
-
-Maecenas sed ultricies felis. Sed imperdiet dictum arcu a egestas. 
-
-\lipsum[4] % Dummy text
-
-%------------------------------------------------
-
-\section{Results}
+\label{sec:intro}
+This document is intended for developers, who would like to experiment with the advanced features of the GPU\footnote{Global Processing Unit or Gnutella Processing Unit} network. Newcomers first should take a look at [3,4,5] for an introduction to the GPU framework.
+The framework extensions described here were made possible by the VisualSynapse [1] and Synapse [2] libraries. These libraries provide Delphi components for \texttt{UDP}, \texttt{TCP}, \texttt{HTTP} and several other protocols.
 
 
-%------------------------------------------------
+
+\section{Conclusion}
+
+Copyright \copyright  2007-2013 the deltasql Development Team, all rights reserved.
 
 
-%----------------------------------------------------------------------------------------
-%	REFERENCE LIST
-%----------------------------------------------------------------------------------------
+\newpage
 
-\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+\section{References}
 
-\bibitem[Figueredo and Wolf, 2009]{Figueredo:2009dg}
-Figueredo, A.~J. and Wolf, P. S.~A. (2009).
-\newblock Assortative pairing and life history strategy - a cross-cultural
-  study.
-\newblock {\em Human Nature}, 20:317--330.
- 
-\end{thebibliography}
+\vspace{0.2cm}
+\vspace{0.2cm}
+\noindent
+[1] R. Tegel,  {\em VisualSynapse}, 2004, available from \path|http://visualsynapse.sourceforge.net|.
 
-%----------------------------------------------------------------------------------------
+\vspace{0.2cm}
+\noindent
+[2] L. Gebauer,  {\em Synapse}, 2004, available from \path|http://synapse.ararat.cz|.
 
-\end{multicols}
 
 \end{document}
+
+
