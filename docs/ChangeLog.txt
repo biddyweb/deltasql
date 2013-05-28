@@ -1,3 +1,6 @@
+28.5.2013 git
+- Cancel search button moved on the navigation bar
+
 10.5.2013 git
 - deltasql.tex compiles with miktex
 - added Latest Changelog link to main site

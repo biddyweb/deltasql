@@ -73,28 +73,6 @@ mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
   
-// this is for search scripts capabilities
-if (isset($_SESSION['search_title']))   $filtertitle=$_SESSION['search_title'];   else $filtertitle="";
-if (isset($_SESSION['search_comments']))   $filtercomment=$_SESSION['search_comments']; else $filtercomment="";
-if (isset($_SESSION['search_script']))   $filterscript=$_SESSION['search_script']; else $filterscript="";
-if (isset($_SESSION['search_authorid']))   $authorid=$_SESSION['search_authorid']; else $authorid="";
-if (isset($_SESSION['search_moduleid']))   $moduleid=$_SESSION['search_moduleid']; else $moduleid="";
-if (isset($_SESSION['search_branchid']))   $branchid=$_SESSION['search_branchid']; else $branchid="";
-if (isset($_SESSION['search_frmisaview']))   $frmisaview=$_SESSION['search_frmisaview']; else $frmisaview="";
-if (isset($_SESSION['search_frmisapackage']))   $frmisapackage=$_SESSION['search_frmisapackage']; else $frmisapackage="";
-if (isset($_SESSION['search_comments_matchcase']))   $commentsmatchcase=$_SESSION['search_comments_matchcase']; else $commentsmatchcase="";
-if (isset($_SESSION['search_script_matchcase']))   $scriptsmatchcase=$_SESSION['search_script_matchcase']; else $scriptsmatchcase="";
-if (isset($_SESSION['search_fromversion']))   $searchfromversion=$_SESSION['search_fromversion']; else $searchfromversion="";
-if (isset($_SESSION['search_toversion']))   $searchtoversion=$_SESSION['search_toversion']; else $searchtoversion="";
-if (isset($_SESSION['search_fromdata']))   $searchfromdata=$_SESSION['search_fromdata']; else $searchfromdata="";
-if (isset($_SESSION['search_todata']))   $searchtodata=$_SESSION['search_todata']; else $searchtodata="";
-if (isset($_SESSION['search_modified']))   $searchmodified=$_SESSION['search_modified']; else $searchmodified="";
-   
-   if (($filtertitle!="") || ($filtercomment!="") || ($filterscript!="") || ($authorid!="") || ($moduleid!="") || ($branchid!="") ||
-       ($searchfromversion!="") || ($searchtoversion!="") || ($frmisaview!="") || ($frmisapackage!="") ||
-       ($searchfromdata!="") || ($searchtodata!="") || ($searchmodified!=""))
-   		echo "<b><a  href=\"search_cancel.php\">Cancel Search</a></b>";
-
 echo "<br>";        
 
 // concatenate the query
