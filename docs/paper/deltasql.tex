@@ -24,13 +24,12 @@ deltasql.sourceforge.net\\}
 \thispagestyle{empty}
 
 \begin{abstract}
-This paper describes a simple but powerful algorithm to synchronize databases. It assumes that each change to the database can be scripted in SQL. To each script, a version number is attached. A special table named tbsynchronization remembers the last version number applied to the database. When a database is updated, the last version number is retrieved, and the algorithm generates the newer scripts which still need to be applied. The paper describes in detail how the algorithm works when development on a main line splits in several branches. It describes several other ideas, which make deltasql a unique synchronization system for databases. 
+This document presents the deltasql framework [1]. The architecture with server and clients and the subdivision in projects and modules is subject for the first chapter. The synchronization algorithm is explained in the second chapter. It is a simple but powerful algorithm to synchronize databases. It assumes that each change to the database can be scripted in SQL. To each script, a version number is attached. A special table named tbsynchronization remembers the last version number applied to the database. When a database is updated, the last version number is retrieved, and the algorithm generates the newer scripts which still need to be applied. The paper describes in detail how the algorithm works when development on a main line splits in several branches. A chapter is reserved to the concept of continouus database integration. In conclusion the paper describes several other ideas embedded on the framework like the verification step, email notification and collective versus individual statistics, which make deltasql a unique synchronization system for databases. 
 \end{abstract}
-
 
 \section{Introduction}
 \label{sec:intro}
-This document presents the deltasql framework [1]. The architecture with server and clients and the subdivision in projects and modules is subject for the first chapter. The synchronization algorithm is explained in the second chapter. The third chapter is dedicated to the concept of continouus integration for databases. The last chapter discusses some more features embedded in the framework, like email notification and collective versus individual statistics.
+
 
 
 \section{Architecture}
