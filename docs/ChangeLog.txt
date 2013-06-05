@@ -1,4 +1,4 @@
-5.6.2013 patch 1 for Cancel Search link on navigation bur for 1.6.1 released
+5.6.2013 patch 1 for Cancel Search link on navigation bar for 1.6.1 released
 
 28.5.2013 git
 - Cancel search button moved on the navigation bar
