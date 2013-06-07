@@ -7,6 +7,9 @@
 <?php include("top.inc.php"); ?>
 <?php include("menu.inc.php"); ?>
 
+<center>
+<p><i>"Thanks for Deltasql, it's excellent!", Ivan E. Hutchins via sourceforge.net</i></p>
+</center>
 
 <center>
 <script type="text/javascript" src="http://www.ohloh.net/p/10241/widgets/project_basic_stats.js"></script>
