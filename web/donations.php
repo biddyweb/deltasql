@@ -42,7 +42,7 @@ Donate with Paypal:
 Donate Bitcoins:
 </td>
 <td>
-<a href="bitcoin:1B5ANtmboh5beArhUtchVUiYPtcTGfknXc?label=deltasql"><img src="pictures/bitcoin.jpg" border="0" /></a>
+<a href="bitcoin:1BgGzJgybHBh9yADbb23NLSr2zGMxKwJbn?label=M31501423X"><img src="pictures/bitcoin.jpg" border="0" /></a>
 </td>
 <td>
 <img src="pictures/bitcoin-qr.png" border="0">
