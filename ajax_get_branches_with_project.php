@@ -11,8 +11,7 @@ mysql_connect($dbserver, $username, $password);
         $headid  = retrieve_head_id();
         $str =  "$headid:HEAD###";
 	
-        $sql = sprintf("SELECT id, name FROM tbbranch WHERE project_id=%d order by name asc", $projectid);
-        //echo "query: $sql";
+        $sql = sprintf("SELECT id, name FROM tbbranch WHERE visible=1 and project_id=%d order by name asc", $projectid);
 		$rs = mysql_query($sql);
 		if (mysql_num_rows($rs) > 0) 
 		{
