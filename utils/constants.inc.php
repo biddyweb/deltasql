@@ -8,7 +8,7 @@ $antclient_version="1.0.3";
 $bashclient_version="1.2.1";
 $deltaclient_windows_version="1.6.0";
 $deltaclient_linux_version="1.6.0";
-$pyclient_version="1.5.1";
+$pyclient_version="1.6.2";
 
 // number of scripts on a page
 $default_scriptsperpage=15;

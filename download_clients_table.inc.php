@@ -25,6 +25,6 @@ href="clients/bash_client.tar.gz">download...</a></center></td></tr>
 
 <tr><td><b>dbredactor</b></td><td><a href="manual.php#install-dbredactor-client"><img src="icons/help.png"></a></td><td>Eclipse (Java, Ant)</td><td>Retrieves version directly from db schema and shows synchronization script from deltasql server (for MySQL, PostgreSQL, Oracle, MS SQL Server and Sybase). JDBC driver is included.</td><td><?php echo "$dbredactor_version"; ?></td><td><a href="clients/java/dbredactor.zip"><center>download...</center></a></td></tr>
 
-<tr><td><b>pyclient</b></td><td><a href="manual.php#install-pyclient"><img src="icons/help.png"></a></td><td>Python (Linux)</td><td>This simple Python script retrieves version directly from db schema and shows synchronization script from deltasql server or executes it into schema depending on configuration (for MySQL only). </td><td><?php echo "$pyclient_version"; ?></td><td><a href="clients/python/pyclient.tar.gz"><center>download...</center></a></td></tr>
+<tr><td><b>pyclient</b></td><td><a href="manual.php#install-pyclient"><img src="icons/help.png"></a></td><td>Python (Linux)</td><td>This simple Python script retrieves version directly from db schema and shows synchronization script from deltasql server or executes it into schema depending on configuration (for MySQL only, either through MySQLdb adapter or through Oracle's mysql.connector). </td><td><?php echo "$pyclient_version"; ?></td><td><a href="clients/python/pyclient.tar.gz"><center>download...</center></a></td></tr>
 </table>
 </center>

@@ -1,7 +1,7 @@
 #!/usr/bin/python
-# (c) 2012 HB9TVM and the deltasql team
+# (c) 2012-2013 HB9TVM and the deltasql team
 # Please open and edit config.ini to configure this Python deltasql client
-import MySQLdb
+from dbadapter import db_retrieve_info
 import SimpleConfigParser
 import urllib
 import os
@@ -11,26 +11,12 @@ if os.path.exists('project.properties'): os.unlink('project.properties')
 if os.path.exists('script.sql'): os.unlink('script.sql')
 if os.path.exists('script.out'): os.unlink('script.out')
 
-
 # opening configuration file
 cp = SimpleConfigParser.SimpleConfigParser()
 cp.read('config.ini')
 
-# First we retrieve the current version from the database schema
-try:
-	db=MySQLdb.connect(cp.getoption('host'),cp.getoption('username'),
-        	           cp.getoption('password'),cp.getoption('database'))
-
-	c=db.cursor()
-	c.execute('select versionnr, projectname, branchname from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);')
-	qtuple= c.fetchone()
-	versionnr=qtuple[0]
-	projectname=qtuple[1]
-	branchname=qtuple[2]
-	db.close()
-except:
-	print 'ERROR: Could not connect to mySQL database, please check connection settings in config.ini'
-	exit(1)
+versionnr, projectname, branchname = db_retrieve_info(cp.getoption('host'),cp.getoption('username'),
+                                     cp.getoption('password'),cp.getoption('database'))
 
 print "Database schema for project "+projectname+" is currently at version "+str(versionnr)+" and follows branch "+branchname+"."
 
