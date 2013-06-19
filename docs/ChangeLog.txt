@@ -1,7 +1,9 @@
 19.6.2013 git
-- pyclient can use either MySQLdb or Oracle's mysql.connector as data connection layer to connect to MySQL database
+- deltasql pyclient written in Python can now use either MySQLdb or Oracle's mysql.connector as data connection layer to connect to MySQL database. 
+  Users need to configure the variable pydbadapter in config.ini to choose their preferred connector.
 
-5.6.2013 patch 1 for Cancel Search link on navigation bar for 1.6.1 released
+5.6.2013 web
+- patch 1 for Cancel Search link on navigation bar for 1.6.1 released
 
 28.5.2013 git
 - Cancel search button moved on the navigation bar
