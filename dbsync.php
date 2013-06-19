@@ -3,6 +3,44 @@
 <head>
 <title>deltasql - Database Synchronization Form</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<script language="javascript"  type="text/javascript" src="validation.js"></script>
+<script language="javascript" type="text/javascript">
+	function getBranches(id)
+	{
+		var obj = document.syncform;
+		if (id != "")
+		{
+			url = "ajax_get_branches.php?projectid="+id;
+			http.open("GET", url, true);
+			http.onreadystatechange = getBranchesResponse; 
+			http.send(null);
+			
+		}
+	}
+	
+	function getBranchesResponse()
+	{
+		//alert(http.readyState);
+		var obj = document.syncform;
+		if (http.readyState == 4)
+		{
+			var result = trimString(http.responseText);
+			if (result != '' && result != 'undefined')
+			{
+				clearBox(obj.frombranchid);
+				obj.frombranchid.options[0] = new Option("-City-", "");
+				var result_line_arr = result.split("###");
+				for (i=0;i<result_line_arr.length;i++)
+				{
+					var result_arr = result_line_arr[i].split(":");
+					var code = result_arr[0];
+					var name = result_arr[1];
+					obj.frombranchid.options[i+1] = new Option(name, code);
+				}
+			}		
+		}
+	}
+</script>
 </head>
 <body>
 <?php
@@ -56,14 +94,14 @@ echo "</center>";
 ?>
 <p>3) Please enter the synchronization details you retrieved from the query:</p>
 
-<form action="dbsync_update.php" method="post">
+<form name="syncform" action="dbsync_update.php" method="post">
 <?php
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
  
  echo "<table>";
  echo "<tr><td><b>Project Name:</b></td><td>";
- printProjectComboBox($defaultprojectid);
+ printProjectComboBox($defaultprojectid, 'onchange="javascript: getBranches(this.value);"');
  echo "</select>";
  echo "</td><td><i>= value in column projectname</i></td></tr>";
  

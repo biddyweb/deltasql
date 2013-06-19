@@ -5,8 +5,8 @@
 	(c) 2007-2013 HB9TVM and the deltasql team
 */
 
-function printProjectComboBox($defaultprojectid) {
- echo "<select NAME=\"frmprojectid\">";
+function printProjectComboBox($defaultprojectid, $event="") {
+ echo "<select NAME=\"frmprojectid\" $event>";
  $query="SELECT * FROM tbproject ORDER BY name";
  $result=mysql_query($query);
  $num=mysql_numrows($result); 
