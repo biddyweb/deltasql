@@ -28,14 +28,15 @@
 			if (result != '' && result != 'undefined')
 			{
 				clearBox(obj.frombranchid);
-				obj.frombranchid.options[0] = new Option("-City-", "");
+                clearBox(obj.tobranchid);
 				var result_line_arr = result.split("###");
 				for (i=0;i<result_line_arr.length;i++)
 				{
 					var result_arr = result_line_arr[i].split(":");
 					var code = result_arr[0];
 					var name = result_arr[1];
-					obj.frombranchid.options[i+1] = new Option(name, code);
+					obj.frombranchid.options[i] = new Option(name, code);
+                    obj.tobranchid.options[i] = new Option(name, code);
 				}
 			}		
 		}
@@ -101,7 +102,7 @@ echo "</center>";
  
  echo "<table>";
  echo "<tr><td><b>Project Name:</b></td><td>";
- printProjectComboBox($defaultprojectid, 'onchange="javascript: getBranches(this.value);"');
+ printProjectComboBox(""/*$defaultprojectid*/, 'onchange="javascript: getBranches(this.value);"');
  echo "</select>";
  echo "</td><td><i>= value in column projectname</i></td></tr>";
  
@@ -112,6 +113,7 @@ echo "</center>";
  echo "<td>";
  
  echo "<select NAME=\"frombranchid\">";
+ /*
  $query7="SELECT * FROM tbbranch WHERE (visible=1) order by id ASC";
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
@@ -124,11 +126,13 @@ echo "</center>";
    echo "VALUE=\"$branchid\">$branchname";
    $i++;
  }
+ */
  echo "</select></td><td><i>= value in column branchname or tagname</i></td></tr>";
  
  echo "<tr><td><b>Update To:</b></td>";
  echo "<td>";
  echo "<select NAME=\"tobranchid\">";
+ /*
  $query8="SELECT * FROM tbbranch WHERE (visible=1) order by id ASC";
  $result8=mysql_query($query8);
  $num8=mysql_numrows($result8); 
@@ -141,6 +145,7 @@ echo "</center>";
    echo "VALUE=\"$branchid\">$branchname";
    $i++;
  }
+ */
  echo "</select>";
  echo "</td><td><i>= HEAD if schema has to include all scripts or another branch name if not</i></td></tr>";
  
