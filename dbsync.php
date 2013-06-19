@@ -102,7 +102,7 @@ echo "</center>";
  
  echo "<table>";
  echo "<tr><td><b>Project Name:</b></td><td>";
- printProjectComboBox(""/*$defaultprojectid*/, 'onchange="javascript: getBranches(this.value);"');
+ printProjectComboBox($defaultprojectid, 'onchange="javascript: getBranches(this.value);"');
  echo "</select>";
  echo "</td><td><i>= value in column projectname</i></td></tr>";
  
@@ -113,39 +113,11 @@ echo "</center>";
  echo "<td>";
  
  echo "<select NAME=\"frombranchid\">";
- /*
- $query7="SELECT * FROM tbbranch WHERE (visible=1) order by id ASC";
- $result7=mysql_query($query7);
- $num7=mysql_numrows($result7); 
- $i=0;
- while ($i<$num7) { 
-   $branchid=mysql_result($result7,$i,"id");
-   $branchname=mysql_result($result7,$i,"name");
-   echo "<option ";
-   if ($branchname=="HEAD") echo "SELECTED ";
-   echo "VALUE=\"$branchid\">$branchname";
-   $i++;
- }
- */
  echo "</select></td><td><i>= value in column branchname or tagname</i></td></tr>";
  
  echo "<tr><td><b>Update To:</b></td>";
  echo "<td>";
  echo "<select NAME=\"tobranchid\">";
- /*
- $query8="SELECT * FROM tbbranch WHERE (visible=1) order by id ASC";
- $result8=mysql_query($query8);
- $num8=mysql_numrows($result8); 
- $i=0;
- while ($i<$num8) { 
-   $branchid=mysql_result($result8,$i,"id");
-   $branchname=mysql_result($result8,$i,"name");
-   echo "<option ";
-   if ($branchname=="HEAD") echo "SELECTED ";
-   echo "VALUE=\"$branchid\">$branchname";
-   $i++;
- }
- */
  echo "</select>";
  echo "</td><td><i>= HEAD if schema has to include all scripts or another branch name if not</i></td></tr>";
  
@@ -185,6 +157,15 @@ echo "</center>";
 <center><input type="Submit" value="Generate Synchronization Script"></center>
 </form>
 <br>
+<?php
+ if ($defaultprojectid!="") {
+  echo "
+   <script type='text/javascript'>
+    getBranches($defaultprojectid);
+   </script>
+   ";
+ } 
+?>
 <?php
 if (isset($_SESSION['displayhelplinks'])) $displayhelp=$_SESSION['displayhelplinks']; else $displayhelp=$default_displayhelplinks;
 if ($displayhelp==1)  
