@@ -1,3 +1,6 @@
+20.6.2013 git
+- further improving dynamic listbox capabilities with Javascript and AJAX
+
 19.6.2013 git
 - deltasql pyclient written in Python can now use either MySQLdb or Oracle's mysql.connector as data connection layer to connect to MySQL database. 
   Users need to configure the variable pydbadapter in config.ini to choose their preferred connector.

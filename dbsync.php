@@ -10,7 +10,7 @@
 		var obj = document.syncform;
 		if (id != "")
 		{
-			url = "ajax_get_branches_with_project.php?projectid="+id;
+			url = "ajax/get_branches_with_project.php?projectid="+id;
 			http.open("GET", url, true);
 			http.onreadystatechange = getBranchesResponse; 
 			http.send(null);

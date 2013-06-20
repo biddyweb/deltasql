@@ -5,6 +5,7 @@ Deltasql Server
 
 /           Root directory for the deltasql server
 /.git       concurrent version system folder
+/ajax       AJAX php scripts to handle dynamic components like listboxes
 /conf       Configuration folder
      example_config.inc.php  This file is an example configuration, which could be renamed to config.inc.php       
 
