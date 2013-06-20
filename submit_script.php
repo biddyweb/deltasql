@@ -103,10 +103,12 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
  
+ 
+ echo "<fieldset><legend>Branches:</legend>";
  // HEAD comes first
  $headid=retrieve_head_id();
 
- echo "<input name=\"BRANCH_$headid\" type=\"checkbox\" value=\"1\" checked=\"checked\" /> HEAD ||";
+ echo "<input name=\"BRANCH_$headid\" type=\"checkbox\" value=\"1\" checked=\"checked\" /> HEAD";
 
  $i=0;
  while ($i<$num7) { 
@@ -115,10 +117,11 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 
    if ($branchname!="HEAD") { 
      echo "<input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"";
-     echo "/>$branchname |";
+     echo "/>$branchname";
    } 
    $i++;
  }
+ echo "</fieldset>";
  
  echo "</td>";
  echo "</tr>";

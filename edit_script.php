@@ -75,8 +75,8 @@ if ($paramscriptid!="") {
  echo "</select></td></tr>";
  echo "<tr><td>Version:</td><td><b>$pversionnr</b></td></tr>";
  
- echo "<td>Apply script to:</td><td>";
- 
+ echo "<td>Apply script to</td><td>";
+ echo "<fieldset><legend>Branches:</legend>";
  $query7="SELECT * FROM tbbranch WHERE visible=1 and istag=0 order by id 
 ASC";
  $result7=mysql_query($query7);
@@ -95,10 +95,10 @@ ASC";
      $num9=mysql_numrows($result9);
      if ($num9>0) echo "checked=\"checked\"";
    }
-   echo "/>$branchname |";
+   echo "/>$branchname";
    $i++;
  }
- 
+ echo "</fieldset>";
  echo "</td>";
  echo "</tr>";
  

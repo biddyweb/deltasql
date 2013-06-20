@@ -1,6 +1,7 @@
 20.6.2013 git
 - further improving dynamic listbox capabilities with Javascript and AJAX
 - added chain of 3 dynamic listboxes in dbsync.php! The second depends on the first, and the third on the first and the second :-)
+- working on dynamic branches for submit script
 
 19.6.2013 git
 - deltasql pyclient written in Python can now use either MySQLdb or Oracle's mysql.connector as data connection layer to connect to MySQL database. 
