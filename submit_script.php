@@ -26,6 +26,50 @@ function RemoveEmptyLines() {
   document.forms['script'].elements['script'].value = text;  
   alarm(text);
 }
+
+
+    function getBranchesCheckList(moduleid)
+	{
+        var obj = document.scriptform;
+		if (moduleid != "")
+		{
+            alert(moduleid);
+			url = "ajax/get_branches_with_module.php?moduleid="+moduleid;
+			alert(1);
+            http.open("GET", url, true);
+			alert(2);          
+            http.onreadystatechange = getBranchesResponseCheckList; 
+			alert(3);
+            http.send(null);
+            alert(4);
+			
+		}
+	}
+	
+	function getBranchesResponseCheckList()
+	{
+        alert('response');
+        /*
+		var obj = document.scriptform;
+		if (http.readyState == 4)
+		{
+            
+			var result = trimString(http.responseText);
+			if (result != '' && result != 'undefined')
+			{
+				clearBox(obj.branchset);
+				var result_line_arr = result.split("###");
+				for (i=0;i<result_line_arr.length;i++)
+				{
+					var result_arr = result_line_arr[i].split(":");
+					var code = result_arr[0];
+					var name = result_arr[1];
+					obj.branchset.checkbox[i] = new Checkbox(name, code);
+				}
+			}		
+		}
+        */
+	}
 // -->
 </script>
 </head>
@@ -58,7 +102,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 
 ?>
 <h2>Insert a New Database Script</h2>
-<form action="submit_script.php" name="script" method="post">
+<form name="scriptform" action="submit_script.php" name="script" method="post">
 <table>
 <tr>
 <td>Title:</td>
@@ -80,7 +124,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 <td>Module:</td>
 <td>
 <?php
- echo "<select NAME=\"frmmoduleid\">";
+ echo "<select NAME=\"frmmoduleid\" onchange=\"javascript: getBranchesCheckList(this.value);\">";
  echo "<option SELECTED VALUE=\"\">";
 
  $query6="SELECT * FROM tbmodule ORDER BY name asc";
@@ -104,7 +148,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  $num7=mysql_numrows($result7); 
  
  
- echo "<fieldset><legend>Branches:</legend>";
+ echo "<fieldset name='branchset'><legend>Branches:</legend>";
  // HEAD comes first
  $headid=retrieve_head_id();
 
