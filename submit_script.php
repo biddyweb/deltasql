@@ -3,6 +3,7 @@
 <head>
 <title>deltasql - Submit database script</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<script language="javascript"  type="text/javascript" src="validation.js"></script>
 <script type="text/javascript">
 <!--
 function SetAllBranches(CheckValue)
@@ -33,31 +34,25 @@ function RemoveEmptyLines() {
         var obj = document.scriptform;
 		if (moduleid != "")
 		{
-            alert(moduleid);
 			url = "ajax/get_branches_with_module.php?moduleid="+moduleid;
-			alert(1);
-            http.open("GET", url, true);
-			alert(2);          
-            http.onreadystatechange = getBranchesResponseCheckList; 
-			alert(3);
-            http.send(null);
-            alert(4);
-			
-		}
+			http.open("GET", url, true);
+			http.onreadystatechange = getBranchesResponseCheckList; 
+			http.send(null);
+        }
 	}
 	
 	function getBranchesResponseCheckList()
 	{
-        alert('response');
-        /*
 		var obj = document.scriptform;
 		if (http.readyState == 4)
 		{
-            
+            alert('response');
+
 			var result = trimString(http.responseText);
 			if (result != '' && result != 'undefined')
 			{
 				clearBox(obj.branchset);
+                /*
 				var result_line_arr = result.split("###");
 				for (i=0;i<result_line_arr.length;i++)
 				{
@@ -66,9 +61,10 @@ function RemoveEmptyLines() {
 					var name = result_arr[1];
 					obj.branchset.checkbox[i] = new Checkbox(name, code);
 				}
-			}		
+                */
+			}	
+            alert('Over');            
 		}
-        */
 	}
 // -->
 </script>
