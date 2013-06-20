@@ -5,22 +5,21 @@
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 <script language="javascript"  type="text/javascript" src="validation.js"></script>
 <script language="javascript" type="text/javascript">
-	function getBranches(id)
+	function getBranches2ndList(projectid)
 	{
 		var obj = document.syncform;
-		if (id != "")
+		if (projectid != "")
 		{
-			url = "ajax/get_branches_with_project.php?projectid="+id;
+			url = "ajax/get_branches_with_project.php?projectid="+projectid;
 			http.open("GET", url, true);
-			http.onreadystatechange = getBranchesResponse; 
+			http.onreadystatechange = getBranchesResponse2ndList; 
 			http.send(null);
 			
 		}
 	}
 	
-	function getBranchesResponse()
+	function getBranchesResponse2ndList()
 	{
-		//alert(http.readyState);
 		var obj = document.syncform;
 		if (http.readyState == 4)
 		{
@@ -36,6 +35,42 @@
 					var code = result_arr[0];
 					var name = result_arr[1];
 					obj.frombranchid.options[i] = new Option(name, code);
+                    obj.tobranchid.options[i] = new Option(name, code);
+				}
+			}		
+		}
+	}
+    
+    function getBranches3rdList(frombranchid)
+	{
+        var obj = document.syncform;
+		if (frombranchid != "")
+		{
+            projectid=obj.frmprojectid.value;
+            if (projectid!="") {
+        	   url = "ajax/get_branches_with_project_and_branch.php?projectid="+projectid+"&frombranchid="+frombranchid;
+			   http.open("GET", url, true);
+			   http.onreadystatechange = getBranchesResponse3rdList; 
+			   http.send(null);
+            }
+        }
+	}
+    
+    function getBranchesResponse3rdList()
+	{
+        var obj = document.syncform;
+		if (http.readyState == 4)
+		{
+			var result = trimString(http.responseText);
+			if (result != '' && result != 'undefined')
+			{
+                clearBox(obj.tobranchid);
+				var result_line_arr = result.split("###");
+				for (i=0;i<result_line_arr.length;i++)
+				{
+					var result_arr = result_line_arr[i].split(":");
+					var code = result_arr[0];
+					var name = result_arr[1];
                     obj.tobranchid.options[i] = new Option(name, code);
 				}
 			}		
@@ -102,7 +137,7 @@ echo "</center>";
  
  echo "<table>";
  echo "<tr><td><b>Project Name:</b></td><td>";
- printProjectComboBox($defaultprojectid, 'onchange="javascript: getBranches(this.value);"');
+ printProjectComboBox($defaultprojectid, 'onchange="javascript: getBranches2ndList(this.value);"');
  echo "</select>";
  echo "</td><td><i>= value in column projectname</i></td></tr>";
  
@@ -112,7 +147,7 @@ echo "</center>";
  echo "<tr><td><b>From:</b></td>";
  echo "<td>";
  
- echo "<select NAME=\"frombranchid\">";
+ echo "<select NAME=\"frombranchid\" onchange=\"javascript: getBranches3rdList(this.value);\">";
  echo "</select></td><td><i>= value in column branchname or tagname</i></td></tr>";
  
  echo "<tr><td><b>Update To:</b></td>";
@@ -161,7 +196,7 @@ echo "</center>";
  if ($defaultprojectid!="") {
   echo "
    <script type='text/javascript'>
-    getBranches($defaultprojectid);
+    getBranches2ndList($defaultprojectid);
    </script>
    ";
  } 
