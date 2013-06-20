@@ -8,10 +8,7 @@
 <!--
 function SetAllBranches(CheckValue)
 {
-	if(!document.forms['script']) {
-		return;
-	}
-	var objCheckBoxes = document.forms['script'].elements;
+	var objCheckBoxes = document.scriptform.branchset.elements;
 	// set the check value for all check boxes
 	for(var i = 0; i < objCheckBoxes.length; i++) {
 		var obj = objCheckBoxes[i];
@@ -51,7 +48,10 @@ function RemoveEmptyLines() {
 			var result = trimString(http.responseText);
 			if (result != '' && result != 'undefined')
 			{
-				clearBox(obj.branchset);
+				var objCheckBoxes = document.scriptform.branchset.elements;
+	            for(var i = 0; i < objCheckBoxes.length; i++) {
+                    obj = objCheckBoxes[i];
+                }
                 /*
 				var result_line_arr = result.split("###");
 				for (i=0;i<result_line_arr.length;i++)
