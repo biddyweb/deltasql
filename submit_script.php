@@ -47,13 +47,21 @@ function RemoveEmptyLines() {
 			{
                 alert(result);
 				
-                var checkboxes = document.getElementsByTagName('input');
-                for (i=0; i<checkboxes.length; i++)   {
-                    //if (checkboxes[i].)
-                    var remElm = checkboxes[i];   // element to be removed
-                    remElm.parentNode.removeChild(remElm);
+                var checkboxes = document.scriptform.branchset.getElementsByTagName('input');
+                length = checkboxes.length;
+                while(length--) {
+                    var remElm = checkboxes[length];   // element to be removed
+                    remElm.nextSibling.nodeValue = '';
+                    document.scriptform.branchset.removeChild(remElm);
                 }
                 
+                /*
+                for (var i=0; i<checkboxes.length; i++)   {
+                    var remElm = checkboxes[0];   // element to be removed
+                    remElm.nextSibling.nodeValue = '';
+                    document.scriptform.branchset.removeChild(remElm);
+                }
+                */
                 /*
 				var result_line_arr = result.split("###");
 				for (i=0;i<result_line_arr.length;i++)
@@ -147,11 +155,11 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  $num7=mysql_numrows($result7); 
  
  
- echo "<fieldset name='branchset'><legend>Branches:</legend><table><tr>";
+ echo "<fieldset name='branchset'><legend>Branches:</legend>";
  // HEAD comes first
  $headid=retrieve_head_id();
 
- echo "<td><input name=\"BRANCH_$headid\" type=\"checkbox\" value=\"1\" checked=\"checked\" /> HEAD</td>";
+ echo "<input name=\"BRANCH_$headid\" type=\"checkbox\" value=\"1\" checked=\"checked\" /> HEAD";
 
  $i=0;
  while ($i<$num7) { 
@@ -159,12 +167,12 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
    $branchname=mysql_result($result7,$i,"name");
 
    if ($branchname!="HEAD") { 
-     echo "<td><input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"";
-     echo "/>$branchname</td>";
+     echo "<input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"";
+     echo "/>$branchname";
    } 
    $i++;
  }
- echo "</table></fieldset>";
+ echo "</fieldset>";
  
  echo "</td>";
  echo "</tr>";
