@@ -1,3 +1,6 @@
+21.6.2013 git
+- choosing branches dynamically for script submission with AJAX and javascript
+
 20.6.2013 git
 - further improving dynamic listbox capabilities with Javascript and AJAX
 - added chain of 3 dynamic listboxes in dbsync.php! The second depends on the first, and the third on the first and the second :-)

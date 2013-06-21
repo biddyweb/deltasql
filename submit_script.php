@@ -75,7 +75,8 @@ function RemoveEmptyLines() {
                     } else {
                         checkbox.checked=true;
                     }
-                    //checkbox.id =  "BRANCH_"+code;
+                    checkbox.id =  "BRANCH_"+code;
+                    checkbox.value = 1;
                     
                     var newlabel = document.createElement("label");
                     newlabel.setAttribute("for",i);
@@ -174,10 +175,10 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  echo "</tr>";
  
  echo "<tr>";
- echo "<td>Particular script (optional):</td>";
- echo "<td><input name=\"frmisaview\" type=\"checkbox\" value=\"1\"/>View";
- echo "<input name=\"frmisapackage\" type=\"checkbox\" value=\"1\"/>Package</td>";
- echo "</tr>";
+ echo "<td>Particular script (optional):</td><td>";
+ echo "<input name=\"frmisaview\" type=\"checkbox\" value=\"1\"/>View";
+ echo "<input name=\"frmisapackage\" type=\"checkbox\" value=\"1\"/>Package";
+ echo "</td></tr>";
  
  mysql_close();
 ?>
