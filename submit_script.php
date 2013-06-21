@@ -45,21 +45,22 @@ function RemoveEmptyLines() {
 			var result = trimString(http.responseText);
 			if (result != '' && result != 'undefined')
 			{
-                alert('response');
                 var checkboxes = document.scriptform.branchset.getElementsByTagName('input');
+                var labels     = document.scriptform.branchset.getElementsByTagName('label');
                 
                 // removing previous checkboxes
                 // we start from the end!!
                 length = checkboxes.length;
                 while(length--) {
                     var remElm = checkboxes[length];   // element to be removed
-                    remElm.nextSibling.nodeValue = '';
                     document.scriptform.branchset.removeChild(remElm);
+                    
+                    var labElm = labels[length];
+                    document.scriptform.branchset.removeChild(labElm);
                 }
                 
 				var result_line_arr = result.split("###");
-				alert('i am here');
-                for (i=0;i<result_line_arr.length;i++)
+				for (i=0;i<result_line_arr.length;i++)
 				{
 					var result_arr = result_line_arr[i].split(":");
 					var code = result_arr[0];
@@ -68,9 +69,13 @@ function RemoveEmptyLines() {
                     
                     var checkbox = document.createElement('input');
                     checkbox.type = "checkbox";
-                    checkbox.name = name;
-                    checkbox.value = "";
-                    checkbox.id = "BRANCH_"+code;
+                    checkbox.name =  "BRANCH_"+code;
+                    if (name!="HEAD") {
+                        checkbox.checked=false;
+                    } else {
+                        checkbox.checked=true;
+                    }
+                    //checkbox.id =  "BRANCH_"+code;
                     
                     var newlabel = document.createElement("label");
                     newlabel.setAttribute("for",i);
@@ -79,7 +84,7 @@ function RemoveEmptyLines() {
                     document.scriptform.branchset.appendChild(checkbox);
                     document.scriptform.branchset.appendChild(newlabel);
 				}
-                alert('Over');    
+                //alert('Over');    
 			}	
                     
 		}
