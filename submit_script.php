@@ -45,9 +45,11 @@ function RemoveEmptyLines() {
 			var result = trimString(http.responseText);
 			if (result != '' && result != 'undefined')
 			{
-                alert(result);
-				
+                alert('response');
                 var checkboxes = document.scriptform.branchset.getElementsByTagName('input');
+                
+                // removing previous checkboxes
+                // we start from the end!!
                 length = checkboxes.length;
                 while(length--) {
                     var remElm = checkboxes[length];   // element to be removed
@@ -55,23 +57,28 @@ function RemoveEmptyLines() {
                     document.scriptform.branchset.removeChild(remElm);
                 }
                 
-                /*
-                for (var i=0; i<checkboxes.length; i++)   {
-                    var remElm = checkboxes[0];   // element to be removed
-                    remElm.nextSibling.nodeValue = '';
-                    document.scriptform.branchset.removeChild(remElm);
-                }
-                */
-                /*
 				var result_line_arr = result.split("###");
-				for (i=0;i<result_line_arr.length;i++)
+				alert('i am here');
+                for (i=0;i<result_line_arr.length;i++)
 				{
 					var result_arr = result_line_arr[i].split(":");
 					var code = result_arr[0];
 					var name = result_arr[1];
-					obj.branchset.checkbox[i] = new Checkbox(name, code);
+					
+                    
+                    var checkbox = document.createElement('input');
+                    checkbox.type = "checkbox";
+                    checkbox.name = name;
+                    checkbox.value = "";
+                    checkbox.id = "BRANCH_"+code;
+                    
+                    var newlabel = document.createElement("label");
+                    newlabel.setAttribute("for",i);
+                    newlabel.innerHTML = name;
+                    
+                    document.scriptform.branchset.appendChild(checkbox);
+                    document.scriptform.branchset.appendChild(newlabel);
 				}
-                */
                 alert('Over');    
 			}	
                     
@@ -156,6 +163,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
  
  
  echo "<fieldset name='branchset'><legend>Branches:</legend>";
+ /*
  // HEAD comes first
  $headid=retrieve_head_id();
 
@@ -172,6 +180,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
    } 
    $i++;
  }
+ */
  echo "</fieldset>";
  
  echo "</td>";
