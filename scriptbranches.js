@@ -56,17 +56,21 @@ function RemoveEmptyLines() {
 				{
 					var result_arr = result_line_arr[i].split(":");
 					var code = result_arr[0];
-					var name = result_arr[1];
+                    var checked = result_arr[1];
+					var name = result_arr[2];
 					
                     
                     var checkbox = document.createElement('input');
                     checkbox.type = "checkbox";
                     checkbox.name =  "BRANCH_"+code;
+                    checkbox.checked = (checked == 1);
+                    /*
                     if (name!="HEAD") {
                         checkbox.checked=false;
                     } else {
                         checkbox.checked=true;
                     }
+                    */
                     checkbox.id =  "BRANCH_"+code;
                     checkbox.value = 1;
                     

@@ -9,7 +9,8 @@ mysql_connect($dbserver, $username, $password);
     if ($moduleid != "")
 	{
         $headid  = retrieve_head_id();
-        $str =  "$headid:HEAD###";
+        // the :1: is to say that the checkbox needs to be checked
+        $str =  "$headid:1:HEAD###";
 	
         $sql = sprintf("SELECT b.id, b.name FROM tbbranch b, tbmoduleproject mp WHERE b.visible=1 and b.istag=0 and b.project_id=mp.project_id and mp.module_id=%d order by name asc", $moduleid);
 		
@@ -18,7 +19,7 @@ mysql_connect($dbserver, $username, $password);
 		{
 			while($row = mysql_fetch_assoc($rs))
 			{
-				$str .=  $row['id'].":".$row['name']."###";
+				$str .=  $row['id'].":0:".$row['name']."###";
 			}
 		}
         echo $str = substr($str,0,-3);
