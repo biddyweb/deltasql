@@ -57,7 +57,7 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 <td>Module:</td>
 <td>
 <?php
- echo "<select NAME=\"frmmoduleid\" onchange=\"javascript: getBranchesCheckList(this.value);\">";
+ echo "<select NAME=\"frmmoduleid\" onchange=\"javascript: getBranchesCheckListForSubmit(this.value);\">";
  echo "<option SELECTED VALUE=\"\">";
 
  $query6="SELECT * FROM tbmodule ORDER BY name asc";

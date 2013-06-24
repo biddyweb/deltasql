@@ -3,6 +3,8 @@
 <head>
 <title>deltasql - Edit database script</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<script language="javascript"  type="text/javascript" src="validation.js"></script>
+<script language="javascript"  type="text/javascript" src="scriptbranches.js"></script>
 </head>
 <body>
 <?php
@@ -41,7 +43,7 @@ if ($paramscriptid!="") {
 
 ?>
 <h2>Edit Database Script</h2>
-<form action="edit_script.php" method="post">
+<form name="scriptform" action="edit_script.php" method="post">
 <table>
 <tr>
 <td>Title:</td>
@@ -58,7 +60,7 @@ if ($paramscriptid!="") {
 <td>
 <?php
  if (!isset($_POST['script']))  {
- echo "<select NAME=\"frmmoduleid\">";
+ echo "<select NAME=\"frmmoduleid\" onchange=\"javascript: getBranchesCheckListForEdit(this.value);\">";
  $query6="SELECT * FROM tbmodule ORDER BY name ASC";
  $result6=mysql_query($query6);
  $num6=mysql_numrows($result6); 
@@ -76,7 +78,8 @@ if ($paramscriptid!="") {
  echo "<tr><td>Version:</td><td><b>$pversionnr</b></td></tr>";
  
  echo "<td>Apply script to</td><td>";
- echo "<fieldset><legend>Branches:</legend>";
+ echo "<fieldset name='branchset'><legend>Branches:</legend>";
+ /*
  $query7="SELECT * FROM tbbranch WHERE visible=1 and istag=0 order by id 
 ASC";
  $result7=mysql_query($query7);
@@ -98,6 +101,8 @@ ASC";
    echo "/>$branchname";
    $i++;
  }
+ */
+ 
  echo "</fieldset>";
  echo "</td>";
  echo "</tr>";

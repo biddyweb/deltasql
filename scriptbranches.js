@@ -18,12 +18,24 @@ function RemoveEmptyLines() {
 }
 
 
-    function getBranchesCheckList(moduleid)
+    function getBranchesCheckListForSubmit(moduleid)
 	{
-        var obj = document.scriptform;
 		if (moduleid != "")
 		{
 			url = "ajax/get_branches_with_module.php?moduleid="+moduleid;
+			http.open("GET", url, true);
+			http.onreadystatechange = getBranchesResponseCheckList; 
+			http.send(null);
+        }
+	}
+    
+    function getBranchesCheckListForEdit(moduleid)
+	{
+		if (moduleid != "")
+		{
+            scriptid = document.scriptform.scriptid.value;
+			url = "ajax/get_branches_with_module_and_script.php?moduleid="+moduleid+'&scriptid='+scriptid;
+            alert(url);
 			http.open("GET", url, true);
 			http.onreadystatechange = getBranchesResponseCheckList; 
 			http.send(null);
@@ -35,6 +47,7 @@ function RemoveEmptyLines() {
 		if (http.readyState == 4)
 		{
 			var result = trimString(http.responseText);
+            alert(result);
 			if (result != '' && result != 'undefined')
 			{
                 var checkboxes = document.scriptform.branchset.getElementsByTagName('input');
