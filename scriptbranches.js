@@ -35,7 +35,7 @@ function RemoveEmptyLines() {
 		{
             scriptid = document.scriptform.scriptid.value;
 			url = "ajax/get_branches_with_module_and_script.php?moduleid="+moduleid+'&scriptid='+scriptid;
-            alert(url);
+            //alert(url);
 			http.open("GET", url, true);
 			http.onreadystatechange = getBranchesResponseCheckList; 
 			http.send(null);
@@ -47,7 +47,7 @@ function RemoveEmptyLines() {
 		if (http.readyState == 4)
 		{
 			var result = trimString(http.responseText);
-            alert(result);
+            //alert(result);
 			if (result != '' && result != 'undefined')
 			{
                 var checkboxes = document.scriptform.branchset.getElementsByTagName('input');

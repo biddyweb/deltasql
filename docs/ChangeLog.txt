@@ -1,3 +1,6 @@
+22.6.2013 git
+- editing scripts with dynamic branches selection works :-D
+
 21.6.2013 git
 - choosing branches dynamically for script submission with AJAX and javascript
 
