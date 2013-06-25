@@ -18,7 +18,6 @@ schemas. It supports several developers working on the same schema.</p>
 It has made life easier for us ever since. It is primarily because of this software that I was able to achieve the task of automating a whole 
 lot of processes in my company.", Harikrishnan Nair, Amrita Technologies, via Linkedin in April 2013</i>
 </p>
-
 </center>
 
 <center>
@@ -62,7 +61,7 @@ synchronization table and thereafter the needed chain of datamodel updates is co
 <i>
 "The open source solution I’ve looked at closely is deltasql. This employs a custom server for mapping changes which runs on Apache, making it cross platform compatible with Windows or Linux. It uses a similar commit and update strategy but pulling the individual scripts from it’s central server instead of SVN. This solution also allows for more databases to be catalogued, including mySQL and postgreSQL and Oracle. Lit integrates into the Eclipse IDE via asset of open source windows so is totally free to use.",  From the article <a href="http://creative-jar.com/insights/labs/programming/database-source-control-map-those-changes/" target="blank_">Database Source Control: Map Those Changes</a> by Tim Hustler</i>
 </p>
-
+</center>
 
 <?php include("bottom.inc.php"); ?>
 </body>

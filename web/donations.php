@@ -15,7 +15,7 @@
 "Throw in a few QA houses, production databases and data warehousing solutions and the “Drop and Reload” method is not going to work out. Both offering (editor's note: one is deltasql) provide a less painful way to make structure changes in a controlled manner and provide a means to roll these changes back and start again should testing prove unsuccessful. Very powerful!", From the article <a href="http://creative-jar.com/insights/labs/programming/database-source-control-map-those-changes/" target="blank_">Database Source Control: Map Those Changes</a> by Tim Hustler
 </i>
 </p>
-
+</center>
 
 <p>
 If deltasql is useful to you and you would like to sponsor further development, consider doing a donation. 
