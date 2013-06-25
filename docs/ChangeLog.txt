@@ -1,3 +1,24 @@
+*******************************
+1.6.2 Release Notes (5.7.2013)
+ 
+  Major features:   Intelligent branch selection on deltasql server:
+                    - when submitting a new script, or while editing an existing one, deltasql will show only
+                      branches to which the script can be attached.
+                    - when synchronizing, only suitable combinations of projects, from and to branches are shown. This considerably
+                      reduces the amount of errors.
+                    The dynamic feature is achieved through a PHP-AJAX-Javascript solution.
+                    
+                    Pyhton deltasql client: 
+                    the client supporst now also Oracle's mysql.connector to reach a MySQL database. An adapter allows the user to
+                    choose between mysql.connector or MySQLdb adapter.
+                    
+  Minor:            Cancel search link moves on the menu bar on the left.
+                    Latest changelog link is more visible and moved on the main of deltasql server.
+  
+  Fixes:            Cleanup: moved graph scripts into a subfolder
+                  
+*******************************
+
 22.6.2013 git
 - editing scripts with dynamic branches selection works :-D
 
