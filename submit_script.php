@@ -75,13 +75,34 @@ if ($rights<1) die("<b>Not enough rights to insert a new database script.</b>");
 
  echo "\n<tr><td>Apply script to:<br>";
  echo "<a onclick=\"SetAllBranches(true);\">all</a> .:. <a onclick=\"SetAllBranches(false);\">none</a></td><td>";
- 
+ echo "<fieldset name='branchset'><legend>Branches:</legend>";
+
+ // ****
+ // We live branches for IE compatibility where intelligent branch selection does not work for some reason, if there would not be IE, we could remove it
  $query7="SELECT * FROM tbbranch WHERE visible=1 AND istag=0 order by name ASC";
  $result7=mysql_query($query7);
  $num7=mysql_numrows($result7); 
  
+ // HEAD comes first
+ $headid=retrieve_head_id();
+
+ echo "<input name=\"BRANCH_$headid\" type=\"checkbox\" value=\"1\" checked=\"checked\" /><label>HEAD</label>";
+
+ $i=0;
+ while ($i<$num7) { 
+   $branchid=mysql_result($result7,$i,"id");
+   $branchname=mysql_result($result7,$i,"name");
+
+   if ($branchname!="HEAD") { 
+     echo "<input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"";
+     echo "/><label>$branchname</label>";
+   } 
+   $i++;
+ }
+ // End of IE compatiblity
+ // ****
  
- echo "<fieldset name='branchset'><legend>Branches:</legend>";
+ 
  echo "</fieldset>";
  
  echo "</td>";

@@ -21,6 +21,9 @@
                   
 *******************************
 
+25.6.2013 git
+- added old branches management for Internet Explorer compatibility...
+
 22.6.2013 git
 - editing scripts with dynamic branches selection works :-D
 

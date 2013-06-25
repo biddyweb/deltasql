@@ -79,6 +79,32 @@ if ($paramscriptid!="") {
  
  echo "<td>Apply script to</td><td>";
  echo "<fieldset name='branchset'><legend>Branches:</legend>";
+ // ****
+ // We live branches for IE compatibility where intelligent branch selection does not work for some reason, if there would not be IE, we could remove it
+ $query7="SELECT * FROM tbbranch WHERE visible=1 and istag=0 order by id 
+ASC";
+ $result7=mysql_query($query7);
+ $num7=mysql_numrows($result7); 
+ 
+ $i=0;
+ while ($i<$num7) { 
+   $branchid=mysql_result($result7,$i,"id");
+   $branchname=mysql_result($result7,$i,"name");
+   echo "<input name=\"BRANCH_$branchid\" type=\"checkbox\" value=\"1\"";
+   
+   // check if the script belongs to this branch in the while loop
+   $query9="SELECT * FROM tbscriptbranch WHERE script_id=$paramscriptid AND branch_id=$branchid";
+   $result9=mysql_query($query9);
+   if ($result9!="") {
+     $num9=mysql_numrows($result9);
+     if ($num9>0) echo "checked=\"checked\"";
+   }
+   echo "/><label>$branchname</label>";
+   $i++;
+ }
+ // End of IE compatiblity
+ // ****
+ 
  echo "</fieldset>";
  echo "</td>";
  echo "</tr>";
