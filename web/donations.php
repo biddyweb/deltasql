@@ -8,6 +8,15 @@
 <?php include("menu.inc.php"); ?>
 <h2>Donations</h2>
 
+
+<center>
+<p>
+<i>
+"Throw in a few QA houses, production databases and data warehousing solutions and the “Drop and Reload” method is not going to work out. Both offering (editor's note: one is deltasql) provide a less painful way to make structure changes in a controlled manner and provide a means to roll these changes back and start again should testing prove unsuccessful. Very powerful!", From the article <a href="http://creative-jar.com/insights/labs/programming/database-source-control-map-those-changes/" target="blank_">Database Source Control: Map Those Changes</a> by Tim Hustler
+</i>
+</p>
+
+
 <p>
 If deltasql is useful to you and you would like to sponsor further development, consider doing a donation. 
  Larger donations will be used to buy a server to test clients against several database types. We plan also to buy

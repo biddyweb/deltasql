@@ -56,6 +56,14 @@ synchronization table and thereafter the needed chain of datamodel updates is co
  Though deltasql works best with Oracle, PostgreSQL and mySQL schemas, any other database type can use most of deltasql functionality.
 </p>
 
+
+<center>
+<p>
+<i>
+"The open source solution I’ve looked at closely is deltasql. This employs a custom server for mapping changes which runs on Apache, making it cross platform compatible with Windows or Linux. It uses a similar commit and update strategy but pulling the individual scripts from it’s central server instead of SVN. This solution also allows for more databases to be catalogued, including mySQL and postgreSQL and Oracle. Lit integrates into the Eclipse IDE via asset of open source windows so is totally free to use.",  From the article <a href="http://creative-jar.com/insights/labs/programming/database-source-control-map-those-changes/" target="blank_">Database Source Control: Map Those Changes</a> by Tim Hustler</i>
+</p>
+
+
 <?php include("bottom.inc.php"); ?>
 </body>
 </html>
