@@ -14,6 +14,8 @@
 <p>
 "... ehm, no testimonial here, as both the video quality and the English language is what it is. But we are sure, you'll do the best out of it ;-)"
 <br>
+</i>
+</p>
 </center>
 
 
