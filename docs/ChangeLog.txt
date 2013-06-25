@@ -1,5 +1,5 @@
 *******************************
-1.6.2 Release Notes (5.7.2013)
+1.6.2 Release Notes (12.7.2013)
  
   Major features:   Intelligent branch selection on deltasql server:
                     - when submitting a new script, or while editing an existing one, deltasql will show only
@@ -9,13 +9,15 @@
                     The dynamic feature is achieved through a PHP-AJAX-Javascript solution.
                     
                     Pyhton deltasql client: 
-                    the client supporst now also Oracle's mysql.connector to reach a MySQL database. An adapter allows the user to
+                    the client supports now also Oracle's mysql.connector to reach a MySQL database. An adapter allows the user to
                     choose between mysql.connector or MySQLdb adapter.
                     
   Minor:            Cancel search link moves on the menu bar on the left.
                     Latest changelog link is more visible and moved on the main of deltasql server.
   
   Fixes:            Cleanup: moved graph scripts into a subfolder
+  
+  Known Issues:     Intelligent branch selection does not work on Internet Explorer (only when submitting scripts)!!!
                   
 *******************************
 
