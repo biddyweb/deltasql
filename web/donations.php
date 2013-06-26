@@ -30,7 +30,7 @@ You can read <a href="http://sourceforge.net/p/deltasql/discussion/">what we pla
 <table>
 <tr>
 <td>
-Donate with Paypal:
+<b>Donate with Paypal:</b>
 </td>
 <td>
 
@@ -48,13 +48,17 @@ Donate with Paypal:
 
 <tr>
 <td>
-Donate Bitcoins:
+<b>Donate Bitcoins:</b>
 </td>
 <td>
 <a href="bitcoin:1BgGzJgybHBh9yADbb23NLSr2zGMxKwJbn?label=M31501423X"><img src="pictures/bitcoin.jpg" border="0" /></a>
 </td>
 <td>
 <img src="pictures/bitcoin-qr.png" border="0">
+</td>
+<td>
+<span class="mtgox" data-id="8bbbe8a5-ad21-4499-95e9-673235b91ac1" data-amount="0.3" data-currency="BTC"><a href="https://payment.mtgox.com/8bbbe8a5-ad21-4499-95e9-673235b91ac1"><img src="https://payment.mtgox.com/img/mtgox-checkout.png" border="0" /></a></span>
+<![if !IE]><script type="text/javascript" src="https://payment.mtgox.com/js/button.min.js"></script><![endif]>
 </td>
 </tr>
 </table>
