@@ -7,17 +7,25 @@
 <body>
 
 <?php 
- include("head.inc.php");
  include("utils/constants.inc.php");
  include("utils/utils.inc.php");
  include("utils/timing.inc.php");
  include("patch/patchlevel.inc.php");
 
- $startwatch = start_watch(); 
- 
  if (file_exists($configurationfile)) {
     include("conf/config.inc.php");
+ } else {
+    include("head-main.inc.php");
+    echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
+    echo "<h2>deltasql Server $deltasql_version</h2>";
+    exit();
  } 
+ 
+ 
+ include("head.inc.php");
+ 
+ $startwatch = start_watch(); 
+ 
  if (!isset($disable_clients_table_on_main_page))  $disable_clients_table_on_main_page= false;
  if (!isset($disable_topten_submitters))  $disable_topten_submitters=true;
  if (!isset($enable_server_stats))  $enable_server_stats=true;
@@ -85,11 +93,7 @@ if (file_exists($configurationfile)) {
     
 	if ($patchlevel!="") echo "-<a href=\"patch/description.txt\">$patchlevel</a>";
  echo "</h2>";
- } else {
-    echo "<h2><a href=\"install.php\">$installmessage</a></h2>";
-    echo "<h2>deltasql Server $deltasql_version</h2>";
-} 
-
+ } 
  
  ?>
 
@@ -201,7 +205,9 @@ if ($enterprise_edition==false) {
 <br>
 <li><a href="http://deltasql.sourceforge.net" target=blank_>deltasql Website...</a></li>
 <?php
-echo "<li><a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\" target=blank_>Latest Changelog...</a></li>";
+if (file_exists($configurationfile)) {
+    echo "<li><a href=\"http://deltasql.sourceforge.net/deltasql/latest_changelog.php?version=$deltasql_version&scripts=$nbscripts&syncs=$nbsyncs&projs=$nbprojects&bras=$nbbranches\" target=blank_>Latest Changelog...</a></li>";
+}
 ?>
 </ul>
 </td>

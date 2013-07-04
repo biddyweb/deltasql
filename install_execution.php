@@ -195,6 +195,9 @@ fwrite($fh, "
 // enables server statistics
 \$enable_server_stats=$stats_enable;
 
+// enables top ten statistics
+\$disable_topten_submitters=$disable_topten_submitters
+
 // if this system contains the test scripts to verify deltasql correctness
 // if set to true, it disables the database consistency check in index.php as well
 \$test_system=$testsystem; 

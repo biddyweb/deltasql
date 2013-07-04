@@ -1,5 +1,5 @@
 *******************************
-1.6.2 Release Notes (12.7.2013)
+1.6.2 Release Notes (8.7.2013)
  
   Major features:   Intelligent branch selection on deltasql server:
                     - when submitting a new script, or while editing an existing one, deltasql will show only
