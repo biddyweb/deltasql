@@ -1,5 +1,5 @@
 *******************************
-1.6.2 Release Notes (8.7.2013)
+1.6.2 Release Notes (4.7.2013)
  
   Major features:   Intelligent branch selection on deltasql server:
                     - when submitting a new script, or while editing an existing one, deltasql will show only
@@ -20,6 +20,11 @@
   Known Issues:     Intelligent branch selection does not work on Internet Explorer (only when submitting scripts)!!!
                   
 *******************************
+
+4.7.2013 git
+fixed some minors during install process
+- warnings due to missing variables (by removing most of main page when installing)
+- top ten submitters were always disabled in 1.6.1
 
 25.6.2013 git
 - added old branches management for Internet Explorer compatibility...
