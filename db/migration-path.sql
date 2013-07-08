@@ -262,9 +262,15 @@ deleting unused parameter
 */
 DELETE FROM tbparameter WHERE paramtype='USAGESTATS' AND paramname='VERSION';
 
+/*
+added column ishead to tbbranch
+*/
+ALTER TABLE  `tbbranch` ADD  `ishead` TINYINT( 1 ) NOT NULL DEFAULT  '0' AFTER  `istag`;
+UPDATE tbbranch SET ishead =1 WHERE name =  'HEAD';
+ 
+
 -- updating synchronization information for the database schema
 INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)
-VALUES ('deltasql-Server', 256, 'HEAD', 'TAG_deltasql_1.6.1', 'admin', 'deltasql-server', 254, 'HEAD', 'Oracle');
--- all scripts to reach db HEAD beginning from version 256 on date 2013-04-18 07:30:56
--- synchronization script generated in 3.3705 seconds
- 
+VALUES ('deltasql-Server', 265, 'HEAD', '', 'admin', 'deltasql-server', 256, 'HEAD', 'Oracle');
+-- all scripts to reach db HEAD beginning from version 265 on date 2013-07-08 12:05:31
+-- synchronization script generated in 0.0949 seconds

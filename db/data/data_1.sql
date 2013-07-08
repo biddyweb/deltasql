@@ -1,1 +1,1 @@
-INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects, the main line of development', 0, '2007-10-31', 1, '', 0, '');
+INSERT INTO `tbbranch` VALUES (1, 'HEAD', NULL, 'This is the Trunk for all projects, the main line of development', 0, '2007-10-31', 1, '', 0, 1, '');

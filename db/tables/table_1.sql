@@ -8,6 +8,7 @@ CREATE TABLE `tbbranch` (
   `visible` tinyint(1) NOT NULL default '1',
   `sourcebranch` VARCHAR( 40 ) NULL,
   `istag` tinyint(1) NOT NULL default '0',
+  `ishead` TINYINT( 1 ) NOT NULL DEFAULT  '0',
   `sourcebranch_id` int(11) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
