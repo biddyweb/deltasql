@@ -40,10 +40,7 @@ else
   exit 0
 fi
 wget -q "$urldeltasql/dbsync_automated_currentversion.php?project=$project" -O version.txt
-cat version.txt | grep -i "project.version" > version.txt
-cat version.txt | cut -c 9- > version.txt
-cat version.txt | sed s/" = "/"="/ > version.txt
-source version.txt
+version=`grep -i "project.version" version.txt | sed 's/^.* = //'`
 rm version.txt
 
 

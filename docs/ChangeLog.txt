@@ -1,3 +1,6 @@
+8.7.2013 Bash Client: Applied fix by Thanos Efraimidis on how to retrieve version number
+The patched Bash Client is available from http://deltasql.sourceforge.net/deltasql/clients/bash_client.tar.gz
+
 *******************************
 1.6.2 Release Notes (4.7.2013)
  
