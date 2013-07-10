@@ -9,20 +9,21 @@
         <Filename Value="createinsertsfromcsv.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="createinsertsfromcsv"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit0>
       <Unit1>
         <Filename Value="createinsertsfromcsvunit.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
+        <ComponentName Value="frmCreateInserts"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="createinsertsfromcsvunit"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="11"/>
+        <CursorPos X="5" Y="53"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -30,6 +31,23 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="4" HistoryIndex="3">
+      <Position1>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="10" Column="89" TopLine="1"/>
+      </Position2>
+      <Position3>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="42" Column="7" TopLine="1"/>
+      </Position3>
+      <Position4>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="48" Column="5" TopLine="5"/>
+      </Position4>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>

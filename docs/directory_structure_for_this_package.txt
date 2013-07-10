@@ -1,6 +1,6 @@
 This package is structured as follows:
 
-Deltasql Server
+deltasql server
 ---------------
 
 /           Root directory for the deltasql server
@@ -26,11 +26,7 @@ Deltasql Server
 	/emails           Temporary directory to output emails, so that users are notifed by changes via email
 /patch                Contains information if patches are applied
 /pictures             Pictures for the deltasql server
-/stylesheet           Stylesheet directory, used to transform XML into HTML
-/tools                Tools to be used in conjunction with deltasql
-	/freepascal
-	  /createinsertsfromcsv A tool which creates from a .csv file an .sql file with corresponding insert statements
-	  
+/stylesheet           Stylesheet directory, used to transform XML into HTML	  
 /utils                Utilites in PHP for deltasql
      /geshi           The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
      /js              jQuery and zeroClipboard library to implement copy&paste functionality
@@ -45,7 +41,7 @@ Deltasql Server
 /Text                Textdiff library, see /utils/textdiff/README.txt for copyright information and licensing
     
 
-Deltasql Clients
+deltasql clients
 ----------------
 
 /clients                  This is the folder with clients that interface with deltasql Server
@@ -58,4 +54,9 @@ Deltasql Clients
 	    /lib              Common libraries for clients
 		/deltaclient      FreePascal deltasql client
     /python               Python client (mySQL support only)
-        
+
+deltasql tools
+--------------
+/tools                Tools to be used in conjunction with deltasql
+	/freepascal
+	  /createinsertsfromcsv A tool which creates from a .csv file an .sql file with corresponding insert statements

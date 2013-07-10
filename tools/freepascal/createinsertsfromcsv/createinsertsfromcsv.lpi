@@ -45,6 +45,7 @@
         <Filename Value="createinsertsfromcsvunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCreateInserts"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="createinsertsfromcsvunit"/>
       </Unit1>

@@ -1,8 +1,84 @@
-object Form1: TForm1
-  Left = 556
-  Height = 240
-  Top = 234
-  Width = 320
-  Caption = 'Form1'
+object frmCreateInserts: TfrmCreateInserts
+  Left = 884
+  Height = 191
+  Top = 192
+  Width = 609
+  Caption = 'deltasql tool - Create SQL inserts from CSV file'
+  ClientHeight = 191
+  ClientWidth = 609
   LCLVersion = '1.0.2.0'
+  object edtFilename: TEdit
+    Left = 112
+    Height = 23
+    Top = 32
+    Width = 352
+    Enabled = False
+    TabOrder = 0
+  end
+  object lblFilename: TLabel
+    Left = 16
+    Height = 16
+    Top = 32
+    Width = 83
+    Caption = 'Input Filename:'
+    ParentColor = False
+  end
+  object btnSelectFileName: TButton
+    Left = 472
+    Height = 25
+    Top = 32
+    Width = 75
+    Caption = '...'
+    OnClick = btnSelectFileNameClick
+    TabOrder = 1
+  end
+  object lblInfo: TLabel
+    Left = 48
+    Height = 16
+    Top = 8
+    Width = 503
+    Caption = 'Please note: the filename has to match the table name (e.g. tbcontract.csv for table tbcontract).'
+    Font.Color = clRed
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbHeader: TCheckBox
+    Left = 112
+    Height = 19
+    Top = 64
+    Width = 187
+    Caption = 'Header includes column names'
+    Checked = True
+    State = cbChecked
+    TabOrder = 2
+  end
+  object btnGenerate: TButton
+    Left = 112
+    Height = 25
+    Top = 96
+    Width = 435
+    Caption = 'Generate SQL Inserts'
+    OnClick = btnGenerateClick
+    TabOrder = 3
+  end
+  object lblOutput: TLabel
+    Left = 8
+    Height = 16
+    Top = 136
+    Width = 93
+    Caption = 'Output Filename:'
+    ParentColor = False
+  end
+  object lblOutputLink: TLabel
+    Left = 112
+    Height = 16
+    Top = 136
+    Width = 56
+    Caption = 'No output'
+    Font.Color = clBlue
+    Font.Style = [fsUnderline]
+    ParentColor = False
+    ParentFont = False
+    OnClick = lblOutputLinkClick
+  end
 end
