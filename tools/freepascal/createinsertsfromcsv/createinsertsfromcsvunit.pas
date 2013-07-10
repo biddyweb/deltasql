@@ -12,6 +12,7 @@ const MAX_FIELDS = 2056; // if a table has more than this number of columns, the
                         // it might need refactoring ;-)
       QUOTE      = 39; //ASCII char for '
       EDITOR     = 'notepad'; // the default editor to use the file
+      UPDATE_STATS_EACH = 1000; // after how many rows percentage stats are updated
 
 type
 
@@ -41,7 +42,9 @@ type
     outputFile,
     insertStatement : AnsiString;
     isNumeric : Array[1..MAX_FIELDS] of Boolean;
+    totalLines : Longint;
 
+    procedure countLines;
     procedure generateInserts;
     procedure constructInsertStatement(header : AnsiString);
     function  fillInsertStatement(values : AnsiString) : AnsiString;
@@ -87,6 +90,12 @@ end;
 
 procedure TfrmCreateInserts.btnGenerateClick(Sender: TObject);
 begin
+    if Trim(edtTableName.Text)='' then
+        begin
+             ShowMessage('ERROR: please define a tablename!');
+             Exit;
+        end;
+
      if Trim(edtFileName.Text)<>'' then
         begin
             if FileExists(edtFileName.Text) then
@@ -104,6 +113,7 @@ procedure TfrmCreateInserts.generateInserts;
 var F, G : TextFile;
     str  : Ansistring;
     firstLine : Boolean;
+    count : Longint;
 begin
   screen.cursor:=crHourglass;
   edtFileName.Enabled := false;
@@ -113,7 +123,8 @@ begin
   edtTableName.Enabled := false;
 
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
-  //ShowMessage(outputFile);
+
+  countLines;
   initFieldTypes;
   inferFieldsFromData;
 
@@ -126,6 +137,7 @@ begin
     Reset(F);
     Rewrite(G);
 
+    count := 0;
     while not EOF(F) do
         begin
           Readln(F, str);
@@ -140,7 +152,9 @@ begin
           else
             WriteLn(G, fillInsertStatement(str));
 
-
+          Inc(count);
+          if (count mod UPDATE_STATS_EACH)=0 then
+               statusbar.SimpleText:='Generating inserts... ('+FormatFloat('0.00',100*count/totalLines)+'%)';
           if firstline then firstline := false;
           Application.ProcessMessages;
         end;
@@ -240,6 +254,7 @@ procedure TfrmCreateInserts.inferFieldsFromData;
 var F : TextFile;
     str : AnsiString;
     firstLine : Boolean;
+    count     : Longint;
 
     procedure scanFieldsForNumeric(str : AnsiString);
     var column : AnsiString;
@@ -273,6 +288,7 @@ begin
  firstLine := true;
  AssignFile(F, edtFileName.Text);
 
+ count := 0;
   try
     Reset(F);
 
@@ -289,6 +305,11 @@ begin
               scanFieldsForNumeric(str);
 
           if firstLine then firstLine := false;
+
+          Inc(count);
+          if (count mod UPDATE_STATS_EACH)=0 then
+               statusbar.SimpleText:='Inferring field type based on input data... ('+FormatFloat('0.00',100*count/totalLines)+'%)';
+
           Application.ProcessMessages;
         end;
 
@@ -297,6 +318,31 @@ begin
   end;
 end;
 
+procedure TfrmCreateInserts.countLines;
+var F : TextFile;
+    str : AnsiString;
+begin
+ statusbar.SimpleText:='Counting lines for percentage stats...';
+
+ AssignFile(F, edtFileName.Text);
+
+ totalLines := 0;
+ try
+    Reset(F);
+
+    while not EOF(F) do
+        begin
+          Readln(F, str);
+          if Trim(str)='' then continue;
+
+          Inc(totalLines);
+          Application.ProcessMessages;
+        end;
+
+  finally
+    CloseFile(F);
+  end;
+end;
 
 end.
 
