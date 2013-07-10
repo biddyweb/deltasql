@@ -29,6 +29,7 @@ type
     insertStatement : AnsiString;
     procedure generateInserts;
     procedure constructInsertStatement(header : AnsiString);
+    function  fillInsertStatement(values : AnsiString) : AnsiString;
   end;
 
 var
@@ -85,6 +86,12 @@ var F, G : TextFile;
     str  : Ansistring;
     firstLine : Boolean;
 begin
+  screen.cursor:=crHourglass;
+  edtFileName.Enabled := false;
+  edtSeparator.Enabled := false;
+  btnGenerate.Enabled := false;
+  btnSelectFileName.Enabled := false;
+
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
   //ShowMessage(outputFile);
 
@@ -98,17 +105,33 @@ begin
     while not EOF(F) do
         begin
           Readln(F, str);
-          if firstLine then
-                begin
-                    constructInsertStatement(str);
-                    firstLine := false;
-                end;
+          if firstLine then constructInsertStatement(str);
+
+          if cbHeader.Checked then
+              begin
+                if not firstline then WriteLn(G, fillInsertStatement(str));
+              end
+          else
+            WriteLn(G, fillInsertStatement(str));
+
+
+          if firstline then firstline := false;
+          Application.ProcessMessages;
         end;
 
+    lblOutputLink.Caption := ExtractFileName(outputFile);
   finally
     CloseFile(F);
     CloseFile(G);
+
+    screen.cursor:=crArrow;
+    edtFileName.Enabled := True;
+    edtSeparator.Enabled := True;
+    btnGenerate.Enabled := True;
+    btnSelectFileName.Enabled := True;
   end;
+
+
 end;
 
 procedure TfrmCreateInserts.constructInsertStatement(header : AnsiString);
@@ -134,7 +157,23 @@ begin
              Delete(insertStatement, length(insertStatement), 1);
              insertStatement := insertStatement+') VALUES(';
          end;
-   ShowMessage(insertStatement);
+   //ShowMessage(insertStatement);
+end;
+
+
+function TfrmCreateInserts.fillInsertStatement(values : AnsiString) : AnsiString;
+var column : AnsiString;
+begin
+  Result := '';
+  column:=Trim(extractParamLong(values, edtSeparator.Text));
+  while column<>'' do
+      begin
+        Result := Result + column + ',';
+        column:=Trim(extractParamLong(values, edtSeparator.Text));
+      end;
+  Delete(Result, length(Result), 1);
+
+  Result := insertStatement + Result + ');';
 end;
 
 procedure TfrmCreateInserts.lblOutputLinkClick(Sender: TObject);
