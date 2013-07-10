@@ -188,7 +188,7 @@ end;
 
 
 function TfrmCreateInserts.fillInsertStatement(values : AnsiString) : AnsiString;
-var column : AnsiString;
+var column, escapedStr : AnsiString;
     i      : Longint;
 begin
   Result := '';
@@ -199,7 +199,11 @@ begin
         if isnumeric[i] or (column='NULL') then
            Result := Result + column + ','
         else
-           Result := Result + Chr(QUOTE) + column + Chr(QUOTE) + ',';
+          begin
+            // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)
+            escapedstr := StringReplace(column, Chr(QUOTE), Chr(QUOTE)+Chr(QUOTE), [rfReplaceAll, rfIgnoreCase]);
+            Result := Result + Chr(QUOTE) + escapedStr + Chr(QUOTE) + ',';
+          end;
 
         column:=Trim(extractParamLong(values, edtSeparator.Text));
         i:=i+1;
