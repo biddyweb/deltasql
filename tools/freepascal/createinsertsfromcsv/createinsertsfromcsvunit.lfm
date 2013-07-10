@@ -1,10 +1,10 @@
 object frmCreateInserts: TfrmCreateInserts
   Left = 830
-  Height = 191
+  Height = 274
   Top = 283
   Width = 609
   Caption = 'deltasql tool - Create SQL inserts from CSV file'
-  ClientHeight = 191
+  ClientHeight = 274
   ClientWidth = 609
   LCLVersion = '1.0.2.0'
   object edtFilename: TEdit
@@ -19,17 +19,17 @@ object frmCreateInserts: TfrmCreateInserts
     Left = 16
     Height = 16
     Top = 32
-    Width = 83
-    Caption = 'Input Filename:'
+    Width = 59
+    Caption = 'Input Data:'
     ParentColor = False
   end
-  object btnSelectFileName: TButton
+  object btnSelectCSVFile: TButton
     Left = 472
     Height = 25
     Top = 32
     Width = 75
     Caption = '...'
-    OnClick = btnSelectFileNameClick
+    OnClick = btnSelectSQLFileClick
     TabOrder = 1
   end
   object lblInfo: TLabel
@@ -53,26 +53,26 @@ object frmCreateInserts: TfrmCreateInserts
     TabOrder = 2
   end
   object btnGenerate: TButton
-    Left = 112
+    Left = 110
     Height = 25
-    Top = 96
+    Top = 160
     Width = 435
     Caption = 'Generate SQL Inserts'
     OnClick = btnGenerateClick
     TabOrder = 3
   end
   object lblOutput: TLabel
-    Left = 8
+    Left = 6
     Height = 16
-    Top = 136
+    Top = 200
     Width = 93
     Caption = 'Output Filename:'
     ParentColor = False
   end
   object lblOutputLink: TLabel
-    Left = 112
+    Left = 110
     Height = 16
-    Top = 136
+    Top = 200
     Width = 56
     Caption = 'No output'
     Font.Color = clBlue
@@ -97,10 +97,54 @@ object frmCreateInserts: TfrmCreateInserts
     Caption = 'Separator:'
     ParentColor = False
   end
-  object dlgOpen: TOpenDialog
+  object rbInfer: TRadioButton
+    Left = 112
+    Height = 19
+    Top = 95
+    Width = 178
+    Caption = 'Infer field types based on data'
+    Checked = True
+    OnChange = rbTableDefinitionChange
+    TabOrder = 6
+    TabStop = True
+  end
+  object rbTableDefinition: TRadioButton
+    Left = 320
+    Height = 19
+    Top = 96
+    Width = 156
+    Caption = 'Use CREATE TABLE script:'
+    OnChange = rbTableDefinitionChange
+    TabOrder = 5
+  end
+  object edtTableDefinition: TEdit
+    Left = 112
+    Height = 23
+    Top = 120
+    Width = 352
+    Enabled = False
+    TabOrder = 7
+  end
+  object btnSelectSQLFile: TButton
+    Left = 476
+    Height = 23
+    Top = 120
+    Width = 72
+    Caption = '...'
+    Enabled = False
+    OnClick = btnSelectSQLFileClick
+    TabOrder = 8
+  end
+  object dlgOpenCSV: TOpenDialog
     Title = 'Open CSV file'
     Filter = 'Comma Separated Values|*.csv|All files|*.*'
-    left = 493
-    top = 136
+    left = 432
+    top = 200
+  end
+  object dlgOpenSQL: TOpenDialog
+    Title = 'Open SQL file'
+    Filter = 'Table Definition|*.sql|All files|*.*'
+    left = 504
+    top = 200
   end
 end

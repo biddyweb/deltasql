@@ -9,10 +9,16 @@ uses
   Process;
 
 type
+
+  { TfrmCreateInserts }
+
   TfrmCreateInserts = class(TForm)
-    btnSelectFileName: TButton;
+    btnSelectCSVFile: TButton;
     btnGenerate: TButton;
+    btnSelectSQLFile: TButton;
     cbHeader: TCheckBox;
+    dlgOpenSQL: TOpenDialog;
+    edtTableDefinition: TEdit;
     edtSeparator: TEdit;
     edtFilename: TEdit;
     lblFilename: TLabel;
@@ -20,10 +26,14 @@ type
     lblOutput: TLabel;
     lblInfo: TLabel;
     lblOutputLink: TLabel;
-    dlgOpen: TOpenDialog;
+    dlgOpenCSV: TOpenDialog;
+    rbInfer: TRadioButton;
+    rbTableDefinition: TRadioButton;
     procedure btnGenerateClick(Sender: TObject);
-    procedure btnSelectFileNameClick(Sender: TObject);
+    procedure btnSelectSQLFileClick(Sender: TObject);
+    procedure btnSelectCSVFileClick(Sender: TObject);
     procedure lblOutputLinkClick(Sender: TObject);
+    procedure rbTableDefinitionChange(Sender: TObject);
   private
     outputFile,
     tableName,
@@ -58,11 +68,21 @@ begin
   end;
 end;
 
-procedure TfrmCreateInserts.btnSelectFileNameClick(Sender: TObject);
+procedure TfrmCreateInserts.btnSelectSQLFileClick(Sender: TObject);
 begin
-  if dlgOpen.Execute then
+  if dlgOpenSQL.Execute then
      begin
-          edtFileName.Text := dlgOpen.FileName;
+          edtTableDefinition.Text := dlgOpenSQL.FileName;
+          edtTableDefinition.Enabled := true;
+     end;
+end;
+
+
+procedure TfrmCreateInserts.btnSelectCSVFileClick(Sender: TObject);
+begin
+  if dlgOpenCSV.Execute then
+     begin
+          edtFileName.Text := dlgOpenCSV.FileName;
           edtFileName.Enabled := true;
      end;
 end;
@@ -91,7 +111,7 @@ begin
   edtFileName.Enabled := false;
   edtSeparator.Enabled := false;
   btnGenerate.Enabled := false;
-  btnSelectFileName.Enabled := false;
+  btnSelectCSVFile.Enabled := false;
 
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
   //ShowMessage(outputFile);
@@ -129,7 +149,7 @@ begin
     edtFileName.Enabled := True;
     edtSeparator.Enabled := True;
     btnGenerate.Enabled := True;
-    btnSelectFileName.Enabled := True;
+    btnSelectCSVFile.Enabled := True;
   end;
 
 
@@ -189,6 +209,12 @@ begin
      AProcess.Free;
    end;
 
+end;
+
+
+procedure TfrmCreateInserts.rbTableDefinitionChange(Sender: TObject);
+begin
+  btnSelectSQLFile.Enabled := rbTableDefinition.Checked;
 end;
 
 end.
