@@ -8,12 +8,17 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
+
+  { TfrmCreateInserts }
+
   TfrmCreateInserts = class(TForm)
     btnSelectFileName: TButton;
     btnGenerate: TButton;
     cbHeader: TCheckBox;
+    edtSeparator: TEdit;
     edtFilename: TEdit;
     lblFilename: TLabel;
+    lblSeparator: TLabel;
     lblOutput: TLabel;
     lblInfo: TLabel;
     lblOutputLink: TLabel;
@@ -22,6 +27,7 @@ type
     procedure btnSelectFileNameClick(Sender: TObject);
     procedure lblOutputLinkClick(Sender: TObject);
   private
+    outputFile : AnsiString;
     procedure generateInserts;
   end;
 
@@ -46,7 +52,9 @@ begin
      if Trim(edtFileName.Text)<>'' then
         begin
             if FileExists(edtFileName.Text) then
-               generateInserts
+              begin
+               generateInserts;
+              end
             else
               ShowMessage('ERROR: could not locate the filename! ('+edtFileName.Text+')');
         end
@@ -55,7 +63,21 @@ end;
 
 
 procedure TfrmCreateInserts.generateInserts;
+var F, G : TextFile;
 begin
+  outputFile := ChangeFileExt(edtFileName.Text, '.sql');
+  ShowMessage(outputFile);
+
+  AssignFile(F, edtFileName.Text);
+  AssignFile(G, outputFile);
+  try
+    Reset(F);
+    Rewrite(G);
+
+  finally
+    CloseFile(F);
+    CloseFile(G);
+  end;
 end;
 
 procedure TfrmCreateInserts.lblOutputLinkClick(Sender: TObject);

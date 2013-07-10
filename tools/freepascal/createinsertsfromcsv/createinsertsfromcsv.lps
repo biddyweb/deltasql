@@ -21,8 +21,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="20"/>
-        <CursorPos X="75" Y="53"/>
+        <TopLine Value="31"/>
+        <CursorPos X="1" Y="77"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -31,7 +31,7 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="10" HistoryIndex="9">
+    <JumpHistory Count="12" HistoryIndex="11">
       <Position1>
         <Filename Value="createinsertsfromcsvunit.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
@@ -72,6 +72,14 @@
         <Filename Value="createinsertsfromcsvunit.pas"/>
         <Caret Line="51" Column="88" TopLine="21"/>
       </Position10>
+      <Position11>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="72" Column="1" TopLine="1"/>
+      </Position11>
+      <Position12>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="76" Column="1" TopLine="30"/>
+      </Position12>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
