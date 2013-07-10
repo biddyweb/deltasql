@@ -21,8 +21,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="103"/>
-        <CursorPos X="5" Y="126"/>
+        <TopLine Value="149"/>
+        <CursorPos X="64" Y="185"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -38,15 +38,17 @@
       <Unit3>
         <Filename Value="..\..\..\clients\freepascal\deltaclient\deltaclientunit.pas"/>
         <UnitName Value="deltaclientunit"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
+        <TopLine Value="170"/>
+        <CursorPos X="32" Y="209"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="..\..\..\..\gpu_freedom\src\client\lib\own\misc\utils.pas"/>
         <UnitName Value="utils"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="17"/>
         <CursorPos X="11" Y="60"/>
@@ -57,7 +59,7 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="16" HistoryIndex="15">
+    <JumpHistory Count="22" HistoryIndex="21">
       <Position1>
         <Filename Value="createinsertsfromcsvunit.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
@@ -122,6 +124,30 @@
         <Filename Value="createinsertsfromcsvunit.pas"/>
         <Caret Line="134" Column="44" TopLine="101"/>
       </Position16>
+      <Position17>
+        <Filename Value="..\..\..\clients\freepascal\deltaclient\deltaclientunit.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position17>
+      <Position18>
+        <Filename Value="..\..\..\clients\freepascal\deltaclient\deltaclientunit.pas"/>
+        <Caret Line="11" Column="46" TopLine="1"/>
+      </Position18>
+      <Position19>
+        <Filename Value="..\..\..\clients\freepascal\deltaclient\deltaclientunit.pas"/>
+        <Caret Line="166" Column="30" TopLine="148"/>
+      </Position19>
+      <Position20>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="183" Column="68" TopLine="145"/>
+      </Position20>
+      <Position21>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="9" Column="10" TopLine="1"/>
+      </Position21>
+      <Position22>
+        <Filename Value="createinsertsfromcsvunit.pas"/>
+        <Caret Line="181" Column="25" TopLine="148"/>
+      </Position22>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

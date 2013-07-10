@@ -5,7 +5,8 @@ unit createinsertsfromcsvunit;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  Process;
 
 type
   TfrmCreateInserts = class(TForm)
@@ -177,8 +178,16 @@ begin
 end;
 
 procedure TfrmCreateInserts.lblOutputLinkClick(Sender: TObject);
+var aProcess : TProcess;
 begin
-
+   AProcess := TProcess.Create(nil);
+   try
+               AProcess.CommandLine := '"notepad" "'+outputFile+'"';
+               AProcess.Options := AProcess.Options - [poWaitOnExit];
+               AProcess.Execute;
+   finally
+     AProcess.Free;
+   end;
 
 end;
 
