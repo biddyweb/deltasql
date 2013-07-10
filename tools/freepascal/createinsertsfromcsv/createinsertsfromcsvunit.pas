@@ -6,7 +6,10 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Process;
+  ComCtrls, Process;
+
+const MAX_FIELDS = 1024;
+      QUOTE      = 39; //ASCII char for '
 
 type
 
@@ -22,6 +25,7 @@ type
     edtSeparator: TEdit;
     edtFilename: TEdit;
     lblFilename: TLabel;
+    lblFilename1: TLabel;
     lblSeparator: TLabel;
     lblOutput: TLabel;
     lblInfo: TLabel;
@@ -29,6 +33,7 @@ type
     dlgOpenCSV: TOpenDialog;
     rbInfer: TRadioButton;
     rbTableDefinition: TRadioButton;
+    statusbar: TStatusBar;
     procedure btnGenerateClick(Sender: TObject);
     procedure btnSelectSQLFileClick(Sender: TObject);
     procedure btnSelectCSVFileClick(Sender: TObject);
@@ -38,9 +43,15 @@ type
     outputFile,
     tableName,
     insertStatement : AnsiString;
+    isNumeric : Array[1..MAX_FIELDS] of Boolean;
+
     procedure generateInserts;
     procedure constructInsertStatement(header : AnsiString);
     function  fillInsertStatement(values : AnsiString) : AnsiString;
+
+    procedure initFieldTypes;
+    procedure inferFieldsFromData;
+    procedure inferFieldsFromTableDefinition;
   end;
 
 var
@@ -112,14 +123,23 @@ begin
   edtSeparator.Enabled := false;
   btnGenerate.Enabled := false;
   btnSelectCSVFile.Enabled := false;
+  rbInfer.Enabled := false;
+  rbTableDefinition.Enabled := false;
+  edtTableDefinition.Enabled := false;
+  btnSelectSQLFile.Enabled := false;
 
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
   //ShowMessage(outputFile);
+  initFieldTypes;
+  if rbInfer.Checked then inferFieldsFromData else inferFieldsFromTableDefinition;
+
 
   firstLine := true;
   AssignFile(F, edtFileName.Text);
   AssignFile(G, outputFile);
+
   try
+    statusbar.SimpleText:='Generating inserts...';
     Reset(F);
     Rewrite(G);
 
@@ -150,6 +170,12 @@ begin
     edtSeparator.Enabled := True;
     btnGenerate.Enabled := True;
     btnSelectCSVFile.Enabled := True;
+    rbInfer.Enabled := true;
+    rbTableDefinition.Enabled := true;
+    edtTableDefinition.Enabled := rbTableDefinition.Checked;
+    btnSelectSQLFile.Enabled := rbTableDefinition.Checked;
+
+    statusbar.SimpleText:='Ready.';
   end;
 
 
@@ -184,13 +210,20 @@ end;
 
 function TfrmCreateInserts.fillInsertStatement(values : AnsiString) : AnsiString;
 var column : AnsiString;
+    i      : Longint;
 begin
   Result := '';
   column:=Trim(extractParamLong(values, edtSeparator.Text));
+  i:=1;
   while column<>'' do
       begin
-        Result := Result + column + ',';
+        if isnumeric[i] then
+           Result := Result + column + ','
+        else
+           Result := Result + Chr(QUOTE) + column + Chr(QUOTE) + ',';
+
         column:=Trim(extractParamLong(values, edtSeparator.Text));
+        i:=i+1;
       end;
   Delete(Result, length(Result), 1);
 
@@ -215,6 +248,21 @@ end;
 procedure TfrmCreateInserts.rbTableDefinitionChange(Sender: TObject);
 begin
   btnSelectSQLFile.Enabled := rbTableDefinition.Checked;
+  edtTableDefinition.Enabled := rbTableDefinition.Checked;
+end;
+
+procedure TfrmCreateInserts.initFieldTypes;
+var i : Longint;
+begin
+  for i:=1 to MAX_FIELDS do isnumeric[i] := true;
+end;
+
+procedure TfrmCreateInserts.inferFieldsFromData;
+begin
+end;
+
+procedure TfrmCreateInserts.inferFieldsFromTableDefinition;
+begin
 end;
 
 end.
