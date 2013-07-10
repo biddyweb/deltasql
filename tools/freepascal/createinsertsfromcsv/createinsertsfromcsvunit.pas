@@ -18,28 +18,23 @@ type
   TfrmCreateInserts = class(TForm)
     btnSelectCSVFile: TButton;
     btnGenerate: TButton;
-    btnSelectSQLFile: TButton;
     cbHeader: TCheckBox;
     dlgOpenSQL: TOpenDialog;
     edtTablename: TEdit;
-    edtTableDefinition: TEdit;
     edtSeparator: TEdit;
     edtFilename: TEdit;
+    lblInfo2: TLabel;
+    lblInfo: TLabel;
     lblTablename: TLabel;
     lblFilename: TLabel;
-    lblFilename1: TLabel;
     lblSeparator: TLabel;
     lblOutput: TLabel;
     lblOutputLink: TLabel;
     dlgOpenCSV: TOpenDialog;
-    rbInfer: TRadioButton;
-    rbTableDefinition: TRadioButton;
     statusbar: TStatusBar;
     procedure btnGenerateClick(Sender: TObject);
-    procedure btnSelectSQLFileClick(Sender: TObject);
     procedure btnSelectCSVFileClick(Sender: TObject);
     procedure lblOutputLinkClick(Sender: TObject);
-    procedure rbTableDefinitionChange(Sender: TObject);
   private
     outputFile,
     insertStatement : AnsiString;
@@ -51,7 +46,6 @@ type
 
     procedure initFieldTypes;
     procedure inferFieldsFromData;
-    procedure inferFieldsFromTableDefinition;
   end;
 
 var
@@ -78,16 +72,6 @@ begin
     S      := '';
   end;
 end;
-
-procedure TfrmCreateInserts.btnSelectSQLFileClick(Sender: TObject);
-begin
-  if dlgOpenSQL.Execute then
-     begin
-          edtTableDefinition.Text := dlgOpenSQL.FileName;
-          edtTableDefinition.Enabled := true;
-     end;
-end;
-
 
 procedure TfrmCreateInserts.btnSelectCSVFileClick(Sender: TObject);
 begin
@@ -124,17 +108,12 @@ begin
   edtSeparator.Enabled := false;
   btnGenerate.Enabled := false;
   btnSelectCSVFile.Enabled := false;
-  rbInfer.Enabled := false;
-  rbTableDefinition.Enabled := false;
-  edtTableDefinition.Enabled := false;
-  btnSelectSQLFile.Enabled := false;
   edtTableName.Enabled := false;
 
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
   //ShowMessage(outputFile);
   initFieldTypes;
-  if rbInfer.Checked then inferFieldsFromData else inferFieldsFromTableDefinition;
-
+  inferFieldsFromData;
 
   firstLine := true;
   AssignFile(F, edtFileName.Text);
@@ -172,11 +151,7 @@ begin
     edtSeparator.Enabled := True;
     btnGenerate.Enabled := True;
     btnSelectCSVFile.Enabled := True;
-    rbInfer.Enabled := true;
-    rbTableDefinition.Enabled := true;
     edtTableName.Enabled := true;
-    edtTableDefinition.Enabled := rbTableDefinition.Checked;
-    btnSelectSQLFile.Enabled := rbTableDefinition.Checked;
 
     statusbar.SimpleText:='Ready.';
   end;
@@ -247,12 +222,6 @@ begin
 end;
 
 
-procedure TfrmCreateInserts.rbTableDefinitionChange(Sender: TObject);
-begin
-  btnSelectSQLFile.Enabled := rbTableDefinition.Checked;
-  edtTableDefinition.Enabled := rbTableDefinition.Checked;
-end;
-
 procedure TfrmCreateInserts.initFieldTypes;
 var i : Longint;
 begin
@@ -319,11 +288,6 @@ begin
   end;
 end;
 
-procedure TfrmCreateInserts.inferFieldsFromTableDefinition;
-var F : TextFile;
-begin
- statusbar.SimpleText:='Inferring field type based on table definition...';
-end;
 
 end.
 
