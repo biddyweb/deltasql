@@ -1,5 +1,5 @@
 unit createinsertsfromcsvunit;
-
+{ (c) 2013 by HB9TVM and the deltasql team. This source code is under the GPL}
 {$mode objfpc}{$H+}
 
 interface
@@ -8,8 +8,10 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ComCtrls, Process;
 
-const MAX_FIELDS = 1024;
+const MAX_FIELDS = 2056; // if a table has more than this number of columns, then
+                        // it might need refactoring ;-)
       QUOTE      = 39; //ASCII char for '
+      EDITOR     = 'notepad'; // the default editor to use the file
 
 type
 
@@ -212,7 +214,7 @@ var aProcess : TProcess;
 begin
    AProcess := TProcess.Create(nil);
    try
-               AProcess.CommandLine := '"notepad" "'+outputFile+'"';
+               AProcess.CommandLine := '"'+EDITOR+'" "'+outputFile+'"';
                AProcess.Options := AProcess.Options - [poWaitOnExit];
                AProcess.Execute;
    finally
