@@ -129,6 +129,8 @@ begin
     while not EOF(F) do
         begin
           Readln(F, str);
+          if Trim(str)='' then continue; // we skip blank lines completely
+
           if firstLine then constructInsertStatement(str);
 
           if cbHeader.Checked then
@@ -277,6 +279,7 @@ begin
     while not EOF(F) do
         begin
           Readln(F, str);
+          if Trim(str)='' then continue; // we skip blank lines completely
 
           if cbHeader.Checked then
               begin
