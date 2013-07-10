@@ -347,3 +347,4 @@ CREATE TABLE IF NOT EXISTS `tbuser` (
 -- Please note: Password for admin user is testdbsync
 INSERT INTO `tbuser` (`id`, `username`, `password`, `first`, `last`, `email`, `rights`, `encrypted`, `passwhash`) VALUES
 (1, 'admin', '****', 'Main', 'Administrator', 'admin@deltasql', 3, 1, 'aa27bde5b2303ed930c48751877b5991');
+

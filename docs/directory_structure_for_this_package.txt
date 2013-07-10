@@ -10,8 +10,7 @@ Deltasql Server
      example_config.inc.php  This file is an example configuration, which could be renamed to config.inc.php       
 
 /db         this folder contains database scripts needed for the mySQL database that backs the server
-    script.sql            This scripts creates the entire database schema
-    script-test-data.sql  This script creates some test data for the database schema
+     script.sql            This scripts creates the entire database schema
     /backup               This folder contains a Unix backup shell script (example)
     /data                 This folder contains the rows in script.sql in single scripts,
     /tables               This folder contains the tables in script.sql in single scripts,
@@ -28,6 +27,10 @@ Deltasql Server
 /patch                Contains information if patches are applied
 /pictures             Pictures for the deltasql server
 /stylesheet           Stylesheet directory, used to transform XML into HTML
+/tools                Tools to be used in conjunction with deltasql
+	/freepascal
+	  /createinsertsfromcsv A tool which creates from a .csv file an .sql file with corresponding insert statements
+	  
 /utils                Utilites in PHP for deltasql
      /geshi           The geshi library for Syntax  Highlighting (see README for licensing, copyright information)
      /js              jQuery and zeroClipboard library to implement copy&paste functionality

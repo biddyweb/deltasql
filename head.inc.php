@@ -61,6 +61,7 @@ echo "
 echo "<ul>";
 echo "<li><a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a></li>";
 echo "<li><a  href=\"clients.php\">Clients</a></li>";
+echo "<li><a  href=\"tools.php\">Toolbox</a></li>";
 echo "</ul>";
 
 echo "
