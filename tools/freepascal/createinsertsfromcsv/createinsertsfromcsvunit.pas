@@ -21,14 +21,15 @@ type
     btnSelectSQLFile: TButton;
     cbHeader: TCheckBox;
     dlgOpenSQL: TOpenDialog;
+    edtTablename: TEdit;
     edtTableDefinition: TEdit;
     edtSeparator: TEdit;
     edtFilename: TEdit;
+    lblTablename: TLabel;
     lblFilename: TLabel;
     lblFilename1: TLabel;
     lblSeparator: TLabel;
     lblOutput: TLabel;
-    lblInfo: TLabel;
     lblOutputLink: TLabel;
     dlgOpenCSV: TOpenDialog;
     rbInfer: TRadioButton;
@@ -41,7 +42,6 @@ type
     procedure rbTableDefinitionChange(Sender: TObject);
   private
     outputFile,
-    tableName,
     insertStatement : AnsiString;
     isNumeric : Array[1..MAX_FIELDS] of Boolean;
 
@@ -95,6 +95,7 @@ begin
      begin
           edtFileName.Text := dlgOpenCSV.FileName;
           edtFileName.Enabled := true;
+          edtTableName.Text := ExtractFileName(changeFileExt(ExtractFileName(dlgOpenCSV.FileName), ''));
      end;
 end;
 
@@ -127,6 +128,7 @@ begin
   rbTableDefinition.Enabled := false;
   edtTableDefinition.Enabled := false;
   btnSelectSQLFile.Enabled := false;
+  edtTableName.Enabled := false;
 
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
   //ShowMessage(outputFile);
@@ -172,6 +174,7 @@ begin
     btnSelectCSVFile.Enabled := True;
     rbInfer.Enabled := true;
     rbTableDefinition.Enabled := true;
+    edtTableName.Enabled := true;
     edtTableDefinition.Enabled := rbTableDefinition.Checked;
     btnSelectSQLFile.Enabled := rbTableDefinition.Checked;
 
@@ -184,16 +187,15 @@ end;
 procedure TfrmCreateInserts.constructInsertStatement(header : AnsiString);
 var column : AnsiString;
 begin
-   tableName := ExtractFileName(changeFileExt(outputFile, ''));
    //ShowMessage('Tablename is '+tableName);
 
    if not cbHeader.Checked then
          begin
-             insertStatement := 'INSERT INTO '+tableName+' VALUES(';
+             insertStatement := 'INSERT INTO '+edtTableName.Text+' VALUES(';
          end
    else
          begin
-             insertStatement := 'INSERT INTO '+tableName+' (';
+             insertStatement := 'INSERT INTO '+edtTableName.Text+' (';
              // we need to retrieve first the column names
              column:=Trim(extractParamLong(header, edtSeparator.Text));
              while column<>'' do
@@ -217,7 +219,7 @@ begin
   i:=1;
   while column<>'' do
       begin
-        if isnumeric[i] then
+        if isnumeric[i] or (column='NULL') then
            Result := Result + column + ','
         else
            Result := Result + Chr(QUOTE) + column + Chr(QUOTE) + ',';
@@ -271,7 +273,7 @@ var F : TextFile;
       i := 1;
       while column<>'' do
            begin
-             if isnumeric[i] then
+             if isnumeric[i] and (column<>'NULL') then
                 begin
                   // test if this column is really numeric
                      try
