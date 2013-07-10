@@ -258,11 +258,69 @@ begin
 end;
 
 procedure TfrmCreateInserts.inferFieldsFromData;
+var F : TextFile;
+    str : AnsiString;
+    firstLine : Boolean;
+
+    procedure scanFieldsForNumeric(str : AnsiString);
+    var column : AnsiString;
+        i      : Longint;
+    begin
+
+      column:=Trim(extractParamLong(str, edtSeparator.Text));
+      i := 1;
+      while column<>'' do
+           begin
+             if isnumeric[i] then
+                begin
+                  // test if this column is really numeric
+                     try
+                        StrToFloat(column);
+                     except
+                           on E : EConvertError do
+                              isnumeric[i] := false;
+                     end;
+                end;
+
+             // go to next column
+             column:=Trim(extractParamLong(str, edtSeparator.Text));
+             i := i+1;
+           end;
+    end;
+
 begin
+ statusbar.SimpleText:='Inferring field type based on input data...';
+
+ firstLine := true;
+ AssignFile(F, edtFileName.Text);
+
+  try
+    Reset(F);
+
+    while not EOF(F) do
+        begin
+          Readln(F, str);
+
+          if cbHeader.Checked then
+              begin
+                if not firstline then scanFieldsForNumeric(str);
+              end
+          else
+              scanFieldsForNumeric(str);
+
+          if firstLine then firstLine := false;
+          Application.ProcessMessages;
+        end;
+
+  finally
+    CloseFile(F);
+  end;
 end;
 
 procedure TfrmCreateInserts.inferFieldsFromTableDefinition;
+var F : TextFile;
 begin
+ statusbar.SimpleText:='Inferring field type based on table definition...';
 end;
 
 end.
