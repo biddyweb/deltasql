@@ -1,7 +1,7 @@
 object frmCreateInserts: TfrmCreateInserts
-  Left = 884
+  Left = 830
   Height = 191
-  Top = 192
+  Top = 283
   Width = 609
   Caption = 'deltasql tool - Create SQL inserts from CSV file'
   ClientHeight = 191
@@ -82,7 +82,8 @@ object frmCreateInserts: TfrmCreateInserts
     OnClick = lblOutputLinkClick
   end
   object dlgOpen: TOpenDialog
-    Filter = '*.csv'
+    Title = 'Open CSV file'
+    Filter = 'Comma Separated Values|*.csv|All files|*.*'
     left = 493
     top = 136
   end
