@@ -16,11 +16,13 @@ type
     btnGenerateSync: TButton;
     btnSelectCSVFileBefore: TButton;
     btnSelectCSVFileAfter: TButton;
+    cbPrimaryKey: TComboBox;
     dlgOpenCSV: TOpenDialog;
     edtFilenameBefore: TEdit;
     edtFilenameAfter: TEdit;
     edtSeparator: TEdit;
     edtTablename: TEdit;
+    lblPKInfo: TLabel;
     lblHeaderRequired: TLabel;
     lblFilenameBefore: TLabel;
     lblFilenameAfter: TLabel;
@@ -30,6 +32,7 @@ type
     lblOutputLink: TLabel;
     lblSeparator: TLabel;
     lblTablename: TLabel;
+    lblPrimaryKey: TLabel;
     rbSeparatorEdit: TRadioButton;
     rbSeparatorTab: TRadioButton;
     statusbar: TStatusBar;

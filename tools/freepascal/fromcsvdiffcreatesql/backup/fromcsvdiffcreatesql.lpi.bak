@@ -45,6 +45,7 @@
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="fromCSVtoSQL"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="fromcsvdiffcreatesqlunit"/>
       </Unit1>

@@ -1,11 +1,11 @@
 object fromCSVtoSQL: TfromCSVtoSQL
   Left = 753
-  Height = 319
+  Height = 358
   Top = 252
-  Width = 667
-  Caption = 'From two tables in CSV generate a SQL sync script'
-  ClientHeight = 319
-  ClientWidth = 667
+  Width = 676
+  Caption = 'From two tables in CSV generate a SQL synchronization script'
+  ClientHeight = 358
+  ClientWidth = 676
   LCLVersion = '1.0.2.0'
   object edtFilenameBefore: TEdit
     Left = 160
@@ -33,24 +33,24 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object btnGenerateSync: TButton
     Left = 157
     Height = 25
-    Top = 216
+    Top = 256
     Width = 438
     Caption = 'Generate SQL Synchronization Script'
     OnClick = btnGenerateSyncClick
     TabOrder = 2
   end
   object lblOutput: TLabel
-    Left = 11
+    Left = 56
     Height = 16
-    Top = 264
+    Top = 304
     Width = 93
     Caption = 'Output Filename:'
     ParentColor = False
   end
   object lblOutputLink: TLabel
-    Left = 128
+    Left = 160
     Height = 16
-    Top = 264
+    Top = 304
     Width = 56
     Caption = 'No output'
     Font.Color = clBlue
@@ -77,8 +77,8 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object statusbar: TStatusBar
     Left = 0
     Height = 23
-    Top = 296
-    Width = 667
+    Top = 335
+    Width = 676
     Panels = <>
     SimpleText = 'Ready.'
   end
@@ -100,7 +100,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object lblInfo: TLabel
     Left = 160
     Height = 16
-    Top = 160
+    Top = 200
     Width = 390
     Caption = 'Note: the field type (string or numeric) is inferred based on the input data.'
     Font.Color = clRed
@@ -110,7 +110,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object lblInfo2: TLabel
     Left = 160
     Height = 16
-    Top = 184
+    Top = 224
     Width = 396
     Caption = 'Quotes will be escaped with a double quote. NULL will not be quoted at all.'
     Font.Color = clRed
@@ -161,16 +161,40 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Left = 160
     Height = 16
     Top = 14
-    Width = 388
-    Caption = 'WARNING: the header is required on the .csv in order for the tool to work.'
+    Width = 420
+    Caption = 'WARNING: the header is required on both .csv files in order for the tool to work.'
     Font.Color = clRed
     ParentColor = False
     ParentFont = False
+  end
+  object cbPrimaryKey: TComboBox
+    Left = 159
+    Height = 23
+    Top = 171
+    Width = 188
+    ItemHeight = 15
+    TabOrder = 10
+  end
+  object lblPrimaryKey: TLabel
+    Left = 16
+    Height = 16
+    Top = 175
+    Width = 136
+    Caption = 'Primary Key or Unique ID:'
+    ParentColor = False
+  end
+  object lblPKInfo: TLabel
+    Left = 159
+    Height = 16
+    Top = 148
+    Width = 337
+    Caption = 'The primary key identifies the same row across the two .csv files'
+    ParentColor = False
   end
   object dlgOpenCSV: TOpenDialog
     Title = 'Open CSV file'
     Filter = 'Comma Separated Values|*.csv|All files|*.*'
     left = 600
-    top = 256
+    top = 296
   end
 end
