@@ -9,7 +9,7 @@
         <Filename Value="fromcsvdiffcreatesql.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="fromcsvdiffcreatesql"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit0>
       <Unit1>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
@@ -21,9 +21,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="18" Y="43"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="95"/>
+        <CursorPos X="15" Y="114"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -41,7 +41,7 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="12" HistoryIndex="11">
+    <JumpHistory Count="21" HistoryIndex="20">
       <Position1>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
@@ -90,6 +90,42 @@
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
         <Caret Line="101" Column="35" TopLine="68"/>
       </Position12>
+      <Position13>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="49" Column="1" TopLine="37"/>
+      </Position13>
+      <Position14>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="105" Column="22" TopLine="78"/>
+      </Position14>
+      <Position15>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="48" Column="65" TopLine="31"/>
+      </Position15>
+      <Position16>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="160" Column="74" TopLine="86"/>
+      </Position16>
+      <Position17>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="163" Column="50" TopLine="116"/>
+      </Position17>
+      <Position18>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="103" Column="62" TopLine="86"/>
+      </Position18>
+      <Position19>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="101" Column="54" TopLine="77"/>
+      </Position19>
+      <Position20>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="110" Column="19" TopLine="93"/>
+      </Position20>
+      <Position21>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="114" Column="19" TopLine="86"/>
+      </Position21>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

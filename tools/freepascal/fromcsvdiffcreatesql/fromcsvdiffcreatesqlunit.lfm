@@ -1,7 +1,7 @@
 object fromCSVtoSQL: TfromCSVtoSQL
-  Left = 753
+  Left = 715
   Height = 358
-  Top = 252
+  Top = 239
   Width = 676
   Caption = 'From two tables in CSV generate a SQL synchronization script'
   ClientHeight = 358
@@ -175,6 +175,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Top = 171
     Width = 188
     ItemHeight = 15
+    Style = csDropDownList
     TabOrder = 10
   end
   object lblPrimaryKey: TLabel
