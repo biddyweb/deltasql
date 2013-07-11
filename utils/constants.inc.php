@@ -1,14 +1,18 @@
 <?php
-//version
+//version of deltasql server, source and data model
 $deltasql_version="1.6.3";
 $ds_schema_version="1.6.3";
 
+// version of deltasql clients
 $dbredactor_version="1.0.2";
 $antclient_version="1.0.3";
 $bashclient_version="1.6.3";
 $deltaclient_windows_version="1.6.0";
 $deltaclient_linux_version="1.6.0";
 $pyclient_version="1.6.2";
+
+// version of deltasql tools
+$tool_createinsertsfromcsv="1.6.3";
 
 // number of scripts on a page
 $default_scriptsperpage=15;
