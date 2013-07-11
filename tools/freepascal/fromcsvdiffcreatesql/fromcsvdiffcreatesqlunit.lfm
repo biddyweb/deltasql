@@ -1,0 +1,176 @@
+object fromCSVtoSQL: TfromCSVtoSQL
+  Left = 753
+  Height = 319
+  Top = 252
+  Width = 667
+  Caption = 'From two tables in CSV generate a SQL synchronization script'
+  ClientHeight = 319
+  ClientWidth = 667
+  LCLVersion = '1.0.2.0'
+  object edtFilenameBefore: TEdit
+    Left = 160
+    Height = 23
+    Top = 40
+    Width = 352
+    TabOrder = 0
+  end
+  object lblFilenameBefore: TLabel
+    Left = 16
+    Height = 16
+    Top = 44
+    Width = 133
+    Caption = 'Table data in CSV before:'
+    ParentColor = False
+  end
+  object btnSelectCSVFileBefore: TButton
+    Left = 520
+    Height = 25
+    Top = 40
+    Width = 75
+    Caption = '...'
+    TabOrder = 1
+  end
+  object btnGenerateSync: TButton
+    Left = 157
+    Height = 25
+    Top = 216
+    Width = 438
+    Caption = 'Generate SQL Synchronization Script'
+    OnClick = btnGenerateSyncClick
+    TabOrder = 2
+  end
+  object lblOutput: TLabel
+    Left = 56
+    Height = 16
+    Top = 264
+    Width = 93
+    Caption = 'Output Filename:'
+    ParentColor = False
+  end
+  object lblOutputLink: TLabel
+    Left = 160
+    Height = 16
+    Top = 264
+    Width = 56
+    Caption = 'No output'
+    Font.Color = clBlue
+    Font.Style = [fsUnderline]
+    ParentColor = False
+    ParentFont = False
+  end
+  object edtSeparator: TEdit
+    Left = 481
+    Height = 23
+    Top = 104
+    Width = 73
+    TabOrder = 3
+    Text = ';'
+  end
+  object lblSeparator: TLabel
+    Left = 392
+    Height = 16
+    Top = 108
+    Width = 54
+    Caption = 'Separator:'
+    ParentColor = False
+  end
+  object statusbar: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 296
+    Width = 667
+    Panels = <>
+    SimpleText = 'Ready.'
+  end
+  object lblTablename: TLabel
+    Left = 88
+    Height = 16
+    Top = 108
+    Width = 63
+    Caption = 'Tablename:'
+    ParentColor = False
+  end
+  object edtTablename: TEdit
+    Left = 159
+    Height = 23
+    Top = 104
+    Width = 192
+    TabOrder = 5
+  end
+  object lblInfo: TLabel
+    Left = 160
+    Height = 16
+    Top = 160
+    Width = 390
+    Caption = 'Note: the field type (string or numeric) is inferred based on the input data.'
+    Font.Color = clRed
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblInfo2: TLabel
+    Left = 160
+    Height = 16
+    Top = 184
+    Width = 396
+    Caption = 'Quotes will be escaped with a double quote. NULL will not be quoted at all.'
+    Font.Color = clRed
+    ParentColor = False
+    ParentFont = False
+  end
+  object rbSeparatorEdit: TRadioButton
+    Left = 456
+    Height = 19
+    Top = 105
+    Width = 20
+    Checked = True
+    TabOrder = 6
+    TabStop = True
+  end
+  object rbSeparatorTab: TRadioButton
+    Left = 456
+    Height = 19
+    Top = 128
+    Width = 42
+    Caption = 'TAB'
+    TabOrder = 7
+  end
+  object lblFilenameAfter: TLabel
+    Left = 26
+    Height = 16
+    Top = 72
+    Width = 123
+    Caption = 'Table data in CSV after:'
+    ParentColor = False
+  end
+  object edtFilenameAfter: TEdit
+    Left = 160
+    Height = 23
+    Top = 68
+    Width = 352
+    TabOrder = 8
+  end
+  object btnSelectCSVFileAfter: TButton
+    Left = 520
+    Height = 25
+    Top = 68
+    Width = 75
+    Caption = '...'
+    TabOrder = 9
+  end
+  object lblHeaderRequired: TLabel
+    Left = 160
+    Height = 16
+    Top = 14
+    Width = 388
+    Caption = 'WARNING: the header is required on the .csv in order for the tool to work.'
+    Font.Color = clRed
+    ParentColor = False
+    ParentFont = False
+  end
+  object dlgOpenCSV: TOpenDialog
+    Title = 'Open CSV file'
+    Filter = 'Comma Separated Values|*.csv|All files|*.*'
+    left = 600
+    top = 256
+  end
+end
