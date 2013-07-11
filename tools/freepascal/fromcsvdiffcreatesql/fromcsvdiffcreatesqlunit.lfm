@@ -28,6 +28,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Top = 40
     Width = 75
     Caption = '...'
+    OnClick = btnSelectCSVFileBeforeClick
     TabOrder = 1
   end
   object btnGenerateSync: TButton
@@ -35,7 +36,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Height = 25
     Top = 256
     Width = 438
-    Caption = 'Generate SQL Synchronization Script'
+    Caption = 'Generate SQL Synchronization Script (INSERT, UPDATE, DELETE)'
     OnClick = btnGenerateSyncClick
     TabOrder = 2
   end
@@ -155,14 +156,15 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Top = 70
     Width = 75
     Caption = '...'
+    OnClick = btnSelectCSVFileAfterClick
     TabOrder = 9
   end
   object lblHeaderRequired: TLabel
     Left = 160
     Height = 16
     Top = 14
-    Width = 420
-    Caption = 'WARNING: the header is required on both .csv files in order for the tool to work.'
+    Width = 470
+    Caption = 'The header with column names is required on both .csv files in order for the tool to work.'
     Font.Color = clRed
     ParentColor = False
     ParentFont = False

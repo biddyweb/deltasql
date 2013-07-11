@@ -28,6 +28,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Top = 40
     Width = 75
     Caption = '...'
+    OnClick = btnSelectCSVFileBeforeClick
     TabOrder = 1
   end
   object btnGenerateSync: TButton
@@ -35,7 +36,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Height = 25
     Top = 256
     Width = 438
-    Caption = 'Generate SQL Synchronization Script'
+    Caption = 'Generate SQL Synchronization Script (INSERT, UPDATE, DELETE)'
     OnClick = btnGenerateSyncClick
     TabOrder = 2
   end
@@ -59,7 +60,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     ParentFont = False
   end
   object edtSeparator: TEdit
-    Left = 481
+    Left = 464
     Height = 23
     Top = 104
     Width = 73
@@ -67,7 +68,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Text = ';'
   end
   object lblSeparator: TLabel
-    Left = 392
+    Left = 372
     Height = 16
     Top = 108
     Width = 54
@@ -118,7 +119,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     ParentFont = False
   end
   object rbSeparatorEdit: TRadioButton
-    Left = 456
+    Left = 440
     Height = 19
     Top = 105
     Width = 20
@@ -127,9 +128,9 @@ object fromCSVtoSQL: TfromCSVtoSQL
     TabStop = True
   end
   object rbSeparatorTab: TRadioButton
-    Left = 456
+    Left = 549
     Height = 19
-    Top = 128
+    Top = 108
     Width = 42
     Caption = 'TAB'
     TabOrder = 7
@@ -137,7 +138,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object lblFilenameAfter: TLabel
     Left = 26
     Height = 16
-    Top = 72
+    Top = 74
     Width = 123
     Caption = 'Table data in CSV after:'
     ParentColor = False
@@ -145,24 +146,25 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object edtFilenameAfter: TEdit
     Left = 160
     Height = 23
-    Top = 68
+    Top = 70
     Width = 352
     TabOrder = 8
   end
   object btnSelectCSVFileAfter: TButton
     Left = 520
     Height = 25
-    Top = 68
+    Top = 70
     Width = 75
     Caption = '...'
+    OnClick = btnSelectCSVFileAfterClick
     TabOrder = 9
   end
   object lblHeaderRequired: TLabel
     Left = 160
     Height = 16
     Top = 14
-    Width = 420
-    Caption = 'WARNING: the header is required on both .csv files in order for the tool to work.'
+    Width = 470
+    Caption = 'The header with column names is required on both .csv files in order for the tool to work.'
     Font.Color = clRed
     ParentColor = False
     ParentFont = False
