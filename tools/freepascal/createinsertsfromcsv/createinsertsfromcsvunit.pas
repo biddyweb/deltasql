@@ -11,6 +11,7 @@ uses
 const MAX_FIELDS = 2056; // if a table has more than this number of columns, then
                         // it might need refactoring ;-)
       QUOTE      = 39; //ASCII char for '
+      TAB        = 9; //ASCII char for TAB
       EDITOR     = 'notepad'; // the default editor to use the file
       UPDATE_STATS_EACH = 1000; // after how many rows percentage stats are updated
 
@@ -34,6 +35,8 @@ type
     lblOutput: TLabel;
     lblOutputLink: TLabel;
     dlgOpenCSV: TOpenDialog;
+    rbSeparatorTab: TRadioButton;
+    rbSeparatorEdit: TRadioButton;
     statusbar: TStatusBar;
     procedure btnGenerateClick(Sender: TObject);
     procedure btnSelectCSVFileClick(Sender: TObject);
@@ -48,6 +51,7 @@ type
     procedure generateInserts;
     procedure constructInsertStatement(header : AnsiString);
     function  fillInsertStatement(values : AnsiString) : AnsiString;
+    function  getSeparator(): AnsiString;
 
     procedure initFieldTypes;
     procedure inferFieldsFromData;
@@ -121,6 +125,8 @@ begin
   btnGenerate.Enabled := false;
   btnSelectCSVFile.Enabled := false;
   edtTableName.Enabled := false;
+  rbSeparatorTab.Enabled := false;
+  rbSeparatorEdit.Enabled := false;
 
   outputFile := ChangeFileExt(edtFileName.Text, '.sql');
 
@@ -170,6 +176,8 @@ begin
     btnGenerate.Enabled := True;
     btnSelectCSVFile.Enabled := True;
     edtTableName.Enabled := true;
+    rbSeparatorTab.Enabled := true;
+    rbSeparatorEdit.Enabled := true;
 
     statusbar.SimpleText:='Ready.';
   end;
@@ -190,11 +198,11 @@ begin
          begin
              insertStatement := 'INSERT INTO '+edtTableName.Text+' (';
              // we need to retrieve first the column names
-             column:=Trim(extractParamLong(header, edtSeparator.Text));
+             column:=Trim(extractParamLong(header, getSeparator()));
              while column<>'' do
                  begin
                    insertStatement := insertStatement + column + ',';
-                   column:=Trim(extractParamLong(header, edtSeparator.Text));
+                   column:=Trim(extractParamLong(header, getSeparator));
                  end;
              Delete(insertStatement, length(insertStatement), 1);
              insertStatement := insertStatement+') VALUES(';
@@ -208,7 +216,7 @@ var column, escapedStr : AnsiString;
     i      : Longint;
 begin
   Result := '';
-  column:=Trim(extractParamLong(values, edtSeparator.Text));
+  column:=Trim(extractParamLong(values, getSeparator()));
   i:=1;
   while column<>'' do
       begin
@@ -221,12 +229,13 @@ begin
             Result := Result + Chr(QUOTE) + escapedStr + Chr(QUOTE) + ',';
           end;
 
-        column:=Trim(extractParamLong(values, edtSeparator.Text));
+        column:=Trim(extractParamLong(values, getSeparator()));
         i:=i+1;
       end;
   Delete(Result, length(Result), 1);
 
   Result := insertStatement + Result + ');';
+
 end;
 
 procedure TfrmCreateInserts.lblOutputLinkClick(Sender: TObject);
@@ -261,7 +270,7 @@ var F : TextFile;
         i      : Longint;
     begin
 
-      column:=Trim(extractParamLong(str, edtSeparator.Text));
+      column:=Trim(extractParamLong(str, getSeparator()));
       i := 1;
       while column<>'' do
            begin
@@ -277,7 +286,7 @@ var F : TextFile;
                 end;
 
              // go to next column
-             column:=Trim(extractParamLong(str, edtSeparator.Text));
+             column:=Trim(extractParamLong(str, getSeparator()));
              i := i+1;
            end;
     end;
@@ -342,6 +351,17 @@ begin
   finally
     CloseFile(F);
   end;
+end;
+
+function TfrmCreateInserts.getSeparator(): AnsiString;
+begin
+  if rbSeparatorEdit.Checked then
+      Result := edtSeparator.Text
+  else
+  if rbSeparatorTab.Checked then
+      Result := Chr(9)
+  else
+    ShowMessage('Internal error: undefined radio box');
 end;
 
 end.
