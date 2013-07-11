@@ -40,8 +40,10 @@ type
     procedure btnSelectCSVFileAfterClick(Sender: TObject);
     procedure btnSelectCSVFileBeforeClick(Sender: TObject);
   private
+    F : Textfile;
+
     procedure fillCBPrimaryKey(filename : String);
-    function  readHeader(filename : String) : AnsiString;
+    function  readMyHeader(myfilename : String) : AnsiString;
     function  getSeparator() : AnsiString;
   end;
 
@@ -95,17 +97,19 @@ begin
 end;
 
 
-function TfromCSVtoSQL.readHeader(filename : String) : AnsiString;
-var F : TextFile;
+function TfromCSVtoSQL.readMyHeader(myfilename : String) : AnsiString;
+var str : AnsiString;
 begin
-  Result := '';
-  AssignFile(F, filename);
+  str := '';
+  AssignFile(F, myfilename);
   try
     Reset(F);
-    ReadLn(F, Result);
+    ReadLn(F, Str);
   finally
     CloseFile(F);
   end;
+
+  Result := Str;
 end;
 
 procedure TfromCSVtoSQL.fillCBPrimaryKey(filename : String);
@@ -113,13 +117,15 @@ var header,
     column : AnsiString;
 begin
    cbPrimaryKey.Clear;
-   header := readHeader(filename);
+   header := readMyHeader(filename);
+   {
    column := Trim(ExtractParamLong(header, getSeparator()));
    while column<>'' do
          begin
            cbPrimaryKey.AddItem(column, nil);
            column := Trim(ExtractParamLong(header, getSeparator()));
          end;
+   }
 end;
 
 function TfromCSVtoSQL.getSeparator(): AnsiString;
