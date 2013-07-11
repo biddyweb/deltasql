@@ -10,19 +10,14 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 ?>
 <h2>deltasql Toolbox</h2>
-<p>Here, we present tools which can be used in conjunction with deltasql.</p>
+<p>Here, we present tools which can be used in conjunction with deltasql. If you have own tools that you would like to publish here, we would be glad to hear from you!</p>
 
 <center>
 <table border="1">
-<tr><th>tool</th><th>help</th><th>environment</th><th>description</th><th>version</th><th>actions</th></tr>
+<tr><th>tool</th><th>environment</th><th>description</th><th>version</th><th>author</th><th>actions</th></tr>
 
 <tr>
 <td><b>createinsertsfromcsv</b></td>
-<td>
-<?php
-//<a href="manual.php#install-deltaclient-windows"><img src="icons/help.png"></a>
-?>
-</td>
 <td>Windows (Freepascal)</td>
 <td>
 This tool takes a file in format CSV (comma separated values) and converts it into a list of SQL INSERT statements. When configuring complex environments with new rows via application GUI, you could select the new rows entered through your SQL client of 
@@ -30,7 +25,9 @@ This tool takes a file in format CSV (comma separated values) and converts it in
  This will avoid the tedious manual configuration process for other environments, in particular if you store the generated INSERT statements as script into deltasql server.
 </td>
 <td><?php echo "$tool_createinsertsfromcsv"; ?>
-</td><td><a href="tools/freepascal/createinsertsfromcsv.zip"><center>download...</center></a></td>
+</td>
+<td>deltasql team</td>
+<td><a href="tools/freepascal/createinsertsfromcsv.zip"><center>download...</center></a></td>
 </tr>
 
 
