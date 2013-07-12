@@ -37,6 +37,7 @@ type TCSVTable = class(TObject)
      function    checkIndexForUniqueness() : Boolean;
      procedure   disposeIndex();
      function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
+     function    retrievePosFromKey(key : Longint) : Longint;
 
    private
      F : TextFile;
@@ -242,6 +243,38 @@ var i : Longint;
 begin
  setLength(idxvalues, 0);
  setLength(idxpos, 0);
+end;
+
+function    TCSVTable.retrievePosFromKey(key : Longint) : Longint;
+var pos, low, high : Longint;
+begin
+    // binary search in a sorted array, iterative, from scratch
+
+    low := 0;
+    high := totalrows_-1;
+
+    while (pos>=low) and (pos<=high) do
+      begin
+        pos := Round( (low+high) / 2);
+        if idxvalues[pos]=key then  // we found it :-)
+           begin
+              Result := posvalues[pos];
+              Exit
+           end
+        else
+        if idxvalues[pos]<key then
+           begin
+              low:=pos+1;
+           end
+        else
+        if idxvalues[pos]>key then
+           begin
+              high := pos-1;
+           end;
+
+      end; // while
+
+   Result := -1; // not found
 end;
 
 end.
