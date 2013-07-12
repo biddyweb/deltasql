@@ -1,12 +1,12 @@
 unit fromcsvdiffcreatesqlunit;
-
+{(c) by 2013 HB9TVM an the deltasql team. Source code is under GPL}
 {$mode objfpc}{$H+}
 
 interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ComCtrls, utils;
+  ComCtrls, csvtables, utils;
 
 type
 
