@@ -19,7 +19,7 @@ if ($rights<2) die("<b>Not enough rights to edit modules</b>");
 
 <?php
 include("conf/config.inc.php");
-$id=$_GET['id'];
+if (isset($_GET['id'])) $id=$_GET['id']; else $id="";
 
 if ($id!="") {
     // on the second call ID is empty
@@ -34,7 +34,10 @@ if ($id!="") {
     $description=mysql_result($result7,0,"description");
 
     mysql_close();
-}    
+} else {
+	$name="";
+	$description="";
+}   
 ?>
 
 <h2>Edit Database Module</h2>
