@@ -255,16 +255,28 @@ begin
 
      // after indexes are created, we should do a uniqueness check
      // if in the index the same value is contigouus, the uniqueness is broken!
-
-
-
-     tableBefore.disposeIndex();
-     tableAfter.disposeIndex();
-
+     if tableBefore.checkIndexForUniqueness() and
+        tableAfter.checkIndexForUniqueness() then
+            begin
+             ShowMessage('Proceding');
+            end
+         else
+            begin
+              ShowMessage('ERROR: the primary key is not unique at least on one of the two tables!');
+            end;
 
   finally
-    if Assigned(tableBefore) then tableBefore.Free;
-    if Assigned(tableAfter) then tableAfter.Free;
+
+    if Assigned(tableBefore) then
+      begin
+         tableBefore.DisposeIndex;
+         tableBefore.Free;
+      end;
+    if Assigned(tableAfter) then
+      begin
+        tableAfter.disposeIndex;
+        tableAfter.Free;
+      end;
     screen.Cursor := crArrow;
   end;
 

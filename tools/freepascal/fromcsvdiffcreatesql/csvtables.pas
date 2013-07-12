@@ -25,7 +25,8 @@ type TCSVTable = class(TObject)
      primarykeyIdx_  : Longint;
      isNumeric_      : Array[1..MAX_COLUMNS] of Boolean;
 
-     myIdx           : TArrayOfPSortable;
+     idxvalues       : Array of Longint;
+     idxpos          : Array of Longint;
 
      constructor Create(filename, tablename, primarykey, separator  : String);
      function    readHeader() : AnsiString;
@@ -35,11 +36,12 @@ type TCSVTable = class(TObject)
      procedure   sortIndex();
      function    checkIndexForUniqueness() : Boolean;
      procedure   disposeIndex();
+     function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
 
    private
      F : TextFile;
      procedure initFieldTypes;
-     function  retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
+
 
 end;
 
@@ -186,12 +188,13 @@ end;
 
 procedure   TCSVTable.createIndex();
 var i   : Longint;
-    p   : PSortable;
     str : AnsiString;
 begin
    if not isNumeric_[primaryKeyIdx_] then raise Exception.Create('Non numeric primary keys are not supported yet ('+IntToStr(primaryKeyIdx_)+')');
 
-   setLength(myIdx, totalrows_);
+   setLength(idxvalues, totalrows_);
+   setLength(idxpos, totalrows_);
+
    AssignFile(F, filename_);
 
   try
@@ -204,11 +207,9 @@ begin
           Readln(F, str);
           if Trim(str)='' then continue; // we skip blank lines completely
 
+          idxvalues[i] := StrToInt(retrieveNFieldValue(Str, primaryKeyIdx_));
+          idxpos[i] := i;
           Inc(i);
-          New(p);
-          p^.value := StrToInt(retrieveNFieldValue(Str, primaryKeyIdx_));
-          p^.position := i;
-          myIdx[i-1] := p;
         end;
 
   finally
@@ -219,19 +220,28 @@ end;
 
 procedure TCSVTable.sortIndex();
 begin
-  QuickSortSortable(myIdx, myIdx[0]^.value, myIdx[totalrows_-1]^.value);
+  QuickSortRelations(idxvalues, idxpos, idxvalues[0], idxvalues[totalrows_-1]);
 end;
 
 function    TCSVTable.checkIndexForUniqueness() : Boolean;
+var i : Longint;
 begin
+  Result := true;
+  for i:=1 to totalrows_-1 do
+     begin
+       if idxvalues[i]=idxvalues[i-1] then
+          begin
+               Result := false;
+               Exit;
+          end;
+     end;
 end;
 
 procedure   TCSVTable.disposeIndex();
 var i : Longint;
 begin
- for i:=0 to totalrows_-1 do
-     if Assigned(myIdx[i]) then Dispose(myIdx[i]);
- setLength(myIdx, 0);
+ setLength(idxvalues, 0);
+ setLength(idxpos, 0);
 end;
 
 end.
