@@ -244,6 +244,15 @@ begin
      tableAfter.createIndex();
      Application.ProcessMessages;
 
+
+     statusBar.SimpleText:='Quickorting index for table before changes...';
+     tableBefore.sortIndex();
+     Application.ProcessMessages;
+
+     statusBar.SimpleText:='Quicksorting index for table after changes...';
+     tableAfter.sortIndex();
+     Application.ProcessMessages;
+
      // after indexes are created, we should do a uniqueness check
      // if in the index the same value is contigouus, the uniqueness is broken!
 

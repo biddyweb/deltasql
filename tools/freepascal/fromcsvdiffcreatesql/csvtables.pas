@@ -11,13 +11,6 @@ const
      MAX_COLUMNS = 2048; // if a table has so many columns, consider
                          // refactoring :-D
 
-type  TIdxSortable = class(TSortable)
-          position : Longint; // position inside the text file
-end;
-type PIdxSortable = ^TIdxSortable;
-
-
-
 type TCSVTable = class(TObject)
    public // we know what we are doing with our datastructure anyway
      filename_,
@@ -32,13 +25,14 @@ type TCSVTable = class(TObject)
      primarykeyIdx_  : Longint;
      isNumeric_      : Array[1..MAX_COLUMNS] of Boolean;
 
-     myIdx           : Array of PIdxSortable;
+     myIdx           : TArrayOfPSortable;
 
      constructor Create(filename, tablename, primarykey, separator  : String);
      function    readHeader() : AnsiString;
      function    countRows() : Longint;
      procedure   inferFieldsFromData;
      procedure   createIndex();
+     procedure   sortIndex();
      function    checkIndexForUniqueness() : Boolean;
      procedure   disposeIndex();
 
@@ -192,7 +186,7 @@ end;
 
 procedure   TCSVTable.createIndex();
 var i   : Longint;
-    p   : PIdxSortable;
+    p   : PSortable;
     str : AnsiString;
 begin
    if not isNumeric_[primaryKeyIdx_] then raise Exception.Create('Non numeric primary keys are not supported yet ('+IntToStr(primaryKeyIdx_)+')');
@@ -221,6 +215,11 @@ begin
     CloseFile(F);
   end;
 
+end;
+
+procedure TCSVTable.sortIndex();
+begin
+  QuickSortSortable(myIdx, myIdx[0]^.value, myIdx[totalrows_-1]^.value);
 end;
 
 function    TCSVTable.checkIndexForUniqueness() : Boolean;
