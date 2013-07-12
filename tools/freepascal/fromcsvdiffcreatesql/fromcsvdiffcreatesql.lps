@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="fromcsvdiffcreatesql.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -21,8 +21,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="95"/>
-        <CursorPos X="15" Y="114"/>
+        <TopLine Value="40"/>
+        <CursorPos X="1" Y="59"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -30,13 +30,24 @@
       <Unit2>
         <Filename Value="..\createinsertsfromcsv\createinsertsfromcsvunit.pas"/>
         <UnitName Value="createinsertsfromcsvunit"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="48"/>
         <CursorPos X="13" Y="83"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="csvtables.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="csvtables"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit3>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>

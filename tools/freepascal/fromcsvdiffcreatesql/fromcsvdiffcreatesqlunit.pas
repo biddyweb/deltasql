@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ComCtrls;
+  ComCtrls, utils;
 
 type
 
@@ -56,24 +56,6 @@ implementation
 
 {$R *.lfm}
 
-function ExtractParamLong(var S: AnsiString; Separator: string): AnsiString;
-var
-  i: Longint;
-begin
-  i := Pos(Separator, S);
-  if i > 0 then
-  begin
-    Result := Copy(S, 1, i - 1);
-    Delete(S, 1, i-1);
-    Delete(S, 1, length(Separator));
-  end
-  else
-  begin
-    Result := S;
-    S      := '';
-  end;
-end;
-
 procedure TfromCSVtoSQL.btnGenerateSyncClick(Sender: TObject);
 begin
   if Trim(edtTableName.Text)='' then
@@ -96,6 +78,12 @@ begin
            ShowMessage('ERROR: the second .csv file does not exist on the file system!');
            Exit;
          end;
+   if not checkForEqualHeader(edtFileNameAfter.Text) then
+             begin
+                ShowMessage('ERROR: the two headers are different!');
+                edtFileNameAfter.Text := '';
+                Exit;
+             end;
 
   enableControls(false);
   // add here the logic that creates the sync script.

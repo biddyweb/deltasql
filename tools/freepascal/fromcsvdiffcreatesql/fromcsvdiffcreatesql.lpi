@@ -35,7 +35,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="3">
       <Unit0>
         <Filename Value="fromcsvdiffcreatesql.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -49,6 +49,11 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="fromcsvdiffcreatesqlunit"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="csvtables.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="csvtables"/>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
