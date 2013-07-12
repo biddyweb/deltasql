@@ -1,3 +1,6 @@
+12.7.2013 git
+- fixed warnings on edit_module.php and edit_project.php
+
 8.7.2013 git
 Bash Client: Applied fix by Thanos Efraimidis on how to retrieve version number
 The patched Bash Client is available from http://deltasql.sourceforge.net/deltasql/clients/bash_client.tar.gz
