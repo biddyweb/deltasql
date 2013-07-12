@@ -41,12 +41,15 @@ type
     procedure btnSelectCSVFileBeforeClick(Sender: TObject);
   private
     F : Textfile;
+    tableBefore : TCSVTable;
+    tableAfter  : TCSVTable;
 
     procedure fillCBPrimaryKey(filename : String);
     function  readMyHeader(myfilename : String) : AnsiString;
     function  getSeparator() : AnsiString;
     function  checkForEqualHeader(myfilename : String) : Boolean;
     procedure enableControls(value : Boolean);
+    procedure createSyncScriptLogic;
   end;
 
 var
@@ -86,7 +89,7 @@ begin
              end;
 
   enableControls(false);
-  // add here the logic that creates the sync script.
+  createSyncScriptLogic;
   enableControls(true);
 end;
 
@@ -196,6 +199,43 @@ begin
   headerFrom:=readMyHeader(edtFileNameBefore.Text);
   headerTo:=readMyHeader(myFileName);
   Result:= (headerFrom=headerTo)
+end;
+
+procedure TfromCSVtoSQL.createSyncScriptLogic;
+var i : Longint;
+begin
+  try
+     //filename, tablename, primarykey, separator
+     tableBefore := TCSVTable.Create(edtFileNameBefore.Text, edtTableName.Text, cbPrimaryKey.Text, getSeparator() );
+     tableAfter  := TCSVTable.Create(edtFileNameAfter.Text, edtTableName.Text, cbPrimaryKey.Text, getSeparator() );
+
+     if tableBefore.totalfields_<>tableAfter.totalfields_ then
+           begin
+              ShowMessage('Internal error: field numbers differ');
+              tableBefore.Free; tableAfter.Free;
+              Exit;
+           end;
+
+     statusBar.SimpleText:='Inferring field type for table before changes...';
+     tableBefore.inferFieldsFromData;
+     statusBar.SimpleText:='Inferring field type for table after changes...';
+     tableAfter.inferFieldsFromData;
+
+
+     // adjust isnumeric fields
+     for i:=1 to tableBefore.totalfields_ do
+       if tableBefore.isnumeric_[i]<>tableAfter.isnumeric_[i] then
+             begin
+                // we set both to false, being non numeric
+                tableBefore.isnumeric_[i] := false;
+                tableAfter.isnumeric_[i] := false;
+             end;
+  finally
+    if Assigned(tableBefore) then tableBefore.Free;
+    if Assigned(tableAfter) then tableAfter.Free;
+  end;
+
+   statusBar.SimpleText:='Ready.';
 end;
 
 end.
