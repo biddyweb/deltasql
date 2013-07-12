@@ -230,6 +230,10 @@ begin
                 tableBefore.isnumeric_[i] := false;
                 tableAfter.isnumeric_[i] := false;
              end;
+
+     // now here we should create the indexes on the primary key
+     // after indexes are created, we should do a uniqueness check
+     // if in the index the same value is contigouus, the uniqueness is broken!
   finally
     if Assigned(tableBefore) then tableBefore.Free;
     if Assigned(tableAfter) then tableAfter.Free;
