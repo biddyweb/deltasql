@@ -5,11 +5,18 @@ unit csvtables;
 interface
 
 uses
-  Classes, SysUtils, utils;
+  Classes, SysUtils, utils, quicksort;
 
 const
      MAX_COLUMNS = 2048; // if a table has so many columns, consider
                          // refactoring :-D
+
+type  TIdxSortable = class(TSortable)
+          position : Longint; // position inside the text file
+end;
+type PIdxSortable = ^TIdxSortable;
+
+
 
 type TCSVTable = class(TObject)
    public // we know what we are doing with our datastructure anyway
@@ -25,14 +32,20 @@ type TCSVTable = class(TObject)
      primarykeyIdx_  : Longint;
      isNumeric_      : Array[1..MAX_COLUMNS] of Boolean;
 
+     myIdx           : Array of PIdxSortable;
+
      constructor Create(filename, tablename, primarykey, separator  : String);
      function    readHeader() : AnsiString;
      function    countRows() : Longint;
      procedure   inferFieldsFromData;
+     procedure   createIndex();
+     function    checkIndexForUniqueness() : Boolean;
+     procedure   disposeIndex();
 
    private
      F : TextFile;
      procedure initFieldTypes;
+     function  retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
 
 end;
 
@@ -63,6 +76,8 @@ begin
  if (primarykeyIdx_=-1) then raise Exception.Create('ERROR: Could not locate primary key!');
 
  totalrows_ := countRows();
+
+ initFieldTypes;
 end;
 
 function TCSVTable.readHeader() : AnsiString;
@@ -117,7 +132,6 @@ end;
 procedure TCSVTable.inferFieldsFromData;
 var
     str : AnsiString;
-    firstLine : Boolean;
 
     procedure scanFieldsForNumeric(str : AnsiString);
     var column : AnsiString;
@@ -146,20 +160,17 @@ var
     end;
 
 begin
- firstLine := true;
  AssignFile(F, filename_);
 
   try
     Reset(F);
-
+    ReadLn(F, Str); // skip header
     while not EOF(F) do
         begin
           Readln(F, str);
           if Trim(str)='' then continue; // we skip blank lines completely
 
-          if not firstline then scanFieldsForNumeric(str);
-
-          if firstLine then firstLine := false;
+          scanFieldsForNumeric(str);
         end;
 
   finally
@@ -167,6 +178,62 @@ begin
   end;
 end;
 
+
+function TCSVTable.retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
+var i : Longint;
+    value : AnsiString;
+begin
+  for i:=1 to pos do
+     begin
+       value := ExtractParamLong(Str, separator_);
+     end;
+  Result := value;
+end;
+
+procedure   TCSVTable.createIndex();
+var i   : Longint;
+    p   : PIdxSortable;
+    str : AnsiString;
+begin
+   if not isNumeric_[primaryKeyIdx_] then raise Exception.Create('Non numeric primary keys are not supported yet ('+IntToStr(primaryKeyIdx_)+')');
+
+   setLength(myIdx, totalrows_);
+   AssignFile(F, filename_);
+
+  try
+    Reset(F);
+    Readln(F, str); // skip header
+
+    i:=0;
+    while not EOF(F) do
+        begin
+          Readln(F, str);
+          if Trim(str)='' then continue; // we skip blank lines completely
+
+          Inc(i);
+          New(p);
+          p^.value := StrToInt(retrieveNFieldValue(Str, primaryKeyIdx_));
+          p^.position := i;
+          myIdx[i-1] := p;
+        end;
+
+  finally
+    CloseFile(F);
+  end;
+
+end;
+
+function    TCSVTable.checkIndexForUniqueness() : Boolean;
+begin
+end;
+
+procedure   TCSVTable.disposeIndex();
+var i : Longint;
+begin
+ for i:=0 to totalrows_-1 do
+     if Assigned(myIdx[i]) then Dispose(myIdx[i]);
+ setLength(myIdx, 0);
+end;
 
 end.
 

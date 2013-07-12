@@ -216,10 +216,13 @@ begin
               Exit;
            end;
 
+     screen.Cursor := crHourGlass;
      statusBar.SimpleText:='Inferring field type for table before changes...';
      tableBefore.inferFieldsFromData;
+     Application.ProcessMessages;
      statusBar.SimpleText:='Inferring field type for table after changes...';
      tableAfter.inferFieldsFromData;
+     Application.ProcessMessages;
 
 
      // adjust isnumeric fields
@@ -232,11 +235,28 @@ begin
              end;
 
      // now here we should create the indexes on the primary key
+
+     statusBar.SimpleText:='Creating index for table before changes...';
+     tableBefore.createIndex();
+     Application.ProcessMessages;
+
+     statusBar.SimpleText:='Creating index for table after changes...';
+     tableAfter.createIndex();
+     Application.ProcessMessages;
+
      // after indexes are created, we should do a uniqueness check
      // if in the index the same value is contigouus, the uniqueness is broken!
+
+
+
+     tableBefore.disposeIndex();
+     tableAfter.disposeIndex();
+
+
   finally
     if Assigned(tableBefore) then tableBefore.Free;
     if Assigned(tableAfter) then tableAfter.Free;
+    screen.Cursor := crArrow;
   end;
 
    statusBar.SimpleText:='Ready.';
