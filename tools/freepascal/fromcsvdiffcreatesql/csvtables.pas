@@ -41,8 +41,9 @@ type TCSVTable = class(TObject)
      procedure   sortIndex();
      function    checkIndexForUniqueness() : Boolean;
      procedure   disposeIndex();
-     function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
      function    retrievePosFromKey(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
+     function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
+     function    retrieveRow(pos : Longint) : AnsiString;
 
    private
      F : TextFile;
@@ -372,6 +373,38 @@ begin
       end; // while
 
    Result := -1; // not found
+end;
+
+function TCSVTable.retrieveRow(pos : Longint) : AnsiString;
+var i : Longint;
+    str : AnsiString;
+begin
+    AssignFile(F, filename_);
+
+    try
+      Reset(F);
+      ReadLn(F, Str); // skip header
+
+      i := 0;
+      while not EOF(F) do
+          begin
+            Readln(F, str);
+            if Trim(str)='' then continue; // we skip blank lines completely
+
+            if i=pos then
+                 begin
+                    Result := Str;
+                    CloseFile(F);
+                    Exit;
+                 end;
+            Inc(i);
+          end;
+
+    finally
+      CloseFile(F);
+    end;
+
+    raise Exception.Create('Internal error: Row '+IntToStr(pos)+' in filename '+filename_+' not found!');
 end;
 
 end.
