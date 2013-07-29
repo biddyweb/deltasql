@@ -17,11 +17,15 @@ type
     btnSelectCSVFileBefore: TButton;
     btnSelectCSVFileAfter: TButton;
     cbPrimaryKey: TComboBox;
+    cbInsert: TCheckBox;
+    cbUpdate: TCheckBox;
+    cbDelete: TCheckBox;
     dlgOpenCSV: TOpenDialog;
     edtFilenameBefore: TEdit;
     edtFilenameAfter: TEdit;
     edtSeparator: TEdit;
     edtTablename: TEdit;
+    lblGenerateStatements: TLabel;
     lblPKInfo: TLabel;
     lblHeaderRequired: TLabel;
     lblFilenameBefore: TLabel;
@@ -105,6 +109,9 @@ begin
   edtSeparator.Enabled := value;
   cbPrimaryKey.Enabled := value;
   btnGenerateSync.Enabled := value;
+  cbInsert.Checked := value;
+  cbDelete.Checked := value;
+  cbUpdate.Checked := value;
 end;
 
 procedure TfromCSVtoSQL.btnSelectCSVFileBeforeClick(Sender: TObject);
@@ -235,7 +242,6 @@ begin
              end;
 
      // now here we should create the indexes on the primary key
-
      statusBar.SimpleText:='Creating index for table before changes...';
      tableBefore.createIndex();
      Application.ProcessMessages;
@@ -244,26 +250,35 @@ begin
      tableAfter.createIndex();
      Application.ProcessMessages;
 
+     if tableBefore.useIndex then
+          begin
+               statusBar.SimpleText:='Quickorting index for table before changes...';
+               tableBefore.sortIndex();
+               Application.ProcessMessages;
 
-     statusBar.SimpleText:='Quickorting index for table before changes...';
-     tableBefore.sortIndex();
-     Application.ProcessMessages;
+               statusBar.SimpleText:='Quicksorting index for table after changes...';
+               tableAfter.sortIndex();
+               Application.ProcessMessages;
 
-     statusBar.SimpleText:='Quicksorting index for table after changes...';
-     tableAfter.sortIndex();
-     Application.ProcessMessages;
-
-     // after indexes are created, we should do a uniqueness check
-     // if in the index the same value is contigouus, the uniqueness is broken!
-     if tableBefore.checkIndexForUniqueness() and
-        tableAfter.checkIndexForUniqueness() then
-            begin
-             ShowMessage('Proceding');
-            end
-         else
-            begin
-              ShowMessage('ERROR: the primary key is not unique at least on one of the two tables!');
-            end;
+               // after indexes are created, we should do a uniqueness check
+               // if in the index the same value is contigouus, the uniqueness is broken!
+               if tableBefore.checkIndexForUniqueness() and
+               tableAfter.checkIndexForUniqueness() then
+               begin
+                    ShowMessage('Proceding');
+               end
+               else
+               begin
+                    ShowMessage('ERROR: the primary key is not unique at least on one of the two tables!');
+                    tableBefore.DisposeIndex;
+                    tableAfter.DisposeIndex;
+                    tableBefore.Free;
+                    tableAfter.Free;
+                    screen.Cursor := crArrow;
+                    statusBar.SimpleText:='Ready.';
+                    Exit;
+               end;
+        end;
 
   finally
 

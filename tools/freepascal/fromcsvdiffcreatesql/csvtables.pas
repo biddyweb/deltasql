@@ -23,10 +23,15 @@ type TCSVTable = class(TObject)
 
      totalrows_      : Longint;
      primarykeyIdx_  : Longint;
-     isNumeric_      : Array[1..MAX_COLUMNS] of Boolean;
+     isNumeric_,
+     isFloat_        : Array[1..MAX_COLUMNS] of Boolean;
 
      idxvalues       : Array of Longint;
+     idxvaluesF      : Array of Extended;
+     idxvaluesS      : Array of AnsiString;
      idxpos          : Array of Longint;
+
+     useIndex       : Boolean;
 
      constructor Create(filename, tablename, primarykey, separator  : String);
      function    readHeader() : AnsiString;
@@ -37,11 +42,13 @@ type TCSVTable = class(TObject)
      function    checkIndexForUniqueness() : Boolean;
      procedure   disposeIndex();
      function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
-     function    retrievePosFromKey(key : Longint) : Longint;
+     function    retrievePosFromKey(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
 
    private
      F : TextFile;
      procedure initFieldTypes;
+     function    retrievePosFromKeyBinary(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
+     function    retrievePosFromKeyLinear(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
 
 
 end;
@@ -56,6 +63,7 @@ begin
  tablename_ := tablename;
  separator_ := separator;
  header_    := readHeader();
+ useIndex   := false;
 
  i:=0;
  column := Trim(ExtractParamLong(header_, separator_));
@@ -123,7 +131,11 @@ end;
 procedure TCSVTable.initFieldTypes;
 var i : Longint;
 begin
-  for i:=1 to MAX_COLUMNS do isnumeric_[i] := true;
+  for i:=1 to MAX_COLUMNS do
+   begin
+     isnumeric_[i] := true;
+     isfloat_[i] := false;
+   end;
 end;
 
 procedure TCSVTable.inferFieldsFromData;
@@ -131,9 +143,12 @@ var
     str : AnsiString;
 
     procedure scanFieldsForNumeric(str : AnsiString);
-    var column : AnsiString;
-        i      : Longint;
+    var column     : AnsiString;
+        i          : Longint;
+        val        : Extended;
+        singleTest : Boolean;
     begin
+      singleTest := true;
 
       column:=Trim(extractParamLong(str, separator_));
       i := 1;
@@ -143,10 +158,22 @@ var
                 begin
                   // test if this column is really numeric
                      try
-                        StrToFloat(column);
+                        val := StrToFloat(column);
+                        if singletest then
+                           begin
+                                if Frac(val)<>0 then
+                                   begin
+                                      isfloat_[i] := true;
+                                      singleTest := false;
+                                   end;
+                           end;
                      except
                            on E : EConvertError do
+                             begin
                               isnumeric_[i] := false;
+                              isfloat_[i]   := false;
+                              singleTest := false;
+                             end;
                      end;
                 end;
 
@@ -190,11 +217,19 @@ end;
 procedure   TCSVTable.createIndex();
 var i   : Longint;
     str : AnsiString;
+    isFloat, isNumeric : Boolean;
 begin
-   if not isNumeric_[primaryKeyIdx_] then raise Exception.Create('Non numeric primary keys are not supported yet ('+IntToStr(primaryKeyIdx_)+')');
+   isFloat := isfloat_[primarykeyIdx_];
+   isNumeric := isnumeric_[primarykeyIdx_];
 
-   setLength(idxvalues, totalrows_);
    setLength(idxpos, totalrows_);
+   if isFloat then
+     setLength(idxvaluesF, totalrows_)
+   else
+   if isNumeric then
+      setLength(idxvalues, totalrows_)
+   else
+     setLength(idxvaluesS, totalrows_);
 
    AssignFile(F, filename_);
 
@@ -208,7 +243,14 @@ begin
           Readln(F, str);
           if Trim(str)='' then continue; // we skip blank lines completely
 
-          idxvalues[i] := StrToInt(retrieveNFieldValue(Str, primaryKeyIdx_));
+          if isFloat then
+             idxvaluesF[i] := StrToFloat(retrieveNFieldValue(Str, primaryKeyIdx_))
+          else
+          if isNumeric then
+             idxvalues[i] := StrToInt(retrieveNFieldValue(Str, primaryKeyIdx_))
+          else
+             idxvaluesS[i] := retrieveNFieldValue(Str, primaryKeyIdx_);
+
           idxpos[i] := i;
           Inc(i);
         end;
@@ -217,11 +259,13 @@ begin
     CloseFile(F);
   end;
 
+  //TODO: add index creation for floats and strings
+  useIndex := isNumeric and (not isFloat);
 end;
 
 procedure TCSVTable.sortIndex();
 begin
-  QuickSortRelations(idxvalues, idxpos, idxvalues[0], idxvalues[totalrows_-1]);
+  if useIndex then QuickSortRelations(idxvalues, idxpos, idxvalues[0], idxvalues[totalrows_-1]);
 end;
 
 function    TCSVTable.checkIndexForUniqueness() : Boolean;
@@ -242,13 +286,66 @@ procedure   TCSVTable.disposeIndex();
 var i : Longint;
 begin
  setLength(idxvalues, 0);
+ setLength(idxvaluesF, 0);
+ setLength(idxvaluesS, 0);
  setLength(idxpos, 0);
 end;
 
-function    TCSVTable.retrievePosFromKey(key : Longint) : Longint;
+
+function TCSVTable.retrievePosFromKey(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
+begin
+  if useIndex then
+     Result := retrievePosFromKeyBinary(key, keyF, keyS)
+  else
+     Result := retrievePosFromKeyLinear(key, keyF, keyS);
+end;
+
+
+function TCSVTable.retrievePosFromKeyLinear(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
+var i : Longint;
+    isFloat, isNumeric : Boolean;
+begin
+  if key<>0 then raise Exception.Create('Internal error in retrievePosFromKeyLinear');
+
+  isFloat := isfloat_[primarykeyIdx_];
+  isNumeric := isnumeric_[primarykeyIdx_];
+
+  for i:=0 to totalrows_-1 do
+     begin
+       if isFloat then
+           begin
+             if (idxvaluesF[i]=keyF) then
+                begin
+                     Result := idxpos[i];
+                     Exit;
+                end;
+           end
+       else
+       if isNumeric then
+          begin
+             if (idxvalues[i]=key) then
+                 begin
+                      Result := idxpos[i];
+                      Exit;
+                 end;
+          end
+       else
+       if idxvaluesS[i]=keyS then
+          begin
+              Result := idxpos[i];
+              Exit;
+          end;
+     end;
+
+  Result := -1;
+end;
+
+function    TCSVTable.retrievePosFromKeyBinary(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
 var pos, low, high : Longint;
 begin
     // binary search in a sorted array, iterative, from scratch
+    if keyF<>0 then raise Exception.Create('Internal error 1 in retrievePosFromKeyBinary');
+    if keyS<>'' then raise Exception.Create('Internal error 2 in retrievePosFromKeyBinary');
 
     low := 0;
     high := totalrows_-1;
@@ -258,7 +355,7 @@ begin
         pos := Round( (low+high) / 2);
         if idxvalues[pos]=key then  // we found it :-)
            begin
-              Result := posvalues[pos];
+              Result := idxpos[pos];
               Exit
            end
         else

@@ -1,10 +1,10 @@
 object fromCSVtoSQL: TfromCSVtoSQL
   Left = 715
-  Height = 358
+  Height = 409
   Top = 239
   Width = 676
   Caption = 'From two tables in CSV generate a SQL synchronization script'
-  ClientHeight = 358
+  ClientHeight = 409
   ClientWidth = 676
   LCLVersion = '1.0.2.0'
   object edtFilenameBefore: TEdit
@@ -32,26 +32,26 @@ object fromCSVtoSQL: TfromCSVtoSQL
     TabOrder = 1
   end
   object btnGenerateSync: TButton
-    Left = 157
+    Left = 160
     Height = 25
-    Top = 256
-    Width = 438
-    Caption = 'Generate SQL Synchronization Script (INSERT, UPDATE, DELETE)'
+    Top = 304
+    Width = 435
+    Caption = 'Generate SQL Synchronization Script'
     OnClick = btnGenerateSyncClick
     TabOrder = 2
   end
   object lblOutput: TLabel
     Left = 56
     Height = 16
-    Top = 304
+    Top = 352
     Width = 93
     Caption = 'Output Filename:'
     ParentColor = False
   end
   object lblOutputLink: TLabel
-    Left = 160
+    Left = 156
     Height = 16
-    Top = 304
+    Top = 352
     Width = 56
     Caption = 'No output'
     Font.Color = clBlue
@@ -78,7 +78,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object statusbar: TStatusBar
     Left = 0
     Height = 23
-    Top = 335
+    Top = 386
     Width = 676
     Panels = <>
     SimpleText = 'Ready.'
@@ -194,10 +194,48 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Caption = 'The primary key identifies the same row across the two .csv files'
     ParentColor = False
   end
+  object cbInsert: TCheckBox
+    Left = 160
+    Height = 19
+    Top = 265
+    Width = 58
+    Caption = 'INSERT'
+    Checked = True
+    State = cbChecked
+    TabOrder = 11
+  end
+  object cbUpdate: TCheckBox
+    Left = 253
+    Height = 19
+    Top = 265
+    Width = 64
+    Caption = 'UPDATE'
+    Checked = True
+    State = cbChecked
+    TabOrder = 12
+  end
+  object cbDelete: TCheckBox
+    Left = 349
+    Height = 19
+    Top = 265
+    Width = 59
+    Caption = 'DELETE'
+    Checked = True
+    State = cbChecked
+    TabOrder = 13
+  end
+  object lblGenerateStatements: TLabel
+    Left = 16
+    Height = 16
+    Top = 268
+    Width = 136
+    Caption = 'Generate SQL statements:'
+    ParentColor = False
+  end
   object dlgOpenCSV: TOpenDialog
     Title = 'Open CSV file'
     Filter = 'Comma Separated Values|*.csv|All files|*.*'
-    left = 600
-    top = 296
+    left = 605
+    top = 344
   end
 end
