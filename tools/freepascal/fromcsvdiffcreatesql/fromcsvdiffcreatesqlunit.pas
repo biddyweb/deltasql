@@ -54,6 +54,8 @@ type
     function  checkForEqualHeader(myfilename : String) : Boolean;
     procedure enableControls(value : Boolean);
     procedure createSyncScriptLogic;
+
+    procedure testIndexes;
   end;
 
 var
@@ -262,12 +264,8 @@ begin
 
                // after indexes are created, we should do a uniqueness check
                // if in the index the same value is contigouus, the uniqueness is broken!
-               if tableBefore.checkIndexForUniqueness() and
-               tableAfter.checkIndexForUniqueness() then
-               begin
-                    ShowMessage('Proceding');
-               end
-               else
+               if not (tableBefore.checkIndexForUniqueness() and
+               tableAfter.checkIndexForUniqueness()) then
                begin
                     ShowMessage('ERROR: the primary key is not unique at least on one of the two tables!');
                     tableBefore.DisposeIndex;
@@ -275,10 +273,12 @@ begin
                     tableBefore.Free;
                     tableAfter.Free;
                     screen.Cursor := crArrow;
-                    statusBar.SimpleText:='Ready.';
+                    statusBar.SimpleText:='ERROR: the primary key is not unique at least on one of the two tables!';
                     Exit;
                end;
         end;
+
+     testIndexes;
 
   finally
 
@@ -296,6 +296,41 @@ begin
   end;
 
    statusBar.SimpleText:='Ready.';
+end;
+
+
+procedure TfromCSVtoSQL.testIndexes;
+var pk, strBefore, strAfter : AnsiString;
+    row : Longint;
+    i   : Longint;
+begin
+ // print PK of tableafter
+ //for i:=0 to tableAfter.totalrows_-1 do
+ //  ShowMessage(IntToStr(tableAfter.idxvalues[i]));
+ //   ShowMessage(IntToStr(tableAfter.idxpos[i]));
+
+ AssignFile(F, edtFileNameBefore.Text);
+ try
+    Reset(F);
+    ReadLn(F); // header
+    while not EOF(F) do
+       begin
+         ReadLn(F, StrBefore);
+         if Trim(strBefore)='' then continue;
+
+         pk := tableBefore.retrievePrimaryKey(strBefore);
+         row := tableAfter.retrievePosFromKey(pk);
+         if row<>-1 then strAfter := tableAfter.retrieveRow(row)
+         else strAfter := 'not found!';
+
+         ShowMessage('Primary key '+pk+' found in tableAfter at position '+IntToStr(row)+#13#10+
+                     'Before: '+strBefore+#13#10+
+                     'After:  '+strAfter+#13#10);
+       end;
+
+ finally
+   CloseFile(F);
+ end;
 end;
 
 end.

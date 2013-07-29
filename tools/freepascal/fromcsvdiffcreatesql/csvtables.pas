@@ -41,7 +41,8 @@ type TCSVTable = class(TObject)
      procedure   sortIndex();
      function    checkIndexForUniqueness() : Boolean;
      procedure   disposeIndex();
-     function    retrievePosFromKey(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
+     function    retrievePosFromKey(key : AnsiString) : Longint;
+     function    retrievePrimaryKey(row : AnsiString) : AnsiString;
      function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
      function    retrieveRow(pos : Longint) : AnsiString;
 
@@ -204,6 +205,11 @@ begin
 end;
 
 
+function TCSVTable.retrievePrimaryKey(row : AnsiString) : AnsiString;
+begin
+  Result := retrieveNFieldValue(row, primaryKeyIdx_);
+end;
+
 function TCSVTable.retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
 var i : Longint;
     value : AnsiString;
@@ -217,7 +223,7 @@ end;
 
 procedure   TCSVTable.createIndex();
 var i   : Longint;
-    str : AnsiString;
+    str, pkfield : AnsiString;
     isFloat, isNumeric : Boolean;
 begin
    isFloat := isfloat_[primarykeyIdx_];
@@ -244,13 +250,16 @@ begin
           Readln(F, str);
           if Trim(str)='' then continue; // we skip blank lines completely
 
+          if str='NULL' then raise Exception.Create('Internal error: Primary key can not contain NULL values');
+
+          pkfield := retrieveNFieldValue(Str, primaryKeyIdx_);
           if isFloat then
-             idxvaluesF[i] := StrToFloat(retrieveNFieldValue(Str, primaryKeyIdx_))
+             idxvaluesF[i] := StrToFloat(pkfield)
           else
           if isNumeric then
-             idxvalues[i] := StrToInt(retrieveNFieldValue(Str, primaryKeyIdx_))
+             idxvalues[i] := StrToInt(pkfield)
           else
-             idxvaluesS[i] := retrieveNFieldValue(Str, primaryKeyIdx_);
+             idxvaluesS[i] := pkfield;
 
           idxpos[i] := i;
           Inc(i);
@@ -293,12 +302,23 @@ begin
 end;
 
 
-function TCSVTable.retrievePosFromKey(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
+function TCSVTable.retrievePosFromKey(key : AnsiString) : Longint;
+var isFloat, isNumeric : Boolean;
 begin
+  isFloat := isfloat_[primarykeyIdx_];
+  isNumeric := isnumeric_[primarykeyIdx_];
+
+  if key='NULL' then raise Exception.Create('Internal error: Primary key can not contain NULL values');
+
   if useIndex then
-     Result := retrievePosFromKeyBinary(key, keyF, keyS)
+     Result := retrievePosFromKeyBinary(StrToInt(key), 0, '')
   else
-     Result := retrievePosFromKeyLinear(key, keyF, keyS);
+    begin
+      if isFloat then
+       Result := retrievePosFromKeyLinear(0, StrToFloat(key), '')
+      else
+       Result := retrievePosFromKeyLinear(0, 0, key);
+    end;
 end;
 
 
@@ -342,7 +362,7 @@ begin
 end;
 
 function    TCSVTable.retrievePosFromKeyBinary(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
-var pos, low, high : Longint;
+var val, pos, low, high : Longint;
 begin
     // binary search in a sorted array, iterative, from scratch
     if keyF<>0 then raise Exception.Create('Internal error 1 in retrievePosFromKeyBinary');
@@ -351,23 +371,24 @@ begin
     low := 0;
     high := totalrows_-1;
 
-    while (pos>=low) and (pos<=high) do
+    while (high>=low) do
       begin
-        pos := Round( (low+high) / 2);
-        if idxvalues[pos]=key then  // we found it :-)
-           begin
-              Result := idxpos[pos];
-              Exit
-           end
-        else
-        if idxvalues[pos]<key then
+        pos := (low+high) div 2;
+        val := idxvalues[pos];
+
+        if val<key then
            begin
               low:=pos+1;
            end
         else
-        if idxvalues[pos]>key then
+        if val>key then
            begin
               high := pos-1;
+           end
+        else
+           begin
+              Result := idxpos[pos];
+              Exit;
            end;
 
       end; // while
@@ -394,8 +415,7 @@ begin
             if i=pos then
                  begin
                     Result := Str;
-                    CloseFile(F);
-                    Exit;
+                    Exit;  // Exit will call the CloseFile in the finally block!
                  end;
             Inc(i);
           end;
@@ -403,6 +423,7 @@ begin
     finally
       CloseFile(F);
     end;
+
 
     raise Exception.Create('Internal error: Row '+IntToStr(pos)+' in filename '+filename_+' not found!');
 end;
