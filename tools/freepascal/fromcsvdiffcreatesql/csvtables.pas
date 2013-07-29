@@ -265,7 +265,7 @@ end;
 
 procedure TCSVTable.sortIndex();
 begin
-  if useIndex then QuickSortRelations(idxvalues, idxpos, idxvalues[0], idxvalues[totalrows_-1]);
+  if useIndex then QuickSortRelations(idxvalues, idxpos, 0, totalrows_-1);
 end;
 
 function    TCSVTable.checkIndexForUniqueness() : Boolean;

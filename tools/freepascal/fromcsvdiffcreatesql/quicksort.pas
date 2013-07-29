@@ -17,22 +17,22 @@ end;
 type PSortable = ^TSortable;
 type TArrayOfPSortable = Array of PSortable;
 
-procedure QuickSort(var A: array of Integer; iLo, iHi: Integer) ;
+procedure QuickSort(var A: array of Longint; iLo, iHi: Longint) ;
 // sorts using values in A, performs same operation on B
-procedure QuickSortRelations(var A, B: array of Integer; iLo, iHi: Integer) ;
+procedure QuickSortRelations(var A, B: array of Longint; iLo, iHi: Longint) ;
 
 // uses TSortable.value to sort the array
-procedure QuickSortSortable(A : TArrayOfPSortable; iLo, iHi: Integer) ;
+procedure QuickSortSortable(A : TArrayOfPSortable; iLo, iHi: Longint) ;
 
 implementation
 
-procedure QuickSort(var A: array of Integer; iLo, iHi: Integer) ;
+procedure QuickSort(var A: array of Longint; iLo, iHi: Longint) ;
  var
-   Lo, Hi, Pivot, T: Integer;
+   Lo, Hi, Pivot, T: Longint;
  begin
    Lo := iLo;
    Hi := iHi;
-   Pivot := A[(Lo + Hi) div 2];
+   Pivot := A[((Lo + Hi) div 2)];
    repeat
      while A[Lo] < Pivot do Inc(Lo) ;
      while A[Hi] > Pivot do Dec(Hi) ;
@@ -50,13 +50,13 @@ procedure QuickSort(var A: array of Integer; iLo, iHi: Integer) ;
  end;
 
  // sorts using values in A, performs same operation on B
- procedure QuickSortRelations(var A, B: array of Integer; iLo, iHi: Integer) ;
+ procedure QuickSortRelations(var A, B: array of Longint; iLo, iHi: Longint) ;
  var
-   Lo, Hi, Pivot, T: Integer;
+   Lo, Hi, Pivot, T: Longint;
  begin
    Lo := iLo;
    Hi := iHi;
-   Pivot := A[(Lo + Hi) div 2];
+   Pivot := A[((Lo + Hi) div 2)];
    repeat
      while A[Lo] < Pivot do Inc(Lo) ;
      while A[Hi] > Pivot do Dec(Hi) ;
@@ -78,13 +78,13 @@ procedure QuickSort(var A: array of Integer; iLo, iHi: Integer) ;
    if Lo < iHi then QuickSortRelations(A, B, Lo, iHi) ;
  end;
 
-procedure QuickSortSortable(A : TArrayOfPSortable; iLo, iHi: Integer) ;
+procedure QuickSortSortable(A : TArrayOfPSortable; iLo, iHi: Longint) ;
  var
-   Lo, Hi, Pivot, T: Integer;
+   Lo, Hi, Pivot, T: Longint;
  begin
    Lo := iLo;
    Hi := iHi;
-   Pivot := A[(Lo + Hi) div 2]^.value;
+   Pivot := A[((Lo + Hi) div 2)]^.value;
    repeat
      while A[Lo]^.value < Pivot do Inc(Lo) ;
      while A[Hi]^.value > Pivot do Dec(Hi) ;
