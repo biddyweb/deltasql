@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, fromcsvdiffcreatesqlunit, csvtables
+  Forms, fromcsvdiffcreatesqlunit, csvtables, sqlfactories
   { you can add units after this };
 
 {$R *.res}
