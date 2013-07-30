@@ -10,8 +10,8 @@ uses
   csvtables, sqlfactories, utils;
 
 const
-
   EDITOR = 'notepad';
+  UPDATE_STATS_EACH = 1000; // after how many rows percentage stats are updated
 
 type
 
@@ -373,6 +373,7 @@ var pk, strBefore, strAfter : AnsiString;
     i   : Longint;
     outputFile,
     outputStr : AnsiString;
+    count : Longint;
 
 begin
  AssignFile(F, edtFileNameBefore.Text);
@@ -387,7 +388,7 @@ begin
     Rewrite(G);
 
     sqlFactory := TSQLFactory.Create(tableBefore);
-
+    count := 0;
     // the first while loop is for UPDATE and DELETE statements
     while not EOF(F) do
        begin
@@ -415,6 +416,10 @@ begin
                      'Before: '+strBefore+#13#10+
                      'After:  '+strAfter+#13#10);
          }
+         Inc(count);
+         if (count mod UPDATE_STATS_EACH)=0 then
+               statusbar.SimpleText:='Generating UPDATE and DELETE statements... ('+FormatFloat('0.00',100*count/tableBefore.totalrows_)+'%)';
+         Application.ProcessMessages;
        end; // while
     CloseFile(F);
 
@@ -422,6 +427,7 @@ begin
     AssignFile(F, edtFileNameAfter.Text);
     Reset(F);
     ReadLn(F); // header
+    count := 0;
     while not EOF(F) do
        begin
          ReadLn(F, StrAfter);
@@ -435,6 +441,11 @@ begin
               WriteLn(G, outputStr);
             end;
          // else no action needed, we did UPDATE in the previous while loop
+
+         Inc(count);
+         if (count mod UPDATE_STATS_EACH)=0 then
+               statusbar.SimpleText:='Generating INSERT statements... ('+FormatFloat('0.00',100*count/tableAfter.totalrows_)+'%)';
+         Application.ProcessMessages;
        end;
 
  finally
