@@ -180,6 +180,7 @@ begin
                 edtFileNameAfter.Text := '';
                 Exit;
              end;
+        fillCBPrimaryKey(edtFileNameAfter.Text);
      end;
 
 end;
