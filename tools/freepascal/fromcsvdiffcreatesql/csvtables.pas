@@ -31,9 +31,12 @@ type TCSVTable = class(TObject)
      idxvaluesS      : Array of AnsiString;
      idxpos          : Array of Longint;
 
+     tablemem_       : Array of AnsiString;
+
      useIndex       : Boolean;
 
      constructor Create(filename, tablename, primarykey, separator  : String);
+     destructor  Destroy;
      function    readHeader() : AnsiString;
      function    countRows() : Longint;
      procedure   inferFieldsFromData;
@@ -45,9 +48,11 @@ type TCSVTable = class(TObject)
      function    retrievePrimaryKey(row : AnsiString) : AnsiString;
      function    retrieveNFieldValue(Str : AnsiString; pos : Longint) : AnsiString;
      function    retrieveRow(pos : Longint) : AnsiString;
+     procedure   loadInMemory;
 
    private
      F : TextFile;
+     loadedInMemory_ : Boolean;
      procedure initFieldTypes;
      function    retrievePosFromKeyBinary(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
      function    retrievePosFromKeyLinear(key : Longint; keyF : Extended; keyS : AnsiString) : Longint;
@@ -66,6 +71,7 @@ begin
  separator_ := separator;
  header_    := readHeader();
  useIndex   := false;
+ loadedInMemory_ := false;
 
  i:=0;
  column := Trim(ExtractParamLong(header_, separator_));
@@ -400,6 +406,14 @@ function TCSVTable.retrieveRow(pos : Longint) : AnsiString;
 var i : Longint;
     str : AnsiString;
 begin
+    // much faster random access if table is loaded in memory
+    if loadedInMemory_ then
+        begin
+           Result := tablemem_[pos];
+           Exit;
+        end;
+
+
     AssignFile(F, filename_);
 
     try
@@ -426,6 +440,43 @@ begin
 
 
     raise Exception.Create('Internal error: Row '+IntToStr(pos)+' in filename '+filename_+' not found!');
+end;
+
+procedure TCSVTable.loadInMemory;
+var i : Longint;
+    str : AnsiString;
+begin
+  setLength(tablemem_, totalrows_+1); // we store also the header
+
+  AssignFile(F, filename_);
+
+    try
+      Reset(F);
+      ReadLn(F, Str); // skip header
+
+      i := 0;
+      while not EOF(F) do
+          begin
+            Readln(F, str);
+            if Trim(str)='' then continue; // we skip blank lines completely
+
+            tablemem_[i] := Str;
+            Inc(i);
+          end;
+
+    finally
+      CloseFile(F);
+    end;
+
+  loadedInMemory_ := true;
+end;
+
+
+destructor TCSVTable.Destroy;
+begin
+  disposeIndex;
+  if loadedInMemory_ then setLength(tablemem_, 0);
+  inherited Destroy;
 end;
 
 end.

@@ -25,11 +25,13 @@ type
     cbInsert: TCheckBox;
     cbUpdate: TCheckBox;
     cbDelete: TCheckBox;
+    cbLoadInMemory: TCheckBox;
     dlgOpenCSV: TOpenDialog;
     edtFilenameBefore: TEdit;
     edtFilenameAfter: TEdit;
     edtSeparator: TEdit;
     edtTablename: TEdit;
+    lblPerformance: TLabel;
     lblGenerateStatements: TLabel;
     lblPKInfo: TLabel;
     lblHeaderRequired: TLabel;
@@ -54,10 +56,6 @@ type
     tableBefore : TCSVTable;
     tableAfter  : TCSVTable;
     sqlFactory  : TSQLFactory;
-
-    enableInsert_,
-    enableDelete_,
-    enableUpdate_ : Boolean;
 
     procedure fillCBPrimaryKey(filename : String);
     function  readMyHeader(myfilename : String) : AnsiString;
@@ -106,9 +104,6 @@ begin
                 Exit;
              end;
 
-  enableInsert_ := cbInsert.Checked;
-  enableDelete_ := cbDelete.Checked;
-  enableUpdate_ := cbUpdate.Checked;
   enableControls(false);
   createSyncScriptLogic;
   enableControls(true);
@@ -126,9 +121,10 @@ begin
   edtSeparator.Enabled := value;
   cbPrimaryKey.Enabled := value;
   btnGenerateSync.Enabled := value;
-  cbInsert.Checked := value;
-  cbDelete.Checked := value;
-  cbUpdate.Checked := value;
+  cbInsert.Enabled := value;
+  cbDelete.Enabled := value;
+  cbUpdate.Enabled := value;
+  cbLoadInMemory.Enabled := value;
 end;
 
 procedure TfromCSVtoSQL.btnSelectCSVFileBeforeClick(Sender: TObject);
@@ -284,6 +280,17 @@ begin
      tableAfter.createIndex();
      Application.ProcessMessages;
 
+     if cbLoadInMemory.Checked then
+         begin
+           statusBar.SimpleText:='Loading table before changes in memory...';
+           tableBefore.loadInMemory();
+           Application.ProcessMessages;
+
+           statusBar.SimpleText:='Loading table after changes in memory...';
+           tableAfter.loadInMemory();
+           Application.ProcessMessages;
+         end;
+
      if tableBefore.useIndex then
           begin
                statusBar.SimpleText:='Quickorting index for table before changes...';
@@ -402,12 +409,12 @@ begin
          begin
            strAfter := tableAfter.retrieveRow(row);
            // need to create an UPDATE statement
-           if StrBefore<>StrAfter then outputStr := sqlFactory.createUpdateStatement(pk, strBefore, strAfter, enableUpdate_);
+           if StrBefore<>StrAfter then outputStr := sqlFactory.createUpdateStatement(pk, strBefore, strAfter, cbUpdate.Checked);
          end
          else
          begin
            //need to create a DELETE statement, the row could not be found in tableAfter.
-           outputStr := sqlFactory.createDeleteStatement(pk, enableDelete_);
+           outputStr := sqlFactory.createDeleteStatement(pk, cbDelete.Checked);
          end;
 
          if outputStr<>'' then WriteLn(G, outputStr);
@@ -437,7 +444,7 @@ begin
          if row=-1 then
             begin
               // we need to create an INSERT statement here
-              outputStr := sqlFactory.createInsertStatement(pk, strAfter, enableInsert_);
+              outputStr := sqlFactory.createInsertStatement(pk, strAfter, cbInsert.Checked);
               WriteLn(G, outputStr);
             end;
          // else no action needed, we did UPDATE in the previous while loop

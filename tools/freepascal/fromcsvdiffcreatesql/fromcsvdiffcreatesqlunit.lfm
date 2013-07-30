@@ -198,7 +198,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object cbInsert: TCheckBox
     Left = 160
     Height = 19
-    Top = 265
+    Top = 280
     Width = 58
     Caption = 'INSERT'
     Checked = True
@@ -208,7 +208,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object cbUpdate: TCheckBox
     Left = 253
     Height = 19
-    Top = 265
+    Top = 280
     Width = 64
     Caption = 'UPDATE'
     Checked = True
@@ -218,7 +218,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object cbDelete: TCheckBox
     Left = 349
     Height = 19
-    Top = 265
+    Top = 280
     Width = 59
     Caption = 'DELETE'
     Checked = True
@@ -228,10 +228,28 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object lblGenerateStatements: TLabel
     Left = 16
     Height = 16
-    Top = 268
+    Top = 283
     Width = 136
     Caption = 'Generate SQL statements:'
     ParentColor = False
+  end
+  object lblPerformance: TLabel
+    Left = 77
+    Height = 16
+    Top = 248
+    Width = 72
+    Caption = 'Performance:'
+    ParentColor = False
+  end
+  object cbLoadInMemory: TCheckBox
+    Left = 160
+    Height = 19
+    Top = 248
+    Width = 461
+    Caption = 'Load tables in memory (much faster in random access, but requires lot of memory!)'
+    Checked = True
+    State = cbChecked
+    TabOrder = 14
   end
   object dlgOpenCSV: TOpenDialog
     Title = 'Open CSV file'
