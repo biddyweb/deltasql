@@ -40,6 +40,7 @@ echo "<tr>
 <th>version number</th>
 <th>visible</th>
 <th>istag</th>
+<th>ishead</th>
 <th>actions</th>
 </tr>";
 
@@ -57,6 +58,7 @@ $projectid=mysql_result($result,$i,"project_id");
 $visible=mysql_result($result,$i,"visible");
 $sourcebranch=mysql_result($result,$i,"sourcebranch");
 $istag=mysql_result($result,$i,"istag");
+$ishead=mysql_result($result,$i,"ishead");
 
 $projectname="";
 if ($projectid!="") {
@@ -88,6 +90,7 @@ echo "
 <td>$versionnr</td>
 <td>$visible</td>
 <td>$istag</td>
+<td>$ishead</td>
 <td>";
 if (($rights>=2) && ($name!="HEAD")) {
     echo "<a href=\"edit_branch.php?id=$id\"><img alt=\"Edit\" src=\"icons/edit.png\"></a> ";
