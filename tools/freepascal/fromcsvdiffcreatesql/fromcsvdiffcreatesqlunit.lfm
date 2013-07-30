@@ -1,10 +1,10 @@
 object fromCSVtoSQL: TfromCSVtoSQL
   Left = 715
-  Height = 409
-  Top = 239
+  Height = 408
+  Top = 240
   Width = 676
   Caption = 'From two tables in CSV generate a SQL synchronization script'
-  ClientHeight = 409
+  ClientHeight = 408
   ClientWidth = 676
   LCLVersion = '1.0.2.0'
   object edtFilenameBefore: TEdit
@@ -58,6 +58,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
     Font.Style = [fsUnderline]
     ParentColor = False
     ParentFont = False
+    OnClick = lblOutputLinkClick
   end
   object edtSeparator: TEdit
     Left = 464
@@ -78,7 +79,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   object statusbar: TStatusBar
     Left = 0
     Height = 23
-    Top = 386
+    Top = 385
     Width = 676
     Panels = <>
     SimpleText = 'Ready.'

@@ -6,7 +6,12 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ComCtrls, csvtables, sqlfactories, utils;
+  ComCtrls, Process,
+  csvtables, sqlfactories, utils;
+
+const
+
+  EDITOR = 'notepad';
 
 type
 
@@ -43,11 +48,16 @@ type
     procedure btnGenerateSyncClick(Sender: TObject);
     procedure btnSelectCSVFileAfterClick(Sender: TObject);
     procedure btnSelectCSVFileBeforeClick(Sender: TObject);
+    procedure lblOutputLinkClick(Sender: TObject);
   private
     F, G : Textfile;
     tableBefore : TCSVTable;
     tableAfter  : TCSVTable;
     sqlFactory  : TSQLFactory;
+
+    enableInsert_,
+    enableDelete_,
+    enableUpdate_ : Boolean;
 
     procedure fillCBPrimaryKey(filename : String);
     function  readMyHeader(myfilename : String) : AnsiString;
@@ -96,6 +106,9 @@ begin
                 Exit;
              end;
 
+  enableInsert_ := cbInsert.Checked;
+  enableDelete_ := cbDelete.Checked;
+  enableUpdate_ := cbUpdate.Checked;
   enableControls(false);
   createSyncScriptLogic;
   enableControls(true);
@@ -125,6 +138,22 @@ begin
         edtFileNameBefore.Text := dlgOpenCSV.FileName;
         fillCBPrimaryKey(edtFileNameBefore.Text);
      end;
+end;
+
+procedure TfromCSVtoSQL.lblOutputLinkClick(Sender: TObject);
+var aProcess : TProcess;
+begin
+   if lblOutputLink.Caption='No output' then Exit;
+
+   AProcess := TProcess.Create(nil);
+   try
+               AProcess.CommandLine := '"'+EDITOR+'" "'+lblOutputLink.Caption+'"';
+               AProcess.Options := AProcess.Options - [poWaitOnExit];
+               AProcess.Execute;
+   finally
+     AProcess.Free;
+   end;
+
 end;
 
 procedure TfromCSVtoSQL.btnSelectCSVFileAfterClick(Sender: TObject);
@@ -281,6 +310,7 @@ begin
         end;
 
      //testIndexes;
+     statusBar.SimpleText:='Creating synchronization script in SQL...';
      synchronizationLogic; // the main sync logic is here
 
   finally
@@ -340,7 +370,9 @@ procedure TfromCSVtoSQL.synchronizationLogic;
 var pk, strBefore, strAfter : AnsiString;
     row : Longint;
     i   : Longint;
-    outputFile : AnsiString;
+    outputFile,
+    outputStr : AnsiString;
+
 begin
  AssignFile(F, edtFileNameBefore.Text);
 
@@ -353,24 +385,41 @@ begin
 
     Rewrite(G);
 
+    sqlFactory := TSQLFactory.Create(tableBefore);
+
+    // the first while loop is for UPDATE and DELETE statements
     while not EOF(F) do
        begin
          ReadLn(F, StrBefore);
          if Trim(strBefore)='' then continue;
 
+         outputStr := '';
          pk := tableBefore.retrievePrimaryKey(strBefore);
          row := tableAfter.retrievePosFromKey(pk);
-         if row<>-1 then strAfter := tableAfter.retrieveRow(row)
-         else strAfter := 'not found!';
+         if row<>-1 then
+         begin
+           strAfter := tableAfter.retrieveRow(row);
+           // need to create an UPDATE statement
+           if StrBefore<>StrAfter then outputStr := sqlFactory.createUpdateStatement(pk, strBefore, strAfter, enableUpdate_);
+         end
+         else
+         begin
+           //need to create a DELETE statement, the row could not be found in tableAfter.
+           outputStr := sqlFactory.createDeleteStatement(pk, enableDelete_);
+         end;
 
+         if outputStr<>'' then WriteLn(G, outputStr);
+         {
          ShowMessage('Primary key '+pk+' found in tableAfter at position '+IntToStr(row)+#13#10+
                      'Before: '+strBefore+#13#10+
                      'After:  '+strAfter+#13#10);
-       end;
+         }
+       end; // while
 
  finally
    CloseFile(F);
    CloseFile(G);
+   sqlFactory.Free;
  end;
 
  lblOutputLink.Caption := outputFile;
