@@ -235,7 +235,7 @@ object fromCSVtoSQL: TfromCSVtoSQL
   end
   object dlgOpenCSV: TOpenDialog
     Title = 'Open CSV file'
-    Filter = 'Comma Separated Values|*.csv|All files|*.*'
+    Filter = 'Comma Separated Values|*.csv|Text Files|*.txt|All files|*.*'
     left = 605
     top = 344
   end

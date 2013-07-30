@@ -18,6 +18,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="fromcsvdiffcreatesqlunit"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="406"/>
@@ -41,7 +42,6 @@
         <Filename Value="sqlfactories.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="sqlfactories"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="23"/>
