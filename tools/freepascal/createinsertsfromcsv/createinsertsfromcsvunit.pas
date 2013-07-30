@@ -221,7 +221,10 @@ begin
   while column<>'' do
       begin
         if isnumeric[i] or (column='NULL') then
+          begin
+           if column='' then column:='NULL';
            Result := Result + column + ','
+          end
         else
           begin
             // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)

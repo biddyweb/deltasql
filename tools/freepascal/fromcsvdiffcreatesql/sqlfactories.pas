@@ -107,7 +107,10 @@ begin
              // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)
             escapedparam := StringReplace(paramAfter, Chr(QUOTE), Chr(QUOTE)+Chr(QUOTE), [rfReplaceAll, rfIgnoreCase]);
              if table_.isNumeric_[count] or (paramAfter='NULL') then
+             begin
+                if escapedparam = '' then escapedparam := 'NULL';
                 Result := Result + escapedparam
+             end
              else
                 Result := Result + Chr(QUOTE) + escapedparam + Chr(QUOTE);
              Result := Result + ',';
@@ -140,7 +143,10 @@ begin
         // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)
         escapedparam := StringReplace(param, Chr(QUOTE), Chr(QUOTE)+Chr(QUOTE), [rfReplaceAll, rfIgnoreCase]);
         if table_.isNumeric_[i] or (param='NULL') then
-                Result := Result + escapedparam
+              begin
+               if escapedparam = '' then escapedparam := 'NULL';
+               Result := Result + escapedparam
+              end
              else
                 Result := Result + Chr(QUOTE) + escapedparam + Chr(QUOTE);
              Result := Result + ',';
