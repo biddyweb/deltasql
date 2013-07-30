@@ -415,6 +415,26 @@ begin
                      'After:  '+strAfter+#13#10);
          }
        end; // while
+    CloseFile(F);
+
+    // now the other way round to identify INSERT statements
+    AssignFile(F, edtFileNameAfter.Text);
+    Reset(F);
+    ReadLn(F); // header
+    while not EOF(F) do
+       begin
+         ReadLn(F, StrAfter);
+         if Trim(strAfter)='' then continue;
+         pk :=  tableAfter.retrievePrimaryKey(strAfter);
+         row := tableBefore.retrievePosFromKey(pk);
+         if row=-1 then
+            begin
+              // we need to create an INSERT statement here
+              outputStr := sqlFactory.createInsertStatement(pk, strAfter, enableInsert_);
+              WriteLn(G, outputStr);
+            end;
+         // else no action needed, we did UPDATE in the previous while loop
+       end;
 
  finally
    CloseFile(F);

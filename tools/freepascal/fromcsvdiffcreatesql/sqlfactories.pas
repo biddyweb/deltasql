@@ -14,6 +14,7 @@ type TSQLFactory = class(TObject)
       constructor Create(var table : TCSVTable);
       function    createDeleteStatement(pk : AnsiString; enabled : Boolean) : AnsiString;
       function    createUpdateStatement(pk, strBefore, strAfter : AnsiString; enabled : Boolean) : AnsiString;
+      function    createInsertStatement(pk, strAfter : AnsiString; enabled : Boolean) : AnsiString;
 
 
     private
@@ -53,7 +54,7 @@ begin
         insert_ := insert_ +table_.fields_[i]+',';
       end;
   Delete(insert_, length(insert_), 1);
-  insert_ := insert_ + ')'+#13#10+'VALUES(';
+  insert_ := insert_ + ') '{+#13#10}+'VALUES(';
 end;
 
 function TSQLFactory.createWhereClause(pk : AnsiString) : AnsiString;
@@ -76,7 +77,8 @@ end;
 
 function TSQLFactory.createUpdateStatement(pk, strBefore, strAfter : AnsiString; enabled : Boolean) : AnsiString;
 var count : Longint;
-    paramBefore, paramAfter : AnsiString;
+    paramBefore, paramAfter,
+    escapedparam : AnsiString;
     changed  : Boolean;
 begin
   if enabled then Result := '' else Result := '-- ';
@@ -102,10 +104,12 @@ begin
        if paramBefore<>paramAfter then
            begin
              Result := Result + table_.fields_[count]+'=';
-             if table_.isNumeric_[count] then
-                Result := Result + paramAfter
+             // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)
+            escapedparam := StringReplace(paramAfter, Chr(QUOTE), Chr(QUOTE)+Chr(QUOTE), [rfReplaceAll, rfIgnoreCase]);
+             if table_.isNumeric_[count] or (paramAfter='NULL') then
+                Result := Result + escapedparam
              else
-                Result := Result + Chr(QUOTE) + paramAfter + Chr(QUOTE);
+                Result := Result + Chr(QUOTE) + escapedparam + Chr(QUOTE);
              Result := Result + ',';
              changed := true;
            end;
@@ -115,6 +119,35 @@ begin
   if not changed then raise Exception.Create('Internal error in createUpdateStatement III: No changes detected for pk '+pk);
   Delete(Result, length(Result), 1);
   Result := Result + createWhereClause(pk);
+end;
+
+function TSQLFactory.createInsertStatement(pk, strAfter : AnsiString; enabled : Boolean) : AnsiString;
+var i : Longint;
+    param, escapedparam : AnsiString;
+begin
+ if enabled then Result := '' else Result := '-- ';
+ Result := Result + insert_;
+
+  for i:=1 to table_.totalfields_ do
+      begin
+        param := ExtractParamLong(strAfter, table_.separator_);
+        if i=table_.primaryKeyIdx_ then
+            begin
+              if (param<>pk) then
+                   raise Exception.Create('Internal error in createInsertStatement I '+param+'/'+pk+#13#10+StrAfter);
+              continue;
+            end;
+        // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)
+        escapedparam := StringReplace(param, Chr(QUOTE), Chr(QUOTE)+Chr(QUOTE), [rfReplaceAll, rfIgnoreCase]);
+        if table_.isNumeric_[i] or (param='NULL') then
+                Result := Result + escapedparam
+             else
+                Result := Result + Chr(QUOTE) + escapedparam + Chr(QUOTE);
+             Result := Result + ',';
+      end;
+
+ Delete(Result, length(Result), 1);
+ Result := Result + ');';
 end;
 
 end.

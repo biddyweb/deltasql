@@ -9,7 +9,7 @@
         <Filename Value="fromcsvdiffcreatesql.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="fromcsvdiffcreatesql"/>
-        <UsageCount Value="36"/>
+        <UsageCount Value="37"/>
       </Unit0>
       <Unit1>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
@@ -20,9 +20,9 @@
         <UnitName Value="fromcsvdiffcreatesqlunit"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="385"/>
-        <CursorPos X="62" Y="409"/>
-        <UsageCount Value="36"/>
+        <TopLine Value="406"/>
+        <CursorPos X="46" Y="416"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -34,7 +34,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="324"/>
         <CursorPos X="6" Y="22"/>
-        <UsageCount Value="33"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -44,18 +44,20 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="75"/>
-        <CursorPos X="40" Y="105"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="23"/>
+        <CursorPos X="37" Y="57"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="..\createinsertsfromcsv\createinsertsfromcsvunit.pas"/>
         <UnitName Value="createinsertsfromcsvunit"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="17" Y="253"/>
+        <TopLine Value="192"/>
+        <CursorPos X="115" Y="228"/>
         <UsageCount Value="16"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="quicksort.pas"/>
@@ -73,124 +75,124 @@
     </General>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="quicksort.pas"/>
-        <Caret Line="83" Column="29" TopLine="42"/>
+        <Filename Value="csvtables.pas"/>
+        <Caret Line="46" Column="58" TopLine="20"/>
       </Position1>
       <Position2>
-        <Filename Value="quicksort.pas"/>
-        <Caret Line="87" Column="34" TopLine="58"/>
+        <Filename Value="csvtables.pas"/>
+        <Caret Line="406" Column="45" TopLine="359"/>
       </Position2>
       <Position3>
         <Filename Value="csvtables.pas"/>
-        <Caret Line="46" Column="58" TopLine="20"/>
+        <Caret Line="380" Column="22" TopLine="1"/>
       </Position3>
       <Position4>
         <Filename Value="csvtables.pas"/>
-        <Caret Line="406" Column="45" TopLine="359"/>
+        <Caret Line="43" Column="30" TopLine="2"/>
       </Position4>
       <Position5>
-        <Filename Value="csvtables.pas"/>
-        <Caret Line="380" Column="22" TopLine="1"/>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="58" Column="27" TopLine="26"/>
       </Position5>
       <Position6>
         <Filename Value="csvtables.pas"/>
-        <Caret Line="43" Column="30" TopLine="2"/>
+        <Caret Line="207" Column="70" TopLine="186"/>
       </Position6>
       <Position7>
-        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="58" Column="27" TopLine="26"/>
-      </Position7>
-      <Position8>
-        <Filename Value="csvtables.pas"/>
-        <Caret Line="207" Column="70" TopLine="186"/>
-      </Position8>
-      <Position9>
         <Filename Value="csvtables.pas"/>
         <Caret Line="253" Column="17" TopLine="228"/>
+      </Position7>
+      <Position8>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="318" Column="58" TopLine="275"/>
+      </Position8>
+      <Position9>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="213" Column="11" TopLine="200"/>
       </Position9>
       <Position10>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="318" Column="58" TopLine="275"/>
+        <Caret Line="305" Column="25" TopLine="281"/>
       </Position10>
       <Position11>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="213" Column="11" TopLine="200"/>
+        <Caret Line="306" Column="5" TopLine="16"/>
       </Position11>
       <Position12>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="305" Column="25" TopLine="281"/>
+        <Caret Line="318" Column="40" TopLine="277"/>
       </Position12>
       <Position13>
-        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="306" Column="5" TopLine="16"/>
-      </Position13>
-      <Position14>
-        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="318" Column="40" TopLine="277"/>
-      </Position14>
-      <Position15>
         <Filename Value="csvtables.pas"/>
         <Caret Line="262" Column="38" TopLine="223"/>
-      </Position15>
-      <Position16>
+      </Position13>
+      <Position14>
         <Filename Value="csvtables.pas"/>
         <Caret Line="215" Column="10" TopLine="201"/>
-      </Position16>
-      <Position17>
+      </Position14>
+      <Position15>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
         <Caret Line="309" Column="50" TopLine="285"/>
-      </Position17>
-      <Position18>
+      </Position15>
+      <Position16>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
         <Caret Line="58" Column="5" TopLine="42"/>
+      </Position16>
+      <Position17>
+        <Filename Value="sqlfactories.pas"/>
+        <Caret Line="49" Column="45" TopLine="5"/>
+      </Position17>
+      <Position18>
+        <Filename Value="sqlfactories.pas"/>
+        <Caret Line="32" Column="3" TopLine="5"/>
       </Position18>
       <Position19>
         <Filename Value="sqlfactories.pas"/>
-        <Caret Line="49" Column="45" TopLine="5"/>
+        <Caret Line="10" Column="16" TopLine="5"/>
       </Position19>
       <Position20>
         <Filename Value="sqlfactories.pas"/>
-        <Caret Line="32" Column="3" TopLine="5"/>
+        <Caret Line="43" Column="41" TopLine="7"/>
       </Position20>
       <Position21>
         <Filename Value="sqlfactories.pas"/>
-        <Caret Line="10" Column="16" TopLine="5"/>
+        <Caret Line="47" Column="20" TopLine="7"/>
       </Position21>
       <Position22>
-        <Filename Value="sqlfactories.pas"/>
-        <Caret Line="43" Column="41" TopLine="7"/>
-      </Position22>
-      <Position23>
-        <Filename Value="sqlfactories.pas"/>
-        <Caret Line="47" Column="20" TopLine="7"/>
-      </Position23>
-      <Position24>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
         <Caret Line="376" Column="38" TopLine="334"/>
+      </Position22>
+      <Position23>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="9" Column="37" TopLine="1"/>
+      </Position23>
+      <Position24>
+        <Filename Value="sqlfactories.pas"/>
+        <Caret Line="14" Column="7" TopLine="7"/>
       </Position24>
       <Position25>
         <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="9" Column="37" TopLine="1"/>
+        <Caret Line="10" Column="3" TopLine="1"/>
       </Position25>
       <Position26>
         <Filename Value="sqlfactories.pas"/>
-        <Caret Line="14" Column="7" TopLine="7"/>
+        <Caret Line="16" Column="108" TopLine="2"/>
       </Position26>
       <Position27>
-        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="10" Column="3" TopLine="1"/>
+        <Filename Value="sqlfactories.pas"/>
+        <Caret Line="117" Column="44" TopLine="75"/>
       </Position27>
       <Position28>
-        <Filename Value="sqlfactories.pas"/>
-        <Caret Line="16" Column="108" TopLine="2"/>
+        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
+        <Caret Line="389" Column="64" TopLine="338"/>
       </Position28>
       <Position29>
         <Filename Value="sqlfactories.pas"/>
-        <Caret Line="117" Column="44" TopLine="75"/>
+        <Caret Line="17" Column="100" TopLine="1"/>
       </Position29>
       <Position30>
-        <Filename Value="fromcsvdiffcreatesqlunit.pas"/>
-        <Caret Line="389" Column="64" TopLine="338"/>
+        <Filename Value="sqlfactories.pas"/>
+        <Caret Line="56" Column="40" TopLine="35"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
