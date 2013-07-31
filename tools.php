@@ -13,6 +13,11 @@ include("utils/constants.inc.php");
 <p>Here, we present tools which can be used in conjunction with deltasql. The tools are intended to help you in SQL script creation, the script might finish in deltasql server thereafter. If you have own tools that you would like to publish here, we would be glad to hear from you!</p>
 
 <center>
+<img src="pictures/createinsertsfromcsv.png" border="0">
+<p><i>Picture:</i> createinsertsfromcsv: this simple tool creates a list of SQL insert statements taken from a CSV file.</p><br>
+</center>
+
+<center>
 <table border="1">
 <tr><th>tool</th><th>environment</th><th>description</th><th>version</th><th>author</th><th>actions</th></tr>
 
@@ -49,8 +54,8 @@ This tool takes two files in format CSV (comma separated values) and converts th
 <br>
 
 <center>
-<img src="pictures/createinsertsfromcsv.png" border="0">
-<p><i>Picture:</i> createinsertsfromcsv: this simple tool creates a list of SQL insert statements taken from a CSV file.</p><br>
+<img src="pictures/fromcsvdiffcreatesql.png" border="0">
+<p><i>Picture:</i> fromcsvdiffcreatesql: this tool creates a SQL synchronization script based on two CSV files.</p><br>
 </center>
 <?php
 include("bottom.inc.php"); 

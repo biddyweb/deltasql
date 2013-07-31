@@ -1,8 +1,3 @@
-<h2>Download deltasql Clients</h2>
-<p>
-Instead of manually synchronizing with the <a href="dbsync.php">form</a> in the synchronization section on the server, you might want
-to try out one of the clients that connect to this server and which integrate into your development environment: 
-</p>
 <center>
 <table border="1">
 <tr><th>client</th><th>help</th><th>environment</th><th>description</th><th>version</th><th>actions</th></tr>
