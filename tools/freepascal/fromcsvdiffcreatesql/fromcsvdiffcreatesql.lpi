@@ -71,6 +71,7 @@
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
       <Checks>
         <IOChecks Value="True"/>
         <RangeChecks Value="True"/>
@@ -80,6 +81,10 @@
       <VerifyObjMethodCallValidity Value="True"/>
     </CodeGeneration>
     <Linking>
+      <Debugging>
+        <GenerateDebugInfo Value="False"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

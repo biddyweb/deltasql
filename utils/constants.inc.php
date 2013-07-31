@@ -13,6 +13,7 @@ $pyclient_version="1.6.2";
 
 // version of deltasql tools
 $tool_createinsertsfromcsv="1.6.3";
+$tool_fromcsvdiffcreatesql="1.6.3";
 
 // number of scripts on a page
 $default_scriptsperpage=15;

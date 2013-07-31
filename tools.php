@@ -10,7 +10,7 @@ include("head.inc.php");
 include("utils/constants.inc.php");
 ?>
 <h2>deltasql Toolbox</h2>
-<p>Here, we present tools which can be used in conjunction with deltasql. If you have own tools that you would like to publish here, we would be glad to hear from you!</p>
+<p>Here, we present tools which can be used in conjunction with deltasql. The tools are intended to help you in SQL script creation, the script might finish in deltasql server thereafter. If you have own tools that you would like to publish here, we would be glad to hear from you!</p>
 
 <center>
 <table border="1">
@@ -28,6 +28,18 @@ This tool takes a file in format CSV (comma separated values) and converts it in
 </td>
 <td>deltasql team</td>
 <td><a href="tools/freepascal/createinsertsfromcsv.zip"><center>download...</center></a></td>
+</tr>
+
+<tr>
+<td><b>fromcsvdiffcreatesql</b></td>
+<td>Windows (Freepascal)</td>
+<td>
+This tool takes two files in format CSV (comma separated values) and converts them into a list of SQL INSERT, UPDATE and DELETE statements. The SQL statements can be used to convert the first CSV into the second. When configuring complex environments via application GUI, you could export a table from the database in CSV before doing configuration changes, then do all configuration changes and then reexport the table as CSV with another filename after the configuration changes. This tool will then create a synchronization script you can apply to other database instances, without the burden of redoing everything manually. 
+</td>
+<td><?php echo "$tool_fromcsvdiffcreatesql"; ?>
+</td>
+<td>deltasql team</td>
+<td><a href="tools/freepascal/fromcsvdiffcreatesql.zip"><center>download...</center></a></td>
 </tr>
 
 
