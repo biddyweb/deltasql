@@ -11,7 +11,7 @@ const QUOTE = 39;
 
 type TSQLFactory = class(TObject)
     public
-      constructor Create(var table : TCSVTable);
+      constructor Create(var table : TCSVTable; includePKinInsert : Boolean);
       function    createDeleteStatement(pk : AnsiString; enabled : Boolean) : AnsiString;
       function    createUpdateStatement(pk, strBefore, strAfter : AnsiString; enabled : Boolean) : AnsiString;
       function    createInsertStatement(pk, strAfter : AnsiString; enabled : Boolean) : AnsiString;
@@ -25,6 +25,8 @@ type TSQLFactory = class(TObject)
       delete_,
       where_    : AnsiString;
 
+      includePKinInsert_ : Boolean;
+
       procedure prepareSQLStatements;
       function  createWhereClause(pk : AnsiString) : AnsiString;
 
@@ -32,11 +34,12 @@ end;
 
 implementation
 
-constructor TSQLFactory.Create(var table : TCSVTable);
+constructor TSQLFactory.Create(var table : TCSVTable; includePKinInsert : Boolean);
 begin
   inherited Create;
 
   table_ := table;
+  includePKinInsert_ := includePKinInsert;
   prepareSQLStatements;
 end;
 
@@ -46,11 +49,11 @@ begin
   delete_ := 'DELETE FROM '+table_.tablename_;
   where_  := ' WHERE '+table_.fields_[table_.primaryKeyIdx_]+'=';
   update_ := 'UPDATE '+table_.tablename_+' SET ';
-  insert_ := 'INSERT '+table_.tablename_+' (';
+  insert_ := 'INSERT INTO '+table_.tablename_+' (';
   // adding all fields but the primary key
   for i:=1 to table_.totalfields_ do
       begin
-        if i=table_.primaryKeyIdx_ then continue;
+        if (not includePKinInsert_) and (i=table_.primaryKeyIdx_) then continue;
         insert_ := insert_ +table_.fields_[i]+',';
       end;
   Delete(insert_, length(insert_), 1);
@@ -138,7 +141,7 @@ begin
             begin
               if (param<>pk) then
                    raise Exception.Create('Internal error in createInsertStatement I '+param+'/'+pk+#13#10+StrAfter);
-              continue;
+              if (not includePKinInsert_) then continue;
             end;
         // escape single quotes ' with twice a quote '' (works for sure in SQL sever and Oracle)
         escapedparam := StringReplace(param, Chr(QUOTE), Chr(QUOTE)+Chr(QUOTE), [rfReplaceAll, rfIgnoreCase]);

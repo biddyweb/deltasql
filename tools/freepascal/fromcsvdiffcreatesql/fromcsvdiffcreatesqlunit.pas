@@ -26,6 +26,7 @@ type
     cbUpdate: TCheckBox;
     cbDelete: TCheckBox;
     cbLoadInMemory: TCheckBox;
+    cbIncludePrimaryKeyInInsert: TCheckBox;
     dlgOpenCSV: TOpenDialog;
     edtFilenameBefore: TEdit;
     edtFilenameAfter: TEdit;
@@ -125,6 +126,7 @@ begin
   cbDelete.Enabled := value;
   cbUpdate.Enabled := value;
   cbLoadInMemory.Enabled := value;
+  cbIncludePrimaryKeyInInsert.Enabled := value;
 end;
 
 procedure TfromCSVtoSQL.btnSelectCSVFileBeforeClick(Sender: TObject);
@@ -394,7 +396,7 @@ begin
 
     Rewrite(G);
 
-    sqlFactory := TSQLFactory.Create(tableBefore);
+    sqlFactory := TSQLFactory.Create(tableBefore, cbIncludePrimaryKeyInInsert.Checked);
     count := 0;
     // the first while loop is for UPDATE and DELETE statements
     while not EOF(F) do
