@@ -1,3 +1,6 @@
+9.8.2013 git
+- added latest Microsoft SQL driver to distribution of dbredactor client 
+
 12.7.2013 git
 - fixed warnings on edit_module.php and edit_project.php
 
