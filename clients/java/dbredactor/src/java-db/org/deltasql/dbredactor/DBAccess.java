@@ -54,7 +54,7 @@ public class DBAccess {
                  DriverManager.registerDriver(new org.postgresql.Driver());	
          } else 
     	 if (conf.getDatabaseType().equals("sqlserver")) {
-             DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());	
+             DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());	
          } else
          if (conf.getDatabaseType().equals("sybase")) {
                  DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());	
