@@ -1,3 +1,24 @@
+*******************************
+1.6.3 Release Notes (5.9.2013)
+ 
+  Major features: New toolbox page listing tools which help in script creation
+				  The first two tools support creation of INSERT scripts, and
+				  of INSERT,UPDATE,DELETE scripts based on .csv exported from your SQL client.
+				  This in case your SQL client does not have an SQL export feature, or if you want to record 
+				  configurations changes on big applications mantained and developed by a third party.
+				  In such case, you would export the db table before doing the changes as .csv, and after doing it.
+				  The provided tool will generate automatically an SQL script with the changes, the script can then
+				  be submitted to deltasql in the usual way.
+  
+                  Added Microsoft SQL server JDBC driver to dbredactor
+ 
+  Fixes: Bash client fixed by Thanos Efraimidis, retrieving version number did not work in all circumstances
+		 
+  Minor: Removed warnings from Edit Module and Edit Script page
+         Preparing database schema to general merging feature
+        
+*******************************
+
 9.8.2013 git
 - added latest Microsoft SQL driver to distribution of dbredactor client 
 
