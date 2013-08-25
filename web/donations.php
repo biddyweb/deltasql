@@ -63,6 +63,11 @@ You can read <a href="http://sourceforge.net/p/deltasql/discussion/">what we pla
 </tr>
 </table>
 
+<h3>Other ways to contribute through crowdfunding</h3>
+<p>If you are happy with deltasql as it is, consider <a href="http://www.indiegogo.com/projects/save-a-life-zlata--2/x/4524548">helping a 3-years old child with cancer</a>, or help to create <a href="http://www.indiegogo.com/projects/a-global-processing-unit/x/4524548">the biggest supercomputer ever built by mankind</a>.
+</p>
+
+</p>
 <?php include("bottom.inc.php"); ?>
 </body>
 </html>
