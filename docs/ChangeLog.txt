@@ -1,5 +1,8 @@
+2.9.2013 git
+- fixed warning in synchronization form when project, from or to branches are missing.
+
 *******************************
-1.6.3 Release Notes (5.9.2013)
+1.6.3 Release Notes (1.9.2013)
  
   Major features: New toolbox page listing tools which help in script creation
 				  The first two tools support creation of INSERT scripts, and

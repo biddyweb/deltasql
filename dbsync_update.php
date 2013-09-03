@@ -8,12 +8,12 @@ if(isset($_SESSION['username'])) {
  $updateuser=$_SESSION["username"];
 } else $updateuser="Not logged in";
 
-$projectid  = $_POST['frmprojectid'];
-$lastversionnr = $_POST['lastversionnr'];
-$frombranchid = $_POST['frombranchid'];
-$tobranchid = $_POST['tobranchid'];
-$dbtype = $_POST['frmdbtype']; 
-$formatgroup = $_POST['formatgroup'];
+if (isset($_POST['frmprojectid'])) $projectid  = $_POST['frmprojectid'];       else $projectid="";
+if (isset($_POST['lastversionnr'])) $lastversionnr = $_POST['lastversionnr'];  else $lastversionnr="";
+if (isset($_POST['frombranchid'])) $frombranchid = $_POST['frombranchid'];     else $frombranchid="";
+if (isset($_POST['tobranchid'])) $tobranchid = $_POST['tobranchid'];           else $tobranchid="";
+if (isset($_POST['frmdbtype'])) $dbtype = $_POST['frmdbtype'];                 else $dbtype="";
+if (isset($_POST['formatgroup'])) $formatgroup = $_POST['formatgroup'];        else $formatgroup="";
 $debug = isset($_POST['frmdebug']);
 
 $htmlformatted=0;
