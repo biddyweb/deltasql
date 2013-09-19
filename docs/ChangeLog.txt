@@ -1,3 +1,6 @@
+19.9.2013 git
+- added sqlite driver and support to dbredactor client
+
 2.9.2013 git
 - fixed warning in synchronization form when project, from or to branches are missing.
 

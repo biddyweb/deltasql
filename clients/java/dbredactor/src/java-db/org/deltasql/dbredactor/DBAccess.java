@@ -58,7 +58,10 @@ public class DBAccess {
          } else
          if (conf.getDatabaseType().equals("sybase")) {
                  DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());	
-         } 
+         } else
+         if (conf.getDatabaseType().equals("sqlite")) {
+        	 	 DriverManager.registerDriver(new org.sqlite.JDBC());
+         }
          else 
       	   throw new IllegalArgumentException("Unknown or unsupported database type ("+conf.getDatabaseType()+")");
        return  DriverManager.getConnection(database, username, password);
