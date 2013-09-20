@@ -10,24 +10,34 @@ include("utils/utils.inc.php");
 include("utils/components.inc.php");
 include("head.inc.php");
 
-$id=$_GET['id'];
-$name=$_GET['name'];
-echo "<h2>Get Synchronization Table for $name</h2>";
-echo "Please choose the <b>Database Type</b> for your $name schema: <br><br>";
+if (isset($_GET['id'])) $id=$_GET['id']; else $id="";
+if (isset($_GET['name'])) $name=$_GET['name']; else $name="";
+echo "<h2>Get Synchronization Table</h2>";
 
 echo "
 <form name=\"databasetype\" id=\"databasetype\" method=\"post\" action=\"synchronization_table.php\">
 ";
-
- printDatabaseComboBox($dbdefault);
-
+ 
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
+ 
+ if ($id=="") {
+	echo "Please choose the <b>Project Name</b>: <br><br>";
+    printProjectComboBox("");
+	echo "<br><br>";
+ }
+ echo "Please choose the <b>Database Type</b> for your $name schema: <br><br>";
+ printDatabaseComboBox($dbdefault);
 
+ 
  echo "Please select if the Database Schema will <b>follow HEAD or stay a branch</b>: <br><br>";
  echo "<select NAME=\"frmsourcebranch\">";
- //$headid=retrieve_head_id();
- $query="SELECT * FROM tbbranch where (project_id=$id) order by id ASC";
+ $headid=retrieve_head_id();
+ if ($id!="") {
+    $query="SELECT * FROM tbbranch where (project_id=$id) and (istag=0) order by id ASC";
+ } else {
+      $query="SELECT * FROM tbbranch where (id<>$headid) and (istag=0) order by id ASC";
+ }
  $result=mysql_query($query);
  $num=mysql_numrows($result); 
  $i=0;
@@ -44,14 +54,10 @@ echo "
  mysql_close();
 ?>
 <?php
-echo "<input type=\"hidden\" name=\"frmprojectid\"  value=\"$id\">";
-echo "<input type=\"hidden\" name=\"frmprojectname\"  value=\"$name\">";
-/*
-// disabled as it creates confusion
-You also can give a name to your schema <i>(optional)</i><br>
-<b>Schema Name: </b>  
-<input type="text" name="frmschemaname" size="30"><br><br>
-*/
+if ($id!="") {
+	echo "<input type=\"hidden\" name=\"frmprojectid\"  value=\"$id\">";
+	echo "<input type=\"hidden\" name=\"frmprojectname\"  value=\"$name\">";
+}
 ?>
 
 <input type="Submit" value="Get Synchronization Table">

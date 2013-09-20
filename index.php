@@ -146,6 +146,7 @@ if ($rights>1)
 <td valign="top">
 <h3>Synchronization</h3>
 <ul>
+<li><a href="get_synchronization_table.php">Get Synchronization Table <img src="icons/history.png"> </a></li>
 <li><a href="list_branches.php">List Branches and Tags <img src="icons/tree.png"></a></li>
 <li><a href="dbsync.php">Synchronize database <img src="icons/show2.png"></a></li>
 </ul>

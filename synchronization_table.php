@@ -18,10 +18,17 @@
  include ("deltasql.css");
  echo "</style>";
 
+ $projectid=$_POST['frmprojectid'];
+ if ($projectid=="") die("<b><font color='red'>Please select a project!</font></b>");
+ 
  $frmdbtype = $_POST['frmdbtype'];
  $frmsourcebranch = $_POST['frmsourcebranch'];
- $projectid=$_POST['frmprojectid'];
- $projectname=$_POST['frmprojectname'];
+ mysql_connect($dbserver, $username, $password);
+ @mysql_select_db($database) or die("Unable to select database");
+ $query="SELECT name FROM tbproject where id=$projectid";
+ $result=mysql_query($query);
+ $projectname=mysql_result($result,0,"name");
+ mysql_close();
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h2>Synchronization Table</h2>";

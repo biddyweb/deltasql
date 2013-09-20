@@ -100,6 +100,7 @@ echo "</ul>";
 echo "
 <h3>Synchronization</h3>
 <ul>
+<li><a href=\"get_synchronization_table.php\"><img src=\"icons/history.png\"> Table</a></li>
 <li><a href=\"list_branches.php\"><img src=\"icons/tree.png\"> List</a></li>
 <li><a href=\"dbsync.php\"><img src=\"icons/show2.png\"> Synchronize</a></li>
 </ul>
