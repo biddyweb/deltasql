@@ -3,6 +3,7 @@
 <head>
 <title>deltasql - Edit database script</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<link rel="shortcut icon" href="pictures/favicon.ico" />
 <script language="javascript"  type="text/javascript" src="validation.js"></script>
 <script language="javascript"  type="text/javascript" src="scriptbranches.js"></script>
 </head>

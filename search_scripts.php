@@ -8,6 +8,7 @@
 <script type="text/javascript" src="utils/jscalendar-1.0/lang/calendar-en.js"></script>
 <script type="text/javascript" src="utils/jscalendar-1.0/calendar-setup.js"></script>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<link rel="shortcut icon" href="pictures/favicon.ico" />
 </head>
 <body>
 <?php

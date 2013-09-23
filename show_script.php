@@ -3,6 +3,7 @@
 <head>
 <title>deltasql - Show Database Script</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<link rel="shortcut icon" href="pictures/favicon.ico" />
 </head>
 <?php
  include_once('utils/geshi/geshi.php');

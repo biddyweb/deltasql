@@ -3,6 +3,7 @@
 <head>
 <title>deltasql - Database Synchronization Form</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<link rel="shortcut icon" href="pictures/favicon.ico" />
 <script language="javascript"  type="text/javascript" src="validation.js"></script>
 <script language="javascript" type="text/javascript">
 	function getBranches2ndList(projectid)

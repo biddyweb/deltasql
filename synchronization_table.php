@@ -3,6 +3,7 @@
 <head>
 <title>deltasql - Synchronization Table</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<link rel="shortcut icon" href="pictures/favicon.ico" />
 </head>
 <?php
  include("utils/constants.inc.php");

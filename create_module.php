@@ -4,6 +4,7 @@
   <head> 
     <title>deltasql - Insert a new database module</title>
     <link rel="stylesheet" type="text/css" href="deltasql.css">
+	<link rel="shortcut icon" href="pictures/favicon.ico" />
   </head>
   <body>
 <?php

@@ -3,6 +3,7 @@
 <head>
 <title>deltasql - History</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
+<link rel="shortcut icon" href="pictures/favicon.ico" />
 </head>
 <body>
 <?php
