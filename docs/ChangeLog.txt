@@ -1,6 +1,7 @@
 22.09.2013 git
 - added favicon on all deltasql pages
 - added twitter follow me on deltasql webpage
+- added matrix banner to Open Source Edition
 
 20.09.2013 git
 - added Get Synchronization Table as indipendent menu entry, both in the navigation bar and on the main page
