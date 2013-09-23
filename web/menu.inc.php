@@ -19,6 +19,7 @@
 <li><a href="http://sourceforge.net/p/deltasql/news/" class="menu" target="blank_">News...</a></li>
 <li><a href="http://sourceforge.net/p/deltasql/discussion/" class="menu" target="blank_">Forum...</a></li>
 <li><a href="http://sourceforge.net/projects/deltasql/" class="menu" target="blank_">Project...</a></li>
+<li><a href="https://twitter.com/dangermouse_77" class="menu" target="blank_"><img src="pictures/twitter.png" border="0" /></a></li>
 </ul>
 </div>
 </td>
