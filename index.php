@@ -224,6 +224,13 @@ if (file_exists($configurationfile)) {
 </ul>
 </td>
 </table>
+ <center>
+<img src="docs/devel-with-deltasql.jpg" border="0"><br>
+</center>
+
+<br><br>
+
+<center>
 
 <?php
  
@@ -242,12 +249,8 @@ if (file_exists($configurationfile)) {
 	echo "</center>";
 }
 ?>
-<br><br>
- <center>
-<img src="docs/devel-with-deltasql.jpg" border="0"><br>
-</center>
 <hr>
-<center>
+
 <h6>deltasql is Open Source under <a href="docs/GPL_license.txt">GPL</a> (source code <a href="http://sourceforge.net/projects/deltasql/">here</a>) and is developed
  and mantained by the <a href="http://sourceforge.net/projects/deltasql/">deltasql Team</a>.
 <?php 
