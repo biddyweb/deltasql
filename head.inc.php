@@ -132,7 +132,7 @@ if ($rights>0) {
 }
 echo "</ul>";
 
-echo "<h3>Other</h3>";
+echo "<h3>Utils</h3>";
 echo "<ul>";
 echo "<li><a  href=\"clients.php\">Clients</a></li>";
 echo "<li><a  href=\"tools.php\">Toolbox</a></li>";

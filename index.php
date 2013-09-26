@@ -182,6 +182,16 @@ if (!$disable_topten_submitters) {
 </ul>
 </td>
 <td>
+
+</td>
+<td>
+<h3>Utils</h3>
+<ul>
+<li><a  href="clients.php">Clients</a></li>
+<li><a  href="tools.php">Toolbox</a></li>
+</ul>
+</td>
+<td>
 <h3>Help</h3>
 <ul>
 <?php

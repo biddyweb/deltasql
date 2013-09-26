@@ -1,5 +1,5 @@
 26.9.2013 git
-- Reorganized navigation bar
+- Reorganized navigation bar creating Utils section with deltasql clients and toolbox
 
 22.09.2013 git
 - added favicon on all deltasql pages
