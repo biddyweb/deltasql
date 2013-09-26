@@ -60,8 +60,6 @@ echo "
 
 echo "<ul>";
 echo "<li><a  href=\"index.php\"><img src=\"icons/home.png\"> Main</a></li>";
-echo "<li><a  href=\"clients.php\">Clients</a></li>";
-echo "<li><a  href=\"tools.php\">Toolbox</a></li>";
 echo "</ul>";
 
 echo "
@@ -132,6 +130,12 @@ if ($rights>0) {
     echo "<li><a href=\"preferences.php\"><img src=\"icons/settings.png\"> Preferences</a></li>";
     echo "<li><a href=\"logout.php\"><img src=\"icons/logout.png\"> Logout</a></li>";
 }
+echo "</ul>";
+
+echo "<h3>Other</h3>";
+echo "<ul>";
+echo "<li><a  href=\"clients.php\">Clients</a></li>";
+echo "<li><a  href=\"tools.php\">Toolbox</a></li>";
 echo "</ul>";
 
 echo "
