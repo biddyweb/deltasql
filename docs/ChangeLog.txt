@@ -1,11 +1,13 @@
 *******************************
-1.6.4 Release Notes (1.10.2013)
+1.6.4 Release Notes (4.10.2013)
 
   Maintenance release with minor fixes and visual enhancements to deltasql server, in order to stabilize the
   1.6.x line. The dbredactor client includes now a JDBC driver for sqlite databases.
   
 *******************************
 
+29.9.2013 git
+- Dynamic branch selection also in Get Synchronization Table
 
 26.9.2013 git
 - Reorganized navigation bar creating Utils section with deltasql clients and toolbox

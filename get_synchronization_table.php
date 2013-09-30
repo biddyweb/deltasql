@@ -3,6 +3,10 @@
 <title>deltasql - Get Synchronization Table</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 <link rel="shortcut icon" href="pictures/favicon.ico" />
+<script language="javascript"  type="text/javascript" src="validation.js"></script>
+<script language="javascript" type="text/javascript">
+<?php include("scriptbranches.js"); ?>
+</script>
 </head>
 <body>
 <?php
@@ -16,7 +20,7 @@ if (isset($_GET['name'])) $name=$_GET['name']; else $name="";
 echo "<h2>Get Synchronization Table</h2>";
 
 echo "
-<form name=\"databasetype\" id=\"databasetype\" method=\"post\" action=\"synchronization_table.php\">
+<form name=\"gettable\" id=\"gettable\" method=\"post\" action=\"synchronization_table.php\">
 ";
  
  mysql_connect($dbserver, $username, $password);
@@ -24,8 +28,11 @@ echo "
  
  if ($id=="") {
 	echo "Please choose the <b>Project Name</b>: <br><br>";
-    printProjectComboBox("");
+    printProjectComboBox("", 'onchange="javascript: getBranchesForProject(this.value);"');
 	echo "<br><br>";
+ } else {
+    // call javascript function with id
+	echo "<script>getBranchesForProject($id); </script>";
  }
  echo "Please choose the <b>Database Type</b> for your $name schema: <br><br>";
  printDatabaseComboBox($dbdefault);
@@ -33,6 +40,7 @@ echo "
  
  echo "Please select if the Database Schema will <b>follow HEAD or stay a branch</b>: <br><br>";
  echo "<select NAME=\"frmsourcebranch\">";
+ // *** For IE compatibility
  $headid=retrieve_head_id();
  if ($id!="") {
     $query="SELECT * FROM tbbranch where (project_id=$id) and (istag=0) order by id ASC";
@@ -53,6 +61,8 @@ echo "
  }
  echo "</select><br><br>";
  mysql_close();
+ // *** End of IE compatibility
+ 
 ?>
 <?php
 if ($id!="") {

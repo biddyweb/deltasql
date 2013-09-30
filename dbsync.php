@@ -6,77 +6,7 @@
 <link rel="shortcut icon" href="pictures/favicon.ico" />
 <script language="javascript"  type="text/javascript" src="validation.js"></script>
 <script language="javascript" type="text/javascript">
-	function getBranches2ndList(projectid)
-	{
-		var obj = document.syncform;
-		if (projectid != "")
-		{
-			url = "ajax/get_branches_with_project.php?projectid="+projectid;
-			http.open("GET", url, true);
-			http.onreadystatechange = getBranchesResponse2ndList; 
-			http.send(null);
-			
-		}
-	}
-	
-	function getBranchesResponse2ndList()
-	{
-		var obj = document.syncform;
-		if (http.readyState == 4)
-		{
-			var result = trimString(http.responseText);
-			if (result != '' && result != 'undefined')
-			{
-				clearBox(obj.frombranchid);
-                clearBox(obj.tobranchid);
-				var result_line_arr = result.split("###");
-				for (i=0;i<result_line_arr.length;i++)
-				{
-					var result_arr = result_line_arr[i].split(":");
-					var code = result_arr[0];
-					var name = result_arr[1];
-					obj.frombranchid.options[i] = new Option(name, code);
-                    obj.tobranchid.options[i] = new Option(name, code);
-				}
-			}		
-		}
-	}
-    
-    function getBranches3rdList(frombranchid)
-	{
-        var obj = document.syncform;
-		if (frombranchid != "")
-		{
-            projectid=obj.frmprojectid.value;
-            if (projectid!="") {
-        	   url = "ajax/get_branches_with_project_and_branch.php?projectid="+projectid+"&frombranchid="+frombranchid;
-			   http.open("GET", url, true);
-			   http.onreadystatechange = getBranchesResponse3rdList; 
-			   http.send(null);
-            }
-        }
-	}
-    
-    function getBranchesResponse3rdList()
-	{
-        var obj = document.syncform;
-		if (http.readyState == 4)
-		{
-			var result = trimString(http.responseText);
-			if (result != '' && result != 'undefined')
-			{
-                clearBox(obj.tobranchid);
-				var result_line_arr = result.split("###");
-				for (i=0;i<result_line_arr.length;i++)
-				{
-					var result_arr = result_line_arr[i].split(":");
-					var code = result_arr[0];
-					var name = result_arr[1];
-                    obj.tobranchid.options[i] = new Option(name, code);
-				}
-			}		
-		}
-	}
+<?php include("scriptbranches.js"); ?>
 </script>
 </head>
 <body>
