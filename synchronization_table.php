@@ -23,12 +23,18 @@
  if ($projectid=="") die("<b><font color='red'>Please select a project!</font></b>");
  
  $frmdbtype = $_POST['frmdbtype'];
- $frmsourcebranch = $_POST['frmsourcebranch'];
+ $frmsourcebranchid = $_POST['frmsourcebranch'];
+ 
+ // retrevieng project name and branch name from ids
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
  $query="SELECT name FROM tbproject where id=$projectid";
  $result=mysql_query($query);
  $projectname=mysql_result($result,0,"name");
+ 
+ $query2="SELECT name FROM tbbranch where id=$frmsourcebranchid";
+ $result2=mysql_query($query2);
+ $frmsourcebranch=mysql_result($result2,0,"name");
  mysql_close();
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
