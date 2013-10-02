@@ -1,0 +1,10 @@
+del *.o
+del *.ppu
+del *.compiled
+del *.ini
+del *.conf
+del log.txt
+del *.sql
+del *.properties
+del *.res
+del *.or
