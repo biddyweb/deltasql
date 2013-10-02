@@ -121,7 +121,7 @@ begin
   for i:=1 to con_.nbbranches do
      begin
        if (con_.branches[i].projectid=-1) or ((con_.branches[i].projectid=projectid)
-           and (con_.branches[i].versionnr>versionnr))  then
+           and (con_.branches[i].versionnr>=versionnr))  then
              begin
                if (not conf.ShowHidden) and (not (con_.branches[i].visible)) then continue;
                if (con_.branches[i].name<>'HEAD') and (con_.branches[i].istag) and (not tags) then continue;

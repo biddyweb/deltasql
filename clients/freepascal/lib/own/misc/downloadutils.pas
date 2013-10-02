@@ -116,7 +116,7 @@ var i, size : Int64;
     str     : AnsiString;
 begin
   logger.log(LVL_DEBUG, 'Performing LFtoCRLF conversion');
-  size := instream.getSize;
+  size := instream.Size;
   logger.log(LVL_DEBUG, 'Stream size: '+IntToStr(size));
   instream.Position := 0;
 
