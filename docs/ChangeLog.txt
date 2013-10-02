@@ -5,6 +5,7 @@
   1.6.x line. 
   - Added automatic branch selection when creating synchronization table. 
   - Fixes to the branch selection in the main synchronization form.
+  - Same fixes applied also to deltaclient for Windows
   - The dbredactor client includes now a JDBC driver for sqlite databases.
   - Favicon and other visual enhancements 
 *******************************
@@ -13,6 +14,7 @@
 Bugfixes:
 - when pressing Back button dbsync form did not work
 - synchronizing from BRANCH_X to BRANCH_X was not shown in selection of synchronization form
+- same fix applied also to deltaclient for Windows
 
 29.9.2013 git
 - Dynamic branch selection also in Get Synchronization Table

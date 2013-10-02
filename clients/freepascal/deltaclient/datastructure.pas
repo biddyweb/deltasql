@@ -120,8 +120,14 @@ begin
   tocon.nbbranches:=0;
   for i:=1 to con_.nbbranches do
      begin
-       if (con_.branches[i].projectid=-1) or ((con_.branches[i].projectid=projectid)
-           and (con_.branches[i].versionnr>=versionnr))  then
+       if (con_.branches[i].projectid=-1) or
+          (
+             (con_.branches[i].projectid=projectid)
+             and (
+                     ( (con_.branches[i].versionnr>=versionnr) and (con_.branches[i].istag=false) ) or
+                     ( (con_.branches[i].versionnr> versionnr) and (con_.branches[i].istag=true) )
+                  )
+          ) then
              begin
                if (not conf.ShowHidden) and (not (con_.branches[i].visible)) then continue;
                if (con_.branches[i].name<>'HEAD') and (con_.branches[i].istag) and (not tags) then continue;

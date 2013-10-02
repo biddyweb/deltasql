@@ -2,22 +2,24 @@ object SettingsForm: TSettingsForm
   Left = 678
   Height = 274
   Top = 88
-  Width = 436
+  Width = 463
   Caption = 'Settings'
   ClientHeight = 274
-  ClientWidth = 436
-  LCLVersion = '0.9.30.2'
+  ClientWidth = 463
+  LCLVersion = '1.0.2.0'
   object edtUrl: TLabeledEdit
     Left = 16
-    Height = 27
+    Height = 23
     Top = 24
-    Width = 408
+    Width = 440
     EditLabel.AnchorSideLeft.Control = edtUrl
+    EditLabel.AnchorSideRight.Control = edtUrl
+    EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = edtUrl
     EditLabel.Left = 16
-    EditLabel.Height = 18
-    EditLabel.Top = 3
-    EditLabel.Width = 309
+    EditLabel.Height = 16
+    EditLabel.Top = 5
+    EditLabel.Width = 440
     EditLabel.Caption = 'Deltasql Server URL (without slash at the end):'
     EditLabel.ParentColor = False
     TabOrder = 0
@@ -25,31 +27,35 @@ object SettingsForm: TSettingsForm
   end
   object edtProxy: TLabeledEdit
     Left = 16
-    Height = 27
+    Height = 23
     Top = 72
-    Width = 312
+    Width = 344
     EditLabel.AnchorSideLeft.Control = edtProxy
+    EditLabel.AnchorSideRight.Control = edtProxy
+    EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = edtProxy
     EditLabel.Left = 16
-    EditLabel.Height = 18
-    EditLabel.Top = 51
-    EditLabel.Width = 44
+    EditLabel.Height = 16
+    EditLabel.Top = 53
+    EditLabel.Width = 344
     EditLabel.Caption = 'Proxy:'
     EditLabel.ParentColor = False
     TabOrder = 1
     OnChange = changeRequiresRestart
   end
   object edtPort: TLabeledEdit
-    Left = 336
-    Height = 27
+    Left = 368
+    Height = 23
     Top = 72
     Width = 88
     EditLabel.AnchorSideLeft.Control = edtPort
+    EditLabel.AnchorSideRight.Control = edtPort
+    EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = edtPort
-    EditLabel.Left = 336
-    EditLabel.Height = 18
-    EditLabel.Top = 51
-    EditLabel.Width = 35
+    EditLabel.Left = 368
+    EditLabel.Height = 16
+    EditLabel.Top = 53
+    EditLabel.Width = 88
     EditLabel.Caption = 'Port:'
     EditLabel.ParentColor = False
     TabOrder = 2
@@ -57,17 +63,17 @@ object SettingsForm: TSettingsForm
   end
   object cbShowHidden: TCheckBox
     Left = 16
-    Height = 24
+    Height = 19
     Top = 112
-    Width = 308
+    Width = 245
     Caption = 'Show branches and tags marked as hidden'
     TabOrder = 3
   end
   object cbLoadOnClipboard: TCheckBox
     Left = 16
-    Height = 24
+    Height = 19
     Top = 144
-    Width = 262
+    Width = 205
     Caption = 'Copy generated script to Clipboard'
     Checked = True
     State = cbChecked
@@ -75,15 +81,17 @@ object SettingsForm: TSettingsForm
   end
   object edtEditor: TLabeledEdit
     Left = 16
-    Height = 27
+    Height = 23
     Top = 192
     Width = 360
     EditLabel.AnchorSideLeft.Control = edtEditor
+    EditLabel.AnchorSideRight.Control = edtEditor
+    EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = edtEditor
     EditLabel.Left = 16
-    EditLabel.Height = 18
-    EditLabel.Top = 171
-    EditLabel.Width = 253
+    EditLabel.Height = 16
+    EditLabel.Top = 173
+    EditLabel.Width = 360
     EditLabel.Caption = 'Editor which opens generated scripts:'
     EditLabel.ParentColor = False
     TabOrder = 5
@@ -116,16 +124,18 @@ object SettingsForm: TSettingsForm
     TabOrder = 8
   end
   object edtUser: TLabeledEdit
-    Left = 256
-    Height = 27
+    Left = 288
+    Height = 23
     Top = 120
     Width = 168
     EditLabel.AnchorSideLeft.Control = edtUser
+    EditLabel.AnchorSideRight.Control = edtUser
+    EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = edtUser
-    EditLabel.Left = 256
-    EditLabel.Height = 18
-    EditLabel.Top = 99
-    EditLabel.Width = 110
+    EditLabel.Left = 288
+    EditLabel.Height = 16
+    EditLabel.Top = 101
+    EditLabel.Width = 168
     EditLabel.Caption = 'Deltaclient user:'
     EditLabel.ParentColor = False
     TabOrder = 9
@@ -135,4 +145,4 @@ object SettingsForm: TSettingsForm
     left = 312
     top = 152
   end
-end
+end
