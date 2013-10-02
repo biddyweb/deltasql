@@ -60,8 +60,9 @@ echo "
    $i++;
  }
  echo "</select><br><br>";
- mysql_close();
  // *** End of IE compatibility
+ 
+ mysql_close();
  
 ?>
 <?php

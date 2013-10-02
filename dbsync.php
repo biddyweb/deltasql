@@ -79,11 +79,14 @@ echo "</center>";
  echo "<td>";
  
  echo "<select NAME=\"frombranchid\" onchange=\"javascript: getBranches3rdList(this.value);\">";
+ printBranchesAndTags();
+ echo "</select><br><br>";
  echo "</select></td><td><i>= value in column branchname or tagname</i></td></tr>";
  
  echo "<tr><td><b>Update To:</b></td>";
  echo "<td>";
  echo "<select NAME=\"tobranchid\">";
+ printBranchesAndTags();
  echo "</select>";
  echo "</td><td><i>= HEAD if schema has to include all scripts or another branch name if not</i></td></tr>";
  

@@ -76,5 +76,24 @@ function echo_files_as_select_options($basedir) {
  closedir($dir_handle);
 }
 
+function printBranchesAndTags() {
+
+ $headid=retrieve_head_id();
+ $query="SELECT * FROM tbbranch where (id<>$headid) order by id ASC";
+ $result=mysql_query($query);
+ $num=mysql_numrows($result); 
+ $i=0;
+ 
+ echo "<option SELECTED VALUE=\"HEAD\">HEAD";
+ while ($i<$num) { 
+   $branchid=mysql_result($result,$i,"id");
+   $branchname=mysql_result($result,$i,"name");
+   echo "<option ";
+   echo "VALUE=\"$branchname\">$branchname";
+   $i++;
+ }
+
+}
+
 
 ?>

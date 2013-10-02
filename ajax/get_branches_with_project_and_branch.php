@@ -18,7 +18,7 @@ mysql_connect($dbserver, $username, $password);
             $resver= mysql_query($versql);
             $versionnr=mysql_result($resver,0,"versionnr");
             //echo "Versionnr is $versionnr";
-            $sql = "SELECT id, name FROM tbbranch WHERE visible=1 and project_id=$projectid and versionnr>$versionnr order by istag, name asc;";
+            $sql = "SELECT id, name FROM tbbranch WHERE visible=1 and project_id=$projectid and versionnr>=$versionnr order by istag, name asc;";
             
         } else {
           $sql = sprintf("SELECT id, name FROM tbbranch WHERE visible=1 and project_id=%d order by name, istag asc", $projectid);

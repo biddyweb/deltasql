@@ -1,11 +1,18 @@
 *******************************
 1.6.4 Release Notes (4.10.2013)
 
-  Maintenance release with minor fixes and visual enhancements to deltasql server, in order to stabilize the
-  1.6.x line. Added automatic branch selection when creating synchronization table. 
-  The dbredactor client includes now a JDBC driver for sqlite databases.
-  
+  Maintenance release with major fixes and visual enhancements to deltasql server, in order to stabilize the
+  1.6.x line. 
+  - Added automatic branch selection when creating synchronization table. 
+  - Fixes to the branch selection in the main synchronization form.
+  - The dbredactor client includes now a JDBC driver for sqlite databases.
+  - Favicon and other visual enhancements 
 *******************************
+
+2.10.2013 git
+Bugfixes:
+- when pressing Back button dbsync form did not work
+- synchronizing from BRANCH_X to BRANCH_X was not shown in selection of synchronization form
 
 29.9.2013 git
 - Dynamic branch selection also in Get Synchronization Table
