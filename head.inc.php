@@ -5,6 +5,7 @@ if (!isset($enterprise_edition)) $enterprise_edition=false;
 if (!isset($dns_name)) $dns_name="";
 if (!isset($enable_server_stats)) $enable_server_stats=false;
 if (!isset($disable_topten_submitters)) $disable_topten_submitters=true;
+if (!isset($keep_private)) $keep_private=false;
 
  if(isset($_SESSION['rights'])) {
     $rights = $_SESSION["rights"];
@@ -49,6 +50,10 @@ echo "
 	echo "<img src='pictures/matrix.png' border='0' />";
 	if ($dns_name=="http://deltasql.sourceforge.net/deltasql") echo "<br><a href='../index.php'>Back to Website</a>";
 }
+
+if (($rights==0) && ($keep_private==true) && (basename($_SERVER['PHP_SELF'])<>'login.php'))
+	die("<br><br><a href='login.php'>Please login...</a></body></html>");
+	
 echo "
 </td>
 </tr>

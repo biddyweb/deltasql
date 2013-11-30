@@ -13,6 +13,8 @@ $dbserver = "localhost";
 // on which DNS name the Apache deltasql server is published (no SLASH at the end)
 $dns_name="http://127.0.0.1/deltasql";
 
+// if all contents of deltasql are available only if logged in
+$keep_private=false;
 
 // [Email Settings]
 // The following settings are used, if users need to be notified by email
