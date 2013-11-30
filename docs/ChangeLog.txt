@@ -2,6 +2,7 @@
 - added $keep_private option to serve deltasql via https:// and to hide everything if user is not logged in.
 - updated FAQ on exposing deltasql to the Internet
 - fixed some missing <?php session_start(); ?> on several pages
+- clicking on logo on top returns back to main page also for Open Source Edition.
 
 *******************************
 1.6.4 Release Notes (4.10.2013)

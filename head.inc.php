@@ -47,7 +47,7 @@ echo "
 ";
 } else { 
     echo "<h3>deltasql - Database Evolution under Control</h3>";
-	echo "<img src='pictures/matrix.png' border='0' />";
+	echo "<a href=\"index.php\"><img src='pictures/matrix.png' border='0' /></a>";
 	if ($dns_name=="http://deltasql.sourceforge.net/deltasql") echo "<br><a href='../index.php'>Back to Website</a>";
 }
 
