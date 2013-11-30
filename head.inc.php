@@ -60,6 +60,10 @@ echo "
 <tr>
 <div align='left'>
 <td>
+";
+
+if (basename($_SERVER['PHP_SELF'])<>'login.php')  {
+echo "
 <h3>Navigation Bar</h3>
 ";
 
@@ -150,7 +154,8 @@ echo "
 <li><a href=\"manual.php\">Manual</a></li>
 </ul>
 ";
-  
+} // basename<>login.php
+
 echo "
 </div>
 </td>
