@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
 <title>Manual - deltasql Error Messages</title>

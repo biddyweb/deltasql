@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
 <title>deltasql - Frequently Asked Questions (FAQ)</title>
@@ -677,8 +678,9 @@ After that you need to restart the Apache webserver. This will solve the issue.
 
 <h3><a name="internet"></a>Is it recommended to run deltasql outside the company's intranet?</h3>
 
-<p>deltasql provides some simple mechanisms to authenticate users and store their passwords in a secure manner.
-However, we still do not recommend running deltasql on the internet: deltasql is not routinely verified against sql injection attacks, nor provides authentication via https.</p>
+<p>deltasql provides a mechanism to authenticate users and store their passwords in a secure manner. If you publish the deltasql pages on Internet, 
+we recommend to serve them via https (e.g. by exposing only port 443 of Apache to the outside) and to set the option <tt>$keep_private=true</tt>
+ in <tt>conf/config.inc.php</tt>. The latter option will show the content of deltasql only to authenticated users.</p>
 
 <h3><a name="question"></a>I have another question, where to submit it?</h3>
 <p>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
 <title>Get your own Logo from an artist</title>
