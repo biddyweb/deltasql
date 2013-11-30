@@ -11,9 +11,11 @@
 </head>
 <body>
 <?php
-include("conf/config.inc.php");
+include("utils/constants.inc.php");
 include("utils/utils.inc.php");
 include("utils/components.inc.php");
+if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installmessage</a></h2>");
+include("conf/config.inc.php");
 include("head.inc.php");
 
 if (isset($_GET['id'])) $id=$_GET['id']; else $id="";

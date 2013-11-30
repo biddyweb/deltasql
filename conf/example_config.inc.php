@@ -13,9 +13,6 @@ $dbserver = "localhost";
 // on which DNS name the Apache deltasql server is published (no SLASH at the end)
 $dns_name="http://127.0.0.1/deltasql";
 
-// if all contents of deltasql are available only if logged in
-$keep_private=false;
-
 // [Email Settings]
 // The following settings are used, if users need to be notified by email
 // of new scripts entered in deltasql
@@ -47,6 +44,9 @@ $enterprise_website="http://www.logobject.ch";
 $enterprise_logo="pictures/enterprise_logo.jpg";
 
 // [Options]
+// if all contents of deltasql are available only if logged in
+$keep_private=false;
+
 // for performance reason, you might want disable SQL highlighting in the
 // synchronization form
 $disable_sql_highlighting=false;

@@ -86,9 +86,18 @@ For the rest, most people can probably leave with the defaults. You can disable 
   as it helps the eye. If the test option is enabled, you can change the underlying deltasql schema without having deltasql complaining about it.
 </p>
 <p>
-You can have a system with test data to experiment with deltasql, or to check deltasql correctness.
-</p>
+By default, deltasql shows the scripts also to guests which are not logged in. You can now choose to protect the entire content from occasional visitors with the first option.
+</P>
+
 <table>
+
+<tr><td>Keep entire content protected by login: </td>
+<td>
+<input type="radio" name="privacy" value="yes"> Yes
+<input type="radio" name="privacy" value="no" checked> No
+</td>
+</tr>
+
 
 <tr><td>Use SQL highlighting: </td>
 <td>
@@ -126,6 +135,7 @@ You can have a system with test data to experiment with deltasql, or to check de
 <input type="radio" name="testgroup" value="testsystemyes"> Yes
 <input type="radio" name="testgroup" value="testsystemno" checked> No
 </td></tr>
+
 </table>
 <br></br>
 

@@ -1,5 +1,6 @@
 30.11.2013 git
-- added $keep_private option to serve deltasql via https:// and to hide everything if user is not logged in.
+- added $keep_private option to serve deltasql via https:// and to hide everything if user is not logged in
+- the option above is available also as option in the installation phase
 - updated FAQ on exposing deltasql to the Internet
 - fixed some missing <?php session_start(); ?> on several pages
 - clicking on logo on top returns back to main page also for Open Source Edition.

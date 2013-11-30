@@ -56,7 +56,7 @@ $usagestatsgroup = $_POST['usagestatsgroup'];
 $emailgroup = $_POST['emailgroup'];
 $copypastegroup = $_POST['copypastegroup'];
 $statsgroup = $_POST['statsgroup'];
-
+$privacy    = $_POST['privacy'];
 
 $testsystem="false";
 $disablesqlhighlightning="false";
@@ -65,6 +65,7 @@ $disable_topten_submitters="false";
 $emails_enable="true";
 $copypaste_enable="0";
 $stats_enable="true";
+$keep_private="false";
 
 if ($testgroup=="testsystemyes") $testsystem="true";
 if ($sqlgroup=="donotusesqlhighlighting") $disablesqlhighlightning="true"; 
@@ -73,6 +74,7 @@ if ($toptengroup=="no") $disable_topten_submitters = "true";
 if ($emailgroup=="no") $emails_enable="false"; 
 if ($copypastegroup=="yes") $copypaste_enable="1";
 if ($statsgroup=="no") $stats_enable="false";  
+if ($privacy=="yes") $keep_private="true";
 
 if (!$debug_output_script) {
 if ($deltasqlschemauser!=$mysqlrootuser) {
@@ -188,6 +190,9 @@ fwrite($fh, "
 
 
 // [Options]
+
+// if all contents of deltasql are available only if logged in
+\$keep_private=$keep_private;
 
 // for performance reason, you might want disable SQL highlighting in the
 // synchronization form
