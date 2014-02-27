@@ -45,6 +45,15 @@ if ($frm_incversion==1) {
    $version = get_and_increase_global_version();
    $query5="UPDATE tbscript set versionnr=$version where id=$frm_scriptid;";
    mysql_query($query5);
+   
+   // actualize module version
+   $query6="UPDATE tbmodule SET create_dt=NOW(),lastversionnr=$version WHERE id=$frm_moduleid";
+   mysql_query($query6);
+
+   // Actualize head version
+  $query7="UPDATE tbbranch SET versionnr=$version, create_dt=NOW() WHERE name='HEAD'";
+  mysql_query($query7);
+   
 } else {
   // retrieve version for email notification
   $query22="SELECT * FROM tbscript WHERE id=$frm_scriptid;";

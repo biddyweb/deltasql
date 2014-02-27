@@ -1,3 +1,6 @@
+16.2.2014 git
+- fixed issue reported by Xiaobo Yang on Forum in handling "Edit Database Script" form data, if "Give latest version number to the edited script (use with care!) is checked
+
 30.11.2013 git
 - added $keep_private option to serve deltasql via https:// and to hide everything if user is not logged in
 - the option above is available also as option in the installation phase
