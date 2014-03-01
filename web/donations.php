@@ -45,7 +45,8 @@ You can read <a href="http://sourceforge.net/p/deltasql/discussion/">what we pla
 <td>
 </td>
 </tr>
-
+<?php
+/*
 <tr>
 <td>
 <b>Donate Bitcoins:</b>
@@ -61,6 +62,7 @@ You can read <a href="http://sourceforge.net/p/deltasql/discussion/">what we pla
 <![if !IE]><script type="text/javascript" src="https://payment.mtgox.com/js/button.min.js"></script><![endif]>
 </td>
 </tr>
+*/ ?>
 </table>
 
 <?php include("bottom.inc.php"); ?>
