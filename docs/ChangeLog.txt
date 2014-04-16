@@ -1,3 +1,14 @@
+*******************************
+1.6.5 Release Notes (16.4.2014)
+
+  Deltasql can be exposed to the Internet via HTTPS, maintenance release with minor fixes
+  - $keep_private option in config.inc.php asks all users to be authenticated before showing any content
+  - added FAQ on how to publish deltasql via HTTPS
+  - fixed issue with "Give latest version number to edited script"
+  - added missing session starts on several pages
+  - clicking on logo returns to main page also in Open Source edition.
+*******************************
+
 16.2.2014 git
 - fixed issue reported by Xiaobo Yang on Forum in handling "Edit Database Script" form data, if "Give latest version number to the edited script (use with care!) is checked
 
