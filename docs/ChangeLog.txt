@@ -1,3 +1,6 @@
+27.4.2014 git
+- removed warning on usagestatsgroup in install_execution.php
+
 *******************************
 1.6.5 Release Notes (16.4.2014)
 

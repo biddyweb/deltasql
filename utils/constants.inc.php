@@ -1,6 +1,6 @@
 <?php
 //version of deltasql server, source and data model
-$deltasql_version="1.6.5";
+$deltasql_version="1.6.6";
 $ds_schema_version="1.6.3";
 
 // version of deltasql clients
