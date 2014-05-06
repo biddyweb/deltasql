@@ -44,8 +44,10 @@ $g->title( 'Synchronizations per month', '{font-size:18px; color: #d01f3c}' );
 // pass in two arrays, one of data, the other data labels
 //
 $g->set_data($data);
-$g->set_x_labels($labels);
-$g->set_x_label_style( 10, '#9933CC', 0, 2 );
+if ($i<=12) {
+  $g->set_x_labels($labels);
+  $g->set_x_label_style( 10, '#9933CC', 0, 2 );
+}
 $g->set_y_max( $max );
 
 $g->set_tool_tip( '#val#' );

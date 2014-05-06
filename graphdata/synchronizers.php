@@ -6,7 +6,7 @@ include("../conf/config.inc.php");
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT update_user, count(*) FROM tbsyncstats group by update_user order by count(*) desc;";
+ $query="SELECT update_user, count(*) FROM tbsyncstats group by update_user order by count(*) desc LIMIT 15;";
  $result=mysql_query($query);
  
  if ($result=="") {

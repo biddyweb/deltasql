@@ -6,7 +6,7 @@ include("../conf/config.inc.php");
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT u.username, u.first, u.last, count(*) FROM tbuser u, tbscript s WHERE s.user_id=u.id GROUP BY u.id ORDER BY count(*) DESC";
+ $query="SELECT u.username, u.first, u.last, count(*) FROM tbuser u, tbscript s WHERE s.user_id=u.id GROUP BY u.id ORDER BY count(*) DESC LIMIT 15";
  $result=mysql_query($query);
  
  if ($result=="") {

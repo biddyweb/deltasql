@@ -6,7 +6,7 @@ include("../conf/config.inc.php");
  // preparing data for chart
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="select count(*), m.name from tbscript s, tbmodule m where s.module_id=m.id group by module_id order by count(*) asc;";
+ $query="select count(*), m.name from tbscript s, tbmodule m where s.module_id=m.id group by module_id order by count(*) desc LIMIT 8;";
  $result=mysql_query($query);
  
  if ($result=="") {
