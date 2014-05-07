@@ -30,10 +30,10 @@ function printCopyPasteBlock($textblock, $default_copypaste) {
 
 function printCopyPasteLink($textlink, $separator, $default_copypaste) {
 if (isCopyPasteEnabled($default_copypaste)) {
-   echo "<a id=\"copy-button\" data-clipboard-target=\"clipboard_text\"><img src=\"icons/new.png\" /> Copy to Clipboard</a>";
-   if ($separator) {
-	  echo " | ";
-   }
- }
+        echo "<a id=\"copy-button\" data-clipboard-target=\"clipboard_text\"><img src=\"icons/new.png\" /> Copy to Clipboard</a>";
+        if ($separator) {
+	      echo " | ";
+        }
+ } //if
 }
 ?>

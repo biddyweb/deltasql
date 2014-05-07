@@ -105,4 +105,18 @@ echo "<b>Please <a href=\"login.php\">login</a></b><br>";
 echo "</center>";
 }
 
+function getBrowser() {
+$browser = $_SERVER['HTTP_USER_AGENT'];
+$chrome = '/Chrome/';
+$firefox = '/Firefox/';
+$ie = '/MSIE/';
+
+if (preg_match($chrome, $browser))
+    return "Chrome/Opera";
+if (preg_match($firefox, $browser))
+    return "Firefox";
+if (preg_match($ie, $browser))
+    return "IE";
+}	
+
 ?>
