@@ -17,8 +17,8 @@ type
   TDeltaForm = class(TForm)
     btnSettings: TButton;
     btnGenerateScript: TButton;
-    btnPasteScript: TButton;
     btnGetVersion: TButton;
+    btnReviewSyncScript: TButton;
     cbDbType: TComboBox;
     edtVersion1: TEdit;
     lblUSE: TLabel;

@@ -1,13 +1,12 @@
 object DeltaForm: TDeltaForm
   Left = 198
-  Height = 280
+  Height = 311
   Top = 132
   Width = 407
-  ActiveControl = btnPasteScript
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'deltaclient for Microsoft SQL Server'
-  ClientHeight = 280
+  ClientHeight = 311
   ClientWidth = 407
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -53,10 +52,10 @@ object DeltaForm: TDeltaForm
     ParentColor = False
   end
   object btnSettings: TButton
-    Left = 307
+    Left = 120
     Height = 25
-    Top = 11
-    Width = 85
+    Top = 8
+    Width = 272
     Caption = 'Settings...'
     OnClick = btnSettingsClick
     TabOrder = 0
@@ -64,9 +63,9 @@ object DeltaForm: TDeltaForm
   object btnGenerateScript: TButton
     Left = 16
     Height = 25
-    Top = 240
+    Top = 272
     Width = 287
-    Caption = 'Generate Synchronization Script ...'
+    Caption = 'Generate and Execute Sync Script'
     Enabled = False
     OnClick = btnGenerateScriptClick
     TabOrder = 1
@@ -133,30 +132,23 @@ object DeltaForm: TDeltaForm
     State = cbChecked
     TabOrder = 7
   end
-  object btnPasteScript: TButton
-    Left = 16
-    Height = 25
-    Top = 11
-    Width = 287
-    Caption = 'Copy SQL Script to Retrieve Version'
-    OnClick = btnPasteScriptClick
-    TabOrder = 8
-  end
   object srvButton: TButton
     Left = 307
     Height = 25
-    Top = 240
+    Top = 272
     Width = 85
     Caption = 'Server...'
     OnClick = srvButtonClick
-    TabOrder = 9
+    TabOrder = 8
   end
   object cbDbType: TComboBox
     Left = 120
     Height = 23
     Top = 40
     Width = 272
+    Enabled = False
     ItemHeight = 15
+    ItemIndex = 3
     Items.Strings = (
       'Oracle'
       'PostgreSQL'
@@ -167,7 +159,8 @@ object DeltaForm: TDeltaForm
       'Other'
     )
     Style = csDropDownList
-    TabOrder = 10
+    TabOrder = 9
+    Text = 'MS SQL Server'
   end
   object lblDatabaseName: TLabel
     Left = 16
@@ -191,7 +184,7 @@ object DeltaForm: TDeltaForm
     Top = 72
     Width = 240
     Enabled = False
-    TabOrder = 11
+    TabOrder = 10
   end
   object btnGetVersion: TButton
     Left = 208
@@ -199,6 +192,14 @@ object DeltaForm: TDeltaForm
     Top = 144
     Width = 48
     Caption = 'Get'
+    TabOrder = 11
+  end
+  object btnReviewSyncScript: TButton
+    Left = 120
+    Height = 25
+    Top = 240
+    Width = 272
+    Caption = 'Review Sync Script...'
     TabOrder = 12
   end
 end

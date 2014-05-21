@@ -1,7 +1,7 @@
 object SettingsForm: TSettingsForm
-  Left = 678
+  Left = 1043
   Height = 274
-  Top = 88
+  Top = 89
   Width = 463
   Caption = 'Settings'
   ClientHeight = 274
@@ -75,9 +75,9 @@ object SettingsForm: TSettingsForm
     Top = 144
     Width = 205
     Caption = 'Copy generated script to Clipboard'
-    Checked = True
-    State = cbChecked
+    Enabled = False
     TabOrder = 4
+    Visible = False
   end
   object edtEditor: TLabeledEdit
     Left = 16
