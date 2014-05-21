@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <LRSInOutputDirectory Value="False"/>
+      </Flags>
+      <MainUnit Value="0"/>
+      <Title Value="deltaclient"/>
+      <UseXPManifest Value="True"/>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <VersionInfo>
+      <Language Value=""/>
+      <CharSet Value=""/>
+    </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPackages>
+    <Units Count="17">
+      <Unit0>
+        <Filename Value="deltaclient.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="deltaclient"/>
+        <EditorIndex Value="9"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="5"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="deltaclientunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DeltaForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="deltaclientunit"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="114"/>
+        <CursorPos X="43" Y="123"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="configurations.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="configurations"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="48" Y="23"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\lib\own\misc\downloadutils.pas"/>
+        <UnitName Value="downloadutils"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="26" Y="101"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\lib\own\misc\loggers.pas"/>
+        <UnitName Value="loggers"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="71" Y="13"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="datastructure.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="datastructure"/>
+        <EditorIndex Value="8"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="97"/>
+        <CursorPos X="34" Y="132"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\bin\projects.conf"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="11"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="..\bin\branches.conf"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="11"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="deltaclientunit.lfm"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="16"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\..\gpu_freedom\src\client\lib\own\coreservices\receivechannelservices.pas"/>
+        <UnitName Value="receivechannelservices"/>
+        <TopLine Value="1"/>
+        <CursorPos X="27" Y="45"/>
+        <UsageCount Value="16"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="deltautils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="deltautils"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="34" Y="38"/>
+        <UsageCount Value="33"/>
+        <Loaded Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\bin\projectversion.properties"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="12"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\lib\own\misc\utils.pas"/>
+        <UnitName Value="utils"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="D:\lazarus\fpc\2.2.2\source\rtl\objpas\sysutils\osutilsh.inc"/>
+        <TopLine Value="9"/>
+        <CursorPos X="10" Y="28"/>
+        <UsageCount Value="13"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="settingsunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SettingsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="settingsunit"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="23" Y="95"/>
+        <UsageCount Value="28"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\..\gpu_solar\src\mainapp\gpu_main_form.pas"/>
+        <UnitName Value="gpu_main_form"/>
+        <TopLine Value="1293"/>
+        <CursorPos X="46" Y="1312"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="D:\lazarus\fpc\2.2.2\source\packages\fcl-process\src\process.pp"/>
+        <UnitName Value="process"/>
+        <TopLine Value="20"/>
+        <CursorPos X="3" Y="39"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="3" Column="6" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="39" Column="25" TopLine="20"/>
+      </Position2>
+      <Position3>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="197" Column="1" TopLine="176"/>
+      </Position3>
+      <Position4>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="11" Column="48" TopLine="1"/>
+      </Position4>
+      <Position5>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="235" Column="53" TopLine="209"/>
+      </Position5>
+      <Position6>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="229" Column="29" TopLine="211"/>
+      </Position6>
+      <Position7>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="236" Column="71" TopLine="212"/>
+      </Position7>
+      <Position8>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="238" Column="57" TopLine="213"/>
+      </Position8>
+      <Position9>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="198" Column="30" TopLine="185"/>
+      </Position9>
+      <Position10>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="21" Column="58" TopLine="1"/>
+      </Position10>
+      <Position11>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="55" Column="3" TopLine="53"/>
+      </Position11>
+      <Position12>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="26" Column="15" TopLine="25"/>
+      </Position12>
+      <Position13>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="58" Column="20" TopLine="54"/>
+      </Position13>
+      <Position14>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="56" Column="7" TopLine="37"/>
+      </Position14>
+      <Position15>
+        <Filename Value="deltaclient.lpr"/>
+        <Caret Line="20" Column="55" TopLine="1"/>
+      </Position15>
+      <Position16>
+        <Filename Value="deltaclient.lpr"/>
+        <Caret Line="22" Column="1" TopLine="1"/>
+      </Position16>
+      <Position17>
+        <Filename Value="configurations.pas"/>
+        <Caret Line="56" Column="51" TopLine="1"/>
+      </Position17>
+      <Position18>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="260" Column="100" TopLine="134"/>
+      </Position18>
+      <Position19>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="9" Column="30" TopLine="1"/>
+      </Position19>
+      <Position20>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="278" Column="92" TopLine="262"/>
+      </Position20>
+      <Position21>
+        <Filename Value="deltaclient.lpr"/>
+        <Caret Line="22" Column="1" TopLine="1"/>
+      </Position21>
+      <Position22>
+        <Filename Value="..\lib\own\misc\downloadutils.pas"/>
+        <Caret Line="90" Column="1" TopLine="72"/>
+      </Position22>
+      <Position23>
+        <Filename Value="..\lib\own\misc\downloadutils.pas"/>
+        <Caret Line="119" Column="27" TopLine="86"/>
+      </Position23>
+      <Position24>
+        <Filename Value="deltaclient.lpr"/>
+        <Caret Line="23" Column="136" TopLine="1"/>
+      </Position24>
+      <Position25>
+        <Filename Value="datastructure.pas"/>
+        <Caret Line="126" Column="93" TopLine="102"/>
+      </Position25>
+      <Position26>
+        <Filename Value="datastructure.pas"/>
+        <Caret Line="132" Column="34" TopLine="100"/>
+      </Position26>
+      <Position27>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="158" Column="3" TopLine="1"/>
+      </Position27>
+      <Position28>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="159" Column="3" TopLine="111"/>
+      </Position28>
+      <Position29>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="160" Column="3" TopLine="112"/>
+      </Position29>
+      <Position30>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="122" Column="43" TopLine="113"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="..\lib\own\misc;..\lib\ext\synapse\src\lib"/>
+      <UnitOutputDirectory Value="..\bin"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <CStyleOperator Value="False"/>
+        <UseAnsiStrings Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <SmallerCode Value="True"/>
+      <Optimizations>
+        <OptimizationLevel Value="2"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <GenerateDebugInfo Value="False"/>
+        <UseLineInfoUnit Value="False"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

@@ -1,0 +1,204 @@
+object DeltaForm: TDeltaForm
+  Left = 198
+  Height = 280
+  Top = 132
+  Width = 407
+  ActiveControl = btnPasteScript
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'deltaclient for Microsoft SQL Server'
+  ClientHeight = 280
+  ClientWidth = 407
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.0.2.0'
+  object lblProject: TLabel
+    Left = 16
+    Height = 16
+    Top = 119
+    Width = 41
+    Caption = 'Project:'
+    ParentColor = False
+  end
+  object lblVersion: TLabel
+    Left = 16
+    Height = 16
+    Top = 151
+    Width = 43
+    Caption = 'Version:'
+    ParentColor = False
+  end
+  object lblFrom: TLabel
+    Left = 16
+    Height = 16
+    Top = 183
+    Width = 32
+    Caption = 'From:'
+    ParentColor = False
+  end
+  object lblTo: TLabel
+    Left = 16
+    Height = 16
+    Top = 215
+    Width = 18
+    Caption = 'To:'
+    ParentColor = False
+  end
+  object lblDbType: TLabel
+    Left = 16
+    Height = 16
+    Top = 47
+    Width = 78
+    Caption = 'Database type:'
+    ParentColor = False
+  end
+  object btnSettings: TButton
+    Left = 307
+    Height = 25
+    Top = 11
+    Width = 85
+    Caption = 'Settings...'
+    OnClick = btnSettingsClick
+    TabOrder = 0
+  end
+  object btnGenerateScript: TButton
+    Left = 16
+    Height = 25
+    Top = 240
+    Width = 287
+    Caption = 'Generate Synchronization Script ...'
+    Enabled = False
+    OnClick = btnGenerateScriptClick
+    TabOrder = 1
+  end
+  object cbProject: TComboBox
+    Left = 120
+    Height = 23
+    Top = 112
+    Width = 272
+    Enabled = False
+    ItemHeight = 15
+    OnChange = cbProjectChange
+    Style = csDropDownList
+    TabOrder = 2
+  end
+  object edtVersion: TEdit
+    Left = 120
+    Height = 23
+    Top = 144
+    Width = 80
+    Enabled = False
+    TabOrder = 3
+  end
+  object cbFromBranch: TComboBox
+    Left = 120
+    Height = 23
+    Top = 176
+    Width = 272
+    Enabled = False
+    ItemHeight = 15
+    OnChange = cbFromChange
+    Style = csDropDownList
+    TabOrder = 4
+  end
+  object cbToBranch: TComboBox
+    Left = 120
+    Height = 23
+    Top = 208
+    Width = 272
+    Enabled = False
+    ItemHeight = 15
+    Style = csDropDownList
+    TabOrder = 5
+  end
+  object cbBranches: TCheckBox
+    Left = 264
+    Height = 19
+    Top = 144
+    Width = 68
+    Caption = 'Branches'
+    Checked = True
+    OnChange = cbBranchesOnChange
+    State = cbChecked
+    TabOrder = 6
+  end
+  object cbTags: TCheckBox
+    Left = 344
+    Height = 19
+    Top = 144
+    Width = 45
+    Caption = 'Tags'
+    Checked = True
+    OnChange = cbTagOnChange
+    State = cbChecked
+    TabOrder = 7
+  end
+  object btnPasteScript: TButton
+    Left = 16
+    Height = 25
+    Top = 11
+    Width = 287
+    Caption = 'Copy SQL Script to Retrieve Version'
+    OnClick = btnPasteScriptClick
+    TabOrder = 8
+  end
+  object srvButton: TButton
+    Left = 307
+    Height = 25
+    Top = 240
+    Width = 85
+    Caption = 'Server...'
+    OnClick = srvButtonClick
+    TabOrder = 9
+  end
+  object cbDbType: TComboBox
+    Left = 120
+    Height = 23
+    Top = 40
+    Width = 272
+    ItemHeight = 15
+    Items.Strings = (
+      'Oracle'
+      'PostgreSQL'
+      'mySQL'
+      'MS SQL Server'
+      'Sybase'
+      'sqlite'
+      'Other'
+    )
+    Style = csDropDownList
+    TabOrder = 10
+  end
+  object lblDatabaseName: TLabel
+    Left = 16
+    Height = 16
+    Top = 79
+    Width = 85
+    Caption = 'Database name:'
+    ParentColor = False
+  end
+  object lblUSE: TLabel
+    Left = 120
+    Height = 16
+    Top = 79
+    Width = 21
+    Caption = 'USE'
+    ParentColor = False
+  end
+  object edtVersion1: TEdit
+    Left = 152
+    Height = 23
+    Top = 72
+    Width = 240
+    Enabled = False
+    TabOrder = 11
+  end
+  object btnGetVersion: TButton
+    Left = 208
+    Height = 25
+    Top = 144
+    Width = 48
+    Caption = 'Get'
+    TabOrder = 12
+  end
+end
