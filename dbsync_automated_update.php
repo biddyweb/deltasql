@@ -12,6 +12,7 @@ if (isset($_GET['client'])) $updateclient = $_GET['client']; else $updateclient=
 if (isset($_GET['htmlformatted'])) $htmlformatted = $_GET['htmlformatted']; else $htmlformatted=0;
 if (isset($_GET['xmlformatted'])) $xmlformatted = $_GET['xmlformatted']; else $xmlformatted=0;
 if (isset($_GET['dbtype'])) $dbtype = $_GET['dbtype']; else $dbtype="Other";
+if (isset($_GET['singlefiles'])) $singlefiles=$_GET['singlefiles']; else $singlefiles=0;
 
 // XML formatted is stronger than html formatted. Both are not allowed
 if ($xmlformatted==1) $htmlformatted=0;
@@ -43,6 +44,6 @@ if ($tobranchid=="") errormessage(3, "The target branch was not found ($tobranch
 
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted, 0 /*excludeviews*/, 0 /*exclude packages*/, 
-             $updateuser, $updateclient, /*$comment*/ "", /*$schemaname*/ "", $dbtype, $xmlformatted, /*singlefiles*/ 0, /*debug*/ 0);
+             $updateuser, $updateclient, /*$comment*/ "", /*$schemaname*/ "", $dbtype, $xmlformatted, $singlefiles, /*debug*/ 0);
 
 ?>

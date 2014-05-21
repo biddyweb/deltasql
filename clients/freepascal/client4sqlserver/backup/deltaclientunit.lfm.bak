@@ -1,7 +1,7 @@
 object DeltaForm: TDeltaForm
-  Left = 198
+  Left = 901
   Height = 311
-  Top = 132
+  Top = 71
   Width = 407
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
