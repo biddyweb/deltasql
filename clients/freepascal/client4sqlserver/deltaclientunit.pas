@@ -37,6 +37,7 @@ type
     lblProject: TLabel;
     procedure btnGenerateScriptClick(Sender: TObject);
     procedure btnPasteScriptClick(Sender: TObject);
+    procedure btnReviewSyncScriptClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure cbBranchesOnChange(Sender: TObject);
     procedure cbFromChange(Sender: TObject);
@@ -53,6 +54,7 @@ type
     BrowserParams_: string;
     unzipper_ : TUnzipper;
 
+    function doChecksBeforeSync() : Boolean;
     procedure reloadProjectsAndBranchesFromServer();
     procedure reloadFromAndToBranch();
     procedure reloadToBranch();
@@ -176,25 +178,74 @@ begin
   Clipboard.AsText := 'select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);';
 end;
 
-procedure TDeltaForm.btnGenerateScriptClick(Sender: TObject);
+function TDeltaForm.DoChecksBeforeSync : Boolean;
+begin
+ Result := false;
+ // algorithm explanation at http://www.deltasql.org/deltasql/manual.php#write-client
+ if (cbProject.Text='') then
+      begin
+         ShowMessage('Please define a project name before hitting the button!');
+         Exit;
+      end;
+
+ if (cbFromBranch.Text='') or (cbToBranch.Text='') then
+       begin
+         ShowMessage('Please set both From: and To: fields before hitting the button!');
+         Exit;
+       end;
+ Result := true;
+end;
+
+procedure TDeltaForm.btnReviewSyncScriptClick(Sender: TObject);
 var param1, param2 : String;
     ok             : Boolean;
     versionServer,
     versionSchema  : Longint;
     aProcess       : TProcess;
 begin
-  // algorithm explanation at http://www.deltasql.org/deltasql/manual.php#write-client
-  if (cbProject.Text='') then
-       begin
-          ShowMessage('Please define a project name before hitting the button!');
-          Exit;
-       end;
+ if not doChecksBeforeSync then Exit;
 
-  if (cbFromBranch.Text='') or (cbToBranch.Text='') then
-        begin
-          ShowMessage('Please set both From: and To: fields before hitting the button!');
-          Exit;
-        end;
+ param1 := '?project='+encodeURL(cbProject.Text)+'&seed='+IntToStr(Trunc(Random*1000));
+ ok := downloadToFile(conf.url+'/dbsync_automated_currentversion.php'+param1, appPath_, 'projectversion.properties', conf.proxy, conf.port, 'deltaclient> ', logger_);
+ if ok then
+    begin
+      versionServer := retrieveProjectVersionFromFile(appPath_+'projectversion.properties');
+      versionSchema := StrToIntDef(edtVersion.Text, 0);
+      if versionSchema>=versionServer then
+         begin
+            ShowMessage('No need to update this schema as version on server is '+IntToStr(versionServer)+'.');
+            Exit;
+         end;
+      param2 := '?project='+encodeUrl(cbProject.Text)+'&version='+encodeUrl(edtVersion.Text)+'&frombranch='+encodeUrl(cbFromBranch.Text)+'&tobranch='+cbToBranch.Text;
+      param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user)+'&dbtype='+encodeUrl(cbDbType.Text)+'&use='+encodeUrl(Trim(edtUseClause.Text));
+      param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
+      ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'script.txt', conf.proxy, conf.port, 'deltaclient> ', logger_);
+      if ok then
+         begin
+           convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
+           DeleteFile(appPath_+PathDelim+'script.txt');
+           if conf.copyScriptToClipboard then copyTextFileToClipboard(appPath_+PathDelim+'script.sql');
+
+           AProcess := TProcess.Create(nil);
+           try
+              AProcess.CommandLine := '"'+conf.editor+'" "'+appPath_+PathDelim+'script.sql'+'"';
+              AProcess.Options := AProcess.Options - [poWaitOnExit];
+              AProcess.Execute;
+           finally
+              AProcess.Free;
+           end;
+         end;
+    end;
+ if not ok then ShowMessage('Error when retrieving script from deltasql server! Please check settings and log.txt');
+end;
+
+procedure TDeltaForm.btnGenerateScriptClick(Sender: TObject);
+var param1, param2 : String;
+    ok             : Boolean;
+    versionServer,
+    versionSchema  : Longint;
+begin
+  if not doChecksBeforeSync then Exit;
 
   param1 := '?project='+encodeURL(cbProject.Text)+'&seed='+IntToStr(Trunc(Random*1000));
   ok := downloadToFile(conf.url+'/dbsync_automated_currentversion.php'+param1, appPath_, 'projectversion.properties', conf.proxy, conf.port, 'deltaclient> ', logger_);
@@ -231,8 +282,6 @@ begin
                      end;
                   end;
                   UnZipper_.Free;
-
-
                 end;
           end;
      end;

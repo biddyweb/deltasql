@@ -1,7 +1,7 @@
 object DeltaForm: TDeltaForm
-  Left = 153
+  Left = 676
   Height = 311
-  Top = 222
+  Top = 339
   Width = 407
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -200,6 +200,7 @@ object DeltaForm: TDeltaForm
     Top = 240
     Width = 272
     Caption = 'Review Sync Script...'
+    OnClick = btnReviewSyncScriptClick
     TabOrder = 12
   end
 end
