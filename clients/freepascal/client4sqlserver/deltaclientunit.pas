@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, configurations, downloadutils, loggers, datastructure, Clipbrd,
-  synacode, deltautils, settingsunit, Process, LazHelpHTML;
+  synacode, deltautils, settingsunit, Process, LazHelpHTML, zipper;
 
 type
 
@@ -50,6 +50,7 @@ type
     logger_  : TLogger;
     BrowserPath_,
     BrowserParams_: string;
+    unzipper_ : TUnzipper;
 
     procedure reloadProjectsAndBranchesFromServer();
     procedure reloadFromAndToBranch();
@@ -202,20 +203,20 @@ begin
              ok := downloadToFile(conf.url+'/output/scripts.zip', appPath_, 'scripts.zip', conf.proxy, conf.port, 'deltaclient> ', logger_);
              if ok then ShowMessage('Scripts downloaded succesfully') else ShowMessage('Error');
 
-            {
-            convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
-            DeleteFile(appPath_+PathDelim+'script.txt');
-            if conf.copyScriptToClipboard then copyTextFileToClipboard(appPath_+PathDelim+'script.sql');
-
-            AProcess := TProcess.Create(nil);
+            UnZipper_ := TUnZipper.Create;
             try
-               AProcess.CommandLine := '"'+conf.editor+'" "'+appPath_+PathDelim+'script.sql'+'"';
-               AProcess.Options := AProcess.Options - [poWaitOnExit];
-               AProcess.Execute;
-            finally
-               AProcess.Free;
-            end;
-            }
+               UnZipper_.FileName := appPath_+'scripts.zip';
+               UnZipper_.OutputPath := appPath_;
+               UnZipper_.Examine;
+               UnZipper_.UnZipAllFiles;
+           except
+             On e: exception  do
+              begin
+                 ShowMessage('Error unzipping file with scripts '+e.Message);
+              end;
+           end;
+           UnZipper_.Free;
+
           end;
      end;
   if not ok then ShowMessage('Error when retrieving script from deltasql server! Please check settings and log.txt');
