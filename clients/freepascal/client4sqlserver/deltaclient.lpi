@@ -45,7 +45,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="5"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="50"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit0>
@@ -60,8 +60,8 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="196"/>
-        <CursorPos X="51" Y="192"/>
-        <UsageCount Value="47"/>
+        <CursorPos X="87" Y="203"/>
+        <UsageCount Value="50"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -73,7 +73,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="48" Y="23"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="50"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -81,9 +81,9 @@
         <UnitName Value="downloadutils"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="26" Y="101"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="55"/>
+        <CursorPos X="10" Y="14"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -92,8 +92,8 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="71" Y="13"/>
-        <UsageCount Value="22"/>
+        <CursorPos X="59" Y="1"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -102,9 +102,9 @@
         <UnitName Value="datastructure"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="97"/>
+        <TopLine Value="96"/>
         <CursorPos X="34" Y="132"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="50"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
@@ -127,7 +127,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="16"/>
+        <UsageCount Value="17"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit8>
@@ -146,7 +146,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="34" Y="38"/>
-        <UsageCount Value="33"/>
+        <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -163,7 +163,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -183,7 +183,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="23" Y="95"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -205,103 +205,103 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="235" Column="53" TopLine="209"/>
+        <Caret Line="236" Column="71" TopLine="212"/>
       </Position1>
       <Position2>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="229" Column="29" TopLine="211"/>
+        <Caret Line="238" Column="57" TopLine="213"/>
       </Position2>
       <Position3>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="236" Column="71" TopLine="212"/>
+        <Caret Line="198" Column="30" TopLine="185"/>
       </Position3>
       <Position4>
-        <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="238" Column="57" TopLine="213"/>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="21" Column="58" TopLine="1"/>
       </Position4>
       <Position5>
-        <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="198" Column="30" TopLine="185"/>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="55" Column="3" TopLine="53"/>
       </Position5>
       <Position6>
         <Filename Value="settingsunit.pas"/>
-        <Caret Line="21" Column="58" TopLine="1"/>
+        <Caret Line="26" Column="15" TopLine="25"/>
       </Position6>
       <Position7>
         <Filename Value="settingsunit.pas"/>
-        <Caret Line="55" Column="3" TopLine="53"/>
+        <Caret Line="58" Column="20" TopLine="54"/>
       </Position7>
       <Position8>
         <Filename Value="settingsunit.pas"/>
-        <Caret Line="26" Column="15" TopLine="25"/>
+        <Caret Line="56" Column="7" TopLine="37"/>
       </Position8>
       <Position9>
-        <Filename Value="settingsunit.pas"/>
-        <Caret Line="58" Column="20" TopLine="54"/>
-      </Position9>
-      <Position10>
-        <Filename Value="settingsunit.pas"/>
-        <Caret Line="56" Column="7" TopLine="37"/>
-      </Position10>
-      <Position11>
         <Filename Value="deltaclient.lpr"/>
         <Caret Line="20" Column="55" TopLine="1"/>
-      </Position11>
-      <Position12>
+      </Position9>
+      <Position10>
         <Filename Value="deltaclient.lpr"/>
         <Caret Line="22" Column="1" TopLine="1"/>
-      </Position12>
-      <Position13>
+      </Position10>
+      <Position11>
         <Filename Value="configurations.pas"/>
         <Caret Line="56" Column="51" TopLine="1"/>
+      </Position11>
+      <Position12>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="260" Column="100" TopLine="134"/>
+      </Position12>
+      <Position13>
+        <Filename Value="settingsunit.pas"/>
+        <Caret Line="9" Column="30" TopLine="1"/>
       </Position13>
       <Position14>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="260" Column="100" TopLine="134"/>
+        <Caret Line="278" Column="92" TopLine="262"/>
       </Position14>
       <Position15>
-        <Filename Value="settingsunit.pas"/>
-        <Caret Line="9" Column="30" TopLine="1"/>
-      </Position15>
-      <Position16>
-        <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="278" Column="92" TopLine="262"/>
-      </Position16>
-      <Position17>
         <Filename Value="deltaclient.lpr"/>
         <Caret Line="22" Column="1" TopLine="1"/>
-      </Position17>
-      <Position18>
+      </Position15>
+      <Position16>
         <Filename Value="..\lib\own\misc\downloadutils.pas"/>
         <Caret Line="90" Column="1" TopLine="72"/>
-      </Position18>
-      <Position19>
+      </Position16>
+      <Position17>
         <Filename Value="..\lib\own\misc\downloadutils.pas"/>
         <Caret Line="119" Column="27" TopLine="86"/>
-      </Position19>
-      <Position20>
+      </Position17>
+      <Position18>
         <Filename Value="deltaclient.lpr"/>
         <Caret Line="23" Column="136" TopLine="1"/>
-      </Position20>
-      <Position21>
+      </Position18>
+      <Position19>
         <Filename Value="datastructure.pas"/>
         <Caret Line="126" Column="93" TopLine="102"/>
-      </Position21>
-      <Position22>
+      </Position19>
+      <Position20>
         <Filename Value="datastructure.pas"/>
         <Caret Line="132" Column="34" TopLine="100"/>
+      </Position20>
+      <Position21>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="158" Column="3" TopLine="1"/>
+      </Position21>
+      <Position22>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="159" Column="3" TopLine="111"/>
       </Position22>
       <Position23>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="158" Column="3" TopLine="1"/>
+        <Caret Line="160" Column="3" TopLine="112"/>
       </Position23>
       <Position24>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="159" Column="3" TopLine="111"/>
+        <Caret Line="122" Column="43" TopLine="113"/>
       </Position24>
       <Position25>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="160" Column="3" TopLine="112"/>
+        <Caret Line="123" Column="43" TopLine="114"/>
       </Position25>
       <Position26>
         <Filename Value="deltaclientunit.pas"/>
@@ -313,15 +313,15 @@
       </Position27>
       <Position28>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="122" Column="43" TopLine="113"/>
+        <Caret Line="200" Column="33" TopLine="196"/>
       </Position28>
       <Position29>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="123" Column="43" TopLine="114"/>
+        <Caret Line="201" Column="21" TopLine="189"/>
       </Position29>
       <Position30>
         <Filename Value="deltaclientunit.pas"/>
-        <Caret Line="200" Column="33" TopLine="196"/>
+        <Caret Line="203" Column="87" TopLine="192"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -363,15 +363,6 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="1">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="deltaclientunit.pas"/>
-        <Line Value="186"/>
-      </Item1>
-    </BreakPoints>
     <Exceptions Count="3">
       <Item1>
         <Name Value="EAbort"/>

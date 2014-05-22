@@ -196,9 +196,12 @@ begin
        param2 := '?project='+encodeUrl(cbProject.Text)+'&version='+encodeUrl(edtVersion.Text)+'&frombranch='+encodeUrl(cbFromBranch.Text)+'&tobranch='+cbToBranch.Text;
        param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user)+'&dbtype='+encodeUrl(cbDbType.Text)+'&singlefiles=1';
        param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
-       ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'scripts.zip', conf.proxy, conf.port, 'deltaclient> ', logger_);
+       ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'scripts.html', conf.proxy, conf.port, 'deltaclient> ', logger_);
        if ok then
           begin
+             ok := downloadToFile(conf.url+'/output/scripts.zip', appPath_, 'scripts.zip', conf.proxy, conf.port, 'deltaclient> ', logger_);
+             if ok then ShowMessage('Scripts downloaded succesfully') else ShowMessage('Error');
+
             {
             convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
             DeleteFile(appPath_+PathDelim+'script.txt');
