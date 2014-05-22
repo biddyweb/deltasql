@@ -204,7 +204,7 @@ begin
              if ok then
                 begin
                   ShowMessage(appPath_+'output');
-                  DeleteFolder(self.Handle, appPath_+'output')
+                  DeleteFolder(self.Handle, appPath_+'output');
                   UnZipper_ := TUnZipper.Create;
                   try
                       UnZipper_.FileName := appPath_+'scripts.zip';

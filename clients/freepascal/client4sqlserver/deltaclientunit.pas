@@ -99,11 +99,13 @@ begin
          idx := cbToBranch.Items.IndexOf(conf.defaultTo);
          cbToBranch.ItemIndex := idx;
        end;
+  { // disabled, the default for this client is always MS SQL server
   if conf.dbType<>'' then
       begin
          idx := cbDbType.Items.IndexOf(conf.dbType);
          cbDbType.ItemIndex := idx;
       end;
+  }
  try
     v:=THTMLBrowserHelpViewer.Create(nil);
     v.FindDefaultBrowser(BrowserPath_,BrowserParams_);
