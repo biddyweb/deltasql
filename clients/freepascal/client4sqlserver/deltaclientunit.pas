@@ -107,6 +107,11 @@ begin
          cbDbType.ItemIndex := idx;
       end;
   }
+  // added for MS SQL server
+  if conf.useclause<>'' Then
+      begin
+        edtUseClause.Text := conf.useclause;
+      end;
  try
     v:=THTMLBrowserHelpViewer.Create(nil);
     v.FindDefaultBrowser(BrowserPath_,BrowserParams_);
@@ -246,6 +251,7 @@ begin
   conf.defaultFrom := cbFromBranch.Text;
   conf.defaultTo:=cbToBranch.Text;
   conf.dbType:=cbDbType.Text;
+  conf.useclause:=edtUseClause.Text;
   conf.saveToIniFile();
 
   projC.Free;

@@ -70,6 +70,7 @@ begin
   defaultFrom    := ini_.ReadString('Default', 'From', '');
   defaultTo      := ini_.ReadString('Default', 'To', '');
   dbType         := ini_.ReadString('Default', 'dbType', 'Other');
+  useclause      := ini_.ReadString('Default', 'useclause', '');
 end;
 
 procedure TConfiguration.saveToIniFile();
@@ -88,6 +89,7 @@ begin
   ini_.WriteString('Default', 'From', defaultFrom);
   ini_.WriteString('Default', 'To', defaultTo);
   ini_.WriteString('Default', 'dbType', dbType);
+  ini_.WriteString('Default', 'useclause', useclause);
 end;
 
 end.
