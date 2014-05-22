@@ -17,7 +17,7 @@ function printXmlScript($script, $comment, $module, $versionnr, $type, $date) {
     echo "  </script>\n";
 }
 
-function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult, $disable_sql_highlighting) {
+function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult, $disable_sql_highlighting, $useclause /* for MS SQL server */) {
  if ($htmlformatted) {
         include_once('geshi/geshi.php');
  }    
@@ -38,7 +38,11 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$
   $script=mysql_result($result,$i,"code");
   $isapackage=mysql_result($result,$i,"isapackage");
   $isaview=mysql_result($result,$i,"isaview");
-	
+  
+  if ($useclause!="") {
+	$script = "USE ". $useclause . "\n" . $script;
+  }  
+  
   // echo the script
   $query2="SELECT * from tbmodule where id=$moduleid"; 
   $result2=mysql_query($query2);   
