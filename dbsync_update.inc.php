@@ -59,7 +59,7 @@ function generateSyncPath($sessionid, $frombranchid, $fromversionnr, $frombranch
 
 function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $htmlformatted,
          $excludeviews, $excludepackages, $updateuser, $updatetype, $commitcomment, $schemaname, $dbtype,
-         $xmlformatted, $singlefiles, $debug) {
+         $xmlformatted, $singlefiles, $debug, $useclause) {
 
 include("conf/config.inc.php");	 
 $startwatch = start_watch();

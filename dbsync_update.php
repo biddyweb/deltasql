@@ -49,7 +49,7 @@ if ($htmlformatted) {
 include("dbsync_update.inc.php");
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 
-             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug);
+             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug, '' /* $use clause for MS SQL server*/);
 
 $_SESSION['dbsync_projectid']   = $projectid;
 			 
