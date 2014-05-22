@@ -20,7 +20,7 @@ type
     btnGetVersion: TButton;
     btnReviewSyncScript: TButton;
     cbDbType: TComboBox;
-    edtVersion1: TEdit;
+    edtUseClause: TEdit;
     lblUSE: TLabel;
     lblDbType: TLabel;
     lblDatabaseName: TLabel;
@@ -42,6 +42,7 @@ type
     procedure cbFromChange(Sender: TObject);
     procedure cbProjectChange(Sender: TObject);
     procedure cbTagOnChange(Sender: TObject);
+    procedure edtUseClauseChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure srvButtonClick(Sender: TObject);
@@ -149,6 +150,11 @@ begin
  reloadFromAndToBranch;
 end;
 
+procedure TDeltaForm.edtUseClauseChange(Sender: TObject);
+begin
+
+end;
+
 procedure TDeltaForm.cbFromChange(Sender: TObject);
 
 begin
@@ -197,7 +203,7 @@ begin
              Exit;
           end;
        param2 := '?project='+encodeUrl(cbProject.Text)+'&version='+encodeUrl(edtVersion.Text)+'&frombranch='+encodeUrl(cbFromBranch.Text)+'&tobranch='+cbToBranch.Text;
-       param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user)+'&dbtype='+encodeUrl(cbDbType.Text)+'&singlefiles=1';
+       param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user)+'&dbtype='+encodeUrl(cbDbType.Text)+'&singlefiles=1&use='+encodeUrl(Trim(edtUseClause.Text));
        param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
        ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'scripts.html', conf.proxy, conf.port, 'deltaclient> ', logger_);
        if ok then

@@ -18,7 +18,8 @@ type TConfiguration = class(TObject)
       defaultProject,
       defaultFrom,
       defaultTo,
-      dbType : String;
+      dbType,
+      useclause : String;
 
       showHidden,
       copyScriptToClipboard : Boolean;

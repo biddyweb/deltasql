@@ -8,3 +8,6 @@ del *.sql
 del *.properties
 del *.res
 del *.or
+del *.html
+del *.zip
+del script.txt

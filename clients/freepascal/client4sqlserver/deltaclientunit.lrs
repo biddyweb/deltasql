@@ -1,8 +1,8 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TDeltaForm','FORMDATA',[
-  'TPF0'#10'TDeltaForm'#9'DeltaForm'#4'Left'#3#127#1#6'Height'#3'7'#1#3'Top'#3
-  +#221#0#5'Width'#3#151#1#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0
+  'TPF0'#10'TDeltaForm'#9'DeltaForm'#4'Left'#3#153#0#6'Height'#3'7'#1#3'Top'#3
+  +#222#0#5'Width'#3#151#1#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0
   +#11'BorderStyle'#7#8'bsSingle'#7'Caption'#6'$deltaclient for Microsoft SQL S'
   +'erver'#12'ClientHeight'#3'7'#1#11'ClientWidth'#3#151#1#8'OnCreate'#7#10'For'
   +'mCreate'#9'OnDestroy'#7#11'FormDestroy'#10'LCLVersion'#6#7'1.0.2.0'#0#6'TLa'
@@ -43,10 +43,10 @@ LazarusResources.Add('TDeltaForm','FORMDATA',[
   +'el'#15'lblDatabaseName'#4'Left'#2#16#6'Height'#2#16#3'Top'#2'O'#5'Width'#2
   +'U'#7'Caption'#6#14'Database name:'#11'ParentColor'#8#0#0#6'TLabel'#6'lblUSE'
   +#4'Left'#2'x'#6'Height'#2#16#3'Top'#2'O'#5'Width'#2#21#7'Caption'#6#3'USE'#11
-  +'ParentColor'#8#0#0#5'TEdit'#11'edtVersion1'#4'Left'#3#152#0#6'Height'#2#23#3
-  +'Top'#2'H'#5'Width'#3#240#0#7'Enabled'#8#8'TabOrder'#2#10#0#0#7'TButton'#13
-  +'btnGetVersion'#4'Left'#3#208#0#6'Height'#2#25#3'Top'#3#144#0#5'Width'#2'0'#7
-  +'Caption'#6#3'Get'#8'TabOrder'#2#11#0#0#7'TButton'#19'btnReviewSyncScript'#4
-  +'Left'#2'x'#6'Height'#2#25#3'Top'#3#240#0#5'Width'#3#16#1#7'Caption'#6#21'Re'
-  +'view Sync Script...'#8'TabOrder'#2#12#0#0#0
+  +'ParentColor'#8#0#0#5'TEdit'#12'edtUseClause'#4'Left'#3#152#0#6'Height'#2#23
+  +#3'Top'#2'H'#5'Width'#3#240#0#8'OnChange'#7#18'edtUseClauseChange'#8'TabOrde'
+  +'r'#2#10#0#0#7'TButton'#13'btnGetVersion'#4'Left'#3#208#0#6'Height'#2#25#3'T'
+  +'op'#3#144#0#5'Width'#2'0'#7'Caption'#6#3'Get'#8'TabOrder'#2#11#0#0#7'TButto'
+  +'n'#19'btnReviewSyncScript'#4'Left'#2'x'#6'Height'#2#25#3'Top'#3#240#0#5'Wid'
+  +'th'#3#16#1#7'Caption'#6#21'Review Sync Script...'#8'TabOrder'#2#12#0#0#0
 ]);

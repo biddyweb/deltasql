@@ -1,7 +1,7 @@
 object DeltaForm: TDeltaForm
-  Left = 383
+  Left = 153
   Height = 311
-  Top = 221
+  Top = 222
   Width = 407
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -178,12 +178,12 @@ object DeltaForm: TDeltaForm
     Caption = 'USE'
     ParentColor = False
   end
-  object edtVersion1: TEdit
+  object edtUseClause: TEdit
     Left = 152
     Height = 23
     Top = 72
     Width = 240
-    Enabled = False
+    OnChange = edtUseClauseChange
     TabOrder = 10
   end
   object btnGetVersion: TButton
