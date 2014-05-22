@@ -201,22 +201,26 @@ begin
        if ok then
           begin
              ok := downloadToFile(conf.url+'/output/scripts.zip', appPath_, 'scripts.zip', conf.proxy, conf.port, 'deltaclient> ', logger_);
-             if ok then ShowMessage('Scripts downloaded succesfully') else ShowMessage('Error');
+             if ok then
+                begin
+                  ShowMessage(appPath_+'output');
+                  DeleteFolder(self.Handle, appPath_+'output');
+                  UnZipper_ := TUnZipper.Create;
+                  try
+                      UnZipper_.FileName := appPath_+'scripts.zip';
+                      UnZipper_.OutputPath := appPath_;
+                      UnZipper_.Examine;
+                      UnZipper_.UnZipAllFiles;
+                  except
+                  On e: exception  do
+                     begin
+                       ShowMessage('Error unzipping file with scripts '+e.Message);
+                     end;
+                  end;
+                  UnZipper_.Free;
 
-            UnZipper_ := TUnZipper.Create;
-            try
-               UnZipper_.FileName := appPath_+'scripts.zip';
-               UnZipper_.OutputPath := appPath_;
-               UnZipper_.Examine;
-               UnZipper_.UnZipAllFiles;
-           except
-             On e: exception  do
-              begin
-                 ShowMessage('Error unzipping file with scripts '+e.Message);
-              end;
-           end;
-           UnZipper_.Free;
 
+                end;
           end;
      end;
   if not ok then ShowMessage('Error when retrieving script from deltasql server! Please check settings and log.txt');

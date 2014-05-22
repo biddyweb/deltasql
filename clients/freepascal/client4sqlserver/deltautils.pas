@@ -5,10 +5,13 @@ unit deltautils;
 interface
 
 uses
-  Classes, SysUtils, ClipBrd;
+  Classes, SysUtils, ClipBrd, ShellAPI;
+
+const FOF_NO_UI = 1556; // used in deleteFolder
 
 function  retrieveProjectVersionFromFile(filename : String) : Longint;
 procedure copyTextFileToClipboard(filename : String);
+procedure deleteFolder(handle : THandle; filename: String);
 
 implementation
 
@@ -52,6 +55,18 @@ try
 finally
   CloseFile(F);
 end;
+end;
+
+procedure deleteFolder(handle : THandle; filename: String);
+var
+  ShOp: TSHFileOpStruct;
+begin
+  ShOp.Wnd := handle;
+  ShOp.wFunc := FO_DELETE;
+  ShOp.pFrom := PChar(filename+#0);
+  ShOp.pTo := nil;
+  ShOp.fFlags := FOF_NO_UI;
+  SHFileOperation(ShOp);
 end;
 
 end.
