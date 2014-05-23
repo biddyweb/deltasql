@@ -62,6 +62,8 @@ function dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid, $h
          $xmlformatted, $singlefiles, $debug, $useclause) {
 
 include("conf/config.inc.php");	 
+include('utils/constants.inc.php');
+
 $startwatch = start_watch();
 if (!isset($default_copypaste)) $default_copypaste=1;		 
 $generated_scripts=0; // this variable keeps track of how many scripts are outputted
@@ -271,7 +273,7 @@ while ($i<$numsg) {
 	 
      if ($debug==1) echo "<p><pre><i>-- DEBUG: query to generate this update script was:\n-- $query\n</i></pre></p>";
      $result=mysql_query($query);   
-     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, $textresult, $disable_sql_highlighting, $useclause);
+     $generated_scripts+=output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, $textresult, $disable_sql_highlighting, $useclause, $dbtype);
 
      $i++;	 
 }
@@ -289,7 +291,8 @@ if ($singlefiles=="0") {
 	$commentstring = "-- updating synchronization information for the database schema";
 	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
 	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$tagname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";
-	
+	if ($dbtype==$db_sqlserver) $updatestring=$updatestring . "\nGO\n";					
+    
 	if (!$xmlformatted) $updatestring = "$updatestring\n-- all scripts to reach db $tobranchname beginning from version $toversionnr on date $update_dt\n";
 	
 	$stopwatch = stop_watch_string($startwatch);

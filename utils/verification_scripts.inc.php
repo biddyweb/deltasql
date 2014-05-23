@@ -12,7 +12,7 @@ $verificationscript = "CALL DELTASQL_VERIFY_SCHEMA($lastversionnr, '$frombranchn
 } else if ($dbtype==strtolower($db_pgsql)) {
 $verificationscript = "SELECT DELTASQL_VERIFY_SCHEMA($lastversionnr, '$frombranchname', '$projectname');\n";  
 } else if ($dbtype==strtolower($db_sqlserver)) {
-$verificationscript = "EXEC deltasql_verify_schema $lastversionnr, '$frombranchname', '$projectname';\n";
+$verificationscript = "EXEC dbo.deltasql_verify_schema $lastversionnr, '$frombranchname', '$projectname';\nGO\n";
 }
 else if ($dbtype!="") {
 	$commentscript = "-- Please make sure this script is executed on the correct schema!!";

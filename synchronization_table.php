@@ -129,8 +129,8 @@ DELIMITER ;
 else
 if ($frmdbtype=="$db_sqlserver")
 $script = "
--- DROP TABLE tbsynchronize;
-CREATE TABLE tbsynchronize
+-- DROP TABLE dbo.tbsynchronize;
+CREATE TABLE dbo.tbsynchronize
 (
   projectname                 varchar(64)                    not null,
   update_dt                   datetime     default getdate()   not null,
@@ -144,14 +144,15 @@ CREATE TABLE tbsynchronize
   dbtype                      varchar(32)              null,
   CONSTRAINT   un_versionnr   UNIQUE (versionnr)
 );
-
+GO
 
 -- this function verifies that scripts are executed in the correct schema
-CREATE PROCEDURE deltasql_verify_schema
+CREATE PROCEDURE dbo.deltasql_verify_schema
 @versionExt int, 
 @branchnameExt varchar,
 @projectnameExt varchar
 AS
+BEGIN
 DECLARE
  @versionV int,
  @branchnameV  varchar(128), 
@@ -161,11 +162,11 @@ DECLARE
  SELECT @branchnameV = branchname FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);
  SELECT @projectnameV = projectname FROM tbsynchronize WHERE versionnr = (SELECT max(versionnr) FROM tbsynchronize);
  
-IF ((@branchnameV <> @branchnameExt) OR (@versionV <> @versionExt) OR (@projectnameV <> @projectnameExt))
-begin
-   RAISERROR('This script is for another schema or it was already executed!!!', 10, 1);
-end
-
+ IF ((@branchnameV <> @branchnameExt) OR (@versionV <> @versionExt) OR (@projectnameV <> @projectnameExt))
+   BEGIN
+     RAISERROR('This script is for another schema or it was already executed!!!', 10, 1);
+   END
+END
 GO
 
 
@@ -241,8 +242,12 @@ echo $script;
   $commit = "";
   if ($frmdbtype=="$db_oracle") {
        $commit = "COMMIT;\n";
-	   echo $commit;
+  } else
+  if ($frmdbtype=="$db_sqlserver") {
+      $commit = "GO;\n";
   }
+  echo $commit;
+
 ?>
 </pre>
 

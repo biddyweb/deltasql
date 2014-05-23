@@ -56,8 +56,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="22"/>
-        <CursorPos X="44" Y="57"/>
+        <TopLine Value="165"/>
+        <CursorPos X="44" Y="181"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -194,7 +194,7 @@
         <Loaded Value="True"/>
       </Unit17>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="deltaclientunit.pas"/>
         <Caret Line="158" Column="3" TopLine="1"/>
@@ -295,6 +295,10 @@
         <Filename Value="deltaclientunit.pas"/>
         <Caret Line="266" Column="70" TopLine="238"/>
       </Position25>
+      <Position26>
+        <Filename Value="deltaclientunit.pas"/>
+        <Caret Line="57" Column="44" TopLine="22"/>
+      </Position26>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

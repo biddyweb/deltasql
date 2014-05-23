@@ -17,11 +17,12 @@ function printXmlScript($script, $comment, $module, $versionnr, $type, $date) {
     echo "  </script>\n";
 }
 
-function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult, $disable_sql_highlighting, $useclause /* for MS SQL server */) {
+function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$textresult, $disable_sql_highlighting, $useclause /* for MS SQL server */, $dbtype) {
  if ($htmlformatted) {
         include_once('geshi/geshi.php');
  }    
  include('conf/config.inc.php');
+ include('utils/constants.inc.php');
 
  if ($result=="") return 0;
  $i=0;
@@ -40,8 +41,11 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$
   $isaview=mysql_result($result,$i,"isaview");
   
   if ($useclause!="") {
-	$script = "USE ". $useclause . "\n" . $script;
+	$script = "USE ". $useclause . ";\nGO\n" . $script;
   }  
+  if ($dbtype==$db_sqlserver) {
+    $script = $script . "\nGO\n";
+  }
   
   // echo the script
   $query2="SELECT * from tbmodule where id=$moduleid"; 

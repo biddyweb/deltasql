@@ -178,7 +178,7 @@ begin
   Clipboard.AsText := 'select * from tbsynchronize where versionnr = (select max(versionnr) from tbsynchronize);';
 end;
 
-function TDeltaForm.DoChecksBeforeSync : Booolean;
+function TDeltaForm.DoChecksBeforeSync : Boolean;
 begin
  Result := false;
  // algorithm explanation at http://www.deltasql.org/deltasql/manual.php#write-client
