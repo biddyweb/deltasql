@@ -14,6 +14,7 @@ if (isset($_POST['frombranchid'])) $frombranchid = $_POST['frombranchid'];     e
 if (isset($_POST['tobranchid'])) $tobranchid = $_POST['tobranchid'];           else $tobranchid="";
 if (isset($_POST['frmdbtype'])) $dbtype = $_POST['frmdbtype'];                 else $dbtype="";
 if (isset($_POST['formatgroup'])) $formatgroup = $_POST['formatgroup'];        else $formatgroup="";
+if (isset($_POST['frmuseclause'])) $useclause = $_POST['frmuseclause'];        else $useclause="";
 $debug = isset($_POST['frmdebug']);
 
 $htmlformatted=0;
@@ -49,7 +50,7 @@ if ($htmlformatted) {
 include("dbsync_update.inc.php");
 
 dbsyncupdate($projectid, $lastversionnr, $frombranchid, $tobranchid,  $htmlformatted, $excludeviews, $excludepackages, 
-             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug, "" /* $use clause for MS SQL server*/);
+             $updateuser, 'deltasql-server', $commitcomment, $schemaname, $dbtype, $xmlformatted, $singlefiles, $debug, $useclause);
 
 $_SESSION['dbsync_projectid']   = $projectid;
 			 

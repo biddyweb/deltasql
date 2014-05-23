@@ -95,6 +95,9 @@ echo "</center>";
  printDatabaseComboBox($dbdefault);
  echo "</td><td><i>= value in column dbtype</i></td></tr>";
 
+ echo "<tr><td><b>USE clause (database name):</b> </td>";
+ echo "<td><input type=\"text\" name=\"frmuseclause\" value=\"\"></td><td><i>= optional database name, for Microsoft SQL server only</i></td></tr>";
+ 
  if ($rights>1) {
    echo "<td><b>Exclude:</b></td>";
    echo "<td><input name=\"frmexcludeviews\" type=\"checkbox\" value=\"1\"/>Views";
@@ -103,7 +106,6 @@ echo "</center>";
    echo "<a href=\"detect_packages_and_views.php\">Detect views and packages</a></td>";
  }
  echo "</td></tr>";
- 
  
  echo "<tr><td><b>Output Format:</b> </td>";
  echo "<td>";
