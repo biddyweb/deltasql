@@ -18,8 +18,6 @@ type
     btnSettings: TButton;
     btnGenerateScript: TButton;
     btnPasteScript: TButton;
-    cbDbType: TComboBox;
-    lblDbType: TLabel;
     srvButton: TButton;
     cbProject: TComboBox;
     cbFromBranch: TComboBox;
@@ -94,11 +92,6 @@ begin
          idx := cbToBranch.Items.IndexOf(conf.defaultTo);
          cbToBranch.ItemIndex := idx;
        end;
-  if conf.dbType<>'' then
-      begin
-         idx := cbDbType.Items.IndexOf(conf.dbType);
-         cbDbType.ItemIndex := idx;
-      end;
  try
     v:=THTMLBrowserHelpViewer.Create(nil);
     v.FindDefaultBrowser(BrowserPath_,BrowserParams_);
@@ -190,7 +183,7 @@ begin
              Exit;
           end;
        param2 := '?project='+encodeUrl(cbProject.Text)+'&version='+encodeUrl(edtVersion.Text)+'&frombranch='+encodeUrl(cbFromBranch.Text)+'&tobranch='+cbToBranch.Text;
-       param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user)+'&dbtype='+encodeUrl(cbDbType.Text);
+       param2 := param2+'&client=deltaclient&user='+encodeUrl(conf.user);
        param2 := param2+'&seed='+IntToStr(Trunc(Random*1000));
        ok := downloadToFile(conf.url+'/dbsync_automated_update.php'+param2, appPath_, 'script.txt', conf.proxy, conf.port, 'deltaclient> ', logger_);
        if ok then
@@ -223,7 +216,6 @@ begin
   conf.defaultProject:=cbProject.Text;
   conf.defaultFrom := cbFromBranch.Text;
   conf.defaultTo:=cbToBranch.Text;
-  conf.dbType:=cbDbType.Text;
   conf.saveToIniFile();
 
   projC.Free;

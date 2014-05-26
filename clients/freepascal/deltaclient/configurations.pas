@@ -17,8 +17,7 @@ type TConfiguration = class(TObject)
       user,
       defaultProject,
       defaultFrom,
-      defaultTo,
-      dbType : String;
+      defaultTo  : String;
 
       showHidden,
       copyScriptToClipboard : Boolean;
@@ -68,7 +67,6 @@ begin
   defaultProject := ini_.ReadString('Default', 'Project', '');
   defaultFrom    := ini_.ReadString('Default', 'From', '');
   defaultTo      := ini_.ReadString('Default', 'To', '');
-  dbType         := ini_.ReadString('Default', 'dbType', 'Other');
 end;
 
 procedure TConfiguration.saveToIniFile();
@@ -86,7 +84,6 @@ begin
   ini_.WriteString('Default', 'Project', defaultProject);
   ini_.WriteString('Default', 'From', defaultFrom);
   ini_.WriteString('Default', 'To', defaultTo);
-  ini_.WriteString('Default', 'dbType', dbType);
 end;
 
 end.
