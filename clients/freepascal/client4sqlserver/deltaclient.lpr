@@ -10,6 +10,8 @@ uses
   Forms, deltaclientunit, configurations, datastructure, deltautils,
   settingsunit;
 
+{$R *.res}
+
 begin
   Application.Initialize;
   Application.CreateForm(TDeltaForm, DeltaForm);
