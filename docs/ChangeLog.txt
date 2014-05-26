@@ -1,3 +1,15 @@
+25.5.2014 git
+- Added columns dbtype and useclause to tbproject table
+ALTER TABLE  `tbproject` ADD  `dbtype` VARCHAR( 32 ) NULL AFTER  `name`;
+ALTER TABLE  `tbproject` ADD  `useclause` VARCHAR( 32 ) NULL AFTER  `dbtype`;
+- Modified script creation and editing to store dbtype and use clause
+- Removed dbtype from dbsync.php as it is retrieved from project
+- Added error if dbtype is not set in tbproject
+- Recompiled deltaclient without dbtype field.
+
+24.5.2014 git
+- added USE statements for Microsoft SQL server. Added GO statements after each script.
+
 6.5.2014 git patch_1_adjusting_charts_for_large_installations
 - adjusted charts for large deltasql installations
 
