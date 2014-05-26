@@ -1,6 +1,6 @@
 <?php
 
-function printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted) {
+function printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted, $useclause) {
 include('constants.inc.php');
 
 // we use strToLower as deltasql clients might use other names for the dbtype parameter
@@ -8,11 +8,13 @@ $dbtype=strtolower(trim($dbtype));
 $commentscript = "-- this verifies that the present script is executed in the correct schema";
 
 if ($dbtype==strtolower($db_oracle)) {
-$verificationscript = "CALL DELTASQL_VERIFY_SCHEMA($lastversionnr, '$frombranchname', '$projectname');\n"; 
+   $verificationscript = "CALL DELTASQL_VERIFY_SCHEMA($lastversionnr, '$frombranchname', '$projectname');\n"; 
 } else if ($dbtype==strtolower($db_pgsql)) {
-$verificationscript = "SELECT DELTASQL_VERIFY_SCHEMA($lastversionnr, '$frombranchname', '$projectname');\n";  
+   $verificationscript = "SELECT DELTASQL_VERIFY_SCHEMA($lastversionnr, '$frombranchname', '$projectname');\n";  
 } else if ($dbtype==strtolower($db_sqlserver)) {
-$verificationscript = "EXEC dbo.deltasql_verify_schema $lastversionnr, '$frombranchname', '$projectname';\nGO\n";
+   $usestring = "";
+   if ($useclause!="") $usestring = "USE " . $useclause . ";\nGO\n";
+   $verificationscript = $usestring . "EXEC dbo.deltasql_verify_schema $lastversionnr, '$frombranchname', '$projectname';\nGO\n";
 }
 else if ($dbtype!="") {
 	$commentscript = "-- Please make sure this script is executed on the correct schema!!";

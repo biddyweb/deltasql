@@ -191,6 +191,13 @@ if ($upgradefromprodtodev==0) {
   generateSyncPath($sessionid, $headid, 0, 'HEAD', $frombranchid,  $lastversionnr, $frombranchname, 1, $xmlformatted, $htmlformatted);
 }
 
+
+
+// retrieve $dbtype from database, $dbtype is specified only in deltasql server < 1.7.0
+//;
+// retrieve $useclause from database
+$useclause = "";
+
 if ($singlefiles==0) {
    
    if ($xmlformatted) {
@@ -221,7 +228,7 @@ if ($singlefiles==0) {
    }
    
    
-   $textresult = printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted);
+   $textresult = printVerificationScript($dbtype, $htmlformatted, $projectname, $lastversionnr, $frombranchname, $xmlformatted, $useclause);
 } else {
    empty_directory("output/scripts");
 }
@@ -289,7 +296,11 @@ if ($singlefiles=="0") {
 
   if ($generated_scripts>0) {
 	$commentstring = "-- updating synchronization information for the database schema";
-	$updatestring = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
+	$schemastring = "";
+	$usestring = "";
+	if ($useclause!="") $usestring = "USE " . $useclause . ";\nGO\n";
+	if ($dbtype==$db_sqlserver) $schemastring = "dbo.";
+	$updatestring = $usestring . "INSERT INTO " . $schemastring . "tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
 	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$tagname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";
 	if ($dbtype==$db_sqlserver) $updatestring=$updatestring . "\nGO\n";					
     
