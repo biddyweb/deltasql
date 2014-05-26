@@ -27,7 +27,7 @@ if ($rights<2) die("<b>Not enough rights to insert a new project.</b>");
 </tr>
 <?php
  echo "<tr><td><b>Database Type:</b></td><td>";
- printDatabaseComboBox("");
+ printDatabaseComboBox($dbdefault);
  echo "</td><td></td></tr>";
 
  echo "<tr><td><b>USE clause (database name):</b> </td>";

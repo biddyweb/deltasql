@@ -26,11 +26,11 @@ function printProjectComboBox($defaultprojectid, $event="") {
 
 
 function printDatabaseComboBox ($mydefault) {
-include("conf/config.inc.php");                                                   
 include("utils/constants.inc.php");                                                   
-//echo "*$dbdefault*";
-if ($mydefault=="") $mydefault = $dbdefault;
 echo "<select name=\"frmdbtype\">";
+if ($mydefault == "")  {
+   echo "<option value=\"\" SELECTED> ";
+} 
 if ($mydefault == $db_oracle)
     echo "<option value=\"$db_oracle\" SELECTED>$db_oracle";
   else
