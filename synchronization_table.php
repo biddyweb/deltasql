@@ -22,20 +22,23 @@
  $projectid=$_POST['frmprojectid'];
  if ($projectid=="") die("<b><font color='red'>Please select a project!</font></b>");
  
- $frmdbtype = $_POST['frmdbtype'];
  $frmsourcebranchid = $_POST['frmsourcebranch'];
  
  // retrevieng project name and branch name from ids
  mysql_connect($dbserver, $username, $password);
  @mysql_select_db($database) or die("Unable to select database");
- $query="SELECT name FROM tbproject where id=$projectid";
+ $query="SELECT name, dbtype,useclause FROM tbproject where id=$projectid";
  $result=mysql_query($query);
  $projectname=mysql_result($result,0,"name");
+ $frmdbtype=mysql_result($result,0,"dbtype");
+ $useclause=mysql_result($result,0,"useclause"); 
  
  $query2="SELECT name FROM tbbranch where id=$frmsourcebranchid";
  $result2=mysql_query($query2);
  $frmsourcebranch=mysql_result($result2,0,"name");
  mysql_close();
+ 
+ if ($frmdbtype=="") die("<b><font color='red'>Please edit this project and specify a database type!</font></b>");
 
  if ($frmsourcebranch=="") $frmsourcebranch="HEAD";
  echo "<h2>Synchronization Table</h2>";
@@ -46,6 +49,8 @@
 <pre>
 <?php
 $intro="";
+$usestring = "";
+
 if (($frmdbtype=="$db_other") ||  ($frmdbtype=="$db_sybase")) {
   $intro = "-- you might need to adapt the following script to your database type\n" .
            "-- the table TBSYNCHRONIZE is mandatory. the stored procedure DELTASQL_VERIFY_SCHEMA is optional.\n\n";
@@ -127,8 +132,13 @@ END;
 DELIMITER ;
 */
 else
-if ($frmdbtype=="$db_sqlserver")
-$script = "
+if ($frmdbtype=="$db_sqlserver") {
+ 
+  if ($useclause!="") {
+	$usestring = "USE " . $useclause . ";\nGO\n";
+  }  
+
+$script = $usestring . "
 -- DROP TABLE dbo.tbsynchronize;
 CREATE TABLE dbo.tbsynchronize
 (
@@ -146,6 +156,7 @@ CREATE TABLE dbo.tbsynchronize
 );
 GO
 
+" . $usestring . "
 -- this function verifies that scripts are executed in the correct schema
 CREATE PROCEDURE dbo.deltasql_verify_schema
 @versionExt int, 
@@ -169,8 +180,8 @@ DECLARE
 END
 GO
 
-
 ";
+}
 else
 if ($frmdbtype=="$db_pgsql")
 $script = "
@@ -235,7 +246,8 @@ echo $script;
   @mysql_select_db($database) or die("Unable to select database");
   $versionnr=get_global_version();
   mysql_close();
-  $insert = "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\n" .
+  $insert = $usestring . 
+            "INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, UPDATE_USER, UPDATE_TYPE, DBTYPE)\n" .
             "VALUES ('$projectname', $versionnr, '$frmsourcebranch', 'INTERNAL', 'deltasql-server', '$frmdbtype');\n";
   
   echo "$insert";

@@ -37,9 +37,6 @@ echo "
     // call javascript function with id
 	echo "<script>getBranchesForProject($id); </script>";
  }
- echo "Please choose the <b>Database Type</b> for your $name schema: <br><br>";
- printDatabaseComboBox($dbdefault);
-
  
  echo "Please select if the Database Schema will <b>follow HEAD or stay a branch</b>: <br><br>";
  echo "<select NAME=\"frmsourcebranch\">";
