@@ -1,6 +1,8 @@
 CREATE TABLE `tbproject` (
   `id` int(11) NOT NULL auto_increment,
   `name` text collate latin1_general_ci NOT NULL,
+  `dbtype` varchar(32) collate latin1_general_ci default NULL,
+  `useclause` varchar(32) collate latin1_general_ci default NULL,
   `description` varchar(700) collate latin1_general_ci default NULL,
   `create_dt` date default NULL,
   PRIMARY KEY  (`id`)
