@@ -27,11 +27,11 @@ if ($rights<2) die("<b>Not enough rights to insert a new project.</b>");
 </tr>
 <?php
  echo "<tr><td><b>Database Type:</b></td><td>";
- printDatabaseComboBox($dbdefault);
+ printDatabaseComboBox("");
  echo "</td><td></td></tr>";
 
  echo "<tr><td><b>USE clause (database name):</b> </td>";
- echo "<td><input type=\"text\" name=\"frmuseclause\" value=\"\"></td><td><i>= optional database name, for Microsoft SQL server only</i></td></tr>";
+ echo "<td><input type=\"text\" name=\"frmuseclause\" value=\"\"></td><td><i>optional database name, for Microsoft SQL server only</i></td></tr>";
 ?>
 </table>
  <input type="Submit" value="Create project">
@@ -41,12 +41,14 @@ if ($rights<2) die("<b>Not enough rights to insert a new project.</b>");
 <?php
 if (isset($_POST['name'])) $frm_name=$_POST['name']; else exit;
 $frm_description=$_POST['description'];
+$frm_useclause=$_POST['frmuseclause'];
+$frm_dbtype=$_POST['frmdbtype'];
 
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
 $versionnr=get_and_increase_global_version();
-$query="INSERT INTO tbproject (id, name, description,create_dt) VALUES('','$frm_name','$frm_description',NOW());";
+$query="INSERT INTO tbproject (id, name, description,create_dt,dbtype,useclause) VALUES('','$frm_name','$frm_description',NOW(),'$frm_dbtype','$frm_useclause');";
 mysql_query($query);
 
 $query2="SELECT * FROM tbproject WHERE name='$frm_name';";

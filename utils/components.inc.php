@@ -25,36 +25,37 @@ function printProjectComboBox($defaultprojectid, $event="") {
 }
 
 
-function printDatabaseComboBox ($dbdefault) {
-include("constants.inc.php");                                                   
+function printDatabaseComboBox ($mydefault) {
+include("conf/config.inc.php");                                                   
+include("utils/constants.inc.php");                                                   
 //echo "*$dbdefault*";
-if ($dbdefault=="") $dbdefault = $db_oracle;
+if ($mydefault=="") $mydefault = $dbdefault;
 echo "<select name=\"frmdbtype\">";
-if ($dbdefault == $db_oracle)
+if ($mydefault == $db_oracle)
     echo "<option value=\"$db_oracle\" SELECTED>$db_oracle";
   else
     echo "<option value=\"$db_oracle\">$db_oracle";
-if ($dbdefault == $db_mysql)                                                   
+if ($mydefault == $db_mysql)                                                   
     echo "<option value=\"$db_mysql\" SELECTED>$db_mysql";                    
   else                                                                          
     echo "<option value=\"$db_mysql\">$db_mysql";
-if ($dbdefault == $db_pgsql)                                                   
+if ($mydefault == $db_pgsql)                                                   
     echo "<option value=\"$db_pgsql\" SELECTED>$db_pgsql";                    
   else                                                                          
     echo "<option value=\"$db_pgsql\">$db_pgsql";
-if ($dbdefault == $db_sqlserver)        
+if ($mydefault == $db_sqlserver)        
    echo "<option value=\"$db_sqlserver\" SELECTED>$db_sqlserver";               
   else                                                                          
     echo "<option value=\"$db_sqlserver\">$db_sqlserver"; 
-if ($dbdefault == $db_sqlite)
+if ($mydefault == $db_sqlite)
     echo "<option value=\"$db_sqlite\" SELECTED>$db_sqlite";
   else
     echo "<option value=\"$db_sqlite\">$db_sqlite";	
-if ($dbdefault == $db_sybase)
+if ($mydefault == $db_sybase)
     echo "<option value=\"$db_sybase\" SELECTED>$db_sybase";
   else
     echo "<option value=\"$db_sybase\">$db_sybase";
-if ($dbdefault == $db_other)
+if ($mydefault == $db_other)
     echo "<option value=\"$db_other\" SELECTED>$db_other";
   else
     echo "<option value=\"$db_other\">$db_other";
