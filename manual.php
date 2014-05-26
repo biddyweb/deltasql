@@ -822,7 +822,7 @@ is set. Click on the links below to see examples</p>
 
 <h3><a name="errors"></a>List of error codes for deltasql server</h3>
 
-<p>The entire list is <a href="http://deltasql.sourceforge.net/deltasql/manual_errormessages.php">here</a>.</p>
+<p>The entire list is <a href="manual_errormessages.php">here</a>.</p>
 
 
 <h3><a name="structure"></a>Directory structure of the deltasql_1.x.y  package</h3>

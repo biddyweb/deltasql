@@ -89,23 +89,15 @@ echo "</center>";
  printBranchesAndTags();
  echo "</select>";
  echo "</td><td><i>= HEAD if schema has to include all scripts or another branch name if not</i></td></tr>";
- 
- echo "</tr>";
- echo "<tr><td><b>Database Type:</b></td><td>";
- printDatabaseComboBox($dbdefault);
- echo "</td><td><i>= value in column dbtype</i></td></tr>";
-
- echo "<tr><td><b>USE clause (database name):</b> </td>";
- echo "<td><input type=\"text\" name=\"frmuseclause\" value=\"\"></td><td><i>= optional database name, for Microsoft SQL server only</i></td></tr>";
- 
  if ($rights>1) {
+   echo "<tr>"; 
    echo "<td><b>Exclude:</b></td>";
    echo "<td><input name=\"frmexcludeviews\" type=\"checkbox\" value=\"1\"/>Views";
    echo "<input name=\"frmexcludepackages\" type=\"checkbox\" value=\"1\"/>Packages</td>";
    echo "<td>";
    echo "<a href=\"detect_packages_and_views.php\">Detect views and packages</a></td>";
+   echo "</tr>";
  }
- echo "</td></tr>";
  
  echo "<tr><td><b>Output Format:</b> </td>";
  echo "<td>";

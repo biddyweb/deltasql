@@ -70,6 +70,14 @@ $generated_scripts=0; // this variable keeps track of how many scripts are outpu
 
 if ($projectid=="")  errormessage(10, "Not possible to compute a dbsync update if project name is missing.", $xmlformatted, $htmlformatted);
 
+// retrieve $dbtype from database, $dbtype is specified from the interface only in deltasql server < 1.7.0. 
+// With 1.7.0 we retrieve it from table tbproject
+//;
+if ($dbtype=="") errormessage(18, "Database type not specified!", $xmlformatted, $htmlformatted);
+
+// retrieve $useclause from database
+$useclause = "";
+
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
@@ -191,12 +199,6 @@ if ($upgradefromprodtodev==0) {
   generateSyncPath($sessionid, $headid, 0, 'HEAD', $frombranchid,  $lastversionnr, $frombranchname, 1, $xmlformatted, $htmlformatted);
 }
 
-
-
-// retrieve $dbtype from database, $dbtype is specified only in deltasql server < 1.7.0
-//;
-// retrieve $useclause from database
-$useclause = "";
 
 if ($singlefiles==0) {
    

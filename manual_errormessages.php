@@ -108,6 +108,11 @@ the synchronization form and try again :-)
 The source or target tag you specified does not belong to the project you would like to synchronize. Please check it!
 </p>
 
+<li><a name="18"></a><i>18</i>: <b>Database type not specified!</b></li>
+<p>
+The database type for this project is not specified. Please go to <a href="list_projects.php">List Projects</a>, edit the project and choose a database type.
+</p>
+
 <?php include("bottom.inc.php"); ?>
 </body>
 </html>

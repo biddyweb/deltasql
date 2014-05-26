@@ -8,19 +8,33 @@
 include("head.inc.php");
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include("utils/components.inc.php");
 show_user_level();
 $rights = $_SESSION["rights"];
 if ($rights<2) die("<b>Not enough rights to insert a new project.</b>");
 ?>
 <h2>Insert a New Project</h2>
 <form action="create_project.php" method="post">
-Name:<br> 
-<input type="text" name="name" size="30"><br>
-Description:<br>
-<textarea name="description" rows="10" cols="70">
-</textarea>
-<br>
-<input type="Submit" value="Create project">
+<table border="0">
+<tr>
+<td>Name:</td> 
+<td><input type="text" name="name" size="30"></td>
+<td></td>
+</tr>
+<tr>
+<td>Description:</td>
+<td><textarea name="description" rows="10" cols="70"></textarea></td>
+</tr>
+<?php
+ echo "<tr><td><b>Database Type:</b></td><td>";
+ printDatabaseComboBox($dbdefault);
+ echo "</td><td></td></tr>";
+
+ echo "<tr><td><b>USE clause (database name):</b> </td>";
+ echo "<td><input type=\"text\" name=\"frmuseclause\" value=\"\"></td><td><i>= optional database name, for Microsoft SQL server only</i></td></tr>";
+?>
+</table>
+ <input type="Submit" value="Create project">
 </form>
 <?php include("bottom.inc.php"); ?>
 
