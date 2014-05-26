@@ -70,16 +70,19 @@ $generated_scripts=0; // this variable keeps track of how many scripts are outpu
 
 if ($projectid=="")  errormessage(10, "Not possible to compute a dbsync update if project name is missing.", $xmlformatted, $htmlformatted);
 
-// retrieve $dbtype from database, $dbtype is specified from the interface only in deltasql server < 1.7.0. 
-// With 1.7.0 we retrieve it from table tbproject
-//;
-if ($dbtype=="") errormessage(18, "Database type not specified!", $xmlformatted, $htmlformatted);
-
-// retrieve $useclause from database
-$useclause = "";
-
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
+
+// retrieve $dbtype from database, $dbtype is specified from the interface only in deltasql server < 1.7.0. 
+// With 1.7.0 we retrieve it from table tbproject
+if ($dbtype=="") {
+    $queryprj="SELECT * from tbproject where id=$projectid"; 
+    $resultprj=mysql_query($queryprj);   
+	$dbtype=mysql_result($resultprj,0,"dbtype");
+	// we retrieve also the USE clause for Microsoft SQL server
+	$useclause=mysql_result($resultprj,0,"useclause");
+}
+if ($dbtype=="") errormessage(18, "Database type not specified!", $xmlformatted, $htmlformatted);
 
 $headid=retrieve_head_id();
 
