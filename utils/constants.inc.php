@@ -7,7 +7,7 @@ $ds_schema_version="1.7.0";
 $dbredactor_version="1.6.4";
 $antclient_version="1.0.3";
 $bashclient_version="1.6.3";
-$deltaclient_windows_version="1.6.4";
+$deltaclient_windows_version="1.7.0";
 $deltaclient_linux_version="1.6.0";
 $pyclient_version="1.6.2";
 

@@ -75,6 +75,7 @@ mysql_connect($dbserver, $username, $password);
 
 // retrieve $dbtype from database, $dbtype is specified from the interface only in deltasql server < 1.7.0. 
 // With 1.7.0 we retrieve it from table tbproject
+$useclause="";
 if ($dbtype=="") {
     $queryprj="SELECT * from tbproject where id=$projectid"; 
     $resultprj=mysql_query($queryprj);   

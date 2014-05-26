@@ -11,7 +11,7 @@ if (isset($_GET['user'])) $updateuser = $_GET['user']; else $updateuser="Unknown
 if (isset($_GET['client'])) $updateclient = $_GET['client']; else $updateclient="Unknown Client";
 if (isset($_GET['htmlformatted'])) $htmlformatted = $_GET['htmlformatted']; else $htmlformatted=0;
 if (isset($_GET['xmlformatted'])) $xmlformatted = $_GET['xmlformatted']; else $xmlformatted=0;
-if (isset($_GET['dbtype'])) $dbtype = $_GET['dbtype']; else $dbtype="Other";
+if (isset($_GET['dbtype'])) $dbtype = $_GET['dbtype']; else $dbtype="";
 if (isset($_GET['singlefiles'])) $singlefiles=$_GET['singlefiles']; else $singlefiles=0;
 
 // XML formatted is stronger than html formatted. Both are not allowed
