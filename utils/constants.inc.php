@@ -1,7 +1,7 @@
 <?php
 //version of deltasql server, source and data model
-$deltasql_version="1.6.6";
-$ds_schema_version="1.6.3";
+$deltasql_version="1.7.0";
+$ds_schema_version="1.7.0";
 
 // version of deltasql clients
 $dbredactor_version="1.6.4";

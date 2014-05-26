@@ -274,3 +274,16 @@ INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_U
 VALUES ('deltasql-Server', 265, 'HEAD', '', 'admin', 'deltasql-server', 256, 'HEAD', 'Oracle');
 -- all scripts to reach db HEAD beginning from version 265 on date 2013-07-08 12:05:31
 -- synchronization script generated in 0.0949 seconds
+
+-- version: 296 module: deltasql-module date: 2014-05-26 07:02:36
+-- applied to: HEAD 
+
+ALTER TABLE  `tbproject` ADD  `dbtype` VARCHAR( 32 ) NULL AFTER  `name`;
+ALTER TABLE  `tbproject` ADD  `useclause` VARCHAR( 32 ) NULL AFTER  `dbtype`;
+
+-- updating synchronization information for the database schema
+INSERT INTO tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)
+VALUES ('deltasql-Server', 297, 'HEAD', 'TAG_deltasql_1.7.0', 'admin', 'deltasql-server', 267, 'HEAD', 'Oracle');
+-- all scripts to reach db HEAD beginning from version 297 on date 2014-05-26 07:02:36
+-- synchronization script generated in 0.3255 seconds
+ 

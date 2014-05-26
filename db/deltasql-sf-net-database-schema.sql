@@ -928,3 +928,6 @@ INSERT INTO `tbuser` (`id`, `username`, `password`, `first`, `last`, `email`, `r
 (8, 'virus', '****', 'Virginia', 'Saladin', 'vir@saladin.com', 2, 1, '326577fbe6d73973bd67437829bf9301'),
 (11, 'linus', 'linus', 'Linus', 'Torvalds', 'linus@kernel.org', 1, 0, NULL),
 (12, 'billgates', '****', 'Bill', 'Gates', 'bill@microsoft.com', 2, 1, '01b6ad058bbd2ab3bdaab9c3c9b87dfc');
+
+ALTER TABLE  `tbproject` ADD  `dbtype` VARCHAR( 32 ) NULL AFTER  `name`;
+ALTER TABLE  `tbproject` ADD  `useclause` VARCHAR( 32 ) NULL AFTER  `dbtype`;
