@@ -38,6 +38,7 @@ if ($htmlformatted) {
     deltasql - Synchronization script
     </title>
     <link rel=\"stylesheet\" type=\"text/css\" href=\"deltasql.css\">
+	<link rel=\"shortcut icon\" href=\"pictures/favicon.ico\" />
     </head>
     <body>";
 	include('head.inc.php'); 
