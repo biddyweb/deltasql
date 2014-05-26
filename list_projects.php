@@ -36,6 +36,8 @@ echo "<tr>
 <th>id</th>
 <th>name</th>
 <th>description</th>
+<th>database type</th>
+<th>use clause</th>
 <th>create dt</th>
 <th>last change at</th>
 <th>actions</th>
@@ -47,6 +49,8 @@ while ($i<$num) {
 $id=mysql_result($result,$i,"id");
 $name=mysql_result($result,$i,"name");          
 $description=mysql_result($result,$i,"description");
+$dbtype=mysql_result($result,$i,"dbtype");
+$useclause=mysql_result($result,$i,"useclause");
 $create_dt=mysql_result($result,$i,"create_dt");
 
 $lastchange=dbsynccurrentversion("", $id, 0);
@@ -57,6 +61,8 @@ echo "
 <td>$id</td>
 <td>$name</td>
 <td>$description</td>
+<td>$dbtype</td>
+<td>$useclause</td>
 <td>$create_dt</td>
 <td>$lastchange</td>
 <td>";
