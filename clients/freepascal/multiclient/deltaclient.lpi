@@ -307,7 +307,7 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <OtherUnitFiles Value="..\lib\own\misc;..\lib\ext\synapse\src\lib"/>
-      <UnitOutputDirectory Value="..\bin"/>
+      <UnitOutputDirectory Value="..\binmulticlient"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>

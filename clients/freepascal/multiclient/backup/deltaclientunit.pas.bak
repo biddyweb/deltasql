@@ -275,6 +275,12 @@ begin
                       UnZipper_.OutputPath := appPath_;
                       UnZipper_.Examine;
                       UnZipper_.UnZipAllFiles;
+
+                      // 1. now we should switch to the directory
+                      // 2. convert all scripts with convertLFtoCRLF(appPath_+PathDelim+'script.txt',appPath_+PathDelim+'script.sql', logger_);
+                      // 3. delete non converted scripts
+                      // 4. execute sqlcmd -S myServer\instanceName -i C:\myScript.sql
+                      // 5. if output is required use sqlcmd -S myServer\instanceName -i C:\myScript.sql -o C:\EmpAdds.txt
                   except
                   On e: exception  do
                      begin

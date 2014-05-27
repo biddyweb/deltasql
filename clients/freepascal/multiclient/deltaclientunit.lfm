@@ -1,11 +1,11 @@
 object DeltaForm: TDeltaForm
-  Left = 676
+  Left = 388
   Height = 311
-  Top = 339
+  Top = 142
   Width = 407
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'deltaclient for Microsoft SQL Server'
+  Caption = 'deltasql multiclient'
   ClientHeight = 311
   ClientWidth = 407
   OnCreate = FormCreate
