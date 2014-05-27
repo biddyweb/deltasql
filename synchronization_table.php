@@ -256,7 +256,7 @@ echo $script;
        $commit = "COMMIT;\n";
   } else
   if ($frmdbtype=="$db_sqlserver") {
-      $commit = "GO;\n";
+      $commit = "GO\n";
   }
   echo $commit;
 
