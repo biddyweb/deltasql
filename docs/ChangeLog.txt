@@ -1,3 +1,13 @@
+*******************************
+1.7.0 Release Notes (30.6.2014)
+
+  Deltasql now officially supports Microsoft SQL server
+  - Information on database type is saved on the project, it is not necessary
+    to give this information each time a synchronization is performed.
+  - Deltaclient recompiled without database type field
+  - Revised script creation for Microsoft SQL server
+*******************************
+
 25.5.2014 git
 - Added columns dbtype and useclause to tbproject table
 ALTER TABLE  `tbproject` ADD  `dbtype` VARCHAR( 32 ) NULL AFTER  `name`;
