@@ -9,6 +9,9 @@
   - USE clause for Microsoft SQL server can be specified on the project
 *******************************
 
+11.6.2014 git
+- Fixed test data set. 
+
 25.5.2014 git
 - Added columns dbtype and useclause to tbproject table
 ALTER TABLE  `tbproject` ADD  `dbtype` VARCHAR( 32 ) NULL AFTER  `name`;
