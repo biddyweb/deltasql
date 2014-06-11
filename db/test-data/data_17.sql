@@ -1,1 +1,1 @@
-INSERT INTO tbproject VALUES (2, 'deltasql-test-project', '', '2008-05-21');
+INSERT INTO tbproject VALUES (2, 'deltasql-test-project', 'mySQL', NULL, 'Project to test synchronization mechanism. See docs/Tests_To_Verify_deltasql_correctness.txt', '2008-05-21');
