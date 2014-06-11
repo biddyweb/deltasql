@@ -6,6 +6,7 @@
     to give this information each time a synchronization is performed.
   - Deltaclient recompiled without database type field
   - Revised script creation for Microsoft SQL server
+  - USE clause for Microsoft SQL server can be specified on the project
 *******************************
 
 25.5.2014 git
