@@ -10,8 +10,8 @@
   - deltasql is installed by default with the test data set, to simplify the learning process
 *******************************
 
-13.5.2014 git
-- deltasql installation process: Separated options for test data and integrity test when deltasql is is updated
+13.6.2014 git
+- deltasql installation process: Separated options for test data set and integrity test when deltasql is is updated. Test data set is installed by default.
 
 11.6.2014 git
 - Fixed test data set. 
