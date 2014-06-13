@@ -193,6 +193,7 @@ you can get deltasql server installed on your own Windows computer or on a Windo
 <li>In 1.4.x a client targeted at the Windows platform (XP, 7) is delivered and the email notification feature is added. Parameters customize deltasql behaviour depending on user preferences.</li>
 <li>The 1.5.x series in 2012 adds charting features to monitor the deltasql server and a handy copy/paste functionality.</li>
 <li>The 1.6.x series in 2013 ships with a deltaclient compiled for the linux platform and adds navigation with frames. 1.6.2 ships with dynamic listboxes for the synchronization form and script management. 1.6.3 introduces the toolbox, a collection of tools which assist in SQL script creation.</li>
+<li>The 1.7.x series in 2014 adds support for Microsoft SQL server and introduces a test data set to verify deltasql correctness.</li>
 </ul>
 
 <h3><a name="stable"></a>Which are the most stable versions of deltasql?</h3>
