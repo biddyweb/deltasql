@@ -711,7 +711,7 @@ Upgrades from production schemas (following branches) to development schemas (fo
 </p>
 </li>
 </ul>
-<p>If you install deltasql with the option <tt>Test System (with Test data)</tt>, you can verify the deltasql correctness with this 
+<p>If you install deltasql with the option <tt>Test System with Test data set</tt>, you can verify the deltasql correctness with this 
 <a href="docs/Tests_To_Verify_deltasql_correctness.txt">file</a>.
 </p>
 
@@ -777,7 +777,7 @@ The client should now ask the deltasql server for the script to be executed in t
 <p>
 <tt>project</tt> is the <tt>PROJECTNAME</tt> column retrieved in step one and <tt>version</tt> is the column
  <tt>VERSIONNR</tt>. <tt>frombranch</tt> is the value stored in <tt>BRANCHNAME</tt>. <tt>tobranch</tt> should be <tt>HEAD</tt>
-  if you want to upgrade a schema (branch or development) to the latest development scheman. It should be set to the
+  if you want to upgrade a schema (branch or development) to the latest development schema. It should be set to the
    value contained in <tt>BRANCHNAME</tt> if the production schema is updated without becoming a development schema.
 If the parameters <tt>frombranch</tt> or <tt>tobranch</tt> are not specified, they default to <tt>HEAD</tt>.
 </p>
