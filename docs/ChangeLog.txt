@@ -9,6 +9,9 @@
   - USE clause for Microsoft SQL server can be specified on the project
 *******************************
 
+13.5.2014 git
+- deltasql installation process: Separated options for test data and integrity test when deltasql is is updated
+
 11.6.2014 git
 - Fixed test data set. 
 

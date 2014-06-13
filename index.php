@@ -31,6 +31,7 @@
  if (!isset($disable_topten_submitters))  $disable_topten_submitters=true;
  if (!isset($enable_server_stats))  $enable_server_stats=true;
  if (!isset($dns_name)) $dns_name="";
+ if (!isset($db_integrity_check)) $db_integrity_check=true;
  
  if(isset($_SESSION['userid'])) {
     $rights = $_SESSION["rights"];
@@ -74,7 +75,7 @@ if (file_exists($configurationfile)) {
     $result4=mysql_query($query4);
     $tagname=mysql_result($result4,0,'tagname');
 	
-	if  ((!$test_system) && ($tagname!="TAG_deltasql_$ds_schema_version")) {
+	if  (($db_integrity_check) && ($tagname!="TAG_deltasql_$ds_schema_version")) {
 	      if ($tagname=="") $tagname="TAG_deltasql_1.3.?";
 	      echo "<p><b><font color=\"red\">Deltasql database schema needs to be upgraded! The database needs to be tagged with TAG_deltasql_$ds_schema_version.</b></font></p>";
 		  echo "<p>Please visit the <a href=\"http://deltasql.sourceforge.net/deltasql/dbsync.php\">synchronization page on deltasql.sourceforge.net</a>, ";

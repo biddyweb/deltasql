@@ -86,7 +86,7 @@ For the rest, most people can probably leave with the defaults. You can disable 
   as it helps the eye. If the test option is enabled, you can change the underlying deltasql schema without having deltasql complaining about it.
 </p>
 <p>
-By default, deltasql shows the scripts also to guests which are not logged in. You can now choose to protect the entire content from occasional visitors with the first option.
+By default, deltasql shows the scripts also to guests which are not logged in. You can now choose to protect the entire content from occasional visitors with the first option in the following list.
 </P>
 
 <table>
@@ -130,10 +130,16 @@ By default, deltasql shows the scripts also to guests which are not logged in. Y
 </td></tr>
 
 
-<tr><td>Test System (with Test Data): </td>
+<tr><td>Install deltasql server with Test Data Set: </td>
 <td>
-<input type="radio" name="testgroup" value="testsystemyes"> Yes
-<input type="radio" name="testgroup" value="testsystemno" checked> No
+<input type="radio" name="testgroup" value="testsystemyes" checked> Yes
+<input type="radio" name="testgroup" value="testsystemno"> No
+</td></tr>
+
+<tr><td>Enable database integrity checks when upgrading deltasql server from older versions: </td>
+<td>
+<input type="radio" name="dbintegrity" value="yes" checked> Yes
+<input type="radio" name="dbintegrity" value="no"> No
 </td></tr>
 
 </table>

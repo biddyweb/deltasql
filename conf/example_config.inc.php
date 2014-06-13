@@ -30,9 +30,6 @@ $deltasql_path="D:\\xampplite\\htdocs\\deltasql\\";
 
 // [Edition Settings]
 
-// if set to true, it disables the database consistency check in index.php
-$test_system=true; 
-
 // default database type for schemas managed by deltasql
 $dbdefault="Oracle";               
 				
@@ -53,6 +50,10 @@ $disable_sql_highlighting=false;
 
 // disables the top ten statistics 
 $disable_topten_submitters=false;
+
+// if set to false, it disables the database consistency check in index.php
+// useful for systems where deltasql is developed and where the schema is updated regularly.
+$db_integrity_check = true;
 
 // enables server statistics
 $enable_server_stats=true;

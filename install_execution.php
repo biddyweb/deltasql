@@ -56,6 +56,7 @@ $emailgroup = $_POST['emailgroup'];
 $copypastegroup = $_POST['copypastegroup'];
 $statsgroup = $_POST['statsgroup'];
 $privacy    = $_POST['privacy'];
+$dbintegrity = $_POST['dbintegrity'];
 
 $testsystem="false";
 $disablesqlhighlightning="false";
@@ -65,6 +66,7 @@ $emails_enable="true";
 $copypaste_enable="0";
 $stats_enable="true";
 $keep_private="false";
+$db_integrity_check="true";
 
 if ($testgroup=="testsystemyes") $testsystem="true";
 if ($sqlgroup=="donotusesqlhighlighting") $disablesqlhighlightning="true"; 
@@ -74,6 +76,7 @@ if ($emailgroup=="no") $emails_enable="false";
 if ($copypastegroup=="yes") $copypaste_enable="1";
 if ($statsgroup=="no") $stats_enable="false";  
 if ($privacy=="yes") $keep_private="true";
+if ($dbintegrity=="no") $db_integrity_check="false";
 
 if (!$debug_output_script) {
 if ($deltasqlschemauser!=$mysqlrootuser) {
@@ -203,9 +206,9 @@ fwrite($fh, "
 // enables top ten statistics
 \$disable_topten_submitters=$disable_topten_submitters;
 
-// if this system contains the test scripts to verify deltasql correctness
-// if set to true, it disables the database consistency check in index.php as well
-\$test_system=$testsystem; 
+// if set to false, it disables the database consistency check in index.php
+// useful for systems where deltasql is developed and where the schema is updated regularly.
+\$db_integrity_check=$db_integrity_check;
 
 // default script title when submitting a new script
 \$default_script_title=\"db update\";
