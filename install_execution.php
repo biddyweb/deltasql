@@ -141,7 +141,7 @@ $query4="UPDATE tbuser SET password='****',passwhash='$hashpwd',encrypted=1 WHER
 mysql_query($query4);
 
 // set TBSYNCHRONIZE to correct tag, used to detect updates
-$query5="UPDATE tbsynchronize SET tagname='TAG_deltasql_$ds_schema_version' WHERE versionnr=0;";
+$query5="UPDATE tbsynchronize SET tagname='TAG_deltasql_$ds_schema_version' WHERE versionnr in (0,3);"; // 3 is when test data set is installed
 mysql_query($query5);
 
 mysql_close();
