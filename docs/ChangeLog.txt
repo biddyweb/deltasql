@@ -1,5 +1,5 @@
 *******************************
-1.7.0 Release Notes (30.6.2014)
+1.7.0 Release Notes (20.6.2014)
 
   Deltasql now officially supports Microsoft SQL server
   - Information on database type is saved on the project, it is not necessary
