@@ -304,7 +304,7 @@ if ($singlefiles=="0") {
 	$commentstring = "-- updating synchronization information for the database schema";
 	$schemastring = "";
 	$usestring = "";
-	if ($useclause!="") $usestring = "USE " . $useclause . ";\nGO\n";
+	if (($useclause!="") && ($dbtype==$db_sqlserver)) $usestring = "USE " . $useclause . ";\nGO\n";
 	if ($dbtype==$db_sqlserver) $schemastring = "dbo.";
 	$updatestring = $usestring . "INSERT INTO " . $schemastring . "tbsynchronize (PROJECTNAME, VERSIONNR, BRANCHNAME, TAGNAME, UPDATE_USER, UPDATE_TYPE, UPDATE_FROMVERSION, UPDATE_FROMSOURCE, DBTYPE)";
 	$updatestring = "$updatestring\nVALUES ('$projectname', $toversionnr, '$tobranchname', '$tagname', '$updateuser', '$updatetype', $lastversionnr, '$frombranchname', '$dbtype');";

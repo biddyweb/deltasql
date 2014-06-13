@@ -40,7 +40,7 @@ function output_scripts($result, $htmlformatted, $xmlformatted, $singlefiles, &$
   $isapackage=mysql_result($result,$i,"isapackage");
   $isaview=mysql_result($result,$i,"isaview");
   
-  if ($useclause!="") {
+  if (($useclause!="") && ($dbtype==$db_sqlserver)) {
 	$script = "USE ". $useclause . ";\nGO\n" . $script;
   }  
   if ($dbtype==$db_sqlserver) {
