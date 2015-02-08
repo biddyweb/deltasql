@@ -1,7 +1,7 @@
 Point your browser to http://deltasql.sourceforge.net/deltasql/manual.php
 to get started. 
 
-deltasql is (c) 2007-2014 the Deltasql Development Team
+deltasql is (c) 2007-2015 the Deltasql Development Team
   contact us at gpu-world@lists.sourceforge.net
           http://deltasql.sourceforge.net
 
