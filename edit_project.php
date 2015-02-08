@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html> 
 <head>
-<title>deltasql - Edit Project</title>
+<title>deltasql - Rename Project</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 <link rel="shortcut icon" href="pictures/favicon.ico" />
 </head>
@@ -16,7 +16,7 @@ if (!file_exists($configurationfile)) die("<h2><a href=\"install.php\">$installm
 
 show_user_level();
 $rights = $_SESSION["rights"];
-if ($rights<2) die("<b>Not enough rights to edit projects</b>");
+if ($rights<2) die("<b>Not enough rights to rename projects</b>");
 ?>
 <?php
 include("conf/config.inc.php");
@@ -49,8 +49,12 @@ if ($id!="") {
 <h2>Edit Project <?php echo "$name"; ?></h2>
 <form action="edit_project.php" method="post">
 <table>
+<?php
+ echo "<tr><td><b>Project Name:</b></td>";
+ echo "<td><input type=\"text\" name=\"frmname\" value=\"$name\"></td></tr>";
+?>
 <tr>
-<td>Description:</td>
+<td><b>Description:</b></td>
 <td><textarea name="description" rows="10" cols="70">
 <?php echo "$description";  ?>
 </textarea></td>
@@ -60,7 +64,6 @@ if ($id!="") {
  echo "<tr><td><b>Database Type:</b></td><td>";
  printDatabaseComboBox($dbtype);
  echo "</td><td></td></tr>";
-
  echo "<tr><td><b>USE clause (database name):</b> </td>";
  echo "<td><input type=\"text\" name=\"frmuseclause\" value=\"$useclause\"></td><td><i>optional database name, for Microsoft SQL server only</i></td></tr>";
  echo "</table>";
@@ -71,15 +74,16 @@ if ($id!="") {
 </form>
 <?php include("bottom.inc.php"); ?>
 <?php
-if (isset($_POST['description'])) $frm_description=$_POST['description']; else exit;
-$frm_projectid=$_POST['projectid'];
+if (isset($_POST['projectid'])) $frm_projectid=$_POST['projectid']; else exit;
+$frm_description=$_POST['description'];
 $frm_dbtype=$_POST['frmdbtype'];
 $frm_useclause=$_POST['frmuseclause'];
+$frm_name=$_POST['frmname'];
 
 mysql_connect($dbserver, $username, $password);
 @mysql_select_db($database) or die("Unable to select database");
 
-$query2="UPDATE `tbproject` SET description='$frm_description', dbtype='$frm_dbtype', useclause='$frm_useclause' WHERE id=$frm_projectid;";
+$query2="UPDATE `tbproject` SET description='$frm_description', dbtype='$frm_dbtype', useclause='$frm_useclause', name='$frm_name' WHERE id=$frm_projectid;";
 mysql_query($query2);
 
 mysql_close();
