@@ -1,4 +1,4 @@
-08.08.2015 git
+08.02.2015 git
 - added ability to rename a project name
 
 *******************************
