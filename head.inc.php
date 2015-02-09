@@ -30,6 +30,7 @@ if (isset($_SESSION['search_toversion']))   $searchtoversion=$_SESSION['search_t
 if (isset($_SESSION['search_fromdata']))   $searchfromdata=$_SESSION['search_fromdata']; else $searchfromdata="";
 if (isset($_SESSION['search_todata']))   $searchtodata=$_SESSION['search_todata']; else $searchtodata="";
 if (isset($_SESSION['search_modified']))   $searchmodified=$_SESSION['search_modified']; else $searchmodified="";
+if (isset($_SESSION['search_projectid']))   $searchprojectid=$_SESSION['search_projectid']; else $searchprojectid="";
 echo "
 <table>
 <tr>
@@ -82,7 +83,7 @@ if ($dns_name!="") {
    echo "<li><a  href=\"search_scripts.php\"><img src=\"icons/search.png\"> Search</a></li>";
    if (($filtertitle!="") || ($filtercomment!="") || ($filterscript!="") || ($authorid!="") || ($moduleid!="") || ($branchid!="") ||
        ($searchfromversion!="") || ($searchtoversion!="") || ($frmisaview!="") || ($frmisapackage!="") ||
-       ($searchfromdata!="") || ($searchtodata!="") || ($searchmodified!=""))
+       ($searchfromdata!="") || ($searchtodata!="") || ($searchmodified!="") || ($searchprojectid!=""))
    		echo "<li><a  href=\"search_cancel.php\"><img src=\"icons/search.png\"> <b>Cancel</b></a></li>";
 }
 echo "</ul>";

@@ -36,7 +36,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="18">
+    <Units Count="19">
       <Unit0>
         <Filename Value="deltaclient.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -53,7 +53,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="deltaclientunit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="244"/>
@@ -186,13 +185,24 @@
       <Unit17>
         <Filename Value="..\deltaclient\deltaclientunit.pas"/>
         <UnitName Value="deltaclientunit"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="184"/>
         <CursorPos X="119" Y="212"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit17>
+      <Unit18>
+        <Filename Value="D:\Projects\gpu_solar\lib\libclimate\energyfunctions.pas"/>
+        <UnitName Value="energyfunctions"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="15"/>
+        <CursorPos X="18" Y="54"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit18>
     </Units>
     <JumpHistory Count="26" HistoryIndex="25">
       <Position1>

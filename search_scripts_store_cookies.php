@@ -18,6 +18,8 @@
    $fromdata=$_POST['fromdata'];
    $todata=$_POST['todata'];
    
+   $frmprojectid=$_POST['frmprojectid'];
+   
    if (!isset($_POST['frmtextlistoutput'])) $textoutput=0; else $textoutput=$_POST['frmtextlistoutput'];
    
    if (!isset($_POST['frmmodified'])) $modified=0; else $modified=$_POST['frmmodified'];
@@ -42,6 +44,8 @@
    $_SESSION["search_todata"] = $todata;
    
    $_SESSION["search_modified"] = $modified;
+   
+   $_SESSION["search_projectid"] = $frmprojectid;
      
    if ($textoutput==1) {
         js_redirect("list_scripts.php?textoutput=1&showall=1");

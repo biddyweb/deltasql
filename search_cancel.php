@@ -22,6 +22,8 @@
    
    $_SESSION["search_modified"] = "";
    
+   $_SESSION["search_projectid"] = "";
+   
    js_redirect("list_scripts.php");
 
 ?>

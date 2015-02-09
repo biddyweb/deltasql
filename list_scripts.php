@@ -76,13 +76,16 @@ mysql_connect($dbserver, $username, $password);
   
 echo "<br>";        
 
-// concatenate the query
+// concatenate the search query to filter scripts
 $query="";
 if ($branchid!="") {
 	$query="$query, tbscriptbranch sb ";
 }
+if ($searchprojectid!="") {
+	$query="$query, tbmoduleproject mp ";
+}
 if ($commentsmatchcase==1) {
-    //TODO: matchase query does not work, commented code is in place in search_scripts
+    //TODO: matchcase query does not work, commented code is in place in search_scripts
     // to activate checkbox
     $query="$query WHERE (s.comments LIKE '%$filtercomment%') ";
 } else {
@@ -110,6 +113,9 @@ if ($moduleid!="") {
 }
 if ($branchid!="") {
 	$query="$query and (s.id=sb.script_id) and (sb.branch_id=$branchid)";
+}
+if ($searchprojectid!="") {
+	$query="$query and (s.module_id=mp.module_id) and (mp.project_id=$searchprojectid)";
 }
 if ($frmisaview!="") {
 	$query="$query and (s.isaview=1)";

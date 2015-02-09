@@ -14,6 +14,7 @@
 <?php
 include("conf/config.inc.php");
 include("utils/utils.inc.php");
+include("utils/components.inc.php");
 include("head.inc.php");
 if(isset($_SESSION['rights'])) {
   $rights = $_SESSION["rights"];
@@ -35,6 +36,7 @@ if (isset($_SESSION['search_toversion'])) $cookie_toversion=$_SESSION['search_to
 if (isset($_SESSION['search_fromdata'])) $cookie_fromdata=$_SESSION['search_fromdata']; else $cookie_fromdata="";
 if (isset($_SESSION['search_todata'])) $cookie_todata=$_SESSION['search_todata']; else $cookie_todata="";
 if (isset($_SESSION['search_modified'])) $cookie_modified=$_SESSION['search_modified']; else $cookie_modified="";
+if (isset($_SESSION['search_projectid'])) $cookie_project=$_SESSION['search_projectid']; else $cookie_project="";
 ?>
 
 <h2>Search Scripts</h2>
@@ -137,6 +139,10 @@ To:
  
  echo "</tr><tr>";
  
+ // Project
+ echo "<td><b>Project:</b></td><td>";
+ printProjectComboBox($cookie_project);
+ echo "</td></tr><tr>";
  //Branch
  echo "<td><b>Branch:</b></td> ";
  echo "<td><select NAME=\"branchid\">";

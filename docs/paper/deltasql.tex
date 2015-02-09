@@ -24,14 +24,15 @@ deltasql.sourceforge.net\\}
 \thispagestyle{empty}
 
 \begin{abstract}
-This document presents the deltasql framework [1]. The architecture with server and clients and the subdivision in projects and modules is subject for the first chapter. 
-The synchronization algorithm is explained in the second chapter. It is a simple but powerful algorithm to synchronize databases. It assumes that each change to the database can be scripted in SQL. To each script, a version number is attached. A special table named tbsynchronization remembers the last version number applied to the database. When a database is updated, the last version number is retrieved, and the algorithm generates the newer scripts which still need to be applied, including a final update statement for the synchronization table. The paper describes in detail how the algorithm works when development on a main line splits in several branches. 
-A chapter is reserved to the concept of continouus database integration. In conclusion the paper describes several other ideas embedded on the framework like the verification step, email notification and collective versus individual statistics, which make deltasql a unique synchronization system for databases. 
+deltasql [1] is an Open Source framework to synchronize databases. The framework is designed to support any SQL-based database. The paper explains some of the ideas behind the framework.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:intro}
-deltasql [1] is an Open Source framework to synchronize databases. The framework is designed to support any SQL-based database. The paper explains the ideas behind the framework.
+
+The architecture with server and clients and the subdivision in projects and modules is subject for the first chapter. 
+The synchronization algorithm is explained in the second chapter. It is a simple but powerful algorithm to synchronize databases. It assumes that each change to the database can be scripted in SQL. To each script, a version number is attached. A special table named tbsynchronization remembers the last version number applied to the database. When a database is updated, the last version number is retrieved, and the algorithm generates the newer scripts which still need to be applied, including a final update statement for the synchronization table. The paper describes in detail how the algorithm works when development on a main line splits in several branches. 
+A chapter is reserved to the concept of continouus database integration. In conclusion the paper describes several other ideas embedded on the framework like the verification step, email notification and collective versus individual statistics, which make deltasql a unique synchronization system for databases. 
 
 \section{Architecture}
 
