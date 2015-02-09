@@ -98,7 +98,7 @@ if ($filtertitle!="") {
 
 if ($filterscript!="") {
     if ($scriptsmatchcase==1) {
-        //TODO: matchase query does not work, commented code is in place in search_scripts
+        //TODO: matchcase query does not work, commented code is in place in search_scripts
         // to activate checkbox
         $query="$query and (UPPER(s.code) LIKE UPPER('%$filterscript%'))"; 
     } else {
