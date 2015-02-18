@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html>
 <head>
-<head>
+<meta http-equiv="refresh" content="60" />
 <title>deltasql - List database scripts</title>
 <link rel="stylesheet" type="text/css" href="deltasql.css">
 <link rel="shortcut icon" href="pictures/favicon.ico" />
