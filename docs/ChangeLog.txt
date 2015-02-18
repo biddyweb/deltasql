@@ -1,4 +1,4 @@
-18.02.2015 git
+18.02.2015 git patch 3
 - added self refreshing of the page List Scripts, to show updates from other developers in real time
 
 09.02.2015 git - patch 2
