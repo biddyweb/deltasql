@@ -1,3 +1,0 @@
-Patch 1: 
-08.02.2015 git
-- added ability to rename a project name
