@@ -1,0 +1,8 @@
+18.02.2015 git patch 3
+- added self refreshing of the page List Scripts, to show updates from other developers in real time
+
+09.02.2015 git - patch 2
+- added ability to search among projects
+
+08.02.2015 git - patch 1
+- added ability to rename a project name
