@@ -1,4 +1,4 @@
-		Copyright (C) 2007-2014  The deltasql Development Team
+		Copyright (C) 2007-2015  The deltasql Development Team
 		    contact us at gpu-world@lists.sourceforge.net
 			   http://deltasql.sourceforge.net
 
